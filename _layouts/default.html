@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang=he>
+<head prefix="og: http://ogp.me/ns#">
+<meta charset=utf-8>
+<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=license href=//creativecommons.org/licenses/by-nc-nd/4.0/>
+<link rel=stylesheet href=/css/style.css>
+<!--[if lt IE 9]><script src=//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js></script><![endif]-->
+<header hidden><div class="~size ~space"></div></header>
+<main class="~size ~space container{% if page.className %} {{ page.className }}{% endif %}" dir=rtl>{{ content }}</main>
+<footer><div class="~size ~space"></div></footer>
