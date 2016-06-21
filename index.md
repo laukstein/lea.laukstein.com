@@ -1,6 +1,6 @@
 ---
 layout: default
-className: center
+className: ~center
 ---
 
 # {{ site.title }}
