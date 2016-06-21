@@ -1,9 +1,16 @@
-timezone: UTC
-markdown: kramdown
-permalink: /:categories/:title
-
-url: https://lea.laukstein.com
-enforce_ssl: lea.laukstein.com
-
 title: Lea Laukstein STYLE
 email: lea@laukstein.com
+url: https://lea.laukstein.com
+enforce_ssl: lea.laukstein.com
+permalink: /:categories/:title
+
+timezone: UTC
+markdown: kramdown
+sass:
+    style: compressed
+compress_html:
+    clippings: all
+    comments: ["<!-- ", " -->"]
+    endings: all
+    profile: false
+    startings: [html, head, body]

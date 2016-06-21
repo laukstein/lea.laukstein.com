@@ -129,7 +129,7 @@ header {
     margin-bottom: -10em;
     color: #be1100;
     object-fit: contain;
-    background-image: url(header.png);
+    background-image: url(/assets/header.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
