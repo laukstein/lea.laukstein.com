@@ -41,6 +41,15 @@ main {
         -ms-user-select: text;
             user-select: text;
 }
+img {
+    -webkit-user-drag: none;
+            user-drag: none;
+    -ms-interpolation-mode: nearest-neighbor; /* IE8-IE11 legacy */
+    image-rendering: -webkit-optimize-contrast; /* Webkit will drop this property https://bugs.webkit.org/show_bug.cgi?id=97991#c5 */
+    image-rendering: -moz-crisp-edges; /* Firefox legacy */
+    image-rendering:      crisp-edges; /* Safari legacy */
+    image-rendering: pixelated;
+}
 h1 {
     margin-top: .2em;
     margin-bottom: .2em;
@@ -83,6 +92,13 @@ hr {
     margin-left: auto;
     box-sizing: border-box;
 }
+.\~br {
+    white-space: pre-line;
+}
+.\~br:after {
+    content: "\a";
+    white-space: pre;
+}
 .\~center {
     display: -ms-flexbox; /* IE10 legacy */
     -ms-flex-pack: center;
@@ -92,13 +108,19 @@ hr {
     display: -webkit-box; /* Safari 5.1 legacy */
     -webkit-box-pack: center;
     -webkit-box-align: center;
+    -webkit-box-orient: vertical;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .container.\~center {
     padding-bottom: 13em;
+}
+.logo {
+    height: 102px;
+    margin-right: -.8em;
 }
 .video {
     position: relative;
