@@ -36,10 +36,29 @@ body {
 }
 main {
     display: block;
+    min-height: 100%;
+    min-height: 100vh;
     -webkit-user-select: text;
        -moz-user-select: text;
         -ms-user-select: text;
             user-select: text;
+}
+header {
+    padding: .25em 0 .5em;
+    color: #be1100;
+    font-size: 174%;
+    line-height: 1;
+    text-align: center;
+    border-bottom: .2em solid currentColor;
+}
+footer {
+    height: 3.7em;
+    margin-top: -4.8em;
+    padding-top: 1em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    border-top: 1px solid #e1e1e1;
 }
 img {
     -webkit-user-drag: none;
@@ -70,13 +89,9 @@ p + p {
 br {
     word-spacing: 0;
 }
-hr {
-    margin: 1em -3em;
-    margin-right: -4.9vw;
-    margin-left: -4.9vw;
-    clear: both;
+iframe {
+    width: 100%;
     border: 0;
-    border-top: 1px solid #ddd;
 }
 .\~size {
     min-width: 15.22em;
@@ -115,12 +130,21 @@ hr {
     align-items: center;
     flex-direction: column;
 }
+.container {
+    padding-top: 3em;
+    padding-bottom: 8em;
+    box-sizing: border-box;
+}
 .container.\~center {
-    padding-bottom: 13em;
+    height: 100vh;
+    padding-bottom: 11em;
 }
 .logo {
     height: 102px;
     margin-right: -.8em;
+}
+.logo + h1 {
+    min-width: 9.3em; /* Chrome compatibility */
 }
 .video {
     position: relative;
@@ -135,37 +159,32 @@ hr {
     top: 0;
     right: 0;
     left: 0;
-    width: 100%;
     height: 100%;
-    margin: auto;
-    border: 0;
+    background-color: #000;
 }
-.container {
-    min-height: 100%;
-    /* padding-top: 12em; */
-    padding-top: 5em;
-    padding-bottom: 5em;
+.signup {
+    overflow: hidden;
+    position: relative;
+    height: 31em;
 }
-header {
-    height: 5em;
-    margin-bottom: -10em;
-    color: #be1100;
-    object-fit: contain;
-    background-image: url(/assets/header.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-bottom: 1em solid currentColor;
-    box-sizing: border-box;
+.signup:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 2em;
+    background-image: linear-gradient(rgba(255,255,255,0), #fff);
+    pointer-events: none;
 }
-footer {
-    height: 3.7em;
-    margin-top: -4.8em;
-    padding-top: 1em;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: normal;
-    border-top: 1px solid #e1e1e1;
+.signup iframe {
+    height: 200%;
+    margin-top: -7em;
+}
+@media (max-width: 706px) {
+    .signup iframe {
+        margin-top: -3em;
+    }
 }
 
 @media (max-width: 480px) {
