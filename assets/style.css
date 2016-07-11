@@ -86,12 +86,30 @@ p {
 p + p {
     margin-top: 1em;
 }
+a {
+    color: #00d;
+    text-decoration: none;
+    -webkit-box-decoration-break: clone; /* Chrome legacy, demo http://jsbin.com/xojoro/quiet */
+            box-decoration-break: clone;
+}
+a:hover,
+a:focus {
+    color: #02a;
+    text-decoration: underline;
+}
 br {
     word-spacing: 0;
 }
 iframe {
     width: 100%;
     border: 0;
+}
+iframe,
+[unselectable] {
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 .\~size {
     min-width: 15.22em;
@@ -130,6 +148,12 @@ iframe {
     align-items: center;
     flex-direction: column;
 }
+.\~no-footer.container {
+    padding-bottom: 0;
+}
+.center {
+    text-align: center;
+}
 .container {
     padding-top: 3em;
     padding-bottom: 8em;
@@ -166,6 +190,10 @@ iframe {
     overflow: hidden;
     position: relative;
     height: 31em;
+    background-color: #f2f2f2;
+}
+.signup.large {
+    height: 45em;
 }
 .signup:after {
     content: "";
@@ -178,8 +206,10 @@ iframe {
     pointer-events: none;
 }
 .signup iframe {
+    width: 101%;
     height: 200%;
     margin-top: -7em;
+    margin-right: -1px;
 }
 @media (max-width: 706px) {
     .signup iframe {

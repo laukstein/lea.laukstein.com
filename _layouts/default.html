@@ -13,6 +13,6 @@ layout: compress
 <style>{% capture inline_css %}{% include_relative /assets/style.css %}{% endcapture %}{{ inline_css | scssify }}</style>
 <!--[if lt IE 9]><script src=//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js></script><![endif]-->
 <main class="~size ~space" dir=rtl>
-{% if page.header %}<header><img class=logo src=/assets/logo.png alt="לוגו"><div class=~br>{{ site.slogan }}</div></header>{% endif %}
+{% if page.header %}<header unselectable=on><img class=logo src=/assets/logo.png alt="לוגו"><div class=~br>{{ site.slogan }}</div></header>{% endif %}
 <div class="container{% if page.className %} {{ page.className }}{% endif %}">{{ content }}</div></main>
-<footer><div class="~size ~space"></div></footer>
+{% if page.className != "~no-footer" %}<footer><div class="~size ~space"></div></footer>{% endif %}
