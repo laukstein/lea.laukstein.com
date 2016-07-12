@@ -14,23 +14,22 @@ var escort = {
     hash: function (param) {
         "use strict";
 
-        if (param) {
-            var arr = location.hash.substring(1).split("&"),
-                pair,
-                i;
+        var arr = location.hash.slice(1).split("&"),
+            obj = {},
+            pair,
+            i;
 
-            if (arr.length) {
-                for (i = 0; i < arr.length; i += 1) {
-                    pair = arr[i].split("=");
+        if (arr.length) {
+            for (i = 0; i < arr.length; i += 1) {
+                pair = arr[i].split("=");
 
-                    if (pair[0] === param) {
-                        return !isNaN(pair[1]) ? Number(pair[1]) : pair[1] || "";
-                    }
+                if (pair[0]) {
+                    obj[pair[0]] = !isNaN(pair[1]) ? Number(pair[1]) : pair[1] && decodeURIComponent(pair[1]);
                 }
             }
         }
 
-        return "";
+        return param ? obj[param] : obj;
     },
     diff: function() {
         "use strict";
