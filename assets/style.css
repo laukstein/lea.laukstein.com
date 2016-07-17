@@ -6,7 +6,11 @@ body {
     height: 100%;
 }
 html,
-button {
+img,
+label,
+iframe,
+button,
+[unselectable] {
     -webkit-user-select: none;
        -moz-user-select: none;
         -ms-user-select: none;
@@ -23,8 +27,13 @@ html {
     touch-action: manipulation;
     cursor: default;
 }
-body {
+body,
+dd,
+dl,
+iframe {
     margin: 0;
+}
+body {
     font-size: 1.7em;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -69,15 +78,22 @@ img {
     image-rendering:      crisp-edges; /* Safari legacy */
     image-rendering: pixelated;
 }
-h1 {
+h1,
+h2 {
     margin-top: .2em;
     margin-bottom: .2em;
     font-weight: normal;
-    font-size: 1.9em;
     line-height: 1.07;
 }
-h1:first-line {
+h1:first-line,
+h2:first-line {
     font-size: 150%;
+}
+h1 {
+    font-size: 1.9em;
+}
+h2 {
+    font-size: 1.24em;
 }
 p {
     margin-top: .8em;
@@ -86,11 +102,87 @@ p {
 p + p {
     margin-top: 1em;
 }
+form {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+label {
+    display: none;
+    box-suppress: discard;
+    padding-top: .2em;
+    padding-bottom: .2em;
+    color: #666;
+    line-height: 1.2;
+}
+input,
+button {
+    width: 20em;
+    max-width: 100%;
+    padding: .6em .75em;
+    margin: .15em 0;
+    text-align: right;
+    font-size: 1em;
+    font-family: inherit;
+    line-height: 1.25;
+    vertical-align: middle;
+    background-color: #f7f7f7;
+    border: 1px solid #f7f7f7;
+    border-top-color: #ececec;
+    border-left-color: #ececec;
+    box-sizing: border-box;
+    outline: none;
+    box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+}
+input:focus,
+[required]:valid {
+    background-color: transparent;
+    border-color: #aaa;
+    border-right-color: #888;
+    border-bottom-color: #888;
+}
+input:focus,
+[required]:valid:focus {
+    border-color: #00d;
+}
+[type=checkbox],
+[type=radio] {
+    width: auto;
+    padding: 0;
+    border: 0;
+    box-sizing: content-box;
+}
+button {
+    overflow: hidden;
+    width: auto;
+    min-width: 9.4em;
+    margin-top: .55em;
+    margin-bottom: .55em;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap; /* Mobile button text wrapping fix for button */
+    word-wrap: normal; /* "nowrap" compatibility for IE9 */
+    text-overflow: ellipsis;
+    text-shadow: -1px -1px 1px #24659c;
+    background-color: #428bca;
+    border: 1px solid #428bca;
+    border-radius: .15em;
+    background-image: radial-gradient(farthest-corner at -11% 128%, #2944b1, transparent);
+    box-shadow: none;
+    outline: 0;
+    cursor: pointer;
+}
+button:active {
+    background-color: #367fbd;
+    border-color: #367fbd;
+}
 .success {
     color: #3c7d2f;
 }
 .error {
     color: #be1100;
+}
+.error.error input {
+    border-color: #be1100;
 }
 a {
     color: #00d;
@@ -108,14 +200,6 @@ br {
 }
 iframe {
     width: 100%;
-    border: 0;
-}
-iframe,
-[unselectable] {
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
 }
 .\~size {
     min-width: 15.22em;
@@ -138,6 +222,17 @@ iframe,
     content: "\a";
     white-space: pre;
 }
+.\~nowrap {
+    white-space: nowrap;
+}
+.\~invisible {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    pointer-events: none;
+}
 .\~center {
     display: -ms-flexbox; /* IE10 legacy */
     -ms-flex-pack: center;
@@ -153,6 +248,12 @@ iframe,
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+.\~flow {
+    float: left;
+}
+.\~small {
+    font-size: small;
 }
 .\~no-footer.container {
     padding-bottom: 0;
@@ -175,6 +276,14 @@ iframe,
 }
 .logo + h1 {
     min-width: 9.3em; /* Chrome compatibility */
+}
+.box {
+    padding-bottom: 5em;
+    margin-bottom: 2em;
+    text-shadow: 1px 1px 1px #fff;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    border-bottom: 1px solid #ddd;
 }
 .video {
     position: relative;
@@ -229,5 +338,115 @@ iframe,
     }
     h1 {
         font-size: 1.5em;
+    }
+    h2 {
+        font-size: .96em;
+    }
+}
+
+@media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */
+    label {
+        display: table-cell;
+    }
+}
+@media (-ms-high-contrast: active), (-ms-high-contrast: none) { /* IE10+ */
+    a {
+        /* Remove IE10 :active gray background-color */
+        background-color: transparent;
+    }
+    ::-ms-clear {
+        /* Remove input x */
+        display: none;
+        box-suppress: discard;
+    }
+    :-ms-input-placeholder {
+        color: inherit;
+    }
+    .error :-ms-input-placeholder {
+        color: #be1100;
+    }
+}
+@supports (-ms-accelerator: true) { /* Edge */
+    ::-ms-clear {
+        /* Remove input x */
+        display: none;
+        box-suppress: discard;
+    }
+    ::-webkit-input-placeholder {
+        color: #333;
+    }
+    .error ::-webkit-input-placeholder {
+        color: #be1100;
+    }
+    [placeholder]:focus::-webkit-input-placeholder {
+        opacity: .54;
+    }
+}
+@media (-webkit-min-device-pixel-ratio: 0) {
+    @supports (not (-ms-accelerator: true)) { /* Webkit */
+        html {
+            /* iOS 7 legacy http://barrow.io/overflow-scrolling */
+            -webkit-overflow-scrolling: touch;
+        }
+        html {
+            /* Old Webkit smooth text rendering issue */
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%; /* iOS fix */
+        }
+        a,
+        input,
+        button {
+            /* Remove outline and highlight-color from click-able elements on Android and iOS */
+            -webkit-tap-highlight-color: rgba(51,51,51,0);
+        }
+        a {
+            /* iOS remove bubble dialog on tap-holding */
+            -webkit-touch-callout: none;
+        }
+        input {
+            -webkit-hyphens: none; /* Safari 9.1 wraps text to multiple lines */
+        }
+        ::-webkit-input-placeholder {
+            color: #333;
+            text-overflow: ellipsis!important; /* Chrome 49 input:focus and Safari 9.1.1 input applies inline "text-overflow: clip" */
+            white-space: nowrap; /* Safari 9.1 wraps text with "-" */
+            -webkit-user-select: none;
+                    user-select: none;
+        }
+        .error ::-webkit-input-placeholder {
+            color: #be1100;
+        }
+        :-webkit-autofill {
+            box-shadow: 1px 1px 0 rgba(0,0,0,.2), inset 0 0 0 2em #fff;
+        }
+        [placeholder]:focus::-webkit-input-placeholder {
+            opacity: .54;
+        }
+        .error ::-webkit-input-placeholder  {
+            color: #be1100;
+        }
+    }
+}
+@-moz-document url-prefix() { /* Firefox */
+    label:active {
+        background-color: transparent;
+    }
+    input,
+    button {
+        background-image: none;
+        border-radius: 0;
+    }
+    input::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+    ::-moz-placeholder {
+        color: #333;
+    }
+    .error ::-moz-placeholder {
+        color: #be1100;
+    }
+    [placeholder]:not(:focus)::-moz-placeholder {
+        opacity: 1;
     }
 }
