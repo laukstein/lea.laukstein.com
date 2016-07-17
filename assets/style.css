@@ -86,6 +86,12 @@ p {
 p + p {
     margin-top: 1em;
 }
+.success {
+    color: #3c7d2f;
+}
+.error {
+    color: #be1100;
+}
 a {
     color: #00d;
     text-decoration: none;
