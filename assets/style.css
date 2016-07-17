@@ -280,9 +280,6 @@ iframe {
 .box {
     padding-bottom: 5em;
     margin-bottom: 2em;
-    text-shadow: 1px 1px 1px #fff;
-    background-repeat: no-repeat;
-    background-position: left bottom;
     border-bottom: 1px solid #ddd;
 }
 .video {
