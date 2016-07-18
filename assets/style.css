@@ -58,7 +58,6 @@ header {
     font-size: 174%;
     line-height: 1;
     text-align: center;
-    border-bottom: .2em solid currentColor;
 }
 footer {
     height: 3.7em;
@@ -225,14 +224,6 @@ iframe {
 .\~nowrap {
     white-space: nowrap;
 }
-.\~invisible {
-    position: absolute;
-    top: 0;
-    z-index: -1;
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    pointer-events: none;
-}
 .\~center {
     display: -ms-flexbox; /* IE10 legacy */
     -ms-flex-pack: center;
@@ -286,8 +277,6 @@ iframe {
     position: relative;
     padding-bottom: 56.25%;
     padding-top: 2.5em;
-    margin-bottom: 1.5em;
-    margin-bottom: 2.4vw;
     clear: both;
 }
 .video iframe {
