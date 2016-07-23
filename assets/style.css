@@ -69,13 +69,17 @@ footer {
     border-top: 1px solid #e1e1e1;
 }
 img {
-    -webkit-user-drag: none;
-            user-drag: none;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
     -ms-interpolation-mode: nearest-neighbor; /* IE8-IE11 legacy */
     image-rendering: -webkit-optimize-contrast; /* Webkit will drop this property https://bugs.webkit.org/show_bug.cgi?id=97991#c5 */
     image-rendering: -moz-crisp-edges; /* Firefox legacy */
     image-rendering:      crisp-edges; /* Safari legacy */
     image-rendering: pixelated;
+    -webkit-user-drag: none;
+            user-drag: none;
 }
 h1,
 h2 {
@@ -263,14 +267,14 @@ iframe {
 }
 .logo {
     height: 102px;
-    margin-right: -.8em;
+    margin-right: -.7em;
 }
 .logo + h1 {
     min-width: 9.3em; /* Chrome compatibility */
 }
 .box {
-    padding-bottom: 5em;
-    margin-bottom: 2em;
+    padding-bottom: 2em;
+    margin-bottom: 2.5em;
     border-bottom: 1px solid #ddd;
 }
 .video {
