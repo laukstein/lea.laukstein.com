@@ -1,10 +1,10 @@
-title: Lea Laukstein STYLE
-slogan: להיות יפה כמו שאת
+title: סטיילינג בקלות לדתיות — לאה לאוקשטיין
 url: https://lea.laukstein.com
 enforce_ssl: lea.laukstein.com
 permalink: /:categories/:title
-
 timezone: UTC
+include: ['_pages']
+safe: true
 markdown: kramdown
 sass:
     style: compressed
@@ -14,3 +14,12 @@ compress_html:
     endings: all
     profile: false
     startings: [html, head, body]
+webrick:
+    headers:
+        Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline' a.disquscdn.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' lealaukstein.disqus.com a.disquscdn.com; frame-src www.youtube.com disqus.com; connect-src links.services.disqus.com; referrer no-referrer; report-uri https://laukstein.report-uri.io/r/default/csp/enforce
+        X-Frame-Options: DENY
+        X-XSS-Protection: 1
+gems:
+    - jekyll-redirect-from
+whitelist:
+    - jekyll-redirect-from

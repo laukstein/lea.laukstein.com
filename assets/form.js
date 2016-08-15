@@ -70,18 +70,18 @@ var form = {
 
         if (data) {
             if (data.result === "success") {
-                message = "<p class=success>תודה!<br>לסיום ההרשמה תקבל עכשיו מייל לאישור.</p>";
+                message = "<h1 class=success>תודה</h1><p>לסיום ההרשמה תקבל עכשיו מייל לאישור</p>";
             } else if (data.msg && data.msg.indexOf("list-manage.com/subscribe/send-email")) {
-                message = "<p class=error>את כבר רשומה, <a href=" + document.location.href + ">תנסי שוב</a>.</p>";
+                message = "<h1 class=error>שגיאה...</h1><p>את כבר רשומה, תנסי עם <a href=" + document.location.href + ">אימייל אחר</a></p>";
             } else {
-                message = "<p class=error>שגיאה<br>בבקשה <a href=" + document.location.href + ">תנסי שוב</a> מאוחר יותר.</p>";
+                message = "<h1 class=error>שגיאה...</h1><p>בבקשה <a href=" + document.location.href + ">תנסי שוב</a> מאוחר יותר</p>";
             }
         } else {
-            message = "<p class=error>שגיאה בשרת<br>ניתן להירשם דרך <a href=//www.facebook.com/LeaLaukstein/>LeaLaukstein</a> או <a href=" + document.location.href + ">תנסי שוב</a>.</p>";
+            message = "<h1 class=error>שגיאה בשרת...</h1><p>ניתן להירשם דרך <a href=//www.facebook.com/LeaLaukstein/>LeaLaukstein</a> או <a href=" + document.location.href + ">תנסי שוב</a></p>";
             console.error("Form error", data);
         }
 
-        this.el.outerHTML = message;
+        this.el.outerHTML = "<div>" + message + "</div>";
     },
     serialize: function () {
         "use strict";
@@ -106,11 +106,20 @@ var form = {
         }
         if (form.active && form.valid()) {
             var head = document.getElementsByTagName("head")[0],
-                script = document.createElement("script");
+                script = document.createElement("script"),
+                arr = form.list("input, button"),
+                i;
             script.src = form.el.action + "&" + form.serialize(form.el) + "&b_" + form.key + "_" + form.name + "&_=" + Math.random().toString(16).substr(2, 8) + "&c=form.success";
-            form.el.innerHTML = "שולח...";
 
-            if (this.currentScript) {
+            for (i = 0; i < arr.length; i += 1) {
+                arr[i].setAttribute("disabled", "");
+
+                if (arr[i].tagName === "BUTTON") {
+                    arr[i].innerHTML = "שולח...";
+                }
+            }
+
+            if (form.currentScript) {
                 head.removeChild(currentScript);
             }
 
@@ -224,12 +233,12 @@ var form = {
                 this.required = this.list("[data-required]");
                 this.dependencies();
 
-                var phone = document.getElementById("phone");
+                var tel = document.getElementById("tel");
 
-                if (phone) {
-                    phone.addEventListener("keypress", this.number);
-                    phone.addEventListener("paste", this.paste);
-                    phone.addEventListener("drop", this.drop);
+                if (tel) {
+                    tel.addEventListener("keypress", this.number);
+                    tel.addEventListener("paste", this.paste);
+                    tel.addEventListener("drop", this.drop);
                 }
             }
         }

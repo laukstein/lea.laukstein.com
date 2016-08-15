@@ -1,0 +1,30 @@
+---
+layout: full
+title: צור קשר
+order: 4
+draft: true
+---
+
+{{ '# לאה לאוקשטיין' | markdownify }}
+
+<form class="cel space" id=form name=70a2d0d976>
+    <dl>
+        <dt><h3>השאר פרטים'</h3>
+        <dd><label for=email>אימייל</label><input id=email name=EMAIL type=email placeholder=*אימייל data-error="אימייל שגוי" autocomplete=email dir=ltr data-required autofocus>
+        <dd><label for=name>שם</label><input id=name name=FNAME placeholder="*שם" data-error="תקליד שם" autocomplete=name dir=auto data-required>
+        <dd><label for=tel>נייד</label><input id=tel name=MMERGE3 type=tel placeholder=נייד autocomplete=tel dir=ltr data-required>
+        <dd>
+            <label for=subject>נושא</label>
+            <select id=subject name=subject>
+                <option value=general>כללי</option>
+                <option value=digital-workshop>סדנה דיגיטאליתי</option>
+                <option value=diagnostic>אבחון מקצועיי</option>
+                <option value=shopping>ליווי יום קניותי</option>
+                <option value=closet>סידור ארוןי</option>
+                <option value=workshop>סדנה פרונטאליתי</option>
+            </select>
+        </dd>
+        <dd><label for=message>תוכן</label><textarea id=message name=message placeholder=תוכן minlength=5 rows=3 dir=rtl data-required></textarea>
+        <dd><button>לשלוח הודעה</button>
+    </dl>
+</form>

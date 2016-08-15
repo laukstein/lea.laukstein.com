@@ -8,14 +8,68 @@ layout: compress
 <head prefix="og: http://ogp.me/ns#">
 <meta charset=utf-8>
 <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+{% if layout.private %}<meta name=robots content=noindex>{% endif %}
 <meta name=viewport content="width=device-width,initial-scale=1">
 <link rel=license href=//creativecommons.org/licenses/by-nc-nd/4.0/>
-<style>{% capture inline_css %}{% include_relative /assets/style.css %}{% endcapture %}{{ inline_css | scssify }}</style>
+<style>{% capture inline_css %}{% include style.css %}{% endcapture %}{{ inline_css | scssify }}</style>
 <!--[if lt IE 9]><script src=//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js></script><![endif]-->
-<main class="~size ~space" dir=rtl>
-{% if page.header %}<header>{% if page.header == true
-    %}<img class=logo src=/assets/logo.png alt="לוגו"><div class=~br>{{ site.slogan }}</div>{% else
-    %}<img src=/assets/{{ page.header }} alt="">{% endif
-%}</header>{% endif %}
-<div class="container{% if page.className %} {{ page.className }}{% endif %}">{{ content }}</div></main>
-{% unless page.className contains "~no-footer" %}<footer><div class="~size ~space"></div></footer>{% endunless %}
+<header dir=ltr>
+    <div class=wrapper>
+        <a class="logo{% if page.url == "/" %} active{% endif %}" href="/"><img src=/assets/logo.png alt="{{ site.title }}"></a>
+        <nav dir=rtl>
+        {% assign pages=site.pages | sort: 'order' %}{%
+        for nav in pages %}{%
+            unless nav.draft %}{%
+                if nav.order and nav.title
+                    %}<a{% if nav.url == page.url %} class=active{% endif %} href="{{ nav.url | prepend: site.baseurl }}">{{ nav.title }}</a>{%
+                endif %}{%
+            endunless %}{%
+        endfor %}
+        </nav>
+    </div>
+</header>
+<main dir=rtl>
+{% case layout.type %}
+    {% when "full" %}
+    <div class="table scale center">
+        <div class=cel>
+            {{ content }}
+        </div>
+    </div>
+    {% when "medium" %}
+    <div class="table scale space medium">
+        {{ content }}
+        {% if layout.comment %}
+        <div class=comment id=disqus_thread></div>
+        <script>
+        /* // https://disqus.com/admin/universalcode/#configuration-variables
+        var disqus_config = function () {
+            this.page.url = location.protocol + "://" + location.host + "/" + location.pathname;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };*/
+        (function () {
+            var d = document,
+                s = d.createElement("script");
+            s.src = "//lealaukstein.disqus.com/embed.js";
+            s.setAttribute("data-timestamp", +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <script id=dsq-count-scr src=//lealaukstein.disqus.com/count.js async></script>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="table scale">
+        {% if page.youtube %}
+            <div class="cel content{% if page.className %} {{ page.className }}{% endif %}">
+                {% include youtube.html id=page.youtube %}
+            </div>
+        {% else %}
+            <div class="cel content space">
+                {{ content }}
+            </div>
+        {% endif %}
+        {% include signup.html %}
+    </div>
+{% endcase %}
+</main>
