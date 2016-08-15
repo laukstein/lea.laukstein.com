@@ -1,5 +1,5 @@
 ---
-layout: full
+layout: status
 permalink: success
 title: ההרשמה
 headline: תודה

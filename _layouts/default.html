@@ -31,6 +31,12 @@ layout: compress
 <main dir=rtl>
 {% case layout.type %}
     {% when "full" %}
+    <div class="table scale full">
+        <div class=cel>
+            {{ content }}
+        </div>
+    </div>
+    {% when "center" %}
     <div class="table scale center">
         <div class=cel>
             {{ content }}

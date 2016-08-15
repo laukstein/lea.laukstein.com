@@ -1,5 +1,5 @@
 ---
-layout: full
+layout: status
 permalink: cancel
 title: ההרשמה
 headline: תנסי שוב...

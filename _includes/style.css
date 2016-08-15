@@ -12,7 +12,8 @@ header,
 img,
 label,
 iframe,
-button {
+button,
+.button {
     -webkit-user-select: none;
        -moz-user-select: none;
         -ms-user-select: none;
@@ -179,12 +180,16 @@ main {
     display: table-cell;
     vertical-align: top;
 }
-.cell-center {
-    display: table-cell;
-    vertical-align: middle;
+.table.full .cel {
+    padding-top: 7vh;
 }
 .table.center .cel {
     padding: 7vh 0 25vh;
+    vertical-align: middle;
+}
+.cell-center {
+    display: table-cell;
+    min-width: 13em;
     vertical-align: middle;
 }
 .content {
@@ -202,18 +207,6 @@ main {
     padding-bottom: 2em;
     margin: auto;
     box-sizing: border-box;
-}
-
-@media (max-width: 56em) {
-    .cel {
-        display: block;
-    }
-    .table.center .cel {
-        display: table-cell;
-    }
-    .content {
-        width: auto;
-    }
 }
 
 h1,
@@ -245,6 +238,9 @@ br {
     word-spacing: 0;
 }
 form {
+    display: inline-block;
+}
+form.signup {
         width: 20em;
     max-width: 100%;
     text-align: center;
@@ -260,7 +256,8 @@ label {
 input,
 select,
 textarea,
-button {
+button,
+.button {
         width: 20em;
     max-width: 100%;
     padding: .66em .75em;
@@ -330,7 +327,8 @@ textarea {
 .error.error input {
     border-color: #be1100;
 }
-button {
+button,
+.button {
     overflow: hidden;
     margin-top: .55em;
     margin-bottom: .55em;
@@ -343,10 +341,18 @@ button {
     background-color: #ffdb00;
     cursor: pointer;
 }
+.button.button {
+    display: inline-block;
+        width: auto;
+    min-width: 5.9em;
+    padding: .56em .65em;
+    color: inherit;
+    text-decoration: none;
+}
 button:active {
     border-color: #9c9c9c;
 }
-button:before {
+.signup button:before {
     content: "\203A";
     font-size: 300%;
     float: left;
@@ -378,9 +384,62 @@ iframe {
     height: 100%;
     background-color: #000;
 }
-.comment {
-    margin-top: 3em;
+
+.items {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    float: right;
+    list-style: none;
 }
+.items li {
+    position: relative;
+        width: 100%;
+    max-width: 16em;
+    height: 17em;
+    padding: 2em;
+    margin: .5em;
+    float: right;
+    background-color: #fff;
+}
+.items li:after,
+.items li:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 15px;
+    width: 50%;
+    height: 20%;
+    max-width: 300px;
+    max-height: 100px;
+    box-shadow: 0 15px 10px rgba(51,51,51,.3);
+}
+.items li:before {
+    left: 8px;
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+}
+.items li:after {
+    right: 8px;
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+}
+.items h3 {
+    position: absolute;
+    bottom: 4.3em;
+    right: 2em;
+}
+.items .action {
+    position: absolute;
+    bottom: 1.95em;
+    right: 2em;
+    left: 2em;
+}
+.items .action form + a,
+.items .action .button + a {
+    margin-right: 1em;
+}
+
 .note {
     position: relative;
     left: 50%;
@@ -394,6 +453,26 @@ iframe {
     text-shadow: 1px 0 0 #ff0;
     background-color: #ffdb00;
     box-sizing: border-box;
+}
+.comment {
+    margin-top: 3em;
+}
+
+@media (max-width: 56em) {
+    .cel {
+        display: block;
+    }
+    .table.center .cel {
+        display: table-cell;
+    }
+    .content {
+        width: auto;
+    }
+}
+@media (max-width: 36em) {
+    .cell-center {
+        display: block;
+    }
 }
 
 @media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */

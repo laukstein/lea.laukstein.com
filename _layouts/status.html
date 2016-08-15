@@ -1,8 +1,10 @@
 ---
 layout: default
-full: full
+private: true
+type: center
 ---
 
-<div class="~center ~full">
-    {{ content }}
-</div>
+{% if page.headline %}
+    <h1 class="nowrap{% if page.className %} {{ page.className }}{% endif %}">{{ page.headline }}</h1>
+{% endif %}
+{{ content }}
