@@ -134,6 +134,7 @@ nav .active:after {
     margin-top: .3em;
 }
 main {
+    display: block; /* Compatibiliy for IE11, old Safari 5.1.7 */
         width: 100%;
     min-width: 12.6em;
     max-width: 84.78em;
