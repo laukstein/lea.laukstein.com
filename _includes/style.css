@@ -46,6 +46,22 @@ body {
         -ms-hyphens: auto;
             hyphens: auto;
 }
+a,
+img {
+    -webkit-user-drag: none;
+            user-drag: none;
+}
+a {
+    color: #00d;
+    text-decoration: none;
+    -webkit-box-decoration-break: clone; /* Chrome legacy, demo http://jsbin.com/xojoro/quiet */
+            box-decoration-break: clone;
+}
+a:hover,
+a:focus {
+    color: #02a;
+    text-decoration: underline;
+}
 img {
     /* width: auto; */
     max-width: 100%;
@@ -224,17 +240,6 @@ p {
 }
 p + p {
     margin-top: 1em;
-}
-a {
-    color: #00d;
-    text-decoration: none;
-    -webkit-box-decoration-break: clone; /* Chrome legacy, demo http://jsbin.com/xojoro/quiet */
-            box-decoration-break: clone;
-}
-a:hover,
-a:focus {
-    color: #02a;
-    text-decoration: underline;
 }
 br {
     word-spacing: 0;
