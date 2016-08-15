@@ -81,7 +81,7 @@ var form = {
             console.error("Form error", data);
         }
 
-        this.el.outerHTML = "<div>" + message + "</div>";
+        this.el.innerHTML = message;
     },
     serialize: function () {
         "use strict";
