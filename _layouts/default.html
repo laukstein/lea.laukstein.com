@@ -8,7 +8,7 @@ layout: compress
 <head prefix="og: http://ogp.me/ns#">
 <meta charset=utf-8>
 <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-{% if layout.private %}<meta name=robots content=noindex>{% endif %}
+{% if layout.private or page.draft %}<meta name=robots content=noindex>{% endif %}
 <meta name=viewport content="width=device-width,initial-scale=1">
 <link rel=license href=//creativecommons.org/licenses/by-nc-nd/4.0/>
 <style>{% capture inline_css %}{% include style.css %}{% endcapture %}{{ inline_css | scssify }}</style>
