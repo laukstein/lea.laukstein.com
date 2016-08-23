@@ -63,6 +63,9 @@ a:focus {
     color: #02a;
     text-decoration: underline;
 }
+a[onclick] {
+    cursor: pointer;
+}
 img {
     /* width: auto; */
     max-width: 100%;
@@ -75,6 +78,9 @@ img {
     image-rendering: pixelated;
     -webkit-user-drag: none;
             user-drag: none;
+}
+a img {
+    border: 0; /* IE10 fix */
 }
 header {
     position: fixed;
@@ -164,6 +170,56 @@ main {
         -ms-user-select: text;
             user-select: text;
 }
+blockquote,
+.items li {
+    position: relative;
+    padding: 2em;
+    background-color: #fff;
+}
+blockquote {
+    margin: 1.2em 0;
+}
+blockquote:before,
+blockquote:after,
+.items li:after,
+.items li:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 15px;
+    width: 50%;
+    height: 20%;
+    max-width: 300px;
+    max-height: 100px;
+    box-shadow: 0 15px 10px rgba(51,51,51,.3);
+}
+blockquote:before,
+.items li:before {
+    left: 8px;
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+}
+blockquote:after,
+.items li:after {
+    right: 8px;
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+}
+blockquote > *:not(div):not(span):not(code):first-child {
+    padding-top: .4em;
+}
+blockquote > *:not(div):not(span):not(code):last-child {
+    padding-bottom: .52em;
+}
+cite {
+    display: block;
+    color: #666;
+    font-style: normal;
+}
+cite:before {
+    content: "\2014\00A0";
+    color: #999;
+}
 .table {
     display: table;
     table-layout: fixed;
@@ -184,7 +240,7 @@ main {
     padding-top: 7vh;
 }
 .table.center .cel {
-    padding: 7vh 0 25vh;
+    padding-bottom: 7vh;
     vertical-align: middle;
 }
 .cell-center {
@@ -198,6 +254,9 @@ main {
 }
 .space {
     padding: 6% 2.1em;
+}
+.space.no-padding {
+    padding-top: 0;
 }
 .nowrap {
     white-space: nowrap;
@@ -214,7 +273,6 @@ h2 {
     margin-top: .2em;
     margin-bottom: .2em;
     color: #d8940f;
-    /* font-weight: normal; */
     line-height: 1.07;
 }
 h1:first-line,
@@ -226,6 +284,9 @@ h1 {
 }
 h2 {
     font-size: 1.24em;
+}
+h2 a[href] {
+    color: inherit;
 }
 p {
     margin-top: .2em;
@@ -268,8 +329,6 @@ button,
     background-color: #fff;
     box-sizing: border-box;
     border: 1px solid transparent;
-    /* outline: none; */
-    box-sizing: border-box;
 }
 input[disabled],
 select[disabled],
@@ -302,9 +361,28 @@ textarea:focus {
     box-shadow: 1px 1px .1em rgba(0,0,0,.2),
                 1px 1px 2em rgba(0,0,0,.15);
 }
+select {
+    color: #fff;
+    background-color: #1e90ff;
+    border-color: #1e90ff;
+}
+option {
+    overflow: hidden;
+
+    /* Match to parent element width (currently supported only on Firefox) */
+    /* Chrome max-width issue https://code.google.com/p/chromium/issues/detail?id=82253 */
+    min-width: 100%;
+    max-width: 0;
+
+    color: #333;
+    white-space: nowrap;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    background-color: #fff;
+}
 textarea {
     overflow-x: hidden;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */ /* Causes placholder dislocation on Chrome */
     min-height: 4.95em;
     max-height: 13em;
     vertical-align: top;
@@ -324,7 +402,9 @@ textarea {
 .error {
     color: #b00;
 }
-.error.error input {
+.error.error input,
+.error.error select,
+.error.error textarea {
     border-color: #be1100;
 }
 button,
@@ -393,36 +473,11 @@ iframe {
     list-style: none;
 }
 .items li {
-    position: relative;
         width: 100%;
     max-width: 16em;
     height: 17em;
-    padding: 2em;
     margin: .5em;
     float: right;
-    background-color: #fff;
-}
-.items li:after,
-.items li:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    bottom: 15px;
-    width: 50%;
-    height: 20%;
-    max-width: 300px;
-    max-height: 100px;
-    box-shadow: 0 15px 10px rgba(51,51,51,.3);
-}
-.items li:before {
-    left: 8px;
-    -webkit-transform: rotate(-2deg);
-            transform: rotate(-2deg);
-}
-.items li:after {
-    right: 8px;
-    -webkit-transform: rotate(2deg);
-            transform: rotate(2deg);
 }
 .items h3 {
     position: absolute;
@@ -456,6 +511,30 @@ iframe {
 }
 .comment {
     margin-top: 3em;
+}
+
+.sheet {
+    display: table;
+    width: auto;
+    word-break: normal;
+    word-break: keep-all;
+    vertical-align: top;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+.row {
+    display: table-row;
+}
+.column {
+    display: table-cell;
+    padding: .4em;
+}
+.label {
+    font-weight: bold;
+    white-space: nowrap;
+}
+.flow {
+    float: left;
 }
 
 @media (max-width: 56em) {

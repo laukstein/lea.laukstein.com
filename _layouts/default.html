@@ -43,7 +43,7 @@ layout: compress
         </div>
     </div>
     {% when "medium" %}
-    <div class="table scale space medium">
+    <div class="table scale space medium{% if page.className %} {{ page.className }}{% endif %}">
         {{ content }}
         {% if layout.comment %}
         <div class=comment id=disqus_thread></div>

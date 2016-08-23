@@ -1,30 +1,31 @@
 ---
-layout: full
+layout: center
 title: צור קשר
 order: 4
-draft: true
 ---
 
-{{ '# לאה לאוקשטיין' | markdownify }}
-
-<form class="cel space" id=form name=70a2d0d976>
+<form class="cel space" id=contact method=POST>
+    <h1>{{ page.title }}</h1>
     <dl>
-        <dt><h3>השאר פרטים'</h3>
-        <dd><label for=email>אימייל</label><input id=email name=EMAIL type=email placeholder=*אימייל data-error="אימייל שגוי" autocomplete=email dir=ltr data-required autofocus>
-        <dd><label for=name>שם</label><input id=name name=FNAME placeholder="*שם" data-error="תקליד שם" autocomplete=name dir=auto data-required>
-        <dd><label for=tel>נייד</label><input id=tel name=MMERGE3 type=tel placeholder=נייד autocomplete=tel dir=ltr data-required>
+        <dt>
         <dd>
-            <label for=subject>נושא</label>
+            <label for=subject>הנושא</label>
             <select id=subject name=subject>
-                <option value=general>כללי</option>
-                <option value=digital-workshop>סדנה דיגיטאליתי</option>
-                <option value=diagnostic>אבחון מקצועיי</option>
-                <option value=shopping>ליווי יום קניותי</option>
-                <option value=closet>סידור ארוןי</option>
-                <option value=workshop>סדנה פרונטאליתי</option>
+                <option>הנושא כללי</option>
+                <option data-name=diagnostic>אבחון מקצועי</option>
+                <option data-name=shopping>ליווי יום קניות</option>
+                <option data-name=digital-workshop>סדנה דיגיטאלית</option>
+                <option data-name=workshop>סדנה פרונטאלית</option>
+                <option data-name=closet>סידור ארון</option>
             </select>
         </dd>
-        <dd><label for=message>תוכן</label><textarea id=message name=message placeholder=תוכן minlength=5 rows=3 dir=rtl data-required></textarea>
-        <dd><button>לשלוח הודעה</button>
+        <dd><label for=email>אימייל</label><input id=email name=email type=email placeholder=אימייל data-error="אימייל שגוי" autocomplete=email dir=ltr data-required autofocus>
+        <dd><label for=name>שם</label><input id=name name=name placeholder=שם data-error="תקליד שם" autocomplete=name dir=auto data-required>
+        <dd><label for=tel>נייד</label><input id=tel name=tel type=tel placeholder=נייד data-error="נייד שגוי" autocomplete=tel dir=ltr data-required>
+        <dd><label for=message>תוכן</label><textarea id=message name=message placeholder=תוכן data-error="הודעה קצרה מדי" rows=3 dir=rtl data-required></textarea>
+        <dd><button formnovalidate>לשלוח הודעה</button>
+        <dd id=status>
     </dl>
 </form>
+<script>{% include contact.min.js %}</script>
+{% comment %}<script src=assets/contact.js></script>{% endcomment %}
