@@ -54,7 +54,7 @@ var contact = {
             for (i = 0; i < arr.length; i += 1) {
                 if (!arr[i].value ||
                     arr[i].type === "email" && !/^\S+@\S+\.\S+$/.test(arr[i].value) ||
-                    arr[i].type === "tel" && !/^0(([23489]{1}\d{7})|[5]{1}\d{8})$/.test(arr[i].value) ||
+                    arr[i].type === "tel" && !/^(\+972(\-)?|0)([1-468-9](\-)?\d{7}|(5|7)[0-9](\-)?\d{7})$/.test(arr[i].value) ||
                     arr[i].name === "message" && arr[i].value.length < 5) {
                     error = arr[i].getAttribute("data-error");
                     flag = false;
@@ -366,7 +366,7 @@ var contact = {
             this.tel = document.getElementById("tel");
             this.message = document.getElementById("message");
             this.status = document.getElementById("status");
-            this.el.action = "//lab.alaukstein.com/contact";
+            this.el.action = "//lab.laukstein.com/contact";
             this.required = this.list("[data-required]");
 
             this.dependencies();
