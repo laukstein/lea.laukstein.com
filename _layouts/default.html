@@ -45,6 +45,10 @@ layout: compress
     </div>
     {% when "medium" %}
     <div class="table scale space medium{% if page.className %} {{ page.className }}{% endif %}">
+        {% if page.youtube %}
+            {% include youtube.html id=page.youtube %}
+            {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+        {% endif %}
         {{ content }}
         {% if layout.comment %}
         <div class=comment id=disqus_thread></div>
