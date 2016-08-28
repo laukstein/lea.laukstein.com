@@ -67,7 +67,6 @@ a[onclick] {
     cursor: pointer;
 }
 img {
-    /* width: auto; */
     max-width: 100%;
     height: auto;
     vertical-align: top;
@@ -88,7 +87,6 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    /* min-width: 32em; */
     padding-right: .5em;
     padding-left: .5em;
     font-weight: bold;
@@ -170,19 +168,18 @@ main {
         -ms-user-select: text;
             user-select: text;
 }
-blockquote,
-.items li {
+
+
+.items li,
+.box {
     position: relative;
     padding: 2em;
     background-color: #fff;
 }
-blockquote {
-    margin: 1.2em 0;
-}
-blockquote:before,
-blockquote:after,
+.items li:before,
 .items li:after,
-.items li:before {
+.box:before,
+.box:after {
     content: "";
     position: absolute;
     z-index: -1;
@@ -193,17 +190,20 @@ blockquote:after,
     max-height: 100px;
     box-shadow: 0 15px 10px rgba(51,51,51,.3);
 }
-blockquote:before,
-.items li:before {
+.items li:before,
+.box:before {
     left: 8px;
     -webkit-transform: rotate(-2deg);
             transform: rotate(-2deg);
 }
-blockquote:after,
-.items li:after {
+.items li:after,
+.box:after {
     right: 8px;
     -webkit-transform: rotate(2deg);
             transform: rotate(2deg);
+}
+blockquote {
+    margin: 1.2em 0;
 }
 blockquote > *:not(div):not(span):not(code):first-child {
     padding-top: .4em;
@@ -301,7 +301,7 @@ br {
 form {
     display: inline-block;
 }
-form.signup {
+form.subscribe {
         width: 20em;
     max-width: 100%;
     text-align: center;
@@ -418,7 +418,7 @@ button,
     word-wrap: normal; /* "nowrap" compatibility for IE9 */
     text-overflow: ellipsis;
     text-shadow: 1px 0 0 #ff0;
-    background-color: #ffdb00;
+    background-color: #ffe000;
     cursor: pointer;
 }
 .button.button {
@@ -429,10 +429,14 @@ button,
     color: inherit;
     text-decoration: none;
 }
+button:focus,
+.button[tabindex]:focus {
+    outline-color: #5b9dd9;
+}
 button:active {
     border-color: #9c9c9c;
 }
-.signup button:before {
+.subscribe button:before {
     content: "\203A";
     font-size: 300%;
     float: left;
@@ -523,7 +527,11 @@ iframe {
     border-collapse: collapse;
 }
 .row {
-    display: table-row;
+    display: table-row-group;
+    border-top: 1px solid #eee;
+}
+.row:first-child {
+    border-top: 0;
 }
 .column {
     display: table-cell;
@@ -537,6 +545,48 @@ iframe {
     float: left;
 }
 
+/* Product item page */
+.card {
+    display: table;
+    table-layout: fixed;
+    min-height: 21em;
+    padding: 0;
+    box-shadow: 0 .8em 4em .2em rgba(0,0,0,.03);
+}
+.image {
+    position: relative;
+    display: table-cell;
+    vertical-align: bottom;
+    background-color: #f9f9f9;
+}
+.image.center {
+    vertical-align: middle;
+}
+.image:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -3em;
+    width: 3em;
+    background-image: linear-gradient(to right, #f9f9f9, rgba(249, 249, 249, 0));
+    pointer-events: none;
+}
+.image img {
+    max-width: initial;
+    vertical-align: bottom;
+}
+.card .content {
+    min-width: 21em;
+    padding: 2em;
+    float: right;
+    vertical-align: top;
+}
+.image + .content {
+    padding-left: 1em;
+}
+
+
 @media (max-width: 56em) {
     .cel {
         display: block;
@@ -548,7 +598,20 @@ iframe {
         width: auto;
     }
 }
-@media (max-width: 36em) {
+@media (max-width: 48em) {
+    .image {
+        display: block;
+        text-align: center;
+    }
+    .image:before {
+        display: none;
+    }
+    .card .content {
+        min-width: 0;
+    }
+    .image + .content {
+        padding-left: 2em;
+    }
     .cell-center {
         display: block;
     }

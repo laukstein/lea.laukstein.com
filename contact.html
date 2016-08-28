@@ -2,6 +2,9 @@
 layout: center
 title: צור קשר
 order: 4
+script:
+    - ui-form.min.js
+    - ui-contact.min.js
 ---
 
 <form class="cel space" id=contact method=POST>
@@ -27,5 +30,7 @@ order: 4
         <dd id=status>
     </dl>
 </form>
-<script>{% include contact.min.js %}</script>
-{% comment %}<script src=assets/contact.js></script>{% endcomment %}
+{% comment %}
+<script src=/assets/ui-form.js></script>
+<script src=/assets/ui-contact.js async></script>
+{% endcomment %}

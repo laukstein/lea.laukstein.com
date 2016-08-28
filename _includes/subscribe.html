@@ -1,4 +1,4 @@
-<form class="cel space signup" id=form name=70a2d0d976>
+<form class="cel space subscribe" id=subscribe name=70a2d0d976>
     <h1>סדרת סטיילינג</h1>
     <dl>
         <dt>
@@ -8,5 +8,8 @@
         <dd><button formnovalidate>להורדה בחינם</button>
     </dl>
 </form>
-<script>{% include form.min.js %}</script>
-{% comment %}<script src=/assets/form.js></script>{% endcomment %}
+{% capture inline_js %}{{ inline_js }}{% include ui-form.min.js %}{% include ui-subscribe.min.js %}{% endcapture %}
+{% comment %}
+<script src=/assets/ui-form.js></script>
+<script src=/assets/ui-subscribe.js async></script>
+{% endcomment %}
