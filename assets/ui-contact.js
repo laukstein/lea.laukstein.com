@@ -148,7 +148,7 @@ ui.contact = {
 
         if (el.scrollHeight <= 301) {
             el.style.height = "auto";
-            el.style.height = el.scrollHeight + el.offsetHeight - el.clientHeight + "px";
+            el.style.height = el.scrollHeight + el.getBoundingClientRect().height - el.clientHeight + "px";
         }
     },
     init: function (id) {
