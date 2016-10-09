@@ -15,6 +15,8 @@ layout: compress
 <!--[if lt IE 9]><script src=//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js></script><![endif]-->
 <header dir=ltr>
     <div class=wrapper>
+        <input class=bar-holder id=bar type=checkbox hidden>
+        <label class=bar for=bar hidden><span></span></label>
         <a class="logo{% if page.url == "/" %} active{% endif %}" href="/"><img src=/assets/logo.png alt="{{ site.title }}"></a>
         <nav dir=rtl>
         {% assign pages=site.pages | sort: 'order' %}{%

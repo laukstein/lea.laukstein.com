@@ -124,7 +124,9 @@ nav a {
     color: inherit;
 }
 nav a:hover,
-nav a:focus {
+nav a:focus,
+.bar:hover,
+.bar:focus {
     color: inherit;
     text-decoration: none;
     background-color: #f9f9f9;
@@ -175,6 +177,7 @@ main {
     position: relative;
     padding: 2em;
     background-color: #fff;
+    box-sizing: border-box;
 }
 .box.no-padding {
     padding: 0;
@@ -461,8 +464,7 @@ iframe {
 .video {
     position: relative;
     width: 100%;
-    padding-top: 2.15em;
-    padding-bottom: 53.15%;
+    padding-top: 56.25%;
     clear: both;
 }
 .video iframe {
@@ -475,29 +477,39 @@ iframe {
 }
 
 .items {
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
-    margin: 0;
-    padding: 0;
+    margin: 0 auto;
+    padding: 0 1.6em;
     float: right;
     list-style: none;
+    box-sizing: border-box;
 }
 .items li {
-        width: 100%;
-    max-width: 16em;
-    height: 17em;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 20em;
+    min-height: 20em;
     margin: .5em;
     float: right;
 }
-.items h3 {
+.items .absolute {
     position: absolute;
-    bottom: 4.3em;
-    right: 2em;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
-.items .action {
-    position: absolute;
-    bottom: 1.95em;
-    right: 2em;
-    left: 2em;
+.items .head {
+    flex: 1;
+}
+.items .action form,
+.items .action a {
+    position: relative;
+    z-index: 1;
 }
 .items .action form + a,
 .items .action .button + a {
@@ -631,17 +643,115 @@ iframe {
     .cell-center {
         display: block;
     }
+
+
+    nav:before,
+    nav .active:after {
+        display: none;
+        box-suppress: discard;
+    }
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 72%;
+        min-width: 9em;
+        padding: 3.5em 0;
+        text-align: right;
+        transform: translateX(-100%);
+        will-change: auto;
+    }
+    nav a {
+        display: block;
+        border-top: 1px solid #eee;
+    }
+    nav a:first-child {
+        border-top: 0;
+    }
+    nav .active.active {
+        color: #fff;
+        background-color: #1e90ff;
+    }
+    .bar {
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        z-index: 3;
+        min-width: 0;
+            width: auto;
+        height: 2.35em;
+        padding: .466em;
+        font-size: 106%;
+        cursor: pointer;
+        pointer-events: auto;
+    }
+    .bar span,
+    .bar span:before,
+    .bar span:after {
+        display: block;
+        width: 1.3em;
+        height: .211em;
+        background-color: #333;
+        border-radius: .5em;
+        box-shadow: 0 0 1px 1px rgba(255,255,255,.3);
+        transition: width .1s, background-color 1ms, transform .35s cubic-bezier(.2,1,.4,1);
+        will-change: transform;
+    }
+    .bar span {
+        position: relative;
+        margin: 1.07em .65em 1.07em .55em;
+        transform: translateY(0); /* Firefox 34 Nightly width fix */
+        transition-duration: .15s;
+    }
+    .bar span:before {
+        content: "";
+        position: absolute;
+        right: 0;
+        width: 1em;
+        transform: translateY(-.42em);
+    }
+    .bar span:after {
+        content: "";
+        position: absolute;
+        width: .4em;
+        transform: translateY(.42em);
+    }
+    .bar-holder:checked ~ .bar span {
+        background-color: transparent;
+        box-shadow: none;
+    }
+    .bar-holder:checked ~ .bar span:before {
+        width: 1.3em;
+        transform: rotate3d(0,0,1,45deg);
+    }
+    .bar-holder:checked ~ .bar span:after {
+        width: 1.3em;
+        transform: rotate3d(0,0,1,-45deg);
+    }
+    .bar-holder:checked ~ nav {
+        box-shadow: 0 0 4em rgba(51,51,51,.11),
+                    0 0 43vw rgba(51,51,51,.3);
+        transform: none;
+        transition: transform .35s cubic-bezier(.2,1,.4,1);
+    }
 }
 
 @media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */
     label {
         display: table-cell;
     }
+    [hidden] {
+        display: none;
+    }
 }
 @media (-ms-high-contrast: active), (-ms-high-contrast: none) { /* IE10+ */
     a {
         /* Remove IE10 :active gray background-color */
         background-color: transparent;
+    }
+    [hidden] { /* IE10 legacy */
+        display: none;
     }
     ::-ms-clear {
         /* Remove input x */
