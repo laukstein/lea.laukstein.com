@@ -75,11 +75,11 @@ layout: compress
                 {% include youtube.html id=page.youtube %}
             </div>
         {% else %}
-            <div class="cel content space">
+            <div class="cel content space{% if page.className %} {{ page.className }}{% endif %}">
                 {{ content }}
             </div>
         {% endif %}
-        {% include subscribe.html %}
+        {% include subscribe.html id=page.subscribe title=page.subscribe-title %}
     </div>
 {% endcase %}
 </main>

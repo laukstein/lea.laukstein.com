@@ -16,7 +16,8 @@ compress_html:
     startings: [html, head, body]
 webrick:
     headers:
-        Content-Security-Policy: default-src 'self'; img-src 'self' www.google-analytics.com referrer.disqus.com a.disquscdn.com www.paypalobjects.com data:; style-src 'self' 'unsafe-inline' a.disquscdn.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' www.google-analytics.com lealaukstein.disqus.com a.disquscdn.com; frame-src www.youtube.com disqus.com; connect-src lab.laukstein.com links.services.disqus.com; referrer no-referrer
+        # Content-Security-Policy: default-src 'self'; img-src 'self' www.google-analytics.com referrer.disqus.com a.disquscdn.com www.paypalobjects.com data:; style-src 'self' 'unsafe-inline' a.disquscdn.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' www.google-analytics.com laukstein.us13.list-manage.com lealaukstein.disqus.com a.disquscdn.com; frame-src www.youtube.com disqus.com; connect-src lab.laukstein.com links.services.disqus.com; referrer no-referrer
+        Content-Security-Policy: referrer no-referrer
         X-Frame-Options: DENY
         X-XSS-Protection: 1
 gems:

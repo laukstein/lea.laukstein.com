@@ -176,6 +176,9 @@ main {
     padding: 2em;
     background-color: #fff;
 }
+.box.no-padding {
+    padding: 0;
+}
 .items li:before,
 .items li:after,
 .box:before,
@@ -254,6 +257,7 @@ cite:before {
 }
 .space {
     padding: 6% 2.1em;
+    box-sizing: border-box;
 }
 .space.no-padding {
     padding-top: 0;
@@ -302,8 +306,9 @@ form {
     display: inline-block;
 }
 form.subscribe {
-        width: 20em;
+        width: 24.2em;
     max-width: 100%;
+    margin: auto;
     text-align: center;
 }
 label {
@@ -587,6 +592,17 @@ iframe {
 }
 
 
+@supports (display: flex) {
+    .table.center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .table.center .cel.cel {
+        display: block;
+        max-width: 100%;
+    }
+}
 @media (max-width: 56em) {
     .cel {
         display: block;

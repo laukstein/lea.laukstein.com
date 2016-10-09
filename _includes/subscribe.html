@@ -1,5 +1,5 @@
-<form class="cel space subscribe" id=subscribe name=70a2d0d976>
-    <h1>סדרת סטיילינג</h1>
+<form class="cel space subscribe" id=subscribe name={% if include.id %}{{ include.id }}{% else %}70a2d0d976{% endif %}>
+    <h1>{% if include.title %}{{ include.title }}{% else %}סדרת סטיילינג{% endif %}</h1>
     <dl>
         <dt>
         <dd><label for=email>אימייל</label><input id=email name=EMAIL type=email placeholder=*אימייל data-error="אימייל שגוי" autocomplete=email dir=ltr data-required autofocus>
