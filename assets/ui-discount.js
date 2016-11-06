@@ -64,7 +64,7 @@ ui.discount = {
                 end;
 
             if (hash) {
-                hash = hash.split("-");
+                hash = String(hash).split("-");
                 date = new Date(hash[0] * 1000);
 
                 if (hash[1] && !isNaN(hash[1])) {
