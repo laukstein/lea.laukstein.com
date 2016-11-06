@@ -600,6 +600,19 @@ iframe {
     padding-left: 1em;
 }
 
+[data-placholder]:before {
+    content: attr(data-placholder);
+}
+.active[data-text][data-placholder]:before {
+    text-decoration: line-through;
+    color: #999;
+    white-space: nowrap;
+}
+.active[data-text]:after {
+    content: attr(data-text);
+    margin: 0 .6em;
+    white-space: nowrap;
+}
 
 @supports (display: flex) {
     .table.center {
