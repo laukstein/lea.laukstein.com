@@ -55,8 +55,9 @@ ui.discount = {
 
         try {
             /* MailChimp tags http://kb.mailchimp.com/merge-tags/all-the-merge-tags-cheat-sheet
-               #discount=*|DATE:U|*-1
-               #discount=1478448145-1 */
+               #discount=*|DATE:U|*   => date
+               #discount=*|DATE:U|*-2 => date - 2 days
+               #discount=1478448145-2 */
             var hash = this.hash("discount"),
                 now = new Date(),
                 start,
