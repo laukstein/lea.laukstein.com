@@ -57,11 +57,23 @@ a {
     text-decoration: none;
     -webkit-box-decoration-break: clone; /* Chrome legacy, demo http://jsbin.com/xojoro/quiet */
             box-decoration-break: clone;
+    outline: transparent auto 5px;
+    transition: outline .15s;
+}
+[tabindex="-1"] {
+    outline: 0;
+    transition:  none;
 }
 a:hover,
 a:focus {
     color: #02a;
     text-decoration: underline;
+}
+a:focus,
+a.absolute:hover,
+a:not(.absolute):hover ~ a.absolute,
+form:hover ~ a.absolute {
+    outline-color: #4d90fe;
 }
 a[onclick] {
     cursor: pointer;
@@ -171,7 +183,6 @@ main {
             user-select: text;
 }
 
-
 .items li,
 .box {
     position: relative;
@@ -208,14 +219,31 @@ main {
     -webkit-transform: rotate(2deg);
             transform: rotate(2deg);
 }
-blockquote {
-    margin: 1.2em 0;
+.box:not(.no-padding):not(.card) img {
+    max-width: calc(100% + 4em);
+    margin: -2em -2em 2em;
 }
-blockquote > *:not(div):not(span):not(code):first-child {
+
+time {
+    display: inline-block;
+    margin: 1.2em 0 1em;
+    color: #aaa;
+    font-size: 90%;
+}
+blockquote {
+    margin: 0;
+}
+blockquote +  blockquote {
+    margin-top: 1.2em;
+}
+blockquote > *:not(div):not(span):not(img):not(code):first-child {
     padding-top: .4em;
 }
-blockquote > *:not(div):not(span):not(code):last-child {
+blockquote > *:not(div):not(span):not(img):not(code):last-child {
     padding-bottom: .52em;
+}
+blockquote time {
+    margin-bottom: 0;
 }
 cite {
     display: block;
@@ -451,6 +479,17 @@ button:active {
     line-height: .45;
     font-family: monospace;
 }
+.items .button,
+.box.card .button {
+    transition: background-color .15s;
+}
+.items .button:hover,
+.items .button:focus,
+.box.card .button:hover,
+.box.card .button:focus {
+    background-color: #ffe90c;
+    text-shadow: 1px 0 0 #fff;
+}
 figure {
     margin: -5% .2em 1em;
 }
@@ -496,7 +535,7 @@ iframe {
     margin: .5em;
     float: right;
 }
-.items .absolute {
+.absolute {
     position: absolute;
     top: 0;
     right: 0;
@@ -507,12 +546,12 @@ iframe {
     flex: 1;
 }
 .items .action form,
-.items .action a {
+.items .action a:not(.absolute) {
     position: relative;
     z-index: 1;
 }
-.items .action form + a,
-.items .action .button + a {
+.items .action form + a:not(.absolute),
+.items .action .button + a:not(.absolute) {
     margin-right: 1em;
 }
 
