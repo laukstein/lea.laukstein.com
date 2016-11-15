@@ -37,7 +37,7 @@ ui.subscribe = {
 
         if (data) {
             if (data.result === "success") {
-                message = "<h1 class=success>תודה</h1><p>לסיום ההרשמה תקבל עכשיו מייל לאישור</p>";
+                message = "<h1 class=success>תודה</h1><p>לסיום ההרשמה תקבלי עכשיו מייל לאישור</p>";
             } else if (data.msg && data.msg.indexOf("list-manage.com/subscribe/send-email")) {
                 message = "<h1 class=error>שגיאה...</h1><p>את כבר רשומה, תנסי עם <a href=" + location.href + ">אימייל אחר</a></p>";
             } else {
