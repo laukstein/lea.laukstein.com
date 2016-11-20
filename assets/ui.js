@@ -158,18 +158,20 @@ var ui = {
             var self = ui.analytics;
 
             // Disabling cookies https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#disabling_cookies
-            ga("create", self.key, self.url, {
-                storage: "none",
-                clientId: localStorage.gaClientId
-            });
-
-            if (!localStorage.gaClientId) {
-                ga(function (tracker) {
-                    localStorage.gaClientId = tracker.get("clientId");
+            if (this.w.ga) {
+                ga("create", self.key, self.url, {
+                    storage: "none",
+                    clientId: localStorage.gaClientId
                 });
-            }
 
-            ga("send", "pageview");
+                if (!localStorage.gaClientId) {
+                    ga(function (tracker) {
+                        localStorage.gaClientId = tracker.get("clientId");
+                    });
+                }
+
+                ga("send", "pageview");
+            }
 
             self.listener();
         },
@@ -179,7 +181,7 @@ var ui = {
             var self = ui.analytics;
 
             if (this.readyState === "complete" || this.readyState === "loaded") {
-                if (typeof ga === "function") {
+                if (this.w.ga) {
                     self.load();
                 } else {
                     self.listener();
