@@ -785,7 +785,7 @@ iframe {
         color: #fff;
         background-color: #1e90ff;
     }
-    .bar {
+    .bar.bar {
         display: inline-block;
         position: absolute;
         left: 0;
