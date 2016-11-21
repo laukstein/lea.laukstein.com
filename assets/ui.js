@@ -181,7 +181,7 @@ var ui = {
             var self = ui.analytics;
 
             if (this.readyState === "complete" || this.readyState === "loaded") {
-                if (this.w.ga) {
+                if (ui.w.ga) {
                     self.load();
                 } else {
                     self.listener();
