@@ -158,7 +158,7 @@ var ui = {
             var self = ui.analytics;
 
             // Disabling cookies https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#disabling_cookies
-            if (this.w.ga) {
+            if (ui.w.ga) {
                 ga("create", self.key, self.url, {
                     storage: "none",
                     clientId: localStorage.gaClientId
