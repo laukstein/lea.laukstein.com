@@ -1,0 +1,45 @@
+---
+layout: compress
+---
+
+<!doctype html>
+<html lang=he>
+<head prefix="og: http://ogp.me/ns#">
+<meta charset=utf-8>
+<title>הנוסחא לסטיילינג ב5 דקות לאישה הדתית</title>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=license href=//creativecommons.org/licenses/by-nc-nd/4.0/>
+<style>{% capture inline_css %}{% include style.css %}{% include academy.css %}{% endcapture %}{{ inline_css | scssify }}</style>
+<!--[if lt IE 9]><script src=//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js></script><![endif]-->
+<script src=https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch></script>
+<header dir=ltr>
+    <div class=wrapper>
+        <input class=bar-holder id=bar type=checkbox hidden>
+        <label class=bar for=bar hidden><span></span></label>
+        <a class=logo href=/academy><img src=/assets/logo-academy.png alt="סטיילינג בקלות לדתיות — לאה לאוקשטיין"></a>
+        <nav dir=rtl>
+            <a id=details href=/5min hidden>פרטים</a><a href=/contact#5min>צור קשר</a>
+        </nav>
+    </div>
+</header>
+<main dir=rtl>
+<div class="table scale center" id=loading>
+    <div class=cel>
+        <b class=spin>טעינה...</b>
+    </div>
+</div>
+<div class="table scale" id=content hidden>
+    <div class="cel content"></div>
+    <form class="cel space subscribe" id=form method=POST data-onsubmit="return false" onsubmit=ui.academy.login(event)>
+        <dl>
+            <dt><h1>הנוסחא לסטיילינג ב5 דקות לאישה הדתית</h1>
+            <dd><label for=email>אימייל</label><input id=email name=email type=email placeholder=אימייל autocomplete=email dir=ltr required autofocus>
+            <dd><label for=pass>סיסמה</label><input id=pass name=password type=password placeholder=סיסמה minlength=5 dir=ltr required>
+            <dd><button id=button>כניסה</button>
+            <dd><a id=link onclick=ui.academy.forgot()>שכחת סיסמא</a>
+        </dl>
+    </form>
+    <div class=bg></div>
+</main>
+<script>{% capture inline_js %}{% include ui.min.js %}{% include ui-form.min.js %}{% include ui-academy.min.js %}{{ inline_js }}{% endcapture %}{{ inline_js }}</script>
+<script id=dsq-count-scr src=https://lealaukstein.disqus.com/count.js></script>

@@ -1,0 +1,234 @@
+.profile {
+    display: inline-block;
+    max-width: 10em;
+    padding: .6em 1.2em .5em .4em;
+    line-height: 1;
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+}
+.profile img {
+    width: 42px;
+    height: 42px;
+    margin-left: .6em;
+    float: right;
+    vertical-align: middle;
+    background-color: #c5c5c5;
+    border-radius: 100%;
+}
+.profile div {
+    overflow: hidden;
+    margin-top: .2em;
+    text-overflow: ellipsis;
+}
+.profile small {
+    color: #00d;
+    cursor: pointer;
+}
+.profile small:hover {
+    text-decoration: underline;
+}
+.subscribe.subscribe {
+    display: table-caption;
+        width: 100%;
+    max-width: 26em;
+    padding: 5.7em 2em .5em;
+    float: left;
+    color: #fff;
+    text-shadow: 1px 1px 1px #333;
+}
+.spin.spin.spin:before {
+    content: "";
+    display: inline-block;
+    padding: .3em;
+    margin: .25em;
+    font-size: 160%;
+    vertical-align: middle;
+    border: .16em solid currentcolor;
+    border-bottom-color: transparent;
+    border-radius: 100%;
+    animation: spin .36s infinite linear;
+}
+button.spin.spin.spin:before {
+    margin: 1px;
+}
+@media (min-width:0\0) and (min-resolution: .001dpcm) {
+    .subscribe .spin:before {
+        font-size: 25%;
+    }
+}
+@media (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .subscribe .spin:before {
+        font-size: 25%;
+    }
+}
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+.subscribe h1,
+.subscribe h2 {
+    margin-bottom: .8em;
+    color: #fff;
+    text-shadow: 1px 1px 1px #333,
+                 0 0 4em rgba(0,0,0,.2);
+}
+.subscribe h2 {
+    margin-top: 5em;
+}
+.subscribe dd {
+        width: 18em;
+    max-width: 100%;
+    margin: auto;
+    text-align: right;
+}
+.subscribe label,
+.subscribe a {
+    color: #fff;
+}
+.subscribe a {
+    text-decoration: underline;
+}
+.subscribe a:hover,
+.subscribe a:focus {
+    text-decoration: none;
+}
+input {
+    border-color: transparent;
+}
+input:focus {
+    box-shadow: 0 0 2em rgba(0,0,0,.55);
+}
+button {
+    margin-top: .15em;
+}
+button:focus,
+button:active {
+    box-shadow: 1px 1px .2em #333;
+}
+button.error {
+    color: #fff;
+    text-shadow: -1px 0 0 #333;
+    background-color: #b00;
+}
+.table img {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    max-width: inherit;
+    object-fit: cover;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+.column {
+    padding-top: 0;
+}
+.nav-container {
+    width: 16em;
+    vertical-align: top;
+}
+.nav {
+        width: 100%;
+    margin-top: .8em;
+    float: right;
+    clear: both;
+    white-space: nowrap;
+    background-color: #fff;
+}
+.nav + .nav {
+    margin-top: 0;
+    border-top: 4px solid #ededed;
+}
+.nav,
+.nav ol {
+    counter-reset: item;
+    padding: 0;
+}
+.nav li {
+    display: block;
+}
+.nav > li {
+    counter-reset: subitem;
+}
+.nav time {
+    margin: 0;
+    margin-right: .4em;
+    float: left;
+    line-height: 1.3;
+    font-weight: normal;
+}
+.nav label {
+    display: block;
+    position: relative;
+    padding: .9em 1.2em;
+    color: currentcolor;
+    font-weight: bold;
+    cursor: pointer;
+}
+.nav label[disabled] {
+    color: #aaa;
+    cursor: default;
+}
+.nav li label:before {
+    content: counters(item, ".") ".";
+    counter-increment: item;
+    margin-left: .4em;
+    float: right;
+    font-weight: normal;
+}
+.nav li a:before {
+    content: counters(subitem, ".") ". ";
+    font-weight: normal;
+    counter-increment: subitem;
+}
+.nav div,
+.nav a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.nav a {
+    display: block;
+    color: initial;
+    text-decoration: none;
+    outline: none;
+}
+.nav .active,
+.nav a:hover,
+.nav a:focus {
+    color: #fff;
+    background-color: #1e90ff;
+    border-color: #1e90ff;
+}
+.nav > li {
+    border-top: 2px solid #ededed;
+}
+.nav > li:first-child {
+    border-top: 0;
+}
+.nav ol {
+    display: none;
+}
+.nav ol a {
+    padding-top: .3em;
+    padding-bottom: .3em;
+    padding-right: 2.5em;
+}
+.comment-container {
+    display: table-row;
+}
+.medium.comment {
+    max-width: 100%;
+}
+.bg {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: url(/assets/academy.jpg) center 3.7em no-repeat #88828c;
+    background-size: cover;
+}
