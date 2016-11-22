@@ -875,7 +875,7 @@ iframe {
         opacity: .54;
     }
 }
-@supports (-ms-accelerator: true) { /* Edge */
+@supports (-ms-ime-align:auto) and (color:unset) { /* Edge 13+ */
     ::-ms-clear {
         /* Remove input x */
         display: none;
