@@ -57,7 +57,7 @@ a {
     text-decoration: none;
     -webkit-box-decoration-break: clone; /* Chrome legacy, demo http://jsbin.com/xojoro/quiet */
             box-decoration-break: clone;
-    outline: transparent auto 5px;
+    outline: transparent auto 2px;
     transition: outline .15s;
 }
 [tabindex="-1"] {
