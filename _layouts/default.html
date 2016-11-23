@@ -10,6 +10,7 @@ layout: compress
 <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
 {% if layout.private or page.draft %}<meta name=robots content=noindex>{% endif %}
 <meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=canonical href={{ page.url | absolute_url | split: '?' | first }}>
 <link rel=license href=//creativecommons.org/licenses/by-nc-nd/4.0/>
 <style>{% capture inline_css %}{% include style.css %}{% endcapture %}{{ inline_css | scssify }}</style>
 <!--[if lt IE 9]><script src=//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js></script><![endif]-->
