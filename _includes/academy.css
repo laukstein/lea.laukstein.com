@@ -1,3 +1,16 @@
+.stretch {
+    overflow-y: auto;
+        width: 100vw;
+    max-width: 100%;
+}
+.stretch header,
+.stretch main,
+.stretch .bg {
+    width: 100vw;
+}
+.stretch .logo {
+    padding-right: 2.1em
+}
 .profile {
     display: inline-block;
     max-width: 10em;
@@ -52,16 +65,6 @@
 }
 button.spin.spin.spin:before {
     margin: 1px;
-}
-@media (min-width:0\0) and (min-resolution: .001dpcm) {
-    .subscribe .spin:before {
-        font-size: 25%;
-    }
-}
-@media (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    .subscribe .spin:before {
-        font-size: 25%;
-    }
 }
 @keyframes spin {
     to {
@@ -232,4 +235,26 @@ button.error {
     bottom: 0;
     background: url(/assets/academy.jpg) center 3.7em no-repeat #88828c;
     background-size: cover;
+}
+
+@media (max-width: 48em) {
+    .logo {
+        margin-right: -.5em;
+    }
+    .stretch .logo {
+        margin-right: 0;
+    }
+}
+@media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */
+    .subscribe .spin:before {
+        font-size: 25%;
+    }
+    button {
+        margin-top: 1em;
+    }
+}
+@media (-ms-high-contrast: active), (-ms-high-contrast: none) { /* IE10+ */
+    .subscribe .spin:before {
+        font-size: 25%;
+    }
 }

@@ -335,6 +335,7 @@ ui.academy = {
     isLogged: function () {
         "use strict";
 
+        ui.d.documentElement.classList.remove("stretch");
         this.content.innerHTML = "";
         this.content.removeAttribute("id");
         this.details.outerHTML = "<div class=profile>" +
