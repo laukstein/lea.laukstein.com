@@ -12,7 +12,6 @@ layout: compress
 <link rel=license href=//creativecommons.org/licenses/by-nc-nd/4.0/>
 <style>{% capture inline_css %}{% include style.css %}{% include academy.css %}{% endcapture %}{{ inline_css | scssify }}</style>
 <!--[if lt IE 9]><script src=//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js></script><![endif]-->
-<script src=https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch></script>
 <header dir=ltr>
     <div class=wrapper>
         <input class=bar-holder id=bar type=checkbox hidden>
@@ -42,5 +41,6 @@ layout: compress
     </form>
     <div class=bg></div>
 </main>
+<script src=https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch></script>
 <script>{% capture inline_js %}{% include ui.min.js %}{% include ui-form.min.js %}{% include ui-academy.min.js %}{{ inline_js }}{% endcapture %}{{ inline_js }}</script>
 <script id=dsq-count-scr src=https://lealaukstein.disqus.com/count.js></script>
