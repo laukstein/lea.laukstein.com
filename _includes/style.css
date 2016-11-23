@@ -400,13 +400,16 @@ textarea {
     border-color: #9c9c9c;
     border-top-color: #ead17c;
     border-left-color: #ccc;
+    outline: transparent auto 1px;
     box-shadow: 1px 1px .1em rgba(0,0,0,.2);
+    transition: outline .15s;
 }
 input:focus,
 select:focus,
 textarea:focus {
     position: relative;
     border-color: #00d;
+    outline-color: #4d90fe;
     box-shadow: 1px 1px 2em rgba(0,0,0,.15);
     box-shadow: 1px 1px .1em rgba(0,0,0,.2),
                 1px 1px 2em rgba(0,0,0,.15);
@@ -469,6 +472,8 @@ button,
     text-overflow: ellipsis;
     text-shadow: 1px 0 0 #ff0;
     background-color: #ffe000;
+    outline: transparent auto 2px;
+    transition: outline .15s;
     cursor: pointer;
 }
 .button.button {
@@ -482,9 +487,6 @@ button,
 button:focus,
 .button[tabindex]:focus {
     outline-color: #5b9dd9;
-}
-button:active {
-    border-color: #9c9c9c;
 }
 .subscribe button:before {
     content: "\203A";
