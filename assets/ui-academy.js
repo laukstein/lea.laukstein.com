@@ -339,7 +339,7 @@ ui.academy = {
         this.content.removeAttribute("id");
         this.details.outerHTML = "<div class=profile>" +
             "<img src=\"https://gravatar.com/avatar/" + this.token.hash + "?s=42&r=g&d=mm\">" +
-            "<div class=nowrap dir=auto>לאה ובנימין לאוקשטיין</div>" +
+            (this.token.fname ? "<div class=nowrap dir=auto>" + this.token.fname + "</div>" : "") +
             "<small onclick=ui.academy.logout()>להתנתק</small>" +
             "</div>";
         delete this.details;
