@@ -590,8 +590,12 @@ iframe {
     margin-top: 3em;
     margin-bottom: 2em;
 }
+.comment:empty {
+    display: none;
+    box-suppress: discard;
+}
 .comment iframe {
-    margin-bottom: -6em;
+    margin-bottom: -6.35em;
 }
 
 .sheet {
