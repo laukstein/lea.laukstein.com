@@ -116,16 +116,16 @@ ui.form = {
         "use strict";
 
         var arr = this.list("input, select, textarea"),
-            q = [],
+            result = [],
             i;
 
         for (i = 0; i < arr.length; i += 1) {
             if (!(arr[i].type === "checkbox" || arr[i].type === "radio") && arr[i].value || arr[i].checked) {
-                q.push(arr[i].name + "=" + encodeURIComponent(arr[i].value));
+                result.push(arr[i].name + "=" + encodeURIComponent(arr[i].value));
             }
         }
 
-        return q.join("&");
+        return result.join("&");
     },
     accessibility: function (flag) {
         "use strict";
