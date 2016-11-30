@@ -25,7 +25,7 @@ layout: compress
             unless nav.draft %}{%
                 if nav.order and nav.title
                     %}{% assign relative_url=nav.url | remove_first: '/'
-                    %}<a{% if nav.url == page.url or page.category == relative_url %} class=active{% endif %} href="{{ nav.url | prepend: site.baseurl }}">{{ nav.title }}</a>{%
+                    %}<a{% if nav.url == page.url or page.category == relative_url %} class=active{% endif %} href="{{ nav.url | relative_url }}">{{ nav.title }}</a>{%
                 endif %}{%
             endunless %}{%
         endfor %}
