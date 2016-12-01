@@ -29,7 +29,7 @@ strict: [2, "function"]*/
 
 ui.academy = {
     data: {
-        date: 1480802400000, /* 2016/12/04 */
+        date: 1488060000000, /* 2017/02/26 */
         interval: 7,
         init: {
             title: "ברוכות הבאות",
