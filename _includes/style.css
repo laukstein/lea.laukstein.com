@@ -134,6 +134,7 @@ nav a {
     position: relative;
     padding: 1em 1.4em;
     color: inherit;
+    vertical-align: top;
 }
 nav a:hover,
 nav a:focus,
@@ -155,6 +156,29 @@ nav .active:after {
     bottom: -1px;
     height: .2em;
     background-color: #d8940f;
+}
+.external.external {
+    padding: 1.2em .35em;
+    background-color: transparent;
+    -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+}
+.external.external:hover,
+.external.external:active {
+    -webkit-filter: none;
+            filter: none;
+}
+[class*=icon-] {
+    height: 20px;
+    background-image: url(/assets/sprites.png);
+    background-repeat: no-repeat;
+}
+.icon-youtube {
+    width: 39px;
+}
+.icon-facebook {
+    width: 20px;
+    background-position: -40px 0;
 }
 .logo {
     padding: 0 1.4em .6em;
@@ -797,6 +821,14 @@ iframe {
     nav .active.active {
         color: #fff;
         background-color: #1e90ff;
+    }
+    .external.external {
+        padding-right: 1.4em;
+        padding-left: 1.4em;
+    }
+    .external.external:hover,
+    .external.external:focus {
+        background-color: #f9f9f9;
     }
     .bar.bar {
         display: inline-block;
