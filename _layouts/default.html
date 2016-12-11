@@ -37,6 +37,14 @@ layout: compress
 {% if layout.comment or page.comment %}
     {% assign addComments=true %}
 {% endif %}
+{% if layout.className %}
+    {% assign className=layout.className %}
+{% else if page.className %}
+    {% assign className=page.className %}
+{% endif %}
+{% if className %}
+    {% capture className %} {{ className }}{% endcapture %}
+{% endif %}
 {% case layout.type %}
     {% when "full" %}
     <div class="table scale full">
@@ -51,7 +59,7 @@ layout: compress
         </div>
     </div>
     {% when "medium" %}
-    <div class="table scale space medium{% if page.className %} {{ page.className }}{% endif %}">
+    <div class="table scale space medium{{ className }}">
         {% if page.youtube %}
             {% include youtube.html id=page.youtube %}
             {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
@@ -64,7 +72,7 @@ layout: compress
     {% else %}
     <div class="table{% unless addComments %} scale{% endunless %}">
         {% if page.youtube %}
-            <div class="cel content{% if page.className %} {{ page.className }}{% endif %}">
+            <div class="cel content{{ className }}">
                 {% include youtube.html id=page.youtube %}
                 {% if content.size > 1 %}
                     <div class=space>
@@ -74,7 +82,7 @@ layout: compress
                 {% endif %}
             </div>
         {% else %}
-            <div class="cel content space{% if page.className %} {{ page.className }}{% endif %}">
+            <div class="cel content space{{ className }}">
                 {{ content }}
             </div>
         {% endif %}

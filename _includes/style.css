@@ -442,12 +442,14 @@ textarea {
     word-wrap: break-word;
     resize: none;
 }
-[type=checkbox],
-[type=radio] {
+[type=checkbox][type=checkbox],
+[type=radio][type=radio] {
     width: auto;
     padding: 0;
     border: 0;
+    background-color: transparent;
     box-sizing: content-box;
+    box-shadow: none;
 }
 .success {
     color: #160;
