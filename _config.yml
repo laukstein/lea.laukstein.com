@@ -21,8 +21,6 @@ webrick:
         X-Frame-Options: DENY
         X-XSS-Protection: 1
 whitelist:
-    # - jekyll-sitemap
     - jekyll-redirect-from
 gems:
-    # - jekyll-sitemap
     - jekyll-redirect-from
