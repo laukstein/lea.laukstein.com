@@ -3,11 +3,13 @@ layout: video
 category: products
 permalink: /closet
 title: סידור ארון
+order: 6
+image: closet.jpg
 ---
 
 <div class="box card" dir=ltr>
     <div class=image>
-        <img src=assets/closet.jpg width=443 height=486 alt="{{ page.title }}">
+        <img src={{ site.assets }}{{ page.image }} width=443 height=486 alt="{{ page.title }}">
     </div>
     <div class=content dir=rtl>
         <h1>{{ page.title }}</h1>

@@ -18,12 +18,12 @@ layout: compress
     <div class=wrapper>
         <input class=bar-holder id=bar type=checkbox hidden>
         <label class=bar for=bar hidden><span></span></label>
-        <a class="logo{% if page.url == "/" %} active{% endif %}" href="/"><img src=/assets/logo.png alt="{{ site.title }}"></a>
+        <a class="logo{% if page.url == "/" %} active{% endif %}" href="/"><img src={{ site.assets }}logo.png alt="{{ site.title }}"></a>
         <nav dir=rtl>
         {% assign pages=site.pages | sort: 'order' %}{%
         for nav in pages %}{%
             unless nav.draft %}{%
-                if nav.order and nav.title
+                if nav.category == null and nav.order and nav.title
                     %}{% assign relative_url=nav.url | remove_first: '/'
                     %}<a{% if nav.url == page.url or page.category == relative_url %} class=active{% endif %} href="{{ nav.url | relative_url }}">{{ nav.title }}</a>{%
                 endif %}{%
@@ -32,7 +32,7 @@ layout: compress
         </nav>
     </div>
 </header>
-{% comment %}<script src=/assets/ui.js></script>{% endcomment %}
+{% comment %}<script src={{ site.assets }}ui.js></script>{% endcomment %}
 <main dir=rtl>
 {% if layout.comment or page.comment %}
     {% assign addComments=true %}

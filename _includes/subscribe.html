@@ -9,6 +9,6 @@
 </form>
 {% capture inline_js %}{{ inline_js }}{% include ui-form.min.js %}{% include ui-subscribe.min.js %}{% endcapture %}
 {% comment %}
-<script src=/assets/ui-form.js></script>
-<script src=/assets/ui-subscribe.js async></script>
+<script src={{ site.assets }}ui-form.js></script>
+<script src={{ site.assets }}ui-subscribe.js async></script>
 {% endcomment %}

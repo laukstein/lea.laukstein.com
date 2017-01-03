@@ -6,7 +6,7 @@ comment: true
 ---
 
 <article class=box>
-    {% if page.image %}<img src=/assets/{{ page.image }} alt="{{ page.title }}">{% endif %}
+    {% if page.image %}<img src={{ site.assets }}{{ page.image }} alt="{{ page.title }}">{% endif %}
     <h1>{{ page.title }}</h1>
     {{ content }}
     <div>{% include date.html value=page.date %}</div>

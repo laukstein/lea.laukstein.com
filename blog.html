@@ -10,7 +10,7 @@ order: 3
         if post.layout == "post" %}
 <blockquote class=box>
     <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>
-    {% if post.image %}<img src=/assets/{{ post.image }} alt="{{ post.title }}">{% endif %}
+    {% if post.image %}<img src={{ site.assets }}{{ post.image }} alt="{{ post.title }}">{% endif %}
     <h2>{{ post.title }}</h2>
     <p>{{ post.content | strip_html | truncatewords: 50, '... <a>המשך קריא</a>' }}</p>
     <div>{% include date.html value=post.date %}</div>

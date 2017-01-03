@@ -1,0 +1,40 @@
+---
+layout: null
+---
+
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    <url>
+        <loc>{{ site.url }}/</loc>
+        <priority>1.0</priority>
+    </url>{%
+    assign pages=site.pages | sort: 'order' %}{%
+    for page in pages %}{%
+        unless page.draft %}{%
+            if page.category == null and page.order and page.title %}{%
+                assign relative_url=page.url | remove_first: '/' %}
+    <url>
+        <loc>{{ site.url }}{{ page.url }}</loc>{% if page.image %}
+        <image:image>
+            <image:loc>{{ site.url }}{{ site.assets }}{{ page.image }}</image:loc>
+        </image:image>{% endif %}
+        <priority>1.0</priority>
+    </url>{%
+    for subpage in pages %}{%
+        if subpage.hidden == null and subpage.category == relative_url %}
+    <url>
+        <loc>{{ site.url }}{{ subpage.url }}</loc>{% if subpage.date %}
+        <lastmod>{{ subpage.date | date_to_xmlschema }}</lastmod>{% endif %}{% if subpage.image %}
+        <image:image>
+            <image:loc>{{ site.url }}{{ site.assets }}{{ subpage.image }}</image:loc>
+        </image:image>{% endif %}
+        <priority>0.8</priority>
+    </url>{%
+        endif %}{%
+    endfor %}{%
+            endif %}{%
+        endunless %}{%
+    endfor %}
+</urlset>

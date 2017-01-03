@@ -2,6 +2,7 @@ title: סטיילינג לדתיות — לאה לאוקשטיין
 url: https://lea.laukstein.com
 enforce_ssl: lea.laukstein.com
 permalink: /:categories/:title
+assets: /assets/
 timezone: UTC
 include: ['_pages']
 safe: true
@@ -19,7 +20,9 @@ webrick:
         Content-Security-Policy: referrer no-referrer
         X-Frame-Options: DENY
         X-XSS-Protection: 1
-gems:
-    - jekyll-redirect-from
 whitelist:
+    # - jekyll-sitemap
+    - jekyll-redirect-from
+gems:
+    # - jekyll-sitemap
     - jekyll-redirect-from

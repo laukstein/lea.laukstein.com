@@ -3,11 +3,13 @@ layout: video
 category: products
 permalink: /shopping
 title: ליווי יום קניות
+order: 5
+image: shopping.jpg
 ---
 
 <div class="box card" dir=ltr>
     <div class=image>
-        <img src=assets/shopping.jpg width=396 height=486 alt="{{ page.title }}">
+        <img src={{ site.assets }}{{ page.image }} width=396 height=486 alt="{{ page.title }}">
     </div>
     <div class=content dir=rtl>
         <h1>{{ page.title }}</h1>
