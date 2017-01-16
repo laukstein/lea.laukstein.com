@@ -4,7 +4,7 @@
         <dd><label for=email>אימייל</label><input id=email name=EMAIL type=email placeholder=*אימייל data-error="אימייל שגוי" autocomplete=email dir=ltr data-required{% if page.url == "/" %} autofocus{% endif %}>
         <dd><label for=name>שם</label><input id=name name=FNAME placeholder="*שם" data-error="תקליד שם" autocomplete=name dir=auto data-required>
         <dd><label for=tel>נייד{% unless include.requiredTel %} (אופציונאלי){% endunless %}</label><input id=tel name=PHONE type=tel placeholder="{% if include.requiredTel %}*{% endif %}נייד"{% if include.requiredTel %} data-error="נייד שגוי" data-required{% endif %} autocomplete=tel dir=ltr>
-        <dd><button formnovalidate>{% if include.button %}{{ include.button }}{% else %}להורדה בחינם{% endif %}</button>
+        <dd>{% include confirm.html %}<button formnovalidate>{% if include.button %}{{ include.button }}{% else %}להורדה בחינם{% endif %}</button>
     </dl>
 </form>
 {% capture inline_js %}{{ inline_js }}{% include ui-form.min.js %}{% include ui-subscribe.min.js %}{% endcapture %}

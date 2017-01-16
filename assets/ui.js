@@ -54,6 +54,22 @@ var ui = {
 
         return param ? obj[param] : obj;
     },
+    confirm: function (el) {
+        "use strict";
+
+        if (el && el.type === "checkbox") {
+            var arr = el.parentNode.parentNode.querySelectorAll("button, .button"),
+                i;
+
+            for (i = 0; i < arr.length; i += 1) {
+                if (el.checked) {
+                    arr[i].removeAttribute("disabled");
+                } else {
+                    arr[i].setAttribute("disabled", "");
+                }
+            }
+        }
+    },
     dependencies: function () {
         "use strict";
 
@@ -224,7 +240,12 @@ var ui = {
                 this.listener(true);
             }
         }
+    },
+    init: function () {
+        "use strict";
+
+        this.analytics.init();
     }
 };
 
-ui.analytics.init();
+ui.init();

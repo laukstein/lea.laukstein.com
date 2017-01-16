@@ -43,6 +43,7 @@ className: no-padding
             </li>
         </ul>
         <div class=action>
+            {% include confirm.html %}
             <form action=https://www.paypal.com/cgi-bin/webscr method=post target=_top>
                 <input type=hidden name=cmd value=_s-xclick>
                 <input type=hidden name=lc value=he_IL>
@@ -94,7 +95,8 @@ className: no-padding
                 <div class=column>סגירת קצוות אחרונים, יישור קו בין כולן, קבלת מניפת צבעים פיזית</div>
             </li>
         </ul>
-        <div class=action>
+        <div class=action id=register>
+            {% include confirm.html %}
             <form action=https://www.paypal.com/cgi-bin/webscr method=post target=_top>
                 <input type=hidden name=cmd value=_s-xclick>
                 <input type=hidden name=lc value=he_IL>

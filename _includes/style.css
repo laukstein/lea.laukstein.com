@@ -13,7 +13,9 @@ img,
 label,
 iframe,
 button,
-.button {
+.button,
+[disabled],
+[unselectable] {
     -webkit-user-select: none;
        -moz-user-select: none;
         -ms-user-select: none;
@@ -404,17 +406,6 @@ button,
     box-sizing: border-box;
     border: 1px solid transparent;
 }
-input[disabled],
-select[disabled],
-textarea[disabled],
-button[disabled] {
-    text-shadow: 0 1px 0 #fff;
-    background-color: #eee;
-    background-image: none;
-    border-color: transparent;
-    box-shadow: none;
-    cursor: default;
-}
 input,
 select,
 textarea {
@@ -470,6 +461,7 @@ textarea {
 [type=radio][type=radio] {
     width: auto;
     padding: 0;
+    margin: 0 .25em;
     border: 0;
     background-color: transparent;
     box-sizing: content-box;
@@ -531,6 +523,25 @@ button:focus,
 .box.card .button:focus {
     background-color: #ffe90c;
     text-shadow: 1px 0 0 #fff;
+}
+[disabled][disabled][disabled][disabled] {
+    color: #aaa;
+    text-shadow: 0 1px 0 #fff;
+    background-color: #eee;
+    background-image: none;
+    border-color: transparent;
+    outline: none;
+    box-shadow: none;
+    cursor: default;
+}
+.confirm {
+    margin-bottom: .2em;
+    font-size: 97%;
+}
+.subscribe .confirm {
+    margin-top: .4em;
+    margin-bottom: 0;
+    text-align: right;
 }
 figure {
     margin: -5% .2em 1em;
