@@ -676,6 +676,10 @@ iframe {
     background-image: linear-gradient(to right, #f9f9f9, rgba(249, 249, 249, 0));
     pointer-events: none;
 }
+.image img,
+img.cell-center {
+    filter: saturate(1.5);
+}
 .image img {
     max-width: initial;
     vertical-align: bottom;

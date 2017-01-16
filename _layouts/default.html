@@ -34,7 +34,7 @@ layout: compress
 </header>
 {% comment %}<script src={{ site.assets }}ui.js></script>{% endcomment %}
 <main dir=rtl>
-{% if layout.comment or page.comment %}
+{% if layout.comment or page.comment or page.category == 'products' %}
     {% assign addComments=true %}
 {% endif %}
 {% if layout.className %}
