@@ -93,6 +93,9 @@ layout: compress
             button=page.subscribe-button
             requiredTel=page.subscribe-requiredTel
         %}
+        {% if page.headlines %}
+            {% include headlines.html %}
+        {% endif %}
     </div>
     {% if addComments %}
         {% include comment.html addClassNames=true %}

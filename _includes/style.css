@@ -212,7 +212,9 @@ main {
 .items li,
 .box {
     position: relative;
-    padding: 2em;
+    display: inline-block;
+    width: 100%;
+    padding: 2.1em;
     background-color: #fff;
     box-sizing: border-box;
 }
@@ -245,9 +247,24 @@ main {
     -webkit-transform: rotate(2deg);
             transform: rotate(2deg);
 }
-.box:not(.no-padding):not(.card) img {
-    max-width: calc(100% + 4em);
-    margin: -2em -2em 2em;
+.box figure {
+    max-width: calc(100% + 4.2em);
+    margin: -2.1em -2.1em 2.1em;
+}
+.box figure.flow {
+    margin-left: 2.1em;
+    margin-bottom: -2.1em;
+    float: right;
+}
+.box figure.flow + h2 {
+    padding-top: 3.2em;
+}
+.no-padding .box figure.flow {
+    margin-bottom: .5em;
+}
+.box figcaption {
+    padding: .6em 2.1em 0;
+    color: #666;
 }
 
 time {
@@ -353,6 +370,18 @@ h2 {
 h1:first-line,
 h2:first-line {
     font-size: 150%;
+}
+.wrapline {
+    display: table-cell;
+    border: 0 solid transparent;
+    border-width: .2em 0;
+}
+.wrapline:after {
+    content: "";
+    display: table-cell;
+    min-width: 10.1em;
+    margin-top: 0;
+    float: left;
 }
 h1 {
     font-size: 1.9em;
@@ -546,7 +575,7 @@ button:focus,
 figure {
     margin: -5% .2em 1em;
 }
-figcaption {
+figcaption.cell-center {
     padding-bottom: 7%;
 }
 iframe {
@@ -718,6 +747,32 @@ img.cell-center {
     margin: 0 .6em;
     white-space: nowrap;
 }
+
+/* First page */
+.headlines {
+    display: table-row;
+}
+.headlines .absolute {
+    z-index: 1;
+}
+.headlines .box:before,
+.headlines .box:after {
+    display: none;
+}
+.headlines blockquote + blockquote {
+    margin-top: 0;
+    border-top: 3px solid #eee;
+}
+.headlines blockquote time {
+    margin-top: .4em;
+}
+.headlines blockquote:first-child {
+    margin-top: 1em;
+}
+.headlines blockquote:last-child {
+    margin-bottom: 3em;
+}
+
 [hidden][hidden] {
     display: none;
 }
@@ -906,6 +961,17 @@ img.cell-center {
                     0 0 43vw rgba(51,51,51,.3);
         transform: none;
         transition: transform .35s cubic-bezier(.2,1,.4,1);
+    }
+}
+@media (max-width: 35em) {
+    .wrapline {
+        display: inherit;
+    }
+    .wrapline:after {
+        display: none;
+    }
+    .box figure.flow {
+        margin-left: -2.1em;
     }
 }
 

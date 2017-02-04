@@ -5,13 +5,15 @@ title: בלוג
 order: 3
 ---
 
-{% assign pages=site.pages | sort: "date" %}{%
+{% assign pages=site.pages | sort: "date" | reverse %}{%
     for post in pages %}{%
         if post.layout == "post" %}
 <blockquote class=box>
     <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>
-    {% if post.image %}<img src={{ site.assets }}{{ post.image }} alt="{{ post.title }}">{% endif %}
-    <h2>{{ post.title }}</h2>
+    {% if post.image %}<figure{% if post.imageClass %} class="{{ post.imageClass }}"{% endif %}>
+        <img src={{ site.assets }}{{ post.image }} alt="{{ post.title }}">
+    </figure>{% endif %}
+    <h2 class=wrapline>{{ post.title }}</h2>
     <p>{{ post.content | strip_html | truncatewords: 50, '... <a>המשך קריא</a>' }}</p>
     <div>{% include date.html value=post.date %}</div>
 </blockquote>{%

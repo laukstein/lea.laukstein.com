@@ -1,0 +1,13 @@
+<div class=headlines>
+{% assign pages=site.pages | sort: "date" | reverse %}{%
+    for post in pages %}{%
+        if post.layout == "post" %}
+    <blockquote class=box>
+        <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>
+        <div>{% include date.html value=post.date %}</div>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content | strip_html | truncatewords: 29, '... <a>המשך קריא</a>' }}</p>
+    </blockquote>{%
+    endif %}{%
+endfor %}
+</div>
