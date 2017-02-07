@@ -329,6 +329,13 @@ cite:before {
     overflow: hidden;
     display: block;
 }
+.content :target:before {
+    content: "";
+    display: block;
+    height: 6.5em;
+    margin-top: -6.5em;
+    pointer-events: none;
+}
 .space {
     padding: 6% 2.1em;
     box-sizing: border-box;
