@@ -17,7 +17,7 @@ compress_html:
     startings: [html, head, body]
 webrick:
     headers:
-        Content-Security-Policy: referrer no-referrer
+        Referrer-Policy: no-referrer
         X-Frame-Options: DENY
         X-XSS-Protection: 1
 whitelist:
