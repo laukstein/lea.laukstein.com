@@ -7,6 +7,9 @@ timezone: UTC
 include: ['_pages']
 safe: true
 markdown: kramdown
+kramdown:
+    input: GFM
+    hard_wrap: true
 sass:
     style: compressed
 compress_html:
