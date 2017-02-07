@@ -6,7 +6,7 @@
         <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>
         <div>{% include date.html value=post.date %}</div>
         <h2>{{ post.title }}</h2>
-        <p>{{ post.content | strip_html | truncatewords: 29, '... <a>המשך קריא</a>' }}</p>
+        <p>{{ post.content | strip_html | truncatewords: 33, '... <a>המשך קריא</a>' }}</p>
     </blockquote>{%
     endif %}{%
 endfor %}
