@@ -1,5 +1,5 @@
 {% if include.value
-%}<time datetime="{{ include.value | date_to_xmlschema }}" itemprop=datePublished>{{ include.value | date: "%R, %-d ב" }}{%
+%}<time datetime="{{ include.value | date_to_xmlschema }}">{{ include.value | date: "%R, %-d ב" }}{%
     assign m = include.value | date: "%-m" %}{%
     case m %}{%
         when '1' %}ינואר{%
