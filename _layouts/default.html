@@ -110,3 +110,22 @@ layout: compress
     {% endfor %}
 {% endif %}
 <script>{% capture inline_js %}{% include ui.min.js %}{{ inline_js }}{% endcapture %}{{ inline_js }}</script>
+{% if page.jsonld == nil and page.category == 'products' and page.image %}
+{% capture jsonld %}
+    {
+        "@context": "http://schema.org/",
+        "@type": "Product",
+        "name": "{{ page.title }}",
+        "image": "{{ site.url }}{{ site.assets }}{{ page.image }}",
+        "offers": {
+            "@type": "Offer",
+            "price": "{{ page.price }}",
+            "priceCurrency": "ILS"
+        }
+    }
+{% endcapture %}
+{% endif %}
+{% if jsonld or page.jsonld %}<script type="application/ld+json">
+{% unless jsonld %}{% assign jsonld=page.jsonld %}{% endunless %}
+{{ jsonld | replace: '$youtube', page.youtube }}
+</script>{% endif %}
