@@ -15,6 +15,7 @@ iframe,
 button,
 .button,
 [disabled],
+.unselectable,
 [unselectable] {
     -webkit-user-select: none;
        -moz-user-select: none;
