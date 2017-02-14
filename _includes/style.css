@@ -703,7 +703,6 @@ iframe {
 /* Product item page */
 .card {
     display: table;
-    table-layout: fixed;
     min-height: 21em;
     padding: 0;
     box-shadow: 0 .8em 4em .2em rgba(0,0,0,.03);
