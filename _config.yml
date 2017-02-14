@@ -21,7 +21,7 @@ compress_html:
 webrick:
     headers:
         Referrer-Policy: no-referrer
-        X-Frame-Options: DENY
+        X-Frame-Options: SAMEORIGIN
         X-XSS-Protection: 1
 whitelist:
     - jekyll-redirect-from
