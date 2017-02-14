@@ -1,0 +1,19 @@
+---
+layout: null
+---
+
+{
+    "lang": "he",
+    "name": "סטיילינג לדתיות — לאה לאוקשטיין",
+    "short_name": "סטיילינג לדתיות",
+    "description": "סטיילינג לדתיות - זה לא רק הבגד - זה החיבור שלך לעצמך",
+    "icons": [{
+        "src": "assets/icon.png",
+        "sizes": "196x196"
+    }],
+    "scope": "/",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#1e90ff",
+    "background_color": "#f9f9f9"
+}
