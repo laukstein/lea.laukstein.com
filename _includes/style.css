@@ -274,6 +274,7 @@ time {
     font-size: 90%;
 }
 blockquote {
+    width: 100%;
     margin: 0;
 }
 blockquote +  blockquote {
