@@ -111,20 +111,57 @@ layout: compress
     {% endfor %}
 {% endif %}
 <script>{% capture inline_js %}{% include ui.min.js %}{{ inline_js }}{% endcapture %}{{ inline_js }}</script>
-{% if page.jsonld == nil and page.category == 'products' and page.image %}
-{% capture jsonld %}
-    {
-        "@context": "http://schema.org/",
-        "@type": "Product",
-        "name": "{{ page.title }}",
-        "image": "{{ site.url }}{{ site.assets }}{{ page.image }}",
-        "offers": {
-            "@type": "Offer",
-            "price": "{{ page.price }}",
-            "priceCurrency": "ILS"
+{% if page.jsonld == nil and page.image %}
+    {% if page.category == 'products' %}
+        {% capture jsonld %}
+        {
+            "@context": "http://schema.org/",
+            "@type": "Product",
+            "name": "{{ page.title }}",
+            "image": "{{ site.url }}{{ site.assets }}{{ page.image }}",
+            "offers": {
+                "@type": "Offer",
+                "price": "{{ page.price }}",
+                "priceCurrency": "ILS"
+            }
         }
-    }
-{% endcapture %}
+        {% endcapture %}
+    {% else if page.category == 'blog' %}
+        {% capture jsonld %}
+        {
+            "@context": "http://schema.org",
+            "@type": "Article",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "{{ page.url | absolute_url | split: '?' | first }}"
+            },
+            "headline": "{{ page.title }}",
+            "image": {
+                "@type": "ImageObject",
+                "url": "{{ site.url }}{{ site.assets }}{{ page.image }}",
+                "width": {% if page.imageHeight %}{{ page.imageHeight }}{% else %}960{% endif %},
+                "height": {% if page.imageWidth %}{{ page.imageWidth }}{% else %}540{% endif %}
+            },
+            "datePublished": "{{ page.date | replace: ' ', 'T' }}",
+            "dateModified": "{{ page.date | replace: ' ', 'T' }}",
+            "author": {
+                "@type": "Person",
+                "name": "לאה לאוקשטיין"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "{{ site.title }}",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "{{ site.url }}{{ site.assets }}hotlink-ok/logo.jpg",
+                    "width": 190,
+                    "height": 60
+                }
+            },
+            "description": "{{ post.content | strip_html | truncatewords: 25, '...' }}"
+        }
+        {% endcapture %}
+    {% endif %}
 {% endif %}
 {% if jsonld or page.jsonld %}<script type="application/ld+json">
 {% unless jsonld %}{% assign jsonld=page.jsonld %}{% endunless %}
