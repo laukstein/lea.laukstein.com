@@ -273,6 +273,12 @@ time {
     color: #aaa;
     font-size: 90%;
 }
+blockquote time {
+    margin-bottom: 0;
+}
+cite time {
+    margin: 0;
+}
 blockquote {
     width: 100%;
     margin: 0;
@@ -285,9 +291,6 @@ blockquote > *:not(div):not(span):not(img):not(code):first-child {
 }
 blockquote > *:not(div):not(span):not(img):not(code):last-child {
     padding-bottom: .52em;
-}
-blockquote time {
-    margin-bottom: 0;
 }
 cite {
     display: block;
@@ -753,6 +756,15 @@ img.cell-center {
     content: attr(data-text);
     margin: 0 .6em;
     white-space: nowrap;
+}
+
+.tag {
+    display: inline-block;
+    padding: .15em .7em;
+    margin: .4em 0;
+    font-size: 90%;
+    background-color: #ededed;
+    border-radius: 3px;
 }
 
 /* First page */
