@@ -405,7 +405,7 @@ ui.academy = {
     video: function (obj, url) {
         "use strict";
 
-        return obj ? "<a href=" + url + "><img src=https://img.youtube.com/vi/" + obj.id + "/1.jpg><h3>" + obj.title + "</h3></a>" : "";
+        return obj ? "<a href=" + encodeURI(url) + "><img src=https://img.youtube.com/vi/" + encodeURIComponent(obj.id) + "/1.jpg><h3>" + obj.title + "</h3></a>" : "";
     },
     session: function () {
         "use strict";
