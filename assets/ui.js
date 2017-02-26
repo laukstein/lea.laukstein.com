@@ -73,8 +73,6 @@ var ui = {
     dependencies: function () {
         "use strict";
 
-        // var arguments;
-
         if (!this.has.classList && Element.prototype) {
             Object.defineProperty(Element.prototype, "classList", {
                 get: function () {
@@ -169,76 +167,90 @@ var ui = {
             };
         }
     },
+    asyncScript: function (src/*, success, options |, options */) {
+        "use strict";
+
+        if (src) {
+            var script = this.d.createElement("script"),
+                onSuccess = typeof arguments[1] === "function" && arguments[1],
+                options = onSuccess ? arguments[2] || {} : arguments[1] || {},
+                params = JSON.parse(JSON.stringify(options)),
+                onReadyStateChange,
+                toggleListener,
+                onLoad,
+                key;
+            script.src = src;
+            delete params.remove;
+
+            if (Object.keys(params).length) {
+                for (key in params) {
+                    if (params.hasOwnProperty(key)) {
+                        script.setAttribute(key, params[key]);
+                    }
+                }
+            }
+
+            (this.d.head || this.d.body).appendChild(script);
+
+            if (onSuccess) {
+                if (!ui.has.eventListener) {
+                    ui.dependencies();
+                }
+
+                toggleListener = function (flag) {
+                    flag = flag === true ? "addEventListener" : "removeEventListener";
+
+                    script[flag]("load", onLoad);
+                    script[flag]("error", toggleListener);
+                    script[flag]("readystatechange", onReadyStateChange);
+                };
+                onLoad = function () {
+                    toggleListener();
+                    onSuccess(script);
+
+                    if (options.remove) {
+                        script.remove();
+                    }
+                };
+                onReadyStateChange = function () {
+                    if (this.readyState === "complete" || this.readyState === "loaded") {
+                        onLoad();
+                    }
+                };
+
+                toggleListener(true);
+            } else if (options.remove) {
+                script.remove();
+            }
+
+            return script;
+        } else {
+            return null;
+        }
+    },
     analytics: {
         key: "UA-11883501-1",
         url: "laukstein.com",
-        listener: function (flag) {
-            "use strict";
-
-            var self = ui.analytics;
-            flag = flag === true ? "addEventListener" : "removeEventListener";
-
-            self.el[flag]("load", self.load);
-            self.el[flag]("error", self.listener);
-            self.el[flag]("readystatechange", self.readystatechange);
-
-            if (!flag) {
-                self.el.removeAttribute("id");
-            } else if (flag !== true) {
-                self.el.remove();
-            }
-        },
-        load: function () {
-            "use strict";
-
-            var self = ui.analytics;
-
-            // Disabling cookies https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#disabling_cookies
-            if (ui.w.ga) {
-                ga("create", self.key, self.url, {
-                    storage: "none",
-                    clientId: localStorage.gaClientId
-                });
-
-                if (!localStorage.gaClientId) {
-                    ga(function (tracker) {
-                        localStorage.gaClientId = tracker.get("clientId");
-                    });
-                }
-
-                ga("send", "pageview");
-            }
-
-            self.listener();
-        },
-        readystatechange: function () {
-            "use strict";
-
-            var self = ui.analytics;
-
-            if (this.readyState === "complete" || this.readyState === "loaded") {
-                if (ui.w.ga) {
-                    self.load();
-                } else {
-                    self.listener();
-                }
-            }
-        },
         init: function () {
             "use strict";
 
-            this.el = ui.d.createElement("script");
-            this.el.src = "https://www.google-analytics.com/analytics.js";
-            this.el.id = +new Date + "";
+            ui.asyncScript("https://www.google-analytics.com/analytics.js", function () {
+                if (ui.w.ga) {
+                    // Disabling cookies https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#disabling_cookies
+                    ga("create", ui.analytics.key, ui.analytics.url, {
+                        storage: "none",
+                        clientId: localStorage.gaClientId
+                    });
 
-            ui.d.body.appendChild(this.el);
+                    if (!localStorage.gaClientId) {
+                        ga(function (tracker) {
+                            localStorage.gaClientId = tracker.get("clientId");
+                        });
+                    }
 
-            this.el = ui.d.getElementById(this.el.id);
-
-            if (this.el) {
-                ui.dependencies("event");
-                this.listener(true);
-            }
+                    ga("send", "pageview");
+                }
+            }, {remove: true});
         }
     },
     init: function () {

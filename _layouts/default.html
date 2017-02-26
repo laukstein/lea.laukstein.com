@@ -34,7 +34,6 @@ layout: compress
         </nav>
     </div>
 </header>
-{% comment %}<script src={{ site.assets }}ui.js></script>{% endcomment %}
 <main dir=rtl>
 {% if layout.comment or page.comment or page.category == 'products' %}
     {% assign addComments=true %}
@@ -55,7 +54,7 @@ layout: compress
         </div>
     </div>
     {% when "center" %}
-    <div class="table scale center">
+    <div class="table scale center" id=content>
         <div class=cel>
             {{ content }}
         </div>
@@ -110,6 +109,7 @@ layout: compress
         {% capture inline_js %}{{ inline_js }}{% include {{ source }} %}{% endcapture %}
     {% endfor %}
 {% endif %}
+{% comment %}<script src={{ site.assets }}ui.js></script>{% endcomment %}
 <script>{% capture inline_js %}{% include ui.min.js %}{{ inline_js }}{% endcapture %}{{ inline_js }}</script>
 {% if page.jsonld == nil and page.image %}
     {% if page.category == 'products' %}
