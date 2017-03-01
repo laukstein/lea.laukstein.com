@@ -754,6 +754,7 @@ img.cell-center {
     padding: 2em;
     float: right;
     vertical-align: top;
+    box-sizing: border-box;
 }
 .image + .content {
     padding-left: 1em;
