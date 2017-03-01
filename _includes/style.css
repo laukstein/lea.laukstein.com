@@ -906,6 +906,8 @@ img.cell-center {
         box-suppress: discard;
     }
     nav {
+        direction: ltr;
+        overflow: auto;
         position: fixed;
         top: 0;
         left: 0;
@@ -918,6 +920,7 @@ img.cell-center {
         will-change: auto;
     }
     nav a {
+        direction: rtl;
         display: block;
         border-top: 1px solid #eee;
     }
