@@ -1012,6 +1012,9 @@ img.cell-center {
     .box figure.flow {
         margin-left: -2.1em;
     }
+    .items li {
+        min-width: auto;
+    }
 }
 
 @media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */
