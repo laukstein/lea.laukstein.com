@@ -181,6 +181,7 @@ var ui = {
                 key;
             script.src = src;
             delete params.remove;
+            delete params.onStart;
 
             if (Object.keys(params).length) {
                 for (key in params) {
@@ -188,6 +189,9 @@ var ui = {
                         script.setAttribute(key, params[key]);
                     }
                 }
+            }
+            if (typeof options.onStart === "function") {
+                options.onStart();
             }
 
             (this.d.head || this.d.body).appendChild(script);
@@ -228,35 +232,57 @@ var ui = {
             return null;
         }
     },
-    analytics: {
-        key: "UA-11883501-1",
-        url: "laukstein.com",
-        init: function () {
-            "use strict";
+    analytics: function () {
+        "use strict";
 
-            ui.asyncScript("https://www.google-analytics.com/analytics.js", function () {
-                if (ui.w.ga) {
-                    // Disabling cookies https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#disabling_cookies
-                    ga("create", ui.analytics.key, ui.analytics.url, {
-                        storage: "none",
-                        clientId: localStorage.gaClientId
+        ui.asyncScript("https://www.google-analytics.com/analytics.js", function () {
+            if (ui.w.ga) {
+                // Disabling cookies https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#disabling_cookies
+                ga("create", "UA-11883501-1", "laukstein.com", {
+                    storage: "none",
+                    clientId: localStorage.gaClientId
+                });
+
+                if (!localStorage.gaClientId) {
+                    ga(function (tracker) {
+                        localStorage.gaClientId = tracker.get("clientId");
                     });
-
-                    if (!localStorage.gaClientId) {
-                        ga(function (tracker) {
-                            localStorage.gaClientId = tracker.get("clientId");
-                        });
-                    }
-
-                    ga("send", "pageview");
                 }
-            }, {remove: true});
-        }
+
+                ga("send", "pageview");
+            }
+        }, {
+            remove: true
+        });
+        ui.asyncScript("https://connect.facebook.net/en_US/fbevents.js", {
+            onStart: function () {
+                // Facebook Pixel https://www.facebook.com/business/help/952192354843755
+                if (!ui.w.fbq) {
+                    var n = ui.w.fbq = function () {
+                        if (n.callMethod) {
+                            n.callMethod.apply(n, arguments);
+                        } else {
+                            n.queue.push(arguments);
+                        }
+                    };
+
+                    ui.w._fbq = ui.w._fbq || n; // eslint-disable-line
+                    n.push = n;
+                    n.loaded = true;
+                    n.version = "2.0";
+                    n.queue = [];
+                }
+
+                fbq("init", "1265828396834846");
+                fbq("track", "PageView");
+            },
+            remove: true
+        });
     },
     init: function () {
         "use strict";
 
-        this.analytics.init();
+        this.analytics();
     }
 };
 
