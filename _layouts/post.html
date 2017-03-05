@@ -8,7 +8,7 @@ comment: true
 <article class=box>
     {% if page.image %}<figure{% if page.imageClass %} class="{{ page.imageClass }}"{% endif %}>
         <img src={{ site.assets }}{{ page.image }} alt="{{ page.title }}">
-        {% if page.imageLabel %}<figcaption>{{ page.imageLabel }}</figcaption>{% endif %}
+        {% if page.imageLabel %}<figcaption>{{ page.imageLabel | markdownify }}</figcaption>{% endif %}
     </figure>{% endif %}
     <h1 class=wrapline>{{ page.title }}</h1>
     {{ content }}
