@@ -9,6 +9,7 @@ YAML options
     title: max 70-78 chars
     description: max 170-200 chars
     date: YYYY-MM-DD HH:MM:SS
+    private: true // default `false`; prevent crawlers from indexing the page
     className: className
     youtube: ID
     image: src

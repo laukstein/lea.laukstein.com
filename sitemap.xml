@@ -23,7 +23,7 @@ layout: null
         <priority>1.0</priority>
     </url>{%
     for subpage in pages %}{%
-        if subpage.hidden == null and subpage.category == relative_url %}
+        if subpage.private == null and subpage.category == relative_url %}
     <url>
         <loc>{{ site.url }}{{ subpage.url }}</loc>{% if subpage.date %}
         <lastmod>{{ subpage.date | date_to_xmlschema }}</lastmod>{% endif %}{% if subpage.image %}
