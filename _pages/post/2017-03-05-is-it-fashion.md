@@ -3,7 +3,7 @@ layout: post
 category: blog
 permalink: /is-it-fashion
 date: 2017-03-05 14:38:00
-title: האם זה אופנה?
+title: האם זאת אופנה?
 image: 2017-03-05-is-it-fashion.jpg
 imageLabel: "צילום: <https://unsplash.com/@clemono2>"
 ---
