@@ -346,7 +346,7 @@ cite:before {
     overflow: hidden;
     display: block;
 }
-.content :target:before {
+.content [id]:target:before {
     content: "";
     display: block;
     height: 6.5em;
