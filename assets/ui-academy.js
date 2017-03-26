@@ -301,8 +301,7 @@ ui.academy = {
             return {};
         }
     }()),
-    // fetch: "https://lab.laukstein.com/academy",
-    fetch: "http://lab.alaukstein.com/academy",
+    fetch: "https://lab.laukstein.com/academy",
     dataset: function (el, prop) {
         "use strict";
 
