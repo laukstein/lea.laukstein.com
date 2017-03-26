@@ -28,14 +28,14 @@ space-before-function-paren: [2, {"anonymous": "always", "named": "never"}],
 strict: [2, "function"]*/
 
 ui.form = {
-    list: function (selector) {
+    list: function (selector, container) {
         "use strict";
 
-        if (!this.el || !selector) {
+        if (!container && !this.el || !selector) {
             return [];
         }
 
-        var arr = this.el.querySelectorAll(selector);
+        var arr = (container || this.el).querySelectorAll(selector);
 
         return arr.length ? Array.from && Array.from(arr) || [].slice.call(arr) : [];
     },

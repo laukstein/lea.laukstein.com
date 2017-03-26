@@ -2,6 +2,7 @@
     overflow-y: auto;
         width: 100vw;
     max-width: 100%;
+    background-color: #88828c;
 }
 .stretch header,
 .stretch main,
@@ -13,7 +14,6 @@
 }
 .profile {
     display: inline-block;
-    max-width: 10em;
     min-width: 6em;
     padding: .6em 1.2em .5em .4em;
     line-height: 1;
@@ -30,8 +30,16 @@
     background-color: #c5c5c5;
     border-radius: 100%;
 }
-.profile div {
+.profile .table.center {
+    justify-content: inherit;
+}
+.profile .cel.cel {
+    padding: 0;
+    margin: 0;
+}
+.profile .nowrap {
     overflow: hidden;
+    max-width: 10em;
     margin-top: .2em;
     text-overflow: ellipsis;
 }
@@ -128,14 +136,16 @@ button.error {
     height: 100vh;
 }
 .column {
+    display: block;
     padding-top: 0;
 }
 .nav-container {
     width: 16em;
+    float: left;
     vertical-align: top;
 }
 .nav {
-        width: 100%;
+    width: 100%;
     margin-top: .8em;
     float: right;
     clear: both;
@@ -183,7 +193,7 @@ button.error {
     float: right;
     font-weight: normal;
 }
-.nav li a:before {
+.nav li li a:before {
     content: counters(subitem, ".") ". ";
     font-weight: normal;
     counter-increment: subitem;
@@ -195,16 +205,24 @@ button.error {
 }
 .nav a {
     display: block;
-    color: initial;
+    color: inherit;
     text-decoration: none;
     outline: none;
 }
 .nav .active,
 .nav a:hover,
-.nav a:focus {
+.nav a:focus,
+.nav label[onclick]:hover,
+.nav label[onclick]:focus,
+.nav-container .selected {
     color: #fff;
     background-color: #1e90ff;
     border-color: #1e90ff;
+}
+.nav label[onclick]:hover time,
+.nav label[onclick]:focus time,
+.nav-container .selected time {
+    color: #fff;
 }
 .nav > li {
     border-top: 2px solid #ededed;
@@ -214,14 +232,19 @@ button.error {
 }
 .nav ol {
     display: none;
+    box-suppress: discard;
+    margin-bottom: .4em;
+}
+.nav .expand ~ ol {
+    display: block;
 }
 .nav ol a {
-    padding-top: .3em;
-    padding-bottom: .3em;
+    padding-top: .4em;
+    padding-bottom: .4em;
     padding-right: 2.5em;
 }
 .comment-container {
-    display: table-row;
+    width: calc(100% - 16.8em);
 }
 .medium.comment {
     max-width: 100%;
@@ -233,16 +256,226 @@ button.error {
     right: 0;
     left: 0;
     bottom: 0;
-    background: url(/assets/academy.jpg) center 3.7em no-repeat #88828c;
+    background: #88828c url(/assets/academy.jpg) center center 3.7em no-repeat;
     background-size: cover;
 }
+.items .cover {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.items .cover h3 {
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1em;
+    margin: 0;
+    color: initial;
+    text-overflow: ellipsis;
+    text-shadow: 1px 1px 0 #fff;
+    background-color: rgba(255,255,255,.8);
+}
+.qa {
+    margin: 6% 2.1em;
+}
+.qa ol,
+.qa input:checked ~ ol {
+    padding: 0;
+    margin: auto;
+}
+.qa > ol {
+    margin-top: 1em;
+}
+.qa ol ol {
+    display: none;
+    position: relative;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    box-shadow: 1px 2px 1px #aaa;
+}
+.qa input:checked ~ ol {
+    display: block;
+}
+.qa li {
+    position: relative;
+    flex: 1;
+    list-style-type: none;
+}
+.qa a {
+    visibility: hidden;
+    margin-right: .4em;
+    float: left;
+}
+.qa input {
+    display: none;
+}
+.qa label {
+    display: block;
+    position: relative;
+    padding: 1.2em 1.6em;
+    padding-left: 1em;
+    line-height: 1.4;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.qa label:before {
+    content: "";
+    display: inline-block;
+    padding: .4em;
+    margin: .2em 0 .2em .5em;
+    vertical-align: middle;
+    background-color: #fff;
+    border: .2em solid #d8940f;
+    border-radius: 2px;
+}
+.qa ol ol label {
+    padding-right: 2.85em;
+}
+.qa ol li:last-child label {
+    border-bottom: 0;
+}
+.qa ol ol li:not(:last-child) label {
+    border-color: #eee;
+}
+.qa label:not([disabled]):hover {
+    background-color: #fff;
+}
+.qa label:not([disabled]):hover:before {
+    border-color: #4d90fe;
+}
+.qa label[disabled] {
+    opacity: .4;
+    pointer-events: none;
+}
+.qa label[disabled]:before {
+    background-color: transparent;
+    border-color: #ccc;
+}
+.qa input:checked ~ label {
+    font-weight: bold;
+    background-color: #fff;
+    border-color: transparent;
+    box-shadow: 0 -1px 0 #eee,
+                1px 2px 1px #aaa;
+}
+.qa input:checked ~ label:before {
+    background-color: #4d90fe;
+    border-color: #4d90fe;
+}
+.qa input:checked ~ label:after {
+    content: "\2716";
+    position: absolute;
+    top: 1.65em;
+    right: 2.15em;
+    color: transparent;
+    font-weight: normal;
+    font-size: 86%;
+    transition: color .35s cubic-bezier(.2,1,.4,1);
+}
+.qa input:checked ~ label:hover,
+.qa ol ol label:not([disabled]):hover {
+    background-color: #f9f9f9;
+}
+.qa input:checked ~ label:hover:after {
+    color: #fff;
+    transition: color .15s cubic-bezier(.2,1,.4,1);
+}
+.dialog {
+    position: relative;
+    z-index: 1;
+    height: 15em;
+    padding: 1em;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 -1px 0 #eee, 1px 2px 2px #aaa;
+}
+.dialog.final {
+    background-color: transparent;
+    box-shadow: none;
+}
+.dialog.dialog.dialog ~ * {
+    display: none;
+}
+.dialog .table {
+    height: 100%;
+}
+.dialog .cel {
+    display: table-cell;
+    vertical-align: middle;
+}
+.dialog .close {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.6em;
+    height: 1.6em;
+    font-size: 170%;
+    line-height: 1.6;
+    cursor: pointer;
+}
+.dialog .close:before {
+    content: "\01F7A9";
+}
+.dialog h1 {
+    color: inherit;
+    font-size: 1.7em;
+}
+.dialog .button {
+    display: inline-block;
+    visibility: visible;
+    width: auto;
+    margin: .6em auto 1.2em;
+    float: none;
+    color: #fff;
+    text-shadow: none;
+    background-color: #1e90ff;
+    box-shadow: none;
+}
+.dialog .button:focus,
+.dialog .button:active {
+    background-color: #0081ff;
+}
 
-@media (max-width: 48em) {
+@media (max-width: 54em) {
+    .bar.bar {
+        display: none;
+    }
+    nav {
+        direction: rtl;
+        overflow: visible;
+        position: static;
+        width: auto;
+        padding: 0;
+        background-color: transparent;
+        transform: none;
+    }
+    nav a {
+        display: inline-block;
+        visibility: hidden;
+    }
     .logo {
         margin-right: -.5em;
     }
     .stretch .logo {
         margin-right: 0;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    .column {
+        padding: 0;
+    }
+    .nav-container,
+    .comment-container {
+        display: block;
+        order: 2;
+        width: auto;
+        float: none;
     }
 }
 @media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */

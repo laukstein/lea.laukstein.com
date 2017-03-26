@@ -29,16 +29,14 @@ strict: [2, "function"]*/
 
 ui.academy = {
     data: {
-        date: 1488060000000, /* 2017/02/26 */
         interval: 7,
         init: {
             title: "ברוכות הבאות",
-            video: [
-                {
-                    id: "7iRtL9RTX7w",
-                    title: "ברוכות הבאות לקורס “הנוסחא לסטיילינג ב5 דקות לאישה הדתית”"
-                }
-            ]
+            page: {
+                type: "video",
+                title: "ברוכות הבאות לקורס \"הנוסחא לסטיילינג ב5 דקות לאישה הדתית\"",
+                value: "7iRtL9RTX7w"
+            }
         },
         session: {
             colours: {
@@ -67,145 +65,219 @@ ui.academy = {
                     qa: {
                         type: "qa",
                         title: "לאיזה קטגוריית צבעים את שייכת?",
-                        value: [
+                        value: "academy-colours.jpg",
+                        question: [
                             {
                                 title: "האם צבע השיער שלך שחור או חום כהה?",
-                                success: {
-                                    title: "העיניים שלך מבריקות, בולטות, בצבע כחול כהה או ירוק כהה? האם יש קונטראסט בין הלבן בעיניים לבין האישון?",
-                                    option: {
-                                        title: "כן",
-                                        success: {
-                                            title: "את בעלת מזל! את צלולה!",
-                                            download: "aaaa"
-                                        }
+                                question: [
+                                    {
+                                        title: "העיניים שלך מבריקות, בולטות, בצבע כחול כהה או ירוק כהה? האם יש קונטראסט בין הלבן בעיניים לבין האישון?",
+                                        final: "clear"
+                                    },
+                                    {
+                                        title: "העיניים שלך כהות?",
+                                        final: "deep"
+                                    },
+                                    {
+                                        title: "העיניים שלך בהירות, כחול בהיר או אפור בהיר?",
+                                        final: "bright"
                                     }
-                                }
+                                ]
                             },
                             {
-                                title: "האם צבע השיער שלך בלונד בהיר, אפור בהיר, חום בהיר?"
+                                title: "האם צבע השיער שלך בלונד בהיר, אפור בהיר, חום בהיר?",
+                                question: [
+                                    {
+                                        title: "העיניים שלך בהירות בצבעים כחול בהיר, אפור או ירוק בהיר?",
+                                        final: "bright"
+                                    },
+                                    {
+                                        title: "העיניים שלך חום בהיר, מתמזג עם צבע השיער?",
+                                        final: "mixed"
+                                    }
+                                ]
                             },
                             {
-                                title: "האם צבע השיער שלך חום בינוני או עכברי, אפור בינוני, בלונד אפורי, בלונד כהה?"
+                                title: "האם צבע השיער שלך חום בינוני או עכברי, אפור בינוני, בלונד אפורי, בלונד כהה?",
+                                question: [
+                                    {
+                                        title: "העיניים שלך בהירות בצבעים כחול בהיר, אפור או ירוק בהיר?",
+                                        final: "bright"
+                                    },
+                                    {
+                                        title: "העיניים שלך חום בהיר, מתמזג עם צבע השיער?",
+                                        final: "mixed"
+                                    }
+                                ]
                             },
                             {
-                                title: "האם צבע השיער שלך ג'ינג'י, דבש, ערמוני?"
+                                title: "האם צבע השיער שלך ג'ינג'י, דבש, ערמוני, והעיניים שלך ירוק חם כהה, חום ירקרק, חום דבש, כחול ירוק?",
+                                final: "warm"
                             },
                             {
-                                title: "האם צבע השיער שלך חום אפרפר (עכברי), בלונדי-אפרורי, כסוף, שיבה אפור?"
+                                title: "האם צבע השיער שלך חום אפרפר (עכברי), בלונדי-אפרורי, כסוף, שיבה אפור, והצבע העיניים שלך כחול או חום או ירקרק?",
+                                final: "cold"
                             }
-                        ]
+                        ],
+                        final: {
+                            clear: {
+                                title: "את צלולה",
+                                value: "0B3TGizvMXI6lZGZTckc0VElhVnc"
+                            },
+                            deep: {
+                                title: "את עמוקה",
+                                value: "0B3TGizvMXI6lSXNCYTNpLUh3LUU"
+                            },
+                            bright: {
+                                title: "את בהירה",
+                                value: "0B3TGizvMXI6lbUJ0S1RCbkpiU28"
+                            },
+                            mixed: {
+                                title: "את מעורבת",
+                                value: "0B3TGizvMXI6lbWhDNW1SNHZWVU0"
+                            },
+                            warm: {
+                                title: "את חמה",
+                                value: "0B3TGizvMXI6lNHhrTzdzb3ByaU0"
+                            },
+                            cold: {
+                                title: "את קרה",
+                                value: "0B3TGizvMXI6lNzRjamg5a1ZreVE"
+                            }
+                        }
                     },
-                    "download": {
-                        type: "download",
+                    "document": {
+                        type: "document",
                         title: "מעגל צבעים",
-                        value: "https://drive.google.com/file/d/0B3TGizvMXI6lSnktdTdteUtJS0k/view"
+                        value: "0B3TGizvMXI6lSnktdTdteUtJS0k"
                     }
                 }
             },
             "body-shape": {
                 title: "מבנה גוף",
-                video: [
-                    {
-                        id: "67JOe6ZRV7c",
-                        title: "למה חשוב להתלבש לפי מבנה גוף"
+                pages: {
+                    "video-1": {
+                        type: "video",
+                        title: "למה חשוב להתלבש לפי מבנה גוף",
+                        value: "67JOe6ZRV7c"
                     },
-                    {
-                        id: "QrPC6lvIAKE",
-                        title: "אילו מבנה גוף יש"
+                    "video-2": {
+                        type: "video",
+                        title: "אילו מבנה גוף יש",
+                        value: "QrPC6lvIAKE"
                     },
-                    {
-                        id: "GRyHlrJnV6Q",
-                        title: "איך לדעת מה מבנה גוף שלך"
+                    "video-3": {
+                        type: "video",
+                        title: "איך לדעת מה מבנה גוף שלך",
+                        value: "GRyHlrJnV6Q"
+                    },
+                    table: {
+                        type: "video",
+                        title: "שאלון: תאבחני את מבנה הגוף שלך",
+                        value: "איך למלא שאלון" // turtorial
                     }
-                ],
-                table: {
-                    title: "שאלון: תאבחני את מבנה הגוף שלך",
-                    video: "איך למלא שאלון" // turtorial
                 }
             },
             style: {
                 title: "סגנון הלבוש",
-                video: [
-                    {
-                        id: "7AMQxfNDzIM",
-                        title: "למה חשוב לדעת מה סגנון הלבוש שלך"
+                pages: {
+                    "video-1": {
+                        type: "video",
+                        title: "למה חשוב לדעת מה סגנון הלבוש שלך",
+                        value: "7AMQxfNDzIM"
                     },
-                    {
-                        id: "",
-                        title: "אילו סגנונות לבוש יש"
+                    "video-2": {
+                        type: "video",
+                        title: "אילו סגנונות לבוש יש",
+                        value: ""
                     },
-                    {
-                        if: "rs8o-d7gkpo",
-                        title: "שיעורי בית"
+                    "video-3": {
+                        type: "video",
+                        title: "שיעורי בית",
+                        value: "rs8o-d7gkpo"
+                    },
+                    table: {
+                        title: "שאלון: תאבחני את סגנון הלבוש שלך"
                     }
-                ],
-                table: {
-                    title: "שאלון: תאבחני את סגנון הלבוש שלך"
                 }
             },
             lingerie: {
                 title: "הלבשה תחתונה",
-                video: [
-                    {
-                        id: "k1ASomUAM34",
-                        title: "כמה חשיבות יש הלבשה תחתונה"
+                pages: {
+                    "video-1": {
+                        type: "video",
+                        title: "כמה חשיבות יש הלבשה תחתונה",
+                        value: "k1ASomUAM34"
                     },
-                    {
-                        id: "",
-                        title: "גזרה, צבע ובד בהלבשה תחתונה"
+                    "video-2": {
+                        type: "video",
+                        title: "גזרה, צבע ובד בהלבשה תחתונה",
+                        value: ""
                     },
-                    {
-                        id: "2H9HC-eaRAE",
-                        title: "איך לדעת שהלבשה תחתונה מתאימה"
+                    "video-3": {
+                        type: "video",
+                        title: "איך לדעת שהלבשה תחתונה מתאימה",
+                        value: "2H9HC-eaRAE"
                     },
-                    {
-                        id: "nYtkrABvBXw",
-                        title: "שיעורי בית"
+                    "video-4": {
+                        type: "video",
+                        title: "שיעורי בית",
+                        value: "nYtkrABvBXw"
                     }
-                ]
+                }
             },
             accessories: {
                 title: "אקססוריז",
-                video: [
-                    {
-                        id: "lJN1n7ecLmY",
-                        title: "למה להשתמש באקססוריז"
+                pages: {
+                    "video-1": {
+                        type: "video",
+                        title: "למה להשתמש באקססוריז",
+                        value: "lJN1n7ecLmY"
                     },
-                    {
-                        id: "",
-                        title: "סוגי אקססוריז"
+                    "video-2": {
+                        type: "video",
+                        title: "סוגי אקססוריז",
+                        value: ""
                     },
-                    {
-                        id: "dkO7I7yHu0o",
-                        title: "איך להתאים אקססוריז למבנה גוף שלך"
+                    "video-3": {
+                        type: "video",
+                        title: "איך להתאים אקססוריז למבנה גוף שלך",
+                        value: "dkO7I7yHu0o"
                     },
-                    {
-                        id: "uxNjzX1V6uk",
-                        title: "שיעורי בית"
+                    "video-4": {
+                        type: "video",
+                        title: "שיעורי בית",
+                        value: "uxNjzX1V6uk"
                     }
-                ]
+                }
             },
             "modular-outfit": {
                 title: "מערכת לבוש היעלה ביותר לאישה הדתית",
-                video: [
-                    {
-                        id: "8rn-HCDQzL4",
-                        title: "למה חשוב שמערכת לבוש תהיה יעילה"
+                pages: {
+                    "video-1": {
+                        type: "video",
+                        title: "למה חשוב שמערכת לבוש תהיה יעילה",
+                        value: "8rn-HCDQzL4"
                     },
-                    {
-                        id: "",
-                        title: "מה כוללת מערכת לבוש יעילה"
+                    "video-2": {
+                        type: "video",
+                        title: "מה כוללת מערכת לבוש יעילה",
+                        value: ""
                     },
-                    {
-                        id: "",
-                        title: "כמה שילובים חדשים אפשר להוציא מ9 פריטים"
+                    "video-3": {
+                        type: "video",
+                        title: "כמה שילובים חדשים אפשר להוציא מ9 פריטים",
+                        value: ""
                     },
-                    {
-                        id: "yzJaU1ZW1QU",
-                        title: "שיעורי בית"
+                    "video-4": {
+                        type: "video",
+                        title: "שיעורי בית",
+                        value: "yzJaU1ZW1QU"
+                    },
+                    "check-list": {
+                        title: "צ’ק ליסט למערכת לבוש יעילה"
                     }
-                ],
-                "check-list": "צ’ק ליסט למערכת לבוש יעילה"
+                }
             },
             bonuses: {
                 title: "בונוסים",
@@ -220,19 +292,71 @@ ui.academy = {
             }
         }
     },
-    token: localStorage.token ? JSON.parse(localStorage.token) : {},
-    fetch: "https://lab.laukstein.com/academy",
-    refresh: function (light) {
+    user: (function () {
+        "use strict";
+        try {
+            return JSON.parse(localStorage.user);
+        } catch(e) {
+            delete localStorage.user;
+            return {};
+        }
+    }()),
+    // fetch: "https://lab.laukstein.com/academy",
+    fetch: "http://lab.alaukstein.com/academy",
+    dataset: function (el, prop) {
         "use strict";
 
-        if (light) {
-            location.hash = "";
+        if (el && el.nodeType === 1) {
+            return el.dataset ? el.dataset[prop] : el.getAttribute("data-" + prop);
+        }
+    },
+    serialize: function (obj) {
+        "use strict";
 
-            if (history.pushState) {
-                history.pushState("", ui.d.title, location.pathname);
+        if (obj) {
+            var arr = Object.keys(obj),
+                result = [],
+                i;
+
+            for (i = 0; i < arr.length; i += 1) {
+                if (obj[arr[i]]) {
+                    result.push(arr[i] + "=" + encodeURIComponent(obj[arr[i]]));
+                }
             }
+
+            return result.join("&");
         } else {
+            return "";
+        }
+    },
+    select: function (el, avoidRedirect) {
+        "use strict";
+
+        if (el) {
+            var hash = this.serialize({
+                session: this.dataset(el, "session"),
+                page: this.dataset(el, "page")
+            });
+
+            if (!avoidRedirect && hash) {
+                location.hash = hash;
+                ui.d.body.scrollTop = 0;
+            } else if (!hash && location.hash || !this.data.session[ui.hash("session")]) {
+                location.hash = "";
+
+                if (history.pushState) {
+                    history.pushState("", ui.d.title, location.pathname);
+                }
+            }
+        }
+    },
+    refresh: function (stripHash) {
+        "use strict";
+
+        if (stripHash) {
             location = location.pathname;
+        } else {
+            location.reload();
         }
     },
     login: function (e) {
@@ -244,6 +368,8 @@ ui.academy = {
 
         fetch(this.fetch + "/login", {
             method: "POST",
+            // Prevent insecure redirects https://developer.mozilla.org/en-US/docs/Web/API/Response/redirected
+            redirect: "error",
             body: JSON.stringify({
                 email: this.email.value,
                 pass: this.pass.value
@@ -251,14 +377,14 @@ ui.academy = {
         }).then(function (response) {
             return response.json();
         }).then(function (data) {
-            localStorage.token = JSON.stringify(data);
+            localStorage.user = JSON.stringify(data);
             var self = ui.academy;
 
             ui.form.accessibility(true);
             self.button.classList.remove("spin");
 
-            if (data.email && data.hash) {
-                ui.academy.refresh();
+            if (data.email && data.token) {
+                ui.academy.refresh(true);
             } else if (self.button) {
                 self.button.classList.add("error");
                 self.button.innerHTML = "הפרטים שגויים, נסי שוב";
@@ -276,7 +402,7 @@ ui.academy = {
         this.button.innerHTML = "שלח לי סיסמא";
         this.button.classList.remove("error");
         this.link.innerHTML = "לנסות להתחבר מחדש";
-        this.link.setAttribute("onclick", "ui.academy.refresh()");
+        this.link.setAttribute("onclick", "ui.academy.refresh(true)");
     },
     remind: function (e) {
         "use strict";
@@ -287,6 +413,7 @@ ui.academy = {
 
         fetch(this.fetch + "/forgot", {
             method: "POST",
+            redirect: "error",
             body: JSON.stringify({
                 email: this.email.value
             })
@@ -299,7 +426,7 @@ ui.academy = {
             self.button.classList.remove("spin");
 
             if (data.success) {
-                ui.form.el.innerHTML = "<h2>פרטי גישה נשלחו למייל שלך</h2><a onclick=ui.academy.refresh()>לנסות להתחבר</a>";
+                ui.form.el.innerHTML = "<h2>פרטי גישה נשלחו למייל שלך</h2><a onclick=ui.academy.refresh(true)>לנסות להתחבר</a>";
             } else {
                 self.button.classList.add("error");
                 self.button.innerHTML = "מייל לא רשום, נסי שוב";
@@ -311,8 +438,8 @@ ui.academy = {
     logout: function () {
         "use strict";
 
-        delete localStorage.token;
-        this.refresh();
+        delete localStorage.user;
+        this.refresh(true);
     },
     date: function () {
         "use strict";
@@ -332,130 +459,380 @@ ui.academy = {
             format: date.getUTCDate() + "/" + (date.getUTCMonth() + 1)
         };
     },
+    key: function (e) {
+        "use strict";
+
+        if (e && e.target && (e.keyCode || e.which) === 13) {
+            e.preventDefault();
+            e.target.click();
+        }
+    },
+    events: function (session, page) {
+        "use strict";
+
+        return " onclick=ui.academy.select(this) onkeydown=ui.academy.key(event)" +
+            (session ? " data-session=" + session : "") + (page ? " data-page=" + page : "") + " tabindex=0";
+    },
     isLogged: function () {
         "use strict";
 
+        // IMPORTANT
+        this.data.date = this.user.created * 1000;
+
         ui.d.documentElement.classList.remove("stretch");
-        this.content.innerHTML = "";
-        this.content.removeAttribute("id");
-        this.details.outerHTML = "<div class=profile>" +
-            "<img src=\"https://gravatar.com/avatar/" + this.token.hash + "?s=42&r=g&d=mm\">" +
-            (this.token.fname ? "<div class=nowrap dir=auto>" + this.token.fname + "</div>" : "") +
-            "<small onclick=ui.academy.logout()>להתנתק</small>" +
+        this.details.remove();
+
+        this.account = ui.d.getElementById("account");
+
+        this.account.outerHTML = "<div class=profile>" +
+            "    <img src=\"https://gravatar.com/avatar/" + this.user.avatar + "?s=42&r=g&d=mm\">" +
+            "    <div class=\"table center\">" +
+            "        <div class=cel>" +
+            (this.user.firstName ? "            <div class=nowrap dir=auto>" + this.user.firstName + "</div>" : "") +
+            "            <small onclick=ui.academy.logout()>התנתק</small>" +
+            "        </div>" +
+            "    </div>" +
             "</div>";
+
         delete this.details;
+        delete this.account;
 
-        var script = ui.d.createElement("script"),
-            obj = this.data.init,
+        var obj = this.data.init,
+            current = ui.hash("session"),
             result = "",
-            subProp,
-            video,
-            table,
-            date,
-            prop;
+            session,
+            pages,
+            page,
+            date;
 
-        ui.w.disqus_config = function () {
-            this.page.identifier = location.hash.replace(/^#/, "");
-            this.page.url = location.href;
-        };
-        script.src = "https://lealaukstein.disqus.com/embed.js";
-        script.setAttribute("data-timestamp", +new Date());
-        (ui.d.head || ui.d.body).appendChild(script);
-
-        result += "<div class=column id=content></div>" +
-            "<div class=\"column nav-container\" id=nav>" +
+        result += "<div class=\"column nav-container\" id=nav>" +
             "<div class=nav>" +
-            "    <a class=active onclick=ui.academy.refresh(true)><label>" + obj.title + "</label></a>" +
+            "    <a class=active" + this.events() + "><label>" + obj.title + "</label></a>" +
             "</div>";
+
         obj = this.data.session;
+
         result += "<ol class=nav>";
 
-        for (prop in obj) {
-            if (obj.hasOwnProperty(prop)) {
-                date = obj[prop].date || this.date();
-                result += "    <li><label" + (date.enabled ? "" : " disabled") +
-                    "><time>" + date.format + "</time><div>" + obj[prop].title + "</div></label>";
-                video = obj[prop].video;
-                table = obj[prop].table;
+        for (session in obj) {
+            if (obj.hasOwnProperty(session)) {
+                date = obj[session].date || this.date();
+                result += "    <li" + (session === current ? " class=expand" : "") + ">" +
+                    "<label" + (date.enabled ? this.events(session) : " disabled") + ">" +
+                    "<time>" + date.format + "</time><div>" + obj[session].title + "</div>" +
+                    "</label>";
+                pages = obj[session].pages;
 
-                if (video || table) result += "<ol>";
-                if (video) {
-                    for (subProp in video) {
-                        if (video.hasOwnProperty(subProp)) {
-                            result += "    <li><a href=#session=" + prop + "&page=" + subProp + " tabindex=0>" + video[subProp].title + "</a>";
+                if (pages && date.enabled) {
+                    result += "<ol>";
+
+                    for (page in pages) {
+                        if (pages.hasOwnProperty(page)) {
+                            result += "    <li><a" + this.events(session, page) + ">" + pages[page].title + "</a>";
                         }
                     }
+
+                    result += "</ol>";
                 }
-                if (table) {
-                    result += "    <li><a href=#session=" + prop + "&page=table tabindex=0>" + table.title + "</a>";
-                }
-                if (video || table) result += "</ol>";
             }
         }
 
         result += "</ol>" +
-            "</div>";
+            "</div>" +
+            "<div class=\"column content\" id=content></div>";
 
-        this.content.innerHTML = result;
+        this.content.outerHTML = "<div class=container>" + result + "</div>";
         this.content = ui.d.getElementById("content");
         this.nav = ui.d.getElementById("nav");
 
-        this.session();
+        this.toggleNav(true);
     },
-    video: function (obj, url) {
+    list: function (obj, session, page) {
         "use strict";
 
-        return obj ? "<a href=" + encodeURI(url) + "><img src=https://img.youtube.com/vi/" + encodeURIComponent(obj.id) + "/1.jpg><h3>" + obj.title + "</h3></a>" : "";
+        var url = "";
+
+        if (obj.value) {
+            switch (obj.type) {
+                case "video":
+                    url = "https://img.youtube.com/vi/" + obj.value + "/maxresdefault.jpg";
+                    break;
+                case "document":
+                    url = "https://drive.google.com/thumbnail?authuser=0&sz=w640&id=" + obj.value;
+                    break;
+                case "qa":
+                    url = "/assets/" + obj.value;
+                    break;
+                default:
+                    url = "";
+            }
+        }
+
+        // YouTube image sizes http://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api
+        return obj ? "<a class=\"absolute cover\"" + this.events(session, page) +
+            " style=\"background-image:url(" + url + ")\"><h3 class=nowrap>" + obj.title + "</h3></a>" : "";
+    },
+    report: function (/*type, data*/) {
+        "use strict";
+        // TBD: report error
+    },
+    qa: function (obj) {
+        "use strict";
+
+        function label(data, index, sameLoop) {
+            var skipLoop = index !== false,
+                result = "",
+                version,
+                final,
+                prop;
+            index = index || 0;
+
+            if (skipLoop && !sameLoop) {
+                index += 1;
+            }
+            if (data) {
+                if (skipLoop) {
+                    final = !data.question;
+                    version = !final && Math.random().toString(16).substr(2, 8);
+                    result += (sameLoop ? "" : "<ol>") +
+                        "<li><input type=radio name=" + index + " id=" + version + ">" +
+                        "<label onclick=" + (data.final ? "\"ui.academy.qa.dialog(event, " + index + ", '" + data.final + "')\"" : "ui.academy.qa.click(event) for=" + version) + ">" + data.title + "</label>";
+                }
+                if (Array.isArray(data.question)) {
+                    index += 1;
+                    result += "<ol>";
+
+                    for (prop in data.question) {
+                        result += label(data.question[prop], index, true);
+                    }
+
+                    result += "</ol>";
+                } else if (data.question) {
+                    result += label(data.question, index);
+                }
+                if (skipLoop) {
+                    result += "</li>" +
+                        (sameLoop ? "" : "</ol>");
+                }
+            }
+
+            return result;
+        }
+
+        this.qa.click = function (e) {
+            var el = e.target,
+                active = el.getAttribute("data-active") === "true",
+                arrB,
+                arr,
+                i,
+                o;
+
+            if (active) {
+                e.preventDefault();
+
+                arr = el.parentNode.querySelectorAll("[data-active]");
+
+                for (i = 0; i < arr.length; i += 1) {
+                    arr[i].removeAttribute("data-active");
+                }
+
+                arr = el.parentNode.querySelectorAll("input:checked");
+
+                for (i = 0; i < arr.length; i += 1) {
+                    arr[i].checked = false;
+                }
+            } else {
+                el.setAttribute("data-active", true);
+            }
+
+            arr = el.parentNode.parentNode.children;
+
+            for (i = 0; i < arr.length; i += 1) {
+                if (!active && arr[i] === el.parentNode) {
+                    el.removeAttribute("disabled");
+                } else {
+                    arrB = arr[i].querySelectorAll("label");
+
+                    for (o = 0; o < arrB.length; o += 1) {
+                        if (active) {
+                            arrB[o].removeAttribute("disabled");
+                        } else {
+                            arrB[o].setAttribute("disabled", true);
+                        }
+                    }
+                }
+            }
+        };
+        this.qa.dialog = function (e, index, type, finalEl) {
+            var el = finalEl || e.target,
+                data = obj.final[type],
+                result = "";
+
+            if (!finalEl && e) {
+                this.click(e);
+            }
+            if (el && data) {
+                result += "<div class=\"dialog" + (finalEl ? " final" : "") + "\">" +
+                    "   <div class=table>" +
+                    "   <div class=cel>" +
+                    (finalEl ? "" : "       <div class=close onclick=ui.academy.qa.reset(this) tabindex=0></div>") +
+                    "       <h1 class=nowrap>" + data.title + "</h1>" +
+                    (finalEl ? "" : "       <p>שימי לב, אחרי הורדה לא ניתן לשנות קטגוריה</p>") +
+                    "       <a class=button" + (finalEl ? " href=\"https://drive.google.com/file/d/" + data.value + "/view\" target=_blank" :
+                        " onclick=\"ui.academy.qa.final(this, '" + type + "')\" tabindex=0") + ">" + (finalEl ? "להוריד סרגל צבעים" : "לקבל סרגל צבעים") + "</a>" +
+                    "   </div>" +
+                    "   </div>" +
+                    "</div>";
+
+                if (!finalEl) {
+                    el = index === 1 ? el.parentNode : el.parentNode.parentNode.parentNode;
+                    el.insertAdjacentHTML("afterbegin", result);
+                }
+            }
+
+            return result;
+        };
+        this.qa.reset = function (el) {
+            if (el) {
+                el.parentNode.parentNode.parentNode.remove();
+            }
+
+            var arr = ui.d.querySelectorAll(".qa [disabled]"),
+                i;
+
+            for (i = 0; i < arr.length; i += 1) {
+                arr[i].removeAttribute("disabled");
+            }
+
+            arr = ui.d.querySelectorAll(".qa input:checked");
+
+            for (i = 0; i < arr.length; i += 1) {
+                arr[i].checked = false;
+            }
+
+            arr = ui.d.querySelectorAll(".qa [data-active]");
+
+            for (i = 0; i < arr.length; i += 1) {
+                arr[i].removeAttribute("data-active");
+            }
+        };
+        this.qa.final = function (el, value) {
+            if (el) {
+                el.setAttribute("disabled", true);
+                el.classList.add("spin");
+            }
+
+            var data = {
+                    email: ui.academy.user.email,
+                    token: ui.academy.user.token,
+                    data: {qa: value}
+                },
+                close = ui.d.querySelector(".qa .close");
+
+            if (close) {
+                close.remove();
+            }
+
+            ui.form.accessibility(false, ui.d.querySelector(".qa"));
+
+            fetch(ui.academy.fetch + "/update", {
+                method: "POST",
+                redirect: "error",
+                body: JSON.stringify(data)
+            }).then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                return !json.error && json;
+            }).then(function (json) {
+                ui.academy.user = json;
+                localStorage.user = JSON.stringify(json);
+
+                ui.academy.refresh();
+            }).catch(function () {
+                ui.academy.user.reportDate = new Date();
+                ui.academy.user.reportData = data;
+                ui.academy.report("update", ui.academy.user);
+
+                if (el) {
+                    el.remove();
+                }
+
+                delete localStorage.user;
+                alert("טעות במערכת, נסי שוב מאוחר יותר");
+            });
+        };
+
+        return "<div class=qa>" +
+            "    <h1>" + obj.title + "</h1>" +
+            (this.user.task && this.user.task.qa ? this.qa.dialog(null, 0, this.user.task.qa, true) : label(obj, false)) +
+            "</div>";
     },
     session: function () {
         "use strict";
 
         if (this.valid && this.content) {
-            this.url = ui.hash("session");
-            this.self = this.url ? this.data.session[this.url] :
-                (location.href.indexOf("#") === -1 || !location.hash && !history.pushState ? this.data.init : null);
+            var session = ui.hash("session"),
+                result = "",
+                page,
+                prop,
+                obj;
+            this.self = session ? this.data.session[session] : (location.href.indexOf("#") === -1 || !location.hash && !history.pushState ? this.data.init : null);
 
-            if (this.self) {
-                var result = "",
-                    obj = this.self.video,
-                    page = ui.hash("page"),
-                    prop;
-                this.comment = ui.d.getElementById("disqus_thread");
+            if (this.self && (!session || !this.nav || this.nav.querySelector("[data-session=\"" + session + "\"]:not([data-page])"))) {
+                page = ui.hash("page");
+                obj = this.self.page || this.self.pages;
 
-                if (this.comment) {
-                    this.comment.remove();
-                    delete this.comment;
-                }
                 if (obj) {
-                    if (this.url && page === undefined) {
+                    if (session && !page) {
+                        result += "<ol class=items>";
+
                         for (prop in obj) {
                             if (obj.hasOwnProperty(prop)) {
-                                result += this.video(obj[prop], "#session=" + this.url + "&page=" + prop);
+                                result += "    <li>" + this.list(obj[prop], session, prop) + "</li>";
                             }
                         }
-                    }
 
-                    obj = this.url ? obj[ui.hash("page")] : obj[0];
+                        result += "</ol>";
 
-                    if (obj) {
-                        result += "<div class=video>" +
-                            "    <iframe src=\"https://www.youtube.com/embed/" + obj.id + "?showinfo=0\" sandbox=\"allow-scripts allow-same-origin\" allowfullscreen></iframe>" +
-                            "</div>" +
-                            "<div class=space><h1>" + obj.title + "</h1></div>";
-                    }
+                        this.content.innerHTML = result;
 
-                    this.content.innerHTML = result;
+                        if (ui.comment) {
+                            ui.comment.remove();
+                        }
+                    } else {
+                        obj = session ? obj && obj[page] : obj;
 
-                    this.nav.insertAdjacentHTML("afterend", "<div class=comment-container><div class=\"comment table space medium no-padding\" id=disqus_thread></div></div>");
-
-                    if (ui.w.DISQUS) {
-                        DISQUS.reset({
-                            reload: true,
-                            config: function () {
-                                this.page.identifier = location.hash.replace(/^#/, "");
-                                this.page.url = location.href;
+                        if (obj) {
+                            switch (obj.type) {
+                                case "video":
+                                    result += "<div class=video>" +
+                                        "    <iframe src=\"https://www.youtube.com/embed/" + obj.value + "?showinfo=0\" allowfullscreen></iframe>" +
+                                        "</div>" +
+                                        "<div class=space><h1>" + obj.title + "</h1></div>";
+                                    break;
+                                case "document":
+                                // width="640" height="480"
+                                // http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
+                                    result += "<div class=video>" +
+                                        "    <iframe src=\"https://drive.google.com/file/d/" + obj.value + "/preview\" allowfullscreen></iframe>" +
+                                        "</div>" +
+                                        "<div class=space>" +
+                                        "    <h1>" + obj.title + "</h1>" +
+                                        "    <a class=button href=\"https://drive.google.com/uc?export=download&id=" + obj.download + "\" target=_blank download=\"" + obj.title + ".pdf\"><b>להוריד " + obj.title + "</a>" +
+                                        "</div>";
+                                    break;
+                                case "qa":
+                                    result += this.qa(obj);
+                                    break;
                             }
-                        });
+
+                            this.content.innerHTML = result;
+                            this.self = obj;
+
+                            if (ui.comment) {
+                                ui.comment.load(this.content);
+                            }
+                        }
                     }
                 }
             } else {
@@ -464,15 +841,83 @@ ui.academy = {
             }
         }
     },
+    toggleNavClassName: function (el, avoidRedirect) {
+        "use strict";
+
+        if (el) {
+            var hash = {
+                    session: this.dataset(el, "session"),
+                    page: this.dataset(el, "page")
+                },
+                name = hash.page || !hash.session ? "active" : "expand",
+                reset = this.nav && this.nav.querySelector("." + name),
+                selected = this.nav && this.nav.querySelector(".selected");
+            hash = this.serialize(hash);
+
+            if (!avoidRedirect && selected) {
+                selected.classList.remove("selected");
+            }
+            if (reset) {
+                reset.classList.remove(name);
+            }
+            if (!hash.page) {
+                reset = this.nav && this.nav.querySelector(".active");
+
+                if (reset) {
+                    reset.classList.remove("active");
+                }
+            }
+            if (el) {
+                if (!avoidRedirect && !hash.page) {
+                    el.classList.add("selected");
+                }
+
+                el.classList.add(name);
+            }
+        }
+    },
+    toggleNav: function (initLoad) {
+        "use strict";
+
+        var session = ui.hash("session"),
+            page = ui.hash("page"),
+            obj = location.hash ? this.data.session[session] : this.data.init,
+            arr;
+
+        if (this.nav) {
+            if (obj) {
+                this.toggleNavClassName(this.nav.querySelector(location.hash ? "[data-session=\"" + session + "\"]:not([data-page])" : "a"));
+
+                if (obj.pages && obj.pages[page]) {
+                    this.toggleNavClassName(this.nav.querySelector("[data-session=\"" + session + "\"][data-page=\"" + page + "\"]"));
+                }
+            }
+            if (initLoad && !location.hash) {
+                arr = this.nav.querySelectorAll("[data-session]:not([data-page])");
+
+                this.toggleNavClassName(arr[arr.length - 1], true);
+            }
+        }
+
+        this.session();
+    },
+    legacy: function () {
+        "use strict";
+
+        if (!ui.w.Promise && ui.asyncScript) {
+            ui.asyncScript("https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch");
+        }
+    },
     init: function () {
         "use strict";
 
-        this.valid = !!this.token.email && !!this.token.hash;
-        this.loading = ui.d.getElementById("loading");
+        this.legacy();
+
+        this.valid = !!this.user.email && !!this.user.token;
         this.content = ui.d.getElementById("content");
         this.details = ui.d.getElementById("details");
 
-        this.loading.remove();
+        ui.d.getElementById("loading").remove();
         this.content.removeAttribute("hidden");
 
         if (this.valid) {
@@ -487,7 +932,7 @@ ui.academy = {
         }
 
         ui.w.onhashchange = ui.w.onhashchange || function () {
-            ui.academy.session();
+            ui.academy.toggleNav();
         };
     }
 };

@@ -14,6 +14,7 @@ label,
 iframe,
 button,
 .button,
+.nav,
 [disabled],
 .unselectable,
 [unselectable] {
@@ -685,7 +686,7 @@ iframe {
     box-suppress: discard;
 }
 .comment iframe {
-    margin-bottom: -6.3em;
+    margin-bottom: -5.8em;
 }
 
 .sheet {

@@ -18,7 +18,7 @@ layout: compress
         <label class=bar for=bar hidden><span></span></label>
         <a class=logo href=/academy><img src={{ site.assets }}logo-academy.png alt="סטיילינג בקלות לדתיות — לאה לאוקשטיין"></a>
         <nav dir=rtl>
-            <a id=details href=/5min hidden>פרטים</a><a href=/contact#5min>צור קשר</a>
+            <a id=details href=/5min hidden>פרטים</a><a href=/contact#5min>צור קשר</a><span id=account></span>
         </nav>
     </div>
 </header>
@@ -35,12 +35,10 @@ layout: compress
             <dt><h1>הנוסחא לסטיילינג ב5 דקות לאישה הדתית</h1>
             <dd><label for=email>אימייל</label><input id=email name=email type=email placeholder=אימייל autocomplete=email dir=ltr required autofocus>
             <dd><label for=pass>סיסמה</label><input id=pass name=password type=password placeholder=סיסמה minlength=5 dir=ltr required>
-            <dd><button id=button>כניסה</button>
-            <dd><a id=link onclick=ui.academy.forgot()>שכחת סיסמא</a>
+            <dd><button id=button>כניסה לפורטל</button>
+            <dd><a id=link onclick=ui.academy.forgot()>שכחת סיסמא?</a>
         </dl>
     </form>
     <div class=bg></div>
 </main>
-<script src=https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch></script>
-<script>{% capture inline_js %}{% include ui.min.js %}{% include ui-form.min.js %}{% include ui-academy.min.js %}{{ inline_js }}{% endcapture %}{{ inline_js }}</script>
-<script id=dsq-count-scr src=https://lealaukstein.disqus.com/count.js></script>
+<script>{% capture inline_js %}{% include ui.min.js %}{% include ui-form.min.js %}{% include ui-comment.min.js %}{% include ui-academy.min.js %}{{ inline_js }}{% endcapture %}{{ inline_js }}</script>
