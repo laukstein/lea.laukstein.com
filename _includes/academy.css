@@ -256,7 +256,7 @@ button.error {
     right: 0;
     left: 0;
     bottom: 0;
-    background: #88828c url(/assets/academy.jpg) center center 3.7em no-repeat;
+    background: #88828c url(/assets/academy.jpg) center 3.7em no-repeat;
     background-size: cover;
 }
 .items .cover {
