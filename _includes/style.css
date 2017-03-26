@@ -61,7 +61,7 @@ a {
     text-decoration: none;
     -webkit-box-decoration-break: clone; /* Chrome legacy, demo http://jsbin.com/xojoro/quiet */
             box-decoration-break: clone;
-    outline: transparent auto 2px;
+    outline: transparent solid 2px;
     transition: outline .15s;
 }
 [tabindex="-1"] {
@@ -73,11 +73,12 @@ a:focus {
     color: #02a;
     text-decoration: underline;
 }
-a:focus,
 a.absolute:hover,
+a.absolute:focus,
 a:not(.absolute):hover ~ a.absolute,
 form:hover ~ a.absolute {
     outline-color: #4d90fe;
+    outline-style: solid;
 }
 a[onclick] {
     cursor: pointer;
@@ -469,7 +470,7 @@ textarea {
     border-color: #9c9c9c;
     border-top-color: #ead17c;
     border-left-color: #ccc;
-    outline: transparent auto 1px;
+    outline: transparent solid 1px;
     box-shadow: 1px 1px .1em rgba(0,0,0,.2);
     transition: outline .15s;
 }
@@ -544,7 +545,7 @@ button,
     text-overflow: ellipsis;
     text-shadow: 1px 0 0 #ff0;
     background-color: #ffe000;
-    outline: transparent auto 2px;
+    outline: transparent solid 2px;
     transition: outline .15s;
     cursor: pointer;
 }
