@@ -678,8 +678,8 @@ ui.academy = {
                     (finalEl ? "" : "       <div class=close onclick=ui.academy.qa.reset(this) tabindex=0></div>") +
                     "       <h1 class=nowrap>" + data.title + "</h1>" +
                     (finalEl ? "" : "       <p>שימי לב, אחרי הורדה לא ניתן לשנות קטגוריה</p>") +
-                    "       <a class=button" + (finalEl ? " href=\"https://drive.google.com/file/d/" + data.value + "/view\" target=_blank" :
-                        " onclick=\"ui.academy.qa.final(this, '" + type + "')\" tabindex=0") + ">" + (finalEl ? "להוריד סרגל צבעים" : "לקבל סרגל צבעים") + "</a>" +
+                    "       <div><a class=button" + (finalEl ? " href=\"https://drive.google.com/file/d/" + data.value + "/view\" target=_blank" :
+                        " onclick=\"ui.academy.qa.final(this, '" + type + "')\" tabindex=0") + ">" + (finalEl ? "להוריד סרגל צבעים" : "לקבל סרגל צבעים") + "</a></div>" +
                     "   </div>" +
                     "   </div>" +
                     "</div>";
@@ -758,7 +758,9 @@ ui.academy = {
                 }
 
                 delete localStorage.user;
+
                 alert("טעות במערכת, נסי שוב מאוחר יותר");
+                ui.academy.refresh(true);
             });
         };
 
