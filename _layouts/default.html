@@ -3,11 +3,16 @@ layout: compress
 # Minify HTML, inline CSS http://codeheaven.io/optimizing-assets-in-jekyll-generated-gh-pages/
 ---
 
+{% if page.titleLong %}
+    {% assign title=page.titleLong %}
+{% else if page.title %}
+    {% assign title=page.title %}
+{% endif %}
 <!doctype html>
 <html lang=he>
 <head prefix="og: http://ogp.me/ns#">
 <meta charset=utf-8>
-<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+<title>{% if title %}{{ title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
 {% if page.description %}<meta name=description content="{{ page.description }}">{% endif %}
 {% if layout.private or page.private or page.draft %}<meta name=robots content=noindex>{% endif %}
 <meta name=viewport content="width=device-width,initial-scale=1">
@@ -46,7 +51,12 @@ layout: compress
 {% if className %}
     {% capture className %} {{ className }}{% endcapture %}
 {% endif %}
-{% case layout.type %}
+{% if page.type %}
+    {% assign type=page.type %}
+{% else if layout.type %}
+    {% assign type=layout.type %}
+{% endif %}
+{% case type %}
     {% when "full" %}
     <div class="table scale full">
         <div class=cel>
@@ -63,7 +73,7 @@ layout: compress
     <div class="table scale space medium{{ className }}">
         {% if page.youtube %}
             {% include youtube.html id=page.youtube %}
-            {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+            {% if title %}<h1>{{ title }}</h1>{% endif %}
         {% endif %}
         {{ content }}
         {% if addComments %}
@@ -76,8 +86,8 @@ layout: compress
             <div class="cel content{{ className }}">
                 {% include youtube.html id=page.youtube %}
                 {% if content.size > 1 %}
-                    <div class=space>
-                        {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+                    <div class=box>
+                        {% if title %}<h1>{{ title }}</h1>{% endif %}
                         {{ content }}
                     </div>
                 {% endif %}
@@ -117,7 +127,7 @@ layout: compress
         {
             "@context": "http://schema.org/",
             "@type": "Product",
-            "name": "{{ page.title }}",
+            "name": "{{ title }}",
             "image": "{{ site.url }}{{ site.assets }}{{ page.image }}",
             "offers": {
                 "@type": "Offer",
@@ -135,7 +145,7 @@ layout: compress
                 "@type": "WebPage",
                 "@id": "{{ page.url | absolute_url | split: '?' | first }}"
             },
-            "headline": "{{ page.title }}",
+            "headline": "{{ title }}",
             "image": {
                 "@type": "ImageObject",
                 "url": "{{ site.url }}{{ site.assets }}{{ page.image }}",

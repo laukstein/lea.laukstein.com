@@ -1,12 +1,12 @@
 # [Lea STYLE](https://lea.laukstein.com)
 
-Used APIs: YouTube, Disqus, MailChimp, PayPal, Google Analytics, Facebook Pixel, private APIs.
-
 YAML options
 
+    type: full | center | medium
     category: blog | products
     permalink: /url
     title: max 70-78 chars
+    titleLong: max 70-78 chars (overwrites page.title except in menu)
     description: max 170-200 chars
     date: YYYY-MM-DD HH:MM:SS
     private: true // default `false`; prevent crawlers from indexing the page
@@ -15,5 +15,7 @@ YAML options
     image: src
     imageClass: className
     imageLabel: "Author: Name <website>"
+
+Used APIs: YouTube, Disqus, MailChimp, Mailgun, PayPal, Google Analytics, Facebook Pixel, and private APIs.
 
 Released under the [CC BY-NC-ND 4.0 License](LICENSE).

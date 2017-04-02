@@ -225,6 +225,9 @@ main {
     padding: 2.1em;
     box-sizing: border-box;
 }
+.video + .box {
+    margin-bottom: 3em;
+}
 .items.items li,
 .box.box {
     background-color: #fff;
@@ -299,7 +302,7 @@ blockquote {
 }
 .box + .box,
 blockquote +  blockquote {
-    margin-top: 1.2em;
+    margin-top: 2.4em;
 }
 blockquote > *:not(div):not(span):not(img):not(code):first-child {
     padding-top: .4em;
@@ -339,13 +342,7 @@ cite:before {
     padding-bottom: 7vh;
     vertical-align: middle;
 }
-.cell-center {
-    display: table-cell;
-    min-width: 13em;
-    vertical-align: middle;
-}
 .content {
-    overflow: hidden;
     display: block;
 }
 .content [id]:target:before {
@@ -356,7 +353,7 @@ cite:before {
     pointer-events: none;
 }
 .space {
-    padding: 6% 2.1em;
+    padding: 6% 2.1em 3em;
     box-sizing: border-box;
 }
 .space.no-padding {
@@ -371,7 +368,7 @@ cite:before {
 }
 .medium {
     max-width: 60.65em;
-    padding-bottom: 2em;
+    padding-bottom: 3em;
     margin: auto;
     box-sizing: border-box;
 }
@@ -601,9 +598,6 @@ button:focus,
 figure {
     margin: -5% .2em 1em;
 }
-figcaption.cell-center {
-    padding-bottom: 7%;
-}
 iframe {
     width: 100%;
     border: 0;
@@ -742,13 +736,10 @@ iframe {
     background-image: linear-gradient(to right, #f9f9f9, rgba(249, 249, 249, 0));
     pointer-events: none;
 }
-.image img,
-img.cell-center {
-    filter: saturate(1.5);
-}
 .image img {
     max-width: initial;
     vertical-align: bottom;
+    filter: saturate(1.5);
 }
 .card .content {
     width: 100%;
@@ -798,7 +789,6 @@ img.cell-center {
 }
 .headlines blockquote + blockquote {
     margin-top: 0;
-    border-top: 3px solid #eee;
 }
 .headlines blockquote time {
     margin-top: .4em;
@@ -808,6 +798,9 @@ img.cell-center {
 }
 .headlines blockquote:last-child {
     margin-bottom: 3em;
+}
+.headlines a:not([href]) {
+    white-space: nowrap;
 }
 
 [hidden][hidden] {
@@ -877,9 +870,6 @@ img.cell-center {
     }
     .image + .content {
         padding-left: 2em;
-    }
-    .cell-center {
-        display: block;
     }
     .sheet {
         margin: 1em -2.8em;

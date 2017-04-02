@@ -1,3 +1,6 @@
+.content {
+    overflow: hidden;
+}
 .stretch {
     overflow-y: auto;
         width: 100vw;
