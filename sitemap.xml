@@ -9,6 +9,12 @@ layout: null
     <url>
         <loc>{{ site.url }}/</loc>
         <priority>1.0</priority>
+        <video:video>
+            <video:thumbnail_loc>https://img.youtube.com/vi/FCccwyUnJLg/maxresdefault.jpg</video:thumbnail_loc>
+            <video:title>{{ site.title }}</video:title>
+            <video:description>סטיילינג לדתיות - זה לא רק הבגד - זה החיבור שלך לעצמך</video:description>
+            <video:player_loc allow_embed="yes" autoplay="ap=1">https://www.youtube.com/v/FCccwyUnJLg</video:player_loc>
+        </video:video>
     </url>{%
     assign pages=site.pages | sort: 'order' %}{%
     for page in pages %}{%
@@ -19,7 +25,12 @@ layout: null
         <loc>{{ site.url }}{{ page.url }}</loc>{% if page.image %}
         <image:image>
             <image:loc>{{ site.url }}{{ site.assets }}{{ page.image }}</image:loc>
-        </image:image>{% endif %}
+        </image:image>{% endif %}{% if page.youtube %}
+        <video:video>
+            <video:thumbnail_loc>https://img.youtube.com/vi/{{ page.youtube }}/maxresdefault.jpg</video:thumbnail_loc>
+            <video:title>{{ page.title }}</video:title>
+            <video:player_loc allow_embed="yes" autoplay="ap=1">https://www.youtube.com/v/{{ page.youtube }}</video:player_loc>
+        </video:video>{% endif %}
         <priority>1.0</priority>
     </url>{%
     for subpage in pages %}{%
@@ -29,7 +40,12 @@ layout: null
         <lastmod>{{ subpage.date | date_to_xmlschema }}</lastmod>{% endif %}{% if subpage.image %}
         <image:image>
             <image:loc>{{ site.url }}{{ site.assets }}{{ subpage.image }}</image:loc>
-        </image:image>{% endif %}
+        </image:image>{% endif %}{% if subpage.youtube %}
+        <video:video>
+            <video:thumbnail_loc>https://img.youtube.com/vi/{{ subpage.youtube }}/maxresdefault.jpg</video:thumbnail_loc>
+            <video:title>{{ subpage.title }}</video:title>
+            <video:player_loc allow_embed="yes" autoplay="ap=1">https://www.youtube.com/v/{{ subpage.youtube }}</video:player_loc>
+        </video:video>{% endif %}
         <priority>0.8</priority>
     </url>{%
         endif %}{%
