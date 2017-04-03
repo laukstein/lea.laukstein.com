@@ -1099,6 +1099,18 @@ iframe {
             color: #be1100;
         }
     }
+    @supports (-webkit-backdrop-filter: blur()) { /* Safari 9+ */
+        /* RTL in-field icons drawn in wrong side https://bugs.webkit.org/show_bug.cgi?id=64108 */
+        input::placeholder,
+        input::-webkit-textfield-decoration-container {
+            direction: rtl;
+        }
+        input::-webkit-contacts-auto-fill-button {
+            position: absolute;
+            left: .4em;
+            margin-top: .2em;
+        }
+    }
 }
 @-moz-document url-prefix() { /* Firefox */
     label:active {
