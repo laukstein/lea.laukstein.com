@@ -273,8 +273,8 @@ var ui = {
                     n.queue = [];
                 }
 
-                fbq("init", "1265828396834846");
-                fbq("track", "PageView");
+                ui.w.fbq("init", "1265828396834846");
+                ui.w.fbq("track", "PageView");
             },
             remove: true
         });
