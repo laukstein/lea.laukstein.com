@@ -31,7 +31,6 @@ ui.videos = (function () {
     "use strict";
 
     // Restrict API access in https://console.cloud.google.com/apis/credentials/key/13?project=lea-style
-
     var container = ui.d.getElementById("content"),
         pageTitle = ui.d.title,
         now = new Date(),
@@ -191,23 +190,28 @@ ui.videos = (function () {
     }
     request.success = function (response) {
         response = response || {};
-        response.isLoaded = true;
-        localStorage.videos = JSON.stringify(response);
-        localStorage.videosDate = localStorage.videosDate || +now;
 
-        if (ui.videos) {
-            ui.videos = response;
+        if (response.error) {
+            return this.error(response);
+        } else {
+            response.isLoaded = true;
+            localStorage.videos = JSON.stringify(response);
+            localStorage.videosDate = localStorage.videosDate || +now;
+
+            if (ui.videos) {
+                ui.videos = response;
+            }
+
+            paintUI(response);
+
+            if (ui.videos) {
+                ui.videos = response;
+            }
+
+            ui.w.onhashchange = paintUI;
+
+            return response;
         }
-
-        paintUI(response);
-
-        if (ui.videos) {
-            ui.videos = response;
-        }
-
-        ui.w.onhashchange = paintUI;
-
-        return response;
     };
     request.error = function (response) {
         delete localStorage.videos;
@@ -215,6 +219,11 @@ ui.videos = (function () {
 
         response = response || {};
 
+        container = container && container.querySelector("strong");
+
+        if (container) {
+            container.innerHTML = "שגיאת שרת, נסה מאוחר יותר.";
+        }
         if (ui.videos) {
             ui.videos = response;
         }
