@@ -209,9 +209,9 @@ ui.videos = (function () {
             }
 
             ui.w.onhashchange = paintUI;
-
-            return response;
         }
+
+        return response;
     };
     request.error = function (response) {
         delete localStorage.videos;
@@ -246,8 +246,6 @@ ui.videos = (function () {
                         return request();
                     }
                 }
-            } else {
-                request.error();
             }
         }
 

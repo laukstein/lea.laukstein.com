@@ -89,9 +89,6 @@ ui.subscribe = {
                     this.el.action = this.url + "?u=" + this.key + "&id=" + this.name;
                     this.el.addEventListener("submit", this.send);
                     this.required = ui.form.list("[data-required]");
-
-                    ui.dependencies();
-
                     var tel = ui.d.getElementById("tel");
 
                     if (tel) {

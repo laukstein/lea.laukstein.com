@@ -70,7 +70,7 @@ var ui = {
             }
         }
     },
-    dependencies: function () {
+    legacy: function () {
         "use strict";
 
         if (!this.has.classList && Element.prototype) {
@@ -166,6 +166,19 @@ var ui = {
                 }
             };
         }
+
+        try {
+            // Safari Private Browsing doesn't support localStorage
+            localStorage.setItem("localStorage", "1");
+            localStorage.removeItem("localStorage");
+        } catch (err) {
+            if (ui.w.localStorage) {
+                // Required for Safari Private Browsing
+                delete ui.w.localStorage;
+            }
+
+            ui.w.localStorage = {};
+        }
     },
     asyncScript: function (src/*, success, options |, options */) {
         "use strict";
@@ -197,10 +210,6 @@ var ui = {
             (this.d.head || this.d.body).appendChild(script);
 
             if (onSuccess) {
-                if (!ui.has.eventListener) {
-                    ui.dependencies();
-                }
-
                 toggleListener = function (flag) {
                     flag = flag === true ? "addEventListener" : "removeEventListener";
 
@@ -282,6 +291,7 @@ var ui = {
     init: function () {
         "use strict";
 
+        this.legacy();
         this.analytics();
     }
 };

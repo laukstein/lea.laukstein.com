@@ -167,7 +167,6 @@ ui.contact = {
                 this.el.action = this.url;
                 this.required = ui.form.list("[data-required]");
 
-                ui.dependencies();
                 this.option();
                 this.el.addEventListener("submit", this.send);
 
