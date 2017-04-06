@@ -192,7 +192,10 @@ var ui = {
                 toggleListener,
                 onLoad,
                 key;
+
             script.src = src;
+            script.async = true;
+
             delete params.remove;
             delete params.onStart;
 
@@ -244,49 +247,46 @@ var ui = {
     analytics: function () {
         "use strict";
 
-        ui.asyncScript("https://www.google-analytics.com/analytics.js", function () {
-            if (ui.w.ga) {
-                // Disabling cookies https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#disabling_cookies
-                ga("create", "UA-11883501-1", "laukstein.com", {
-                    storage: "none",
-                    clientId: localStorage.gaClientId
-                });
+        if (location.host === "lea.laukstein.com") {
+            var analytics = this.w.analytics = this.w.analytics || [];
 
-                if (!localStorage.gaClientId) {
-                    ga(function (tracker) {
-                        localStorage.gaClientId = tracker.get("clientId");
+            if (!analytics || !analytics.initialize) {
+                if (analytics && analytics.invoked) {
+                    console.error("Segment snippet included twice.");
+                } else {
+                    ui.asyncScript("//cdn.segment.com/analytics.js/v1/UlzwzWyCQ6YaTIm4mdGOMFP1AjWkTsVu/analytics.min.js", function () {
+                        if (analytics && typeof analytics.page === "function") {
+                            analytics.page();
+                        }
+                    }, {
+                        onStart: function () {
+                            analytics.SNIPPET_VERSION = "4.0.0";
+                            analytics.invoked = true;
+                            analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"];
+                            analytics.factory = function (method) {
+                                return function () {
+                                    var e = Array.prototype.slice.call(arguments);
+
+                                    e.unshift(method);
+                                    analytics.push(e);
+
+                                    return analytics;
+                                };
+                            };
+
+                            var key,
+                                i;
+
+                            for (i = 0; i < analytics.methods.length; i += 1) {
+                                key = analytics.methods[i];
+                                analytics[key] = analytics.factory(key);
+                            }
+                        },
+                        remove: true
                     });
                 }
-
-                ga("send", "pageview");
             }
-        }, {
-            remove: true
-        });
-        ui.asyncScript("https://connect.facebook.net/en_US/fbevents.js", {
-            onStart: function () {
-                // Facebook Pixel https://www.facebook.com/business/help/952192354843755
-                if (!ui.w.fbq) {
-                    var n = ui.w.fbq = function () {
-                        if (n.callMethod) {
-                            n.callMethod.apply(n, arguments);
-                        } else {
-                            n.queue.push(arguments);
-                        }
-                    };
-
-                    ui.w._fbq = ui.w._fbq || n; // eslint-disable-line
-                    n.push = n;
-                    n.loaded = true;
-                    n.version = "2.0";
-                    n.queue = [];
-                }
-
-                ui.w.fbq("init", "1265828396834846");
-                ui.w.fbq("track", "PageView");
-            },
-            remove: true
-        });
+        }
     },
     init: function () {
         "use strict";

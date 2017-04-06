@@ -16,6 +16,6 @@ YAML options
     imageClass: className
     imageLabel: "Author: Name <website>"
 
-Used APIs: YouTube, Disqus, MailChimp, Mailgun, PayPal, Google Analytics, Facebook Pixel, and private APIs.
+Used APIs: YouTube, Disqus, MailChimp, Mailgun, PayPal, Segment, and private APIs.
 
 Released under the [CC BY-NC-ND 4.0 License](LICENSE).
