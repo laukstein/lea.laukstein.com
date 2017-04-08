@@ -248,44 +248,102 @@ var ui = {
         "use strict";
 
         if (location.host === "lea.laukstein.com") {
-            var analytics = this.w.analytics = this.w.analytics || [];
-
-            if (!analytics || !analytics.initialize) {
-                if (analytics && analytics.invoked) {
-                    console.error("Segment snippet included twice.");
-                } else {
-                    ui.asyncScript("//cdn.segment.com/analytics.js/v1/UlzwzWyCQ6YaTIm4mdGOMFP1AjWkTsVu/analytics.min.js", function () {
-                        if (analytics && typeof analytics.page === "function") {
-                            analytics.page();
-                        }
-                    }, {
-                        onStart: function () {
-                            analytics.SNIPPET_VERSION = "4.0.0";
-                            analytics.invoked = true;
-                            analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"];
-                            analytics.factory = function (method) {
-                                return function () {
-                                    var e = Array.prototype.slice.call(arguments);
-
-                                    e.unshift(method);
-                                    analytics.push(e);
-
-                                    return analytics;
-                                };
-                            };
-
-                            var key,
-                                i;
-
-                            for (i = 0; i < analytics.methods.length; i += 1) {
-                                key = analytics.methods[i];
-                                analytics[key] = analytics.factory(key);
-                            }
-                        },
-                        remove: true
+            ui.asyncScript("https://www.google-analytics.com/analytics.js", function () {
+                if (ui.w.ga) {
+                    // Disabling cookies https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#disabling_cookies
+                    ga("create", "UA-11883501-1", "laukstein.com", {
+                        storage: "none",
+                        clientId: localStorage.gaClientId
                     });
+
+                    if (!localStorage.gaClientId) {
+                        ga(function (tracker) {
+                            localStorage.gaClientId = tracker.get("clientId");
+                        });
+                    }
+
+                    ga("send", "pageview");
                 }
+            }, {
+                remove: true
+            });
+
+            if (!ui.w.FS) {
+                ui.asyncScript("https://www.fullstory.com/s/fs.js", function () {
+                    var g = ui.w.FS = function (a, b) {
+                        if (g.q) {
+                            g.q.push([a, b]);
+                        } else {
+                            g._api(a, b); // eslint-disable-line
+                        }
+                    };
+                    g.q = [];
+                    g.setUserVars = function (v) {
+                        g("user", v);
+                    };
+                    g.identify = function (i, v) {
+                        g("user", {uid: i});
+
+                        if (v) {
+                            g.setUserVars(v);
+                        }
+                    };
+                    g.identifyAccount = function (i, v) {
+                        o = "account";
+                        v = v || {};
+                        v.acctId = i;
+
+                        g(o, v);
+                    };
+                    g.clearUserCookie = function (c, d, i) {
+                        if (!c || ui.d.cookie.match("fs_uid=[`;`]*`[`;`]*`[`;`]*`")) {
+                            d = n.domain;
+
+                            while (1) {
+                                n.cookie = "fs_uid=;domain=" + d + ";path=/;expires=" + new Date(0).toUTCString();
+                                i = d.indexOf(".");
+
+                                if (i < 0) break;
+
+                                d = d.slice(i + 1);
+                            }
+                        }
+                    };
+                }, {
+                    onStart: function () {
+                        ui.w._fs_debug = false; // eslint-disable-line
+                        ui.w._fs_host = "www.fullstory.com"; // eslint-disable-line
+                        ui.w._fs_org = "3YG86"; // eslint-disable-line
+                        ui.w._fs_namespace = "FS"; // eslint-disable-line
+                    },
+                    remove: true
+                });
             }
+
+            ui.asyncScript("https://connect.facebook.net/en_US/fbevents.js", {
+                onStart: function () {
+                    // Facebook Pixel https://www.facebook.com/business/help/952192354843755
+                    if (!ui.w.fbq) {
+                        var n = ui.w.fbq = function () {
+                            if (n.callMethod) {
+                                n.callMethod.apply(n, arguments);
+                            } else {
+                                n.queue.push(arguments);
+                            }
+                        };
+
+                        ui.w._fbq = ui.w._fbq || n; // eslint-disable-line
+                        n.push = n;
+                        n.loaded = true;
+                        n.version = "2.0";
+                        n.queue = [];
+                    }
+
+                    fbq("init", "1265828396834846");
+                    fbq("track", "PageView");
+                },
+                remove: true
+            });
         }
     },
     init: function () {
