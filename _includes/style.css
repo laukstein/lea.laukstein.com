@@ -897,7 +897,7 @@ iframe {
         display: none;
         box-suppress: discard;
     }
-    nav {
+    .nav-container {
         direction: ltr;
         overflow: auto;
         position: fixed;
@@ -975,21 +975,22 @@ iframe {
         width: .4em;
         transform: translateY(.42em);
     }
-    .bar-holder:checked ~ .bar span {
+    .bar-holder:checked ~ header .wrapper .bar span {
         background-color: transparent;
         box-shadow: none;
     }
-    .bar-holder:checked ~ .bar span:before {
+    .bar-holder:checked ~ header .wrapper .bar span:before {
         width: 1.3em;
         transform: rotate3d(0,0,1,45deg);
     }
-    .bar-holder:checked ~ .bar span:after {
+    .bar-holder:checked ~ header .wrapper .bar span:after {
         width: 1.3em;
         transform: rotate3d(0,0,1,-45deg);
     }
-    .bar-holder:checked ~ nav {
+    .bar-holder:checked ~ header .wrapper .nav-container,
+    .bar-holder:checked ~ main .container .nav-container {
         box-shadow: 0 0 4em rgba(51,51,51,.11),
-                    0 0 43vw rgba(51,51,51,.3);
+                    0 0 40vw rgba(51,51,51,.3);
         transform: none;
         transition: transform .35s cubic-bezier(.2,1,.4,1);
     }

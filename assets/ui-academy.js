@@ -479,6 +479,7 @@ ui.academy = {
         this.data.date = this.user.created * 1000;
 
         ui.d.documentElement.classList.remove("stretch");
+        ui.d.documentElement.classList.add("logedin");
         this.details.remove();
 
         this.account = ui.d.getElementById("account");
@@ -504,14 +505,14 @@ ui.academy = {
             page,
             date;
 
-        result += "<div class=\"column nav-container\" id=nav>" +
-            "<div class=nav>" +
+        result += "<div class=\"column nav-container\" id=nav dir=ltr>" +
+            "<div class=nav dir=rtl>" +
             "    <a class=active" + this.events() + "><label>" + obj.title + "</label></a>" +
             "</div>";
 
         obj = this.data.session;
 
-        result += "<ol class=nav>";
+        result += "<ol class=nav dir=rtl>";
 
         for (session in obj) {
             if (obj.hasOwnProperty(session)) {
@@ -783,6 +784,9 @@ ui.academy = {
                 page = ui.hash("page");
                 obj = this.self.page || this.self.pages;
 
+                if (this.bar && this.bar.checked) {
+                    this.bar.checked = false;
+                }
                 if (obj) {
                     if (session && !page) {
                         result += "<ol class=items>";
@@ -917,6 +921,7 @@ ui.academy = {
         this.valid = !!this.user.email && !!this.user.token;
         this.content = ui.d.getElementById("content");
         this.details = ui.d.getElementById("details");
+        this.bar = ui.d.getElementById("bar");
 
         ui.d.getElementById("loading").remove();
         this.content.removeAttribute("hidden");

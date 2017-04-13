@@ -21,12 +21,12 @@ layout: compress
 <link rel=license href=//creativecommons.org/licenses/by-nc-nd/4.0/>
 <style>{% capture inline_css %}{% include style.css %}{% endcapture %}{{ inline_css | scssify }}</style>
 <!--[if lt IE 9]><script src=//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js></script><![endif]-->
+<input class=bar-holder id=bar type=checkbox hidden>
 <header dir=ltr>
     <div class=wrapper>
-        <input class=bar-holder id=bar type=checkbox hidden>
         <label class=bar for=bar hidden><span></span></label>
-        <a class="logo{% if page.url == "/" %} active{% endif %}" href="/"><img src={{ site.assets }}logo.png alt="{{ site.title }}"></a>
-        <nav dir=rtl>
+        <a class="logo{% if page.url == "/" %} active{% endif %}" href="/"><img src={{ site.assets }}logo.png width=101 height=47 alt="{{ site.title }}"></a>
+        <nav class=nav-container dir=rtl>
         {% assign pages=site.pages | sort: 'order' %}{%
         for nav in pages %}{%
             unless nav.draft %}{%

@@ -1,3 +1,6 @@
+header .wrapper {
+    min-width: 16.5em;
+}
 .content {
     overflow: hidden;
 }
@@ -15,6 +18,14 @@
 .stretch .logo {
     padding-right: 2.1em
 }
+.logo {
+    overflow: hidden;
+    direction: rtl;
+    position: relative;
+}
+.logo img {
+    max-width: initial;
+}
 .profile {
     display: inline-block;
     min-width: 6em;
@@ -23,6 +34,7 @@
     font-weight: normal;
     text-align: right;
     vertical-align: top;
+    background-color: #fff;
 }
 .profile img {
     width: 42px;
@@ -143,6 +155,7 @@ button.error {
     padding-top: 0;
 }
 .nav-container {
+    z-index: 9;
     width: 16em;
     float: left;
     vertical-align: top;
@@ -444,27 +457,33 @@ button.error {
 }
 
 @media (max-width: 54em) {
-    .bar.bar {
-        display: none;
+    .stretch header .wrapper {
+        min-width: 24.779em;
     }
-    nav {
-        direction: rtl;
-        overflow: visible;
-        position: static;
-        width: auto;
-        padding: 0;
+    .logedin nav {
+        padding-left: 3em;
         background-color: transparent;
-        transform: none;
     }
     nav a {
         display: inline-block;
-        visibility: hidden;
+    }
+    .stretch .bar.bar {
+        display: none;
+    }
+    .logedin .bar.bar {
+        position: fixed;
     }
     .logo {
         margin-right: -.5em;
     }
     .stretch .logo {
         margin-right: 0;
+    }
+    .profile {
+        padding-right: .5em;
+    }
+    .profile .nowrap {
+        max-width: 3em;
     }
     .container {
         display: flex;
@@ -479,6 +498,32 @@ button.error {
         order: 2;
         width: auto;
         float: none;
+    }
+    .nav-container {
+        top: 3.75em;
+            width: 100vw;
+        max-width: 24em;
+        background-color: #fff;
+    }
+    .bar-holder:checked ~ main .container .nav-container {
+        box-shadow: 0 0 4em rgba(51,51,51,0.11),
+                    0 0 27vw rgba(51,51,51,0.3);
+    }
+}
+@media (max-width: 33em) {
+    .logedin nav a {
+        visibility: hidden;
+    }
+}
+@media (max-width: 28em) {
+    .stretch nav a {
+        padding: 1em;
+    }
+    .stretch header .wrapper {
+        min-width: 18.5em;
+    }
+    .logo {
+        width: 84px;
     }
 }
 @media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */
