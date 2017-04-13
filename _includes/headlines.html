@@ -1,13 +1,26 @@
 <div class=headlines>
-{% assign pages=site.pages | sort: "date" | reverse %}{%
-    for post in pages %}{%
-        if post.layout == "post" %}
+{% assign counter = 0 %}{%
+assign max = 5 %}{%
+assign pages=site.pages | sort: "date" | reverse %}{%
+for post in pages %}{%
+    if post.layout == "post" %}{%
+        assign counter = counter | plus:1 %}{%
+        if counter < max %}
     <blockquote class=box>
         <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>
         <div>{% include date.html value=post.date %}</div>
         <h2>{{ post.title }}</h2>
         <p>{{ post.content | strip_html | truncatewords: 33, '... <a>המשך קריא</a>' }}</p>
     </blockquote>{%
+        else %}{%
+            capture more %}{{ more }}<li><a href={{ post.url | prepend: site.baseurl }}>{{ post.title }}</a></li>{% endcapture %}{%
+        endif %}{%
     endif %}{%
 endfor %}
+{% if more %}
+    <blockquote class=box>
+        <p>מאמרים נוספים:</p>
+        <ol start={{ max + 1 }}>{{ more }}</ol>
+    </blockquote>{%
+endif %}
 </div>
