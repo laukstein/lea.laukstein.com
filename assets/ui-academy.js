@@ -57,14 +57,9 @@ ui.academy = {
                         title: "שיעורי בית",
                         value: "1LcyCHR5D-Q"
                     },
-                    "video-4": {
-                        type: "video",
-                        title: "איך לשלב צבעים",
-                        value: "3cA_tnKHbvo"
-                    },
                     qa: {
                         type: "qa",
-                        title: "לאיזה קטגוריית צבעים את שייכת?",
+                        title: "שאלון: לאיזה קטגוריית צבעים את שייכת?",
                         value: "academy-colours.jpg",
                         question: [
                             {
@@ -145,6 +140,11 @@ ui.academy = {
                                 value: "0B3TGizvMXI6lNzRjamg5a1ZreVE"
                             }
                         }
+                    },
+                    "video-4": {
+                        type: "video",
+                        title: "איך לשלב צבעים",
+                        value: "3cA_tnKHbvo"
                     },
                     "document": {
                         type: "document",
@@ -383,7 +383,7 @@ ui.academy = {
             self.button.classList.remove("spin");
 
             if (data.email && data.token) {
-                ui.academy.refresh(true);
+                ui.academy.refresh();
             } else if (self.button) {
                 self.button.classList.add("error");
                 self.button.innerHTML = "הפרטים שגויים, נסי שוב";
