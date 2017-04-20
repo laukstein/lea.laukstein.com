@@ -1039,26 +1039,26 @@ iframe {
         opacity: .54;
     }
 }
-@supports (-ms-ime-align:auto) and (color:unset) { /* Edge 13+ */
-    ::-ms-clear {
-        /* Remove input x */
-        display: none;
-        box-suppress: discard;
-    }
-    ::-webkit-input-placeholder {
-        direction: rtl;
-        color: #333;
-    }
-    .error ::-webkit-input-placeholder {
-        color: #be1100;
-    }
-    :focus::-webkit-input-placeholder,
-    [disabled]::-webkit-input-placeholder {
-        opacity: .54;
-    }
-}
 @media (-webkit-min-device-pixel-ratio: 0) {
-    @supports (not (-ms-accelerator: true)) { /* Webkit */
+    @supports (-ms-ime-align: auto) and (color: unset) { /* Edge 13+ */
+        ::-ms-clear {
+            /* Remove input x */
+            display: none;
+            box-suppress: discard;
+        }
+        ::-webkit-input-placeholder {
+            direction: rtl;
+            color: #333;
+        }
+        .error ::-webkit-input-placeholder {
+            color: #be1100;
+        }
+        :focus::-webkit-input-placeholder,
+        [disabled]::-webkit-input-placeholder {
+            opacity: .54;
+        }
+    }
+    @supports (not (-ms-accelerator: true)) and (not (-ms-ime-align: auto)) { /* Webkit, Safari 9+ */
         html {
             /* iOS 7 legacy http://barrow.io/overflow-scrolling */
             -webkit-overflow-scrolling: touch;
