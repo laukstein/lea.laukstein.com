@@ -341,8 +341,7 @@ var ui = {
 
                     fbq("init", "1265828396834846");
                     fbq("track", "PageView");
-                },
-                remove: true
+                }
             });
         }
     },
