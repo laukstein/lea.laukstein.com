@@ -43,12 +43,12 @@ ui.comment = {
             this.el = ui.d.getElementById("disqus_thread");
         }
         if (this.el) {
-            if (!ui.w.disqus_config && ui.asyncScript) {
-                ui.w.disqus_config = config;
+            if (!window.disqus_config && ui.asyncScript) {
+                window.disqus_config = config;
 
                 ui.asyncScript("https://lealaukstein.disqus.com/count.js", {id: "dsq-count-scr"});
                 ui.asyncScript("https://lealaukstein.disqus.com/embed.js", {"data-timestamp": +new Date()});
-            } else if (ui.w.DISQUS) {
+            } else if (window.DISQUS) {
                 DISQUS.reset({
                     reload: true,
                     config: config

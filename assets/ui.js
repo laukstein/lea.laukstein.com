@@ -249,7 +249,7 @@ var ui = {
 
         if (location.host === "lea.laukstein.com") {
             ui.asyncScript("https://www.google-analytics.com/analytics.js", function () {
-                if (ui.w.ga) {
+                if (window.ga) {
                     // Disabling cookies https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#disabling_cookies
                     ga("create", "UA-11883501-1", "laukstein.com", {
                         storage: "none",
@@ -268,9 +268,9 @@ var ui = {
                 remove: true
             });
 
-            if (!ui.w.FS) {
+            if (!window.FS) {
                 ui.asyncScript("https://www.fullstory.com/s/fs.js", function () {
-                    var g = ui.w.FS = function (a, b) {
+                    var g = window.FS = function (a, b) {
                         if (g.q) {
                             g.q.push([a, b]);
                         } else {
@@ -311,10 +311,10 @@ var ui = {
                     };
                 }, {
                     onStart: function () {
-                        ui.w._fs_debug = false; // eslint-disable-line
-                        ui.w._fs_host = "www.fullstory.com"; // eslint-disable-line
-                        ui.w._fs_org = "3YG86"; // eslint-disable-line
-                        ui.w._fs_namespace = "FS"; // eslint-disable-line
+                        window._fs_debug = false; // eslint-disable-line
+                        window._fs_host = "www.fullstory.com"; // eslint-disable-line
+                        window._fs_org = "3YG86"; // eslint-disable-line
+                        window._fs_namespace = "FS"; // eslint-disable-line
                     },
                     remove: true
                 });
@@ -323,8 +323,8 @@ var ui = {
             ui.asyncScript("https://connect.facebook.net/en_US/fbevents.js", {
                 onStart: function () {
                     // Facebook Pixel https://www.facebook.com/business/help/952192354843755
-                    if (!ui.w.fbq) {
-                        var n = ui.w.fbq = function () {
+                    if (!window.fbq) {
+                        var n = window.fbq = function () {
                             if (n.callMethod) {
                                 n.callMethod.apply(n, arguments);
                             } else {
@@ -332,7 +332,7 @@ var ui = {
                             }
                         };
 
-                        ui.w._fbq = ui.w._fbq || n; // eslint-disable-line
+                        window._fbq = window._fbq || n; // eslint-disable-line
                         n.push = n;
                         n.loaded = true;
                         n.version = "2.0";
