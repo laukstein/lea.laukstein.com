@@ -326,8 +326,8 @@ var ui = {
                         }
                     };
 
-                    if (ui.analytics.identify.FS) {
-                        ui.analytics.identify.FS();
+                    if (ui.identify.FS) {
+                        ui.identify.FS();
                     }
                 }, {
                     onStart: function () {
