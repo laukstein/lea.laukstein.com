@@ -924,7 +924,7 @@ ui.academy = {
             arr,
             i;
 
-        if (this.user.task.calculator && obj.final[this.user.task.calculator]) {
+        if (this.user.task && this.user.task.calculator && obj.final[this.user.task.calculator]) {
             // Google docs links http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
             result = "<div class=\"dialog final\">" +
                 "   <div class=table>" +
