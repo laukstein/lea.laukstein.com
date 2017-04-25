@@ -1,4 +1,4 @@
-/*eslint
+﻿/*eslint
 comma-spacing: 2,
 dot-notation: [2, {"allowKeywords": true}],
 eqeqeq: 2,
@@ -76,26 +76,26 @@ ui.form = {
             e.preventDefault();
         }
     },
-    valid: function (list) {
+    valid: function (arr) {
         "use strict";
 
-        if (Array.isArray(list) && list.length) {
-            var arr = this.list(".error"),
-                flag = true,
+        if (Array.isArray(arr) && arr.length) {
+            var flag = true,
                 error,
                 i;
 
             for (i = 0; i < arr.length; i += 1) {
-                arr[i].classList.remove("error");
+                if (arr[i].parentNode.classList.contains("error") &&
+                    (!arr[i].validity || arr[i].validity.valid)) {
+                    arr[i].parentNode.classList.remove("error");
+                }
             }
-
-            arr = list;
-
             for (i = 0; i < arr.length; i += 1) {
                 if (!arr[i].value ||
                     arr[i].type === "email" && !/^\S+@\S+\.\S+$/.test(arr[i].value) ||
                     arr[i].type === "tel" && !/^(\+972(\-)?|0)([1-468-9](\-)?\d{7}|(5|7)[0-9](\-)?\d{7})$/.test(arr[i].value) ||
-                    arr[i].name === "message" && arr[i].value.length < 5) {
+                    arr[i].name === "message" && arr[i].value.length < 5 ||
+                    !arr[i].validity || !arr[i].validity.valid) {
                     error = arr[i].getAttribute("data-error");
                     flag = false;
 
@@ -112,10 +112,10 @@ ui.form = {
             return true;
         }
     },
-    serialize: function () {
+    serialize: function (container) {
         "use strict";
 
-        var arr = this.list("input, select, textarea"),
+        var arr = this.list("input, select, textarea", container),
             result = [],
             i;
 
@@ -127,10 +127,56 @@ ui.form = {
 
         return result.join("&");
     },
-    accessibility: function (flag) {
+    deserialize: function (container) {
         "use strict";
 
-        var arr = this.list("input, select, textarea, button"),
+        var data = this.serialize(container),
+            pairs = data && data.split("&"),
+            result = {},
+            pair,
+            key,
+            val,
+            i;
+
+        if (!data || !pairs) {
+            return result;
+        } else {
+            for (i = 0; i < pairs.length; i += 1) {
+                pair = pairs[i].split("=");
+
+                if (pair[0]) {
+                    key = decodeURIComponent(pair[0]);
+
+                    try {
+                        // Fix decodeURIComponent("%") error "URIError: URI malformed"
+                        val = decodeURIComponent(pair[1]);
+                    } catch (e) {
+                        val = pair[1];
+                    }
+
+                    if (val === "undefined" || val === "") {
+                        val = undefined;
+                    } else if (val === "true") {
+                        val = true;
+                    } else if (val === "false") {
+                        val = false;
+                    }
+
+                    if (!isNaN(parseFloat(val)) && isFinite(val)) {
+                        val = Number(val);
+                    }
+
+                    result[key] = val;
+                }
+            }
+
+            return result;
+        }
+    },
+    accessibility: function (flag, container, toggleSpin) {
+        "use strict";
+
+        var arr = this.list("input, select, textarea, button", container),
             i;
 
         for (i = 0; i < arr.length; i += 1) {
@@ -143,9 +189,17 @@ ui.form = {
                 if (flag) {
                     arr[i].innerHTML = arr[i].getAttribute("data-text");
                     arr[i].removeAttribute("data-text");
+
+                    if (toggleSpin) {
+                        arr[i].classList.remove("spin");
+                    }
                 } else {
                     arr[i].setAttribute("data-text", arr[i].innerHTML);
                     arr[i].innerHTML = "שולח...";
+
+                    if (toggleSpin) {
+                        arr[i].classList.add("spin");
+                    }
                 }
             }
         }

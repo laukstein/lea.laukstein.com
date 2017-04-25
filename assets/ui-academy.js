@@ -1,4 +1,4 @@
-/*eslint
+﻿/*eslint
 comma-spacing: 2,
 dot-notation: [2, {"allowKeywords": true}],
 eqeqeq: 2,
@@ -26,6 +26,54 @@ semi: 2,
 space-before-blocks: 2,
 space-before-function-paren: [2, {"anonymous": "always", "named": "never"}],
 strict: [2, "function"]*/
+
+ui.identify.ga = function () {
+    "use strict";
+
+    if (window.ga && ui.academy.user.email) {
+        // Reosurce https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#user_id
+        ga("set", "userId", ui.academy.user.email);
+
+        delete this.ga;
+    }
+};
+ui.identify.FS = function () {
+    "use strict";
+
+    if (window.FS) {
+        var name = [],
+            user = {};
+
+        if (ui.academy.user.firstName) {
+            name.push(ui.academy.user.firstName);
+        }
+        if (ui.academy.user.lastName) {
+            name.push(ui.academy.user.lastName);
+        }
+        if (name.length) {
+            user.displayName = name.join(" ");
+        }
+
+        user.email = ui.academy.user.email;
+
+        if (user.email) {
+            // Resource http://help.fullstory.com/develop-js/identify
+            FS.identify(user.email, user);
+
+            delete this.FS;
+        }
+    }
+};
+ui.identify.all = function () {
+    "use strict";
+
+    if (ui.identify.ga) {
+        ui.identify.ga();
+    }
+    if (ui.identify.FS) {
+        ui.identify.FS();
+    }
+};
 
 ui.academy = {
     data: {
@@ -59,7 +107,7 @@ ui.academy = {
                     },
                     qa: {
                         type: "qa",
-                        title: "שאלון: לאיזה קטגוריית צבעים את שייכת?",
+                        title: "שאלון:\nלאיזה קטגוריית צבעים את שייכת?",
                         value: "academy-colours.jpg",
                         question: [
                             {
@@ -171,10 +219,42 @@ ui.academy = {
                         title: "איך לדעת מה מבנה גוף שלך",
                         value: "GRyHlrJnV6Q"
                     },
-                    table: {
-                        type: "video",
-                        title: "שאלון: תאבחני את מבנה הגוף שלך",
-                        value: "איך למלא שאלון" // turtorial
+                    calculator: {
+                        type: "calculator",
+                        title: "מחשבון:\nתאבחני את מבנה הגוף שלך",
+                        value: "1gKI_JUyD20fvq27_B3Kxq9vfJ6f99xLnnd1ht1vibhU",
+                        button: "הצג תוצאה",
+                        notice: "שימי לב, חישוב ניתן רק לפעם אחת",
+                        result: "את בעלת מבנה גוף {0}",
+                        download: "להוריד מדריך הגיזרות",
+                        form: {
+                            A: "היקף הכתפיים",
+                            B: "היקף היריכיים",
+                            C: "היקף המותן",
+                            D: "היקף החזה"
+                        },
+                        final: {
+                            hourglass: {
+                                title: "שעון חול",
+                                value: "1bcn85H0V-BfhQ_K8WoBfnuJYGoyicdKbx1BUtk-3-0o"
+                            },
+                            invertedTriangle: {
+                                title: "משולש הפוך",
+                                value: "1D9zt-uqJyT9YNCZHm6VBjJmbRovTJWad_wlP77Z23EI"
+                            },
+                            triangle: {
+                                title: "משולש",
+                                value: "11ERkWQ_5EdOu67T_glBwUYgmBvtwmP-U3xpxaF6QK-w"
+                            },
+                            rounded: {
+                                title: "מעוגל",
+                                value: "1Dq2xJwSz9noiMjOC24esefAnvQn260zxA2YLrjqnrZ8"
+                            },
+                            square: {
+                                title: "מרובע",
+                                value: "1gKI_JUyD20fvq27_B3Kxq9vfJ6f99xLnnd1ht1vibhU"
+                            }
+                        }
                     }
                 }
             },
@@ -294,6 +374,7 @@ ui.academy = {
     },
     user: (function () {
         "use strict";
+
         try {
             return JSON.parse(localStorage.user);
         } catch(e) {
@@ -362,8 +443,7 @@ ui.academy = {
         "use strict";
 
         e.preventDefault();
-        ui.form.accessibility(false);
-        this.button.classList.add("spin");
+        ui.form.accessibility(false, null, true);
 
         fetch(this.fetch + "/login", {
             method: "POST",
@@ -379,8 +459,7 @@ ui.academy = {
             localStorage.user = JSON.stringify(data);
             var self = ui.academy;
 
-            ui.form.accessibility(true);
-            self.button.classList.remove("spin");
+            ui.form.accessibility(true, null, true);
 
             if (data.email && data.token) {
                 ui.academy.refresh();
@@ -407,8 +486,7 @@ ui.academy = {
         "use strict";
 
         e.preventDefault();
-        ui.form.accessibility(false);
-        this.button.classList.add("spin");
+        ui.form.accessibility(false, null, true);
 
         fetch(this.fetch + "/forgot", {
             method: "POST",
@@ -421,8 +499,7 @@ ui.academy = {
         }).then(function (data) {
             var self = ui.academy;
 
-            ui.form.accessibility(true);
-            self.button.classList.remove("spin");
+            ui.form.accessibility(true, null, true);
 
             if (data.success) {
                 ui.form.el.innerHTML = "<h2>פרטי גישה נשלחו למייל שלך</h2><a onclick=ui.academy.refresh(true)>לנסות להתחבר</a>";
@@ -528,7 +605,7 @@ ui.academy = {
 
                     for (page in pages) {
                         if (pages.hasOwnProperty(page)) {
-                            result += "    <li><a" + this.events(session, page) + ">" + pages[page].title + "</a>";
+                            result += "    <li><a" + this.events(session, page) + ">" + pages[page].title.replace(/\n/g, " ") + "</a>";
                         }
                     }
 
@@ -558,6 +635,8 @@ ui.academy = {
                     url = "https://img.youtube.com/vi/" + obj.value + "/maxresdefault.jpg";
                     break;
                 case "document":
+                case "calculator":
+                    // Link params details https://pgenom.com/community/threads/гуглодиск-как-хостинг-картинок-файловый-хостинг.1236/
                     url = "https://drive.google.com/thumbnail?authuser=0&sz=w640&id=" + obj.value;
                     break;
                 case "qa":
@@ -570,10 +649,11 @@ ui.academy = {
 
         // YouTube image sizes http://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api
         return obj ? "<a class=\"absolute cover\"" + this.events(session, page) +
-            " style=\"background-image:url(" + url + ")\"><h3 class=nowrap>" + obj.title + "</h3></a>" : "";
+            " style=\"background-image:url(" + url + ")\"><h3 class=nowrap dir=auto>" + obj.title.replace(/\n/g, " ") + "</h3></a>" : "";
     },
     report: function (/*type, data*/) {
         "use strict";
+
         // TBD: report error
     },
     qa: function (obj) {
@@ -642,7 +722,7 @@ ui.academy = {
                     arr[i].checked = false;
                 }
             } else {
-                el.setAttribute("data-active", true);
+                el.setAttribute("data-active", "true");
             }
 
             arr = el.parentNode.parentNode.children;
@@ -657,7 +737,7 @@ ui.academy = {
                         if (active) {
                             arrB[o].removeAttribute("disabled");
                         } else {
-                            arrB[o].setAttribute("disabled", true);
+                            arrB[o].setAttribute("disabled", "");
                         }
                     }
                 }
@@ -678,7 +758,7 @@ ui.academy = {
                     (finalEl ? "" : "       <div class=close onclick=ui.academy.qa.reset(this) tabindex=0></div>") +
                     "       <h1 class=nowrap>" + data.title + "</h1>" +
                     (finalEl ? "" : "       <p>שימי לב, אחרי הורדה לא ניתן לשנות קטגוריה</p>") +
-                    "       <div><a class=button" + (finalEl ? " href=\"https://drive.google.com/file/d/" + data.value + "/view\" target=_blank" :
+                    "       <div><a class=button" + (finalEl ? " href=\"https://drive.google.com/uc?export=download&id=" + data.value + "\" target=_blank" :
                         " onclick=\"ui.academy.qa.final(this, '" + type + "')\" tabindex=0") + ">" + (finalEl ? "להוריד סרגל צבעים" : "לקבל סרגל צבעים") + "</a></div>" +
                     "   </div>" +
                     "   </div>" +
@@ -717,11 +797,6 @@ ui.academy = {
             }
         };
         this.qa.final = function (el, value) {
-            if (el) {
-                el.setAttribute("disabled", true);
-                el.classList.add("spin");
-            }
-
             var data = {
                     email: ui.academy.user.email,
                     token: ui.academy.user.token,
@@ -733,7 +808,7 @@ ui.academy = {
                 close.remove();
             }
 
-            ui.form.accessibility(false, ui.d.querySelector(".qa"));
+            ui.form.accessibility(false, ui.d.querySelector(".qa"), true);
 
             fetch(ui.academy.fetch + "/update", {
                 method: "POST",
@@ -751,7 +826,6 @@ ui.academy = {
             }).catch(function () {
                 ui.academy.user.reportDate = new Date();
                 ui.academy.user.reportData = data;
-                ui.academy.report("update", ui.academy.user);
 
                 if (el) {
                     el.remove();
@@ -760,13 +834,125 @@ ui.academy = {
                 delete localStorage.user;
 
                 alert("טעות במערכת, נסי שוב מאוחר יותר");
-                ui.academy.refresh(true);
+                ui.academy.report("update", ui.academy.user);
+                ui.academy.refresh();
             });
         };
 
-        return "<div class=qa>" +
-            "    <h1>" + obj.title + "</h1>" +
+        return "<div class=\"form qa\">" +
+            "    <h1>" + obj.title.replace(/\n/g, "<br>") + "</h1>" +
             (this.user.task && this.user.task.qa ? this.qa.dialog(null, 0, this.user.task.qa, true) : label(obj, false)) +
+            "</div>";
+    },
+    submit: function (e) {
+        "use strict";
+
+        if (e) {
+            e.preventDefault();
+
+            if (ui.form.valid(ui.form.list("[data-required]", e.target))) {
+                ui.form.accessibility(false, e.target, true);
+
+                var page = ui.hash("page"),
+                    data = {
+                        email: ui.academy.user.email,
+                        token: ui.academy.user.token,
+                        data: {}
+                    };
+
+                switch (page) {
+                    case "calculator":
+                        data.data.calculator = (function () {
+                            var post = ui.form.deserialize(e.target),
+                                A = post.A,
+                                B = post.B,
+                                C = post.C,
+                                D = post.D,
+                                tolerance = 8,
+                                comp = function (a, b) {
+                                    // Compare with tolerance
+                                    return a === false ? false : Math.abs((a || 0) - (b || 0)) <= (tolerance || 0);
+                                };
+
+                            if (comp(A, B) && comp(A, C) && comp(A, D) && comp(B, C) && comp(B, D) && comp(C, D)) {
+                                return "square";
+                            } else if (comp(A, B) && (A > C && !comp(A, C) || B > C && !comp(B, C))) {
+                                return "hourglass";
+                            } else if ((A > B && !comp(A, B)) || (D > B && !comp(D, B))) {
+                                return "invertedTriangle";
+                            } else if (A < B && !comp(A, B)) {
+                                return "triangle";
+                            } else if (comp(A, B) && (A < C && !comp(A, C) || B < C && !comp(B, C))) {
+                                return "rounded";
+                            }
+
+                            return "";
+                        }());
+                        break;
+                }
+
+                fetch(ui.academy.fetch + "/update", {
+                    method: "POST",
+                    redirect: "error",
+                    body: JSON.stringify(data)
+                }).then(function (response) {
+                    return response.json();
+                }).then(function (json) {
+                    return !json.error && json;
+                }).then(function (json) {
+                    ui.academy.user = json;
+                    localStorage.user = JSON.stringify(json);
+
+                    ui.academy.refresh();
+                }).catch(function () {
+                    ui.academy.user.reportDate = new Date();
+                    ui.academy.user.reportData = data;
+
+                    delete localStorage.user;
+
+                    alert("טעות במערכת, נסי שוב מאוחר יותר");
+                    ui.academy.report("update", ui.academy.user);
+                    ui.academy.refresh();
+                });
+            }
+        }
+    },
+    calculator: function (obj) {
+        "use strict";
+
+        var result = "",
+            arr,
+            i;
+
+        if (this.user.task.calculator && obj.final[this.user.task.calculator]) {
+            // Google docs links http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
+            result = "<div class=\"dialog final\">" +
+                "   <div class=table>" +
+                "   <div class=cel>" +
+                "       <h1>" + obj.result.format(obj.final[this.user.task.calculator].title) + "</h1>" +
+                "       <div><a class=button href=\"https://docs.google.com/presentation/d/" + obj.final[this.user.task.calculator].value + "/export/pdf\" target=_blank tabindex=0>" + obj.download + "</a></div>" +
+                "   </div>" +
+                "   </div>" +
+                "</div>";
+        } else {
+            arr = Object.keys(obj.form);
+
+            for (i = 0; i < arr.length; i += 1) {
+                result += "<li class=row>" +
+                    "    <label class=\"column label\" for=" + arr[i] + ">" + obj.form[arr[i]] + "</label>" +
+                    "    <div class=column><input id=" + arr[i] + " name=" + arr[i] + " type=number min=50 max=200 maxlength=3 data-required" + (!i ? " autofocus" : "") + "></div>" +
+                    "</li>";
+            }
+
+            result = "<form onsubmit=ui.academy.submit(event) method=post novalidate>" +
+                "    <ul class=sheet>" + result + "</ul>" +
+                "    <button>" + obj.button + "</button>" +
+                "    <p>" + obj.notice + "</p>" +
+                "</form>";
+        }
+
+        return "<div class=\"form calculator\">" +
+            "    <h1>" + obj.title.replace(/\n/g, "<br>") + "</h1>" + result +
             "</div>";
     },
     session: function () {
@@ -789,7 +975,7 @@ ui.academy = {
                 }
                 if (obj) {
                     if (session && !page) {
-                        result += "<ol class=items>";
+                        result += "<ol class=items dir=ltr>";
 
                         for (prop in obj) {
                             if (obj.hasOwnProperty(prop)) {
@@ -816,15 +1002,18 @@ ui.academy = {
                                         "<div class=space><h1>" + obj.title + "</h1></div>";
                                     break;
                                 case "document":
-                                // width="640" height="480"
-                                // http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
+                                    // width="640" height="480"
+                                    // http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
                                     result += "<div class=video>" +
                                         "    <iframe src=\"https://drive.google.com/file/d/" + obj.value + "/preview\" allowfullscreen></iframe>" +
                                         "</div>" +
                                         "<div class=space>" +
                                         "    <h1>" + obj.title + "</h1>" +
-                                        "    <a class=button href=\"https://drive.google.com/uc?export=download&id=" + obj.download + "\" target=_blank download=\"" + obj.title + ".pdf\"><b>להוריד " + obj.title + "</a>" +
+                                        "    <a class=button href=\"https://drive.google.com/uc?export=download&id=" + obj.value + "\" target=_blank download=\"" + obj.title + ".pdf\"><b>להוריד " + obj.title + "</a>" +
                                         "</div>";
+                                    break;
+                                case "calculator":
+                                    result += this.calculator(obj);
                                     break;
                                 case "qa":
                                     result += this.qa(obj);
@@ -928,6 +1117,7 @@ ui.academy = {
 
         if (this.valid) {
             this.isLogged();
+            ui.identify.all();
         } else {
             ui.form.el = ui.d.getElementById("form");
             this.button = ui.d.getElementById("button");

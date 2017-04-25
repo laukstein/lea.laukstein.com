@@ -121,10 +121,11 @@ button.spin.spin.spin:before {
 .subscribe a:focus {
     text-decoration: none;
 }
-input {
+.subscribe input {
     border-color: transparent;
+    outline: 0;
 }
-input:focus {
+.subscribe input:focus {
     box-shadow: 0 0 2em rgba(0,0,0,.55);
 }
 button {
@@ -150,7 +151,8 @@ button.error {
     width: 100vw;
     height: 100vh;
 }
-.column {
+.column.nav-container,
+.column.content {
     display: block;
     padding-top: 0;
 }
@@ -289,12 +291,17 @@ button.error {
     padding: 1em;
     margin: 0;
     color: initial;
+    text-align: right;
     text-overflow: ellipsis;
     text-shadow: 1px 1px 0 #fff;
     background-color: rgba(255,255,255,.8);
 }
-.qa {
+.form {
     margin: 6% 2.1em;
+}
+.form button.spin.spin.spin:before {
+    margin: -.12em;
+    margin-left: .3em;
 }
 .qa ol,
 .qa input:checked ~ ol {
@@ -454,6 +461,24 @@ button.error {
 .dialog .button:focus,
 .dialog .button:active {
     background-color: #0081ff;
+}
+.calculator .sheet {
+    margin: 0;
+}
+.calculator .row {
+    display: table-row-group;
+}
+.calculator .column {
+    display: table-cell;
+    padding: .4em;
+}
+.calculator input {
+    direction: ltr;
+    width: 5em;
+    text-align: left;
+}
+.calculator button {
+    width: 12em;
 }
 
 @media (max-width: 54em) {

@@ -8,7 +8,6 @@ no-console: 0,
 no-empty-function: 2,
 no-empty: ["error", { "allowEmptyCatch": true }],
 no-eval: 2,
-no-extend-native: 2,
 no-inner-declarations: 2,
 no-loop-func: 2,
 no-mixed-spaces-and-tabs: 2,
@@ -117,6 +116,18 @@ var ui = {
                     if (this.parentElement) {
                         this.parentElement.removeChild(this);
                     }
+                }
+            });
+        }
+        if (!String.prototype.format) {
+            // Reference: http://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format
+            Object.defineProperty(String.prototype, "format", {
+                value: function () {
+                    var args = arguments;
+
+                    return this.replace(/{(\d+)}/g, function (match, number) {
+                        return typeof args[number] !== "undefined" ? args[number] : match;
+                    });
                 }
             });
         }
@@ -244,6 +255,7 @@ var ui = {
             return null;
         }
     },
+    identify: {},
     analytics: function () {
         "use strict";
 
@@ -263,6 +275,10 @@ var ui = {
                     }
 
                     ga("send", "pageview");
+
+                    if (ui.identify.ga) {
+                        ui.identify.ga();
+                    }
                 }
             }, {
                 remove: true
@@ -309,6 +325,10 @@ var ui = {
                             }
                         }
                     };
+
+                    if (ui.analytics.identify.FS) {
+                        ui.analytics.identify.FS();
+                    }
                 }, {
                     onStart: function () {
                         window._fs_debug = false; // eslint-disable-line
