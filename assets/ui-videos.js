@@ -222,7 +222,7 @@ ui.videos = (function () {
         container = container && container.querySelector("strong");
 
         if (container) {
-            container.innerHTML = "שגיאת שרת, נסה מאוחר יותר.";
+            container.innerHTML = "שגיאת שרת, <a href>נסה שוב</a> או מאוחר יותר.";
         }
         if (ui.videos) {
             ui.videos = response;
@@ -246,6 +246,9 @@ ui.videos = (function () {
                         return request();
                     }
                 }
+            } else {
+                delete localStorage.videos;
+                delete localStorage.videosDate;
             }
         }
 
