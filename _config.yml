@@ -27,3 +27,5 @@ whitelist:
     - jekyll-redirect-from
 gems:
     - jekyll-redirect-from
+exclude:
+    - node_modules
