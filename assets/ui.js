@@ -255,120 +255,204 @@ var ui = {
             return null;
         }
     },
-    identify: {},
+    setUser: function (session) {
+        "use strict";
+
+        try {
+            var email = session && (session.email || session.EMAIL),
+                diff = email !== this.identify.user.email,
+                user = {},
+                name = [];
+
+            this.getUser();
+
+            if (email) {
+                if (!diff) {
+                    user = this.identify.user;
+                }
+
+                user.date = +new Date();
+                user.referrer = location.href;
+                user.email = email;
+
+                if (session.avatar) {
+                    user.avatar = session.avatar;
+                }
+                if (session.tel || session.PHONE) {
+                    user.telephone = session.tel || session.PHONE;
+                }
+                if (session.name || session.FNAME || session.firstName) {
+                    name.push(session.name || session.FNAME || session.firstName);
+                    user.firstName = session.name || session.FNAME || session.firstName;
+                }
+                if (session.lastName) {
+                    name.push(session.lastName);
+                    user.lastName = session.lastName;
+                }
+                if (name.length && (!user.fullName || session.lastName)) {
+                    user.fullName = name.join(" ");
+                }
+
+                this.identify.user = user;
+                localStorage.user = JSON.stringify(user);
+
+                this.identify.all();
+            }
+
+            return user;
+        } catch(e) {
+            return {};
+        }
+    },
+    getUser: function () {
+        "use strict";
+
+        this.identify.user = (function () {
+            try {
+                return JSON.parse(localStorage.user);
+            } catch(e) {
+                return {};
+            }
+        }());
+
+        return this.identify.user;
+    },
+    identify: {
+        user: {},
+        ga: function () {
+            "use strict";
+
+            if (window.ga && this.user.email) {
+                // Resource https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#user_id
+                ga("set", "userId", this.user.email);
+            }
+        },
+        FS: function () {
+            "use strict";
+
+            if (window.FS && this.user.email) {
+                // Resource http://help.fullstory.com/develop-js/identify
+                FS.identify(this.user.email, this.user.fullName && {
+                    email: this.user.email,
+                    displayName: this.user.fullName
+                });
+            }
+        },
+        all: function () {
+            "use strict";
+
+            ui.getUser();
+            this.ga();
+            this.FS();
+        }
+    },
     analytics: function () {
         "use strict";
 
-        if (location.host === "lea.laukstein.com") {
-            ui.asyncScript("https://www.google-analytics.com/analytics.js", function () {
-                if (window.ga) {
-                    // Disabling cookies https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#disabling_cookies
-                    ga("create", "UA-11883501-1", "laukstein.com", {
-                        storage: "none",
-                        clientId: localStorage.gaClientId
-                    });
-
-                    if (!localStorage.gaClientId) {
-                        ga(function (tracker) {
-                            localStorage.gaClientId = tracker.get("clientId");
-                        });
-                    }
-
-                    ga("send", "pageview");
-
-                    if (ui.identify.ga) {
-                        ui.identify.ga();
-                    }
-                }
-            }, {
-                remove: true
-            });
-
-            if (!window.FS) {
-                ui.asyncScript("https://www.fullstory.com/s/fs.js", function () {
-                    var g = window.FS = function (a, b) {
-                        if (g.q) {
-                            g.q.push([a, b]);
-                        } else {
-                            g._api(a, b); // eslint-disable-line
-                        }
-                    };
-                    g.q = [];
-                    g.setUserVars = function (v) {
-                        g("user", v);
-                    };
-                    g.identify = function (i, v) {
-                        g("user", {uid: i});
-
-                        if (v) {
-                            g.setUserVars(v);
-                        }
-                    };
-                    g.identifyAccount = function (i, v) {
-                        o = "account";
-                        v = v || {};
-                        v.acctId = i;
-
-                        g(o, v);
-                    };
-                    g.clearUserCookie = function (c, d, i) {
-                        if (!c || ui.d.cookie.match("fs_uid=[`;`]*`[`;`]*`[`;`]*`")) {
-                            d = n.domain;
-
-                            while (1) {
-                                n.cookie = "fs_uid=;domain=" + d + ";path=/;expires=" + new Date(0).toUTCString();
-                                i = d.indexOf(".");
-
-                                if (i < 0) break;
-
-                                d = d.slice(i + 1);
-                            }
-                        }
-                    };
-
-                    if (ui.identify.FS) {
-                        ui.identify.FS();
-                    }
-                }, {
-                    onStart: function () {
-                        window._fs_debug = false; // eslint-disable-line
-                        window._fs_host = "www.fullstory.com"; // eslint-disable-line
-                        window._fs_org = "3YG86"; // eslint-disable-line
-                        window._fs_namespace = "FS"; // eslint-disable-line
-                    },
-                    remove: true
+        ui.asyncScript("https://www.google-analytics.com/analytics.js", function () {
+            if (window.ga) {
+                // Disabling cookies https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#disabling_cookies
+                ga("create", "UA-11883501-1", "laukstein.com", {
+                    storage: "none",
+                    clientId: localStorage.gaClientId
                 });
+
+                if (!localStorage.gaClientId) {
+                    ga(function (tracker) {
+                        localStorage.gaClientId = tracker.get("clientId");
+                    });
+                }
+
+                ga("send", "pageview");
+
+                ui.identify.ga();
             }
+        }, {
+            remove: true
+        });
 
-            ui.asyncScript("https://connect.facebook.net/en_US/fbevents.js", {
-                onStart: function () {
-                    // Facebook Pixel https://www.facebook.com/business/help/952192354843755
-                    if (!window.fbq) {
-                        var n = window.fbq = function () {
-                            if (n.callMethod) {
-                                n.callMethod.apply(n, arguments);
-                            } else {
-                                n.queue.push(arguments);
-                            }
-                        };
-
-                        window._fbq = window._fbq || n; // eslint-disable-line
-                        n.push = n;
-                        n.loaded = true;
-                        n.version = "2.0";
-                        n.queue = [];
+        if (!window.FS) {
+            ui.asyncScript("https://www.fullstory.com/s/fs.js", function () {
+                var g = window.FS = function (a, b) {
+                    if (g.q) {
+                        g.q.push([a, b]);
+                    } else {
+                        g._api(a, b); // eslint-disable-line
                     }
+                };
+                g.q = [];
+                g.setUserVars = function (v) {
+                    g("user", v);
+                };
+                g.identify = function (i, v) {
+                    g("user", {uid: i});
 
-                    fbq("init", "1265828396834846");
-                    fbq("track", "PageView");
+                    if (v) {
+                        g.setUserVars(v);
+                    }
+                };
+                g.identifyAccount = function (i, v) {
+                    o = "account";
+                    v = v || {};
+                    v.acctId = i;
+
+                    g(o, v);
+                };
+                g.clearUserCookie = function (c, d, i) {
+                    if (!c || ui.d.cookie.match("fs_uid=[`;`]*`[`;`]*`[`;`]*`")) {
+                        d = n.domain;
+
+                        while (1) {
+                            n.cookie = "fs_uid=;domain=" + d + ";path=/;expires=" + new Date(0).toUTCString();
+                            i = d.indexOf(".");
+
+                            if (i < 0) break;
+
+                            d = d.slice(i + 1);
+                        }
+                    }
+                };
+
+                ui.identify.FS();
+            }, {
+                onStart: function () {
+                    window._fs_debug = false; // eslint-disable-line
+                    window._fs_host = "www.fullstory.com"; // eslint-disable-line
+                    window._fs_org = "3YG86"; // eslint-disable-line
+                    window._fs_namespace = "FS"; // eslint-disable-line
                 }
             });
         }
+
+        ui.asyncScript("https://connect.facebook.net/en_US/fbevents.js", {
+            onStart: function () {
+                // Facebook Pixel https://www.facebook.com/business/help/952192354843755
+                if (!window.fbq) {
+                    var n = window.fbq = function () {
+                        if (n.callMethod) {
+                            n.callMethod.apply(n, arguments);
+                        } else {
+                            n.queue.push(arguments);
+                        }
+                    };
+
+                    window._fbq = window._fbq || n; // eslint-disable-line
+                    n.push = n;
+                    n.loaded = true;
+                    n.version = "2.0";
+                    n.queue = [];
+                }
+
+                fbq("init", "1265828396834846");
+                fbq("track", "PageView");
+            }
+        });
     },
     init: function () {
         "use strict";
 
         this.legacy();
+        this.getUser();
         this.analytics();
     }
 };

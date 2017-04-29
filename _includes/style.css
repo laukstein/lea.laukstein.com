@@ -449,6 +449,7 @@ button,
 .button {
         width: 20em;
     max-width: 100%;
+    height: 2.674em; /* Mac Safari/Chrome <select> issue having same height as <input> */
     padding: .66em .75em;
     font-size: 1em;
     font-family: inherit;
@@ -503,6 +504,7 @@ option {
 textarea {
     overflow-x: hidden;
     /* overflow-y: scroll; */ /* Causes placholder dislocation on Chrome */
+        height: auto;
     min-height: 4.95em;
     max-height: 13em;
     vertical-align: top;
@@ -512,6 +514,7 @@ textarea {
 [type=checkbox][type=checkbox],
 [type=radio][type=radio] {
     width: auto;
+    height: auto;
     padding: 0;
     margin: 0 .25em;
     border: 0;

@@ -27,54 +27,6 @@ space-before-blocks: 2,
 space-before-function-paren: [2, {"anonymous": "always", "named": "never"}],
 strict: [2, "function"]*/
 
-ui.identify.ga = function () {
-    "use strict";
-
-    if (window.ga && ui.academy.user.email) {
-        // Reosurce https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#user_id
-        ga("set", "userId", ui.academy.user.email);
-
-        delete this.ga;
-    }
-};
-ui.identify.FS = function () {
-    "use strict";
-
-    if (window.FS) {
-        var name = [],
-            user = {};
-
-        if (ui.academy.user.firstName) {
-            name.push(ui.academy.user.firstName);
-        }
-        if (ui.academy.user.lastName) {
-            name.push(ui.academy.user.lastName);
-        }
-        if (name.length) {
-            user.displayName = name.join(" ");
-        }
-
-        user.email = ui.academy.user.email;
-
-        if (user.email) {
-            // Resource http://help.fullstory.com/develop-js/identify
-            FS.identify(user.email, user);
-
-            delete this.FS;
-        }
-    }
-};
-ui.identify.all = function () {
-    "use strict";
-
-    if (ui.identify.ga) {
-        ui.identify.ga();
-    }
-    if (ui.identify.FS) {
-        ui.identify.FS();
-    }
-};
-
 ui.academy = {
     data: {
         interval: 7,
@@ -372,17 +324,17 @@ ui.academy = {
             }
         }
     },
-    user: (function () {
+    session: (function () {
         "use strict";
 
         try {
-            return JSON.parse(localStorage.user);
+            return JSON.parse(localStorage.session);
         } catch(e) {
-            delete localStorage.user;
+            delete localStorage.session;
             return {};
         }
     }()),
-    fetch: "https://lab.laukstein.com/academy",
+    fetch: location.protocol + "//lab." + location.host.replace(/^[^.]+\./, "") + "/academy",
     dataset: function (el, prop) {
         "use strict";
 
@@ -456,9 +408,10 @@ ui.academy = {
         }).then(function (response) {
             return response.json();
         }).then(function (data) {
-            localStorage.user = JSON.stringify(data);
             var self = ui.academy;
+            localStorage.session = JSON.stringify(data);
 
+            ui.setUser(data);
             ui.form.accessibility(true, null, true);
 
             if (data.email && data.token) {
@@ -514,7 +467,7 @@ ui.academy = {
     logout: function () {
         "use strict";
 
-        delete localStorage.user;
+        delete localStorage.session;
         this.refresh(true);
     },
     date: function () {
@@ -553,19 +506,18 @@ ui.academy = {
         "use strict";
 
         // IMPORTANT
-        this.data.date = this.user.created * 1000;
+        this.data.date = this.session.created * 1000;
 
         ui.d.documentElement.classList.remove("stretch");
         ui.d.documentElement.classList.add("logedin");
         this.details.remove();
 
         this.account = ui.d.getElementById("account");
-
         this.account.outerHTML = "<div class=profile>" +
-            "    <img src=\"https://gravatar.com/avatar/" + this.user.avatar + "?s=42&r=g&d=mm\">" +
+            "    <img src=\"https://gravatar.com/avatar/" + this.session.avatar + "?s=42&r=g&d=mm\">" +
             "    <div class=\"table center\">" +
             "        <div class=cel>" +
-            (this.user.firstName ? "            <div class=nowrap dir=auto>" + this.user.firstName + "</div>" : "") +
+            (this.session.firstName ? "            <div class=nowrap dir=auto>" + this.session.firstName + "</div>" : "") +
             "            <small onclick=ui.academy.logout()>התנתק</small>" +
             "        </div>" +
             "    </div>" +
@@ -798,8 +750,8 @@ ui.academy = {
         };
         this.qa.final = function (el, value) {
             var data = {
-                    email: ui.academy.user.email,
-                    token: ui.academy.user.token,
+                    email: ui.academy.session.email,
+                    token: ui.academy.session.token,
                     data: {qa: value}
                 },
                 close = ui.d.querySelector(".qa .close");
@@ -819,29 +771,29 @@ ui.academy = {
             }).then(function (json) {
                 return !json.error && json;
             }).then(function (json) {
-                ui.academy.user = json;
-                localStorage.user = JSON.stringify(json);
+                ui.academy.session = json;
+                localStorage.session = JSON.stringify(json);
 
                 ui.academy.refresh();
             }).catch(function () {
-                ui.academy.user.reportDate = new Date();
-                ui.academy.user.reportData = data;
+                ui.academy.session.reportDate = new Date();
+                ui.academy.session.reportData = data;
 
                 if (el) {
                     el.remove();
                 }
 
-                delete localStorage.user;
+                delete localStorage.session;
 
                 alert("טעות במערכת, נסי שוב מאוחר יותר");
-                ui.academy.report("update", ui.academy.user);
+                ui.academy.report("update", ui.academy.session);
                 ui.academy.refresh();
             });
         };
 
         return "<div class=\"form qa\">" +
             "    <h1>" + obj.title.replace(/\n/g, "<br>") + "</h1>" +
-            (this.user.task && this.user.task.qa ? this.qa.dialog(null, 0, this.user.task.qa, true) : label(obj, false)) +
+            (this.session.task && this.session.task.qa ? this.qa.dialog(null, 0, this.session.task.qa, true) : label(obj, false)) +
             "</div>";
     },
     submit: function (e) {
@@ -855,8 +807,8 @@ ui.academy = {
 
                 var page = ui.hash("page"),
                     data = {
-                        email: ui.academy.user.email,
-                        token: ui.academy.user.token,
+                        email: ui.academy.session.email,
+                        token: ui.academy.session.token,
                         data: {}
                     };
 
@@ -900,18 +852,18 @@ ui.academy = {
                 }).then(function (json) {
                     return !json.error && json;
                 }).then(function (json) {
-                    ui.academy.user = json;
-                    localStorage.user = JSON.stringify(json);
+                    ui.academy.session = json;
+                    localStorage.session = JSON.stringify(json);
 
                     ui.academy.refresh();
                 }).catch(function () {
-                    ui.academy.user.reportDate = new Date();
-                    ui.academy.user.reportData = data;
+                    ui.academy.session.reportDate = new Date();
+                    ui.academy.session.reportData = data;
 
-                    delete localStorage.user;
+                    delete localStorage.session;
 
                     alert("טעות במערכת, נסי שוב מאוחר יותר");
-                    ui.academy.report("update", ui.academy.user);
+                    ui.academy.report("update", ui.academy.session);
                     ui.academy.refresh();
                 });
             }
@@ -924,13 +876,13 @@ ui.academy = {
             arr,
             i;
 
-        if (this.user.task && this.user.task.calculator && obj.final[this.user.task.calculator]) {
+        if (this.session.task && this.session.task.calculator && obj.final[this.session.task.calculator]) {
             // Google docs links http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
             result = "<div class=\"dialog final\">" +
                 "   <div class=table>" +
                 "   <div class=cel>" +
-                "       <h1>" + obj.result.format(obj.final[this.user.task.calculator].title) + "</h1>" +
-                "       <div><a class=button href=\"https://docs.google.com/presentation/d/" + obj.final[this.user.task.calculator].value + "/export/pdf\" target=_blank tabindex=0>" + obj.download + "</a></div>" +
+                "       <h1>" + obj.result.format(obj.final[this.session.task.calculator].title) + "</h1>" +
+                "       <div><a class=button href=\"https://docs.google.com/presentation/d/" + obj.final[this.session.task.calculator].value + "/export/pdf\" target=_blank tabindex=0>" + obj.download + "</a></div>" +
                 "   </div>" +
                 "   </div>" +
                 "</div>";
@@ -955,7 +907,7 @@ ui.academy = {
             "    <h1>" + obj.title.replace(/\n/g, "<br>") + "</h1>" + result +
             "</div>";
     },
-    session: function () {
+    pageSession: function () {
         "use strict";
 
         if (this.valid && this.content) {
@@ -1093,7 +1045,7 @@ ui.academy = {
             }
         }
 
-        this.session();
+        this.pageSession();
     },
     legacy: function () {
         "use strict";
@@ -1107,7 +1059,7 @@ ui.academy = {
 
         this.legacy();
 
-        this.valid = !!this.user.email && !!this.user.token;
+        this.valid = !!this.session.email && !!this.session.token;
         this.content = ui.d.getElementById("content");
         this.details = ui.d.getElementById("details");
         this.bar = ui.d.getElementById("bar");

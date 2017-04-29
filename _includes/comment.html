@@ -1,14 +1,2 @@
-<div class="comment{% if include.addClassNames %} table space medium no-padding{% endif %}" id=disqus_thread></div>
-<script>
-var disqus_config = function () {
-    /* https://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables */
-    this.page.url = location.protocol + '//' + location.host + location.pathname;
-};
-(function () {
-    var s = document.createElement("script");
-    s.src = "https://lealaukstein.disqus.com/embed.js";
-    s.setAttribute("data-timestamp", +new Date());
-    (document.head || document.body).appendChild(s);
-})();
-</script>
-<script id=dsq-count-scr src=https://lealaukstein.disqus.com/count.js async></script>
+{% assign script_template = "ui-comment.js"
+%}<div class="comment{% if include.addClassNames %} table space medium no-padding{% endif %}" id=disqus_thread></div>

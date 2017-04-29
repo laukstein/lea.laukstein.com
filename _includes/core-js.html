@@ -1,0 +1,25 @@
+{% comment %}
+
+Array concat supported on Liquid 4
+https://help.shopify.com/themes/liquid/filters/array-filters#concat
+
+{% endcomment %}{%
+
+assign script_global = layout.script | join: ", " %}{% if script_template %}{%
+assign script_global = script_global | append: ", " | append: script_template %}{% endif %}{% if page.script %}{%
+assign script_page = page.script | join: ", " %}{%
+assign script = script_global | append: ", " | append: script_page | split: ", " | uniq %}{% else %}{%
+assign script = script_global | split: ", " | uniq %}{% endif %}{%
+if script %}
+    {% for source in script %}
+        {% if jekyll.environment == "development" %}
+            {% capture js %}{{ js }}
+<script src={{ site.assets }}{{ source }}></script>{% endcapture %}
+        {% else %}
+            {% capture js %}{{ js }}{% include {{ source | replace: ".js", ".min.js" }} %}{% endcapture %}
+        {% endif %}
+    {% endfor %}
+    {% unless jekyll.environment == "development" %}
+        {% capture js %}<script>{{ js }}</script>{% endcapture %}
+    {% endunless %}
+{% endif %}{{ js }}

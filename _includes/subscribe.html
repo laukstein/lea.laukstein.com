@@ -1,4 +1,5 @@
-<form class="cel space subscribe" id=subscribe name={% if include.id %}{{ include.id }}{% else %}70a2d0d976{% endif %}>
+{% assign script_template = "ui-form.js, ui-subscribe.js"
+%}<form class="cel space subscribe" id=subscribe name={% if include.id %}{{ include.id }}{% else %}70a2d0d976{% endif %}>
     <h1{% if include.requiredTel %} class=inherit{% endif %}>{% if include.title %}{{ include.title }}{% else %}סטיילינג לדתיות{% endif %}</h1>
     {% unless include.title %}<p>מדריך בעל שלושה סרטונים על יסודות הסטיילינג</p>{% endunless %}
     <div>
@@ -15,8 +16,3 @@
     </div>
     {% include confirm.html %}<button formnovalidate>{% if include.button %}{{ include.button }}{% else %}להורדה בחינם{% endif %}</button>
 </form>
-{% capture inline_js %}{{ inline_js }}{% include ui-form.min.js %}{% include ui-subscribe.min.js %}{% endcapture %}
-{% comment %}
-<script src={{ site.assets }}ui-form.js></script>
-<script src={{ site.assets }}ui-subscribe.js async></script>
-{% endcomment %}

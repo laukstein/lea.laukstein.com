@@ -28,7 +28,7 @@ space-before-function-paren: [2, {"anonymous": "always", "named": "never"}],
 strict: [2, "function"]*/
 
 ui.comment = {
-    load: function (container) {
+    load: function (container, avoidError) {
         "use strict";
 
         function config() {
@@ -54,7 +54,7 @@ ui.comment = {
                     config: config
                 });
             }
-        } else {
+        } else if (!avoidError) {
             console.error("Missing container element");
         }
     },
@@ -64,5 +64,12 @@ ui.comment = {
         if (this.el) {
             this.el.innerHTML = "";
         }
+    },
+    init: function () {
+        "use strict";
+
+        this.load(null, true);
     }
 };
+
+ui.comment.init();

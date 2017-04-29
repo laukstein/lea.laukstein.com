@@ -1,27 +1,12 @@
 ---
 layout: compress
-# Minify HTML, inline CSS http://codeheaven.io/optimizing-assets-in-jekyll-generated-gh-pages/
+style:
+    - style.css
+script:
+    - ui.js
 ---
 
-{% if page.titleLong %}
-    {% assign title=page.titleLong %}
-{% else if page.title %}
-    {% assign title=page.title %}
-{% endif %}
-<!doctype html>
-<html lang=he>
-<head prefix="og: http://ogp.me/ns#">
-<meta charset=utf-8>
-<title>{% if title %}{{ title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-{% if page.description %}<meta name=description content="{{ page.description }}">{% endif %}
-{% if layout.private or page.private or page.draft %}<meta name=robots content=noindex>{% endif %}
-<meta name=viewport content="width=device-width,initial-scale=1">
-<link rel=canonical href={{ page.url | absolute_url | split: '?' | first }}>
-<link rel=manifest href=/manifest.json>
-<link rel=license href=//creativecommons.org/licenses/by-nc-nd/4.0/>
-<style>{% capture inline_css %}{% include style.css %}{% endcapture %}{{ inline_css | scssify }}</style>
-<!--[if lt IE 9]><script src=//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js></script><![endif]-->
-<input class=bar-holder id=bar type=checkbox hidden>
+{% include core-head.html %}<input class=bar-holder id=bar type=checkbox hidden>
 <header dir=ltr>
     <div class=wrapper>
         <label class=bar for=bar hidden><span></span></label>
@@ -39,50 +24,45 @@ layout: compress
         </nav>
     </div>
 </header>
-<main dir=rtl>
-{% if layout.comment or page.comment or page.category == 'products' %}
+<main dir=rtl>{%
+if layout.comment or page.comment or page.category == 'products' %}
     {% assign addComments=true %}
-{% endif %}
-{% if layout.className %}
+{% endif %}{%
+if layout.className %}
     {% assign className=layout.className %}
 {% else if page.className %}
     {% assign className=page.className %}
-{% endif %}
-{% if className %}
+{% endif %}{%
+if className %}
     {% capture className %} {{ className }}{% endcapture %}
-{% endif %}
-{% if page.type %}
+{% endif %}{%
+if page.type %}
     {% assign type=page.type %}
 {% else if layout.type %}
     {% assign type=layout.type %}
-{% endif %}
-{% case type %}
+{% endif %}{%
+case type %}
     {% when "full" %}
     <div class="table scale full">
-        <div class=cel>
-            {{ content }}
-        </div>
+        <div class=cel>{{ content }}</div>
     </div>
     {% when "center" %}
     <div class="table scale center" id=content>
-        <div class=cel>
-            {{ content }}
-        </div>
+        <div class=cel>{{ content }}</div>
     </div>
     {% when "medium" %}
-    <div class="table scale space medium{{ className }}">
-        {% if page.youtube %}
-            {% include youtube.html id=page.youtube %}
-            {% if title %}<h1>{{ title }}</h1>{% endif %}
-        {% endif %}
-        {{ content }}
-        {% if addComments %}
-            {% include comment.html %}
-        {% endif %}
+    <div class="table scale space medium{{ className }}">{%
+        if page.youtube %}{%
+            include youtube.html id=page.youtube %}{%
+            if title %}<h1>{{ title }}</h1>{% endif %}{%
+        endif %}{{ content }}{%
+        if addComments %}{%
+            include comment.html %}{%
+        endif %}
     </div>
     {% else %}
-    <div class="table{% unless addComments %} scale{% endunless %}">
-        {% if page.youtube %}
+    <div class="table{% unless addComments %} scale{% endunless %}">{%
+        if page.youtube %}
             <div class="cel content{{ className }}">
                 {% include youtube.html id=page.youtube %}
                 {% if content.size > 1 %}
@@ -91,37 +71,29 @@ layout: compress
                         {{ content }}
                     </div>
                 {% endif %}
-            </div>
-        {% else %}
+            </div>{%
+        else %}
             <div class="cel content space{{ className }}">
                 {{ content }}
-            </div>
-        {% endif %}
-        {% include subscribe.html
+            </div>{%
+        endif %}{%
+        include subscribe.html
             id=page.subscribe
             title=page.subscribe-title
             button=page.subscribe-button
             requiredTel=page.subscribe-requiredTel
-        %}
-        {% if page.headlines %}
-            {% include headlines.html %}
-        {% endif %}
-    </div>
-    {% if addComments %}
-        {% include comment.html addClassNames=true %}
-    {% endif %}
-{% endcase %}
+        %}{%
+        if page.headlines %}{%
+            include headlines.html %}{%
+        endif %}
+    </div>{%
+    if addComments %}{%
+        include comment.html addClassNames=true %}{%
+    endif %}{%
+endcase %}
 </main>
-
-{% if page.script %}
-    {% assign script=page.script %}
-    {% for source in script %}
-        {% capture inline_js %}{{ inline_js }}{% include {{ source }} %}{% endcapture %}
-    {% endfor %}
-{% endif %}
-{% comment %}<script src={{ site.assets }}ui.js></script>{% endcomment %}
-<script>{% capture inline_js %}{% include ui.min.js %}{{ inline_js }}{% endcapture %}{{ inline_js }}</script>
-{% if page.jsonld == nil and page.image %}
+{% include core-js.html %}{%
+if page.jsonld == nil and page.image %}
     {% if page.category == 'products' %}
         {% capture jsonld %}
         {
@@ -172,8 +144,7 @@ layout: compress
         }
         {% endcapture %}
     {% endif %}
-{% endif %}
-{% if jsonld or page.jsonld %}<script type="application/ld+json">
-{% unless jsonld %}{% assign jsonld=page.jsonld %}{% endunless %}
-{{ jsonld | replace: '$youtube', page.youtube }}
-</script>{% endif %}
+{% endif %}{%
+if jsonld or page.jsonld %}<script type="application/ld+json">{%
+    unless jsonld %}{% assign jsonld=page.jsonld %}{% endunless %}
+{{ jsonld | replace: '$youtube', page.youtube }}</script>{% endif %}

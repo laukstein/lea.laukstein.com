@@ -1,0 +1,38 @@
+{% if page.titleLong %}
+    {% assign title=page.titleLong %}
+{% else if page.title %}
+    {% assign title=page.title %}
+{% endif %}{% comment %}
+
+Array concat supported on Liquid 4
+https://help.shopify.com/themes/liquid/filters/array-filters#concat
+
+{% endcomment %}{%
+
+assign style_global = layout.style | join: ", " %}{% if page.style %}{%
+assign style_page = page.style | join: ", " %}{%
+assign style = style_global | append: ", " | append: style_page | split: ", " | uniq %}{% else %}{%
+assign style = style_global | split: ", " | uniq %}{% endif %}{%
+if style %}
+    {% for source in style %}
+        {% capture css %}{{ css }}{% include {{ source }} %}{% endcapture %}
+    {% endfor %}
+    {% capture css %}<style>{% if jekyll.environment == "development" %}
+{{ css }}{% else %}{{ css | scssify }}{% endif %}</style>{% endcapture %}
+{% endif %}{%
+
+capture head %}<!doctype html>
+<html{% if layout.className %} class={{ className }}{% endif %} lang=he>
+<head prefix="og: http://ogp.me/ns#">
+<meta charset=utf-8>
+<title>{% if title %}{{ title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>{%
+if page.description %}
+<meta name=description content="{{ page.description }}">{% endif %}{%
+if layout.private or page.private or page.draft %}
+<meta name=robots content=noindex>{% endif %}
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=canonical href={{ page.url | absolute_url | split: '?' | first }}>
+<link rel=manifest href=/manifest.json>
+<link rel=license href=//creativecommons.org/licenses/by-nc-nd/4.0/>
+{{ css }}
+<!--[if lt IE 9]><script src=//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js></script><![endif]-->{% endcapture %}{{ head }}

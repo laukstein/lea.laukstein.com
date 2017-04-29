@@ -37,6 +37,8 @@ ui.subscribe = {
 
         if (data) {
             if (data.result === "success") {
+                ui.setUser(this.session);
+
                 message = "<h1 class=success>תודה</h1><p>לסיום ההרשמה תקבלי עכשיו מייל לאישור</p>";
             } else if (data.msg && data.msg.indexOf("list-manage.com/subscribe/send-email")) {
                 message = "<h1 class=error>שגיאה...</h1><p>את כבר רשומה, תנסי עם <a href=" + location.href + ">אימייל אחר</a></p>";
@@ -60,6 +62,8 @@ ui.subscribe = {
             e.preventDefault();
         }
         if (self.active && ui.form.valid(self.required)) {
+            self.session = ui.form.deserialize(self.el);
+
             script = ui.d.createElement("script");
             script.src = self.el.action + "&" + ui.form.serialize(self.el) + "&b_" + self.key + "_" + self.name + "&_=" + Math.random().toString(16).substr(2, 8) + "&c=ui.subscribe.success";
             head = ui.d.getElementsByTagName("head")[0];
