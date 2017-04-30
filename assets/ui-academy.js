@@ -327,12 +327,39 @@ ui.academy = {
     session: (function () {
         "use strict";
 
-        try {
-            return JSON.parse(localStorage.session);
-        } catch(e) {
-            delete localStorage.session;
-            return {};
+        function getData(sessionName, callback) {
+            var result = {};
+
+            try {
+                result = JSON.parse(localStorage[sessionName]);
+            } catch(e) {
+                delete localStorage[sessionName];
+            }
+
+            if (typeof callback === "function") {
+                return callback(result);
+            } else {
+                return result;
+            }
         }
+
+        // localStorage renaming backwards compatibility, 2017/04/30
+        return getData("session", function (session) {
+            if (session.email && session.token) {
+                return session;
+            } else {
+                return getData("user", function (user) {
+                    if (user.email && user.token) {
+                        localStorage.session = localStorage.user;
+
+                        delete localStorage.user;
+                        ui.setUser(user);
+                    }
+
+                    return user;
+                });
+            }
+        });
     }()),
     fetch: location.protocol + "//lab." + location.host.replace(/^[^.]+\./, "") + "/academy",
     dataset: function (el, prop) {
