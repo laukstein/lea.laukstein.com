@@ -1,4 +1,4 @@
-﻿/*eslint
+/*eslint
 comma-spacing: 2,
 dot-notation: [2, {"allowKeywords": true}],
 eqeqeq: 2,
@@ -61,10 +61,10 @@ ui.academy = {
                         type: "qa",
                         title: "שאלון:\nלאיזה קטגוריית צבעים את שייכת?",
                         value: "academy-colours.jpg",
-                        question: [
+                        option: [
                             {
                                 title: "האם צבע השיער שלך שחור או חום כהה?",
-                                question: [
+                                option: [
                                     {
                                         title: "העיניים שלך מבריקות, בולטות, בצבע כחול כהה או ירוק כהה? האם יש קונטראסט בין הלבן בעיניים לבין האישון?",
                                         final: "clear"
@@ -81,7 +81,7 @@ ui.academy = {
                             },
                             {
                                 title: "האם צבע השיער שלך בלונד בהיר, אפור בהיר, חום בהיר?",
-                                question: [
+                                option: [
                                     {
                                         title: "העיניים שלך בהירות בצבעים כחול בהיר, אפור או ירוק בהיר?",
                                         final: "bright"
@@ -94,7 +94,7 @@ ui.academy = {
                             },
                             {
                                 title: "האם צבע השיער שלך חום בינוני או עכברי, אפור בינוני, בלונד אפורי, בלונד כהה?",
-                                question: [
+                                option: [
                                     {
                                         title: "העיניים שלך בהירות בצבעים כחול בהיר, אפור או ירוק בהיר?",
                                         final: "bright"
@@ -179,7 +179,7 @@ ui.academy = {
                         notice: "שימי לב, חישוב ניתן רק לפעם אחת",
                         result: "את בעלת מבנה גוף {0}",
                         download: "להוריד מדריך הגיזרות",
-                        form: {
+                        option: {
                             A: "היקף הכתפיים",
                             B: "היקף היריכיים",
                             C: "היקף המותן",
@@ -221,15 +221,138 @@ ui.academy = {
                     "video-2": {
                         type: "video",
                         title: "אילו סגנונות לבוש יש",
-                        value: ""
+                        value: "P1IQBJCoUTc"
                     },
                     "video-3": {
                         type: "video",
                         title: "שיעורי בית",
                         value: "rs8o-d7gkpo"
                     },
-                    table: {
-                        title: "שאלון: תאבחני את סגנון הלבוש שלך"
+                    sat: {
+                        type: "sat",
+                        title: "שאלון:\nמצאי את סגנון הלבוש שלך",
+                        next: "המשך",
+                        back: "חזור",
+                        button: "הצג תוצאה",
+                        limit: "סמני מקסימום שתי תשובות",
+                        // https://www.quora.com/How-can-I-download-all-of-the-full-size-images-from-my-Pinterest-board#MPvCcJ
+                        value: "https://s-media-cache-ak0.pinimg.com/originals/50/0d/de/500dde47e9c1b7cafedb043176fa190d.jpg",
+                        option: [
+                            {
+                                title: "כיצד את בוחרת את צבעי הבגדים שלך?",
+                                option: {
+                                    A: "בהתאם למצב רוח שלי באותו יום",
+                                    B: "צבעים חזקים וקונטרסטים",
+                                    C: "צבעי פסטל",
+                                    D: "פריטי לבוש המתאימים מבחינת הצבעים, הבדים או הדוגמאות",
+                                    E: "בשילובי צבעים בסיסיים ופשוטים ובצבעים חלקים, צבעי אדמה"
+                                }
+                            }, {
+                                title: "כיצד תגדירי את סגנון הקניות שלך?",
+                                option: {
+                                    A: "אוהבת לקנות בשווקים, יד שניה ובמבצעים",
+                                    B: "קונה בלי לחשוב פעמיים כל דבר שמוצא חן בעיני",
+                                    C: "הקניות עושות אותי שמחה ואני נהנת, אני יוצאת לקניות כשאני רוצה לשפר מצב רוח שלי",
+                                    D: "הקניות שלי מתוכננות ונעשות על פי רשימה מוכנה מראש, משקיעה בפריטים איכותיים וקלאסיים שתמיד באופנה",
+                                    E: "קונה בהתאם לצורך או לקראת אירועים מיוחדים. לא מוכנה לוותר על נוחות, במקרה הצורך אלך לתופרת"
+                                }
+                            }, {
+                                title: "כיצד היית מגדירה את הופעתך באופן כללי?",
+                                option: {
+                                    A: "בעלת סגנון ייחודי המשלב פריטים שונים ויוצאי דופן",
+                                    B: "בעלת אמירה אופנתית ופריטים המושכים תשומת לב",
+                                    C: "אוהבת בגדים עם קישוטים עדינים הגורמים לי להרגיש נשית",
+                                    D: "נקי ואלגנטי",
+                                    E: "אוהבת בגדים נוחים"
+                                }
+                            }, {
+                                title: "איזה מהפריטים בארון שלך משמשים אותך לעבודה?",
+                                option: {
+                                    A: "פריטי לבוש אקראיים שאני מערבבת ביניהם לפי טעמי האישי",
+                                    B: "פריטים יוצאי דופן שתופסים את העין",
+                                    C: "חולצות יפות ועליוניות שאני משלבת עם חצאיות",
+                                    D: "פריטים בסיסיים הניתנים לשדרוג עם אביזרים, פריטים מחויטים",
+                                    E: "פריטי לבוש יום יומיים, כמו מכנסי ג'ינס וחולצה פשוטים"
+                                }
+                            }, {
+                                title: "איזה מהפריטים בארון שלך משמשים אותך לשעות הפנאי?",
+                                option: {
+                                    A: "אוסף פריטי לבוש בסגנון רטרו או וינטאג'",
+                                    B: "הפריטים האופנתיים שנרכשו לאחרונה",
+                                    C: "פריטים יפים ונשיים, עם תחרות",
+                                    D: "פריטים בעלי סגנון פשוט שלהם אני מוספיה אביזרים",
+                                    E: "בגדים נוחים ואיכותיים, מכותנה או פשתן, טוניקות"
+                                }
+                            }, {
+                                title: "איזה מהפריטים בארון שלך שמורים לאירועים מיוחדים?",
+                                option: {
+                                    A: "שילבו בדים מיוחדים או גזרות מעניינות",
+                                    B: "פריטים מיוחדים וגרנדיוזיים המושכים תשומת הלב",
+                                    C: "שמלות נשיות וקלילות ומקושטות ועשויים מבדים קלילים",
+                                    D: "חליפה אלגנטית ומחויטת או שמלה קלאסית וסולידית בשילוב תכשיטים אופנתיים",
+                                    E: "חצאית אלגנטית ערוכה ונוחה או מכנסיים בשילוב עם חולצה נוחה וחגיגית או טוניקה"
+                                }
+                            }, {
+                                title: "כיצד תתארי את הנעליים שלך?",
+                                option: {
+                                    A: "לאו דווקא מתאימות ללבוש שלי אבל מיוחדות",
+                                    B: "לרוב בעלות עקבים",
+                                    C: "יפות עם סרטים או קישוטים",
+                                    D: "קלאסיות, מתאימות להרבה בגדים",
+                                    E: "נוחות ושטוחות"
+                                }
+                            }, {
+                                title: "איזה סוג תכשיטים את אוהבת?",
+                                option: {
+                                    A: "לא שגרתיים, ממש פריטי אספנות",
+                                    B: "גדולים ובעלי אמירה אישית",
+                                    C: "מורכבים ועשירים מאוד בפריטים, עם סלסולים ופרחים",
+                                    D: "בעלי קו מעודן וקלאסי, עשויים מזהב או כסף",
+                                    E: "עשויים בדרך כלל מחומרים טבעים"
+                                }
+                            }, {
+                                title: "מהו יחסך לנושא האיפור?",
+                                option: {
+                                    A: "אוהבת להתנסות בדברים חדשים ומתחדשים כל הזמן",
+                                    B: "אוהבת אותו מודגש וקצת מוגזם",
+                                    C: "אוהבת ומשקיעה בו זמן רב",
+                                    D: "לא מחדשת, דבקה בהרגלים שלי, אבל חשוב ומשלים את ההופעה שלי",
+                                    E: "מינימליסטי, אם בכלל"
+                                }
+                            }, {
+                                title: "מהו סגנון כיסוי ראש / שיער שלך?",
+                                option: {
+                                    A: "משתנה בהתאם למצב הרוח שלי",
+                                    B: "משתנה בקביעות, משתנה בצבעוניות",
+                                    C: "אוהבת להוציא שיער בצדדים. שיער ארוך",
+                                    D: "מעודן ומשתלב עם הלבוש שלך",
+                                    E: "דורש תחזוקה מינימלית"
+                                }
+                            }, {
+                                title: "כשאת בוחרת חולצה מודפסת היא תהיה____?",
+                                option: {
+                                    A: "הדפס בסגנון חדש, שאין לי בארון",
+                                    B: "הדפס דומיננטי",
+                                    C: "עדין עם נקודות או פרחים קטנים",
+                                    D: "בדרך כלל קונה פריטים ללא הדפס",
+                                    E: "אוהבת חלק וגם אוהבת הדפס אתני"
+                                }
+                            }
+                        ],
+                        success: {
+                            title: "הסגנון שלך הוא {0}",
+                            link: "https://www.pinterest.com/lea0156/",
+                            value: "{0}סגנון-{1}/",
+                            result: "תמונות סגנון {0}",
+                            all: "תמונות לכל הסגנונות ב-{0}"
+                        },
+                        final: {
+                            A: "יצירתי",
+                            B: "דרמטי",
+                            C: "רומנטי",
+                            D: "קלאסי",
+                            E: "טבעי"
+                        }
                     }
                 }
             },
@@ -618,6 +741,9 @@ ui.academy = {
                     // Link params details https://pgenom.com/community/threads/гуглодиск-как-хостинг-картинок-файловый-хостинг.1236/
                     url = "https://drive.google.com/thumbnail?authuser=0&sz=w640&id=" + obj.value;
                     break;
+                case "sat":
+                    url = obj.value;
+                    break;
                 case "qa":
                     url = "/assets/" + obj.value;
                     break;
@@ -635,15 +761,22 @@ ui.academy = {
 
         // TBD: report error
     },
+    uniqueID: function () {
+        "use strict";
+
+        return Math.random().toString(16).substr(2, 8);
+    },
     qa: function (obj) {
         "use strict";
+
+        var self = this;
 
         function label(data, index, sameLoop) {
             var skipLoop = index !== false,
                 result = "",
-                version,
                 final,
-                prop;
+                prop,
+                id;
             index = index || 0;
 
             if (skipLoop && !sameLoop) {
@@ -651,23 +784,23 @@ ui.academy = {
             }
             if (data) {
                 if (skipLoop) {
-                    final = !data.question;
-                    version = !final && Math.random().toString(16).substr(2, 8);
+                    final = !data.option;
+                    id = !final && self.uniqueID();
                     result += (sameLoop ? "" : "<ol>") +
-                        "<li><input type=radio name=" + index + " id=" + version + ">" +
-                        "<label onclick=" + (data.final ? "\"ui.academy.qa.dialog(event, " + index + ", '" + data.final + "')\"" : "ui.academy.qa.click(event) for=" + version) + ">" + data.title + "</label>";
+                        "<li><input type=radio name=" + index + (id ? " id=" + id : "") + ">" +
+                        "<label onclick=" + (data.final ? "\"ui.academy.qa.dialog(event, " + index + ", '" + data.final + "')\"" : "ui.academy.qa.click(event) for=" + id) + ">" + data.title + "</label>";
                 }
-                if (Array.isArray(data.question)) {
+                if (Array.isArray(data.option)) {
                     index += 1;
                     result += "<ol>";
 
-                    for (prop in data.question) {
-                        result += label(data.question[prop], index, true);
+                    for (prop in data.option) {
+                        result += label(data.option[prop], index, true);
                     }
 
                     result += "</ol>";
-                } else if (data.question) {
-                    result += label(data.question, index);
+                } else if (data.option) {
+                    result += label(data.option, index);
                 }
                 if (skipLoop) {
                     result += "</li>" +
@@ -737,7 +870,7 @@ ui.academy = {
                     (finalEl ? "" : "       <div class=close onclick=ui.academy.qa.reset(this) tabindex=0></div>") +
                     "       <h1 class=nowrap>" + data.title + "</h1>" +
                     (finalEl ? "" : "       <p>שימי לב, אחרי הורדה לא ניתן לשנות קטגוריה</p>") +
-                    "       <div><a class=button" + (finalEl ? " href=\"https://drive.google.com/uc?export=download&id=" + data.value + "\" target=_blank" :
+                    "       <div><a class=button" + (finalEl ? " href=\"https://drive.google.com/uc?export=download&id=" + data.value + "\" rel=noopener target=_blank" :
                         " onclick=\"ui.academy.qa.final(this, '" + type + "')\" tabindex=0") + ">" + (finalEl ? "להוריד סרגל צבעים" : "לקבל סרגל צבעים") + "</a></div>" +
                     "   </div>" +
                     "   </div>" +
@@ -823,77 +956,83 @@ ui.academy = {
             (this.session.task && this.session.task.qa ? this.qa.dialog(null, 0, this.session.task.qa, true) : label(obj, false)) +
             "</div>";
     },
-    submit: function (e) {
+    submit: function (o, post) {
         "use strict";
+
+        var e = o instanceof Event && o,
+            el = o && o.target || o;
 
         if (e) {
             e.preventDefault();
+        }
+        if (ui.form.valid(ui.form.list("[data-required]", el))) {
+            var page = ui.hash("page"),
+                data = {
+                    email: ui.academy.session.email,
+                    token: ui.academy.session.token,
+                    data: {}
+                };
 
-            if (ui.form.valid(ui.form.list("[data-required]", e.target))) {
-                ui.form.accessibility(false, e.target, true);
+            ui.form.accessibility(false, el, true, page === "sat" && "label");
 
-                var page = ui.hash("page"),
-                    data = {
-                        email: ui.academy.session.email,
-                        token: ui.academy.session.token,
-                        data: {}
-                    };
+            switch (page) {
+                case "calculator":
+                    data.data.calculator = (function () {
+                        post = ui.form.deserialize(el);
+                        var A = post.A,
+                            B = post.B,
+                            C = post.C,
+                            D = post.D,
+                            tolerance = 8,
+                            comp = function (a, b) {
+                                // Compare with tolerance
+                                return a === false ? false : Math.abs((a || 0) - (b || 0)) <= (tolerance || 0);
+                            };
 
-                switch (page) {
-                    case "calculator":
-                        data.data.calculator = (function () {
-                            var post = ui.form.deserialize(e.target),
-                                A = post.A,
-                                B = post.B,
-                                C = post.C,
-                                D = post.D,
-                                tolerance = 8,
-                                comp = function (a, b) {
-                                    // Compare with tolerance
-                                    return a === false ? false : Math.abs((a || 0) - (b || 0)) <= (tolerance || 0);
-                                };
+                        if (comp(A, B) && comp(A, C) && comp(A, D) && comp(B, C) && comp(B, D) && comp(C, D)) {
+                            return "square";
+                        } else if (comp(A, B) && (A > C && !comp(A, C) || B > C && !comp(B, C))) {
+                            return "hourglass";
+                        } else if ((A > B && !comp(A, B)) || (D > B && !comp(D, B))) {
+                            return "invertedTriangle";
+                        } else if (A < B && !comp(A, B)) {
+                            return "triangle";
+                        } else if (comp(A, B) && (A < C && !comp(A, C) || B < C && !comp(B, C))) {
+                            return "rounded";
+                        }
 
-                            if (comp(A, B) && comp(A, C) && comp(A, D) && comp(B, C) && comp(B, D) && comp(C, D)) {
-                                return "square";
-                            } else if (comp(A, B) && (A > C && !comp(A, C) || B > C && !comp(B, C))) {
-                                return "hourglass";
-                            } else if ((A > B && !comp(A, B)) || (D > B && !comp(D, B))) {
-                                return "invertedTriangle";
-                            } else if (A < B && !comp(A, B)) {
-                                return "triangle";
-                            } else if (comp(A, B) && (A < C && !comp(A, C) || B < C && !comp(B, C))) {
-                                return "rounded";
-                            }
-
-                            return "";
-                        }());
-                        break;
-                }
-
-                fetch(ui.academy.fetch + "/update", {
-                    method: "POST",
-                    redirect: "error",
-                    body: JSON.stringify(data)
-                }).then(function (response) {
-                    return response.json();
-                }).then(function (json) {
-                    return !json.error && json;
-                }).then(function (json) {
-                    ui.academy.session = json;
-                    localStorage.session = JSON.stringify(json);
-
-                    ui.academy.refresh();
-                }).catch(function () {
-                    ui.academy.session.reportDate = new Date();
-                    ui.academy.session.reportData = data;
-
-                    delete localStorage.session;
-
-                    alert("טעות במערכת, נסי שוב מאוחר יותר");
-                    ui.academy.report("update", ui.academy.session);
-                    ui.academy.refresh();
-                });
+                        return "";
+                    }());
+                    break;
+                case "sat":
+                    data.data.sat = post;
+                    el.closest("[data-handler]").querySelector("[data-back]").remove();
+                    break;
             }
+
+            fetch(ui.academy.fetch + "/update", {
+                method: "POST",
+                redirect: "error",
+                body: JSON.stringify(data)
+            }).then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                return !json.error && json;
+            }).then(function (json) {
+                ui.academy.session = json;
+                localStorage.session = JSON.stringify(json);
+
+                ui.academy.refresh();
+            }).catch(function () {
+                ui.academy.session.reportDate = new Date();
+                ui.academy.session.reportData = data;
+
+                delete localStorage.session;
+
+                alert("טעות במערכת, נסי שוב מאוחר יותר");
+                ui.academy.report("update", ui.academy.session);
+                ui.academy.refresh();
+            });
         }
     },
     calculator: function (obj) {
@@ -909,16 +1048,16 @@ ui.academy = {
                 "   <div class=table>" +
                 "   <div class=cel>" +
                 "       <h1>" + obj.result.format(obj.final[this.session.task.calculator].title) + "</h1>" +
-                "       <div><a class=button href=\"https://docs.google.com/presentation/d/" + obj.final[this.session.task.calculator].value + "/export/pdf\" target=_blank tabindex=0>" + obj.download + "</a></div>" +
+                "       <div><a class=button href=\"https://docs.google.com/presentation/d/" + obj.final[this.session.task.calculator].value + "/export/pdf\" rel=noopener target=_blank tabindex=0>" + obj.download + "</a></div>" +
                 "   </div>" +
                 "   </div>" +
                 "</div>";
         } else {
-            arr = Object.keys(obj.form);
+            arr = Object.keys(obj.option);
 
             for (i = 0; i < arr.length; i += 1) {
                 result += "<li class=row>" +
-                    "    <label class=\"column label\" for=" + arr[i] + ">" + obj.form[arr[i]] + "</label>" +
+                    "    <label class=\"column label\" for=" + arr[i] + ">" + obj.option[arr[i]] + "</label>" +
                     "    <div class=column><input id=" + arr[i] + " name=" + arr[i] + " type=number min=50 max=200 maxlength=3 data-required" + (!i ? " autofocus" : "") + "></div>" +
                     "</li>";
             }
@@ -933,6 +1072,185 @@ ui.academy = {
         return "<div class=\"form calculator\">" +
             "    <h1>" + obj.title.replace(/\n/g, "<br>") + "</h1>" + result +
             "</div>";
+    },
+    sat: {
+        ui: function (obj) {
+            "use strict";
+
+            var self = ui.academy,
+                result = "",
+                index = 0,
+                sum = [],
+                calculate,
+                prefixer,
+                option,
+                group,
+                title,
+                links,
+                form;
+
+            if (self.session.task && self.session.task.sat && self.session.task.sat.length) {
+                calculate = (function () {
+                        // http://www.jstips.co/en/javascript/flattening-multidimensional-arrays-in-javascript/
+                    var flattenArray = [].concat.apply([], self.session.task.sat),
+                        // http://stackoverflow.com/questions/840781/easiest-way-to-find-duplicate-values-in-a-javascript-array#24968449
+                        sumObject = flattenArray.map(function (name) {
+                            return {
+                                count: 1,
+                                name: name
+                            };
+                        }).reduce(function (a, b) {
+                            a[b.name] = (a[b.name] || 0) + b.count;
+                            return a;
+                        }, {}),
+                        keys = Object.keys(sumObject),
+                        largest = Math.max.apply(null, keys.map(function (x) {
+                            return sumObject[x];
+                        })),
+                        res = keys.reduce(function (arr, key) {
+                            if (sumObject[key] === largest) {
+                                arr.push(key);
+                            }
+
+                            return arr;
+                        }, []);
+
+                    return res;
+                }());
+                title = obj.success.title.format(calculate.map(function (x) {
+                    return obj.final[x];
+                }).join(", "));
+                links = calculate.map(function (x) {
+                    return "<a class=button href=\"" + obj.success.value.format(obj.success.link, obj.final[x]) + "\" rel=noopener target=_blank>" + obj.success.result.format(obj.final[x]) + "</a>";
+                }).join("");
+
+                result = "<div class=\"dialog final\">" +
+                    "   <div class=table>" +
+                    "   <div class=cel>" +
+                    "       <h1>" + title + "</h1>" +
+                    "       <div>" + links + "</div>" +
+                    "       <p>" + obj.success.all.format("<a href=\"" + obj.success.link + "\" rel=noopener target=_blank>Pinterest</a>") + "</p>" +
+                    "   </div>" +
+                    "   </div>" +
+                    "</div>";
+            } else {
+                prefixer = function (prop) {
+                    var prefixes = ["Webkit", "Moz", "ms"],
+                        style = ui.d.documentElement.style,
+                        vendorProp,
+                        i;
+
+                    if (!prop) {
+                        return null;
+                    } else {
+                        prop = prop.toLowerCase().replace(/\-([a-z])/g, function (a, b) {
+                            return b.toUpperCase();
+                        });
+                    }
+                    if (prop in style) {
+                        return prop;
+                    } else {
+                        prop = prop.charAt(0).toUpperCase() + prop.substr(1);
+
+                        for (i = 0; i < prefixes.length; i += 1) {
+                            vendorProp = prefixes[i] + prop;
+
+                            if (vendorProp in style) {
+                                return vendorProp;
+                            }
+                        }
+
+                        return null;
+                    }
+                };
+                this.navigate = function (goNext) {
+                    var el = ui.d.getElementById("slide");
+
+                    if (el) {
+                        if (goNext) {
+                            index += 1;
+                        } else {
+                            index -= 1;
+                        }
+
+                        el.style[prefixer("transform")] = "translateX(" + (100 * index) + "%)";
+                    }
+                };
+                this.check = function (el) {
+                    var handler = el.closest("[data-handler]"),
+                        button = handler.querySelector("[data-next]"),
+                        uncheckedChecboxes = handler.querySelectorAll("input:not(:checked) ~ label"),
+                        data = ui.form.deserialize(handler),
+                        keys = Object.keys(data),
+                        count = keys.length,
+                        i;
+
+                    sum[index] = keys;
+
+                    if (count) {
+                        button.removeAttribute("disabled");
+                    } else {
+                        button.setAttribute("disabled", "");
+                    }
+
+                    for (i = 0; i < uncheckedChecboxes.length; i += 1) {
+                        if (count > 1) {
+                            uncheckedChecboxes[i].setAttribute("disabled", "");
+                        } else {
+                            uncheckedChecboxes[i].removeAttribute("disabled");
+                        }
+                    }
+                };
+                this.done = function (el) {
+                    self.submit(el.closest("[data-handler]"), sum);
+                };
+                option = function (key, value) {
+                    var id = self.uniqueID();
+                    return "<li>" +
+                        "    <input name=" + key + " id=" + id + " onclick=ui.academy.sat.check(this) type=checkbox>" +
+                        "    <label class=\"column label wrap\" for=" + id + ">" + value + "</label>" +
+                        "</li>";
+                };
+                group = function (data, n, len) {
+                    var arr = Object.keys(data.option),
+                        res = "",
+                        i;
+
+                    for (i = 0; i < arr.length; i += 1) {
+                        res += option(arr[i], data.option[arr[i]]);
+                    }
+
+                    return "<li class=qa data-handler>" +
+                        "    <h4 class=wrap>" + n + ". " + data.title + "</h4>" +
+                        "    <small class=wrap><i>" + obj.limit + "</i></small>" +
+                        "    <ol>" + res + "</ol>" +
+                        (n === len ?
+                            "    <button class=next onclick=ui.academy.sat.done(this) data-next disabled>" + obj.button + "</button>" :
+                            "    <button class=next onclick=ui.academy.sat.navigate(true) data-next disabled>" + obj.next + "</button>") +
+                        (n > 1 ? "    <span class=back onclick=ui.academy.sat.navigate() data-back>" + obj.back + "</span>" : "") +
+                        "</li>";
+                };
+                form = function (data) {
+                    var arr = data.option,
+                        res = "",
+                        i;
+
+                    for (i = 0; i < arr.length; i += 1) {
+                        res += group(arr[i], i + 1, arr.length);
+                    }
+
+                    return res;
+                };
+
+                result = "<form onsubmit=event.preventDefault() method=post novalidate>" +
+                    "    <ul class=\"sheet wrapper\" id=slide>" + form(obj) + "</ul>" +
+                    "</form>";
+            }
+
+            return "<div class=\"form sat\">" +
+                "    <h1>" + obj.title.replace(/\n/g, "<br>") + "</h1>" + result +
+                "</div>";
+        }
     },
     pageSession: function () {
         "use strict";
@@ -988,14 +1306,13 @@ ui.academy = {
                                         "</div>" +
                                         "<div class=space>" +
                                         "    <h1>" + obj.title + "</h1>" +
-                                        "    <a class=button href=\"https://drive.google.com/uc?export=download&id=" + obj.value + "\" target=_blank download=\"" + obj.title + ".pdf\"><b>להוריד " + obj.title + "</a>" +
+                                        "    <a class=button href=\"https://drive.google.com/uc?export=download&id=" + obj.value + "\" rel=noopener target=_blank download=\"" + obj.title + ".pdf\"><b>להוריד " + obj.title + "</a>" +
                                         "</div>";
                                     break;
                                 case "calculator":
-                                    result += this.calculator(obj);
-                                    break;
+                                case "sat":
                                 case "qa":
-                                    result += this.qa(obj);
+                                    result += this[obj.type].ui ? this[obj.type].ui(obj) : this[obj.type](obj);
                                     break;
                             }
 
@@ -1077,8 +1394,16 @@ ui.academy = {
     legacy: function () {
         "use strict";
 
-        if (!ui.w.Promise && ui.asyncScript) {
-            ui.asyncScript("https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch");
+        if (ui.asyncScript) {
+            // Documentation https://polyfill.io/v2/docs/examples
+            var features = [];
+
+            ui.w.Promise || features.push("Promise");
+            (ui.w.Element && Element.prototype.closest) || features.push("Element.prototype.closest");
+
+            if (features.length) {
+                ui.asyncScript("https://cdn.polyfill.io/v2/polyfill.min.js?features=" + features.join(",") + "&flags=gated");
+            }
         }
     },
     init: function () {
@@ -1091,7 +1416,12 @@ ui.academy = {
         this.details = ui.d.getElementById("details");
         this.bar = ui.d.getElementById("bar");
 
-        ui.d.getElementById("loading").remove();
+        var loading = ui.d.getElementById("loading");
+
+        if (loading) {
+            loading.remove();
+        }
+
         this.content.removeAttribute("hidden");
 
         if (this.valid) {

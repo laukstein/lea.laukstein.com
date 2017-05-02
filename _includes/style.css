@@ -427,6 +427,7 @@ br {
 }
 form {
     display: inline-block;
+    width: 100%;
 }
 form.subscribe {
         width: 24.2em;
@@ -561,7 +562,8 @@ button:focus,
 .button[tabindex]:focus {
     outline-color: #5b9dd9;
 }
-.subscribe button:before {
+.subscribe button:before,
+button.next:before {
     content: "\203A";
     font-size: 300%;
     float: left;
@@ -706,10 +708,6 @@ iframe {
 .column {
     display: table-cell;
     padding: .4em;
-}
-.label {
-    font-weight: bold;
-    white-space: nowrap;
 }
 .flow {
     float: left;
