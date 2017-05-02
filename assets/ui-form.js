@@ -117,11 +117,16 @@ ui.form = {
 
         var arr = this.list("input, select, textarea", container),
             result = [],
+            boolean,
+            value,
             i;
 
         for (i = 0; i < arr.length; i += 1) {
-            if (!(arr[i].type === "checkbox" || arr[i].type === "radio") && arr[i].value || arr[i].checked) {
-                result.push(arr[i].name + "=" + encodeURIComponent(arr[i].value));
+            boolean = arr[i].type === "checkbox" || arr[i].type === "radio";
+            value = boolean ? arr[i].checked : arr[i].value && encodeURIComponent(arr[i].value);
+
+            if (value) {
+                result.push(arr[i].name + "=" + value);
             }
         }
 
@@ -173,11 +178,15 @@ ui.form = {
             return result;
         }
     },
-    accessibility: function (flag, container, toggleSpin) {
+    accessibility: function (flag, container, toggleSpin, customTag) {
         "use strict";
 
-        var arr = this.list("input, select, textarea, button", container),
+        var tags = ["input", "select", "textarea", "button"],
+            arr,
             i;
+
+        customTag && tags.push(customTag);
+        arr = this.list(tags.join(", "), container);
 
         for (i = 0; i < arr.length; i += 1) {
             if (flag) {
