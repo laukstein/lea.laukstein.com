@@ -32,8 +32,8 @@ ui.comment = {
         "use strict";
 
         function config() {
-            this.page.identifier = location.hash.replace(/^#/, "");
-            this.page.url = location.href;
+            this.page.identifier = location.hash.replace(/^#!?/, "");
+            this.page.url = "https://lea.laukstein.com" + location.pathname + location.hash;
         }
 
         this.el = ui.d.getElementById("disqus_thread");
