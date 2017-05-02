@@ -11,6 +11,7 @@ kramdown:
     input: GFM
     hard_wrap: true
 sass:
+    sass_dir: assets
     style: compressed
 compress_html:
     clippings: all
