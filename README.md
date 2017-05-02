@@ -18,6 +18,6 @@ YAML options
 
 Differ production and development environment with `SET JEKYLL_ENV=production | development` before `jekyll serve`.
 
-Used APIs: YouTube, Disqus, MailChimp, Mailgun, PayPal, Google Analytics, FullStory, Facebook Pixel, and private APIs.
+Used APIs: YouTube, Disqus, MailChimp, Mailgun, PayPal, Google Analytics, FullStory, Facebook Pixel, Sentry, and private APIs.
 
 Released under the [CC BY-NC-ND 4.0 License](LICENSE).
