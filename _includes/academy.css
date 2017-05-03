@@ -487,6 +487,7 @@ button.error {
 }
 .calculator button {
     width: 12em;
+    margin-top: .55em;
 }
 
 .sat form {

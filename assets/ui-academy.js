@@ -179,6 +179,7 @@ ui.academy = {
                         notice: "שימי לב, חישוב ניתן רק לפעם אחת",
                         result: "את בעלת מבנה גוף {0}",
                         download: "להוריד מדריך הגיזרות",
+                        error: "שגיאה בחישוב, {0}נא לפנות ללאה{1}",
                         option: {
                             A: "היקף הכתפיים",
                             B: "היקף היריכיים",
@@ -960,7 +961,8 @@ ui.academy = {
         "use strict";
 
         var e = o instanceof Event && o,
-            el = o && o.target || o;
+            el = o && o.target || o,
+            self = this;
 
         if (e) {
             e.preventDefault();
@@ -977,7 +979,7 @@ ui.academy = {
 
             switch (page) {
                 case "calculator":
-                    data.data.calculator = (function () {
+                    data.data[page] = (function () {
                         post = ui.form.deserialize(el);
                         var A = post.A,
                             B = post.B,
@@ -999,40 +1001,54 @@ ui.academy = {
                             return "triangle";
                         } else if (comp(A, B) && (A < C && !comp(A, C) || B < C && !comp(B, C))) {
                             return "rounded";
-                        }
+                        } else {
+                            // C > D
+                            ui.form.accessibility(true, el, true);
 
-                        return "";
+                            var status = el.querySelector("[data-status]"),
+                                button = el.querySelector("button");
+
+                            if (status) {
+                                status.innerHTML = "<b>" + self.data.session["body-shape"].pages[page].error.format("<a href=\"/contact#5min\" target=_blank>", "</a>") + "</b>";
+                                status.classList.add("error");
+                            }
+                            if (button) {
+                                button.classList.add("error");
+                            }
+                        }
                     }());
                     break;
                 case "sat":
-                    data.data.sat = post;
+                    data.data[page] = post;
                     el.closest("[data-handler]").querySelector("[data-back]").remove();
                     break;
             }
 
-            fetch(ui.academy.fetch + "/update", {
-                method: "POST",
-                redirect: "error",
-                body: JSON.stringify(data)
-            }).then(function (response) {
-                return response.json();
-            }).then(function (json) {
-                return !json.error && json;
-            }).then(function (json) {
-                ui.academy.session = json;
-                localStorage.session = JSON.stringify(json);
+            if (data.data[page]) {
+                fetch(ui.academy.fetch + "/update", {
+                    method: "POST",
+                    redirect: "error",
+                    body: JSON.stringify(data)
+                }).then(function (response) {
+                    return response.json();
+                }).then(function (json) {
+                    return !json.error && json;
+                }).then(function (json) {
+                    ui.academy.session = json;
+                    localStorage.session = JSON.stringify(json);
 
-                ui.academy.refresh();
-            }).catch(function () {
-                ui.academy.session.reportDate = new Date();
-                ui.academy.session.reportData = data;
+                    ui.academy.refresh();
+                }).catch(function () {
+                    ui.academy.session.reportDate = new Date();
+                    ui.academy.session.reportData = data;
 
-                delete localStorage.session;
+                    delete localStorage.session;
 
-                alert("טעות במערכת, נסי שוב מאוחר יותר");
-                ui.academy.report("update", ui.academy.session);
-                ui.academy.refresh();
-            });
+                    alert("טעות במערכת, נסי שוב מאוחר יותר");
+                    ui.academy.report("update", ui.academy.session);
+                    ui.academy.refresh();
+                });
+            }
         }
     },
     calculator: function (obj) {
@@ -1064,8 +1080,8 @@ ui.academy = {
 
             result = "<form onsubmit=ui.academy.submit(event) method=post novalidate>" +
                 "    <ul class=sheet>" + result + "</ul>" +
+                "    <p data-status><small><i>" + obj.notice + "</i></small></p>" +
                 "    <button>" + obj.button + "</button>" +
-                "    <p>" + obj.notice + "</p>" +
                 "</form>";
         }
 
@@ -1115,11 +1131,11 @@ ui.academy = {
                             return arr;
                         }, []);
 
-                    return res;
+                    return res.length > 2 ? ["A"] : res;
                 }());
                 title = obj.success.title.format(calculate.map(function (x) {
                     return obj.final[x];
-                }).join(", "));
+                }).join(" "));
                 links = calculate.map(function (x) {
                     return "<a class=button href=\"" + obj.success.value.format(obj.success.link, obj.final[x]) + "\" rel=noopener target=_blank>" + obj.success.result.format(obj.final[x]) + "</a>";
                 }).join("");
