@@ -562,6 +562,50 @@ button.error {
     margin-left: -.1em;
 }
 
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10% {
+        transform: translateX(-9px);
+    }
+    20% {
+        transform: translateX(8px);
+    }
+    30% {
+        transform: translateX(-7px);
+    }
+    40% {
+        transform: translateX(6px);
+    }
+    50% {
+        transform: translateX(-5px);
+    }
+    60% {
+        transform: translateX(4px);
+    }
+    70% {
+        transform: translateX(-3px);
+    }
+    80% {
+        transform: translateX(2px);
+    }
+    90% {
+        transform: translateX(-1px);
+    }
+}
+
+button[disabled] {
+    animation-name: shake;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+}
+button[disabled].spin,
+button[disabled]:not(:hover) {
+    animation-name: none;
+}
+
 @media (max-width: 54em) {
     .stretch header .wrapper {
         min-width: 24.779em;
