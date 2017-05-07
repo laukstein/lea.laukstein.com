@@ -69,12 +69,19 @@ ui.videos = (function () {
             }())
         });
     };
+    generateHTML.links = function (str) {
+        // Regex https://regex101.com/r/apPfwx/2
+        var regex = /(https?:\/\/[^\s:@.,]+\.+[a-z])[^<\s\\!,]{0,}[^<\s\\!|^.,?$]{1,}|[^\s:,/@\-0=]{1,}[a-z0-9\-.]\.com?\/*[^<\s\\!]{1,}[^<\s\\!|^.,$]/ig,
+            pattern = "<a href=\"$&\" rel=noopener target=_blank dir=auto>$&</a>";
+
+        return str && str.replace(regex, pattern);
+    };
     generateHTML.image = function (obj) {
         return "<li class=box>" +
             "    <a class=absolute href=#" + obj.id + " tabindex=0></a>" +
             "    <figure><img src=" + obj.image + " alt=" + obj.title + "></figure>" +
             "    <h2 class=wrapline>" + obj.title + "</h2>" +
-            (obj.description ? "    <p>" + obj.description + "</p>" : "") +
+            (obj.description ? "    <p>" + this.links(obj.description) + "</p>" : "") +
             (obj.date ? "    <div><time>" + obj.date + "</time></div>" : "") +
             "</li>";
     };
@@ -85,7 +92,7 @@ ui.videos = (function () {
             "    <div class=video><iframe src=\"https://www.youtube.com/embed/" + obj.id + "?showinfo=0&autoplay=1\" allowfullscreen></iframe></div>" +
             "    <div class=content dir=rtl>" +
             "        <h1>" + obj.title + "</h1>" +
-            (obj.description ? "        <p>" + obj.description + "</p>" : "") +
+            (obj.description ? "        <p>" + this.links(obj.description) + "</p>" : "") +
             (obj.date ? "        <div><time>" + obj.date + "</time></div>" : "") +
             "    </div>" +
             "</article>";
