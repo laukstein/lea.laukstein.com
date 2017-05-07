@@ -29,7 +29,7 @@ if style %}{%
 endif %}{%
 
 capture head %}<!doctype html>
-<html{% if layout.className %} class={{ className }}{% endif %} lang=he>
+<html{% if layout.className %} class="{{ layout.className }}"{% endif %} lang=he>
 <head prefix="og: http://ogp.me/ns#">
 <meta charset=utf-8>
 <title>{% if title %}{{ title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>{%
