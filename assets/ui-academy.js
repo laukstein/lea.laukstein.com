@@ -1,31 +1,5 @@
-/*eslint
-comma-spacing: 2,
-dot-notation: [2, {"allowKeywords": true}],
-eqeqeq: 2,
-indent: ["error", 4, { "SwitchCase": 1 }],
-key-spacing: [2, {"beforeColon": false, "afterColon": true}],
-no-console: 0,
-no-empty-function: 2,
-no-empty: ["error", { "allowEmptyCatch": true }],
-no-eval: 2,
-no-extend-native: 2,
-no-inner-declarations: 2,
-no-loop-func: 2,
-no-mixed-spaces-and-tabs: 2,
-no-multi-spaces: 2,
-no-new-func: 2,
-no-new: 2,
-no-shadow: 2,
-no-trailing-spaces: "error",
-no-undef: 0,
-no-underscore-dangle: 2,
-no-unused-vars: 2,
-no-use-before-define: 2,
-quotes: [2, "double"],
-semi: 2,
-space-before-blocks: 2,
-space-before-function-paren: [2, {"anonymous": "always", "named": "never"}],
-strict: [2, "function"]*/
+/* eslint
+no-alert: 0 */
 
 ui.academy = {
     data: {
@@ -35,7 +9,7 @@ ui.academy = {
             page: {
                 type: "video",
                 title: "ברוכות הבאות לקורס \"הנוסחא לסטיילינג ב5 דקות לאישה הדתית\"",
-                value: "7iRtL9RTX7w"
+                value: "M_sz6CC8HDo"
             }
         },
         session: {
@@ -146,7 +120,7 @@ ui.academy = {
                         title: "איך לשלב צבעים",
                         value: "3cA_tnKHbvo"
                     },
-                    "document": {
+                    document: {
                         type: "document",
                         title: "מעגל צבעים",
                         value: "0B3TGizvMXI6lSnktdTdteUtJS0k"
@@ -456,33 +430,33 @@ ui.academy = {
 
             try {
                 result = JSON.parse(localStorage[sessionName]);
-            } catch(e) {
+            } catch (e) {
                 delete localStorage[sessionName];
             }
 
             if (typeof callback === "function") {
                 return callback(result);
-            } else {
-                return result;
             }
+
+            return result;
         }
 
         // localStorage renaming backwards compatibility, 2017/04/30
         return getData("session", function (session) {
             if (session.email && session.token) {
                 return session;
-            } else {
-                return getData("user", function (user) {
-                    if (user.email && user.token) {
-                        localStorage.session = localStorage.user;
-
-                        delete localStorage.user;
-                        ui.setUser(user);
-                    }
-
-                    return user;
-                });
             }
+
+            return getData("user", function (user) {
+                if (user.email && user.token) {
+                    localStorage.session = localStorage.user;
+
+                    delete localStorage.user;
+                    ui.setUser(user);
+                }
+
+                return user;
+            });
         });
     }()),
     fetch: location.protocol + "//lab." + location.host.replace(/^[^.]+\./, "") + "/academy",
@@ -508,9 +482,9 @@ ui.academy = {
             }
 
             return result.join("&");
-        } else {
-            return "";
         }
+
+        return "";
     },
     select: function (el, avoidRedirect) {
         "use strict";
@@ -537,7 +511,7 @@ ui.academy = {
         "use strict";
 
         if (stripHash) {
-            location = location.pathname;
+            ui.w.location = location.pathname;
         } else {
             location.reload();
         }
@@ -548,18 +522,19 @@ ui.academy = {
         e.preventDefault();
         ui.form.accessibility(false, null, true);
 
-        fetch(this.fetch + "/login", {
+        var self = this;
+
+        fetch(self.fetch + "/login", {
             method: "POST",
             // Prevent insecure redirects https://developer.mozilla.org/en-US/docs/Web/API/Response/redirected
             redirect: "error",
             body: JSON.stringify({
-                email: this.email.value,
-                pass: this.pass.value
+                email: self.email.value,
+                pass: self.pass.value
             })
         }).then(function (response) {
             return response.json();
         }).then(function (data) {
-            var self = ui.academy;
             localStorage.session = JSON.stringify(data);
 
             ui.setUser(data);
@@ -592,17 +567,17 @@ ui.academy = {
         e.preventDefault();
         ui.form.accessibility(false, null, true);
 
-        fetch(this.fetch + "/forgot", {
+        var self = this;
+
+        fetch(self.fetch + "/forgot", {
             method: "POST",
             redirect: "error",
             body: JSON.stringify({
-                email: this.email.value
+                email: self.email.value
             })
         }).then(function (response) {
             return response.json();
         }).then(function (data) {
-            var self = ui.academy;
-
             ui.form.accessibility(true, null, true);
 
             if (data.success) {
@@ -739,7 +714,7 @@ ui.academy = {
                     break;
                 case "document":
                 case "calculator":
-                    // Link params details https://pgenom.com/community/threads/гуглодиск-как-хостинг-картинок-файловый-хостинг.1236/
+                    // Params https://pgenom.com/community/threads/гуглодиск-как-хостинг-картинок-файловый-хостинг.1236/
                     url = "https://drive.google.com/thumbnail?authuser=0&sz=w640&id=" + obj.value;
                     break;
                 case "sat":
@@ -753,11 +728,12 @@ ui.academy = {
             }
         }
 
-        // YouTube image sizes http://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api
+        // YouTube image sizes http://stackoverflow.com/questions/2068344
         return obj ? "<a class=\"absolute cover\"" + this.events(session, page) +
-            " style=\"background-image:url(" + url + ")\"><h3 class=nowrap dir=auto>" + obj.title.replace(/\n/g, " ") + "</h3></a>" : "";
+            " style=\"background-image:url(" + url + ")\"><h3 class=nowrap dir=auto>" +
+            obj.title.replace(/\n/g, " ") + "</h3></a>" : "";
     },
-    report: function (/*type, data*/) {
+    report: function (/* type, data */) {
         "use strict";
 
         // TBD: report error
@@ -776,8 +752,8 @@ ui.academy = {
             var skipLoop = index !== false,
                 result = "",
                 final,
-                prop,
                 id;
+
             index = index || 0;
 
             if (skipLoop && !sameLoop) {
@@ -789,14 +765,18 @@ ui.academy = {
                     id = !final && self.uniqueID();
                     result += (sameLoop ? "" : "<ol>") +
                         "<li><input type=radio name=" + index + (id ? " id=" + id : "") + ">" +
-                        "<label onclick=" + (data.final ? "\"ui.academy.qa.dialog(event, " + index + ", '" + data.final + "')\"" : "ui.academy.qa.click(event) for=" + id) + ">" + data.title + "</label>";
+                        "<label onclick=" + (data.final ?
+                            "\"ui.academy.qa.dialog(event, " + index + ", '" + data.final + "')\"" :
+                            "ui.academy.qa.click(event) for=" + id) + ">" + data.title + "</label>";
                 }
                 if (Array.isArray(data.option)) {
                     index += 1;
                     result += "<ol>";
 
-                    for (prop in data.option) {
-                        result += label(data.option[prop], index, true);
+                    for (key in data.option) {
+                        if (data.option.hasOwnProperty(key)) {
+                            result += label(data.option[key], index, true);
+                        }
                     }
 
                     result += "</ol>";
@@ -962,18 +942,20 @@ ui.academy = {
 
         var e = o instanceof Event && o,
             el = o && o.target || o,
-            self = this;
+            self = this,
+            data,
+            page;
 
         if (e) {
             e.preventDefault();
         }
         if (ui.form.valid(ui.form.list("[data-required]", el))) {
-            var page = ui.hash("page"),
-                data = {
-                    email: ui.academy.session.email,
-                    token: ui.academy.session.token,
-                    data: {}
-                };
+            page = ui.hash("page");
+            data = {
+                email: ui.academy.session.email,
+                token: ui.academy.session.token,
+                data: {}
+            };
 
             ui.form.accessibility(false, el, true, page === "sat" && "label");
 
@@ -989,7 +971,9 @@ ui.academy = {
                             comp = function (a, b) {
                                 // Compare with tolerance
                                 return a === false ? false : Math.abs((a || 0) - (b || 0)) <= (tolerance || 0);
-                            };
+                            },
+                            button,
+                            status;
 
                         if (comp(A, B) && comp(A, C) && comp(A, D) && comp(B, C) && comp(B, D) && comp(C, D)) {
                             return "square";
@@ -1001,27 +985,28 @@ ui.academy = {
                             return "triangle";
                         } else if (comp(A, B) && (A < C && !comp(A, C) || B < C && !comp(B, C))) {
                             return "rounded";
-                        } else {
-                            // C > D
-                            ui.form.accessibility(true, el, true);
+                        }
 
-                            var status = el.querySelector("[data-status]"),
-                                button = el.querySelector("button");
+                        // C > D
+                        ui.form.accessibility(true, el, true);
 
-                            if (status) {
-                                status.innerHTML = "<b>" + self.data.session["body-shape"].pages[page].error.format("<a href=\"/contact#5min\" target=_blank>", "</a>") + "</b>";
-                                status.classList.add("error");
-                            }
-                            if (button) {
-                                button.classList.add("error");
-                            }
+                        button = el.querySelector("button");
+                        status = el.querySelector("[data-status]");
+
+                        if (status) {
+                            status.innerHTML = "<b>" + self.data.session["body-shape"].pages[page].error.format("<a href=\"/contact#5min\" target=_blank>", "</a>") + "</b>";
+                            status.classList.add("error");
+                        }
+                        if (button) {
+                            button.classList.add("error");
                         }
                     }());
                     break;
                 case "sat":
                     data.data[page] = post;
-                    el.closest("[data-handler]").querySelector("[data-back]").remove();
-                    break;
+                    el.closest("[data-handler]")
+                        .querySelector("[data-back]")
+                        .remove();
             }
 
             if (data.data[page]) {
@@ -1074,7 +1059,7 @@ ui.academy = {
             for (i = 0; i < arr.length; i += 1) {
                 result += "<li class=row>" +
                     "    <label class=\"column label\" for=" + arr[i] + ">" + obj.option[arr[i]] + "</label>" +
-                    "    <div class=column><input id=" + arr[i] + " name=" + arr[i] + " type=number min=50 max=200 maxlength=3 data-required" + (!i ? " autofocus" : "") + "></div>" +
+                    "    <div class=column><input id=" + arr[i] + " name=" + arr[i] + " type=number min=50 max=200 maxlength=3 data-required" + (i ? "" : " autofocus") + "></div>" +
                     "</li>";
             }
 
@@ -1109,7 +1094,7 @@ ui.academy = {
                 calculate = (function () {
                         // http://www.jstips.co/en/javascript/flattening-multidimensional-arrays-in-javascript/
                     var flattenArray = [].concat.apply([], self.session.task.sat),
-                        // http://stackoverflow.com/questions/840781/easiest-way-to-find-duplicate-values-in-a-javascript-array#24968449
+                        // http://stackoverflow.com/questions/840781/#24968449
                         sumObject = flattenArray.map(function (name) {
                             return {
                                 count: 1,
@@ -1117,6 +1102,7 @@ ui.academy = {
                             };
                         }).reduce(function (a, b) {
                             a[b.name] = (a[b.name] || 0) + b.count;
+
                             return a;
                         }, {}),
                         keys = Object.keys(sumObject),
@@ -1156,16 +1142,15 @@ ui.academy = {
                         vendorProp,
                         i;
 
-                    if (!prop) {
-                        return null;
-                    } else {
-                        prop = prop.toLowerCase().replace(/\-([a-z])/g, function (a, b) {
+                    if (prop) {
+                        prop = prop.toLowerCase().replace(/-([a-z])/g, function (a, b) {
                             return b.toUpperCase();
                         });
-                    }
-                    if (prop in style) {
-                        return prop;
-                    } else {
+
+                        if (prop in style) {
+                            return prop;
+                        }
+
                         prop = prop.charAt(0).toUpperCase() + prop.substr(1);
 
                         for (i = 0; i < prefixes.length; i += 1) {
@@ -1175,9 +1160,9 @@ ui.academy = {
                                 return vendorProp;
                             }
                         }
-
-                        return null;
                     }
+
+                    return null;
                 };
                 this.navigate = function (goNext) {
                     var el = ui.d.getElementById("slide");
@@ -1222,6 +1207,7 @@ ui.academy = {
                 };
                 option = function (key, value) {
                     var id = self.uniqueID();
+
                     return "<li>" +
                         "    <input name=" + key + " id=" + id + " onclick=ui.academy.sat.check(this) type=checkbox>" +
                         "    <label class=\"column label wrap\" for=" + id + ">" + value + "</label>" +
@@ -1271,15 +1257,18 @@ ui.academy = {
     pageSession: function () {
         "use strict";
 
-        if (this.valid && this.content) {
-            var session = ui.hash("session"),
-                result = "",
-                page,
-                prop,
-                obj;
-            this.self = session ? this.data.session[session] : (location.href.indexOf("#") === -1 || !location.hash && !history.pushState ? this.data.init : null);
+        var session = ui.hash("session"),
+            result = "",
+            page,
+            prop,
+            obj;
 
-            if (this.self && (!session || !this.nav || this.nav.querySelector("[data-session=\"" + session + "\"]:not([data-page])"))) {
+        if (this.valid && this.content) {
+            this.self = session ? this.data.session[session] :
+                (location.href.indexOf("#") === -1 || !location.hash && !history.pushState ? this.data.init : null);
+
+            if (this.self && (!session || !this.nav ||
+                this.nav.querySelector("[data-session=\"" + session + "\"]:not([data-page])"))) {
                 page = ui.hash("page");
                 obj = this.self.page || this.self.pages;
 
@@ -1310,7 +1299,8 @@ ui.academy = {
                             switch (obj.type) {
                                 case "video":
                                     result += "<div class=video>" +
-                                        "    <iframe src=\"https://www.youtube.com/embed/" + obj.value + "?showinfo=0\" allowfullscreen></iframe>" +
+                                        "    <iframe src=\"https://www.youtube.com/embed/" +
+                                            obj.value + "?showinfo=0\" allowfullscreen></iframe>" +
                                         "</div>" +
                                         "<div class=space><h1>" + obj.title + "</h1></div>";
                                     break;
@@ -1318,11 +1308,14 @@ ui.academy = {
                                     // width="640" height="480"
                                     // http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
                                     result += "<div class=video>" +
-                                        "    <iframe src=\"https://drive.google.com/file/d/" + obj.value + "/preview\" allowfullscreen></iframe>" +
+                                        "    <iframe src=\"https://drive.google.com/file/d/" +
+                                            obj.value + "/preview\" allowfullscreen></iframe>" +
                                         "</div>" +
                                         "<div class=space>" +
                                         "    <h1>" + obj.title + "</h1>" +
-                                        "    <a class=button href=\"https://drive.google.com/uc?export=download&id=" + obj.value + "\" rel=noopener target=_blank download=\"" + obj.title + ".pdf\"><b>להוריד " + obj.title + "</a>" +
+                                        "    <a class=button href=\"https://drive.google.com/uc?export=download&id=" +
+                                            obj.value + "\" rel=noopener target=_blank download=\"" +
+                                            obj.title + ".pdf\"><b>להוריד " + obj.title + "</a>" +
                                         "</div>";
                                     break;
                                 case "calculator":
@@ -1350,14 +1343,17 @@ ui.academy = {
     toggleNavClassName: function (el, avoidRedirect) {
         "use strict";
 
+        var hash = {},
+            selected,
+            reset,
+            name;
+
         if (el) {
-            var hash = {
-                    session: this.dataset(el, "session"),
-                    page: this.dataset(el, "page")
-                },
-                name = hash.page || !hash.session ? "active" : "expand",
-                reset = this.nav && this.nav.querySelector("." + name),
-                selected = this.nav && this.nav.querySelector(".selected");
+            hash.session = this.dataset(el, "session");
+            hash.page = this.dataset(el, "page");
+            name = hash.page || !hash.session ? "active" : "expand";
+            reset = this.nav && this.nav.querySelector("." + name);
+            selected = this.nav && this.nav.querySelector(".selected");
             hash = this.serialize(hash);
 
             if (!avoidRedirect && selected) {
@@ -1392,10 +1388,12 @@ ui.academy = {
 
         if (this.nav) {
             if (obj) {
-                this.toggleNavClassName(this.nav.querySelector(location.hash ? "[data-session=\"" + session + "\"]:not([data-page])" : "a"));
+                this.toggleNavClassName(this.nav.querySelector(location.hash ?
+                    "[data-session=\"" + session + "\"]:not([data-page])" : "a"));
 
                 if (obj.pages && obj.pages[page]) {
-                    this.toggleNavClassName(this.nav.querySelector("[data-session=\"" + session + "\"][data-page=\"" + page + "\"]"));
+                    this.toggleNavClassName(this.nav.querySelector("[data-session=\"" +
+                        session + "\"][data-page=\"" + page + "\"]"));
                 }
             }
             if (initLoad && !location.hash) {
@@ -1410,15 +1408,16 @@ ui.academy = {
     legacy: function () {
         "use strict";
 
-        if (ui.asyncScript) {
-            // Documentation https://polyfill.io/v2/docs/examples
-            var features = [];
+        var features = [];
 
+        if (ui.asyncScript) {
+            // https://polyfill.io/v2/docs/examples
             ui.w.Promise || features.push("Promise");
             (ui.w.Element && Element.prototype.closest) || features.push("Element.prototype.closest");
 
             if (features.length) {
-                ui.asyncScript("https://cdn.polyfill.io/v2/polyfill.min.js?features=" + features.join(",") + "&flags=gated");
+                ui.asyncScript("https://cdn.polyfill.io/v2/polyfill.min.js?features=" +
+                    features.join(",") + "&flags=gated");
             }
         }
     },
@@ -1427,12 +1426,12 @@ ui.academy = {
 
         this.legacy();
 
+        var loading = ui.d.getElementById("loading");
+
         this.valid = !!this.session.email && !!this.session.token;
         this.content = ui.d.getElementById("content");
         this.details = ui.d.getElementById("details");
         this.bar = ui.d.getElementById("bar");
-
-        var loading = ui.d.getElementById("loading");
 
         if (loading) {
             loading.remove();

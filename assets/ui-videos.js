@@ -1,32 +1,3 @@
-/*eslint
-comma-spacing: 2,
-dot-notation: [2, {"allowKeywords": true}],
-eqeqeq: 2,
-indent: ["error", 4, { "SwitchCase": 1 }],
-key-spacing: [2, {"beforeColon": false, "afterColon": true}],
-no-console: 0,
-no-empty-function: 2,
-no-empty: ["error", { "allowEmptyCatch": true }],
-no-eval: 2,
-no-extend-native: 2,
-no-inner-declarations: 2,
-no-loop-func: 2,
-no-mixed-spaces-and-tabs: 2,
-no-multi-spaces: 2,
-no-new-func: 2,
-no-new: 2,
-no-shadow: 2,
-no-trailing-spaces: "error",
-no-undef: 0,
-no-underscore-dangle: 2,
-no-unused-vars: 2,
-no-use-before-define: 2,
-quotes: [2, "double"],
-semi: 2,
-space-before-blocks: 2,
-space-before-function-paren: [2, {"anonymous": "always", "named": "never"}],
-strict: [2, "function"]*/
-
 ui.videos = (function () {
     "use strict";
 
@@ -77,12 +48,14 @@ ui.videos = (function () {
         return result;
     }
     generateHTML.safe = function (str) {
-        return String(str).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&apos;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        return String(str).replace(/&/g, "&amp;").replace(/"/g, "&quot;")
+            .replace(/'/g, "&apos;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     };
     generateHTML.loop = function (obj, type) {
         return this[type || "image"]({
             id: obj.resourceId && encodeURIComponent(obj.resourceId.videoId),
-            image: obj.thumbnails && (obj.thumbnails.maxres && encodeURI(obj.thumbnails.maxres.url) || obj.thumbnails.standard && encodeURI(obj.thumbnails.standard.url)),
+            image: obj.thumbnails && (obj.thumbnails.maxres && encodeURI(obj.thumbnails.maxres.url) ||
+                obj.thumbnails.standard && encodeURI(obj.thumbnails.standard.url)),
             title: this.safe(obj.title),
             description: this.safe(obj.description).replace(/\n/g, "<br>"),
             date: (function () {
@@ -128,6 +101,7 @@ ui.videos = (function () {
     function paintUI(response) {
         var url = location.hash,
             result;
+
         url = url && url.substring(1);
         response = ui.videos || response;
 
@@ -184,6 +158,7 @@ ui.videos = (function () {
             }).catch(function (err) {
                 return request.error(err);
             });
+
         return {
             inProgress: true
         };
@@ -193,23 +168,23 @@ ui.videos = (function () {
 
         if (response.error) {
             return this.error(response);
-        } else {
-            response.isLoaded = true;
-            localStorage.videos = JSON.stringify(response);
-            localStorage.videosDate = localStorage.videosDate || +now;
-
-            if (ui.videos) {
-                ui.videos = response;
-            }
-
-            paintUI(response);
-
-            if (ui.videos) {
-                ui.videos = response;
-            }
-
-            ui.w.onhashchange = paintUI;
         }
+
+        response.isLoaded = true;
+        localStorage.videos = JSON.stringify(response);
+        localStorage.videosDate = localStorage.videosDate || +now;
+
+        if (ui.videos) {
+            ui.videos = response;
+        }
+
+        paintUI(response);
+
+        if (ui.videos) {
+            ui.videos = response;
+        }
+
+        ui.w.onhashchange = paintUI;
 
         return response;
     };
@@ -239,12 +214,12 @@ ui.videos = (function () {
             if (cacheAge() < cacheDays) {
                 if (isJSON) {
                     return request.success(response);
-                } else {
-                    try {
-                        return request.success(JSON.parse(response));
-                    } catch (e) {
-                        return request();
-                    }
+                }
+
+                try {
+                    return request.success(JSON.parse(response));
+                } catch (e) {
+                    return request();
                 }
             } else {
                 delete localStorage.videos;
@@ -260,4 +235,4 @@ ui.videos = (function () {
     }
 
     return container && request.getData(localStorage.videos);
-} ());
+}());
