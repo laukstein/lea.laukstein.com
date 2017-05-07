@@ -342,7 +342,7 @@ ui.academy = {
                     "video-2": {
                         type: "video",
                         title: "גזרה, צבע ובד בהלבשה תחתונה",
-                        value: ""
+                        value: "IpwM9HEeup4"
                     },
                     "video-3": {
                         type: "video",
