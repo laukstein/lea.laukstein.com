@@ -115,10 +115,34 @@ header {
 header a {
     display: inline-block;
 }
-header .wrapper {
+header .wrapper,
+footer .wrapper {
     min-width: 14.779em;
     max-width: 80em;
     margin: auto;
+}
+footer {
+    overflow: hidden;
+    padding: 0 2.4em;
+    margin-top: -2.5em;
+    font-size: 106%;
+    line-height: 2.2;
+    text-align: left;
+    text-overflow: ellipsis;
+    border-top: 1px solid #eee;
+}
+.stretch footer {
+    border-top-color: transparent;
+}
+footer .wrapper a {
+    color: #666;
+    font-size: 96%;
+}
+.stretch.stretch footer .wrapper a {
+    color: #fff;
+}
+footer a + a {
+    margin-right: 1.6em;
 }
 nav {
     /* position: relative; */
@@ -198,12 +222,13 @@ nav .active:after {
     margin-top: .3em;
 }
 main {
-    display: block; /* Compatibiliy for IE11, old Safari 5.1.7 */
+    display: table;
         width: 100%;
     min-width: 12.6em;
     max-width: 84.78em;
     height: 100%;
     padding-top: 3.7em;
+    padding-bottom: 3em;
     margin: auto;
     box-sizing: border-box;
     -webkit-user-select: text;
@@ -339,7 +364,7 @@ cite:before {
     padding-top: 7vh;
 }
 .table.center .cel {
-    padding-bottom: 7vh;
+    padding-bottom: 5vh;
     vertical-align: middle;
 }
 .content {

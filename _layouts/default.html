@@ -92,7 +92,8 @@ case type %}
     endif %}{%
 endcase %}
 </main>
-{% include core-js.html %}{%
+{% include core-footer.html %}{%
+include core-js.html %}{%
 if page.jsonld == nil and page.image %}
     {% if page.category == 'products' %}
         {% capture jsonld %}
