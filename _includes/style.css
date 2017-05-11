@@ -222,11 +222,11 @@ nav .active:after {
     margin-top: .3em;
 }
 main {
-    display: table;
+    display: inline-block;
         width: 100%;
     min-width: 12.6em;
     max-width: 84.78em;
-    height: 100%;
+    min-height: 100%;
     padding-top: 3.7em;
     padding-bottom: 3em;
     margin: auto;
@@ -462,7 +462,6 @@ form.subscribe {
 }
 label {
     display: none;
-    box-suppress: discard;
     padding-top: .2em;
     padding-bottom: .2em;
     color: #666;
@@ -831,6 +830,7 @@ iframe {
 
 [hidden][hidden] {
     display: none;
+    box-suppress: discard;
 }
 
 @supports (display: flex) {
@@ -838,6 +838,9 @@ iframe {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .main .table.center {
+        min-height: calc(100vh - 6.7em);
     }
     .table.center .cel.cel {
         display: block;

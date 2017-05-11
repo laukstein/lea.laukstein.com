@@ -47,6 +47,7 @@ header .wrapper {
 }
 .profile .table.center {
     justify-content: inherit;
+    height: 2.3em;
 }
 .profile .cel.cel {
     padding: 0;
