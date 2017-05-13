@@ -77,171 +77,228 @@ window.ui = {
     analytics: function () {
         "use strict";
 
-        ui.asyncScript("https://www.google-analytics.com/analytics.js", {
-            onSuccess: function () {
-                // https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id
-                if (window.ga) {
-                    ga("create", "UA-11883501-1", "laukstein.com", {
-                        clientId: localStorage.gaClientId,
-                        storage: "none"
-                    });
-
-                    if (!localStorage.gaClientId) {
-                        ga(function (tracker) {
-                            localStorage.gaClientId = tracker.get("clientId");
+        if (this.environment === "production") {
+            // https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id
+            this.asyncScript("https://www.google-analytics.com/analytics.js", {
+                onSuccess: function () {
+                    if (window.ga) {
+                        ga("create", "UA-11883501-1", "laukstein.com", {
+                            clientId: localStorage.gaClientId,
+                            storage: "none"
                         });
+
+                        if (!localStorage.gaClientId) {
+                            ga(function (tracker) {
+                                localStorage.gaClientId = tracker.get("clientId");
+                            });
+                        }
+
+                        ga("send", "pageview");
+
+                        ui.identify.ga();
+                    }
+                },
+                remove: true
+            });
+
+            if (!window.FS) {
+                this.asyncScript("https://www.fullstory.com/s/fs.js", {
+                    onStart: function () {
+                        window._fs_debug = false; // eslint-disable-line
+                        window._fs_host = "www.fullstory.com"; // eslint-disable-line
+                        window._fs_org = "3YG86"; // eslint-disable-line
+                        window._fs_namespace = "FS"; // eslint-disable-line
+                    },
+                    onSuccess: function () {
+                        var g = window[window._fs_namespace || "FS"] = function (a, b) { // eslint-disable-line
+                            if (g.q) {
+                                g.q.push([a, b]);
+                            } else if (g._api) {
+                                g._api(a, b);
+                            }
+                        };
+                        g.q = [];
+                        g.setUserVars = function (v) {
+                            g("user", v);
+                        };
+                        g.identify = function (i, v) {
+                            g("user", {uid: i});
+
+                            if (v) {
+                                g.setUserVars(v);
+                            }
+                        };
+                        g.identifyAccount = function (i, v) {
+                            o = "account";
+                            v = v || {};
+                            v.acctId = i;
+
+                            g(o, v);
+                        };
+                        g.clearUserCookie = function (c, d, i) {
+                            if (!c || ui.d.cookie.match("fs_uid=[`;`]*`[`;`]*`[`;`]*`")) {
+                                d = n.domain;
+
+                                while (1) { // eslint-disable-line
+                                    n.cookie = "fs_uid=;domain=" + d + ";path=/;expires=" + new Date(0).toUTCString();
+                                    i = d.indexOf(".");
+
+                                    if (i < 0) break;
+
+                                    d = d.slice(i + 1);
+                                }
+                            }
+                        };
+
+                        ui.identify.fs();
+                    }
+                });
+            }
+
+            // Facebook Pixel https://www.facebook.com/business/help/952192354843755
+            this.asyncScript("https://connect.facebook.net/en_US/fbevents.js", {
+                onStart: function () {
+                    var n;
+
+                    if (!window.fbq) {
+                        n = window.fbq = function () {
+                            if (n.callMethod) {
+                                n.callMethod.apply(n, arguments);
+                            } else {
+                                n.queue.push(arguments);
+                            }
+                        };
+
+                        window._fbq = window._fbq || n; // eslint-disable-line
+                        n.push = n;
+                        n.loaded = true;
+                        n.version = "2.0";
+                        n.queue = [];
                     }
 
-                    ga("send", "pageview");
-
-                    ui.identify.ga();
+                    fbq("init", "1265828396834846");
+                    fbq("track", "PageView");
                 }
-            },
-            remove: true
-        });
+            });
 
-        if (!window.FS) {
-            ui.asyncScript("https://www.fullstory.com/s/fs.js", {
-                onStart: function () {
-                    window._fs_debug = false; // eslint-disable-line
-                    window._fs_host = "www.fullstory.com"; // eslint-disable-line
-                    window._fs_org = "3YG86"; // eslint-disable-line
-                    window._fs_namespace = "FS"; // eslint-disable-line
-                },
+            // Sentry JavaScript client Raven.js https://docs.sentry.io/clients/javascript/install/
+            this.asyncScript("https://cdn.ravenjs.com/3.14.2/raven.min.js", {
+                crossorigin: "anonymous",
                 onSuccess: function () {
-                    var g = window[window._fs_namespace || "FS"] = function (a, b) { // eslint-disable-line
-                        if (g.q) {
-                            g.q.push([a, b]);
-                        } else if (g._api) {
-                            g._api(a, b);
-                        }
-                    };
-                    g.q = [];
-                    g.setUserVars = function (v) {
-                        g("user", v);
-                    };
-                    g.identify = function (i, v) {
-                        g("user", {uid: i});
-
-                        if (v) {
-                            g.setUserVars(v);
-                        }
-                    };
-                    g.identifyAccount = function (i, v) {
-                        o = "account";
-                        v = v || {};
-                        v.acctId = i;
-
-                        g(o, v);
-                    };
-                    g.clearUserCookie = function (c, d, i) {
-                        if (!c || ui.d.cookie.match("fs_uid=[`;`]*`[`;`]*`[`;`]*`")) {
-                            d = n.domain;
-
-                            while (1) { // eslint-disable-line
-                                n.cookie = "fs_uid=;domain=" + d + ";path=/;expires=" + new Date(0).toUTCString();
-                                i = d.indexOf(".");
-
-                                if (i < 0) break;
-
-                                d = d.slice(i + 1);
-                            }
-                        }
-                    };
-
-                    ui.identify.fs();
+                    if (window.Raven && Raven.config) {
+                        Raven.config("https://1e8b57d9fb744a9ba1068e9b5cc5386c@sentry.io/156066", {
+                            environment: ui.environmen
+                        }).install();
+                        ui.identify.raven();
+                    }
                 }
             });
         }
-
-        ui.asyncScript("https://connect.facebook.net/en_US/fbevents.js", {
-            onStart: function () {
-                // Facebook Pixel https://www.facebook.com/business/help/952192354843755
-                var n;
-
-                if (!window.fbq) {
-                    n = window.fbq = function () {
-                        if (n.callMethod) {
-                            n.callMethod.apply(n, arguments);
-                        } else {
-                            n.queue.push(arguments);
-                        }
-                    };
-
-                    window._fbq = window._fbq || n; // eslint-disable-line
-                    n.push = n;
-                    n.loaded = true;
-                    n.version = "2.0";
-                    n.queue = [];
-                }
-
-                fbq("init", "1265828396834846");
-                fbq("track", "PageView");
-            }
-        });
-
-        // Sentry JavaScript client Raven.js https://docs.sentry.io/clients/javascript/install/
-        ui.asyncScript("https://cdn.ravenjs.com/3.14.2/raven.min.js", {
-            crossorigin: "anonymous",
-            onSuccess: function () {
-                if (window.Raven && Raven.config) {
-                    Raven.config("https://1e8b57d9fb744a9ba1068e9b5cc5386c@sentry.io/156066",
-                        {environment: ui.environmen}).install();
-                    ui.identify.raven();
-                }
-            }
-        });
     },
     identify: {
         all: function () {
             "use strict";
 
             var arr = Object.keys(this),
-                ignoredKeys = ["all", "user"],
+                ignoredKeys = ["all", "user", "track"],
                 i;
 
             ui.getUser();
 
             for (i = 0; i < arr.length; i += 1) {
-                if (ignoredKeys.indexOf(arr[i]) === -1 && typeof this[i] === "function") {
-                    this[i]();
+                if (ignoredKeys.indexOf(arr[i]) === -1 && typeof this[arr[i]] === "function") {
+                    this[arr[i]]();
                 }
+            }
+        },
+        track: function (options) {
+            "use strict";
+
+            options = options || {};
+            var retryCount = 0,
+                retryMax = 5,
+                sequence,
+                init;
+
+            if (ui.environment === "production") {
+                // https://www.quora.com/What-is-the-next-number-in-the-sequence-1-3-7-13-21-31-43-The-function-f-n
+                // http://stackoverflow.com/questions/7944239/
+                // http://stackoverflow.com/questions/37217953/
+                // Array.apply(null, Array(6)).reduce(function(x, y, z){
+                //     return x.concat(z < 2 ? z : x[z-1] + 2 * (x[z-2])); }, [])
+                //     .filter(function(x, y, z){ return x && y === z.indexOf(x); });
+                // [1, 3, 5, 11]
+                sequence = function (n) {
+                    return n < 2 ? 1 : sequence(n - 1) + 2 * (n - 1);
+                };
+                init = function () {
+                    retryCount += 1;
+
+                    if (retryCount < retryMax) {
+                        if (typeof options.callback !== "function") {
+                            console.log("Analytics disabled", options);
+                        } else if (!options.hasOwnProperty("condition") || typeof options.condition === "function" ? options.condition() : options.condition) {
+                            options.callback();
+                        } else {
+                            setTimeout(init, sequence(retryCount) * 500);
+                        }
+                    }
+                };
+
+                init();
+            } else {
+                console.log("Identified", this.user);
             }
         },
         fs: function () {
             "use strict";
 
-            if (window.FS && this.user.email) {
-                // http://help.fullstory.com/develop-js/identify
-                FS.identify(this.user.email, this.user.fullName && {
-                    displayName: this.user.fullName,
-                    email: this.user.email
-                });
-            }
+            this.track({
+                condition: function () {
+                    return window.FS && this.user.email;
+                },
+                callback: function () {
+                    // http://help.fullstory.com/develop-js/identify
+                    FS.identify(this.user.email, this.user.fullName && {
+                        displayName: this.user.fullName,
+                        email: this.user.email
+                    });
+                }
+            });
         },
         ga: function () {
             "use strict";
 
-            if (window.ga && this.user.email) {
-                // https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#user_id
-                ga("set", "userId", this.user.email);
-            }
+            this.track({
+                condition: function () {
+                    return window.ga && this.user.email;
+                },
+                callback: function () {
+                    // https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#user_id
+                    ga("set", "userId", this.user.email);
+                }
+            });
         },
         raven: function () {
             "use strict";
 
-            var obj = {};
+            this.track({
+                condition: function () {
+                    return window.Raven && Raven.setUserContext && this.user.email;
+                },
+                callback: function () {
+                    var obj = {};
 
-            if (window.Raven && Raven.setUserContext && this.user.email) {
-                // https://docs.sentry.io/learn/context/
-                obj.email = this.user.email;
+                    obj.email = this.user.email;
 
-                if (this.user.fullName) {
-                    obj.username = this.user.fullName;
+                    if (this.user.fullName) {
+                        obj.username = this.user.fullName;
+                    }
+
+                    // https://docs.sentry.io/learn/context/
+                    Raven.setUserContext(obj);
                 }
-
-                Raven.setUserContext(obj);
-            }
+            });
         },
         user: {}
     },
@@ -477,10 +534,7 @@ window.ui = {
 
         this.legacy();
         this.getUser();
-
-        if (this.environment === "production") {
-            this.analytics();
-        }
+        this.analytics();
     }
 };
 
