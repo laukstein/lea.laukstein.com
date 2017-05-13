@@ -1065,7 +1065,7 @@ ui.academy = {
 
             result = "<form onsubmit=ui.academy.submit(event) method=post novalidate>" +
                 "    <ul class=sheet>" + result + "</ul>" +
-                "    <p data-status><small><i>" + obj.notice + "</i></small></p>" +
+                "    <div data-status><small><i>" + obj.notice + "</i></small></div>" +
                 "    <button>" + obj.button + "</button>" +
                 "</form>";
         }
