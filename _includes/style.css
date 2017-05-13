@@ -222,7 +222,7 @@ nav .active:after {
     margin-top: .3em;
 }
 main {
-    display: inline-block;
+    display: block;
         width: 100%;
     min-width: 12.6em;
     max-width: 84.78em;
@@ -349,12 +349,13 @@ cite:before {
     table-layout: fixed;
     width: 100%;
 }
-.table.scale {
-    height: 100%;
-}
 .table.center {
     width: auto;
     margin: auto;
+}
+.table.scale,
+main .table.center {
+    min-height: calc(100vh - 6.7em);
 }
 .cel {
     display: table-cell;
@@ -838,9 +839,6 @@ iframe {
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-    .main .table.center {
-        min-height: calc(100vh - 6.7em);
     }
     .table.center .cel.cel {
         display: block;
