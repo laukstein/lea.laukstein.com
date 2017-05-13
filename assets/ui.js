@@ -215,7 +215,8 @@ window.ui = {
             "use strict";
 
             options = options || {};
-            var retryCount = 0,
+            var self = this,
+                retryCount = 0,
                 retryMax = 5,
                 sequence,
                 init;
@@ -237,8 +238,8 @@ window.ui = {
                     if (retryCount < retryMax) {
                         if (typeof options.callback !== "function") {
                             console.log("Analytics disabled", options);
-                        } else if (!options.hasOwnProperty("condition") || typeof options.condition === "function" ? options.condition() : options.condition) {
-                            options.callback();
+                        } else if (!options.hasOwnProperty("condition") || typeof options.condition === "function" ? options.condition(self) : options.condition) {
+                            options.callback(self);
                         } else {
                             setTimeout(init, sequence(retryCount) * 500);
                         }
@@ -254,14 +255,14 @@ window.ui = {
             "use strict";
 
             this.track({
-                condition: function () {
-                    return window.FS && this.user.email;
+                condition: function (self) {
+                    return window.FS && self.user.email;
                 },
-                callback: function () {
+                callback: function (self) {
                     // http://help.fullstory.com/develop-js/identify
-                    FS.identify(this.user.email, this.user.fullName && {
-                        displayName: this.user.fullName,
-                        email: this.user.email
+                    FS.identify(self.user.email, self.user.fullName && {
+                        displayName: self.user.fullName,
+                        email: self.user.email
                     });
                 }
             });
@@ -270,12 +271,12 @@ window.ui = {
             "use strict";
 
             this.track({
-                condition: function () {
-                    return window.ga && this.user.email;
+                condition: function (self) {
+                    return window.ga && self.user.email;
                 },
-                callback: function () {
+                callback: function (self) {
                     // https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#user_id
-                    ga("set", "userId", this.user.email);
+                    ga("set", "userId", self.user.email);
                 }
             });
         },
@@ -283,16 +284,16 @@ window.ui = {
             "use strict";
 
             this.track({
-                condition: function () {
-                    return window.Raven && Raven.setUserContext && this.user.email;
+                condition: function (self) {
+                    return window.Raven && Raven.setUserContext && self.user.email;
                 },
-                callback: function () {
+                callback: function (self) {
                     var obj = {};
 
-                    obj.email = this.user.email;
+                    obj.email = self.user.email;
 
-                    if (this.user.fullName) {
-                        obj.username = this.user.fullName;
+                    if (self.user.fullName) {
+                        obj.username = self.user.fullName;
                     }
 
                     // https://docs.sentry.io/learn/context/
