@@ -752,6 +752,7 @@ ui.academy = {
             var skipLoop = index !== false,
                 result = "",
                 final,
+                key,
                 id;
 
             index = index || 0;
