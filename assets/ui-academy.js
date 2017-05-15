@@ -210,8 +210,7 @@ ui.academy = {
                         back: "חזור",
                         button: "הצג תוצאה",
                         limit: "סמני מקסימום שתי תשובות",
-                        // https://www.quora.com/How-can-I-download-all-of-the-full-size-images-from-my-Pinterest-board#MPvCcJ
-                        value: "https://s-media-cache-ak0.pinimg.com/originals/50/0d/de/500dde47e9c1b7cafedb043176fa190d.jpg",
+                        value: "academy-style.jpg",
                         option: [
                             {
                                 title: "כיצד את בוחרת את צבעי הבגדים שלך?",
