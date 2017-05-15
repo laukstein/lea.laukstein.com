@@ -248,13 +248,14 @@ window.ui = {
 
                 init();
             } else {
-                console.log("Identified", this.user);
+                console.log("Identified: " + options.name, this.user);
             }
         },
         fs: function () {
             "use strict";
 
             this.track({
+                name: "FullStory",
                 condition: function (self) {
                     return window.FS && self.user.email;
                 },
@@ -271,6 +272,7 @@ window.ui = {
             "use strict";
 
             this.track({
+                name: "Google Analytics",
                 condition: function (self) {
                     return window.ga && self.user.email;
                 },
@@ -284,6 +286,7 @@ window.ui = {
             "use strict";
 
             this.track({
+                name: "Sentry",
                 condition: function (self) {
                     return window.Raven && Raven.setUserContext && self.user.email;
                 },
