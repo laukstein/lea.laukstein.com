@@ -411,12 +411,16 @@ ui.academy = {
             bonuses: {
                 title: "בונוסים",
                 date: {
-                    enabled: false,
+                    // Enabled 3w from registration date
+                    interval: 3,
                     format: "..."
                 },
                 pages: {
-                    pregnency: {},
-                    face: {}
+                    underwear: {
+                        type: "document",
+                        title: "הלבשה תחתונה",
+                        value: "1waOmpJlmN6tRAn6M6scEUwbGN_OhvrFDdacIqJyGD5w"
+                    }
                 }
             }
         }
@@ -595,8 +599,10 @@ ui.academy = {
         delete localStorage.session;
         this.refresh(true);
     },
-    date: function () {
+    date: function (options) {
         "use strict";
+
+        options = options || {};
 
         if (!this.currentTime) {
             this.firstSession = true;
@@ -604,13 +610,15 @@ ui.academy = {
             delete this.firstSession;
         }
 
-        this.currentTime = this.currentTime || new Date(this.data.date);
+        this.currentTime = !options.interval && this.currentTime || new Date(this.data.date);
         var date = new Date(this.currentTime.setDate(this.currentTime.getDate() +
-            (this.firstSession ? 0 : this.data.interval)) + 10000000);
+                (options.interval ? options.interval * this.data.interval :
+                (this.firstSession ? 0 : this.data.interval))) +
+                (options.interval ? 0 : 10000000));
 
         return {
             enabled: +date <= +new Date(),
-            format: date.getUTCDate() + "/" + (date.getUTCMonth() + 1)
+            format: options.format || date.getUTCDate() + "/" + (date.getUTCMonth() + 1)
         };
     },
     key: function (e) {
@@ -670,7 +678,7 @@ ui.academy = {
 
         for (session in obj) {
             if (obj.hasOwnProperty(session)) {
-                date = obj[session].date || this.date();
+                date = this.date(obj[session].date);
                 result += "    <li" + (session === current ? " class=expand" : "") + ">" +
                     "<label" + (date.enabled ? this.events(session) : " disabled") + ">" +
                     "<time>" + date.format + "</time><div>" + obj[session].title + "</div>" +
@@ -717,8 +725,6 @@ ui.academy = {
                     url = "https://drive.google.com/thumbnail?authuser=0&sz=w640&id=" + obj.value;
                     break;
                 case "sat":
-                    url = obj.value;
-                    break;
                 case "qa":
                     url = "/assets/" + obj.value;
                     break;
