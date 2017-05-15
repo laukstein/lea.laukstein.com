@@ -425,6 +425,7 @@ ui.academy = {
             }
         }
     },
+    hash: {},
     session: (function () {
         "use strict";
 
@@ -493,19 +494,30 @@ ui.academy = {
         "use strict";
 
         if (el) {
-            var hash = this.serialize({
+            var hash = {
                 session: this.dataset(el, "session"),
                 page: this.dataset(el, "page")
-            });
+            };
 
-            if (!avoidRedirect && hash) {
-                location.hash = hash;
-                ui.d.body.scrollTop = 0;
-            } else if (!hash && location.hash || !this.data.session[ui.hash("session")]) {
-                location.hash = "";
+            if ((this.hash.session === hash.session) &&
+                (this.hash.page === hash.page)) {
+                el.classList.toggle("expand");
 
-                if (history.pushState) {
-                    history.pushState("", ui.d.title, location.pathname);
+                if (this.bar && this.bar.checked) {
+                    this.bar.checked = false;
+                }
+            } else {
+                hash = this.serialize(hash);
+
+                if (!avoidRedirect && hash) {
+                    location.hash = hash;
+                    ui.d.body.scrollTop = 0;
+                } else if (!hash && location.hash || !this.data.session[ui.hash("session")]) {
+                    location.hash = "";
+
+                    if (history.replaceState) {
+                        history.replaceState("", ui.d.title, location.pathname);
+                    }
                 }
             }
         }
@@ -1263,31 +1275,29 @@ ui.academy = {
     pageSession: function () {
         "use strict";
 
-        var session = ui.hash("session"),
+        var hash = ui.hash(),
             result = "",
-            page,
             prop,
             obj;
 
         if (this.valid && this.content) {
-            this.self = session ? this.data.session[session] :
-                (location.href.indexOf("#") === -1 || !location.hash && !history.pushState ? this.data.init : null);
+            this.self = hash.session ? this.data.session[hash.session] :
+                (location.href.indexOf("#") === -1 || !location.hash && !history.replaceState ? this.data.init : null);
 
-            if (this.self && (!session || !this.nav ||
-                this.nav.querySelector("[data-session=\"" + session + "\"]:not([data-page])"))) {
-                page = ui.hash("page");
+            if (this.self && (!hash.session || !this.nav ||
+                this.nav.querySelector("[data-session=\"" + hash.session + "\"]:not([data-page])"))) {
                 obj = this.self.page || this.self.pages;
 
                 if (this.bar && this.bar.checked) {
                     this.bar.checked = false;
                 }
                 if (obj) {
-                    if (session && !page) {
+                    if (hash.session && !hash.page) {
                         result += "<ol class=items dir=ltr>";
 
                         for (prop in obj) {
                             if (obj.hasOwnProperty(prop)) {
-                                result += "    <li>" + this.list(obj[prop], session, prop) + "</li>";
+                                result += "    <li>" + this.list(obj[prop], hash.session, prop) + "</li>";
                             }
                         }
 
@@ -1299,7 +1309,7 @@ ui.academy = {
                             ui.comment.remove();
                         }
                     } else {
-                        obj = session ? obj && obj[page] : obj;
+                        obj = hash.session ? obj && obj[hash.page] : obj;
 
                         if (obj) {
                             switch (obj.type) {
@@ -1346,49 +1356,50 @@ ui.academy = {
             }
         }
     },
-    toggleNavClassName: function (el, avoidRedirect) {
+    toggleNavClassName: function (el) {
         "use strict";
 
-        var hash = {},
-            selected,
-            reset,
-            name;
+        var hash = ui.hash(),
+            resetElement = {
+                session: this.nav && this.nav.querySelector(".expand"),
+                active: this.nav && this.nav.querySelector(".active"),
+                page: this.nav && this.nav.querySelector(".selected")
+            },
+            applyClass,
+            diff;
 
-        if (el) {
-            hash.session = this.dataset(el, "session");
-            hash.page = this.dataset(el, "page");
-            name = hash.page || !hash.session ? "active" : "expand";
-            reset = this.nav && this.nav.querySelector("." + name);
-            selected = this.nav && this.nav.querySelector(".selected");
-            hash = this.serialize(hash);
+        hash.previous = {
+            session: this.dataset(resetElement.session, "session"),
+            page: this.dataset(resetElement.page || resetElement.active, "page")
+        };
+        applyClass = function (key, className, forceApplyClass) {
+            if (forceApplyClass || hash.previous[key] !== hash[key]) {
+                if (resetElement[key]) {
+                    resetElement[key].classList.remove(className);
 
-            if (!avoidRedirect && selected) {
-                selected.classList.remove("selected");
-            }
-            if (reset) {
-                reset.classList.remove(name);
-            }
-            if (!hash.page) {
-                reset = this.nav && this.nav.querySelector(".active");
-
-                if (reset) {
-                    reset.classList.remove("active");
+                    if (ui.d.activeElement === resetElement[key]) {
+                        resetElement[key].blur();
+                    }
                 }
-            }
-            if (el) {
-                if (!avoidRedirect && !hash.page) {
-                    el.classList.add("selected");
+                if (!diff) {
+                    diff = true;
                 }
 
-                el.classList.add(name);
+                el.classList.add(className);
             }
-        }
+        };
+
+        applyClass("session", "expand");
+        applyClass("page", "selected", !!diff);
+        applyClass("active", "active", !!diff);
     },
     toggleNav: function (initLoad) {
         "use strict";
 
-        var session = ui.hash("session"),
-            page = ui.hash("page"),
+        this.hash = ui.hash();
+
+        var session = this.hash.session,
+            page = this.hash.page,
             obj = location.hash ? this.data.session[session] : this.data.init,
             arr;
 
@@ -1405,7 +1416,7 @@ ui.academy = {
             if (initLoad && !location.hash) {
                 arr = this.nav.querySelectorAll("[data-session]:not([data-page])");
 
-                this.toggleNavClassName(arr[arr.length - 1], true);
+                this.toggleNavClassName(arr[arr.length - 1]);
             }
         }
 
