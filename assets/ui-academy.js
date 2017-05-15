@@ -366,7 +366,7 @@ ui.academy = {
                     "video-2": {
                         type: "video",
                         title: "סוגי אקססוריז",
-                        value: ""
+                        value: "kp6SULk09RY"
                     },
                     "video-3": {
                         type: "video",
