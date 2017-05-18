@@ -217,31 +217,21 @@ window.ui = {
             options = options || {};
             var self = this,
                 retryCount = 0,
-                retryMax = 5,
-                sequence,
+                retryMax = 4,
                 init;
 
             if (ui.environment === "production") {
-                // https://www.quora.com/What-is-the-next-number-in-the-sequence-1-3-7-13-21-31-43-The-function-f-n
-                // http://stackoverflow.com/questions/7944239/
-                // http://stackoverflow.com/questions/37217953/
-                // Array.apply(null, Array(6)).reduce(function(x, y, z){
-                //     return x.concat(z < 2 ? z : x[z-1] + 2 * (x[z-2])); }, [])
-                //     .filter(function(x, y, z){ return x && y === z.indexOf(x); });
-                // [1, 3, 5, 11]
-                sequence = function (n) {
-                    return n < 2 ? 1 : sequence(n - 1) + 2 * (n - 1);
-                };
                 init = function () {
                     retryCount += 1;
 
                     if (retryCount < retryMax) {
                         if (typeof options.callback !== "function") {
                             console.log("Analytics disabled", options);
-                        } else if (!options.hasOwnProperty("condition") || typeof options.condition === "function" ? options.condition(self) : options.condition) {
+                        } else if (!options.hasOwnProperty("condition") ||
+                            typeof options.condition === "function" ? options.condition(self) : options.condition) {
                             options.callback(self);
                         } else {
-                            setTimeout(init, sequence(retryCount) * 500);
+                            setTimeout(init, (retryCount - 1) * 1000);
                         }
                     }
                 };
