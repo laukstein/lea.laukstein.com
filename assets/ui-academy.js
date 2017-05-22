@@ -391,20 +391,18 @@ ui.academy = {
                     "video-2": {
                         type: "video",
                         title: "מה כוללת מערכת לבוש יעילה",
-                        value: ""
+                        value: "-zHM4bjnLsI"
                     },
                     "video-3": {
-                        type: "video",
-                        title: "כמה שילובים חדשים אפשר להוציא מ9 פריטים",
-                        value: ""
-                    },
-                    "video-4": {
                         type: "video",
                         title: "שיעורי בית",
                         value: "yzJaU1ZW1QU"
                     },
                     "check-list": {
-                        title: "צ’ק ליסט למערכת לבוש יעילה"
+                        type: "document",
+                        title: "צ'ק ליסט למערכת לבוש יעילה",
+                        value: "1eSQaxVn2AKrwwrNafS0JnKTwjJzs50-7edCKn8kwkVs",
+                        download: "https://docs.google.com/document/d/{0}/export?format=pdf"
                     }
                 }
             },
@@ -1329,8 +1327,9 @@ ui.academy = {
                                         "</div>" +
                                         "<div class=space>" +
                                         "    <h1>" + obj.title + "</h1>" +
-                                        "    <a class=button href=\"https://drive.google.com/uc?export=download&id=" +
-                                            obj.value + "\" rel=noopener target=_blank download=\"" +
+                                        "    <a class=button href=\"" + (obj.download ? obj.download.format(obj.value) :
+                                                "https://drive.google.com/uc?export=download&id=" + obj.value) +
+                                            "\" rel=noopener target=_blank download=\"" +
                                             obj.title + ".pdf\"><b>להוריד " + obj.title + "</a>" +
                                         "</div>";
                                     break;
