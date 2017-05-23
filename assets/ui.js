@@ -93,7 +93,13 @@ window.ui = {
                             });
                         }
 
-                        ga("send", "pageview");
+                        // Page tracking
+                        // https://developers.google.com/analytics/devguides/collection/analyticsjs/pages
+                        ga("send", {
+                            hitType: "pageview",
+                            title: ui.d.title,
+                            page: location.pathname
+                        });
 
                         ui.identify.ga();
                     }
