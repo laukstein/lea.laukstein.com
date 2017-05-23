@@ -512,9 +512,9 @@ window.ui = {
 
         try {
             // Safari Private Browsing doesn't support localStorage
-            localStorage.setItem("localStorage", "1");
-            localStorage.removeItem("localStorage");
-        } catch (err) {
+            localStorage.localStorage = "1";
+            delete localStorage.localStorage;
+        } catch (e) {
             if (ui.w.localStorage) {
                 // Required for Safari Private Browsing
                 delete ui.w.localStorage;
