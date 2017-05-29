@@ -1082,8 +1082,10 @@ iframe {
         }
     }
     @supports (not (-ms-accelerator: true)) and (not (-ms-ime-align: auto)) { /* Webkit, Safari 9+ */
-        html {
-            /* iOS 7 legacy http://barrow.io/overflow-scrolling */
+        html,
+        textarea {
+            /* iOS 10.3.1 ignores z-index when used -webkit-overflow-scrolling
+               https://github.com/scottjehl/Device-Bugs/issues/14 */
             -webkit-overflow-scrolling: touch;
         }
         html {
