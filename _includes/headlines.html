@@ -1,4 +1,5 @@
 <div class=headlines>
+<div class=grid>
 {% assign counter = 0 %}{%
 assign max = 5 %}{%
 assign pages=site.pages | sort: "date" | reverse %}{%
@@ -18,9 +19,10 @@ for post in pages %}{%
     endif %}{%
 endfor %}
 {% if more %}
-    <blockquote class=box>
+    <blockquote class="box footer">
         <p>מאמרים נוספים:</p>
         <ol start={{ max + 1 }}>{{ more }}</ol>
     </blockquote>{%
 endif %}
+</div>
 </div>

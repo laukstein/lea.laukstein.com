@@ -24,7 +24,7 @@ script:
         </nav>
     </div>
 </header>
-<main dir=rtl>{%
+<main{% if page.pageName %} class={{ page.pageName }}{% endif %} dir=rtl>{%
 if layout.comment or page.comment or page.category == 'products' %}
     {% assign addComments=true %}
 {% endif %}{%

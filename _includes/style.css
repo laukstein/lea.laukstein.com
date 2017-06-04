@@ -458,6 +458,7 @@ form {
 form.subscribe {
         width: 24.2em;
     max-width: 100%;
+    padding-bottom: 6%;
     margin: auto;
     text-align: center;
 }
@@ -830,6 +831,37 @@ iframe {
     box-suppress: discard;
 }
 
+@supports (display: grid) {
+    .grid {
+        display: grid;
+        grid-gap: 1.2em;
+        /* grid-template-columns: repeat(auto-fit, minmax(20em, 1fr)); */
+        /* grid-auto-rows: minmax(13em, auto); */
+        margin-top: 1.2em;
+    }
+    .grid .footer {
+        grid-column: 1 / -1;
+    }
+    .headlines .grid .box {
+        margin-top: 0;
+    }
+
+    @media (min-width: 54.001em) {
+        .landing .table.scale {
+            display: grid;
+            grid-template-areas: "sidebar content" "sidebar headlines";
+        }
+        .landing .content {
+            grid-area: content;
+            grid-column: 1;
+        }
+        .landing form.subscribe {
+            grid-area: sidebar;
+            grid-column: 2;
+            margin: 2.3em 0;
+        }
+    }
+}
 @supports (display: flex) {
     .table.center {
         display: flex;
