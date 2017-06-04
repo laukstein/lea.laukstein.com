@@ -1007,7 +1007,6 @@ iframe {
         height: .211em;
         background-color: #333;
         border-radius: .5em;
-        box-shadow: 0 0 1px 1px rgba(255,255,255,.3);
         transition: width .1s, background-color 1ms, transform .35s cubic-bezier(.2,1,.4,1);
         will-change: transform;
     }
@@ -1032,7 +1031,6 @@ iframe {
     }
     .bar-holder:checked ~ header .wrapper .bar span {
         background-color: transparent;
-        box-shadow: none;
     }
     .bar-holder:checked ~ header .wrapper .bar span:before {
         width: 1.3em;
