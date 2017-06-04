@@ -831,48 +831,138 @@ iframe {
     box-suppress: discard;
 }
 
-@supports (display: grid) {
-    .grid {
-        display: grid;
-        grid-gap: 1.2em;
-        /* grid-template-columns: repeat(auto-fit, minmax(20em, 1fr)); */
-        /* grid-auto-rows: minmax(13em, auto); */
-        margin-top: 1.2em;
+@media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */
+    label {
+        display: table-cell;
     }
-    .grid .footer {
-        grid-column: 1 / -1;
+}
+@media (-ms-high-contrast: active), (-ms-high-contrast: none) { /* IE10+ */
+    a {
+        /* Remove IE10 :active gray background-color */
+        background-color: transparent;
     }
-    .headlines .grid .box {
-        margin-top: 0;
+    ::-ms-clear {
+        /* Remove input x */
+        display: none;
+        box-suppress: discard;
     }
+    :-ms-input-placeholder {
+        direction: rtl;
+        color: inherit;
+    }
+    .error :-ms-input-placeholder {
+        color: #be1100;
+    }
+    [disabled]:-ms-input-placeholder {
+        opacity: .54;
+    }
+}
+@media (-webkit-min-device-pixel-ratio: 0) {
+    @supports (-ms-ime-align: auto) and (color: unset) { /* Edge 13+ */
+        ::-ms-clear {
+            /* Remove input x */
+            display: none;
+            box-suppress: discard;
+        }
+        ::-webkit-input-placeholder {
+            direction: rtl;
+            color: #333;
+        }
+        .error ::-webkit-input-placeholder {
+            color: #be1100;
+        }
+        :focus::-webkit-input-placeholder,
+        [disabled]::-webkit-input-placeholder {
+            opacity: .54;
+        }
+    }
+    @supports (not (-ms-accelerator: true)) and (not (-ms-ime-align: auto)) { /* Webkit, Safari 9+ */
+        html,
+        textarea {
+            /* iOS 10.3.1 ignores z-index when used -webkit-overflow-scrolling
+               https://github.com/scottjehl/Device-Bugs/issues/14 */
+            -webkit-overflow-scrolling: touch;
+        }
+        html {
+            /* Old Webkit smooth text rendering issue */
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%; /* iOS fix */
+        }
+        a,
+        label,
+        input,
+        button {
+            /* Remove outline and highlight-color from click-able elements on Android and iOS */
+            -webkit-tap-highlight-color: rgba(51,51,51,0);
+        }
+        a {
+            /* iOS remove bubble dialog on tap-holding */
+            -webkit-touch-callout: none;
+        }
+        input {
+            -webkit-hyphens: none; /* Safari 9.1 wraps text to multiple lines */
+        }
+        ::-webkit-input-placeholder {
+            direction: rtl;
+            color: #333;
+            text-overflow: ellipsis!important; /* Chrome 49 input:focus and Safari 9.1.1 input applies inline "text-overflow: clip" */
+            white-space: nowrap; /* Safari 9.1 wraps text with "-" */
+            -webkit-user-select: none;
+                    user-select: none;
+        }
+        .error ::-webkit-input-placeholder {
+            color: #be1100;
+        }
+        :-webkit-autofill {
+            box-shadow: 1px 1px 0 rgba(0,0,0,.2),
+                        inset 0 0 0 2em #fff;
+        }
+        :focus::-webkit-input-placeholder,
+        [disabled]::-webkit-input-placeholder {
+            opacity: .54;
+        }
+        .error ::-webkit-input-placeholder  {
+            color: #be1100;
+        }
+    }
+    @supports (-webkit-backdrop-filter: blur()) { /* Safari 9+ */
+        /* RTL in-field icons drawn in wrong side https://bugs.webkit.org/show_bug.cgi?id=64108 */
+        input::placeholder,
+        input::-webkit-textfield-decoration-container {
+            direction: rtl;
+        }
+        input::-webkit-contacts-auto-fill-button {
+            position: absolute;
+            left: .4em;
+            margin-top: .2em;
+        }
+    }
+}
+@-moz-document url-prefix() { /* Firefox */
+    label:active {
+        background-color: transparent;
+    }
+    input,
+    button {
+        background-image: none;
+        border-radius: 0;
+    }
+    ::-moz-placeholder {
+        direction: rtl;
+        color: #333;
+    }
+    .error ::-moz-placeholder {
+        color: #be1100;
+    }
+    [placeholder]:not(:focus)::-moz-placeholder {
+        opacity: 1;
+    }
+    button::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+    }
+}
 
-    @media (min-width: 54.001em) {
-        .landing .table.scale {
-            display: grid;
-            grid-template-areas: "sidebar content" "sidebar headlines";
-        }
-        .landing .content {
-            grid-area: content;
-            grid-column: 1;
-        }
-        .landing form.subscribe {
-            grid-area: sidebar;
-            grid-column: 2;
-            margin: 2.3em 0;
-        }
-    }
-}
-@supports (display: flex) {
-    .table.center {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .table.center .cel.cel {
-        display: block;
-        max-width: 100%;
-    }
-}
 @media (max-width: 56em) {
     .cel {
         display: block;
@@ -1068,135 +1158,45 @@ iframe {
         margin-right: .8em;
     }
 }
+@supports (display: grid) {
+    .grid {
+        display: grid;
+        grid-gap: 1.2em;
+        /* grid-template-columns: repeat(auto-fit, minmax(20em, 1fr)); */
+        /* grid-auto-rows: minmax(13em, auto); */
+        margin-top: 1.2em;
+    }
+    .grid .footer {
+        grid-column: 1 / -1;
+    }
+    .headlines .grid .box {
+        margin-top: 0;
+    }
 
-@media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */
-    label {
-        display: table-cell;
-    }
-}
-@media (-ms-high-contrast: active), (-ms-high-contrast: none) { /* IE10+ */
-    a {
-        /* Remove IE10 :active gray background-color */
-        background-color: transparent;
-    }
-    ::-ms-clear {
-        /* Remove input x */
-        display: none;
-        box-suppress: discard;
-    }
-    :-ms-input-placeholder {
-        direction: rtl;
-        color: inherit;
-    }
-    .error :-ms-input-placeholder {
-        color: #be1100;
-    }
-    [disabled]:-ms-input-placeholder {
-        opacity: .54;
-    }
-}
-@media (-webkit-min-device-pixel-ratio: 0) {
-    @supports (-ms-ime-align: auto) and (color: unset) { /* Edge 13+ */
-        ::-ms-clear {
-            /* Remove input x */
-            display: none;
-            box-suppress: discard;
+    @media (min-width: 54.001em) {
+        .landing .table.scale {
+            display: grid;
+            grid-template-areas: "sidebar content" "sidebar headlines";
         }
-        ::-webkit-input-placeholder {
-            direction: rtl;
-            color: #333;
+        .landing .content {
+            grid-area: content;
+            grid-column: 1;
         }
-        .error ::-webkit-input-placeholder {
-            color: #be1100;
-        }
-        :focus::-webkit-input-placeholder,
-        [disabled]::-webkit-input-placeholder {
-            opacity: .54;
-        }
-    }
-    @supports (not (-ms-accelerator: true)) and (not (-ms-ime-align: auto)) { /* Webkit, Safari 9+ */
-        html,
-        textarea {
-            /* iOS 10.3.1 ignores z-index when used -webkit-overflow-scrolling
-               https://github.com/scottjehl/Device-Bugs/issues/14 */
-            -webkit-overflow-scrolling: touch;
-        }
-        html {
-            /* Old Webkit smooth text rendering issue */
-            -webkit-font-smoothing: antialiased;
-            -webkit-text-size-adjust: 100%; /* iOS fix */
-        }
-        a,
-        label,
-        input,
-        button {
-            /* Remove outline and highlight-color from click-able elements on Android and iOS */
-            -webkit-tap-highlight-color: rgba(51,51,51,0);
-        }
-        a {
-            /* iOS remove bubble dialog on tap-holding */
-            -webkit-touch-callout: none;
-        }
-        input {
-            -webkit-hyphens: none; /* Safari 9.1 wraps text to multiple lines */
-        }
-        ::-webkit-input-placeholder {
-            direction: rtl;
-            color: #333;
-            text-overflow: ellipsis!important; /* Chrome 49 input:focus and Safari 9.1.1 input applies inline "text-overflow: clip" */
-            white-space: nowrap; /* Safari 9.1 wraps text with "-" */
-            -webkit-user-select: none;
-                    user-select: none;
-        }
-        .error ::-webkit-input-placeholder {
-            color: #be1100;
-        }
-        :-webkit-autofill {
-            box-shadow: 1px 1px 0 rgba(0,0,0,.2),
-                        inset 0 0 0 2em #fff;
-        }
-        :focus::-webkit-input-placeholder,
-        [disabled]::-webkit-input-placeholder {
-            opacity: .54;
-        }
-        .error ::-webkit-input-placeholder  {
-            color: #be1100;
-        }
-    }
-    @supports (-webkit-backdrop-filter: blur()) { /* Safari 9+ */
-        /* RTL in-field icons drawn in wrong side https://bugs.webkit.org/show_bug.cgi?id=64108 */
-        input::placeholder,
-        input::-webkit-textfield-decoration-container {
-            direction: rtl;
-        }
-        input::-webkit-contacts-auto-fill-button {
-            position: absolute;
-            left: .4em;
-            margin-top: .2em;
+        .landing form.subscribe {
+            grid-area: sidebar;
+            grid-column: 2;
+            margin: 2.3em 0;
         }
     }
 }
-@-moz-document url-prefix() { /* Firefox */
-    label:active {
-        background-color: transparent;
+@supports (display: flex) {
+    .table.center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    input,
-    button {
-        background-image: none;
-        border-radius: 0;
-    }
-    ::-moz-placeholder {
-        direction: rtl;
-        color: #333;
-    }
-    .error ::-moz-placeholder {
-        color: #be1100;
-    }
-    [placeholder]:not(:focus)::-moz-placeholder {
-        opacity: 1;
-    }
-    button::-moz-focus-inner {
-        padding: 0;
-        border: 0;
+    .table.center .cel.cel {
+        display: block;
+        max-width: 100%;
     }
 }
