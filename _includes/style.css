@@ -1151,7 +1151,8 @@ iframe {
             color: #be1100;
         }
         :-webkit-autofill {
-            box-shadow: 1px 1px 0 rgba(0,0,0,.2), inset 0 0 0 2em #fff;
+            box-shadow: 1px 1px 0 rgba(0,0,0,.2),
+                        inset 0 0 0 2em #fff;
         }
         :focus::-webkit-input-placeholder,
         [disabled]::-webkit-input-placeholder {
