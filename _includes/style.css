@@ -1066,6 +1066,9 @@ iframe {
         flex: initial;
         min-width: auto;
     }
+    footer a + a {
+        margin-right: .8em;
+    }
 }
 
 @media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */
