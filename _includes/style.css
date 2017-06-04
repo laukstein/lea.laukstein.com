@@ -1158,6 +1158,14 @@ iframe {
         margin-right: .8em;
     }
 }
+@media (prefers-reduced-motion) {
+    /* Reduce motion https://drafts.csswg.org/mediaqueries-5/#prefers-reduced-motion
+       Supported in Safari 10.1 https://webkit.org/blog/7477/new-web-features-in-safari-10-1/ */
+    * {
+        animation: none;
+        transition: none;
+    }
+}
 @supports (display: grid) {
     .grid {
         display: grid;
