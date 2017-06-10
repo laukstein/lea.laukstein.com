@@ -18,7 +18,7 @@ button,
 [disabled],
 .unselectable,
 [unselectable] {
-    -webkit-user-select: none;
+    -webkit-user-select: none; /* Safari legacy */
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
@@ -34,6 +34,7 @@ html {
     background-color: #f9f9f9;
     touch-action: manipulation;
     cursor: default;
+    caret-color: currentcolor;
 }
 body,
 dd,
@@ -231,7 +232,7 @@ main {
     padding-bottom: 3em;
     margin: auto;
     box-sizing: border-box;
-    -webkit-user-select: text;
+    -webkit-user-select: text; /* Safari legacy */
        -moz-user-select: text;
         -ms-user-select: text;
             user-select: text;
@@ -549,6 +550,18 @@ textarea {
     box-sizing: content-box;
     box-shadow: none;
 }
+::placeholder {
+    direction: rtl;
+    color: #333;
+    text-overflow: ellipsis!important; /* Chrome and Safari 9.1.1 input applies inline CSS "text-overflow: clip" */
+    user-select: none;
+}
+[placeholder]:focus::placeholder {
+    opacity: .54;
+}
+.error ::placeholder  {
+    color: #c00;
+}
 .success {
     color: #160;
 }
@@ -558,7 +571,7 @@ textarea {
 .error.error input,
 .error.error select,
 .error.error textarea {
-    border-color: #be1100;
+    border-color: #c00;
 }
 button,
 .button {
@@ -851,29 +864,30 @@ iframe {
         color: inherit;
     }
     .error :-ms-input-placeholder {
-        color: #be1100;
+        color: #c00;
     }
     [disabled]:-ms-input-placeholder {
         opacity: .54;
     }
 }
 @media (-webkit-min-device-pixel-ratio: 0) {
+    ::-webkit-input-placeholder {
+        direction: rtl;
+        color: #333;
+    }
+    [placeholder]:focus::-webkit-input-placeholder,
+    [disabled]::-webkit-input-placeholder {
+        opacity: .54;
+    }
+    .error ::-webkit-input-placeholder {
+        color: #c00;
+    }
+
     @supports (-ms-ime-align: auto) and (color: unset) { /* Edge 13+ */
         ::-ms-clear {
             /* Remove input x */
             display: none;
             box-suppress: discard;
-        }
-        ::-webkit-input-placeholder {
-            direction: rtl;
-            color: #333;
-        }
-        .error ::-webkit-input-placeholder {
-            color: #be1100;
-        }
-        :focus::-webkit-input-placeholder,
-        [disabled]::-webkit-input-placeholder {
-            opacity: .54;
         }
     }
     @supports (not (-ms-accelerator: true)) and (not (-ms-ime-align: auto)) { /* Webkit, Safari 9+ */
@@ -891,7 +905,11 @@ iframe {
         a,
         label,
         input,
-        button {
+        select,
+        textarea,
+        button,
+        [onclick],
+        [tabindex] {
             /* Remove outline and highlight-color from click-able elements on Android and iOS */
             -webkit-tap-highlight-color: rgba(51,51,51,0);
         }
@@ -902,27 +920,9 @@ iframe {
         input {
             -webkit-hyphens: none; /* Safari 9.1 wraps text to multiple lines */
         }
-        ::-webkit-input-placeholder {
-            direction: rtl;
-            color: #333;
-            text-overflow: ellipsis!important; /* Chrome 49 input:focus and Safari 9.1.1 input applies inline "text-overflow: clip" */
-            white-space: nowrap; /* Safari 9.1 wraps text with "-" */
-            -webkit-user-select: none;
-                    user-select: none;
-        }
-        .error ::-webkit-input-placeholder {
-            color: #be1100;
-        }
         :-webkit-autofill {
             box-shadow: 1px 1px 0 rgba(0,0,0,.2),
                         inset 0 0 0 2em #fff;
-        }
-        :focus::-webkit-input-placeholder,
-        [disabled]::-webkit-input-placeholder {
-            opacity: .54;
-        }
-        .error ::-webkit-input-placeholder  {
-            color: #be1100;
         }
     }
     @supports (-webkit-backdrop-filter: blur()) { /* Safari 9+ */
@@ -947,14 +947,7 @@ iframe {
         background-image: none;
         border-radius: 0;
     }
-    ::-moz-placeholder {
-        direction: rtl;
-        color: #333;
-    }
-    .error ::-moz-placeholder {
-        color: #be1100;
-    }
-    [placeholder]:not(:focus)::-moz-placeholder {
+    [placeholder]:not(:focus)::placeholder {
         opacity: 1;
     }
     button::-moz-focus-inner {
