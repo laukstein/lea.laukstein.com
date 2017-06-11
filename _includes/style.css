@@ -1200,4 +1200,33 @@ iframe {
         display: block;
         max-width: 100%;
     }
+
+    /* YouTube image play icon */
+    .play {
+        overflow: hidden;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .play:before,
+    .play:after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        pointer-events: none;
+    }
+    .play:before {
+        width: 3.8em;
+        height: 2em;
+        padding-top: .7em;
+        font-size: 1em;
+        background-color: #cc181e;
+        border-radius: .6em;
+    }
+    .play:after {
+        border: solid 0 transparent;
+        border-width: .6em 0 .6em 1em;
+        border-left-color: #fff;
+    }
 }
