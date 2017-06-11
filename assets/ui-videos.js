@@ -54,8 +54,10 @@ ui.videos = (function () {
     generateHTML.loop = function (obj, type) {
         return this[type || "image"]({
             id: obj.resourceId && encodeURIComponent(obj.resourceId.videoId),
-            image: obj.thumbnails && (obj.thumbnails.maxres && encodeURI(obj.thumbnails.maxres.url) ||
-                obj.thumbnails.standard && encodeURI(obj.thumbnails.standard.url)),
+            image: obj.thumbnails && (
+                obj.thumbnails.maxres && encodeURI(obj.thumbnails.maxres.url) ||
+                obj.thumbnails.standard && encodeURI(obj.thumbnails.standard.url) ||
+                obj.thumbnails.high && encodeURI(obj.thumbnails.high.url)),
             title: this.safe(obj.title),
             description: this.safe(obj.description).replace(/\n/g, "<br>"),
             date: (function () {
