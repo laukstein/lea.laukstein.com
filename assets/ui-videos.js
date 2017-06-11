@@ -80,8 +80,8 @@ ui.videos = (function () {
     };
     generateHTML.image = function (obj) {
         return "<li class=box>" +
-            "    <a class=absolute href=#" + obj.id + " tabindex=0></a>" +
-            "    <figure><img src=" + obj.image + " alt=" + obj.title + "></figure>" +
+            "    <figure class=play><img src=\"" + obj.image + "\" alt=\"" + obj.title + "\"></figure>" +
+            "    <a class=absolute href=\"#" + obj.id + "\" tabindex=0></a>" +
             "    <h2 class=wrapline>" + obj.title + "</h2>" +
             (obj.description ? "    <p>" + this.links(obj.description) + "</p>" : "") +
             (obj.date ? "    <div><time>" + obj.date + "</time></div>" : "") +
