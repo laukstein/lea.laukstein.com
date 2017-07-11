@@ -871,6 +871,22 @@ iframe {
     }
 }
 @media (-webkit-min-device-pixel-ratio: 0) {
+    html {
+        /* iOS 10.3.1 ignores z-index when used -webkit-overflow-scrolling
+           https://github.com/scottjehl/Device-Bugs/issues/14 */
+        -webkit-overflow-scrolling: touch;
+    }
+    a,
+    label,
+    input,
+    select,
+    textarea,
+    button,
+    [onclick],
+    [tabindex] {
+        /* Remove outline and highlight-color from click-able elements on Android and iOS */
+        -webkit-tap-highlight-color: rgba(51,51,51,0);
+    }
     ::-webkit-input-placeholder {
         direction: rtl;
         color: #333;
@@ -891,27 +907,10 @@ iframe {
         }
     }
     @supports (not (-ms-accelerator: true)) and (not (-ms-ime-align: auto)) { /* Webkit, Safari 9+ */
-        html,
-        textarea {
-            /* iOS 10.3.1 ignores z-index when used -webkit-overflow-scrolling
-               https://github.com/scottjehl/Device-Bugs/issues/14 */
-            -webkit-overflow-scrolling: touch;
-        }
         html {
             /* Old Webkit smooth text rendering issue */
             -webkit-font-smoothing: antialiased;
             -webkit-text-size-adjust: 100%; /* iOS fix */
-        }
-        a,
-        label,
-        input,
-        select,
-        textarea,
-        button,
-        [onclick],
-        [tabindex] {
-            /* Remove outline and highlight-color from click-able elements on Android and iOS */
-            -webkit-tap-highlight-color: rgba(51,51,51,0);
         }
         a {
             /* iOS remove bubble dialog on tap-holding */
