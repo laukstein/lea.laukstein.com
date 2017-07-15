@@ -744,6 +744,9 @@ iframe {
     display: table-cell;
     padding: .4em;
 }
+.label {
+    white-space: nowrap;
+}
 .flow {
     float: left;
 }
