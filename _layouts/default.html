@@ -122,8 +122,8 @@ if page.jsonld == nil and page.image %}
             "image": {
                 "@type": "ImageObject",
                 "url": "{{ site.url }}{{ site.assets }}{{ page.image }}",
-                "width": {% if page.imageHeight %}{{ page.imageHeight }}{% else %}960{% endif %},
-                "height": {% if page.imageWidth %}{{ page.imageWidth }}{% else %}540{% endif %}
+                "width": {% if page.imageWidth %}{{ page.imageWidth }}{% else %}960{% endif %},
+                "height": {% if page.imageHeight %}{{ page.imageHeight }}{% else %}540{% endif %}
             },
             "datePublished": "{{ page.date | replace: ' ', 'T' }}",
             "dateModified": "{{ page.date | replace: ' ', 'T' }}",
