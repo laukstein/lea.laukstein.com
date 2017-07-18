@@ -229,7 +229,7 @@ main {
     max-width: 84.78em;
     min-height: 100%;
     padding-top: 3.7em;
-    padding-bottom: 3em;
+    padding-bottom: 2.6em;
     margin: auto;
     box-sizing: border-box;
     -webkit-user-select: text; /* Safari legacy */
@@ -357,7 +357,7 @@ cite:before {
 }
 .table.scale,
 main .table.center {
-    min-height: calc(100vh - 6.7em);
+    min-height: calc(100vh - 6.3em);
 }
 .cel {
     display: table-cell;
