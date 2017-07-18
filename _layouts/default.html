@@ -12,11 +12,11 @@ script:
         <label class=bar for=bar hidden><span></span></label>
         <a class="logo{% if page.url == "/" %} active{% endif %}" href="/"><img src={{ site.assets }}logo.png width=101 height=47 alt="{{ site.title }}"></a>
         <nav class=nav-container dir=rtl>
-        {% assign pages=site.pages | sort: 'order' %}{%
+        {% assign pages=site.pages | sort: "order" %}{%
         for nav in pages %}{%
             unless nav.draft %}{%
                 if nav.category == null and nav.order and nav.title
-                    %}{% assign relative_url=nav.url | remove_first: '/'
+                    %}{% assign relative_url=nav.url | remove_first: "/"
                     %}<a{% if nav.url == page.url or page.category == relative_url %} class=active{% endif %} href="{{ nav.url | relative_url }}">{{ nav.title }}</a>{%
                 endif %}{%
             endunless %}{%
