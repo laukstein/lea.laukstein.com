@@ -289,6 +289,7 @@ main {
 }
 .box figure {
     max-width: calc(100% + 4.2em);
+    min-height: 16em;
     margin: -2.1em -2.1em 2.1em;
 }
 .box figure.flow {
