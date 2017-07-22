@@ -55,7 +55,7 @@ case type %}
     </div>
     {% when "medium" %}
     <div class="table scale space medium{{ className }}">{%
-        if page.video %}{%
+        if page.video and layout.category != "products" %}{%
             include youtube.html id=page.video %}{%
             if title %}<h1>{{ title }}</h1>{% endif %}{%
         endif %}{{ content }}{%
