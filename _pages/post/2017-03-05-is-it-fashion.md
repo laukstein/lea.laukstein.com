@@ -1,6 +1,5 @@
 ---
 layout: post
-category: blog
 permalink: /is-it-fashion
 date: 2017-03-05 14:38:00
 title: האם זאת אופנה?

@@ -1,0 +1,8 @@
+{% if include.image %}
+    <figure{% if include.imageClass %} class="{{ include.imageClass }}"{% endif %}>
+        <img src={{ site.assets }}{{ include.image }}{%
+            if include.imageWidth %} width={{ include.imageWidth }}{% endif %}{%
+            if include.imageHeight %} height={{ include.imageHeight }}{% endif %} alt="{{ include.title }}">
+        {% if include.imageLabel %}<figcaption>{{ include.imageLabel | markdownify }}</figcaption>{% endif %}
+    </figure>
+{% endif %}

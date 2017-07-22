@@ -1,6 +1,5 @@
 ---
 layout: post
-category: blog
 permalink: /hidabroot
 date: 2017-01-18 20:01:00
 title: ! "ראיון הדברות: גיורת סטייליסטית לאה לאוקשטיין"

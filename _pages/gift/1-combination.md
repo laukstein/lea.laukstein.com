@@ -1,9 +1,9 @@
 ---
 layout: video
 permalink: /gift/combination
-title: גיוון עם מעט פריטים לשילובים רבים
+title: מעט פריטים לשילובים רבים
 private: true
 className: no-padding
-youtube: 2Nt-hYLHYNQ
+video: B5uJjMEtx_o
 comment: true
 ---

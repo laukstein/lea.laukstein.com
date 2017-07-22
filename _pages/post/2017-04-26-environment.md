@@ -1,6 +1,5 @@
 ---
 layout: post
-category: blog
 permalink: /environment
 date: 2017-04-26 13:40:00
 title: ארון "צנוע" ואיכות הסביבה

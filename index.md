@@ -2,7 +2,7 @@
 layout: default
 redirect_from: /signup/
 description: סטיילינג לדתיות - זה לא רק הבגד - זה החיבור שלך לעצמך
-youtube: FCccwyUnJLg
+video: fkS2Go4_H7E
 pageName: landing
 headlines: true
 jsonld: |
@@ -10,7 +10,7 @@ jsonld: |
         "@context": "http://schema.org/",
         "@type": "Product",
         "name": "סדרת סטיילינג לדתיות",
-        "image": "https://img.youtube.com/vi/$youtube/maxresdefault.jpg",
+        "image": "https://img.youtube.com/vi/$video/0.jpg",
         "description": "מדריך בעל שלושה סרטונים על יסודות הסטיילינג",
         "offers": {
             "@type": "Offer",

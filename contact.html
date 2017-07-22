@@ -5,6 +5,13 @@ order: 6
 script:
     - ui-form.js
     - ui-contact.js
+products:
+    - name: workshop
+      title: סדנאות
+    - name: personal
+      title: סטיילינג אישי
+    - name: diy
+      title: עשי זאת בעצמך
 ---
 
 <form class="cel space" id=contact method=POST>
@@ -13,14 +20,17 @@ script:
         <dd>
             <label for=subject>הנושא</label>
             <select id=subject name=subject>
-                <option>הנושא כללי</option>
-                <option data-name=diagnostic>אבחון מקצועי</option>
-                <option data-name=5min>הנוסחא לסטיילינג ב5 דקות לאישה הדתית</option>
-                <option data-name=shopping>ליווי יום קניות</option>
-                <!-- <option data-name=workshop-digital-offline>סדנה דיגיטלית</option> -->
-                <option data-name=workshop>סדנת סטיילינג</option>
-                <option data-name=workshop-youth>סדנת סטיילינג לנערות</option>
-                <option data-name=closet>סידור ארון</option>
+                <option>הנושא כללי</option>{%
+                for group in page.products %}
+                <optgroup label="{{ group.title }}">{%
+                assign pages=site.pages | sort: "order" %}{%
+                    for item in pages %}{%
+                        if item.layout == "product" and item.group == group.name %}
+                    <option data-name={{ item.url | remove: "/" }}>{{ item.title }}</option>{%
+                        endif %}{%
+                    endfor %}
+                </optgroup>{%
+                endfor %}
             </select>
         </dd>
         <dd><label for=email>אימייל</label><input id=email name=email type=email placeholder=אימייל data-error="אימייל שגוי" autocomplete=email dir=ltr data-required autofocus>
@@ -30,4 +40,5 @@ script:
         <dd><button formnovalidate>לשלוח הודעה</button>
         <dd id=status>
     </dl>
+    <p>לאה לאוקשטיין טל' <a href=tel://0585800020 target=_blank>058-5800020</a></p>
 </form>

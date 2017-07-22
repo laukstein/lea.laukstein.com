@@ -1,121 +1,33 @@
 ---
-layout: video
-category: products
-permalink: /5min
-title: הנוסחא לסטיילינג ב5 דקות לאישה הדתית
-private: true
-order: 1
-price: 496
-image: 5min.jpg
-className: no-padding
----
+layout: product
+group: diy
+order: 2
 
-<div class="box card" dir=ltr>
-    <img src={{ site.assets }}{{ page.image }} width=960 height=540 alt="{{ page.title }}י">
-    <div class=content dir=rtl>
-        <h1>{{ page.title }}</h1>
-        <ul class=sheet>
-            <li class=row>
-                <div class="column label">אורך</div>
-                <div class=column>6 שיעורים, ב6 שבועות, כל שיעור כ20 דקות</div>
-            </li>
-            <li class=row>
-                <div class="column label">מיקום</div>
-                <div class=column>בית או משרד שלך, מהמחשב או נייד שלך</div>
-            </li>
-            <li class=row>
-                <div class="column label">את יוצאת עם</div>
-                <div class=column>ידע של השיטה המוכחת שלי להתלבש ב5 דקות ללא מאמץ ולהראות נהדר. הקורס הראשון במינו בישראל המותאם לאישה הדתית. בנוסף את מקבלת את כל הידע הנדגש למבנה גוף, מבנה פנים וצבעים שלך. הקורס מתנהל באתר חברים פרטי ויחיד מסוגו בו תוכלי לצפות בשיעורים שוב ושוב. השיעורים יישארו לך זמינים עד שנה לאחר תום הקורס. לכל אורך התכנית תוכלי לשאול אותי שאלות בנושא תוכן וגם בנושאים טכניים ותקבלי תשובה לשאלתך עד 24 שעות מרגע שליחת השאלה.</div>
-            </li>
-            <li class=row>
-                <div class="column label">השקעה</div>
-                <div class=column><b>{{ page.price }} ש"ח</b> או <b>248x2 ש"ח</b></div>
-            </li>
-            <li class=row>
-                <div class="column label">המחזור הקרוב</div>
-                <div class=column><b>26/02/2017</b></div>
-            </li>
-            <li class=row>
-                <div class="column label">בונוסים</div>
-                <div class=column>הדרכה על מערכת לבוש יעילה בהריון <s>97 ש"ח</s><br>חוברת גזרות מותאמות לפי מבנה גוף האישי שלך <s>297 ש"ח</s><br>מניפת צבעים אישית <s>297 ש"ח</s><br>מפגש סיכום חגיגי <s>100 ש"ח</s><br>יום צילומים עם צלם ל4 נרשמות הראשונות <s>800 ש"ח</s><br>הדרכה לאבחון מבנה פנים + חוברת קשירות כיסוי ראש למבני הפנים <s>157 ש"ח</s><br><h3>סך הכל שווי הבונוסים <s>1748 ש"ח</s></h3></div>
-            </li>
-            <li class=row>
-                <div class="column label">אחריות</div>
-                <div class=column>שבועיים מתחילת הקורס. אם לא תהיי מרוצה מכל סיבה שהיא, תקבלי כל כספך בחזרה</div>
-            </li>
-        </ul>
-        <div class=action>
-            {% include confirm.html %}
-            <form action=https://www.paypal.com/cgi-bin/webscr method=post target=_top>
-                <input type=hidden name=cmd value=_s-xclick>
-                <input type=hidden name=lc value=he_IL>
-                <input type=hidden name=hosted_button_id value=5DRJ5UA3NUQEN>
-                <input type=hidden name=custom value="list=d3efe03c04&item=academy">
-                <input type=hidden name=notify_url value=https://lab.laukstein.com/academy/ipn>
-                <img src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width=1 height=1 alt="">
-                <button class=button>שלם {{ page.price }} ש"ח</button>
-            </form> או<form action=https://www.paypal.com/cgi-bin/webscr method=post target=_top>
-                <input type=hidden name=cmd value=_s-xclick>
-                <input type=hidden name=lc value=he_IL>
-                <input type=hidden name=hosted_button_id value=WRWZPF99HHES2>
-                <input type=hidden name=custom value="list=d3efe03c04&item=academy">
-                <input type=hidden name=notify_url value=https://lab.laukstein.com/academy/ipn>
-                <img src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width=1 height=1 alt="">
-                <button class=button>שלם 248x2 ש"ח</button>
-            </form>
-        </div>
-    </div>
-    <div class=content dir=rtl>
-        <h2>מבנה הקורס</h2>
-        <ul class=sheet>
-            <li class=row>
-                <div class="column label">שיעור 1</div>
-                <div class=column>עולם הצבעים<br>כללי אבחון עצמי לצבעים המחמיאים שלך, מניפת צבעים האישית להורדה. חוק שילובי הצבעים.</div>
-            </li>
-            <li class=row>
-                <div class="column label">שיעור 2</div>
-                <div class=column>מבנה גוף<br>כללי אבחון עצמאי למבנה גוף האישי שלך, חוברת גיזרות להורדה</div>
-            </li>
-            <li class=row>
-                <div class="column label">שיעור 3</div>
-                <div class=column>סגנון האישי<br>סוגי סגנונון שונים, כללי אבחון עצמאי לסגנון האישי שלך, חוברת השראה להורדה</div>
-            </li>
-            <li class=row>
-                <div class="column label">שיעור 4</div>
-                <div class=column>יסוד לכל מלתחה - הלבשה תחתונה<br>כללי לאבחון והתאמה עצמית להלבשה תחתונה נכונה</div>
-            </li>
-            <li class=row>
-                <div class="column label">שיעור 5</div>
-                <div class=column>עולם האקססוריז<br>כללי אבחון עצמי להתאמת אקססוריז נכון, סוגי אקססוריז, כמות המומלצת שלי לאקססוריז</div>
-            </li>
-            <li class=row>
-                <div class="column label">שיעור 6</div>
-                <div class=column>מערכת לבוש היעילה ביותר לאישה הדתית<br>פירוט למערכת לבוש יעילה ביותר, שיטת 9 פריטים</div>
-            </li>
-            <li class=row>
-                <div class="column label">מפגש סיכום</div>
-                <div class=column>סגירת קצוות אחרונים, יישור קו בין כולן, קבלת מניפת צבעים פיזית</div>
-            </li>
-        </ul>
-        <div class=action id=register>
-            {% include confirm.html %}
-            <form action=https://www.paypal.com/cgi-bin/webscr method=post target=_top>
-                <input type=hidden name=cmd value=_s-xclick>
-                <input type=hidden name=lc value=he_IL>
-                <input type=hidden name=hosted_button_id value=5DRJ5UA3NUQEN>
-                <input type=hidden name=custom value="list=d3efe03c04&item=academy">
-                <input type=hidden name=notify_url value=https://lab.laukstein.com/academy/ipn>
-                <img src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width=1 height=1 alt="">
-                <button class=button>שלם {{ page.price }} ש"ח</button>
-            </form> או<form action=https://www.paypal.com/cgi-bin/webscr method=post target=_top>
-                <input type=hidden name=cmd value=_s-xclick>
-                <input type=hidden name=lc value=he_IL>
-                <input type=hidden name=hosted_button_id value=WRWZPF99HHES2>
-                <input type=hidden name=custom value="list=d3efe03c04&item=academy">
-                <input type=hidden name=notify_url value=https://lab.laukstein.com/academy/ipn>
-                <img src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width=1 height=1 alt="">
-                <button class=button>שלם 248x2 ש"ח</button>
-            </form>
-        </div>
-    </div>
-</div>
+title: קורס דיגיטאלי לעבודה עצמית
+permalink: /diy
+redirect_from: /5min
+image: product-diy.jpg
+imageWidth: 960
+imageHeight: 540
+duration: 6 שבועות
+price: 450
+location: און ליין
+fit: נשים שיש להן זמן לניסוי ותהיה עצמית, מוטיבציה גבוהה לעבודה עצמית
+details: שיעורים שנפתחים פעם בשבוע, ליווי בואטסאפ
+goals: |
+    * להקנות דרכי חשיבה וכלים בסיסיים לקבלה ואהבה עצמית על ידי לבוש נכון שתורם  לאיזון הגוף
+    * הכרות עם סגנון האישי, הצבעים ומבנה הגוף
+    * להקנות ידע על שילובי צבעים חדשים.
+    * ידע מעשי לסידור ארון יעיל ומזמין שילובים יצירתיים
+    * ידע על התאמה נכונה להלבשה תחתונה
+    * ידע על 9 פריטי החובה בכל ארון
+takeWith: |
+    * אבחון מלא לסגנון, צבעים ומבנה גוף
+    * מניפת צבעים דיגיטלית
+    * לוח השראה לסגנון האישי
+    * ספר גזרות המתאימות במיוחד למבנה גוף האישי
+    * מדריך על הלבשה תחתונה
+    * מעגל צבעים להורדה
+    * מענה לשאלות
+    * מועדון חברות עם מפגשי רענון
+---

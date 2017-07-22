@@ -356,7 +356,7 @@ button.error {
     margin: .2em 0 .2em .5em;
     vertical-align: middle;
     background-color: #fff;
-    border: .2em solid #d8940f;
+    border: .2em solid #f58e84;
     border-radius: 2px;
 }
 .qa ol ol label {
@@ -679,7 +679,7 @@ button[disabled]:not(:hover) {
         min-width: 18.5em;
     }
     .logo {
-        width: 84px;
+        width: 26px;
     }
 }
 @media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */

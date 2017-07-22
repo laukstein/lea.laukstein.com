@@ -1,6 +1,5 @@
 ---
 layout: post
-category: blog
 permalink: /shoemaker
 date: 2017-05-03 09:05:00
 title: למה הסנדלר הולך יחף?

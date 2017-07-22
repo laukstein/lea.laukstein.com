@@ -4,20 +4,23 @@ style:
     - style.css
 script:
     - ui.js
+exceptFromNav:
+    - post
+    - product
 ---
 
 {% include core-head.html %}<input class=bar-holder id=bar type=checkbox hidden>
 <header dir=ltr>
     <div class=wrapper>
         <label class=bar for=bar hidden><span></span></label>
-        <a class="logo{% if page.url == "/" %} active{% endif %}" href="/"><img src={{ site.assets }}logo.png width=101 height=47 alt="{{ site.title }}"></a>
+        <a class="logo{% if page.url == "/" %} active{% endif %}" href="/"><img src={{ site.assets }}logo.png width=47 height=47 alt="{{ site.title }}"></a>
         <nav class=nav-container dir=rtl>
-        {% assign pages=site.pages | sort: "order" %}{%
+        {% assign pages = site.pages | sort: "order" %}{%
         for nav in pages %}{%
-            unless nav.draft %}{%
-                if nav.category == null and nav.order and nav.title
-                    %}{% assign relative_url=nav.url | remove_first: "/"
-                    %}<a{% if nav.url == page.url or page.category == relative_url %} class=active{% endif %} href="{{ nav.url | relative_url }}">{{ nav.title }}</a>{%
+            unless nav.private or nav.draft or layout.exceptFromNav contains nav.layout %}{%
+                if nav.order and nav.title
+                    %}{% assign relative_url = nav.url | remove_first: "/"
+                    %}<a{% if nav.url == page.url or layout.category == relative_url %} class=active{% endif %} href="{{ nav.url | relative_url }}">{{ nav.title }}</a>{%
                 endif %}{%
             endunless %}{%
         endfor %}<a class=external rel=noopener href="https://www.facebook.com/LeaLaukstein/" title="פייסבוק" target=_blank><div class=icon-facebook></div></a><a class=external rel=noopener href="https://www.youtube.com/channel/UCNNsgimJtU1q1LUMVsq44Dg" title="יוטיוב" target=_blank><div class=icon-youtube></div></a>
@@ -25,7 +28,7 @@ script:
     </div>
 </header>
 <main{% if page.pageName %} class={{ page.pageName }}{% endif %} dir=rtl>{%
-if layout.comment or page.comment or page.category == 'products' %}
+if layout.comment or page.comment %}
     {% assign addComments=true %}
 {% endif %}{%
 if layout.className %}
@@ -52,8 +55,8 @@ case type %}
     </div>
     {% when "medium" %}
     <div class="table scale space medium{{ className }}">{%
-        if page.youtube %}{%
-            include youtube.html id=page.youtube %}{%
+        if page.video %}{%
+            include youtube.html id=page.video %}{%
             if title %}<h1>{{ title }}</h1>{% endif %}{%
         endif %}{{ content }}{%
         if addComments %}{%
@@ -62,9 +65,9 @@ case type %}
     </div>
     {% else %}
     <div class="table{% unless addComments %} scale{% endunless %}">{%
-        if page.youtube %}
+        if page.video %}
             <div class="cel content{{ className }}">
-                {% include youtube.html id=page.youtube %}
+                {% include youtube.html id=page.video %}
                 {% if content.size > 1 %}
                     <div class=box>
                         {% if title %}<h1>{{ title }}</h1>{% endif %}
@@ -94,14 +97,15 @@ endcase %}
 </main>
 {% include core-footer.html %}{%
 include core-js.html %}{%
-if page.jsonld == nil and page.image %}
-    {% if page.category == 'products' %}
+if page.jsonld == nil and page.image or page.video %}
+    {% if layout.category == "products" %}
         {% capture jsonld %}
         {
             "@context": "http://schema.org/",
             "@type": "Product",
             "name": "{{ title }}",
-            "image": "{{ site.url }}{{ site.assets }}{{ page.image }}",
+            "image": "{% if page.video %}https://img.youtube.com/vi/{{ page.video }}/0.jpg{%
+                else %}{{ site.url }}{{ site.assets }}{{ page.image }}{% endif %}",
             "offers": {
                 "@type": "Offer",
                 "price": "{{ page.price }}",
@@ -109,7 +113,7 @@ if page.jsonld == nil and page.image %}
             }
         }
         {% endcapture %}
-    {% else if page.category == 'blog' %}
+    {% else if layout.category == "blog" %}
         {% capture jsonld %}
         {
             "@context": "http://schema.org",
@@ -148,4 +152,4 @@ if page.jsonld == nil and page.image %}
 {% endif %}{%
 if jsonld or page.jsonld %}<script type="application/ld+json">{%
     unless jsonld %}{% assign jsonld=page.jsonld %}{% endunless %}
-{{ jsonld | replace: '$youtube', page.youtube }}</script>{% endif %}
+{{ jsonld | replace: '$video', page.video }}</script>{% endif %}

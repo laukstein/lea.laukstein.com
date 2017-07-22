@@ -1,19 +1,22 @@
 # [Lea STYLE](https://lea.laukstein.com)
 
-YAML options
+YAML schema
 
+    layout: default | post | product | video
     type: full | center | medium
-    category: blog | products
     permalink: /url
+    redirect_from: /outdated-url
     title: max 70-78 chars
-    titleLong: max 70-78 chars (overwrites page.title except in menu)
+    titleLong: max 70-78 chars (overwrites page.title except in nav)
     description: max 170-200 chars
     date: YYYY-MM-DD HH:MM:SS
-    private: true // default `false`; prevent crawlers from indexing the page
+    private: true // default `false`, prevent page indexing
     className: className
-    youtube: ID
+    video: ID
     image: src
     imageClass: className
+    imageWidth: Number
+    imageHeight: Number
     imageLabel: "Author: Name <website>"
 
 Differ production and development environment with `SET JEKYLL_ENV=production | development` before `jekyll serve`.

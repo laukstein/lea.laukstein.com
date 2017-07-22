@@ -1,6 +1,5 @@
 ---
 layout: post
-category: blog
 permalink: /not-courage-but-a-dream
 date: 2017-03-26 19:02:00
 title: זה לא אומץ, זה חלום!

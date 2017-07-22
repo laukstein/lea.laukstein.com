@@ -1,41 +1,32 @@
 ---
-layout: video
-category: products
-permalink: /shopping
-title: ליווי יום קניות
-order: 5
-price: 800
-image: shopping.jpg
----
+layout: product
+group: personal
+order: 3
 
-<div class="box card" dir=ltr>
-    <div class=image>
-        <img src={{ site.assets }}{{ page.image }} width=396 height=486 alt="{{ page.title }}">
-    </div>
-    <div class=content dir=rtl>
-        <h1>{{ page.title }}</h1>
-        <ul class=sheet>
-            <li class=row>
-                <div class="column label">אורך המפגש</div>
-                <div class=column>4 שעות</div>
-            </li>
-            <li class=row>
-                <div class="column label">מיקום</div>
-                <div class=column>קניון קרוב למגורים שלך. מראש אבדוק את החנויות, ואקח אותך קר לחנויות שמתאימות לך לפי צבעים, לפי סגנון ולפי מידה ומבנה גוף.</div>
-            </li>
-            <li class=row>
-                <div class="column label">את יוצאת עם</div>
-                <div class=column>חויה כיפית, ובגדים חדשים שהכי מחמיאים לך, שרכשת לפי המלצתי. בנוסף את מקבלת את כל הידע הנדגש למבנה גוף, מבנה פנים וצבעים שלך.</div>
-            </li>
-            <li class=row>
-                <div class="column label">השקעה</div>
-                <div class=column><b>{{ page.price }} ש"ח</b></div>
-            </li>
-            <li class=row>
-                <div class="column label">בונוס</div>
-                <div class=column>בשווי של 200 ש"ח – אבחון מקצועי לפנים, מבנה גוף וצבעים</div>
-            </li>
-        </ul>
-        <a class=button href=/contact#shopping tabindex=0>צור קשר</a>
-    </div>
-</div>
+title: סיבוב קניות
+permalink: /shopping
+image: product-shopping.jpg
+imageClass: contain
+imageWidth: 396
+imageHeight: 486
+duration: 4 שעות
+price: 800
+location: קניון או מרכז בגדים אחר
+fit: נשים שלקראת שינוי או מחפשות שינוי
+details: מילאוי שאלון, ליווי בקניות, המשך התיעצות בואטסאפ
+goals: |
+    * להכיר חנויות אפשריות שלא הכרת המתאימות לאישיות, מידות, סגנון, התפקיד והתקציב שלך
+    * להכיר גזרות אפשרויות נוספות ממגוון בגדי החנויות
+    * להקנות דרכי חשיבה וכלים בסיסיים לקבלה ואהבה עצמית על ידי לבוש נכון שתורם לאיזון הגוף
+    * הכרות עם סגנון האישי, צבעים ומבנה הגוף
+    * התנסות ביצירת שילובים יצוגיים מעניינים
+    * לפתוח אפשרויות שונות ולראות את עצמך קצת אחרת ממה שאת רגילה
+    * להתנסות ביצירת שילובים שונים מרק 9 פריטים. להקנות ידע לשילובי צבעים חדשים
+takeWith: |
+    * 9 פריטי החובה (על חשבונך) המתאימים ביותר עבור האישיות, התפקיד, הסגנון והתקציב שלך
+    * תיעוד התהליך לשיחזור קל של השילובים המוצלחים
+    * אבחון מלא לסגנון, צבעים ומבנה גוף
+    * מניפת צבעים דיגיטלית
+    * המשך ליווי בואטסאפ
+    * מועדון חברות עם מפגשי רענון
+---

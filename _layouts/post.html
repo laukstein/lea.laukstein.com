@@ -1,15 +1,19 @@
 ---
 layout: default
+category: blog
 type: medium
 className: no-padding
 comment: true
 ---
 
 <article class=box>
-    {% if page.image %}<figure{% if page.imageClass %} class="{{ page.imageClass }}"{% endif %}>
-        <img src={{ site.assets }}{{ page.image }} alt="{{ page.title }}">
-        {% if page.imageLabel %}<figcaption>{{ page.imageLabel | markdownify }}</figcaption>{% endif %}
-    </figure>{% endif %}
+    {%
+        include image.html
+        title=page.title
+        image=page.image
+        imageClass=page.imageClass
+        imageLabel=page.imageLabel
+    %}
     <h1 class=wrapline>{{ page.title }}</h1>
     {{ content }}
     {% if page.date %}<div>{% include date.html value=page.date %}</div>{% endif %}

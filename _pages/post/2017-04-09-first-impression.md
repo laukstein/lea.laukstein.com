@@ -1,6 +1,5 @@
 ---
 layout: post
-category: blog
 permalink: /first-impression
 date: 2017-04-09 12:05:00
 title: מחאה על רושם ראשוני

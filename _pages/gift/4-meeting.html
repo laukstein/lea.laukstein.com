@@ -1,0 +1,28 @@
+---
+layout: video
+permalink: /gift/meeting
+title: אני רוצה לעזור לך ליישם את הידע שרכשת!
+private: true
+className: no-padding
+video: wG0GrHzHxPM
+comment: true
+products:
+    - /diagnostic
+    - /closet
+    - /shopping
+    - /closet+shopping
+    - /diy
+---
+
+<p>בכול אחד מאפשרויות האלו את מקבלת אבחון מלא של מבנה הגוף, והצבעים שלך, והסגנון שלך, ליווי בואטסאפ, ומפגשים פעמיים בשנה עם כל העדכונים יחד עם שער הלקוחות. אשמח לענות לך על כול שאלה, כאן בתגובות או בטלפון <a href=tel://0585800020 target=_blank>058-5800020</a>.</p>
+<ol class="items flexible">{% assign pages=site.pages | sort: "order" %}{%
+    for item in pages %}{%
+        if item.layout == "product" and page.products contains item.url %}
+    <li>
+        <h3><a href={{ item.url | prepend: site.baseurl }}>{{ item.title }}</a></h3>
+        <p>{{ item.price }} ש"ח {% if item.discount %} ({{ item.discount }}){% endif %}</p>
+        <a class=absolute href={{ item.url | prepend: site.baseurl }}></a>
+    </li>{%
+    endif %}{%
+endfor %}
+</ol>

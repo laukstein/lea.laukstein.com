@@ -1,37 +1,27 @@
 ---
-layout: video
-category: products
-permalink: /diagnostic
-title: אבחון מקצועי
-order: 4
-price: 180
-image: diagnostic.jpg
----
+layout: product
+group: personal
+order: 1
 
-<div class="box card" dir=ltr>
-    <div class=image>
-        <img src={{ site.assets }}{{ page.image }} width=400 height=510 alt="{{ page.title }}">
-    </div>
-    <div class=content dir=rtl>
-        <h1>{{ page.title }}</h1>
-        <ul class=sheet>
-            <li class=row>
-                <div class="column label">אורך המפגש</div>
-                <div class=column>כ60 דקות</div>
-            </li>
-            <li class=row>
-                <div class="column label">מיקום</div>
-                <div class=column>מיקום און לין</div>
-            </li>
-            <li class=row>
-                <div class="column label">את יוצאת עם</div>
-                <div class=column>אבחון של מבנה גוף ושל מבנה פנים. ידע על צבעים המתאימים לך. וגיזרות המתאימות לך. וכל הידע הזקוק לך כדי להראות יותר רזה, יותר גבוה ואיך לאזן את מבנה הגוף האישי שלך.</div>
-            </li>
-            <li class=row>
-                <div class="column label">השקעה</div>
-                <div class=column><b>{{ page.price }} ש"ח</b></div>
-            </li>
-        </ul>
-        <a class=button href=/contact#diagnostic tabindex=0>צור קשר</a>
-    </div>
-</div>
+title: אבחון בשיחת אונליין
+permalink: /diagnostic
+image: product-diagnostic.jpg
+imageWidth: 960
+imageHeight: 540
+duration: 60 דקות
+price: 180
+location: און ליין
+fit: נשים שיש להן זמן לניסוי ותהיה עצמית וצריכות רק יעוץ נקודתי
+details: מילאוי שאלון, מצגת, קבצים להורדה
+goals: |
+    * להכיר מבנה הגוף האישי, הצבעים המיטביים והסגנון האישי שלך
+    * זיהוי מטרה אישית ליצירת מראה מאוזן ורצוי עליך על ידי לבוש נכון והקניית ידע על דרכים פשוטות להשגת המטרה
+    * להכיר שילובי צבעים חדשים
+takeWith: |
+    * אבחון מלא לסגנון, צבעים ומבנה גוף
+    * יעוץ על פריטי הלבוש השונים שלך
+    * המלצות אישיות בבחירת הבגדים
+    * מניפת צבעים דיגיטלית
+    * המשך ליווי בואטסאפ
+    * מועדון חברות עם מפגשי רענון
+---

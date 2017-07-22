@@ -1,6 +1,5 @@
 ---
 layout: post
-category: blog
 permalink: /how-come-styling
 date: 2016-11-07 12:30:00
 title: איך הגעתי בכלל לסטיילינג?
