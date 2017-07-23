@@ -30,4 +30,10 @@ takeWith: |
     * מעגל צבעים להורדה
     * מענה לשאלות
     * מועדון חברות עם מפגשי רענון
+button:
+    - type: paypal
+      title: לרכישה
+      id: 5DRJ5UA3NUQEN
+      custom: list=d3efe03c04&item=academy
+      notify: https://lab.laukstein.com/academy/ipn
 ---

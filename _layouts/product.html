@@ -53,10 +53,23 @@ l10n:
                 </li>{%
                 endif %}
             {% endfor %}
-        </ul>{%
-        if page.button %}{% for item in page.button %}
-            <a class=button href={{ item.url }} tabindex=0>{{ item.title }}</a>
-        {% endfor %}{% else
+        </ul>{% if page.button %}{%
+for item in page.button %}{%
+case item.type %}{%
+    when "paypal" %}
+        <form action=https://www.paypal.com/cgi-bin/webscr method=post target=_top>
+            <input type=hidden name=cmd value=_s-xclick>
+            <input type=hidden name=lc value=he_IL>
+            <input type=hidden name=hosted_button_id value={{ item.id }}>
+            <input type=hidden name=custom value="{{ item.custom }}">
+            <input type=hidden name=notify_url value={{ item.notify }}>
+            <img src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width=1 height=1 alt>
+            <button class=button>{{ item.title }}</button>
+        </form>{%
+    when "subscribe" %}
+        <a class=button href={{ item.url }} tabindex=0>{{ item.title }}</a>{%
+endcase %}{%
+endfor %}{% else
         %}<a class=button href=/contact#{{ page.url | remove: "/" }} tabindex=0>צרי קשר להזמנה</a>{%
         endif %}
     </div>
