@@ -1,5 +1,5 @@
 .full {
-    background: bottom no-repeat url(/assets/products.jpg);
+    background: top no-repeat url(/assets/products.jpg);
     background-size: cover;
 }
 .cel {
