@@ -56,7 +56,7 @@ case type %}
     {% when "medium" %}
     <div class="table scale space medium{{ className }}">{%
         if page.video and layout.category != "products" %}{%
-            include youtube.html id=page.video %}{%
+            include youtube.html id = page.video %}{%
             if title %}<h1>{{ title }}</h1>{% endif %}{%
         endif %}{{ content }}{%
         if addComments %}{%
@@ -67,7 +67,7 @@ case type %}
     <div class="table{% unless addComments %} scale{% endunless %}">{%
         if page.video %}
             <div class="cel content{{ className }}">
-                {% include youtube.html id=page.video %}
+                {% include youtube.html id = page.video %}
                 {% if content.size > 1 %}
                     <div class=box>
                         {% if title %}<h1>{{ title }}</h1>{% endif %}
@@ -81,17 +81,17 @@ case type %}
             </div>{%
         endif %}{%
         include subscribe.html
-            id=page.subscribe
-            title=page.subscribe-title
-            button=page.subscribe-button
-            requiredTel=page.subscribe-requiredTel
+            id = page.subscribe
+            title = page.subscribe-title
+            button = page.subscribe-button
+            requiredTel = page.subscribe-requiredTel
         %}{%
         if page.headlines %}{%
             include headlines.html %}{%
         endif %}
     </div>{%
     if addComments %}{%
-        include comment.html addClassNames=true %}{%
+        include comment.html addClassNames = true %}{%
     endif %}{%
 endcase %}
 </main>

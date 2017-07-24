@@ -1,8 +1,9 @@
 {% if include.image %}
-    <figure{% if include.imageClass %} class="{{ include.imageClass }}"{% endif %}>
+    <figure{% if include.className %} class="{{ include.className }}"{% endif %}>
         <img src={{ site.assets }}{{ include.image }}{%
-            if include.imageWidth %} width={{ include.imageWidth }}{% endif %}{%
-            if include.imageHeight %} height={{ include.imageHeight }}{% endif %} alt="{{ include.title }}">
-        {% if include.imageLabel %}<figcaption>{{ include.imageLabel | markdownify }}</figcaption>{% endif %}
+            if include.width %} width={{ include.width }}{% endif %}{%
+            if include.height %} height={{ include.height }}{% endif %} alt="{{ include.title }}">
+        {% if include.label %}<figcaption>{{ include.label | markdownify }}</figcaption>{% endif %}
     </figure>
+    {% if include.text %}{{ include.text | markdownify }}{% endif %}
 {% endif %}
