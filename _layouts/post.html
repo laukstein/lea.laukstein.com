@@ -11,6 +11,7 @@ comment: true
         include image.html
         title = page.title
         image = page.image
+        width = page.imageWidth
         className = page.imageClass
         label = page.imageLabel
     %}
@@ -18,12 +19,14 @@ comment: true
     {{ content }}
     {% if page.date %}<div>{% include date.html value = page.date %}</div>{% endif %}
     {% if page.imageList %}{% for item in page.imageList %}
-    {%
+    <div class=item>{%
         include image.html
         title = item.label
         image = item.image
+        className = item.className
+        width = page.width
         label = item.label
         text = item.text
-    %}
+    %}</div>
     {% endfor %}{% endif %}
 </article>

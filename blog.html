@@ -11,7 +11,7 @@ order: 3
 <blockquote class=box>
     <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>
     {% if post.image %}<figure{% if post.imageClass %} class="{{ post.imageClass }}"{% endif %}>
-        <img src={{ site.assets }}{{ post.image }} alt="{{ post.title }}">
+        <img src={{ site.assets }}{{ post.image }}{% if post.imageWidth %} width={{ post.imageWidth }}{% endif %} alt="{{ post.title }}">
     </figure>{% endif %}
     <h2 class=wrapline>{{ post.title }}</h2>
     <p>{{ post.content | strip_html | truncatewords: 50, '... <a>המשך קריא</a>' }}</p>

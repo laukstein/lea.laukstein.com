@@ -292,6 +292,16 @@ main {
     /* min-height: 16em; */
     margin: -2.1em -2.1em 2.1em;
 }
+.box .item {
+    margin: 2.1em 0 2.9em;
+}
+.box .item:last-child {
+    margin-bottom: 1.3em;
+}
+.box .item figure {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
 .box.card figure {
     max-width: 100%;
     margin: 0;
@@ -438,12 +448,17 @@ h1:first-line,
 h2:first-line {
     font-size: 150%;
 }
-.wrapline {
+.wrapline,
+.box .item figure.flow + p {
     display: table-cell;
     border: 0 solid transparent;
     border-width: .2em 0;
 }
-.wrapline:after {
+.box .item figure.flow + p {
+    margin-top: 2.9em;
+}
+.wrapline:after,
+.box .item figure.flow + p:after {
     content: "";
     display: table-cell;
     min-width: 10.1em;
