@@ -289,17 +289,18 @@ main {
 }
 .box figure {
     max-width: calc(100% + 4.2em);
-    /* min-height: 16em; */
-    margin: -2.1em -2.1em 2.1em;
+    margin: -2.1em -2.1em 1.2em;
 }
 .box .item {
-    margin: 2.1em 0 2.9em;
-}
-.box .item:last-child {
-    margin-bottom: 1.3em;
+    width: 100%;
+    margin-top: 2em;
+    float: left;
 }
 .box .item figure {
     margin-top: 0;
+    margin-bottom: 1em;
+}
+.box .item figure ~ p {
     margin-bottom: 1em;
 }
 .box.card figure {
@@ -312,13 +313,19 @@ main {
     margin-bottom: -2.1em;
     float: right;
 }
+.box figure img {
+    margin-bottom: .6em;
+}
+blockquote.box figure img {
+    margin-bottom: 0;
+}
 .box figure.flow + h2 {
     padding-top: 3.2em;
 }
 .no-padding .box figure.flow {
     margin-bottom: .5em;
 }
-.box figure img {
+.box figure:not(.auto-width) img {
     width: 100%;
 }
 .box.card figure img {
@@ -333,8 +340,10 @@ main {
     object-position: 95%;
 }
 .box figcaption {
-    padding: .6em 2.1em 0;
+    margin-right: 2.1em;
+    margin-left: 2.1em;
     color: #666;
+    clear: both;
 }
 
 time {
@@ -357,10 +366,10 @@ blockquote {
 blockquote +  blockquote {
     margin-top: 2.4em;
 }
-blockquote > *:not(div):not(span):not(img):not(code):first-child {
+blockquote > *:not(figure.flow):not(div):not(span):not(img):not(code):first-child {
     padding-top: .4em;
 }
-blockquote > *:not(div):not(span):not(img):not(code):last-child {
+blockquote > *:not(figure.flow):not(div):not(span):not(img):not(code):last-child {
     padding-bottom: .52em;
 }
 cite {
@@ -453,9 +462,6 @@ h2:first-line {
     display: table-cell;
     border: 0 solid transparent;
     border-width: .2em 0;
-}
-.box .item figure.flow + p {
-    margin-top: 2.9em;
 }
 .wrapline:after,
 .box .item figure.flow + p:after {
@@ -1173,13 +1179,14 @@ iframe {
     }
 }
 @media (max-width: 35em) {
-    .wrapline {
+    .wrapline,
+    .box .item figure.flow + p {
         display: inherit;
     }
     .wrapline:after {
         display: none;
     }
-    .box figure.flow {
+    .box figure.flow.flow {
         margin-left: -2.1em;
     }
 }

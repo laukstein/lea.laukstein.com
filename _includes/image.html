@@ -1,9 +1,19 @@
-{% if include.image %}
-    <figure{% if include.className %} class="{{ include.className }}"{% endif %}>
+{% if include.image
+%}<figure{% if include.className %} class="{{ include.className }}"{% endif %}>{%
+    if include.image.first %}{%
+        for item in include.image %}
+        <img src={{ site.assets }}{{ item }}{%
+            if include.width %} width={{ include.width }}{% endif %}{%
+            if include.height %} height={{ include.height }}{% endif %} alt="{{ include.title }}">{%
+        endfor %}{%
+    else %}
         <img src={{ site.assets }}{{ include.image }}{%
             if include.width %} width={{ include.width }}{% endif %}{%
-            if include.height %} height={{ include.height }}{% endif %} alt="{{ include.title }}">
+            if include.height %} height={{ include.height }}{% endif %} alt="{{ include.title }}">{%
+    endif %}
         {% if include.label %}<figcaption>{{ include.label | markdownify }}</figcaption>{% endif %}
-    </figure>
-    {% if include.text %}{{ include.text | markdownify }}{% endif %}
-{% endif %}
+    </figure>{%
+    if include.text %}
+    {{ include.text | markdownify }}{%
+    endif %}{%
+endif %}
