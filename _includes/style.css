@@ -293,8 +293,9 @@ main {
 }
 .box .item {
     width: 100%;
-    margin-top: 2em;
+    padding-top: 2em;
     float: left;
+    border-top: 1px solid #eee;
 }
 .box .item figure {
     margin-top: 0;

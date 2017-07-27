@@ -5,7 +5,7 @@ assign max = 5 %}{%
 assign pages=site.pages | sort: "date" | reverse %}{%
 for post in pages %}{%
     if post.layout == "post" %}{%
-        assign counter = counter | plus:1 %}{%
+        assign counter = counter | plus: 1 %}{%
         if counter < max %}
     <blockquote class=box>
         <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>
