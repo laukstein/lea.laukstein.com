@@ -623,7 +623,7 @@ ui.academy = {
         this.currentTime = !options.interval && this.currentTime || new Date(this.data.date);
         var date = new Date(this.currentTime.setDate(this.currentTime.getDate() +
                 (options.interval ? options.interval * this.data.interval :
-                (this.firstSession ? 0 : this.data.interval))) +
+                    (this.firstSession ? 0 : this.data.interval))) +
                 (options.interval ? 0 : 10000000));
 
         return {
@@ -1010,7 +1010,7 @@ ui.academy = {
                         status = el.querySelector("[data-status]");
 
                         if (status) {
-                            status.innerHTML = "<b>" + self.data.session["body-shape"].pages[page].error.format("<a href=\"/contact#5min\" target=_blank>", "</a>") + "</b>";
+                            status.innerHTML = "<b>" + self.data.session["body-shape"].pages[page].error.format("<a href=\"/contact#diy\" target=_blank>", "</a>") + "</b>";
                             status.classList.add("error");
                         }
                         if (button) {
@@ -1108,7 +1108,7 @@ ui.academy = {
 
             if (self.session.task && self.session.task.sat && self.session.task.sat.length) {
                 calculate = (function () {
-                        // http://www.jstips.co/en/javascript/flattening-multidimensional-arrays-in-javascript/
+                    // http://www.jstips.co/en/javascript/flattening-multidimensional-arrays-in-javascript/
                     var flattenArray = [].concat.apply([], self.session.task.sat),
                         // http://stackoverflow.com/questions/840781/#24968449
                         sumObject = flattenArray.map(function (name) {
@@ -1328,7 +1328,7 @@ ui.academy = {
                                         "<div class=space>" +
                                         "    <h1>" + obj.title + "</h1>" +
                                         "    <a class=button href=\"" + (obj.download ? obj.download.format(obj.value) :
-                                                "https://drive.google.com/uc?export=download&id=" + obj.value) +
+                                            "https://drive.google.com/uc?export=download&id=" + obj.value) +
                                             "\" rel=noopener target=_blank download=\"" +
                                             obj.title + ".pdf\"><b>להוריד " + obj.title + "</a>" +
                                         "</div>";
