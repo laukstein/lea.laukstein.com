@@ -4,12 +4,13 @@ ui.subscribe = {
     success: function (data) {
         "use strict";
 
-        var message;
+        data = typeof data === "object" && !(data instanceof Event) ? data : undefined;
+
+        var self = ui.subscribe,
+            message;
 
         if (data) {
             if (data.result === "success") {
-                ui.setUser(this.session);
-
                 message = "<h1 class=success>תודה</h1><p>לסיום ההרשמה תקבלי עכשיו מייל לאישור</p>";
             } else if (data.msg && data.msg.indexOf("list-manage.com/subscribe/send-email")) {
                 message = "<h1 class=error>שגיאה...</h1><p>את כבר רשומה, תנסי עם <a href=" + location.href + ">אימייל אחר</a></p>";
@@ -20,7 +21,7 @@ ui.subscribe = {
             message = "<h1 class=error>שגיאה בשרת...</h1><p>ניתן להירשם דרך <a href=//www.facebook.com/LeaLaukstein/>LeaLaukstein</a> או <a href=" + location.href + ">תנסי שוב</a></p>";
         }
 
-        this.el.innerHTML = message;
+        self.el.innerHTML = message;
     },
     send: function (e) {
         "use strict";
@@ -29,14 +30,17 @@ ui.subscribe = {
             script,
             head;
 
+        self.session = ui.form.deserialize(self.el);
+
+        ui.setUser(self.session);
+
         if (e) {
             e.preventDefault();
         }
         if (self.active && ui.form.valid(self.required)) {
-            self.session = ui.form.deserialize(self.el);
-
             script = ui.d.createElement("script");
             script.src = self.el.action + "&" + ui.form.serialize(self.el) + "&b_" + self.key + "_" + self.name + "&_=" + Math.random().toString(16).substr(2, 8) + "&c=ui.subscribe.success";
+            script.addEventListener("error", self.success);
             head = ui.d.getElementsByTagName("head")[0];
 
             ui.form.accessibility();

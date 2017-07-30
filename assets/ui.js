@@ -503,7 +503,7 @@ window.ui = {
                     return this.fireEvent("on" + eventObject.type, eventObject);
                 };
             }(this.w.prototype, HTMLDocument.prototype, Element.prototype, "addEventListener", "removeEventListener",
-                    "dispatchEvent", []));
+                "dispatchEvent", []));
         }
         if (typeof console === "undefined") {
             this.w.console = {

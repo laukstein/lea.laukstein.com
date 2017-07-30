@@ -35,8 +35,6 @@ ui.contact = {
         }
         if (response) {
             if (response.result === "success") {
-                ui.setUser(self.session);
-
                 result = "<h1 class=success>תודה</h1><p>הודעה נשלחה</p>";
             } else if (response.error) {
                 if (response.error.email) {
@@ -72,11 +70,14 @@ ui.contact = {
         var self = ui.contact,
             client;
 
+        self.session = ui.form.deserialize(self.el);
+
+        ui.setUser(self.session);
+
         if (e) {
             e.preventDefault();
         }
         if (self.active && ui.form.valid(self.required)) {
-            self.session = ui.form.deserialize(self.el);
             client = new XMLHttpRequest();
 
             client.open("POST", self.el.action, true);
