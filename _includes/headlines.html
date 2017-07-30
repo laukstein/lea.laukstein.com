@@ -1,12 +1,11 @@
 <div class=headlines>
 <div class=grid>
-{% assign counter = 0 %}{%
-assign max = 5 %}{%
+{% assign index = 0 %}{%
+assign max = 4 %}{%
 assign pages=site.pages | sort: "date" | reverse %}{%
 for post in pages %}{%
     if post.layout == "post" %}{%
-        assign counter = counter | plus: 1 %}{%
-        if counter < max %}
+        if index < max %}
     <blockquote class=box>
         <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>
         <div>{% include date.html value = post.date %}</div>
@@ -16,6 +15,7 @@ for post in pages %}{%
         else %}{%
             capture more %}{{ more }}<li><a href={{ post.url | prepend: site.baseurl }}>{{ post.title }}</a></li>{% endcapture %}{%
         endif %}{%
+        assign index = index | plus: 1 %}{%
     endif %}{%
 endfor %}
 {% if more %}
