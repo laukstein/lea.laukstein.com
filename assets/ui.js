@@ -535,6 +535,12 @@ window.ui = {
         this.legacy();
         this.getUser();
         this.analytics();
+
+        var el = this.d.getElementById("bar-close");
+
+        if (el) {
+            el.addEventListener("touchstart", el.click);
+        }
     }
 };
 
