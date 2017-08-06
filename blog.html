@@ -6,8 +6,8 @@ order: 3
 ---
 
 {% assign pages=site.pages | sort: "date" | reverse %}{%
-    for post in pages %}{%
-        if post.layout == "post" %}
+for post in pages %}{%
+    if post.layout == "post" %}
 <blockquote class=box>
     <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>
     {% if post.image %}<figure{% if post.imageClass %} class="{{ post.imageClass }}"{% endif %}>
