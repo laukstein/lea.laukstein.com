@@ -287,6 +287,10 @@ main {
     -webkit-transform: rotate(2deg);
             transform: rotate(2deg);
 }
+article.box li {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
 .box figure {
     max-width: calc(100% + 4.2em);
     margin: -2.1em -2.1em 1.2em;

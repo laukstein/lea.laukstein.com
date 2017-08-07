@@ -10,7 +10,7 @@ for post in pages %}{%
         <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>
         <div>{% include date.html value = post.date %}</div>
         <h2>{{ post.title }}</h2>
-        <p>{{ post.content | strip_html | truncatewords: 20, '... <a>המשך קריא</a>' }}</p>
+        <p>{{ post.content | markdownify | strip_html | truncatewords: 20, '... <a>המשך קריא</a>' }}</p>
     </blockquote>{%
         else %}{%
             capture more %}{{ more }}<li><a href={{ post.url | prepend: site.baseurl }}>{{ post.title }}</a></li>{% endcapture %}{%
