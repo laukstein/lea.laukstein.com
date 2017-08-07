@@ -16,7 +16,7 @@ layout: null
             <video:player_loc allow_embed="yes" autoplay="ap=1">https://www.youtube.com/v/FCccwyUnJLg</video:player_loc>
         </video:video>
     </url>{%
-    assign pages=site.pages | sort: 'order' %}{%
+    assign pages=site.pages | sort: "date" | sort: "order" %}{%
     for page in pages %}{%
         unless page.draft %}{%
             if page.category == null and page.title and page.order or page.url == '/privacy' %}{%
@@ -34,7 +34,7 @@ layout: null
         <priority>1.0</priority>
     </url>{%
     for subpage in pages %}{%
-        if subpage.private == null and subpage.category == relative_url %}
+        if subpage.private == null %}{% if subpage.category == relative_url or relative_url == "blog" and subpage.layout == "post" %}
     <url>
         <loc>{{ site.url }}{{ subpage.url }}</loc>{% if subpage.date %}
         <lastmod>{{ subpage.date | date_to_xmlschema }}</lastmod>{% endif %}{% if subpage.image %}
@@ -48,7 +48,7 @@ layout: null
         </video:video>{% endif %}
         <priority>0.8</priority>
     </url>{%
-        endif %}{%
+        endif %}{% endif %}{%
     endfor %}{%
             endif %}{%
         endunless %}{%
