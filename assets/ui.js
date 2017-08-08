@@ -199,6 +199,8 @@ window.ui = {
                     }
                 }
             });
+        } else {
+            this.identify.track({name: "All"});
         }
     },
     identify: {
@@ -236,6 +238,7 @@ window.ui = {
                         } else if (!options.hasOwnProperty("condition") ||
                             typeof options.condition === "function" ? options.condition(self) : options.condition) {
                             options.callback(self);
+                            console.log("Identified: " + options.name, self.user);
                         } else {
                             setTimeout(init, (retryCount - 1) * 1000);
                         }
@@ -244,7 +247,7 @@ window.ui = {
 
                 init();
             } else {
-                console.log("Identified: " + options.name, this.user);
+                console.log("Identified: " + options.name, self.user);
             }
         },
         fs: function () {
