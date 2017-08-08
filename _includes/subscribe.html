@@ -3,12 +3,12 @@
     <h1{% if include.requiredTel %} class=inherit{% endif %}>{% if include.title %}{{ include.title }}{% else %}סטייל שבא מבפנים{% endif %}</h1>
     {% unless include.title %}<p>מדריך על שלושה עקרונות הסטיילינג</p>{% endunless %}
     <div>
-        <label for=email>אימייל</label>
-        <input id=email name=EMAIL type=email placeholder=*אימייל data-error="אימייל שגוי" autocomplete=email dir=ltr data-required{% if page.url == "/" %} autofocus{% endif %}>
+        <label for=name>שם</label>
+        <input id=name name=FNAME placeholder="*שם" data-error="תקליד שם" autocomplete=name dir=auto data-required{% if page.url == "/" %} autofocus{% endif %}>
     </div>
     <div>
-        <label for=name>שם</label>
-        <input id=name name=FNAME placeholder="*שם" data-error="תקליד שם" autocomplete=name dir=auto data-required>
+        <label for=email>אימייל</label>
+        <input id=email name=EMAIL type=email placeholder=*אימייל data-error="אימייל שגוי" autocomplete=email dir=ltr data-required>
     </div>
     <div>
         <label for=tel>נייד{% unless include.requiredTel %} (אופציונאלי){% endunless %}</label>
