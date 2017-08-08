@@ -138,7 +138,7 @@ ui.form = {
                 } else if (val === "false") {
                     val = false;
                 }
-                if (!isNaN(parseFloat(val)) && isFinite(val)) {
+                if (!isNaN(parseFloat(val)) && isFinite(val) && val === String(Number(val))) {
                     val = Number(val);
                 }
 
