@@ -238,7 +238,6 @@ window.ui = {
                         } else if (!options.hasOwnProperty("condition") ||
                             typeof options.condition === "function" ? options.condition(self) : options.condition) {
                             options.callback(self);
-                            console.log("Identified: " + options.name, self.user);
                         } else {
                             setTimeout(init, (retryCount - 1) * 1000);
                         }
@@ -247,7 +246,7 @@ window.ui = {
 
                 init();
             } else {
-                console.log("Identified: " + options.name, self.user);
+                console.log("Identifier: " + options.name, self.user);
             }
         },
         fs: function () {
@@ -259,11 +258,21 @@ window.ui = {
                     return window.FS && self.user.email;
                 },
                 callback: function (self) {
+                    var obj = {};
+
+                    obj.email = self.user.email;
+
+                    if (self.user.fullName) {
+                        obj.displayName = self.user.fullName;
+                    }
+                    if (self.user.phone) {
+                        obj.phone = self.user.phone;
+                    }
+
                     // http://help.fullstory.com/develop-js/identify
-                    FS.identify(self.user.email, self.user.fullName && {
-                        displayName: self.user.fullName,
-                        email: self.user.email
-                    });
+                    FS.identify(self.user.email, obj);
+
+                    console.log("FullStory", self.user.email, obj);
                 }
             });
         },
@@ -278,6 +287,8 @@ window.ui = {
                 callback: function (self) {
                     // https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#user_id
                     ga("set", "userId", self.user.email);
+
+                    console.log("Google Analytics", self.user.email);
                 }
             });
         },
@@ -300,6 +311,8 @@ window.ui = {
 
                     // https://docs.sentry.io/learn/context/
                     Raven.setUserContext(obj);
+
+                    console.log("Sentry", obj);
                 }
             });
         },
@@ -332,7 +345,7 @@ window.ui = {
                     user.avatar = session.avatar;
                 }
                 if (session.tel || session.PHONE) {
-                    user.telephone = session.tel || session.PHONE;
+                    user.phone = session.tel || session.PHONE;
                 }
                 if (session.name || session.FNAME || session.firstName) {
                     name.push(session.name || session.FNAME || session.firstName);
@@ -367,6 +380,14 @@ window.ui = {
                 return {};
             }
         }());
+
+        if (this.identify.user.telephone) {
+            // Parameter rename 2017/08/09
+            this.identify.user.phone = this.identify.user.telephone;
+            delete this.identify.user.telephone;
+
+            localStorage.user = JSON.stringify(this.identify.user);
+        }
 
         return this.identify.user;
     },
