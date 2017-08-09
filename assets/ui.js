@@ -114,8 +114,6 @@ window.ui = {
                         window._fs_host = "www.fullstory.com"; // eslint-disable-line
                         window._fs_org = "3YG86"; // eslint-disable-line
                         window._fs_namespace = "FS"; // eslint-disable-line
-                    },
-                    onSuccess: function () {
                         var g = window[window._fs_namespace || "FS"] = function (a, b) { // eslint-disable-line
                             if (g.q) {
                                 g.q.push([a, b]);
@@ -155,7 +153,8 @@ window.ui = {
                                 }
                             }
                         };
-
+                    },
+                    onSuccess: function () {
                         ui.identify.fs();
                     }
                 });
