@@ -1,23 +1,6 @@
-ui.has.valid = function (fn) {
-    "use strict";
-
-    try {
-        return fn();
-    } catch (e) {
-        if (!this.error) {
-            this.error = {
-                e: null
-            };
-        }
-
-        this.error.e = e;
-
-        return this.error;
-    }
-};
 ui.contact = {
     key: "8a321b1a-8fa6-470f-91ab-fcbe92ffbfbf",
-    url: "https://lab.laukstein.com/contact",
+    url: ui.form.server + "/contact",
     success: function () {
         "use strict";
 
@@ -72,12 +55,12 @@ ui.contact = {
 
         self.session = ui.form.deserialize(self.el);
 
-        ui.setUser(self.session);
-
         if (e) {
             e.preventDefault();
         }
         if (self.active && ui.form.valid(self.required)) {
+            ui.setUser(self.session);
+
             client = new XMLHttpRequest();
 
             client.open("POST", self.el.action, true);

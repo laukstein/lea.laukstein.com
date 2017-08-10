@@ -265,7 +265,7 @@ window.ui = {
                         obj.displayName = self.user.fullName;
                     }
                     if (self.user.phone) {
-                        obj.phone = self.user.phone;
+                        obj.phone_str = self.user.phone; // eslint-disable-line
                     }
 
                     // http://help.fullstory.com/develop-js/identify

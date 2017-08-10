@@ -1,4 +1,22 @@
+ui.has.valid = function (fn) {
+    "use strict";
+
+    try {
+        return fn();
+    } catch (e) {
+        if (!this.error) {
+            this.error = {
+                e: null
+            };
+        }
+
+        this.error.e = e;
+
+        return this.error;
+    }
+};
 ui.form = {
+    server: location.protocol + "//lab." + location.host.split(".").slice(-2).join("."),
     list: function (selector, container) {
         "use strict";
 
