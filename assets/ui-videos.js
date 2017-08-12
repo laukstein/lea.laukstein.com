@@ -9,6 +9,47 @@ ui.videos = (function () {
         requestCount = 0,
         cacheDays = 1;
 
+    function lazyload() {
+        if (ui.w.IntersectionObserver && !lazyload.error) {
+            // Resource
+            // https://corydowdy.com/blog/lazy-loading-images-with-intersection-observer
+            // https://jeremenichelli.github.io/2016/04/quick-introduction-to-the-intersection-observer-api/
+            try {
+                !lazyload.initDefined && ui.w.IntersectionObserver && ui.w.IntersectionObserverEntry &&
+                "intersectionRatio" in ui.w.IntersectionObserverEntry.prototype &&
+                !("isIntersecting" in IntersectionObserverEntry.prototype) &&
+                Object.defineProperty(ui.w.IntersectionObserverEntry.prototype, "isIntersecting", {
+                    get: function () {
+                        return this.intersectionRatio > 0;
+                    }
+                });
+
+                var arr = ui.d.querySelectorAll("img[data-src]");
+
+                arr = arr.length ? Array.from && Array.from(arr) || [].slice.call(arr) : [];
+                lazyload.initDefined = true;
+
+                arr.forEach(function (img) {
+                    lazyload.observer.observe(img);
+                });
+            } catch (e) {
+                lazyload.error = e;
+            }
+        }
+    }
+    lazyload.observer = ui.w.IntersectionObserver && new IntersectionObserver(function (changes) {
+        changes.forEach(function (change) {
+            if (change.isIntersecting) {
+                change.target.src = change.target.dataset.src;
+                change.target.removeAttribute("data-src");
+                lazyload.observer.unobserve(change.target);
+            }
+        });
+    }, {
+        rootMargin: "200px 0px",
+        threshold: 0.01
+    });
+
     function cacheAge() {
         var start,
             end;
@@ -80,7 +121,7 @@ ui.videos = (function () {
     };
     generateHTML.image = function (obj) {
         return "<li class=box>" +
-            "    <figure class=play><img src=\"" + obj.image + "\" alt=\"" + obj.title + "\"></figure>" +
+            "    <figure class=play><img " + (ui.w.IntersectionObserver ? "data-" : "") + "src=\"" + obj.image + "\" alt=\"" + obj.title + "\"></figure>" +
             "    <a class=absolute href=\"#" + obj.id + "\" tabindex=0></a>" +
             "    <h2 class=wrapline>" + obj.title + "</h2>" +
             (obj.description ? "    <p>" + this.links(obj.description) + "</p>" : "") +
@@ -146,6 +187,11 @@ ui.videos = (function () {
                         }
                     }
                 }
+                if (url) {
+                    lazyload.observer && lazyload.observer.disconnect();
+                } else {
+                    lazyload();
+                }
             } else {
                 if (url) {
                     location.hash = "";
@@ -159,14 +205,28 @@ ui.videos = (function () {
         }
     }
     function request() {
-        fetch("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUNNsgimJtU1q1LUMVsq44Dg&maxResults=50&key=AIzaSyBt0-e3Ups6i4p8GQs811EarYbpMiPfxg4")
-            .then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                return request.getData(data, true);
-            }).catch(function (err) {
-                return request.error(err);
-            });
+        var features = [];
+
+        function call() {
+            fetch("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUNNsgimJtU1q1LUMVsq44Dg&maxResults=50&key=AIzaSyBt0-e3Ups6i4p8GQs811EarYbpMiPfxg4")
+                .then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    return request.getData(data, true);
+                }).catch(function (err) {
+                    return request.error(err);
+                });
+        }
+
+        ui.w.fetch || features.push("fetch");
+        ui.w.IntersectionObserver || features.push("IntersectionObserver");
+
+        if (features.length) {
+            ui.asyncScript("https://cdn.polyfill.io/v2/polyfill.min.js?features=" +
+                features.join(",") + "&flags=gated", {onSuccess: call});
+        } else {
+            call();
+        }
 
         return {
             inProgress: true

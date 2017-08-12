@@ -1428,6 +1428,7 @@ ui.academy = {
 
         if (ui.asyncScript) {
             // https://polyfill.io/v2/docs/examples
+            ui.w.fetch || features.push("fetch");
             ui.w.Promise || features.push("Promise");
             (ui.w.Element && Element.prototype.closest) || features.push("Element.prototype.closest");
 
