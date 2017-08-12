@@ -1,15 +1,8 @@
-{% comment %}
-
-Array concat supported on Liquid 4
-https://help.shopify.com/themes/liquid/filters/array-filters#concat
-
-{% endcomment %}{%
-
-assign script_global = layout.script | join: ", " %}{% if script_template %}{%
-assign script_global = script_global | append: ", " | append: script_template %}{% endif %}{% if page.script %}{%
-assign script_page = page.script | join: ", " %}{%
-assign script = script_global | append: ", " | append: script_page | split: ", " | uniq %}{% else %}{%
-assign script = script_global | split: ", " | uniq %}{% endif %}{%
+{%
+assign script = layout.script %}{% if script_template %}{%
+assign script_template = script_template | split: ", " %}
+assign script = script | concat: script_template | uniq %}{% endif %}{% if page.script %}{%
+assign script = script | concat: page.script | uniq %}{% endif %}{%
 if script %}
     {% for source in script %}
         {% if jekyll.environment == "development" %}
