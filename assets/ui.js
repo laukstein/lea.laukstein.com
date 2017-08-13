@@ -84,7 +84,8 @@ window.ui = {
                     if (window.ga) {
                         ga("create", "UA-11883501-1", "laukstein.com", {
                             clientId: localStorage.gaClientId,
-                            storage: "none"
+                            storage: "none",
+                            userId: ui.identify.user.email
                         });
 
                         if (!localStorage.gaClientId) {
@@ -199,7 +200,7 @@ window.ui = {
                 }
             });
         } else {
-            this.identify.track({name: "All"});
+            this.identify.all();
         }
     },
     identify: {
@@ -232,11 +233,9 @@ window.ui = {
                     retryCount += 1;
 
                     if (retryCount < retryMax) {
-                        if (typeof options.callback !== "function") {
-                            console.log("Analytics disabled", options);
-                        } else if (!options.hasOwnProperty("condition") ||
-                            typeof options.condition === "function" ? options.condition(self) : options.condition) {
+                        if (options.condition(self)) {
                             options.callback(self);
+                            options.log(self);
                         } else {
                             setTimeout(init, (retryCount - 1) * 1000);
                         }
@@ -244,8 +243,8 @@ window.ui = {
                 };
 
                 init();
-            } else {
-                console.log("Identifier: " + options.name, self.user);
+            } else if (self.user.email) {
+                options.log(self);
             }
         },
         fs: function () {
@@ -256,7 +255,7 @@ window.ui = {
                 condition: function (self) {
                     return window.FS && self.user.email;
                 },
-                callback: function (self) {
+                params: function (self) {
                     var obj = {};
 
                     obj.email = self.user.email;
@@ -268,10 +267,14 @@ window.ui = {
                         obj.phone_str = self.user.phone; // eslint-disable-line
                     }
 
+                    return obj;
+                },
+                callback: function (self) {
                     // http://help.fullstory.com/develop-js/identify
-                    FS.identify(self.user.email, obj);
-
-                    console.log("FullStory", self.user.email, obj);
+                    FS.identify(self.user.email, this.params(self));
+                },
+                log: function (self) {
+                    console.log("FullStory", self.user.email, this.params(self));
                 }
             });
         },
@@ -286,7 +289,8 @@ window.ui = {
                 callback: function (self) {
                     // https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#user_id
                     ga("set", "userId", self.user.email);
-
+                },
+                log: function (self) {
                     console.log("Google Analytics", self.user.email);
                 }
             });
@@ -299,7 +303,7 @@ window.ui = {
                 condition: function (self) {
                     return window.Raven && Raven.setUserContext && self.user.email;
                 },
-                callback: function (self) {
+                params: function (self) {
                     var obj = {};
 
                     obj.email = self.user.email;
@@ -308,10 +312,14 @@ window.ui = {
                         obj.username = self.user.fullName;
                     }
 
+                    return obj;
+                },
+                callback: function (self) {
                     // https://docs.sentry.io/learn/context/
-                    Raven.setUserContext(obj);
-
-                    console.log("Sentry", obj);
+                    Raven.setUserContext(this.params(self));
+                },
+                log: function (self) {
+                    console.log("Sentry", this.params(self));
                 }
             });
         },
