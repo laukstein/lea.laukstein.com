@@ -1,6 +1,6 @@
 {%
 assign script = layout.script %}{% if script_template %}{%
-assign script_template = script_template | split: ", " %}
+assign script_template = script_template | split: ", " %}{%
 assign script = script | concat: script_template | uniq %}{% endif %}{% if page.script %}{%
 assign script = script | concat: page.script | uniq %}{% endif %}{%
 if script %}
