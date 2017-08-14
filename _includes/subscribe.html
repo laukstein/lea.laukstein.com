@@ -1,5 +1,5 @@
 {% assign script_template = "ui-form.js, ui-subscribe.js"
-%}<form class="cel space subscribe" id=subscribe name={% if include.id %}{{ include.id }}{% else %}70a2d0d976{% endif %}>
+%}<form class="cel space subscribe" id=subscribe name={% if include.id %}{{ include.id }}{% else %}70a2d0d976{% endif %} method=post>
     <h1{% if include.requiredTel %} class=inherit{% endif %}>{% if include.title %}{{ include.title }}{% else %}סטייל שבא מבפנים{% endif %}</h1>
     {% unless include.title %}<p>מדריך על שלושה עקרונות הסטיילינג</p>{% endunless %}
     <div>
