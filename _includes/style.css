@@ -63,11 +63,13 @@ a {
     -webkit-box-decoration-break: clone; /* Chrome legacy, demo http://jsbin.com/xojoro/quiet */
             box-decoration-break: clone;
     outline: transparent solid 2px;
-    transition: outline .15s;
+    -webkit-transition: outline .15s;
+            transition: outline .15s;
 }
 [tabindex="-1"] {
     outline: 0;
-    transition:  none;
+    -webkit-transition: none;
+            transition: none;
 }
 a:hover,
 a:focus {
@@ -83,6 +85,10 @@ form:hover ~ a.absolute {
 }
 a[onclick] {
     cursor: pointer;
+}
+p a:not([class]) {
+    /* iOS fix link text wrapping */
+    word-break: break-word;
 }
 img {
     max-width: 100%;
@@ -149,6 +155,7 @@ nav {
     /* position: relative; */
     display: inline-block;
     text-align: center;
+    vertical-align: top; /* IE too big padding */
     background-color: #fff;
 }
 /* nav:before {
@@ -293,6 +300,7 @@ article.box li {
 }
 .box figure {
     max-width: calc(100% + 4.2em);
+    min-height: 5em;
     margin: -2.1em -2.1em 1.2em;
 }
 .box .item {
@@ -349,6 +357,43 @@ blockquote.box figure img {
     margin-left: 2.1em;
     color: #666;
     clear: both;
+}
+
+/* YouTube image play icon */
+.play {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+.play ~ .absolute {
+    z-index: 1;
+}
+.play:before,
+.play:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+}
+.play:before {
+    top: calc(50% - 1.7em);
+    left: calc(50% - 1.9em);
+    width: 3.8em;
+    height: 2em;
+    padding-top: .7em;
+    font-size: 1em;
+    background-color: #cc181e;
+    border-radius: .6em;
+}
+.play:after {
+    top: calc(50% - 1em);
+    left: calc(50% - .5em);
+    border: solid 0 transparent;
+    border-width: .6em 0 .6em 1em;
+    border-left-color: #fff;
 }
 
 time {
@@ -519,7 +564,9 @@ textarea,
 button,
 .button {
         width: 20em;
+    min-width: 9em;
     max-width: 100%;
+    max-width: calc(100vw - 4.2em);
     height: 2.674em; /* Mac Safari/Chrome <select> issue having same height as <input> */
     padding: .66em .75em;
     font-size: 1em;
@@ -541,7 +588,8 @@ textarea {
     border-left-color: #ccc;
     outline: transparent solid 1px;
     box-shadow: 1px 1px .1em rgba(0,0,0,.2);
-    transition: outline .15s;
+    -webkit-transition: outline .15s;
+            transition: outline .15s;
 }
 input:focus,
 select:focus,
@@ -588,7 +636,9 @@ textarea {
 }
 [type=checkbox][type=checkbox],
 [type=radio][type=radio] {
-    width: auto;
+        width: auto;
+    min-width: inherit;
+    max-width: inherit;
     height: auto;
     padding: 0;
     margin: 0 .25em;
@@ -633,7 +683,8 @@ button,
     text-overflow: ellipsis;
     background-color: #74b5b2;
     outline: transparent solid 2px;
-    transition: outline .15s, background-color .15s;
+    -webkit-transition: outline .15s, background-color .15s;
+            transition: outline .15s, background-color .15s;
     cursor: pointer;
 }
 .button.button {
@@ -1102,7 +1153,8 @@ iframe {
         min-width: 9em;
         padding: 3.5em 0;
         text-align: right;
-        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+                transform: translateX(-100%);
         will-change: auto;
     }
     nav a {
@@ -1146,45 +1198,54 @@ iframe {
         height: .211em;
         background-color: #333;
         border-radius: .5em;
-        transition: width .1s, background-color 1ms, transform .35s cubic-bezier(.2,1,.4,1);
+        -webkit-transition: width .1s, background-color 1ms, -webkit-transform .35s cubic-bezier(.2,1,.4,1);
+                transition: width .1s, background-color 1ms, transform .35s cubic-bezier(.2,1,.4,1);
         will-change: transform;
     }
     .bar span {
         position: relative;
         margin: 1.07em .65em 1.07em .55em;
-        transform: translateY(0); /* Firefox 34 Nightly width fix */
-        transition-duration: .15s;
+        -webkit-transform: translateY(0);
+                transform: translateY(0); /* Firefox 34 Nightly width fix */
+        -webkit-transition-duration: .15s;
+                transition-duration: .15s;
     }
     .bar span:before {
         content: "";
         position: absolute;
         right: 0;
         width: 1em;
-        transform: translateY(-.42em);
+        -webkit-transform: translateY(-.42em);
+                transform: translateY(-.42em);
     }
     .bar span:after {
         content: "";
         position: absolute;
         width: .4em;
-        transform: translateY(.42em);
+        -webkit-transform: translateY(.42em);
+                transform: translateY(.42em);
     }
     .bar-holder:checked ~ header .wrapper .bar span {
         background-color: transparent;
     }
     .bar-holder:checked ~ header .wrapper .bar span:before {
         width: 1.3em;
-        transform: rotate3d(0,0,1,45deg);
+        -webkit-transform: rotate3d(0,0,1,45deg);
+                transform: rotate3d(0,0,1,45deg);
     }
     .bar-holder:checked ~ header .wrapper .bar span:after {
         width: 1.3em;
-        transform: rotate3d(0,0,1,-45deg);
+        -webkit-transform: rotate3d(0,0,1,-45deg);
+                transform: rotate3d(0,0,1,-45deg);
     }
     .bar-holder:checked ~ header .wrapper .nav-container,
     .bar-holder:checked ~ main .container .nav-container {
         box-shadow: 0 0 4em rgba(51,51,51,.11),
-                    0 0 40vw rgba(51,51,51,.3);
-        transform: none;
-        transition: transform .35s cubic-bezier(.2,1,.4,1);
+                    0 0 12em rgba(51,51,51,.3);
+        -webkit-transform: none;
+                transform: none;
+        -webkit-transition: -webkit-transform .35s cubic-bezier(.2,1,.4,1);
+                transition: transform .35s cubic-bezier(.2,1,.4,1);
     }
     .bar-holder:checked ~ header .wrapper .bar-close {
         display: block;
@@ -1261,34 +1322,5 @@ iframe {
     .table.center .cel.cel {
         display: block;
         max-width: 100%;
-    }
-
-    /* YouTube image play icon */
-    .play {
-        overflow: hidden;
-        z-index: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .play:before,
-    .play:after {
-        content: "";
-        position: absolute;
-        z-index: 1;
-        pointer-events: none;
-    }
-    .play:before {
-        width: 3.8em;
-        height: 2em;
-        padding-top: .7em;
-        font-size: 1em;
-        background-color: #cc181e;
-        border-radius: .6em;
-    }
-    .play:after {
-        border: solid 0 transparent;
-        border-width: .6em 0 .6em 1em;
-        border-left-color: #fff;
     }
 }

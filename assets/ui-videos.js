@@ -219,7 +219,6 @@ ui.videos = (function () {
         }
 
         ui.w.fetch || features.push("fetch");
-        ui.w.IntersectionObserver || features.push("IntersectionObserver");
 
         if (features.length) {
             ui.asyncScript("https://cdn.polyfill.io/v2/polyfill.min.js?features=" +

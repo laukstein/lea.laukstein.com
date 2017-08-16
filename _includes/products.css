@@ -49,10 +49,19 @@
     main {
         background-color: #e2e1e7;
     }
-    .full {
-        background-position: center 3.75em;
-        background-attachment: fixed;
+    main:before {
+        content: "";
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        /* Fixed background isn't supported on mobile */
+        background: center 3.75em no-repeat url(/assets/products.jpg);
         background-size: contain;
+    }
+    .full {
+        background: none;
     }
     .cel {
         background: none;
