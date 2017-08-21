@@ -21,7 +21,7 @@ endfor %}
 {% if more %}
     <blockquote class="box footer">
         <p>מאמרים נוספים:</p>
-        <ol start={{ max + 1 }}>{{ more }}</ol>
+        <ol start={{ max | plus: 1 }}>{{ more }}</ol>
     </blockquote>{%
 endif %}
 </div>
