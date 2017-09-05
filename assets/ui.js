@@ -600,7 +600,7 @@ window.ui = {
                     case "bluetooth":
                     case "cellular":
                     case "3g":
-                    case "4g":
+                    // case "4g":
                         result = "360p";
                         break;
                 }
