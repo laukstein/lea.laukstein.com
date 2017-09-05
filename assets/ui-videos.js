@@ -120,6 +120,8 @@ ui.videos = (function () {
         return str && str.replace(regex, pattern);
     };
     generateHTML.image = function (obj) {
+        obj.image = ui.video.youtubeSupport ? obj.image : ui.video.getData(obj.id).image;
+
         return "<li class=box>" +
             "    <figure class=play><img " + (ui.w.IntersectionObserver ? "data-" : "") + "src=\"" + obj.image + "\" alt=\"" + obj.title + "\"></figure>" +
             "    <a class=absolute href=\"#" + obj.id + "\" tabindex=0></a>" +
@@ -132,7 +134,9 @@ ui.videos = (function () {
         ui.d.title = obj.title;
 
         return "<article class=\"box card\" dir=ltr>" +
-            "    <div class=video><iframe src=\"https://www.youtube.com/embed/" + obj.id + "?showinfo=0&autoplay=1\" allowfullscreen></iframe></div>" +
+            "    <div class=video>" +
+                (ui.video.youtubeSupport ? "<iframe src=\"https://www.youtube.com/embed/" + obj.id + "?showinfo=0&hl=he&autoplay=1\" allowfullscreen></iframe>" : ui.video.template(obj.id)) +
+            "    </div>" +
             "    <div class=content dir=rtl>" +
             "        <h1>" + obj.title + "</h1>" +
             (obj.description ? "        <p>" + this.links(obj.description) + "</p>" : "") +
@@ -173,7 +177,10 @@ ui.videos = (function () {
                 ui.d.body.scrollTop = url ? 0 : response.scrollTop || 0;
 
                 if (!ui.isLoaded) {
-                    ui.asyncScript("https://apis.google.com/js/platform.js", {remove: true});
+                    if (ui.video.youtubeSupport) {
+                        ui.asyncScript("https://apis.google.com/js/platform.js", {remove: true});
+                    }
+
                     ui.isLoaded = true;
                 }
                 if (ui.comment) {
@@ -189,6 +196,16 @@ ui.videos = (function () {
                 }
                 if (url) {
                     lazyload.observer && lazyload.observer.disconnect();
+
+                    if (!ui.video.youtubeSupport) {
+                        if (ui.w.plyr) {
+                            ui.video.plyrSuccess();
+                        } else if (!ui.video.youtubeSupportProgress) {
+                            ui.video.youtubeSupportProgress = true;
+
+                            ui.asyncScript("/assets/plyr.js", ui.video.plyrSuccess);
+                        }
+                    }
                 } else {
                     lazyload();
                 }
@@ -207,14 +224,14 @@ ui.videos = (function () {
     function request() {
         var features = [];
 
-        function call() {
-            fetch("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUNNsgimJtU1q1LUMVsq44Dg&maxResults=50&key=AIzaSyBt0-e3Ups6i4p8GQs811EarYbpMiPfxg4")
+        function call(url) {
+            fetch(url)
                 .then(function (response) {
                     return response.json();
                 }).then(function (data) {
                     return request.getData(data, true);
                 }).catch(function (err) {
-                    return request.error(err);
+                    return /^https?:\/\/.*/.test(url) ? call("/assets/playlistItems.json") : request.error(err);
                 });
         }
 
@@ -224,7 +241,7 @@ ui.videos = (function () {
             ui.asyncScript("https://cdn.polyfill.io/v2/polyfill.min.js?features=" +
                 features.join(",") + "&flags=gated", {onSuccess: call});
         } else {
-            call();
+            call("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUNNsgimJtU1q1LUMVsq44Dg&maxResults=50&key=AIzaSyBt0-e3Ups6i4p8GQs811EarYbpMiPfxg4");
         }
 
         return {

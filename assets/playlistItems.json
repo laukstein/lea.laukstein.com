@@ -1,0 +1,1480 @@
+﻿{
+ "kind": "youtube#playlistItemListResponse",
+ "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/4l3YWxv-DpPr5L_xzxz4B77lAVA\"",
+ "pageInfo": {
+  "totalResults": 33,
+  "resultsPerPage": 50
+ },
+ "items": [
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/S9QiEVDG6ioF-RA3mRfrxqqTvwk\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLjZ6X0hwdm1faV9V",
+   "snippet": {
+    "publishedAt": "2017-08-06T23:34:17.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "איך לארוז לחופשה - סטיילינג לדתיות",
+    "description": "לאה לאוקשטיין - סטייל שבא מבפנים\n\nסרטון חדש - איך לארוז לחופשה?\n(אבל איך מצלמים סרטון בחופש הגדול עם ילדים בבית? ככה....)\n\nכמה המלצות:\n1) בגדים שלא מתקמטים ולא דורשים גיהוץ\n2) לקחת פחות בגדים ולכבס ביד. בחום שלנו הם יתייבשו תוך שעתיים\n3) פריטים שקל לשלב אחד עם השני, בעיקר בצבע חלק, ללא הדפס או בהדפס קלאסי\n4) שמלה או חצאית ג'ינס תהיה מעולה\n5) כמה שפחות שכבות\n\nמי שעדיין לא הורידה את המדריך שלי על שלושה עקרונות הסטיילינג - https://lea.laukstein.com",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/6z_Hpvm_i_U/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/6z_Hpvm_i_U/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/6z_Hpvm_i_U/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/6z_Hpvm_i_U/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/6z_Hpvm_i_U/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 0,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "6z_Hpvm_i_U"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/IHTXaVDo4IQKyKQu-_q7xZSOPXw\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmZrUzJHbzRfSDdF",
+   "snippet": {
+    "publishedAt": "2017-07-22T21:59:40.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "איך להכניס לארון אך ורק פריטים מדוייקים? לאה לאוקשטיין - סטיילינג לדתיות",
+    "description": "לקבלת המדריך על שלושה עקרנונות הסטיילינג - https://lea.laukstein.com\n\nלאה לאוקשטיין - סטייל שבא מבפנים",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/fkS2Go4_H7E/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/fkS2Go4_H7E/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/fkS2Go4_H7E/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/fkS2Go4_H7E/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/fkS2Go4_H7E/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 1,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "fkS2Go4_H7E"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/tAHCdytwP9DGqoi0enYlwWDLVZ4\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLlp0SUY4M0hZY09Z",
+   "snippet": {
+    "publishedAt": "2017-06-30T09:56:15.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "סידור ארון אצל בת חן",
+    "description": "הכי כיף, שכול השפע הזה כבר נמצא בארון של בת חן! אלו בגדים שלה! ומצאנו שילובים חדשים ומקוריים לבגדים שנתקעו בארון!\n\nלמזמינות סידור ארון מצולם בוידאו - הנחה משמעותית.\nלפרטים: https://lea.laukstein.com",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/ZtIF83HYcOY/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/ZtIF83HYcOY/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/ZtIF83HYcOY/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/ZtIF83HYcOY/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/ZtIF83HYcOY/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 2,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "ZtIF83HYcOY"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/jyctY2QQdTgWgAMrc_WPJJDzdAM\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLkFjSDBycks1YUtj",
+   "snippet": {
+    "publishedAt": "2017-06-09T12:11:27.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "סדנאות סטיילינג ושיחות גיור לנשים ונערות",
+    "description": "לאה לאוקשטיין\nלהזמנות https://lea.laukstein.com, 0585800020",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/AcH0rrK5aKc/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/AcH0rrK5aKc/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/AcH0rrK5aKc/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 3,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "AcH0rrK5aKc"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/C3GzFDP_SFBZc7d_-mfemhQ_k_o\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLnhDbHo1Q2VScjYw",
+   "snippet": {
+    "publishedAt": "2017-06-06T08:22:47.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "לאה לאוקשטיין - שיחות גיור וסדנאות סטיילינג",
+    "description": "להזמנות - https://lea.laukstein.com, 0585800020",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/xClz5CeRr60/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/xClz5CeRr60/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/xClz5CeRr60/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/xClz5CeRr60/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/xClz5CeRr60/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 4,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "xClz5CeRr60"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/Xt5QLoyJlQ3Fbk_u0mj6m4ymLok\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLnhWaFlkVzFXWHFr",
+   "snippet": {
+    "publishedAt": "2017-05-21T07:00:02.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "יש צבע שלא מתאים לכל צבע אחר?",
+    "description": "כאן מעגל צבעים המקורי ומעורב עם לבן ושחור. בערך את כל הצבעים שיש, חוץ מצבעים הניטראלים שמתאימים לכל צבע - כמו חום, בז', אפור, שחור, לבן.\n\nלהורדת מדריך ביסודות הסטיילינג https://lea.laukstein.com",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/xVhYdW1WXqk/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/xVhYdW1WXqk/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/xVhYdW1WXqk/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/xVhYdW1WXqk/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/xVhYdW1WXqk/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 5,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "xVhYdW1WXqk"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/smFOvTNRE6TQkvuI2JX-DClCPWA\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLkh6VFNEaktWMWRn",
+   "snippet": {
+    "publishedAt": "2017-05-05T10:49:04.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "לקנות חכם ולהדגיש מותן!",
+    "description": "להזמנת סידור ארון אצלך, בספירת העומר מבצע של 500 ש\"ח בלבד!\nלכל הפרטים https://lea.laukstein.com/closet",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/HzTSDjKV1dg/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/HzTSDjKV1dg/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/HzTSDjKV1dg/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/HzTSDjKV1dg/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/HzTSDjKV1dg/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 6,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "HzTSDjKV1dg"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/M3fO65Z7IGEi81yLa1c2Cxf8jKw\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLnpKRnE5SVpPM0pv",
+   "snippet": {
+    "publishedAt": "2017-04-16T11:56:45.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "סידור ארון אצל עתרת",
+    "description": "בסידור ארון אצל עתרת גילינו כמה חשוב לדעת מה הסגנון האישי. וכל הפרטים שנשארו בארון ולא נלבשו היו כאלו שלא השתלבו עם הסגנון שלה.\n\nלהזמנת שירות https://lea.laukstein.com/closet",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/zJFq9IZO3Jo/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/zJFq9IZO3Jo/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/zJFq9IZO3Jo/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/zJFq9IZO3Jo/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/zJFq9IZO3Jo/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 7,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "zJFq9IZO3Jo"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/52moF5EfbKYN2j-4HPdp5RgCJCw\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLjRId1RlWmlaSjRR",
+   "snippet": {
+    "publishedAt": "2017-03-31T11:08:53.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "מה הוא הסטיילינג שלך? ראיון עם לאה לאוקשטיין - סטייליסטית גיורת.",
+    "description": "אני אוהבת יותר לתת יעוץ ארון, מאשר שופינג.\nאני אוהבת לעזור לראות את השפע שיש ללקוחה שלי בארון, למרות שהיא חשבה שאין לה מה ללבוש! בדרך כלל יחסרו לה אולי 2-3 פריטים שיאפשרו לה בקלות להתלבש ולגוון. אותם הפריטים אפשר להשלים בקניה יעילה בשעה אחת.\nכאן ראיון קטן איתי, מה אני חושבת על סטיילינג!\n\nhttps://lea.laukstein.com",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/4HwTeZiZJ4Q/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/4HwTeZiZJ4Q/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/4HwTeZiZJ4Q/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/4HwTeZiZJ4Q/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/4HwTeZiZJ4Q/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 8,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "4HwTeZiZJ4Q"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/VafxmsoMIJtRlzFA54OkxXe2vrU\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLlkzeU4wbzlQSkdF",
+   "snippet": {
+    "publishedAt": "2017-03-17T09:02:06.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "איך להכניס צבע ללבוש שלנו?",
+    "description": "הכלל אומר שאפשר לשלב עד שלושה צבעים בלבוש אחד, בנוסף לצבעים הניטרליים. לכן באמת אין סיבה לשמור על סטים קבועים.\nכאן בסרטון כמה דרכים שיעזרו לכן להכניס צבע ללבוש שלכם.\n\nלאה לאוקשטיין - סטיילינג לדתיות\nלהורדת מדריך ביוסודת הסטיילינג - https://lea.laukstein.com",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Y3yN0o9PJGE/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/Y3yN0o9PJGE/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/Y3yN0o9PJGE/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/Y3yN0o9PJGE/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/Y3yN0o9PJGE/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 9,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "Y3yN0o9PJGE"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/16WnDouT6SKdD6jm5uhDJ1Kw2kk\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLnpBSFZVdXpyb2ZN",
+   "snippet": {
+    "publishedAt": "2017-03-01T13:36:38.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "איך לגוון עם בגדי שבת?",
+    "description": "שבת היא פעם בשבוע, והרבה פעמים דווקא לכבוד שבת אנחנו מתקשות להתאים לבוש, שיהיה חגיגי אבל לא יותר מדי!\nההמלצה שלי היא לנצל את הבגדים כמה שיותר!\nבעצם, כל בגד יום יום אפשר בקלות להפוך לבגד שבתי, וכל בגד של אירוע אפשר להפוך לבגד לשבת.\nכאן בסרטון יש כמה טיפים איך עושים זאת!\nלקבלת הסדרה החינמית: https://lea.laukstein.com\n\nלהזמנת סדנת סטיילינג לנערות ונשים בשילוב עם סיפור הגיור שלי: https://lea.laukstein.com/contact",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/zAHVUuzrofM/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/zAHVUuzrofM/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/zAHVUuzrofM/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/zAHVUuzrofM/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/zAHVUuzrofM/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 10,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "zAHVUuzrofM"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/1ryikJMDZK1b2wrMw2rd-2kNMfk\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLlIxeFIzRU5rQ0RR",
+   "snippet": {
+    "publishedAt": "2017-02-14T09:44:21.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "הדפסים לפי מבנה גוף",
+    "description": "אילו הדפסים יתאימו לאילו מבני גוף?\n\nלאה לאוקשטיין סטיילינג לדתיות\nלקבלת מדריך ביסודות הסטיילינג https://lea.laukstein.com",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/R1xR3ENkCDQ/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/R1xR3ENkCDQ/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/R1xR3ENkCDQ/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/R1xR3ENkCDQ/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/R1xR3ENkCDQ/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 11,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "R1xR3ENkCDQ"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/L0RMWcxPP38E2jrw2EOCv9tMaWw\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmxqeWlIQ3hIR2ZZ",
+   "snippet": {
+    "publishedAt": "2017-02-09T14:45:24.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "הדפסים, איך ולמה?",
+    "description": "שאלות שאני מקבלת מהלקוחות שלי:\nהאם אפשר לשלב הדפסים?\nהאם אפשר לשלב יותר מהדפס אחד בלבוש?\nאם לבשתי חצאית משבצות, אז מה יתאים?\nמה מתאים לפסים?\nכאן בסרטון כמה טיפים פשוטים שכדאי לזכור!\nלקבלת המדריך ביסודות הסטיילינג - https://lea.laukstein.com\nלאה לאוקשטיין - סטיילינג לדתיות",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/ljyiHCxHGfY/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/ljyiHCxHGfY/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/ljyiHCxHGfY/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/ljyiHCxHGfY/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/ljyiHCxHGfY/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 12,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "ljyiHCxHGfY"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/CnK1lI921BTtZoQjzEYvEoAlCsQ\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmVORjdTQmhKQmI4",
+   "snippet": {
+    "publishedAt": "2017-01-27T10:38:13.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "מבנה הפנים - איך להתאים מטפחת ותסרוקת?",
+    "description": "לקבלת מדריך ביסודות הסטיילינג https://lea.laukstein.com\nלהזמנת מטפחות של אתכסיא http://etcasiart.com/",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/eNF7SBhJBb8/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/eNF7SBhJBb8/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/eNF7SBhJBb8/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/eNF7SBhJBb8/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/eNF7SBhJBb8/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 13,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "eNF7SBhJBb8"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/-EVVv4Q164Eld_j7iHarHpXmYNA\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLlRMYUxhX2d1X2w4",
+   "snippet": {
+    "publishedAt": "2017-01-03T12:10:57.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "למה פסי רוחב מחמיאים ואפה להניח אותם?",
+    "description": "לאה לאוקשטיין - סטיילינג לדתיות\nלהורדת מדריך ביסודות הסטיילינג - https://lea.laukstein.com",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/TLaLa_gu_l8/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/TLaLa_gu_l8/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/TLaLa_gu_l8/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/TLaLa_gu_l8/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/TLaLa_gu_l8/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 14,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "TLaLa_gu_l8"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/VQzro5NG7YFB0NDG3CJO4A_-qy0\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLkpoMFpPZVVobHZV",
+   "snippet": {
+    "publishedAt": "2016-12-26T11:14:30.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "איפור עמיד ליום עמוס!",
+    "description": "להרשמה לסדנת איפור עם בת חן כרמל http://www.bcarmelmakeup.com/blank-2\nלקבלת מדריך ביסודות הסטיילינג https://lea.laukstein.com",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Jh0ZOeUhlvU/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/Jh0ZOeUhlvU/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/Jh0ZOeUhlvU/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/Jh0ZOeUhlvU/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/Jh0ZOeUhlvU/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 15,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "Jh0ZOeUhlvU"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/GPbMfNqwi7XDYeJ052PBBwZ8d94\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLnoyWjBjZnBCSTNj",
+   "snippet": {
+    "publishedAt": "2016-12-26T11:15:09.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "לקוחות מספרים - המלצה של עינת",
+    "description": "לאה לאוקשטיין - סטיילינג לדתיות\nלקבלת מדריך ביסודות הסטיילינג - https://lea.laukstein.com",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/z2Z0cfpBI3c/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/z2Z0cfpBI3c/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/z2Z0cfpBI3c/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/z2Z0cfpBI3c/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/z2Z0cfpBI3c/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 16,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "z2Z0cfpBI3c"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/ZOwT1sV7u7M3uCHGMRcvp2YttvU\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLldKUWw3NXZJV0J3",
+   "snippet": {
+    "publishedAt": "2016-12-13T08:20:59.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "עשי זאת בעצמך - תכשיט משלך!",
+    "description": "לקבלת מדריך ביסודות הסטיילינג https://lea.laukstein.com\nלאה לאוקשטיין - סטיילינג לדתיות",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/WJQl75vIWBw/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/WJQl75vIWBw/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/WJQl75vIWBw/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/WJQl75vIWBw/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/WJQl75vIWBw/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 17,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "WJQl75vIWBw"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/l12YI4kW_yz8g-p9Kr-1rwsIf-8\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLk1BQ19NS0RSR2Nn",
+   "snippet": {
+    "publishedAt": "2016-12-12T07:11:00.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "סטיילינג בכיסוי ראש",
+    "description": "לאה לאוקשטיין מומחית לסטיילינג לדתיות - לקבלת מדריך https://lea.laukstein.com\nחגית רז ד\"ר מטפחת - סטיילינג בכיסוי ראש",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/MAC_MKDRGcg/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/MAC_MKDRGcg/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/MAC_MKDRGcg/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/MAC_MKDRGcg/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/MAC_MKDRGcg/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 18,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "MAC_MKDRGcg"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/f2mAF6Yzl1MkUb5du-KwLFcVUG0\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLkVxMlNpVUZvY0sw",
+   "snippet": {
+    "publishedAt": "2016-12-08T11:42:52.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "מתלה תכשיטים -עשי זאת בעצמך!",
+    "description": "לאה לאוקשטיין - סטיילינג לדתיות\nלקבלת מדריך ביסודות הסטיילינג - https://lea.laukstein.com",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Eq2SiUFocK0/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/Eq2SiUFocK0/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/Eq2SiUFocK0/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/Eq2SiUFocK0/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/Eq2SiUFocK0/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 19,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "Eq2SiUFocK0"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/B9YYkq806n_xrIAczpKC98XAHhI\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLlVQWGt0NV9MVzRN",
+   "snippet": {
+    "publishedAt": "2016-12-07T08:23:23.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "איזה מגף יתאים לך?",
+    "description": "לקבלת מדריך ביסודות הסטיילינג - https://lea.laukstein.com\nלאה לאוקשטיין - סטיילינג לדתיות",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/UPXkt5_LW4M/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/UPXkt5_LW4M/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/UPXkt5_LW4M/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/UPXkt5_LW4M/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/UPXkt5_LW4M/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 20,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "UPXkt5_LW4M"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/m5OvAXJ1IZJGrEpQmYGJABOl94k\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmxSQ1pRZHJSOUhr",
+   "snippet": {
+    "publishedAt": "2016-12-06T06:15:58.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "ירידה במשקל בסטייל",
+    "description": "להורדת מדריך על סטיילינג לדתיות - https://lea.laukstein.com\nלהורדת מיני קורס בירידה במשקל - http://lp.vp4.me/rrzy\nלאה לאוקשטיין מומחית לסטיילינג לדתיות\nמעיין דיין דיאטנית קלינית",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/lRCZQdrR9Hk/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/lRCZQdrR9Hk/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/lRCZQdrR9Hk/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/lRCZQdrR9Hk/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/lRCZQdrR9Hk/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 21,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "lRCZQdrR9Hk"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/P5u_ExcTidIR14c8bc_QLPOpdyE\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmJaVXRSdVZucHdN",
+   "snippet": {
+    "publishedAt": "2016-12-04T06:31:00.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "עיצוב הבית ולבוש בבית, חלק א",
+    "description": "לקבלת ההטבה לפגישת יעוץ בהום סטיילינג - http://lp.wisemail.co.il/rcmh\nלקבלת מדריך בסטיילינג - https://lea.laukstein.com\n\nאורית לוי הום סטיילינג\nלאה לאוקשטיין - סטיילינג לדתיות",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/bZUtRuVnpwM/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/bZUtRuVnpwM/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/bZUtRuVnpwM/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/bZUtRuVnpwM/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/bZUtRuVnpwM/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 22,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "bZUtRuVnpwM"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/PbZBE4_mVkDu8U3NRznXScMew9Q\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLlJCQl94ZFVJTG5j",
+   "snippet": {
+    "publishedAt": "2016-12-11T12:56:46.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "עיצוב הבית ולבוש בבית, חלק ב",
+    "description": "אורית לוי הום סטיילינג\nלאה לאוקשטיין - סטיילינג בקלות\n\nלצפיה בחלק הראשון - https://youtu.be/bZUtRuVnpwM\n\nלקבלת ההטבה לפגישת יעוץ בהום סטיילינג - http://lp.wisemail.co.il/rcmh\nלקבלת מדריך בסטיילינג - https://lea.laukstein.com",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/RBB_xdUILnc/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/RBB_xdUILnc/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/RBB_xdUILnc/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/RBB_xdUILnc/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/RBB_xdUILnc/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 23,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "RBB_xdUILnc"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/lsmnjhxtFum_VfiHhjxmdk6LOzY\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLjhHc3lveWdkdkdF",
+   "snippet": {
+    "publishedAt": "2016-11-30T07:51:34.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "\"אוי, איך אני נראת?\"",
+    "description": "לאה לאוקשטיין - מומחית לסטיילינג לדתיות\nלפרטים על הקורס - lea.laukstein.com",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/8GsyoygdvGE/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/8GsyoygdvGE/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/8GsyoygdvGE/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/8GsyoygdvGE/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/8GsyoygdvGE/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 24,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "8GsyoygdvGE"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/WvdNdaTP6h4Ze1HH8z6TMVk3JuQ\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLk5VV0ZvQkw4REVJ",
+   "snippet": {
+    "publishedAt": "2016-11-09T09:05:42.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "איך להזמין ג'קט מחמיא למבנה גוף האישי שלך?",
+    "description": "למה ביום יש רק 24 שעות?\nגם אתן מרגישות שהיתן רוצות להספיק מיליון דברים ביום אחד? גם אתן לא מבינות למה אתן עייפות ומופתאות לגלות שבעצם כבר שתים עשרה בלילה?\nאחד מהדרכים לחסוך קצת זמן הוא קניות באינטרנט. אז הכנתי לכן סרטון ממש בספונטאניות, איזה ג'קט יחמיא לכל אחד ממבני הגוף, וכמה טיפים למה כדי לשים לב.\nאשמח לשמוע מכן, אם זה עזר! ואתן מוזמנות לכתוב לשאלות נוספות בשימחה!\nואם את רוצה ליווי אישי וצמוד רק עבורך ביום קניות - אשמח להכיר אותך וללוות אותך!",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/NUWFoBL8DEI/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/NUWFoBL8DEI/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/NUWFoBL8DEI/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/NUWFoBL8DEI/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/NUWFoBL8DEI/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 25,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "NUWFoBL8DEI"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/dsungBbpm9D9snQCIXlGWTtpA90\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLjlLbFVoMDRjYm1R",
+   "snippet": {
+    "publishedAt": "2016-11-07T17:21:55.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "איך להשאיר רושם ראשוני טוב באירוע?",
+    "description": "ראיון משותף  - סטייליסטית לאה לאוקשטיין ומיטל טולדנו, מאמנת אישית לנשים שרוצות לחיות את הטוב.\nלהורדת בנק הוויות http://meital.vp4.me/havayot\nלהורדת מדריך סטיילינג לדתיות  https://lea.laukstein.com",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/9KlUh04cbmQ/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/9KlUh04cbmQ/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/9KlUh04cbmQ/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/9KlUh04cbmQ/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/9KlUh04cbmQ/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 26,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "9KlUh04cbmQ"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/xEF6WTCQ-pjBAfF9kxZLAYndYlk\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmRIV0xHUVpzMHBz",
+   "snippet": {
+    "publishedAt": "2016-10-27T19:30:51.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "גשם הראשון!! איך מתלבשים?",
+    "description": "טיפים לתקופת המעבר - שגם חם וגם קר באותו יום!\nלהורדת המדריך - https://lea.laukstein.com\nלאה לאוקשטיין - מומחית לסטיילינג לדתיות\nמדריך ללבוש עסקי https://lea.laukstein.com/signup-business",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/dHWLGQZs0ps/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/dHWLGQZs0ps/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/dHWLGQZs0ps/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/dHWLGQZs0ps/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/dHWLGQZs0ps/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 27,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "dHWLGQZs0ps"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/WTfh3GyPjYukFii0ATSiD3QaZ-w\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmpSV0o2UklxdUFB",
+   "snippet": {
+    "publishedAt": "2016-09-24T20:41:58.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "ראיון עם שמרית בנימין - איך צילום נכון עוזר בסטיילינג?",
+    "description": "לאה לאוקשטיין, סטיילינג בקלות.\nלקבלת מדריך של שלושה שיעורים - https://lea.laukstein.com\nשמרית בנימין צמלת מקצועית - להזמנות 050-2213131\nלעדכונים לבלוג של שמרית http://shimritbin.blogspot.co.il/",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/jRWJ6RIquAA/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/jRWJ6RIquAA/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/jRWJ6RIquAA/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/jRWJ6RIquAA/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/jRWJ6RIquAA/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 28,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "jRWJ6RIquAA"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/QAQLdc7gPBpALvW1WaGeM_BN_Bk\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLklOUGp0OV9UVTRB",
+   "snippet": {
+    "publishedAt": "2016-09-07T07:51:49.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "איך למנוע תסכול מהקניות?",
+    "description": "לאה לאוקשטיין - סטיילינג לדתיות\nכמה המלצות חשובות לקניית בגדים חדשים - איך לעשות את זה נכון!\n\nלהורדת סדרה החינמת בסודות הסטיילינג - https://lea.laukstein.com\nבקרו אותי בקבוצה הסגורה בפייסבוק עם טיפים עדכניים - סדנאת סטיילינג לדתיות https://www.facebook.com/groups/304148679918860/",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/INPjt9_TU4A/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/INPjt9_TU4A/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/INPjt9_TU4A/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/INPjt9_TU4A/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/INPjt9_TU4A/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 29,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "INPjt9_TU4A"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/jZjg_8PdoSK7F1B3E6_SDU4VjW4\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLjV1NEppb2x1NTVB",
+   "snippet": {
+    "publishedAt": "2016-08-10T06:19:00.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "איך ללבוש לבן",
+    "description": "לאה לאוקשטיין, מומחית לסטיילינג לדתיות\n\nלהורדת מדריך ביסודות סטיילינג - https://lea.laukstein.com",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/5u4Jiolu55A/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/5u4Jiolu55A/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/5u4Jiolu55A/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/5u4Jiolu55A/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 30,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "5u4Jiolu55A"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/J2NeySH6Ui6U16WloOjZWDphLMw\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmJsby11UEZSNWg0",
+   "snippet": {
+    "publishedAt": "2016-08-06T19:02:42.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "מי יכולה ללבוש שכבה אחת!",
+    "description": "לאה לאוקשטיין סטיילינג לדתיות\nלהורדת מדריך ביסודות הסטיילינג - https://lea.laukstein.com\n\nבקרי אותי בקבוצה הסגורה בפייסבוק! שם תוכלי לעלות תמונות ולהתיעץ איתי! https://www.facebook.com/groups/304148679918860/",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/blo-uPFR5h4/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/blo-uPFR5h4/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/blo-uPFR5h4/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/blo-uPFR5h4/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/blo-uPFR5h4/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 31,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "blo-uPFR5h4"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/OgBSCGeuqDkf-5z9RCHyDexJbng\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLlRIZmJ1RlYxNnFv",
+   "snippet": {
+    "publishedAt": "2016-07-24T07:45:35.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "איך לעשות קניות בארון שלך?",
+    "description": "איך לסדר ארון, כך שלא תצטרכי לקנות בגדים חדשים.\nסרטון לבין המיצרים.\nלקבלת מדריך ביסודות הסטיילינג - https://lea.laukstein.com\n\nלאה לאוקשטיין סטיילינג לדתיות\nלעדכונים בדף הפייסבוק https://www.facebook.com/LeaLaukstein/",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/THfbuFV16qo/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/THfbuFV16qo/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/THfbuFV16qo/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/THfbuFV16qo/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/THfbuFV16qo/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "לאה לאוקשטיין - סטיילינג לדתיות",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 32,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "THfbuFV16qo"
+    }
+   }
+  }
+ ]
+}

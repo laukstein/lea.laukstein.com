@@ -556,8 +556,178 @@ window.ui = {
                 // Required for Safari Private Browsing
                 delete ui.w.localStorage;
             }
+            if (ui.w.sessionStorage) {
+                // Required for Safari Private Browsing
+                delete ui.w.sessionStorage;
+            }
 
             ui.w.localStorage = {};
+            ui.w.sessionStorage = {};
+        }
+    },
+    video: {
+        getData: function (id) {
+            "use strict";
+
+            var obj = ui.videoLegacy && ui.videoLegacy[id] || {},
+                res = {},
+                prop;
+
+            for (prop in obj) {
+                if (obj.hasOwnProperty(prop)) {
+                    res[prop] = "https://dl.dropboxusercontent.com/s/" + obj[prop] +
+                        "/" + id + (prop === "image" ? ".jpg" : "-" + prop + ".mp4");
+                }
+            }
+
+            return res;
+        },
+        size: (function () {
+            "use strict";
+
+            if (sessionStorage.videoSize) {
+                return sessionStorage.videoSize;
+            }
+
+            var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection,
+                result = "720p";
+
+            if (connection && connection.type) {
+                // Example https://github.com/daniellmb/downlinkMax/blob/master/downlinkmax.js
+                switch (connection.type) {
+                    case "none":
+                    case "2g":
+                    case "bluetooth":
+                    case "cellular":
+                    case "3g":
+                    case "4g":
+                        result = "360p";
+                        break;
+                }
+            } else if (navigator.maxTouchPoints > 0 || window.matchMedia && window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window) {
+                // Is touch device
+                result = "360p";
+            }
+
+            sessionStorage.videoSize = result;
+
+            return result;
+        }()),
+        template: function (id) {
+            "use strict";
+
+            var obj = this.getData(id);
+
+            return id ? "<video poster=\"" + obj.image + "\" preload=auto controls controlsList=nodownload>" +
+                "    <source src=\"" + obj[this.size] + "\" type=\"video/mp4\">" +
+                "</video>" : "";
+        },
+        applyPlyr: function () {
+            "use strict";
+
+            if (!this.youtubeSupport) {
+                var success = function () {
+                    plyr.setup && plyr.setup({
+                        showPosterOnEnd: true,
+                        iconUrl: "/assets/plyr.svg",
+                        blankUrl: "/assets/blank.mp4",
+                        volume: 10
+                    });
+                    delete ui.video.youtubeSupportProgress;
+                };
+
+                if (ui.w.plyr) {
+                    success();
+                } else if (!this.youtubeSupportProgress) {
+                    this.youtubeSupportProgress = true;
+
+                    ui.asyncScript("/assets/plyr.js", success);
+                }
+            }
+        },
+        youtubeSupport: function () {
+            "use strict";
+
+            var loadImage = {},
+                callback;
+
+            callback = function () {
+                var self = ui.video,
+                    arr = ui.d.querySelectorAll(".video iframe"),
+                    el,
+                    i;
+
+                if (ui.videoLegacy) {
+                    sessionStorage["ui.videoLegacy"] = JSON.stringify(ui.videoLegacy);
+                } else {
+                    try {
+                        ui.videoLegacy = JSON.parse(sessionStorage["ui.videoLegacy"]);
+                    } catch (e) {
+                        ui.videoLegacy = {};
+                    }
+                }
+
+                self.youtubeSupport = sessionStorage.youtubeSupport === "true";
+
+                for (i = 0; i < arr.length; i += 1) {
+                    arr[i].outerHTML = self.template(arr[i].src.replace(/^.*\/embed\//, "").replace(/\?.*$/, ""));
+                }
+
+                if (!ui.w.plyr && !self.youtubeSupportProgress) {
+                    self.applyPlyr();
+
+                    el = ui.d.createElement("link");
+                    el.href = "/assets/plyr.css";
+                    el.rel = "stylesheet";
+
+                    ui.d.body.appendChild(el);
+                }
+                // if (!self.youtubeSupport && ui.w.FS && FS.setUserVars) {
+                //     FS.setUserVars({youTube_bool: false}); // eslint-disable-line
+                // }
+
+                return self.youtubeSupport;
+            };
+
+            if (sessionStorage["ui.videoLegacy"] && sessionStorage.youtubeSupport) {
+                return callback();
+            }
+
+            loadImage.get = function (url, onload, onerror) {
+                var image = new Image();
+
+                image.onload = onload;
+                image.onerror = onerror;
+                image.src = url;
+            };
+            loadImage.result = function (isLoaded) {
+                sessionStorage.youtubeSupport = isLoaded;
+
+                if (!isLoaded) {
+                    ui.asyncScript("/assets/ui-videoLegacy.js", callback);
+                }
+            };
+            loadImage.error = function () {
+                // console.log(e.target.src);
+                loadImage.result(false);
+            };
+            loadImage.success = function (e) {
+                if (e.target.naturalWidth > 1) {
+                    loadImage.result(true);
+                } else {
+                    loadImage.error(e);
+                }
+            };
+
+            loadImage.get("https://www.youtube.com/favicon.ico", function (e) {
+                if (e.target.naturalWidth > 1) {
+                    loadImage.get("https://img.youtube.com/vi/fkS2Go4_H7E/1.jpg", loadImage.success, loadImage.error);
+                } else {
+                    loadImage.error(e);
+                }
+            }, loadImage.error);
+
+            return "checking";
         }
     },
     init: function () {
@@ -566,6 +736,7 @@ window.ui = {
         this.legacy();
         this.getUser();
         this.analytics();
+        this.video.youtubeSupport();
 
         var el = this.d.getElementById("bar-close");
 

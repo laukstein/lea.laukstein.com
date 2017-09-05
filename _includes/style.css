@@ -205,7 +205,7 @@ nav .active:after {
     -webkit-filter: none;
             filter: none;
 }
-[class*=icon-] {
+[class*=icon-]:not(svg) {
     height: 20px;
     background-image: url(/assets/sprites.png);
     background-repeat: no-repeat;
@@ -302,6 +302,7 @@ article.box li {
     max-width: calc(100% + 4.2em);
     min-height: 5em;
     margin: -2.1em -2.1em 1.2em;
+    background-color: #ededed;
 }
 .box .item {
     width: 100%;
@@ -326,7 +327,7 @@ article.box li {
     margin-bottom: -2.1em;
     float: right;
 }
-.box figure img {
+.box figure:not(.play) img {
     margin-bottom: .6em;
 }
 blockquote.box figure img {
@@ -385,7 +386,7 @@ blockquote.box figure img {
     height: 2em;
     padding-top: .7em;
     font-size: 1em;
-    background-color: #cc181e;
+    background-color: #e42b26;
     border-radius: .6em;
 }
 .play:after {
@@ -558,10 +559,10 @@ label {
     color: #666;
     line-height: 1.2;
 }
-input,
+input:not([type=range]),
 select,
 textarea,
-button,
+button:not([data-plyr]),
 .button {
         width: 20em;
     min-width: 9em;
@@ -577,7 +578,7 @@ button,
     box-sizing: border-box;
     border: 1px solid transparent;
 }
-input,
+input:not([type=range]),
 select,
 textarea {
     margin-top: .15em;
@@ -591,7 +592,7 @@ textarea {
     -webkit-transition: outline .15s;
             transition: outline .15s;
 }
-input:focus,
+input:not([type=range]):focus,
 select:focus,
 textarea:focus {
     position: relative;
@@ -670,7 +671,7 @@ textarea {
 .error.error textarea {
     border-color: #c00;
 }
-button,
+button:not([data-plyr]),
 .button {
     overflow: hidden;
     margin-top: .55em;
@@ -695,12 +696,12 @@ button,
     color: #fff;
     text-decoration: none;
 }
-button:focus,
+button:not([data-plyr]):focus,
 .button[tabindex]:focus {
     outline-color: #5b9dd9;
 }
-button:hover,
-button:focus,
+button:not([data-plyr]):hover,
+button:not([data-plyr]):focus,
 .button:hover,
 .button:focus {
     background-color: #569e9b;
@@ -745,6 +746,8 @@ iframe {
     padding-top: 56.25%;
     clear: both;
 }
+.video video,
+.video .plyr,
 .video iframe {
     position: absolute;
     top: 0;
@@ -752,6 +755,9 @@ iframe {
     left: 0;
     height: 100%;
     background-color: #000;
+}
+.plyr__play-large {
+    cursor: pointer;
 }
 
 .items {
@@ -1015,6 +1021,9 @@ iframe {
     }
     .error ::-webkit-input-placeholder {
         color: #c00;
+    }
+    video::-webkit-media-controls {
+        width: 100%;
     }
 
     @supports (-ms-ime-align: auto) and (color: unset) { /* Edge 13+ */

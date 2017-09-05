@@ -727,7 +727,7 @@ ui.academy = {
         if (obj.value) {
             switch (obj.type) {
                 case "video":
-                    url = "https://img.youtube.com/vi/" + obj.value + "/maxresdefault.jpg";
+                    url = ui.video.youtubeSupport ? "https://img.youtube.com/vi/" + obj.value + "/maxresdefault.jpg" : ui.video.getData(obj.value).image;
                     break;
                 case "document":
                 case "calculator":
@@ -1313,8 +1313,8 @@ ui.academy = {
                             switch (obj.type) {
                                 case "video":
                                     result += "<div class=video>" +
-                                        "    <iframe src=\"https://www.youtube.com/embed/" +
-                                            obj.value + "?showinfo=0\" allowfullscreen></iframe>" +
+                                        (ui.video.youtubeSupport ? "<iframe src=\"https://www.youtube.com/embed/" +
+                                            obj.value + "?showinfo=0&hl=he\" allowfullscreen></iframe>" : ui.video.template(obj.value)) +
                                         "</div>" +
                                         "<div class=space><h1>" + obj.title + "</h1></div>";
                                     break;
@@ -1343,6 +1343,9 @@ ui.academy = {
                             this.content.innerHTML = result;
                             this.self = obj;
 
+                            if (obj.type === "video") {
+                                ui.video.applyPlyr();
+                            }
                             if (ui.comment) {
                                 ui.comment.load(this.content);
                             }
@@ -1430,7 +1433,7 @@ ui.academy = {
             // https://polyfill.io/v2/docs/examples
             ui.w.fetch || features.push("fetch");
             ui.w.Promise || features.push("Promise");
-            (ui.w.Element && Element.prototype.closest) || features.push("Element.prototype.closest");
+            (ui.w.Element && Element.prototype.matches && Element.prototype.closest) || features.push("Element.prototype.closest");
 
             if (features.length) {
                 ui.asyncScript("https://cdn.polyfill.io/v2/polyfill.min.js?features=" +
