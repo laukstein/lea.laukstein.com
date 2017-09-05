@@ -868,8 +868,30 @@ iframe {
     font-weight: bold;
     white-space: nowrap;
 }
+.column.label {
+    width: 1px;
+}
 .flow {
     float: left;
+}
+.contact.sheet {
+    width: 100%;
+    margin: 1.8em 0;
+    line-height: 1;
+}
+.contact.sheet .column {
+    display: table-cell;
+}
+.contact.sheet .row {
+    display: table-row-group;
+    padding: 0;
+    border-top: 0;
+}
+.contact.sheet .label {
+    font-weight: normal;
+}
+.contact.sheet .label.row {
+    display: table-caption;
 }
 
 /* Product item page */
