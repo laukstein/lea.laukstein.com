@@ -197,15 +197,7 @@ ui.videos = (function () {
                 if (url) {
                     lazyload.observer && lazyload.observer.disconnect();
 
-                    if (!ui.video.youtubeSupport) {
-                        if (ui.w.plyr) {
-                            ui.video.plyrSuccess();
-                        } else if (!ui.video.youtubeSupportProgress) {
-                            ui.video.youtubeSupportProgress = true;
-
-                            ui.asyncScript("/assets/plyr.js", ui.video.plyrSuccess);
-                        }
-                    }
+                    ui.video.applyPlyr();
                 } else {
                     lazyload();
                 }
