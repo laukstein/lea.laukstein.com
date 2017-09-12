@@ -302,6 +302,9 @@ article.box li {
     max-width: calc(100% + 4.2em);
     min-height: 5em;
     margin: -2.1em -2.1em 1.2em;
+}
+.box:not(article) figure,
+article.box figure img {
     background-color: #ededed;
 }
 .box .item {
@@ -327,10 +330,10 @@ article.box li {
     margin-bottom: -2.1em;
     float: right;
 }
-.box figure:not(.play) img {
+.box:not(article) figure:not(.play) img {
     margin-bottom: .6em;
 }
-blockquote.box figure img {
+blockquote.box.box figure img {
     margin-bottom: 0;
 }
 .box figure.flow + h2 {
