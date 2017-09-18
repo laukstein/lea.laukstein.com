@@ -135,7 +135,7 @@ ui.videos = (function () {
 
         return "<article class=\"box card\" dir=ltr>" +
             "    <div class=video>" +
-                (ui.video.youtubeSupport ? "<iframe src=\"https://www.youtube.com/embed/" + obj.id + "?showinfo=0&hl=he&autoplay=1\" allowfullscreen></iframe>" : ui.video.template(obj.id)) +
+                (ui.video.youtubeSupport ? "<iframe src=\"https://www.youtube.com/embed/" + obj.id + "?showinfo=0&hl=he&autoplay=1\" gesture=media allowfullscreen></iframe>" : ui.video.template(obj.id)) +
             "    </div>" +
             "    <div class=content dir=rtl>" +
             "        <h1>" + obj.title + "</h1>" +
