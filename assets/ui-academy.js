@@ -1314,7 +1314,7 @@ ui.academy = {
                                 case "video":
                                     result += "<div class=video>" +
                                         (ui.video.youtubeSupport ? "<iframe src=\"https://www.youtube.com/embed/" +
-                                            obj.value + "?showinfo=0&hl=he\" allowfullscreen></iframe>" : ui.video.template(obj.value)) +
+                                            obj.value + "?showinfo=0\" allowfullscreen></iframe>" : ui.video.template(obj.value)) +
                                         "</div>" +
                                         "<div class=space><h1>" + obj.title + "</h1></div>";
                                     break;
