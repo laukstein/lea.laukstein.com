@@ -1,9 +1,8 @@
-{% if page.titleLong %}
-    {% assign title=page.titleLong %}
-{% else if page.title %}
-    {% assign title=page.title %}
-{% endif %}
-{%
+{% if page.titleLong %}{%
+    assign title=page.titleLong %}{%
+else if page.title %}{%
+    assign title=page.title %}{%
+endif %}{%
 assign style = layout.style | uniq %}{% if page.style %}{%
 assign style = style | concat: page.style | uniq %}{% endif %}{%
 if style %}{%
