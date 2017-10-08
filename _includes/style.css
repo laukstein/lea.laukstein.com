@@ -121,6 +121,7 @@ header {
 }
 header a {
     display: inline-block;
+    outline: 0; /* Remove Firefox outline flicker on page load */
 }
 header .wrapper,
 footer .wrapper {
