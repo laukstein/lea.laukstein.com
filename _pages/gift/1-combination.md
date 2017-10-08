@@ -4,6 +4,6 @@ permalink: /gift/combination
 title: מעט פריטים לשילובים רבים
 private: true
 className: no-padding
-video: B5uJjMEtx_o
+video: ENSbaRhEjyI
 comment: true
 ---
