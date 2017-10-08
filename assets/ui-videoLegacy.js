@@ -1,6 +1,9 @@
 /* eslint
 camelcase: 0 */
 
+// MP4 from http://y2mate.com/youtube/t3xR5EYJvZY
+// JPG from https://img.youtube.com/vi/t3xR5EYJvZY/maxresdefault.jpg or /hqdefault.jpg
+
 ui.videoLegacy = {
     "-UU-ePzH-m8": {
         image: "qxicgx6rjtge4dt",
@@ -122,6 +125,11 @@ ui.videoLegacy = {
         "720p": "5sbir2224v3jhqn",
         "360p": "vofi2tp51be9gbp"
     },
+    ENSbaRhEjyI: {
+        image: "anny07f90ou6pqq",
+        "720p": "anp8thdki76bcra",
+        "360p": "ktx698l8taagzf5"
+    },
     Eq2SiUFocK0: {
         image: "ycvsh4idkh7q6x0",
         "720p": "cbzqzzbf24nwxmv",
@@ -186,6 +194,11 @@ ui.videoLegacy = {
         image: "zxl4gf98mggf2al",
         "720p": "evbpxd0yboc34e7",
         "360p": "yrzq54hfagen97k"
+    },
+    "kDiyN5T-QKE": {
+        image: "tkwjefh2oh3dsnw",
+        "720p": "j8p6cflaazc3h0a",
+        "360p": "skm0ywllxmac1f3"
     },
     "kFURYmGTe-U": {
         image: "w1r9k1jo1bhtzgp",
