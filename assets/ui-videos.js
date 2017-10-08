@@ -50,12 +50,15 @@ ui.videos = (function () {
         threshold: 0.01
     });
 
-    function cacheAge() {
+    function cacheAge(response) {
         var start,
             end;
 
         try {
-            start = localStorage.videosDate && new Date(Number(localStorage.videosDate)) || now;
+            response = JSON.parse(response);
+        } catch (e) {}
+        try {
+            start = response && response.downloadTime && new Date(Number(response.downloadTime)) || now;
         } catch (e) {
             return 0;
         }
@@ -214,31 +217,15 @@ ui.videos = (function () {
         }
     }
     function request() {
-        var features = [];
+        ui.legacy(function () {
+            if (localStorage.videos) {
+                request.getData(localStorage.videos);
+            } else {
+                request.error();
+            }
+        });
 
-        function call(url) {
-            fetch(url)
-                .then(function (response) {
-                    return response.json();
-                }).then(function (data) {
-                    return request.getData(data, true);
-                }).catch(function (err) {
-                    return /^https?:\/\/.*/.test(url) ? call("/assets/playlistItems.json") : request.error(err);
-                });
-        }
-
-        ui.w.fetch || features.push("fetch");
-
-        if (features.length) {
-            ui.asyncScript("https://cdn.polyfill.io/v2/polyfill.min.js?features=" +
-                features.join(",") + "&flags=gated", {onSuccess: call});
-        } else {
-            call("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUNNsgimJtU1q1LUMVsq44Dg&maxResults=50&key=AIzaSyBt0-e3Ups6i4p8GQs811EarYbpMiPfxg4");
-        }
-
-        return {
-            inProgress: true
-        };
+        return {};
     }
     request.success = function (response) {
         response = response || {};
@@ -247,9 +234,8 @@ ui.videos = (function () {
             return this.error(response);
         }
 
-        response.isLoaded = true;
+        response.downloadTime = +now;
         localStorage.videos = JSON.stringify(response);
-        localStorage.videosDate = localStorage.videosDate || +now;
 
         if (ui.videos) {
             ui.videos = response;
@@ -267,10 +253,8 @@ ui.videos = (function () {
     };
     request.error = function (response) {
         delete localStorage.videos;
-        delete localStorage.videosDate;
 
         response = response || {};
-
         container = container && container.querySelector("strong");
 
         if (container) {
@@ -282,33 +266,32 @@ ui.videos = (function () {
 
         return response;
     };
-    request.getData = function (response, isJSON) {
+    request.getData = function (response) {
         requestCount += 1;
 
         if (requestCount > requestCountMax) {
-            return request.error();
+            return this.error();
         } else if (response) {
-            if (cacheAge() < cacheDays) {
-                if (isJSON) {
-                    return request.success(response);
-                }
-
+            if (cacheAge(response) < cacheDays) {
                 try {
-                    return request.success(JSON.parse(response));
+                    return this.success(JSON.parse(response));
                 } catch (e) {
-                    return request();
+                    return this();
                 }
             } else {
                 delete localStorage.videos;
-                delete localStorage.videosDate;
             }
         }
 
-        return request();
+        return this();
     };
 
     if (!container) {
         console.error("Missing container element");
+    }
+    if (localStorage.videosDate) {
+        // No need for "videosDate" since 2017/10/08
+        delete localStorage.videosDate;
     }
 
     return container && request.getData(localStorage.videos);

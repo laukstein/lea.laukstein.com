@@ -1434,56 +1434,41 @@ ui.academy = {
 
         this.pageSession();
     },
-    legacy: function () {
-        "use strict";
-
-        var features = [];
-
-        if (ui.asyncScript) {
-            // https://polyfill.io/v2/docs/examples
-            ui.w.fetch || features.push("fetch");
-            ui.w.Promise || features.push("Promise");
-            (ui.w.Element && Element.prototype.matches && Element.prototype.closest) || features.push("Element.prototype.closest");
-
-            if (features.length) {
-                ui.asyncScript("https://cdn.polyfill.io/v2/polyfill.min.js?features=" +
-                    features.join(",") + "&flags=gated");
-            }
-        }
-    },
     init: function () {
         "use strict";
 
-        this.legacy();
+        var self = this;
 
-        var loading = ui.d.getElementById("loading");
+        ui.legacy(function () {
+            var loading = ui.d.getElementById("loading");
 
-        this.valid = !!this.session.email && !!this.session.token;
-        this.content = ui.d.getElementById("content");
-        this.details = ui.d.getElementById("details");
-        this.bar = ui.d.getElementById("bar");
+            self.valid = !!self.session.email && !!self.session.token;
+            self.content = ui.d.getElementById("content");
+            self.details = ui.d.getElementById("details");
+            self.bar = ui.d.getElementById("bar");
 
-        if (loading) {
-            loading.remove();
-        }
+            if (loading) {
+                loading.remove();
+            }
 
-        this.content.removeAttribute("hidden");
+            self.content.removeAttribute("hidden");
 
-        if (this.valid) {
-            this.isLogged();
-            ui.identify.all();
-        } else {
-            ui.form.el = ui.d.getElementById("form");
-            this.button = ui.d.getElementById("button");
-            this.email = ui.d.getElementById("email");
-            this.pass = ui.d.getElementById("pass");
-            this.link = ui.d.getElementById("link");
-            this.details.removeAttribute("hidden");
-        }
+            if (self.valid) {
+                self.isLogged();
+                ui.identify.all();
+            } else {
+                ui.form.el = ui.d.getElementById("form");
+                self.button = ui.d.getElementById("button");
+                self.email = ui.d.getElementById("email");
+                self.pass = ui.d.getElementById("pass");
+                self.link = ui.d.getElementById("link");
+                self.details.removeAttribute("hidden");
+            }
 
-        ui.w.onhashchange = ui.w.onhashchange || function () {
-            ui.academy.toggleNav();
-        };
+            ui.w.onhashchange = ui.w.onhashchange || function () {
+                self.toggleNav();
+            };
+        });
     }
 };
 

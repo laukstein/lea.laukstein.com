@@ -2,9 +2,9 @@ window.ui = {
     w: window,
     d: document,
     environment: location.host === "lea.laukstein.com" ? "prod" : "dev",
+    awaitCallback: [],
     has: {
-        classList: "classList" in document.documentElement,
-        eventListener: !!document.addEventListener
+        classList: "classList" in document.documentElement
     },
     asyncScript: function (src/* , success, options |, options */) {
         "use strict";
@@ -447,135 +447,6 @@ window.ui = {
             }
         }
     },
-    legacy: function () {
-        "use strict";
-
-        if (!this.has.classList && Element.prototype) {
-            Object.defineProperty(Element.prototype, "classList", {
-                get: function () {
-                    var self = this;
-
-                    function classlist() {
-                        return self.className.split(/\s+/);
-                    }
-                    function update(fn) {
-                        return function (value) {
-                            var classes = classlist(),
-                                index = classes.indexOf(value);
-
-                            fn(classes, index, value);
-
-                            self.className = classes.join(" ");
-                        };
-                    }
-
-                    return {
-                        add: update(function (classes, index, value) {
-                            ~index || classes.push(value);
-                        }),
-                        contains: function (value) {
-                            return !!~classlist().indexOf(value);
-                        },
-                        item: function (index) {
-                            return classlist()[index] || null;
-                        },
-                        remove: update(function (classes, index) {
-                            ~index && classes.splice(index, 1);
-                        }),
-                        toggle: update(function (classes, index, value) {
-                            ~index ? classes.splice(index, 1) : classes.push(value);
-                        })
-                    };
-                }
-            });
-        }
-        if (!Element.prototype.remove) {
-            Object.defineProperty(Element.prototype, "remove", {
-                value: function () {
-                    if (this.parentElement) {
-                        this.parentElement.removeChild(this);
-                    }
-                }
-            });
-        }
-        if (!String.prototype.format) {
-            // Reference: http://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format
-            Object.defineProperty(String.prototype, "format", {
-                value: function () {
-                    var args = arguments;
-
-                    return this.replace(/{(\d+)}/g, function (match, number) {
-                        return typeof args[number] === "undefined" ? match : args[number];
-                    });
-                }
-            });
-        }
-        if (!this.has.eventListener) {
-            // EventListener polyfill https://gist.github.com/jonathantneal/3748027
-            (function (wPrototype, dPrototype, ePrototype, on, off, event, registry) { // eslint-disable-line
-                wPrototype[on] = dPrototype[on] = ePrototype[on] = function (type, listener) {
-                    var self = this;
-
-                    registry.unshift([self, type, listener, function (e) {
-                        e.currentTarget = self;
-                        e.preventDefault = function () {
-                            e.returnValue = false;
-                        };
-                        e.stopPropagation = function () {
-                            e.cancelBubble = true;
-                        };
-                        e.target = e.srcElement || self;
-
-                        listener.call(self, e);
-                    }]);
-
-                    this.attachEvent("on" + type, registry[0][3]);
-                };
-                wPrototype[off] = dPrototype[off] = ePrototype[off] = function (type, listener) {
-                    var register,
-                        i;
-
-                    for (i = 0; register = registry[i]; i += 1) { // eslint-disable-line
-                        if (register[0] === this && register[1] === type && register[2] === listener) {
-                            return this.detachEvent("on" + type, registry.splice(i, 1)[0][3]);
-                        }
-                    }
-                };
-                wPrototype[event] = dPrototype[event] = ePrototype[event] = function (eventObject) {
-                    return this.fireEvent("on" + eventObject.type, eventObject);
-                };
-            }(this.w.prototype, HTMLDocument.prototype, Element.prototype, "addEventListener", "removeEventListener",
-                "dispatchEvent", []));
-        }
-        if (typeof console === "undefined") {
-            this.w.console = {
-                log: function () {
-                    return arguments;
-                },
-                error: function () {
-                    return arguments;
-                }
-            };
-        }
-
-        try {
-            // Safari Private Browsing doesn't support localStorage
-            localStorage.localStorage = "1";
-            delete localStorage.localStorage;
-        } catch (e) {
-            if (ui.w.localStorage) {
-                // Required for Safari Private Browsing
-                delete ui.w.localStorage;
-            }
-            if (ui.w.sessionStorage) {
-                // Required for Safari Private Browsing
-                delete ui.w.sessionStorage;
-            }
-
-            ui.w.localStorage = {};
-            ui.w.sessionStorage = {};
-        }
-    },
     video: {
         getData: function (id) {
             "use strict";
@@ -656,17 +527,17 @@ window.ui = {
                 }
             }
         },
-        youtubeSupport: function () {
+        youtubeSupport: function (legacyCallback) {
             "use strict";
 
-            var loadImage = {},
-                callback;
+            var self = ui.video,
+                arr = ui.d.querySelectorAll(".video iframe"),
+                loadImage = {},
+                el,
+                i;
 
-            callback = function () {
-                var self = ui.video,
-                    arr = ui.d.querySelectorAll(".video iframe"),
-                    el,
-                    i;
+            loadImage.callback = function () {
+                self.youtubeSupport = false;
 
                 if (ui.videoLegacy) {
                     sessionStorage["ui.videoLegacy"] = JSON.stringify(ui.videoLegacy);
@@ -677,8 +548,6 @@ window.ui = {
                         ui.videoLegacy = {};
                     }
                 }
-
-                self.youtubeSupport = sessionStorage.youtubeSupport === "true";
 
                 for (i = 0; i < arr.length; i += 1) {
                     arr[i].outerHTML = self.template(arr[i].src.replace(/^.*\/embed\//, "").replace(/\?.*$/, ""));
@@ -693,15 +562,24 @@ window.ui = {
 
                     ui.d.body.appendChild(el);
                 }
+
+                // Don't apply too many FS.setUserVars until FullStory supports UserVars removal
                 // if (!self.youtubeSupport && ui.w.FS && FS.setUserVars) {
                 //     FS.setUserVars({youTube_bool: false}); // eslint-disable-line
                 // }
 
                 return self.youtubeSupport;
             };
+            loadImage.legacyCallback = function () {
+                if (typeof legacyCallback === "function") {
+                    legacyCallback();
+                }
+            };
 
-            if (sessionStorage["ui.videoLegacy"] && sessionStorage.youtubeSupport) {
-                return callback();
+            if (sessionStorage["ui.videoLegacy"] && sessionStorage.youtubeSupport === "false") {
+                loadImage.legacyCallback();
+
+                return loadImage.callback();
             }
 
             loadImage.get = function (url, onload, onerror) {
@@ -712,48 +590,181 @@ window.ui = {
                 image.src = url;
             };
             loadImage.result = function (isLoaded) {
-                sessionStorage.youtubeSupport = isLoaded;
+                sessionStorage.youtubeSupport = !!isLoaded;
 
-                if (!isLoaded) {
-                    ui.asyncScript("/assets/ui-videoLegacy.js", callback);
+                if (!isLoaded && self.youtubeSupport) {
+                    ui.asyncScript("/assets/ui-videoLegacy.js", this.callback);
                 }
             };
-            loadImage.error = function () {
+            loadImage.error = function (finalCall) {
+                if (finalCall === true) {
+                    this.legacy(true);
+                }
+
                 // console.log(e.target.src);
-                loadImage.result(false);
+                this.result(false);
             };
             loadImage.success = function (e) {
                 if (e.target.naturalWidth > 1) {
-                    loadImage.result(true);
+                    this.result(true);
+
+                    self.youtubeSupport = true;
                 } else {
-                    loadImage.error(e);
+                    this.error();
+                }
+            };
+            loadImage.legacy = function (hasStatus) {
+                var videos = localStorage.videos;
+
+                try {
+                    videos = videos && JSON.parse(videos);
+                } catch (err) {}
+
+                if (videos) {
+                    if (hasStatus) {
+                        this.legacyCallback();
+                    } else if (videos.local) {
+                        this.error(true);
+                    } else {
+                        this.result(true);
+
+                        this.legacyCallback();
+                    }
+                } else {
+                    this.call = function (url, isFallback) {
+                        fetch(url).then(function (response) {
+                            return response.json();
+                        }).then(function (response) {
+                            response.downloadTime = +new Date();
+                            localStorage.videos = JSON.stringify(response);
+
+                            if (typeof legacyCallback === "function") {
+                                legacyCallback();
+                            }
+
+                            return loadImage.result(!isFallback);
+                        }).catch(function () {
+                            return /^https?:\/\/.*/.test(url) ? loadImage.call("/assets/playlistItems.json", true) : !hasStatus && loadImage.error(true);
+                        });
+                    };
+
+                    this.call("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUNNsgimJtU1q1LUMVsq44Dg&maxResults=50&key=AIzaSyBt0-e3Ups6i4p8GQs811EarYbpMiPfxg4");
                 }
             };
 
             loadImage.get("https://www.youtube.com/favicon.ico", function (e) {
+                // ISP Etrog <https://www.etrog.net.il> blocker will return 1x1px image
                 if (e.target.naturalWidth > 1) {
-                    loadImage.get("https://img.youtube.com/vi/fkS2Go4_H7E/1.jpg", loadImage.success, loadImage.error);
+                    // Software Nativ <https://www.enativ.com> blocks www.googleapis.com API
+                    loadImage.legacy();
                 } else {
-                    loadImage.error(e);
+                    loadImage.error();
                 }
-            }, loadImage.error);
+            }, this.error);
+
+            // TODO: when internet goes off, then remove the sessionStorage
 
             return "checking";
+        }
+    },
+    legacy: function (callback) {
+        "use strict";
+
+        var self = this;
+
+        if (typeof callback === "function") {
+            self.awaitCallback.push(callback);
+        }
+        if (self.legacy.__once) {
+            if (!self.legacy.__loading) {
+                self.legacy.__runAwaitList();
+            }
+
+            return;
+        }
+
+        self.legacy.__once = true;
+        self.legacy.__loading = true;
+        self.legacy.__runAwaitList = function () {
+            var arr = self.awaitCallback.slice(),
+                i;
+
+            if (self.legacy.__loading) {
+                delete self.legacy.__loading;
+            }
+
+            for (i = 0; i < arr.length; i += 1) {
+                self.awaitCallback.splice(0, 1);
+
+                if (arr[i] && typeof arr[i] === "function") {
+                    arr[i]();
+                }
+            }
+        };
+
+        try {
+            // Safari Private Browsing doesn't support localStorage
+            localStorage.localStorage = "1";
+            delete localStorage.localStorage;
+        } catch (e) {
+            if (ui.w.localStorage) {
+                // Required for Safari Private Browsing
+                delete ui.w.localStorage;
+            }
+            if (ui.w.sessionStorage) {
+                // Required for Safari Private Browsing
+                delete ui.w.sessionStorage;
+            }
+
+            ui.w.localStorage = {};
+            ui.w.sessionStorage = {};
+        }
+
+        if (typeof console === "undefined") {
+            this.w.console = {
+                log: function () {
+                    return arguments;
+                },
+                error: function () {
+                    return arguments;
+                }
+            };
+        }
+        if (!String.prototype.format) {
+            // Reference: http://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format
+            Object.defineProperty(String.prototype, "format", {
+                value: function () {
+                    var args = arguments;
+
+                    return this.replace(/{(\d+)}/g, function (match, number) {
+                        return typeof args[number] === "undefined" ? match : args[number];
+                    });
+                }
+            });
+        }
+        if (!self.w.fetch || !self.w.Promise || !Element.prototype.closest) {
+            self.asyncScript("/assets/legacy.js", function () {
+                self.video.youtubeSupport(self.legacy.__runAwaitList);
+            });
+        } else {
+            self.video.youtubeSupport(self.legacy.__runAwaitList);
         }
     },
     init: function () {
         "use strict";
 
-        this.legacy();
-        this.getUser();
-        this.analytics();
-        this.video.youtubeSupport();
+        var self = this;
 
-        var el = this.d.getElementById("bar-close");
+        this.legacy(function () {
+            self.getUser();
+            self.analytics();
 
-        if (el) {
-            el.addEventListener("touchstart", el.click);
-        }
+            var el = self.d.getElementById("bar-close");
+
+            if (el) {
+                el.addEventListener("touchstart", el.click);
+            }
+        });
     }
 };
 
