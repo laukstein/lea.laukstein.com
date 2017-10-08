@@ -1,18 +1,18 @@
 {% assign script_template = "ui-form.js, ui-subscribe.js"
 %}<form class="cel space subscribe" id=subscribe name={% if include.id %}{{ include.id }}{% else %}70a2d0d976{% endif %} method=post>
     <h1{% if include.requiredTel %} class=inherit{% endif %}>{% if include.title %}{{ include.title }}{% else %}סטייל שבא מבפנים{% endif %}</h1>
-    {% unless include.title %}<p>מדריך על שלושה עקרונות הסטיילינג</p>{% endunless %}
-    <div>
+    {% unless include.title %}<p>מדריך ליצירת ארון מדוייק</p>{% endunless %}
+    <div class=invisible>
         <label for=name>שם</label>
-        <input id=name name=FNAME placeholder="*שם" data-error="תקליד שם" autocomplete=name dir=auto data-required{% if page.url == "/" %} autofocus{% endif %}>
+        <input id=name tabindex=-1 name=FNAME placeholder="שם" data-error="תקליד שם" autocomplete=name dir=auto>
     </div>
     <div>
         <label for=email>אימייל</label>
-        <input id=email name=EMAIL type=email placeholder=*אימייל data-error="אימייל שגוי" autocomplete=email dir=ltr data-required>
+        <input id=email name=EMAIL type=email placeholder=אימייל data-error="אימייל שגוי" autocomplete=email dir=ltr data-required{% if page.url == "/" %} autofocus{% endif %}>
     </div>
-    <div>
+    <div class=invisible>
         <label for=tel>נייד{% unless include.requiredTel %} (אופציונאלי){% endunless %}</label>
-        <input id=tel name=PHONE type=tel placeholder="{% if include.requiredTel %}*{% endif %}נייד"{% if include.requiredTel %} data-error="נייד שגוי" data-required{% endif %} autocomplete=tel dir=ltr>
+        <input id=tel tabindex=-1 name=PHONE type=tel placeholder="{% if include.requiredTel %}*{% endif %}נייד"{% if include.requiredTel %} data-error="נייד שגוי" data-required{% endif %} autocomplete=tel dir=ltr>
     </div>
     <button formnovalidate>{% if include.button %}{{ include.button }}{% else %}להורדה בחינם{% endif %}</button>
     {% include confirm.html %}

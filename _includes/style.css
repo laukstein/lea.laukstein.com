@@ -556,8 +556,31 @@ form.subscribe {
     max-width: 100%;
     padding-bottom: 6%;
     margin: auto;
-    text-align: center;
+    text-align: right;
 }
+
+.subscribe h1 {
+    font-size: 1.7em;
+    margin-bottom: 0;
+}
+.subscribe p {
+    margin-top: 0;
+    margin-bottom: .9em;
+    font-weight: bold;
+    color: #777;
+}
+.subscribe input {
+    border-color: #777;
+}
+.subscribe button {
+    margin-top: .35em;
+    text-align: right;
+}
+.subscribe .confirm {
+    color: #aaa;
+    margin-top: .5em;
+}
+
 label {
     display: none;
     padding-top: .2em;
@@ -994,6 +1017,14 @@ iframe {
 [hidden][hidden] {
     display: none;
     box-suppress: discard;
+}
+.invisible {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    opacity: 0;
+    width: 1px;
+    pointer-events: none;
 }
 
 @media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */
