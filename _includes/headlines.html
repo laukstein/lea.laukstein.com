@@ -8,9 +8,13 @@ for post in pages %}{%
         if index < max %}
     <blockquote class=box>
         <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>
-        <div>{% include date.html value = post.date %}</div>
+        {% if post.image %}<figure>
+            <img class=absolute src={{ site.assets }}{{ post.image }}{% if post.imageWidth %} width={{ post.imageWidth }}{% endif %} alt="{{ post.title }}">
+        </figure>{% endif %}
         <h2>{{ post.title }}</h2>
-        <p>{{ post.content | markdownify | strip_html | truncatewords: 20, '... <a>המשך קריא</a>' }}</p>
+        <p>{{ post.content | markdownify | strip_html | truncatewords: 20, ' ...' }}</p>
+        <a>המשך קריא</a>
+        <div class=footer>{% include date.html value = post.date %}</div>
     </blockquote>{%
         else %}{%
             capture more %}{{ more }}<li><a href={{ post.url | prepend: site.baseurl }}>{{ post.title }}</a></li>{% endcapture %}{%
@@ -20,7 +24,7 @@ for post in pages %}{%
 endfor %}
 {% if more %}
     <blockquote class="box footer">
-        <p>מאמרים נוספים:</p>
+        <p>מאמרים נוספים</p>
         <ol start={{ max | plus: 1 }}>{{ more }}</ol>
     </blockquote>{%
 endif %}
