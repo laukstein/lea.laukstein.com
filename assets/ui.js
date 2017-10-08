@@ -77,7 +77,7 @@ window.ui = {
     analytics: function () {
         "use strict";
 
-        if (this.environment === "production") {
+        if (this.environment === "prod") {
             // https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id
             this.asyncScript("https://www.google-analytics.com/analytics.js", {
                 onSuccess: function () {
@@ -228,7 +228,7 @@ window.ui = {
                 retryMax = 4,
                 init;
 
-            if (ui.environment === "production") {
+            if (ui.environment === "prod") {
                 init = function () {
                     retryCount += 1;
 

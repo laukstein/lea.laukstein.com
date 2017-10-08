@@ -6,7 +6,7 @@ endif %}{%
 assign style = layout.style | uniq %}{% if page.style %}{%
 assign style = style | concat: page.style | uniq %}{% endif %}{%
 if style %}{%
-    if jekyll.environment == "development" %}
+    if jekyll.environment == "dev" %}
         {% for source in style %}
             {% capture css %}{{ css }}
 <link rel=stylesheet href={{ site.assets }}{{ source }}>{% endcapture %}
