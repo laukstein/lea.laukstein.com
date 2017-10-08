@@ -14,5 +14,6 @@
         <label for=tel>נייד{% unless include.requiredTel %} (אופציונאלי){% endunless %}</label>
         <input id=tel name=PHONE type=tel placeholder="{% if include.requiredTel %}*{% endif %}נייד"{% if include.requiredTel %} data-error="נייד שגוי" data-required{% endif %} autocomplete=tel dir=ltr>
     </div>
-    {% include confirm.html %}<button formnovalidate>{% if include.button %}{{ include.button }}{% else %}להורדה בחינם{% endif %}</button>
+    <button formnovalidate>{% if include.button %}{{ include.button }}{% else %}להורדה בחינם{% endif %}</button>
+    {% include confirm.html %}
 </form>
