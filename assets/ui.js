@@ -15,6 +15,7 @@ window.ui = {
             params = JSON.parse(JSON.stringify(options)),
             onReadyStateChange,
             toggleListener,
+            onError,
             onLoad,
             key;
 
