@@ -42,20 +42,30 @@ window.ui = {
 
             (this.d.head || this.d.body).appendChild(script);
 
-            if (options.onSuccess) {
+            if (options.onSuccess || options.onError) {
                 toggleListener = function (flag) {
                     flag = flag === true ? "addEventListener" : "removeEventListener";
 
                     script[flag]("load", onLoad);
-                    script[flag]("error", toggleListener);
+                    script[flag]("error", onError);
                     script[flag]("readystatechange", onReadyStateChange);
+
+                    if (flag === "removeEventListener" && options.remove) {
+                        script.remove();
+                    }
                 };
                 onLoad = function () {
-                    toggleListener();
-                    options.onSuccess(script);
+                    toggleListener(false);
 
-                    if (options.remove) {
-                        script.remove();
+                    if (options.onSuccess) {
+                        options.onSuccess(script);
+                    }
+                };
+                onError = function () {
+                    toggleListener(false);
+
+                    if (options.onError) {
+                        options.onError();
                     }
                 };
                 onReadyStateChange = function () {
