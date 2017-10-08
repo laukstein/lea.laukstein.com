@@ -461,7 +461,17 @@ ui.academy = {
             });
         });
     }()),
-    fetch: location.protocol + "//lab." + location.host.replace(/^[^.]+\./, "") + "/academy",
+    fetch: (function () {
+        "use strict";
+
+        var parts = location.host.split(".");
+
+        while (parts.length > 2) {
+            parts.shift();
+        }
+
+        return location.protocol + "//lab." + parts.join(".") + "/academy";
+    }()),
     dataset: function (el, prop) {
         "use strict";
 
