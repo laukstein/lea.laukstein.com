@@ -266,8 +266,9 @@ button.error {
     width: calc(100% - 16.8em);
 }
 .comment {
-    margin-right: 2.1em;
-    margin-left: 2.1em;
+    padding-right: 2.1em;
+    padding-left: 2.1em;
+    box-sizing: border-box;
 }
 .medium.comment {
     max-width: 100%;
