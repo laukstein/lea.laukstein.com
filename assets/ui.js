@@ -1,7 +1,7 @@
 window.ui = {
     w: window,
     d: document,
-    environment: location.host === "lea.laukstein.com" ? "production" : "development",
+    environment: location.host === "lea.laukstein.com" ? "prod" : "dev",
     has: {
         classList: "classList" in document.documentElement,
         eventListener: !!document.addEventListener
