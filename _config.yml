@@ -4,7 +4,7 @@ enforce_ssl: lea.laukstein.com
 permalink: /:categories/:title
 assets: /assets/
 timezone: UTC
-include: ['_pages']
+include: [_pages]
 safe: true
 markdown: kramdown
 kramdown:
@@ -28,5 +28,4 @@ whitelist:
     - jekyll-redirect-from
 plugins:
     - jekyll-redirect-from
-exclude:
-    - node_modules
+exclude: [CNAME, Gemfile, Gemfile.lock, LICENSE, node_modules, README.md, ~*]
