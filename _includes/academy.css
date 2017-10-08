@@ -406,7 +406,7 @@ button.error {
 }
 .qa input:checked ~ label:hover,
 .qa ol ol label:not([disabled]):hover {
-    background-color: #f9f9f9;
+    background-color: #f8f8f9;
 }
 .qa input:checked ~ label:hover:after {
     color: #fff;
