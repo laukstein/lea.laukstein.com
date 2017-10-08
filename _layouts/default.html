@@ -13,7 +13,9 @@ exceptFromNav:
 <header dir=ltr>
     <div class=wrapper>
         <label class=bar for=bar hidden><span></span></label>
-        <a class="logo{% if page.url == "/" %} active{% endif %}" href="/"><img src={{ site.assets }}logo.png width=47 height=47 alt="{{ site.title }}"></a>
+        <a class="logo{% if page.url == "/" %} active{% endif %}" href="/" dir=rtl>
+            <img src={{ site.assets }}logo.png width=47 height=47 alt="{{ site.title }}"><div>לאה לאוקשטיין</div>
+        </a>
         <nav class=nav-container dir=rtl>
         {% assign pages = site.pages | sort: "order" %}{%
         for nav in pages %}{%

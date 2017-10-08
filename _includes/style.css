@@ -217,9 +217,10 @@ nav .active:after {
     width: 20px;
     background-position: -40px 0;
 }
-.logo {
-    padding: 0 1.4em .4em;
+a.logo {
     float: right;
+    color: #f58e84;
+    text-decoration: none;
 }
 .logo:hover,
 .logo:active {
@@ -227,7 +228,12 @@ nav .active:after {
             filter: grayscale(70%);
 }
 .logo img {
-    margin-top: .5em;
+    margin: .45em;
+    vertical-align: middle;
+}
+.logo div {
+    display: inline-block;
+    vertical-align: middle;
 }
 main {
     display: block;
