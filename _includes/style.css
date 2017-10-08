@@ -313,9 +313,12 @@ article.box figure img {
     float: left;
     border-top: 1px solid #eee;
 }
-.box .item figure {
+.box .item figure:not(.last) {
     margin-top: 0;
     margin-bottom: 1em;
+}
+.box .item figure.last {
+    margin-bottom: -2.1em;
 }
 .box .item figure ~ p {
     margin-bottom: 1em;
