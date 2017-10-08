@@ -33,4 +33,4 @@ if layout.private or page.private or page.draft %}
 <link rel=canonical href={{ page.url | absolute_url | split: '?' | first }}>
 <link rel=manifest href=/manifest.json>
 <link rel=license href=//creativecommons.org/licenses/by-nc-nd/4.0/>{{ css }}
-<!--[if lt IE 9]><script src=//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js></script><![endif]-->{% endcapture %}{{ head }}
+<!--[if lt IE 9]><script src=/assets/html5shiv.min.js></script><![endif]-->{% endcapture %}{{ head }}
