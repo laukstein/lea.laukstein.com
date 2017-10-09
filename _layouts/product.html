@@ -11,10 +11,10 @@ l10n:
       title: עלות
     - name: location
       title: מיקום
+    - name: extra
+      title: תוספת
     - name: fit
       title: מתאים ל
-    - name: participantCount
-      title: מס' משתתפות
     - name: details
       title: תיאור התהליך
     - name: goals
@@ -66,8 +66,6 @@ case item.type %}{%
             <img src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width=1 height=1 alt>
             <button class=button>{{ item.title }}</button>
         </form>{%
-    when "subscribe" %}
-        <a class=button href={{ item.url }} tabindex=0>{{ item.title }}</a>{%
 endcase %}{%
 endfor %}{% else
         %}<a class=button href=/contact#{{ page.url | remove: "/" }} tabindex=0>צרי קשר להזמנה</a>{%

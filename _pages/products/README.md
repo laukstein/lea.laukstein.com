@@ -14,8 +14,8 @@ YAML schema
     price
     discount
     location
+    extra
     fit
-    participantCount
     details
     goals: |
         multi-line text
