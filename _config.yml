@@ -28,4 +28,11 @@ whitelist:
     - jekyll-redirect-from
 plugins:
     - jekyll-redirect-from
-exclude: [CNAME, Gemfile, Gemfile.lock, LICENSE, node_modules, README.md, ~*]
+exclude:
+    - CNAME
+    - Gemfile
+    - Gemfile.lock
+    - LICENSE
+    - node_modules
+    - /*README.md
+    - ~*
