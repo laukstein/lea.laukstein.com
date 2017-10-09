@@ -4,9 +4,6 @@ style:
     - style.css
 script:
     - ui.js
-exceptFromNav:
-    - post
-    - product
 ---
 
 {% include core-head.html %}<input class=bar-holder id=bar type=checkbox hidden>
@@ -19,12 +16,10 @@ exceptFromNav:
         <nav class=nav-container dir=rtl>
         {% assign pages = site.pages | sort: "order" %}{%
         for nav in pages %}{%
-            unless nav.private or nav.draft or layout.exceptFromNav contains nav.layout %}{%
-                if nav.order and nav.title
-                    %}{% assign relative_url = nav.url | remove_first: "/"
-                    %}<a{% if nav.url == page.url or layout.category == relative_url %} class=active{% endif %} href="{{ nav.url | relative_url }}">{{ nav.title }}</a>{%
-                endif %}{%
-            endunless %}{%
+            if nav.header and nav.title
+                %}{% assign relative_url = nav.url | remove_first: "/"
+                %}<a{% if nav.url == page.url or layout.category == relative_url %} class=active{% endif %} href="{{ nav.url | relative_url }}">{{ nav.title }}</a>{%
+            endif %}{%
         endfor %}<a class=external rel=noopener href="https://www.facebook.com/LeaLaukstein/" title="פייסבוק" target=_blank><div class=icon-facebook></div></a><a class=external rel=noopener href="https://www.youtube.com/channel/UCNNsgimJtU1q1LUMVsq44Dg" title="יוטיוב" target=_blank><div class=icon-youtube></div></a>
         </nav>
         <label class="bar-close absolute" id=bar-close for=bar hidden></label>

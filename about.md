@@ -1,8 +1,10 @@
 ---
 layout: default
+header: true
+order: 4
+
 title: אודות
 titleLong: סטיילינג לדתיות
-order: 5
 video: 4HwTeZiZJ4Q
 ---
 

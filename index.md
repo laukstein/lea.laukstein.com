@@ -1,6 +1,6 @@
 ---
 layout: default
-redirect_from: /signup/
+redirect_from: /recommendations
 description: סטיילינג לדתיות - זה לא רק הבגד - זה החיבור שלך לעצמך
 video: fkS2Go4_H7E
 pageName: landing
