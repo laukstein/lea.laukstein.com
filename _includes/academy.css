@@ -631,6 +631,7 @@ button[disabled]:not(:hover) {
         position: fixed;
     }
     .logo {
+        z-index: inherit;
         margin-right: -.5em;
     }
     .stretch .logo {
@@ -680,7 +681,7 @@ button[disabled]:not(:hover) {
         min-width: 18.5em;
     }
     .logo {
-        width: 26px;
+        width: 3.3em;
     }
 }
 @media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */
