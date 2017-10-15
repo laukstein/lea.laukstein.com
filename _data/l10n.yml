@@ -1,0 +1,25 @@
+product:
+    - name: title
+    - name: duration
+      title: אורך
+    - name: price
+      title: עלות
+    - name: location
+      title: מיקום
+    - name: extra
+      title: תוספת
+    - name: fit
+      title: מתאים ל
+      more: true
+    - name: details
+      title: תיאור התהליך
+      more: true
+    - name: goals
+      title: מטרות
+      more: true
+    - name: takeWith
+      title: את יוצאת עם
+      more: true
+    - name: buttonType
+      title: כפתור
+      more: true

@@ -1,0 +1,62 @@
+---
+layout: default
+category: products
+array: []
+css: |
+    .card .content {
+        overflow-x: auto;
+        max-width: 100vw;
+    }
+    .card .footer {
+        margin: 1em;
+    }
+    .card .footer a {
+        color: #02a;
+    }
+    .sheet {
+        table-layout: fixed;
+        min-width: 44em;
+    }
+    .sheet h3 {
+        margin: 0;
+    }
+    .sheet .column {
+        padding: 1em;
+    }
+    .sheet .column.label {
+        width: 4.4em;
+    }
+---
+
+{%
+    assign pages = site.pages | sort: "order" %}{%
+    assign data = layout.array %}{%
+    assign l10n = site.data.l10n.product
+%}{% for item in pages %}{%
+    if item.order and item.subnav != "products" and item.group == page.group %}{%
+        assign data = data | push: item %}{%
+    endif %}{%
+endfor %}<article class="box card" dir=ltr>
+    <div class=content dir=rtl>
+        <ul class="sheet sheet-fixed">{%
+            for item in l10n %}{%
+                if item.name != "buttonType" and item.name != page.labelEscape %}
+                <li class=row>
+                    <div class="column label">{{ item.title }}</div>{%
+                    for page in data %}
+                    <div class=column data-label="{{ item.title }}">{%
+                        if item.name == "title" %}<h3><a href={{ page.url }}>{{ page[item.name] }}</a></h3>{% else %}{%
+                        if page[item.name] contains "
+" %}{{ page[item.name] | markdownify }}{%
+                        else %}{{ page[item.name] }}{% endif %}{% endif %}{%
+                        if item.name == "price" %} ש"ח{%
+                            if page.discount %} <span class=nowrap>({{ page.discount }})</span>{% endif %}{%
+                        endif %}</div>{%
+                    endfor %}
+                </li>{%
+                endif %}{%
+            endfor %}
+        </ul>
+        <div class=footer><a href=/contact>צרי קשר להזמנות</a></div>
+    </div>
+</article>{{ content }}

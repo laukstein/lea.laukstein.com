@@ -4,72 +4,11 @@ category: products
 type: medium
 className: no-padding
 comment: true
-l10n:
-    - name: duration
-      title: אורך
-    - name: price
-      title: עלות
-    - name: location
-      title: מיקום
-    - name: extra
-      title: תוספת
-    - name: fit
-      title: מתאים ל
-    - name: details
-      title: תיאור התהליך
-    - name: goals
-      title: מטרות
-    - name: takeWith
-      title: את יוצאת עם
-    - name: buttonType
-      title: כפתור
+css: |
+    article.box figure img {
+        background-color: #f9f9f9;
+    }
 ---
 
-<div class="box card" dir=ltr>
-    {% include youtube.html id = page.video %}
-    {%
-        include image.html
-        title = page.title
-        image = page.image
-        className = page.imageClass
-        width = page.imageWidth
-        height = page.imageHeight
-        label = page.imageLabel
-    %}
-    <div class=content dir=rtl>
-        {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
-        <ul class=sheet>{%
-            for item in layout.l10n %}
-                {% if item.name != "title" and item.name != "buttonType" and item.title and page[item.name]
-                %}<li class=row>
-                    <div class="column label">{{ item.title }}</div>
-                    <div class=column>{%
-                        if page[item.name] contains "
-" %}{{ page[item.name] | markdownify }}{%
-                        else %}{{ page[item.name] }}{% endif %}{%
-                        if item.name == "price" %} ש"ח{%
-                            if page.discount %} ({{ page.discount }}){% endif %}{%
-                        endif %}</div>
-                </li>{%
-                endif %}
-            {% endfor %}
-        </ul>{% if page.button %}{%
-for item in page.button %}{%
-case item.type %}{%
-    when "paypal" %}
-        <form action=https://www.paypal.com/cgi-bin/webscr method=post target=_top>
-            <input type=hidden name=cmd value=_s-xclick>
-            <input type=hidden name=lc value=he_IL>
-            <input type=hidden name=hosted_button_id value={{ item.id }}>
-            <input type=hidden name=custom value="{{ item.custom }}">
-            <input type=hidden name=notify_url value={{ item.notify }}>
-            <img src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width=1 height=1 alt>
-            <button class=button>{{ item.title }}</button>
-        </form>{%
-endcase %}{%
-endfor %}{% else
-        %}<a class=button href=/contact#{{ page.url | remove: "/" }} tabindex=0>צרי קשר להזמנה</a>{%
-        endif %}
-    </div>
-</div>
+{% include product.html data = page more = true %}
 {{ content }}

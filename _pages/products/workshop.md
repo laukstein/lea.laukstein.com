@@ -5,7 +5,6 @@ order: 2
 
 title: סדנה לנשים
 permalink: /workshop
-redirect_from: workshop+giyur
 image: product-workshop.jpg
 imageClass: contain
 imageWidth: 239

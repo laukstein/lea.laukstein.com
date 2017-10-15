@@ -1,0 +1,61 @@
+---
+layout: default
+category: products
+css: |
+    .grid.grid {
+        grid-template-columns: repeat(auto-fit, minmax(19.2em, 1fr));
+        padding-right: .4em;
+        padding-left: .4em;
+        margin-top: 0;
+    }
+    .grid .card {
+        display: inline-block;
+        width: 100%;
+        min-width: 17em;
+        min-height: inherit;
+        margin: 0;
+    }
+    .grid .content {
+        min-width: inherit;
+        padding: 1.5em 2em 6em;
+    }
+    .grid .more,
+    .grid .button {
+        position: absolute;
+        z-index: 1;
+    }
+    .grid .more {
+        left: 2.8em;
+        bottom: 2.65em;
+    }
+    .grid .more:hover {
+        text-decoration: underline;
+    }
+    .grid .button {
+        bottom: 1.4em;
+    }
+    .grid .label {
+        padding-left: 0;
+    }
+    .grid .footer:before {
+        content: "≡";
+        margin-left: .3em;
+        color: #02a;
+        font-weight: bold;
+        vertical-align: middle;
+        text-decoration: none;
+    }
+    .grid .footer a {
+        color: #02a;
+    }
+---
+
+{%
+    assign url = page.url %}{%
+    assign title = page.title %}{%
+    assign pages = site.pages | sort: "order" %}
+{% for item in pages %}{%
+    if item.order and item.subnav != "products" and item.group == page.group %}{%
+        include product.html data = item %}{%
+    endif %}{%
+endfor %}<div class=footer><a href={{ url }}-compare>להשוואה כל "{{ title }}"</a></div>{{ content }}

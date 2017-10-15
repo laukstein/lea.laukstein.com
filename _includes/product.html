@@ -1,0 +1,56 @@
+{% if include.data %}{%
+    assign page = include.data %}{%
+    assign l10n = site.data.l10n.product
+%}<article class="box card" dir=ltr>{%
+    if include.more %}
+    {% include youtube.html id = page.video %}{%
+        include image.html
+        title = page.title
+        image = page.image
+        className = page.imageClass
+        width = page.imageWidth
+        height = page.imageHeight
+        label = page.imageLabel
+    %}{%
+    endif %}
+    <div class=content dir=rtl>
+        {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+        <ul class="sheet{% if include.more == nil %} sheet-fixed{% endif %}">{%
+            for item in l10n %}{%
+                if item.name != "title" and item.name != "buttonType" and item.title and page[item.name] %}{%
+                if item.more == nil or include.more %}
+                <li class=row>
+                    <div class="column label">{{ item.title }}</div>
+                    <div class=column>{%
+                        if page[item.name] contains "
+" %}{{ page[item.name] | markdownify }}{%
+                        else %}{{ page[item.name] }}{% endif %}{%
+                        if item.name == "price" %} ש"ח{%
+                            if page.discount %} ({{ page.discount }}){% endif %}{%
+                        endif %}</div>
+                </li>{%
+                endif %}{%
+                endif %}{%
+            endfor %}
+        </ul>{% if page.button %}{%
+for item in page.button %}{%
+case item.type %}{%
+    when "paypal" %}
+        <form action=https://www.paypal.com/cgi-bin/webscr method=post target=_top>
+            <input type=hidden name=cmd value=_s-xclick>
+            <input type=hidden name=lc value=he_IL>
+            <input type=hidden name=hosted_button_id value={{ item.id }}>
+            <input type=hidden name=custom value="{{ item.custom }}">
+            <input type=hidden name=notify_url value={{ item.notify }}>
+            <img src=https://www.paypalobjects.com/en_US/i/scr/pixel.gif width=1 height=1 alt>
+            <button class=button>{{ item.title }}</button>
+        </form>{%
+endcase %}{%
+endfor %}{% else
+        %}<a class=button href=/contact#{{ page.url | remove: "/" }} tabindex=0>צרי קשר</a>{%
+        endif %}{% if include.more == nil %}
+        <a class=more href={{ page.url }}>פרטים מלאים</a>
+        <a class=absolute href={{ page.url }}></a>{% endif %}
+    </div>
+</article>{%
+endif %}
