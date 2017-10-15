@@ -28,11 +28,11 @@ imageHeight: 640
         <h2 id={{ group.name }}>{{ group.title }}</h2>
         <ol class=list>
         {% assign pages=site.pages | sort: "order" %}{%
-            for item in pages %}{%
-                if item.layout == "product" and item.group == group.name %}
+        for item in pages %}{%
+            if item.layout == "product" and item.group == group.name %}
             <li><a href={{ item.url | prepend: site.baseurl }}>{{ item.title }}</a>{%
-                endif %}{%
-            endfor %}
+            endif %}{%
+        endfor %}
         </ol>
     </li>
 {% endfor %}</ol>
