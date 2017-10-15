@@ -3,7 +3,7 @@ layout: product
 group: personal
 order: 1
 
-title: אבחון בשיחת אונליין
+title: אבחון אונליין
 permalink: /diagnostic
 image: product-diagnostic.jpg
 imageWidth: 960
