@@ -19,8 +19,8 @@ layout: null
     assign pages=site.pages | sort: "date" | sort: "order" %}{%
     for page in pages %}{%
         unless page.draft %}{%
-            if page.category == null and page.title and page.order or page.url == '/privacy' %}{%
-                assign relative_url=page.url | remove_first: '/' %}
+            if page.category == null and page.title and page.order or page.url == '/privacy' or page.layout == 'products-compare' %}{%
+                assign relative_url = page.url | remove_first: '/' %}
     <url>
         <loc>{{ site.url }}{{ page.url }}</loc>{% if page.image %}
         <image:image>
