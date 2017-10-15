@@ -1,23 +1,30 @@
 {% if page.titleLong %}{%
-    assign title=page.titleLong %}{%
+    assign title = page.titleLong %}{%
 else if page.title %}{%
-    assign title=page.title %}{%
+    assign title = page.title %}{%
 endif %}{%
 assign style = layout.style | uniq %}{% if page.style %}{%
 assign style = style | concat: page.style | uniq %}{% endif %}{%
+assign inlineCSS = layout.css | append: page.css | scssify %}{%
 if style %}{%
-    if jekyll.environment == "dev" %}
-        {% for source in style %}
-            {% capture css %}{{ css }}
-<link rel=stylesheet href={{ site.assets }}{{ source }}>{% endcapture %}
-        {% endfor %}
-    {% else %}
-        {% for source in style %}
-            {% capture css %}{{ css }}{% include {{ source }} %}{% endcapture %}
-        {% endfor %}
-        {% capture css %}
-<style>{{ css | scssify }}</style>{% endcapture %}
-    {% endif %}{%
+    if jekyll.environment == "dev" %}{%
+        for source in style %}{%
+            capture css %}{{ css }}
+<link rel=stylesheet href={{ site.assets }}{{ source }}>{% endcapture %}{%
+        endfor %}{%
+        if inlineCSS.size > 0 %}{%
+            capture css %}{{ css }}
+<style>{{ inlineCSS }}</style>{%
+            endcapture %}{%
+        endif %}{%
+    else %}{%
+        for source in style %}
+            {% capture css %}{{ css }}{% include {{ source }} %}{% endcapture %}{%
+        endfor %}{%
+        capture css %}
+<style>{{ css | scssify }}{{ inlineCSS }}</style>{%
+        endcapture %}{%
+    endif %}{%
 endif %}{%
 
 capture head %}<!doctype html>

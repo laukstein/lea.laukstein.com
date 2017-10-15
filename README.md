@@ -12,6 +12,10 @@ YAML schema
     date: YYYY-MM-DD HH:MM:SS
     private: true // default `false`, prevent page indexing
     className: className
+    css: |
+        selector {
+            rule: value;
+        }
     video: ID
     image: src
     imageClass: className
