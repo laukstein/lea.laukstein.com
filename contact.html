@@ -14,6 +14,21 @@ products:
       title: סטיילינג אישי
     - name: diy
       title: עשי זאת בעצמך
+css: |
+    .sheet {
+        width: 100%;
+        margin: 1.8em 0;
+        line-height: 1;
+    }
+    .sheet .row {
+        border-top: 0;
+    }
+    .sheet .row.label {
+        display: table-caption;
+    }
+    .sheet .label {
+        font-weight: normal;
+    }
 ---
 
 <form class="cel space" id=contact method=post>
@@ -42,7 +57,7 @@ products:
         <dd><button formnovalidate>לשלוח הודעה</button>
         <dd id=status>
     </dl>
-    <dl class="contact sheet">
+    <dl class="sheet sheet-fixed">
         <dt class="row label"><h3>לאה לאוקשטיין</h3></dt>
         <dd class=row>
             <div class="column label">נייד</div>

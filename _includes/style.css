@@ -872,9 +872,11 @@ iframe {
     margin-bottom: -5.8em;
 }
 
-.sheet {
+.sheet,
+.sheet.sheet-fixed {
     display: table;
     width: 100%;
+    margin: 0;
     word-break: normal;
     word-break: keep-all;
     vertical-align: top;
@@ -889,14 +891,16 @@ iframe {
 .sheet li {
     margin: .3em 0;
 }
-.row {
+.row,
+.sheet-fixed .row {
     display: table-row-group;
     border-top: 1px solid #eee;
 }
 .row:first-child {
     border-top: 0;
 }
-.column {
+.column,
+.sheet-fixed .column {
     display: table-cell;
     padding: .4em;
 }
@@ -909,25 +913,6 @@ iframe {
 }
 .flow {
     float: left;
-}
-.contact.sheet {
-    width: 100%;
-    margin: 1.8em 0;
-    line-height: 1;
-}
-.contact.sheet .column {
-    display: table-cell;
-}
-.contact.sheet .row {
-    display: table-row-group;
-    padding: 0;
-    border-top: 0;
-}
-.contact.sheet .label {
-    font-weight: normal;
-}
-.contact.sheet .label.row {
-    display: table-caption;
 }
 
 /* Product item page */
