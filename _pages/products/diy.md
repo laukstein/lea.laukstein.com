@@ -1,7 +1,8 @@
 ---
 layout: product
+subnav: products
 group: diy
-order: 1
+order: 3
 
 title: קורס אינטרנטי
 permalink: /diy

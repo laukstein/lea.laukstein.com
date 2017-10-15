@@ -4,6 +4,7 @@ style:
     - style.css
 script:
     - ui.js
+array: []
 ---
 
 {% include core-head.html %}<input class=bar-holder id=bar type=checkbox hidden>
@@ -13,45 +14,68 @@ script:
         <a class="logo{% if page.url == "/" %} active{% endif %}" href="/" dir=rtl>
             <img src={{ site.assets }}logo.png width=47 height=47 alt="{{ site.title }}"><div>לאה לאוקשטיין</div>
         </a>
-        <nav class=nav-container dir=rtl>
-        {% assign pages = site.pages | sort: "order" %}{%
-        for nav in pages %}{%
-            if nav.header and nav.title
-                %}{% assign relative_url = nav.url | remove_first: "/"
-                %}<a{% if nav.url == page.url or layout.category == relative_url %} class=active{% endif %} href="{{ nav.url | relative_url }}">{{ nav.title }}</a>{%
-            endif %}{%
-        endfor %}<a class=external rel=noopener href="https://www.facebook.com/LeaLaukstein/" title="פייסבוק" target=_blank><div class=icon-facebook></div></a><a class=external rel=noopener href="https://www.youtube.com/channel/UCNNsgimJtU1q1LUMVsq44Dg" title="יוטיוב" target=_blank><div class=icon-youtube></div></a>
-        </nav>
+        <ul class="nav nav-container" role=navigation dir=rtl>{%
+            assign pages = site.pages | sort: "order" %}{%
+
+            for nav in pages %}{%
+                if nav.header and nav.title %}{%
+                    assign relative_url = nav.url | remove_first: "/" %}{%
+                    assign className = layout.array %}{%
+                    if nav.hasSubnav %}{%
+                        assign className = className | push: "subnav-container" %}{%
+                    endif %}{%
+                    if relative_url == "products" and nav.products %}{%
+                        assign className = className | push: "notice" %}{%
+                    endif %}{%
+                    if nav.url == page.url or layout.category == relative_url %}{%
+                        assign className = className | push: "active" %}{%
+                    endif %}{%
+                    if nav.hasSubnav %}{% capture subnavHTML %}
+                <ul class=subnav>{%
+                    for subnav in pages %}{%
+                        if subnav.subnav == relative_url %}
+                    <li{% if subnav.url == page.url or subnav.group == page.group %}{% assign assign className = className | push: "subactive" %} class=active{% endif %}><a href="{{ subnav.url | relative_url }}">{{ subnav.title }}</a></li>{%
+                        endif %}{%
+                    endfor %}
+                </ul>
+            {% endcapture %}{% else %}{% assign subnavHTML = nil %}{% endif %}
+            <li{% if className.size > 0 %} class="{{ className | join: " " }}"{% endif %}><a href="{{ nav.url | relative_url }}">{{ nav.title }}</a>{{ subnavHTML }}</li>{%
+                endif %}{%
+            endfor %}
+            <li class=external><a rel=noopener href="https://www.facebook.com/LeaLaukstein/" title="פייסבוק" target=_blank><div class=icon-facebook></div></a></li>
+            <li class=external><a rel=noopener href="https://www.youtube.com/channel/UCNNsgimJtU1q1LUMVsq44Dg" title="יוטיוב" target=_blank><div class=icon-youtube></div></a></li>
+        </ul>
         <label class="bar-close absolute" id=bar-close for=bar hidden></label>
     </div>
 </header>
 <main{% if page.pageName %} class={{ page.pageName }}{% endif %} dir=rtl>{%
-if layout.comment or page.comment %}
-    {% assign addComments=true %}
-{% endif %}{%
-if layout.className %}
-    {% assign className=layout.className %}
-{% else if page.className %}
-    {% assign className=page.className %}
-{% endif %}{%
-if className %}
-    {% capture className %} {{ className }}{% endcapture %}
-{% endif %}{%
-if page.type %}
-    {% assign type=page.type %}
-{% else if layout.type %}
-    {% assign type=layout.type %}
-{% endif %}{%
-case type %}
-    {% when "full" %}
+if layout.comment or page.comment %}{%
+    assign addComments=true %}{%
+endif %}{%
+
+assign className = nil %}{%
+if page.className %}{%
+    assign className=page.className %}{%
+endif %}{%
+if className %}{%
+    capture className %} {{ className }}{% endcapture %}{%
+endif %}{%
+
+if page.type %}{%
+    assign type=page.type %}{%
+else if layout.type %}{%
+    assign type=layout.type %}{%
+endif %}{%
+case type %}{%
+    when "full" %}
     <div class="table scale full">
         <div class=cel>{{ content }}</div>
-    </div>
-    {% when "center" %}
+    </div>{%
+    when "center" %}
     <div class="table scale center" id=content>
         <div class=cel>{{ content }}</div>
-    </div>
-    {% when "medium" %}
+    </div>{%
+    when "medium" %}
     <div class="table scale space medium{{ className }}">{%
         if page.video and layout.category != "products" %}{%
             include youtube.html id = page.video %}{%
@@ -60,8 +84,8 @@ case type %}
         if addComments %}{%
             include comment.html %}{%
         endif %}
-    </div>
-    {% else %}
+    </div>{%
+    else %}
     <div class="table{% unless addComments %} scale{% endunless %}">{%
         if page.video %}
             <div class="cel content{{ className }}">

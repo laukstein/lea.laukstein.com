@@ -687,14 +687,14 @@ ui.academy = {
             page,
             date;
 
-        result += "<div class=\"column nav-container\" id=nav dir=ltr>" +
-            "<div class=nav dir=rtl>" +
+        result += "<div class=\"column nav-container\" id=sidenav role=navigation dir=ltr>" +
+            "<div class=sidenav dir=rtl>" +
             "    <a class=active" + this.events() + "><label>" + obj.title + "</label></a>" +
             "</div>";
 
         obj = this.data.session;
 
-        result += "<ol class=nav dir=rtl>";
+        result += "<ol class=sidenav dir=rtl>";
 
         for (session in obj) {
             if (obj.hasOwnProperty(session)) {
@@ -725,7 +725,7 @@ ui.academy = {
 
         this.content.outerHTML = "<div class=container>" + result + "</div>";
         this.content = ui.d.getElementById("content");
-        this.nav = ui.d.getElementById("nav");
+        this.sidenav = ui.d.getElementById("sidenav");
 
         this.toggleNav(true);
     },
@@ -1292,8 +1292,8 @@ ui.academy = {
             this.self = hash.session ? this.data.session[hash.session] :
                 (location.href.indexOf("#") === -1 || !location.hash && !history.replaceState ? this.data.init : null);
 
-            if (this.self && (!hash.session || !this.nav ||
-                this.nav.querySelector("[data-session=\"" + hash.session + "\"]:not([data-page])"))) {
+            if (this.self && (!hash.session || !this.sidenav ||
+                this.sidenav.querySelector("[data-session=\"" + hash.session + "\"]:not([data-page])"))) {
                 obj = this.self.page || this.self.pages;
 
                 if (this.bar && this.bar.checked) {
@@ -1373,9 +1373,9 @@ ui.academy = {
 
         var hash = ui.hash(),
             resetElement = {
-                session: this.nav && this.nav.querySelector(".expand"),
-                active: this.nav && this.nav.querySelector(".active"),
-                page: this.nav && this.nav.querySelector(".selected")
+                session: this.sidenav && this.sidenav.querySelector(".expand"),
+                active: this.sidenav && this.sidenav.querySelector(".active"),
+                page: this.sidenav && this.sidenav.querySelector(".selected")
             },
             applyClass,
             diff;
@@ -1415,18 +1415,18 @@ ui.academy = {
             obj = location.hash ? this.data.session[session] : this.data.init,
             arr;
 
-        if (this.nav) {
+        if (this.sidenav) {
             if (obj) {
-                this.toggleNavClassName(this.nav.querySelector(location.hash ?
+                this.toggleNavClassName(this.sidenav.querySelector(location.hash ?
                     "[data-session=\"" + session + "\"]:not([data-page])" : "a"));
 
                 if (obj.pages && obj.pages[page]) {
-                    this.toggleNavClassName(this.nav.querySelector("[data-session=\"" +
+                    this.toggleNavClassName(this.sidenav.querySelector("[data-session=\"" +
                         session + "\"][data-page=\"" + page + "\"]"));
                 }
             }
             if (initLoad && !location.hash) {
-                arr = this.nav.querySelectorAll("[data-session]:not([data-page])");
+                arr = this.sidenav.querySelectorAll("[data-session]:not([data-page])");
 
                 this.toggleNavClassName(arr[arr.length - 1]);
             }

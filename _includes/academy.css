@@ -163,7 +163,7 @@ button.error {
     float: left;
     vertical-align: top;
 }
-.nav {
+.sidenav {
     width: 100%;
     margin-top: .8em;
     float: right;
@@ -171,29 +171,29 @@ button.error {
     white-space: nowrap;
     background-color: #fff;
 }
-.nav + .nav {
+.sidenav + .sidenav {
     margin-top: 0;
     border-top: 4px solid #ededed;
 }
-.nav,
-.nav ol {
+.sidenav,
+.sidenav ol {
     counter-reset: item;
     padding: 0;
 }
-.nav li {
+.sidenav li {
     display: block;
 }
-.nav > li {
+.sidenav > li {
     counter-reset: subitem;
 }
-.nav time {
+.sidenav time {
     margin: 0;
     margin-right: .4em;
     float: left;
     line-height: 1.3;
     font-weight: normal;
 }
-.nav label {
+.sidenav label {
     display: block;
     position: relative;
     padding: .9em 1.2em;
@@ -201,63 +201,63 @@ button.error {
     font-weight: bold;
     cursor: pointer;
 }
-.nav label[disabled] {
+.sidenav label[disabled] {
     color: #aaa;
     cursor: default;
 }
-.nav li label:before {
+.sidenav li label:before {
     content: counters(item, ".") ".";
     counter-increment: item;
     margin-left: .4em;
     float: right;
     font-weight: normal;
 }
-.nav li li a:before {
+.sidenav li li a:before {
     content: counters(subitem, ".") ". ";
     font-weight: normal;
     counter-increment: subitem;
 }
-.nav div,
-.nav a {
+.sidenav div,
+.sidenav a {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.nav a {
+.sidenav a {
     display: block;
     color: inherit;
     text-decoration: none;
     outline: none;
 }
-.nav .active,
-.nav a:hover,
-.nav a:focus,
-.nav label[onclick]:hover,
-.nav label[onclick]:focus,
+.sidenav .active,
+.sidenav a:hover,
+.sidenav a:focus,
+.sidenav label[onclick]:hover,
+.sidenav label[onclick]:focus,
 .nav-container .selected {
     color: #fff;
     background-color: #1e90ff;
     border-color: #1e90ff;
 }
-.nav label[onclick]:hover time,
-.nav label[onclick]:focus time,
+.sidenav label[onclick]:hover time,
+.sidenav label[onclick]:focus time,
 .nav-container .selected time {
     color: #fff;
 }
-.nav > li {
+.sidenav > li {
     border-top: 2px solid #ededed;
 }
-.nav > li:first-child {
+.sidenav > li:first-child {
     border-top: 0;
 }
-.nav ol {
+.sidenav ol {
     display: none;
     box-suppress: discard;
     margin-bottom: .4em;
 }
-.nav .expand ~ ol {
+.sidenav .expand ~ ol {
     display: block;
 }
-.nav ol a {
+.sidenav ol a {
     padding-top: .4em;
     padding-bottom: .4em;
     padding-right: 2.5em;
@@ -617,12 +617,12 @@ button[disabled]:not(:hover) {
     .stretch header .wrapper {
         min-width: 24.779em;
     }
-    .logedin nav {
+    .logedin .nav {
         padding-left: 3em;
         background-color: transparent;
     }
-    nav a {
-        display: inline-block;
+    .nav li {
+        float: right;
     }
     .stretch .bar.bar {
         display: none;
@@ -669,12 +669,12 @@ button[disabled]:not(:hover) {
     }
 }
 @media (max-width: 33em) {
-    .logedin nav a {
+    .logedin .nav a {
         visibility: hidden;
     }
 }
 @media (max-width: 28em) {
-    .stretch nav a {
+    .stretch .nav a {
         padding: 1em;
     }
     .stretch header .wrapper {

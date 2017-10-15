@@ -15,6 +15,7 @@ iframe,
 button,
 .button,
 .nav,
+.subnav,
 [disabled],
 .unselectable,
 [unselectable] {
@@ -120,7 +121,7 @@ header {
     border-bottom: 1px solid #ededed;
 }
 header a {
-    display: inline-block;
+    display: block;
     outline: 0; /* Remove Firefox outline flicker on page load */
 }
 header .wrapper,
@@ -152,40 +153,41 @@ footer .wrapper a {
 footer a + a {
     margin-right: 1.6em;
 }
-nav {
-    /* position: relative; */
+.nav,
+.subnav {
     display: inline-block;
+    padding: 0;
+    margin: 0;
+    list-style: none;
     text-align: center;
-    vertical-align: top; /* IE too big padding */
+    vertical-align: top;
     background-color: #fff;
 }
-/* nav:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -3em;
-    bottom: 0;
-    width: 3em;
-    background-image: linear-gradient(to right, #fff, rgba(255,255,255,0));
-} */
-nav a {
+.nav li {
     position: relative;
+    float: right;
+}
+.nav a {
     padding: 1em 1.4em;
     color: inherit;
-    vertical-align: top;
 }
-nav a:hover,
-nav a:focus,
+.subnav-container:hover,
+.nav a:not([rel=noopener]):hover,
+.nav a:not([rel=noopener]):focus,
 .bar:hover,
 .bar:focus {
     color: inherit;
     text-decoration: none;
     background-color: #f8f8f9;
 }
-nav .active.active {
+.subnav-container:hover,
+.subnav-container:not(:hover) > a:focus {
+    box-shadow: 0 2em 4em rgba(36,45,54,.2);
+}
+.nav > .active.active > a {
     color: #f58e84;
 }
-nav .active:after {
+.nav > .active:after {
     content: "";
     display: block;
     position: absolute;
@@ -195,14 +197,37 @@ nav .active:after {
     height: .2em;
     background-color: #f58e84;
 }
-.external.external {
+.subnav {
+    display: none;
+    position: absolute;
+    right: 0;
+    text-align: initial;
+    background-color: #fbfbfb;
+
+    z-index: 1;
+    background-color: #fff;
+    box-shadow: 0 3em 6em rgba(36,45,54,.5);
+}
+.subnav-container:hover .subnav,
+.subnav-container > a:hover ~ .subnav,
+.subnav-container > a:focus ~ .subnav,
+.subnav:hover {
+    display: block;
+}
+.subnav li {
+    float: none;
+    border-top: 1px solid #eee;
+}
+.subnav .active.active > a {
+    background-color: #f6f6f6;
+}
+.external a {
     padding: 1.2em .35em;
-    background-color: transparent;
     -webkit-filter: grayscale(100%);
             filter: grayscale(100%);
 }
-.external.external:hover,
-.external.external:active {
+.external a:hover,
+.external a:active {
     -webkit-filter: none;
             filter: none;
 }
@@ -915,7 +940,7 @@ iframe {
     float: left;
 }
 
-/* Product item page */
+/* Product pages */
 .card {
     display: table;
     width: 100%;
@@ -988,7 +1013,6 @@ iframe {
         display: grid;
         grid-gap: 1.2em;
         grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-        /* grid-auto-rows: minmax(13em, auto); */
         margin-top: 1.2em;
     }
     .grid figure {
@@ -1216,8 +1240,7 @@ iframe {
         position: relative;
         z-index: -1;
     }
-    /* nav:before, */
-    nav .active:after {
+    .nav > .active:after {
         display: none;
         box-suppress: discard;
     }
@@ -1236,25 +1259,46 @@ iframe {
                 transform: translateX(-100%);
         will-change: auto;
     }
-    nav a {
+    .nav li,
+    .subnav.subnav li:first-child {
         direction: rtl;
-        display: block;
+        float: none;
         border-top: 1px solid #eee;
     }
-    nav a:first-child {
+    .nav li:first-child {
         border-top: 0;
     }
-    nav .active.active {
+    .nav a {
+        padding-right: 2.3em;
+    }
+    .nav > .active.active > a {
+        color: inherit;
+    }
+    .nav.nav a:hover,
+    .nav.nav a:focus,
+    .subactive.subactive > a {
+        background-color: #f6f6f6;
+    }
+    .nav > .active:not(.subactive) > a {
         color: #fff;
         background-color: #1e90ff;
     }
-    .external.external {
-        padding-right: 1.4em;
-        padding-left: 1.4em;
+    .subnav.subnav,
+    .subnav-container.subnav-container {
+        background-color: initial;
+        box-shadow: none;
     }
-    .external.external:hover,
-    .external.external:focus {
-        background-color: #f8f8f9;
+    .subnav {
+        position: static;
+        display: block;
+        background-color: #fbfbfb;
+    }
+    .subnav a {
+        padding-right: 3.7em;
+    }
+    .subnav .active.active > a {
+        color: #fff;
+        background-color: #1e90ff;
     }
     .bar.bar {
         display: inline-block;
