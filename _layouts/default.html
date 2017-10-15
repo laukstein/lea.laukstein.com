@@ -78,12 +78,13 @@ case type %}
                 {{ content }}
             </div>{%
         endif %}{%
-        include subscribe.html
-            id = page.subscribe
-            title = page.subscribe-title
-            button = page.subscribe-button
-            requiredTel = page.subscribe-requiredTel
-        %}{%
+        if page.subscribe %}
+{% include subscribe.html
+                id = page.subscribe
+                title = page.subscribe-title
+                button = page.subscribe-button
+                requiredTel = page.subscribe-requiredTel %}{%
+        endif %}{%
         if page.headlines %}{%
             include headlines.html %}{%
         endif %}

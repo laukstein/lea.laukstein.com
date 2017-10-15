@@ -1,5 +1,5 @@
-{% assign script_template = "ui-form.js, ui-subscribe.js"
-%}<form class="cel space subscribe" id=subscribe name={% if include.id %}{{ include.id }}{% else %}70a2d0d976{% endif %} method=post>
+{% if include.id %}{% assign script_template = "ui-form.js, ui-subscribe.js"
+%}<form class="cel space subscribe" id=subscribe name={{ include.id }} method=post>
     <h1{% if include.requiredTel %} class=inherit{% endif %}>{% if include.title %}{{ include.title }}{% else %}סטייל שבא מבפנים{% endif %}</h1>
     {% unless include.title %}<p>מדריך ליצירת ארון מדוייק</p>{% endunless %}
     <div class=invisible>
@@ -15,5 +15,5 @@
         <input id=tel tabindex=-1 name=PHONE type=tel placeholder="{% if include.requiredTel %}*{% endif %}נייד"{% if include.requiredTel %} data-error="נייד שגוי" data-required{% endif %} autocomplete=tel dir=ltr>
     </div>
     <button formnovalidate>{% if include.button %}{{ include.button }}{% else %}להורדה בחינם{% endif %}</button>
-    {% include confirm.html %}
-</form>
+    {% include confirm.html
+%}</form>{% endif %}
