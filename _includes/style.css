@@ -81,7 +81,7 @@ a.absolute:hover,
 a.absolute:focus,
 a:not(.absolute):hover ~ a.absolute,
 form:hover ~ a.absolute {
-    outline-color: #4d90fe;
+    outline-color: #1e90ff;
     outline-style: solid;
 }
 a[onclick] {
@@ -118,7 +118,7 @@ header {
     font-size: 106%;
     white-space: nowrap;
     background-color: #fff;
-    border-bottom: 1px solid #ededed;
+    border-bottom: 1px solid #eee;
 }
 header a {
     display: block;
@@ -200,11 +200,9 @@ footer a + a {
 .subnav {
     display: none;
     position: absolute;
+    z-index: 1;
     right: 0;
     text-align: initial;
-    background-color: #fbfbfb;
-
-    z-index: 1;
     background-color: #fff;
     box-shadow: 0 3em 6em rgba(36,45,54,.5);
 }
@@ -219,7 +217,7 @@ footer a + a {
     border-top: 1px solid #eee;
 }
 .subnav .active.active > a {
-    background-color: #f6f6f6;
+    background-color: #f8f8f9;
 }
 .external a {
     padding: 1.2em .35em;
@@ -337,7 +335,7 @@ article.box li {
 }
 .box:not(article) figure,
 article.box figure img {
-    background-color: #ededed;
+    background-color: #eee;
 }
 .box .item {
     width: 100%;
@@ -645,7 +643,7 @@ textarea {
     margin-top: .15em;
     margin-bottom: .15em;
     text-align: right;
-    border-color: #9c9c9c;
+    border-color: #999;
     border-top-color: #ccc;
     border-left-color: #ccc;
     outline: transparent solid 1px;
@@ -658,7 +656,7 @@ select:focus,
 textarea:focus {
     position: relative;
     border-color: #00d;
-    outline-color: #4d90fe;
+    outline-color: #1e90ff;
     box-shadow: 1px 1px 2em rgba(0,0,0,.15);
     box-shadow: 1px 1px .1em rgba(0,0,0,.2),
                 1px 1px 2em rgba(0,0,0,.15);
@@ -1000,7 +998,7 @@ iframe {
     padding: .15em .7em;
     margin: .4em 0;
     font-size: 90%;
-    background-color: #ededed;
+    background-color: #eee;
     border-radius: 3px;
 }
 
@@ -1277,7 +1275,7 @@ iframe {
     .nav.nav a:hover,
     .nav.nav a:focus,
     .subactive.subactive > a {
-        background-color: #f6f6f6;
+        background-color: #f8f8f9;
     }
     .nav > .active:not(.subactive) > a {
         color: #fff;
@@ -1291,7 +1289,6 @@ iframe {
     .subnav {
         position: static;
         display: block;
-        background-color: #fbfbfb;
     }
     .subnav a {
         padding-right: 3.7em;
