@@ -1011,7 +1011,6 @@ iframe {
         display: grid;
         grid-gap: 1.2em;
         grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-        margin-top: 1.2em;
     }
     .grid figure {
         overflow: hidden;
@@ -1187,6 +1186,9 @@ iframe {
     }
 }
 @media (max-width: 54em) {
+    .subscribe h1 {
+        font-size: 1.5em;
+    }
     img {
         /* Prevent downsized pixelated scale */
         image-rendering: auto;
