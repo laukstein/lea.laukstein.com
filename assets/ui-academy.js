@@ -637,7 +637,7 @@ ui.academy = {
                 (options.interval ? 0 : 10000000));
 
         return {
-            enabled: +date <= +new Date(),
+            enabled: +date <= +new Date,
             format: options.format || date.getUTCDate() + "/" + (date.getUTCMonth() + 1)
         };
     },
@@ -943,7 +943,7 @@ ui.academy = {
 
                 ui.academy.refresh();
             }).catch(function () {
-                ui.academy.session.reportDate = new Date();
+                ui.academy.session.reportDate = new Date;
                 ui.academy.session.reportData = data;
 
                 if (el) {
@@ -1050,7 +1050,7 @@ ui.academy = {
 
                     ui.academy.refresh();
                 }).catch(function () {
-                    ui.academy.session.reportDate = new Date();
+                    ui.academy.session.reportDate = new Date;
                     ui.academy.session.reportData = data;
 
                     delete localStorage.session;

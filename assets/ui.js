@@ -355,7 +355,7 @@ window.ui = {
                     user = this.identify.user;
                 }
 
-                user.date = +new Date();
+                user.date = +new Date;
                 user.referrer = location.href;
                 user.email = email;
 
@@ -635,7 +635,7 @@ window.ui = {
                         fetch(url).then(function (response) {
                             return response.json();
                         }).then(function (response) {
-                            response.downloadTime = +new Date();
+                            response.downloadTime = +new Date;
                             localStorage.videos = JSON.stringify(response);
 
                             if (typeof legacyCallback === "function") {

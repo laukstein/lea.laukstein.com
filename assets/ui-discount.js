@@ -10,7 +10,7 @@ ui.discount = {
                #discount=*|DATE:U|*-2 => date - 2 days
                #discount=1478448145-2 */
             var hash = ui.hash("discount"),
-                now = new Date(),
+                now = new Date,
                 start,
                 date,
                 end;

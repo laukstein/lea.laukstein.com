@@ -18,7 +18,7 @@ ui.comment = {
                 window.disqus_config = config; // eslint-disable-line
 
                 ui.asyncScript("https://lealaukstein.disqus.com/count.js", {id: "dsq-count-scr"});
-                ui.asyncScript("https://lealaukstein.disqus.com/embed.js", {"data-timestamp": +new Date()});
+                ui.asyncScript("https://lealaukstein.disqus.com/embed.js", {"data-timestamp": +new Date});
             } else if (window.DISQUS) {
                 DISQUS.reset({
                     reload: true,
