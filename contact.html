@@ -15,8 +15,21 @@ products:
     - name: diy
       title: עשי זאת בעצמך
 css: |
-    .sheet {
-        width: 100%;
+    .profile {
+        padding: 2.85em;
+        margin: 2.4em .6em;
+        margin-right: 0;
+        float: right;
+        background-color: #eee;
+        background-image: url(/assets/profile.jpg);
+        background-position: 34% top;
+        background-repeat: no-repeat;
+        background-size: 184%;
+        border: .3em solid #fff;
+        border-radius: 100%;
+    }
+    .sheet.sheet-fixed {
+        width: initial;
         margin: 1.8em 0;
         line-height: 1;
     }
@@ -57,6 +70,7 @@ css: |
         <dd><button formnovalidate>לשלוח הודעה</button>
         <dd id=status>
     </dl>
+    <div class=profile></div>
     <dl class="sheet sheet-fixed">
         <dt class="row label"><h3>לאה לאוקשטיין</h3></dt>
         <dd class=row>
