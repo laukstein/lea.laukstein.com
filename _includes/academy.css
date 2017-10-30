@@ -108,7 +108,7 @@ button.spin.spin.spin:before {
 .subscribe dd {
         width: 18em;
     max-width: 100%;
-    margin: auto;
+    margin: 0;
     text-align: right;
 }
 .subscribe label,
