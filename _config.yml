@@ -1,11 +1,11 @@
 title: סטיילינג לדתיות — לאה לאוקשטיין
 url: https://lea.laukstein.com
 enforce_ssl: lea.laukstein.com
-permalink: /:categories/:title
+permalink: /:category/:title
 assets: /assets/
 timezone: UTC
-include: [_pages]
 safe: true
+include: [_pages]
 markdown: kramdown
 kramdown:
     input: GFM
