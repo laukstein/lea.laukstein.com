@@ -159,6 +159,9 @@ button:not([data-plyr]):focus,
     width: 100vw;
     height: 100vh;
 }
+.qa .column.label {
+    width: inherit;
+}
 .column.nav-container,
 .column.content {
     display: block;
@@ -337,6 +340,7 @@ button:not([data-plyr]):focus,
 .qa li {
     position: relative;
     flex: 1;
+    margin: 0;
     list-style-type: none;
 }
 .qa a {
