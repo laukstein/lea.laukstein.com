@@ -129,17 +129,24 @@ button.spin.spin.spin:before {
 .subscribe input:focus {
     box-shadow: 0 0 2em rgba(0,0,0,.55);
 }
-button {
+button:not([data-plyr]) {
     margin-top: .15em;
 }
-button:focus,
-button:active {
-    box-shadow: 1px 1px .2em #333;
-}
-button.error {
+button.error:not([data-plyr]) {
     color: #fff;
     text-shadow: -1px 0 0 #333;
     background-color: #b00;
+}
+button:not([data-plyr]),
+.button {
+    background-color: #1e90ff;
+}
+button:not([data-plyr]):hover,
+button:not([data-plyr]):focus,
+.button:hover,
+.button:focus,
+.button:active {
+    background-color: #0081ff;
 }
 .table img {
     position: absolute;
@@ -461,16 +468,11 @@ button.error {
     float: none;
     color: #fff;
     text-shadow: none;
-    background-color: #1e90ff;
     box-shadow: none;
 }
 .dialog.final .button {
     margin-right: .2em;
     margin-left: .2em;
-}
-.dialog .button:focus,
-.dialog .button:active {
-    background-color: #0081ff;
 }
 .calculator .sheet {
     margin: 0;
