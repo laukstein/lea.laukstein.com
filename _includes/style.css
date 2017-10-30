@@ -396,43 +396,6 @@ blockquote.box.box figure img {
     clear: both;
 }
 
-/* YouTube image play icon */
-.play {
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-}
-.play ~ .absolute {
-    z-index: 1;
-}
-.play:before,
-.play:after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-}
-.play:before {
-    top: calc(50% - 1.7em);
-    left: calc(50% - 1.9em);
-    width: 3.8em;
-    height: 2em;
-    padding-top: .7em;
-    font-size: 1em;
-    background-color: #e42b26;
-    border-radius: .6em;
-}
-.play:after {
-    top: calc(50% - 1em);
-    left: calc(50% - .5em);
-    border: solid 0 transparent;
-    border-width: .6em 0 .6em 1em;
-    border-left-color: #fff;
-}
-
 time {
     display: inline-block;
     margin: 1.2em 0 1em;
@@ -817,6 +780,49 @@ iframe {
 }
 .plyr__play-large {
     cursor: pointer;
+}
+
+/* YouTube play button */
+.play {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.play ~ .absolute {
+    z-index: 1;
+}
+.play:before,
+.play:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+}
+.play:before {
+    top: calc(50% - 1.3em);
+    left: calc(50% - 1.9em);
+    width: 3.9em;
+    height: 2em;
+    padding-top: .7em;
+    font-size: 1em;
+    background-color: #e42b26;
+    border-radius: .6em;
+}
+.play:after {
+    top: calc(50% - .56em);
+    left: calc(50% - .45em);
+    border: solid 0 transparent;
+    border-width: .6em 0 .6em 1.1em;
+    border-left-color: #fff;
+}
+.play.video:after {
+    left: calc(50% - .35em);
+}
+.play iframe {
+    opacity: 0;
 }
 
 .items {
