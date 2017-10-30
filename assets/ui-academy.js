@@ -880,7 +880,7 @@ ui.academy = {
                     "       <h1 class=nowrap>" + data.title + "</h1>" +
                     (finalEl ? "" : "       <p>שימי לב, אחרי הורדה לא ניתן לשנות קטגוריה</p>") +
                     "       <div><a class=button" + (finalEl ? " href=\"https://drive.google.com/uc?export=download&id=" + data.value + "\" rel=noopener target=_blank" :
-                        " onclick=\"ui.academy.qa.final(this, '" + type + "')\" tabindex=0") + ">" + (finalEl ? "להוריד סרגל צבעים" : "לקבל סרגל צבעים") + "</a></div>" +
+                        " onclick=\"ui.academy.qa.final(this, '" + type + "')\"") + " tabindex=0>" + (finalEl ? "להוריד סרגל צבעים" : "לקבל סרגל צבעים") + "</a></div>" +
                     "   </div>" +
                     "   </div>" +
                     "</div>";
@@ -1151,7 +1151,7 @@ ui.academy = {
                     return obj.final[x];
                 }).join(" "));
                 links = calculate.map(function (x) {
-                    return "<a class=button href=\"" + obj.success.value.format(obj.success.link, obj.final[x]) + "\" rel=noopener target=_blank>" + obj.success.result.format(obj.final[x]) + "</a>";
+                    return "<a class=button href=\"" + obj.success.value.format(obj.success.link, obj.final[x]) + "\" rel=noopener target=_blank tabindex=0>" + obj.success.result.format(obj.final[x]) + "</a>";
                 }).join("");
 
                 result = "<div class=\"dialog final\">" +
@@ -1342,7 +1342,7 @@ ui.academy = {
                                         "    <a class=button href=\"" + (obj.download ? obj.download.format(obj.value) :
                                             "https://drive.google.com/uc?export=download&id=" + obj.value) +
                                             "\" rel=noopener target=_blank download=\"" +
-                                            obj.title + ".pdf\"><b>להוריד " + obj.title + "</a>" +
+                                            obj.title + ".pdf\" tabindex=0><b>להוריד " + obj.title + "</a>" +
                                         "</div>";
                                     break;
                                 case "calculator":
