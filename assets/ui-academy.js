@@ -732,12 +732,14 @@ ui.academy = {
     list: function (obj, session, page) {
         "use strict";
 
-        var url = "";
+        var url = "",
+            imageSize;
 
         if (obj.value) {
             switch (obj.type) {
                 case "video":
-                    url = ui.video.youtubeSupport ? "https://img.youtube.com/vi/" + obj.value + "/maxresdefault.jpg" : ui.video.getData(obj.value).image;
+                    imageSize = obj.value === "-zHM4bjnLsI" ? "0" : "maxresdefault";
+                    url = ui.video.youtubeSupport ? "https://img.youtube.com/vi/" + obj.value + "/" + imageSize + ".jpg" : ui.video.getData(obj.value).image;
                     break;
                 case "document":
                 case "calculator":
