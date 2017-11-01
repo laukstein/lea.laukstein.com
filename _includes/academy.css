@@ -401,19 +401,26 @@ button:not([data-plyr]):focus,
     box-shadow: 0 -1px 0 #eee,
                 1px 2px 1px #aaa;
 }
-.qa input:checked ~ label:before {
-    background-color: #1e90ff;
-    border-color: #1e90ff;
+svg {
+    vertical-align: top;
+    box-sizing: border-box;
 }
-.qa input:checked ~ label:after {
-    content: "\2716";
+.qa label .icon-check {
     position: absolute;
-    top: 1.65em;
-    right: 2.15em;
-    color: transparent;
-    font-weight: normal;
-    font-size: 86%;
-    transition: color .35s cubic-bezier(.2,1,.4,1);
+    width: 1.55em;
+    height: 1.55em;
+    visibility: hidden;
+    padding: .3em;
+    margin-right: -1.89em;
+    fill: #fff;
+}
+.qa input:checked ~ label:before {
+    color: #1e90ff;
+    background-color: currentcolor;
+    border-color: currentcolor;
+}
+.qa input:checked ~ label .icon-check {
+    visibility: visible;
 }
 .qa input:checked ~ label:hover,
 .qa ol ol label:not([disabled]):hover {
@@ -455,10 +462,19 @@ button:not([data-plyr]):focus,
     height: 1.6em;
     font-size: 170%;
     line-height: 1.6;
+    outline: 0;
     cursor: pointer;
 }
-.dialog .close:before {
-    content: "\01F7A9";
+.dialog .close .icon-close {
+    width: 100%;
+    height: 100%;
+    padding: .15em;
+    fill: #777;
+    transition: fill .35s cubic-bezier(.2,1,.4,1);
+}
+.dialog .close:hover .icon-close,
+.dialog .close:focus .icon-close {
+    fill: #333;
 }
 .dialog h1 {
     color: inherit;

@@ -424,6 +424,8 @@ ui.academy = {
         }
     },
     hash: {},
+    iconCheck: "<svg class=icon-check><use xlink:href=#check /></svg>",
+    iconClose: "<svg class=icon-close><use xlink:href=#close /></svg>",
     session: (function () {
         "use strict";
 
@@ -795,7 +797,7 @@ ui.academy = {
                         "<li><input type=radio name=" + index + (id ? " id=" + id : "") + ">" +
                         "<label onclick=" + (data.final ?
                             "\"ui.academy.qa.dialog(event, " + index + ", '" + data.final + "')\"" :
-                            "ui.academy.qa.click(event) for=" + id) + ">" + data.title + "</label>";
+                            "ui.academy.qa.click(event) for=" + id) + ">" + ui.academy.iconCheck + data.title + "</label>";
                 }
                 if (Array.isArray(data.option)) {
                     index += 1;
@@ -876,7 +878,7 @@ ui.academy = {
                 result += "<div class=\"dialog" + (finalEl ? " final" : "") + "\">" +
                     "   <div class=table>" +
                     "   <div class=cel>" +
-                    (finalEl ? "" : "       <div class=close onclick=ui.academy.qa.reset(this) tabindex=0></div>") +
+                    (finalEl ? "" : "       <div class=close onclick=ui.academy.qa.reset(this) tabindex=0>" + ui.academy.iconClose +"</div>") +
                     "       <h1 class=nowrap>" + data.title + "</h1>" +
                     (finalEl ? "" : "       <p>שימי לב, אחרי הורדה לא ניתן לשנות קטגוריה</p>") +
                     "       <div><a class=button" + (finalEl ? " href=\"https://drive.google.com/uc?export=download&id=" + data.value + "\" rel=noopener target=_blank" :
@@ -1238,7 +1240,7 @@ ui.academy = {
 
                     return "<li>" +
                         "    <input name=" + key + " id=" + id + " onclick=ui.academy.sat.check(this) type=checkbox>" +
-                        "    <label class=\"column label wrap\" for=" + id + ">" + value + "</label>" +
+                        "    <label class=\"column label wrap\" for=" + id + ">" + ui.academy.iconCheck + value + "</label>" +
                         "</li>";
                 };
                 group = function (data, n, len) {
