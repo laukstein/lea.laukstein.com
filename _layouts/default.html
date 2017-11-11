@@ -7,7 +7,7 @@ script:
 array: []
 ---
 
-{% include core-head.html %}<input class=bar-holder id=bar type=checkbox hidden>
+{% include core-head.html %}{% unless page.hiddenHeader %}<input class=bar-holder id=bar type=checkbox hidden>
 <header dir=ltr>
     <div class=wrapper>
         <label class=bar for=bar hidden><span></span></label>
@@ -48,7 +48,7 @@ array: []
         <label class="bar-close absolute" id=bar-close for=bar hidden></label>
     </div>
 </header>
-<main{% if page.pageName %} class={{ page.pageName }}{% endif %} dir=rtl>{%
+{% endunless %}<main{% if page.pageName %} class={{ page.pageName }}{% endif %} dir=rtl>{%
 if layout.comment or page.comment %}{%
     assign addComments=true %}{%
 endif %}{%

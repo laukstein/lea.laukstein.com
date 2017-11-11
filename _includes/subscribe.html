@@ -8,7 +8,7 @@
     </div>
     <div>
         <label for=email>אימייל</label>
-        <input id=email name=EMAIL type=email placeholder=אימייל data-error="אימייל שגוי" autocomplete=email dir=ltr data-required{% if page.url == "/" %} autofocus{% endif %}>
+        <input id=email name=EMAIL type=email placeholder=אימייל data-error="אימייל שגוי" autocomplete=email dir=ltr data-required{% if page.subscribe-autofocus %} autofocus{% endif %}>
     </div>
     <div class=invisible>
         <label for=tel>נייד{% unless include.requiredTel %} (אופציונאלי){% endunless %}</label>

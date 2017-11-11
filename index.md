@@ -5,6 +5,7 @@ description: סטיילינג לדתיות - זה לא רק הבגד - זה הח
 video: fkS2Go4_H7E
 pageName: landing
 subscribe: 70a2d0d976
+subscribe-autofocus: true
 headlines: true
 news: |
     <div class="box news">
