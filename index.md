@@ -8,48 +8,10 @@ subscribe: 70a2d0d976
 subscribe-success: המדריך כבר בדרך אליך
 subscribe-autofocus: true
 headlines: true
-news: |
-    <div class="box news">
-        <h2>מה חדש?</h2>
-        <ul>
-            <li><b>15-19/10</b> פעילות פייסבוק <a href=https://www.facebook.com/groups/304148679918860/ rel=nofollow target=_blank>"מסדרות ארון ביחד"</a></li>
-            <li><span class=tag>חינם</span> סדנת תאמת צבעים במטפחות, לפרטים <a href=tel:0585800020 target=_blank>058-5800020</a></li>
-            <li><b>23/10</b> רחובות, חנות הלן קובעי לימון</li>
-            <li>סדנת סטיילינג על בגדי חורף, לפרטים <a href=tel:0585800020 target=_blank>058-5800020</a>
-                <ul>
-                    <li><b>21/10</b> (מוצאי שבת) ירושלים</li>
-                    <li><b>25/10</b> לוד</li>
-                    <li><b>31/10</b> בית שמש</li>
-                </ul>
-            </li>
-            <li>סדרת וידאו חדשה "שאלי את לאה" - מוזמנות לשלוח שאלות שלכן ל-<a href=mailto:lea@laukstein.com target=_blank>lea@laukstein.com</a></li>
-        </ul>
-    </div>
 css: |
-    .news h2 {
-        margin: 0 0 .3em;
-    }
-    .news ul {
-        margin: .2em 0;
-        list-style: none;
-    }
-    .news > ul {
-        padding: 0;
-        margin: 0 -2.1em -1.1em;
-        list-style: none;
-    }
-    .news > ul > li {
-        padding: .2em 2.2em;
-        border-top: 1px solid #eee;
-    }
-    .news > ul > li:first-child {
-        border-top: 0;
-    }
-    .news .tag {
-        display: inline;
-    }
     .headlines {
         display: table-row;
+        margin-top: 1.2em;
     }
     .headlines a.absolute {
         z-index: 1;
