@@ -823,7 +823,7 @@ ui.academy = {
         }
 
         this.qa.click = function (e) {
-            var el = e.target,
+            var el = e.target.tagName === "LABEL" ? e.target : e.target.closest("label"),
                 active = el.getAttribute("data-active") === "true",
                 arrB,
                 arr,
