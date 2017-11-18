@@ -1382,8 +1382,9 @@ ui.academy = {
                 if (!diff) {
                     diff = true;
                 }
-
-                el.classList.add(className);
+                if (el) {
+                    el.classList.add(className);
+                }
             }
         };
 
@@ -1435,7 +1436,9 @@ ui.academy = {
             if (history.replaceState) {
                 history.replaceState("", ui.d.title, location.pathname + "#" + hash);
             } else {
-                location.hash = hash;
+                ui.w.location = location.pathname + "#" + hash;
+
+                return;
             }
         }
 
