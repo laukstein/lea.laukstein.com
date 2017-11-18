@@ -481,25 +481,6 @@ ui.academy = {
             return el.dataset ? el.dataset[prop] : el.getAttribute("data-" + prop);
         }
     },
-    serialize: function (obj) {
-        "use strict";
-
-        if (obj) {
-            var arr = Object.keys(obj),
-                result = [],
-                i;
-
-            for (i = 0; i < arr.length; i += 1) {
-                if (obj[arr[i]]) {
-                    result.push(arr[i] + "=" + encodeURIComponent(obj[arr[i]]));
-                }
-            }
-
-            return result.join("&");
-        }
-
-        return "";
-    },
     select: function (el, avoidRedirect) {
         "use strict";
 
@@ -517,7 +498,7 @@ ui.academy = {
                     this.bar.checked = false;
                 }
             } else {
-                hash = this.serialize(hash);
+                hash = ui.serialize(hash);
 
                 if (!avoidRedirect && hash) {
                     location.hash = hash;

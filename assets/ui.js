@@ -428,6 +428,24 @@ window.ui = {
         }
 
         return param ? obj[param] : obj;
+    serialize: function (obj) {
+        "use strict";
+
+        if (typeof obj === "object") {
+            var arr = Object.keys(obj),
+                result = [],
+                i;
+
+            for (i = 0; i < arr.length; i += 1) {
+                if (obj[arr[i]]) {
+                    result.push(arr[i] + "=" + encodeURIComponent(obj[arr[i]]));
+                }
+            }
+
+            return result.join("&");
+        }
+
+        return "";
     },
     confirm: function (el) {
         "use strict";
