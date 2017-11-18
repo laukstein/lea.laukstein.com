@@ -654,7 +654,7 @@ ui.academy = {
             "    <div class=\"table center\">" +
             "        <div class=cel>" +
             (this.session.firstName ? "            <div class=nowrap dir=auto>" + this.session.firstName + "</div>" : "") +
-            "            <small onclick=ui.academy.logout()>התנתק</small>" +
+            "            <small onclick=ui.academy.logout()>התנתקי</small>" +
             "        </div>" +
             "    </div>" +
             "</div>";
