@@ -469,7 +469,8 @@ main .table.center {
     padding: 6% 2.1em 3em;
     box-sizing: border-box;
 }
-.space.no-padding {
+.no-padding .space,
+.no-padding.space {
     padding-top: 0;
 }
 .video + .space {
