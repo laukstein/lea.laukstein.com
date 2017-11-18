@@ -3,6 +3,7 @@ no-alert: 0 */
 
 ui.academy = {
     data: {
+        startDate: 1513461600000, /* 2017/12/17 */
         interval: 7,
         init: {
             title: "ברוכות הבאות",
@@ -613,7 +614,7 @@ ui.academy = {
             delete this.firstSession;
         }
 
-        this.currentTime = !options.interval && this.currentTime || new Date(this.data.date);
+        this.currentTime = !options.interval && this.currentTime || new Date(Math.max(this.data.startDate, this.data.date));
         var date = new Date(this.currentTime.setDate(this.currentTime.getDate() +
                 (options.interval ? options.interval * this.data.interval :
                     (this.firstSession ? 0 : this.data.interval))) +
