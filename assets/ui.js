@@ -409,10 +409,13 @@ window.ui = {
 
         return this.identify.user;
     },
-    hash: function (param) {
+    hash: function (options /* param */) {
         "use strict";
 
-        var arr = location.hash.replace(/^#!?/, "").split("&"),
+        options = typeof options === "string" ? {param: options} : options || {};
+        options.hash = typeof options.hash === "string" ? options.hash : location.hash;
+
+        var arr = options.hash.replace(/^\??#?!?/, "").split("&"),
             obj = {},
             pair,
             i;
@@ -427,7 +430,8 @@ window.ui = {
             }
         }
 
-        return param ? obj[param] : obj;
+        return options.param ? obj[options.param] : obj;
+    },
     serialize: function (obj) {
         "use strict";
 
