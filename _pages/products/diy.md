@@ -9,11 +9,9 @@ permalink: /diy
 redirect_from:
     - /5min
     - /guide
-image: product-diy.jpg
-imageWidth: 960
-imageHeight: 540
 duration: 6 שבועות, 24 סרטונים
 price: 470
+video: j22FJGJGzXo
 extra: ליווי לא מוגבל חינם
 location: און ליין
 fit: נשים שמעוניינות לעבודה עצמית
