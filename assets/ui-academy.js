@@ -1423,7 +1423,21 @@ ui.academy = {
     init: function () {
         "use strict";
 
-        var self = this;
+        var self = this,
+            hash;
+
+        if (location.search) {
+            if (location.search.length > location.hash.length) {
+                hash = ui.serialize(ui.hash({hash: location.search}));
+            } else {
+                hash = location.hash.replace(/^#/, "");
+            }
+            if (history.replaceState) {
+                history.replaceState("", ui.d.title, location.pathname + "#" + hash);
+            } else {
+                location.hash = hash;
+            }
+        }
 
         ui.legacy(function () {
             var loading = ui.d.getElementById("loading");

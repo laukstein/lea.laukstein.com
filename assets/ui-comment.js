@@ -3,8 +3,18 @@ ui.comment = {
         "use strict";
 
         function config() {
-            this.page.identifier = location.hash.replace(/^#!?/, "");
-            this.page.url = "https://lea.laukstein.com" + location.pathname + location.hash;
+            var identifier = "https://lea.laukstein.com" + location.pathname;
+
+            if (location.hash && location.pathname === "/academy") {
+                identifier += "?" + ui.serialize(ui.hash({
+                    hash: [location.hash, location.search].reduce(function (a, b) {
+                        return a.length > b.length ? a : b;
+                    })
+                }));
+            }
+
+            this.page.identifier = identifier;
+            this.page.url = identifier;
         }
 
         this.el = ui.d.getElementById("disqus_thread");
