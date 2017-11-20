@@ -9,7 +9,7 @@ ui.academy = {
             title: "ברוכות הבאות",
             page: {
                 type: "video",
-                title: "ברוכות הבאות לקורס סטיילינג שבא מבפנים",
+                title: "ברוכות הבאות לקורס סטייל שבא מבפנים",
                 value: "nSv3UYBf8Gw"
             }
         },
