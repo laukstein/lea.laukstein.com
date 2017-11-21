@@ -3,11 +3,11 @@ product:
     - name: duration
       title: אורך
     - name: price
-      title: עלות
+      title: ההשקעה
     - name: location
       title: מיקום
     - name: extra
-      title: תוספת
+      title: בונוס
     - name: fit
       title: מתאים ל
       more: true
