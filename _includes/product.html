@@ -36,6 +36,8 @@
 for item in page.button %}{%
     if item.paypal %}
         <a rel=noopener href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id={{ item.paypal }}" class=button>{{ item.title }}</a>{%
+    endif %}{% if item.more %}
+        {{ item.more}}{%
     endif %}{%
 endfor %}{% else
         %}<a class=button href=/contact#{{ page.url | remove: "/" }} tabindex=0>צרי קשר</a>{%

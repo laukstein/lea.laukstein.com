@@ -28,4 +28,12 @@ button:
       title: לרכישה 620 ש"ח
     - paypal: ELP92GH2ZJAAY
       title: שני תשלומים 310x2
+    - more: <span class="more nowrap">לשאלות נוספות <a href="tel:0585800020" target=_blank>058-5800020</a></span>
+css: |
+    .sheet {
+        margin-bottom: .6em;
+    }
+    .more {
+        margin-right: .4em;
+    }
 ---
