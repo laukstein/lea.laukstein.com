@@ -22,6 +22,8 @@ YAML schema
     takeWith: |
         multi-line text
     button:
-        - type: subscribe | paypal
+        - paypal
+          title
+        - type: subscribe
           title
           url

@@ -36,9 +36,8 @@ takeWith: |
     * מענה לשאלות
     * מועדון חברות עם מפגשי רענון
 button:
-    - type: paypal
-      title: לרכישה
-      id: 5DRJ5UA3NUQEN
-      custom: list=d3efe03c04&item=academy
-      notify: https://lab.laukstein.com/academy/ipn
+    - paypal: WQ8BJBKUBHUNE
+      title: לרכישה 620 ש"ח
+    - paypal: ELP92GH2ZJAAY
+      title: שני תשלומים 310x2
 ---
