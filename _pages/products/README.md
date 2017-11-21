@@ -27,3 +27,5 @@ YAML schema
         - type: subscribe
           title
           url
+        - more: <html>
+    css
