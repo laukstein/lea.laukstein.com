@@ -1254,6 +1254,7 @@ iframe {
     .nav-container {
         direction: ltr;
         overflow: auto;
+        overscroll-behavior: contain;
         position: fixed;
         top: 0;
         left: 0;
