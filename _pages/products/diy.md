@@ -28,12 +28,35 @@ button:
       title: לרכישה 620 ש"ח
     - paypal: ELP92GH2ZJAAY
       title: שני תשלומים 310x2
-    - more: <span class="more nowrap">לשאלות נוספות <a href="tel:0585800020" target=_blank>058-5800020</a></span>
+    - more: |
+        <span class="more nowrap">לשאלות נוספות <a href="tel:0585800020" target=_blank>058-5800020</a></span>
+        <a class=compare-wrapper href=/assets/product-diy-compare.gif target=_blank><img class=compare src=/assets/product-diy-compare.gif alt="השוואת מחירים"></a>
+    - paypal: WQ8BJBKUBHUNE
+      title: לרכישה 620 ש"ח
+    - paypal: ELP92GH2ZJAAY
+      title: שני תשלומים 310x2
 css: |
     .sheet {
         margin-bottom: .6em;
     }
     .more {
         margin-right: .4em;
+    }
+    .compare-wrapper {
+        pointer-events: none;
+        cursor: default;
+    }
+    .compare {
+        display: block;
+            width: calc(100% + 4em);
+        max-width: 100vw;
+        margin: 0 calc(-2em);
+        image-rendering: -webkit-optimize-contrast;
+    }
+    @media (max-width: 54em) {
+        .compare-wrapper {
+            pointer-events: auto;
+            cursor: pointer;
+        }
     }
 ---
