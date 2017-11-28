@@ -32,18 +32,20 @@
                 endif %}{%
                 endif %}{%
             endfor %}
-        </ul>{% if page.button %}{%
+        </ul>
+        <div class=sticky-footer>{% if page.button %}{%
 for item in page.button %}{%
     if item.paypal %}
-        <a rel=noopener href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id={{ item.paypal }}" class=button>{{ item.title }}</a>{%
+            <a rel=noopener href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id={{ item.paypal }}" class=button>{{ item.title }}</a>{%
     endif %}{% if item.more %}
         {{ item.more}}{%
     endif %}{%
 endfor %}{% else
         %}<a class=button href=/contact#{{ page.url | remove: "/" }} tabindex=0>צרי קשר</a>{%
         endif %}{% if include.more == nil %}
-        <a class=more href={{ page.url }}>פרטים מלאים</a>
-        <a class=absolute href={{ page.url }}></a>{% endif %}
+            <a class=more href={{ page.url }}>פרטים מלאים</a>
+            <a class=absolute href={{ page.url }}></a>{% endif %}
+        </div>
     </div>
 </article>{%
 endif %}

@@ -985,6 +985,12 @@ iframe {
 .image + .content {
     padding-left: 1em;
 }
+.sticky-footer {
+    position: sticky;
+    bottom: 0;
+    background-color: rgba(255,255,255,.8);
+    box-shadow: 0 -.7em 2.3em rgba(255,255,255,.8);
+}
 
 [data-placholder]:before {
     content: attr(data-placholder);
