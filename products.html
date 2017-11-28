@@ -30,7 +30,7 @@ imageHeight: 640
         {% assign pages=site.pages | sort: "order" %}{%
         for item in pages %}{%
             if item.layout == "product" and item.group == group.name %}
-            <li><a href={{ item.url | prepend: site.baseurl }}>{{ item.title }}</a>{%
+            <li><a href={{ item.url | prepend: site.baseurl }}>{% if item.title-short %}{{ item.title-short }}{% else %}{{ item.title }}{% endif %}</a>{%
             endif %}{%
         endfor %}
         </ol>

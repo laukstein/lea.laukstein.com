@@ -56,7 +56,7 @@ css: |
                 assign pages=site.pages | sort: "order" %}{%
                     for item in pages %}{%
                         if item.layout == "product" and item.group == group.name %}
-                    <option data-name={{ item.url | remove: "/" }}>{{ item.title }}</option>{%
+                    <option data-name={{ item.url | remove: "/" }}>{% if item.title-short %}{{ item.title-short }}{% else %}{{ item.title }}{% endif %}</option>{%
                         endif %}{%
                     endfor %}
                 </optgroup>{%

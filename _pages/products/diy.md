@@ -4,7 +4,8 @@ subnav: products
 group: diy
 order: 3
 
-title: קורס אינטרנטי
+title: קורס סטיילינג בלי לצאת מהבית
+title-short: קורס סטיילינג
 permalink: /diy
 redirect_from:
     - /5min

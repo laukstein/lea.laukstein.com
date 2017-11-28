@@ -34,7 +34,7 @@ array: []
                 <ul class=subnav>{%
                     for subnav in pages %}{%
                         if subnav.subnav == relative_url %}
-                    <li{% if subnav.url == page.url or subnav.group == page.group %}{% assign assign className = className | push: "subactive" %} class=active{% endif %}><a href="{{ subnav.url | relative_url }}">{{ subnav.title }}</a></li>{%
+                    <li{% if subnav.url == page.url or subnav.group == page.group %}{% assign assign className = className | push: "subactive" %} class=active{% endif %}><a href="{{ subnav.url | relative_url }}">{% if subnav.title-short %}{{ subnav.title-short }}{% else %}{{ subnav.title }}{% endif %}</a></li>{%
                         endif %}{%
                     endfor %}
                 </ul>

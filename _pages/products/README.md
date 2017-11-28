@@ -4,6 +4,7 @@ YAML schema
     group: workshop | personal | diy
     order
     title
+    title-short
     permalink
     video
     image
