@@ -705,7 +705,7 @@ button:not([data-plyr]),
     white-space: nowrap; /* Mobile button text wrapping fix for button */
     word-wrap: normal; /* "nowrap" compatibility for IE9 */
     text-overflow: ellipsis;
-    background-color: #74b5b2;
+    background-color: #569e9b;
     outline: transparent solid 2px;
     -webkit-transition: outline .15s, background-color .15s;
             transition: outline .15s, background-color .15s;
@@ -727,7 +727,7 @@ button:not([data-plyr]):hover,
 button:not([data-plyr]):focus,
 .button:hover,
 .button:focus {
-    background-color: #569e9b;
+    background-color: #438784;
 }
 .subscribe button:before,
 button.next:before {
