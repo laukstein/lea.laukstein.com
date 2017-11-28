@@ -10,7 +10,7 @@ imageClass: contain
 imageWidth: 396
 imageHeight: 486
 duration: 4 שעות
-price: 770
+price: 850
 location: מרכז קניות בגדים
 fit: נשים לקראת או אחרי שינוי תפקיד/גזרה/גיל
 details: מילוי שאלון, ליווי בקניות, קבצים להורדה, המשך התיעצות בואטסאפ
