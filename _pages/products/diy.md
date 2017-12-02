@@ -12,8 +12,7 @@ redirect_from:
     - /guide
 video: j22FJGJGzXo
 duration: 7 שבועות (מתחילות ב17/12)
-price: 620
-discount: עד לתאריך 1/12 במקום 770 ש"ח
+price: 770
 extra: ליווי חופשי במהלך הקורס
 goals: |
     * להכיר את מבנה הגוף, צבעים והסגנון שלך
@@ -26,9 +25,9 @@ takeWith: תוכלי לעשות קניות חכמות וממוקדות, להכנ
 button:
     - more: <div class=headline>בואי תבחרי מה נוח לך</div>
     - paypal: WQ8BJBKUBHUNE
-      title: תשלום אחד 620
+      title: תשלום אחד 770
     - paypal: ELP92GH2ZJAAY
-      title: שני תשלומים 310
+      title: שלושה תשלומים 257
     - more: <p>לא בטוחה? רוצה להתיעץ איתי? תרימי טלפון <a href="tel:0585800020" target=_blank>058-5800020</a></p>
 css: |
     .sheet {
