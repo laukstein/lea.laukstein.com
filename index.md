@@ -63,6 +63,7 @@ css: |
                 grid-template-areas: "sidebar content" "sidebar headlines";
             }
             .landing .content {
+                display: -webkit-box;
                 grid-area: content;
                 grid-column: 1;
             }
