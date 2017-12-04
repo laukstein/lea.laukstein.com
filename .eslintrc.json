@@ -8,6 +8,9 @@
     "parserOptions": {
         "ecmaVersion": 6
     },
+    "settings": {
+        "polyfills": ["fetch"]
+    },
     "rules": {
         "accessor-pairs": "error",
         "array-bracket-spacing": "error",
