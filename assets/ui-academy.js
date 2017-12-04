@@ -6,16 +6,16 @@ ui.academy = {
         startDate: 1513461600000, /* 2017/12/17 */
         interval: 7,
         init: {
-            title: "ברוכות הבאות",
+            title: "ברוכה הבאה",
             page: {
                 type: "video",
-                title: "ברוכות הבאות לקורס סטייל שבא מבפנים",
+                title: "ברוכה הבאה לקורס סטייל שבא מבפנים",
                 value: "nSv3UYBf8Gw"
             }
         },
         session: {
             colours: {
-                title: "צבעים ושילובים",
+                title: "הצבע הזה הוא אני",
                 pages: {
                     "video-1": {
                         type: "video",
@@ -129,7 +129,7 @@ ui.academy = {
                 }
             },
             "body-shape": {
-                title: "מבנה גוף",
+                title: "כמה טוב להיות את!",
                 pages: {
                     "video-1": {
                         type: "video",
@@ -187,7 +187,7 @@ ui.academy = {
                 }
             },
             style: {
-                title: "סגנון הלבוש",
+                title: "על טעם, ריח, ואופי",
                 pages: {
                     "video-1": {
                         type: "video",
@@ -331,58 +331,12 @@ ui.academy = {
                     }
                 }
             },
-            lingerie: {
-                title: "הלבשה תחתונה",
-                pages: {
-                    "video-1": {
-                        type: "video",
-                        title: "כמה חשיבות יש הלבשה תחתונה",
-                        value: "k1ASomUAM34"
-                    },
-                    "video-2": {
-                        type: "video",
-                        title: "גזרה, צבע ובד בהלבשה תחתונה",
-                        value: "IpwM9HEeup4"
-                    },
-                    "video-3": {
-                        type: "video",
-                        title: "איך לדעת שהלבשה תחתונה מתאימה",
-                        value: "2H9HC-eaRAE"
-                    },
-                    "video-4": {
-                        type: "video",
-                        title: "שיעורי בית",
-                        value: "nYtkrABvBXw"
-                    }
-                }
-            },
-            accessories: {
-                title: "אקססוריז",
-                pages: {
-                    "video-1": {
-                        type: "video",
-                        title: "למה להשתמש באקססוריז",
-                        value: "lJN1n7ecLmY"
-                    },
-                    "video-2": {
-                        type: "video",
-                        title: "סוגי אקססוריז",
-                        value: "kp6SULk09RY"
-                    },
-                    "video-3": {
-                        type: "video",
-                        title: "איך להתאים אקססוריז למבנה גוף שלך",
-                        value: "dkO7I7yHu0o"
-                    },
-                    "video-4": {
-                        type: "video",
-                        title: "שיעורי בית",
-                        value: "uxNjzX1V6uk"
-                    }
-                }
+            "magic-closet": {
+                title: "ארון הקסמים",
+                pages: {}
             },
             "modular-outfit": {
-                title: "מערכת לבוש היעלה ביותר לאישה הדתית",
+                title: "יש לך מה ללבוש",
                 pages: {
                     "video-1": {
                         type: "video",
@@ -407,6 +361,56 @@ ui.academy = {
                     }
                 }
             },
+            accessories: {
+                title: "התוספת שתופסת",
+                pages: {
+                    "video-1": {
+                        type: "video",
+                        title: "למה להשתמש באקססוריז",
+                        value: "lJN1n7ecLmY"
+                    },
+                    "video-2": {
+                        type: "video",
+                        title: "סוגי אקססוריז",
+                        value: "kp6SULk09RY"
+                    },
+                    "video-3": {
+                        type: "video",
+                        title: "איך להתאים אקססוריז למבנה גוף שלך",
+                        value: "dkO7I7yHu0o"
+                    },
+                    "video-4": {
+                        type: "video",
+                        title: "שיעורי בית",
+                        value: "uxNjzX1V6uk"
+                    }
+                }
+            },
+            lingerie: {
+                title: "יסודות למראה חטוב",
+                pages: {
+                    "video-1": {
+                        type: "video",
+                        title: "כמה חשיבות יש הלבשה תחתונה",
+                        value: "k1ASomUAM34"
+                    },
+                    "video-2": {
+                        type: "video",
+                        title: "גזרה, צבע ובד בהלבשה תחתונה",
+                        value: "IpwM9HEeup4"
+                    },
+                    "video-3": {
+                        type: "video",
+                        title: "איך לדעת שהלבשה תחתונה מתאימה",
+                        value: "2H9HC-eaRAE"
+                    },
+                    "video-4": {
+                        type: "video",
+                        title: "שיעורי בית",
+                        value: "nYtkrABvBXw"
+                    }
+                }
+            }/* ,
             bonuses: {
                 title: "בונוסים",
                 date: {
@@ -421,7 +425,7 @@ ui.academy = {
                         value: "1waOmpJlmN6tRAn6M6scEUwbGN_OhvrFDdacIqJyGD5w"
                     }
                 }
-            }
+            } */
         }
     },
     hash: {},
