@@ -410,7 +410,7 @@ ui.academy = {
                         value: "nYtkrABvBXw"
                     }
                 }
-            }/* ,
+            },
             bonuses: {
                 title: "בונוסים",
                 date: {
@@ -425,7 +425,7 @@ ui.academy = {
                         value: "1waOmpJlmN6tRAn6M6scEUwbGN_OhvrFDdacIqJyGD5w"
                     }
                 }
-            } */
+            }
         }
     },
     hash: {},
