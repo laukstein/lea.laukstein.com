@@ -75,27 +75,27 @@ ui.academy = {
                         final: {
                             clear: {
                                 title: "את צלולה",
-                                value: "0B3TGizvMXI6lZGZTckc0VElhVnc"
+                                value: "1RBWFZEoSG2IBhZWX74-bFerykqF1sJns"
                             },
                             deep: {
                                 title: "את עמוקה",
-                                value: "0B3TGizvMXI6lSXNCYTNpLUh3LUU"
+                                value: "1dB3YO4ph2X6G-5ljir0RLUUQn3l7tkTZ"
                             },
                             bright: {
                                 title: "את בהירה",
-                                value: "0B3TGizvMXI6lbUJ0S1RCbkpiU28"
+                                value: "1F1juuLT-pHxU4FVlLEFXamQKesNd3AzO"
                             },
                             mixed: {
                                 title: "את מעורבת",
-                                value: "0B3TGizvMXI6lbWhDNW1SNHZWVU0"
+                                value: "1bmSwDG6GGggZTUuNjDHxZNMSlwYa8SuW"
                             },
                             warm: {
                                 title: "את חמה",
-                                value: "0B3TGizvMXI6lNHhrTzdzb3ByaU0"
+                                value: "1lml4F6bRh9yiz47x-t7Xs5sWjlo1mE9i"
                             },
                             cold: {
                                 title: "את קרה",
-                                value: "0B3TGizvMXI6lNzRjamg5a1ZreVE"
+                                value: "1OOitln7OtHB7qvUqvhvkHI7XnmLLwPUR"
                             }
                         }
                     }
@@ -1156,15 +1156,26 @@ ui.academy = {
                 "</div>";
         }
     },
-    videoTemplate: function (id, title) {
+    videoTemplate: function (id, title, pages) {
         "use strict";
+
+        var buttons = "",
+            prop;
+
+        if (pages) {
+            for (prop in pages) {
+                if (pages.hasOwnProperty(prop)) {
+                    buttons += "<a class=button href=\"#session=" + ui.hash("session") + "&page=" + prop + "\">" + pages[prop].title + "</a>";
+                }
+            }
+        }
 
         return "<div class=video>" +
             (ui.video.youtubeSupport ?
                 "<iframe src=\"https://www.youtube.com/embed/" + id + "?showinfo=0\" allowfullscreen></iframe>" :
                 ui.video.template(id)) +
             "</div>" +
-            "<div class=space><h1>" + title + "</h1></div>";
+            "<div class=space><h1>" + title + "</h1>" + buttons + "</div>";
     },
     pageSession: function () {
         "use strict";
@@ -1188,8 +1199,9 @@ ui.academy = {
                 if (obj) {
                     if (!hash.session || hash.session && !hash.page) {
                         if (obj.video) {
-                            result += this.videoTemplate(obj.video, obj.title);
+                            result += this.videoTemplate(obj.video, obj.title, obj.pages);
                         }
+
                         // result += "<ol class=items dir=ltr>";
 
                         // for (prop in obj) {
@@ -1235,11 +1247,15 @@ ui.academy = {
 
                     this.content.innerHTML = result;
 
-                    if (obj.video || obj.type === "video") {
-                        ui.video.applyPlyr();
-                    }
-                    if (ui.comment) {
-                        ui.comment.load(this.content);
+                    if (obj) {
+                        if (obj.video || obj.type === "video") {
+                            ui.video.applyPlyr();
+                        }
+                        if (ui.comment) {
+                            ui.comment.load(this.content);
+                        }
+                    } else if (ui.comment) {
+                        ui.comment.remove();
                     }
                 }
             } else {
