@@ -6,32 +6,15 @@ ui.academy = {
         startDate: 1513461600000, /* 2017/12/17 */
         interval: 7,
         init: {
-            title: "ברוכה הבאה",
-            page: {
-                type: "video",
-                title: "ברוכה הבאה לקורס סטייל שבא מבפנים",
-                value: "nSv3UYBf8Gw"
-            }
+            title: "ברוכה הבאה לקורס סטייל שבא מבפנים",
+            shortTitle: "ברוכה הבאה",
+            video: "yCsI9dSOvK0"
         },
         session: {
             colours: {
                 title: "הצבע הזה הוא אני",
+                video: "-GfNNMbAwI4",
                 pages: {
-                    "video-1": {
-                        type: "video",
-                        title: "איך צבע נכון ולא נכון משפיע על הפנים",
-                        value: "Ws126uyiS9g"
-                    },
-                    "video-2": {
-                        type: "video",
-                        title: "שש קטגורייות אנשים",
-                        value: "fyLTeiOpItU"
-                    },
-                    "video-3": {
-                        type: "video",
-                        title: "שיעורי בית",
-                        value: "1LcyCHR5D-Q"
-                    },
                     qa: {
                         type: "qa",
                         title: "שאלון:\nלאיזה קטגוריית צבעים את שייכת?",
@@ -115,37 +98,13 @@ ui.academy = {
                                 value: "0B3TGizvMXI6lNzRjamg5a1ZreVE"
                             }
                         }
-                    },
-                    "video-4": {
-                        type: "video",
-                        title: "איך לשלב צבעים",
-                        value: "3cA_tnKHbvo"
-                    },
-                    document: {
-                        type: "document",
-                        title: "מעגל צבעים",
-                        value: "0B3TGizvMXI6lSnktdTdteUtJS0k"
                     }
                 }
             },
             "body-shape": {
                 title: "כמה טוב להיות את!",
+                video: "xZMfS-HXqXM",
                 pages: {
-                    "video-1": {
-                        type: "video",
-                        title: "למה חשוב להתלבש לפי מבנה גוף",
-                        value: "67JOe6ZRV7c"
-                    },
-                    "video-2": {
-                        type: "video",
-                        title: "אילו מבנה גוף יש",
-                        value: "QrPC6lvIAKE"
-                    },
-                    "video-3": {
-                        type: "video",
-                        title: "איך לדעת מה מבנה גוף שלך",
-                        value: "GRyHlrJnV6Q"
-                    },
                     calculator: {
                         type: "calculator",
                         title: "מחשבון:\nתאבחני את מבנה הגוף שלך",
@@ -188,22 +147,8 @@ ui.academy = {
             },
             style: {
                 title: "על טעם, ריח, ואופי",
+                video: "YjHQvrvnC9Y",
                 pages: {
-                    "video-1": {
-                        type: "video",
-                        title: "למה חשוב לדעת מה סגנון הלבוש שלך",
-                        value: "7AMQxfNDzIM"
-                    },
-                    "video-2": {
-                        type: "video",
-                        title: "אילו סגנונות לבוש יש",
-                        value: "P1IQBJCoUTc"
-                    },
-                    "video-3": {
-                        type: "video",
-                        title: "שיעורי בית",
-                        value: "rs8o-d7gkpo"
-                    },
                     sat: {
                         type: "sat",
                         title: "שאלון:\nמצאי את סגנון הלבוש שלך",
@@ -338,21 +283,6 @@ ui.academy = {
             "modular-outfit": {
                 title: "יש לך מה ללבוש",
                 pages: {
-                    "video-1": {
-                        type: "video",
-                        title: "למה חשוב שמערכת לבוש תהיה יעילה",
-                        value: "8rn-HCDQzL4"
-                    },
-                    "video-2": {
-                        type: "video",
-                        title: "מה כוללת מערכת לבוש יעילה",
-                        value: "-zHM4bjnLsI"
-                    },
-                    "video-3": {
-                        type: "video",
-                        title: "שיעורי בית",
-                        value: "yzJaU1ZW1QU"
-                    },
                     "check-list": {
                         type: "document",
                         title: "צ'ק ליסט למערכת לבוש יעילה",
@@ -363,53 +293,11 @@ ui.academy = {
             },
             accessories: {
                 title: "התוספת שתופסת",
-                pages: {
-                    "video-1": {
-                        type: "video",
-                        title: "למה להשתמש באקססוריז",
-                        value: "lJN1n7ecLmY"
-                    },
-                    "video-2": {
-                        type: "video",
-                        title: "סוגי אקססוריז",
-                        value: "kp6SULk09RY"
-                    },
-                    "video-3": {
-                        type: "video",
-                        title: "איך להתאים אקססוריז למבנה גוף שלך",
-                        value: "dkO7I7yHu0o"
-                    },
-                    "video-4": {
-                        type: "video",
-                        title: "שיעורי בית",
-                        value: "uxNjzX1V6uk"
-                    }
-                }
+                pages: {}
             },
             lingerie: {
                 title: "יסודות למראה חטוב",
-                pages: {
-                    "video-1": {
-                        type: "video",
-                        title: "כמה חשיבות יש הלבשה תחתונה",
-                        value: "k1ASomUAM34"
-                    },
-                    "video-2": {
-                        type: "video",
-                        title: "גזרה, צבע ובד בהלבשה תחתונה",
-                        value: "IpwM9HEeup4"
-                    },
-                    "video-3": {
-                        type: "video",
-                        title: "איך לדעת שהלבשה תחתונה מתאימה",
-                        value: "2H9HC-eaRAE"
-                    },
-                    "video-4": {
-                        type: "video",
-                        title: "שיעורי בית",
-                        value: "nYtkrABvBXw"
-                    }
-                }
+                pages: {}
             },
             bonuses: {
                 title: "בונוסים",
@@ -618,7 +506,7 @@ ui.academy = {
             delete this.firstSession;
         }
 
-        this.currentTime = !options.interval && this.currentTime || new Date(Math.max(this.data.startDate, this.data.date));
+        this.currentTime = !options.interval && this.currentTime || new Date(Math.max(this.data.startDate || 0, this.data.date));
         var date = new Date(this.currentTime.setDate(this.currentTime.getDate() +
                 (options.interval ? options.interval * this.data.interval :
                     (this.firstSession ? 0 : this.data.interval))) +
@@ -677,7 +565,7 @@ ui.academy = {
 
         result += "<div class=\"column nav-container\" id=sidenav role=navigation dir=ltr>" +
             "<div class=sidenav dir=rtl>" +
-            "    <a class=active" + this.events() + "><label>" + obj.title + "</label></a>" +
+            "    <a class=active" + this.events() + "><label>" + (obj.shortTitle || obj.title) + "</label></a>" +
             "</div>";
 
         obj = this.data.session;
@@ -717,17 +605,15 @@ ui.academy = {
 
         this.toggleNav(true);
     },
-    list: function (obj, session, page) {
+    /* list: function (obj, session, page) {
         "use strict";
 
-        var url = "",
-            imageSize;
+        var url = "";
 
         if (obj.value) {
             switch (obj.type) {
                 case "video":
-                    imageSize = obj.value === "-zHM4bjnLsI" ? "0" : "maxresdefault";
-                    url = ui.video.youtubeSupport ? "https://img.youtube.com/vi/" + obj.value + "/" + imageSize + ".jpg" : ui.video.getData(obj.value).image;
+                    url = ui.video.youtubeSupport ? "https://img.youtube.com/vi/" + obj.value + "/maxresdefault.jpg" : ui.video.getData(obj.value).image;
                     break;
                 case "document":
                 case "calculator":
@@ -747,7 +633,7 @@ ui.academy = {
         return obj ? "<a class=\"absolute cover\"" + this.events(session, page) +
             " style=\"background-image:url(" + url + ")\"><h3 class=nowrap dir=auto>" +
             obj.title.replace(/\n/g, " ") + "</h3></a>" : "";
-    },
+    }, */
     report: function (/* type, data */) {
         "use strict";
 
@@ -1270,12 +1156,22 @@ ui.academy = {
                 "</div>";
         }
     },
+    videoTemplate: function (id, title) {
+        "use strict";
+
+        return "<div class=video>" +
+            (ui.video.youtubeSupport ?
+                "<iframe src=\"https://www.youtube.com/embed/" + id + "?showinfo=0\" allowfullscreen></iframe>" :
+                ui.video.template(id)) +
+            "</div>" +
+            "<div class=space><h1>" + title + "</h1></div>";
+    },
     pageSession: function () {
         "use strict";
 
         var hash = ui.hash(),
             result = "",
-            prop,
+            // prop,
             obj;
 
         if (this.valid && this.content) {
@@ -1284,39 +1180,32 @@ ui.academy = {
 
             if (this.self && (!hash.session || !this.sidenav ||
                 this.sidenav.querySelector("[data-session=\"" + hash.session + "\"]:not([data-page])"))) {
-                obj = this.self.page || this.self.pages;
+                obj = this.self;
 
                 if (this.bar && this.bar.checked) {
                     this.bar.checked = false;
                 }
                 if (obj) {
-                    if (hash.session && !hash.page) {
-                        result += "<ol class=items dir=ltr>";
-
-                        for (prop in obj) {
-                            if (obj.hasOwnProperty(prop)) {
-                                result += "    <li>" + this.list(obj[prop], hash.session, prop) + "</li>";
-                            }
+                    if (!hash.session || hash.session && !hash.page) {
+                        if (obj.video) {
+                            result += this.videoTemplate(obj.video, obj.title);
                         }
+                        // result += "<ol class=items dir=ltr>";
 
-                        result += "</ol>";
+                        // for (prop in obj) {
+                        //     if (obj.hasOwnProperty(prop)) {
+                        //         result += "    <li>" + this.list(obj[prop], hash.session, prop) + "</li>";
+                        //     }
+                        // }
 
-                        this.content.innerHTML = result;
-
-                        if (ui.comment) {
-                            ui.comment.remove();
-                        }
+                        // result += "</ol>";
                     } else {
-                        obj = hash.session ? obj && obj[hash.page] : obj;
+                        obj = hash.session ? obj && obj.pages && obj.pages[hash.page] : obj;
 
-                        if (obj) {
+                        if (obj && obj.type) {
                             switch (obj.type) {
                                 case "video":
-                                    result += "<div class=video>" +
-                                        (ui.video.youtubeSupport ? "<iframe src=\"https://www.youtube.com/embed/" +
-                                            obj.value + "?showinfo=0\" allowfullscreen></iframe>" : ui.video.template(obj.value)) +
-                                        "</div>" +
-                                        "<div class=space><h1>" + obj.title + "</h1></div>";
+                                    result += this.videoTemplate(obj.value, obj.title);
                                     break;
                                 case "document":
                                     // width="640" height="480"
@@ -1340,16 +1229,17 @@ ui.academy = {
                                     break;
                             }
 
-                            this.content.innerHTML = result;
                             this.self = obj;
-
-                            if (obj.type === "video") {
-                                ui.video.applyPlyr();
-                            }
-                            if (ui.comment) {
-                                ui.comment.load(this.content);
-                            }
                         }
+                    }
+
+                    this.content.innerHTML = result;
+
+                    if (obj.video || obj.type === "video") {
+                        ui.video.applyPlyr();
+                    }
+                    if (ui.comment) {
+                        ui.comment.load(this.content);
                     }
                 }
             } else {
@@ -1428,23 +1318,7 @@ ui.academy = {
     init: function () {
         "use strict";
 
-        var self = this,
-            hash;
-
-        if (location.search) {
-            if (location.search.length > location.hash.length) {
-                hash = ui.serialize(ui.hash({hash: location.search}));
-            } else {
-                hash = location.hash.replace(/^#/, "");
-            }
-            if (history.replaceState) {
-                history.replaceState("", ui.d.title, location.pathname + "#" + hash);
-            } else {
-                ui.w.location = location.pathname + "#" + hash;
-
-                return;
-            }
-        }
+        var self = this;
 
         ui.legacy(function () {
             var loading = ui.d.getElementById("loading");

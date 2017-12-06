@@ -1,373 +1,297 @@
 /* eslint
 camelcase: 0 */
 
-// MP4 from http://y2mate.com/youtube/t3xR5EYJvZY
+// MP4 from http://video.genyoutube.net/t3xR5EYJvZY
 // JPG from https://img.youtube.com/vi/t3xR5EYJvZY/maxresdefault.jpg or /hqdefault.jpg
 
 ui.videoLegacy = {
-    "-UU-ePzH-m8": {
-        image: "qxicgx6rjtge4dt",
-        "720p": "ot72jy98cndmqf8",
-        "360p": "304i390pjzdouib"
+    "-GfNNMbAwI4": {
+        academy: true,
+        "360p": "r32h1ec1xx443wr",
+        "720p": "2td9xypuezwtuhs",
+        image: "ywxz197oe2as7h2"
     },
-    "-zHM4bjnLsI": {
-        image: "2cvs9dzojs53z5a",
-        "720p": "p1w1gxkt2rvwmej",
-        "360p": "w1p1n4qkbfz4a1r"
+    "-UU-ePzH-m8": {
+        "360p": "304i390pjzdouib",
+        "720p": "ot72jy98cndmqf8",
+        image: "qxicgx6rjtge4dt"
     },
     "0vO1VdF527o": {
-        image: "bsz95h561v3rjac",
+        "360p": "7webmw06w5lzt9j",
         "720p": "0gofgepyzj5575z",
-        "360p": "7webmw06w5lzt9j"
+        image: "bsz95h561v3rjac"
     },
     "1J9RsOHbTTk": {
-        image: "4g1scla13rjcaho",
+        "360p": "f3p66e6tfhiojaf",
         "720p": "2i7xpbqmiu2bepq",
-        "360p": "f3p66e6tfhiojaf"
-    },
-    "1LcyCHR5D-Q": {
-        image: "3efqzyq7oq9gmvv",
-        "720p": "6fi7pvmvg8o7h8l",
-        "360p": "h5kpgdvw2a4v9rl"
-    },
-    "2H9HC-eaRAE": {
-        image: "q7hi61fu3y5ln0u",
-        "720p": "hlmnrnzula1eygq",
-        "360p": "eg834otp9cli1bq"
-    },
-    "3cA_tnKHbvo": {
-        image: "swzkj6984r8ubty",
-        "720p": "7uaks4ezy73dx0t",
-        "360p": "ashvojgcront71l"
+        image: "4g1scla13rjcaho"
     },
     "4HwTeZiZJ4Q": {
-        image: "ftcnz9vd6o74c18",
+        "360p": "s6alogdx8yurzag",
         "720p": "8r6fu92szl0jedn",
-        "360p": "s6alogdx8yurzag"
+        image: "ftcnz9vd6o74c18"
     },
     "5u4Jiolu55A": {
-        image: "kawdewz3m6kdenf",
+        "360p": "nb06z3mrgyyw64q",
         "720p": "nonbdehqvko7oco",
-        "360p": "nb06z3mrgyyw64q"
-    },
-    "67JOe6ZRV7c": {
-        image: "45l01u1727cvsak",
-        "720p": "dm0atv116idm0by",
-        "360p": "ccxc0exxlae9mdb"
+        image: "kawdewz3m6kdenf"
     },
     "6z_Hpvm_i_U": {
-        image: "33fxpgr8rnyxy3z",
+        "360p": "wdais2i91pfs62j",
         "720p": "meyoqxpl12puvmu",
-        "360p": "wdais2i91pfs62j"
-    },
-    "7AMQxfNDzIM": {
-        image: "s1or8j1dygn7f6o",
-        "720p": "45g8a5ukza1uvzm",
-        "360p": "4qii97j2kn5bv8x"
+        image: "33fxpgr8rnyxy3z"
     },
     "8GsyoygdvGE": {
-        image: "ot0ow0pr0l9hqyd",
+        "360p": "19owjhy4y1p9sjz",
         "720p": "zy57jmaprem6znl",
-        "360p": "19owjhy4y1p9sjz"
-    },
-    "8rn-HCDQzL4": {
-        image: "ruaileaukzemsp2",
-        "720p": "pnsyi0bu6dnlinv",
-        "360p": "7n9ldtr3q7p3c02"
+        image: "ot0ow0pr0l9hqyd"
     },
     "9KlUh04cbmQ": {
-        image: "hafbrvxunf25gyq",
+        "360p": "zlchm6fd03o006e",
         "720p": "ioovtwwcwhpi4yc",
-        "360p": "zlchm6fd03o006e"
+        image: "hafbrvxunf25gyq"
     },
     AcH0rrK5aKc: {
-        image: "aiusnphkup1axtj",
+        "360p": "mczuk9va9186mcv",
         "720p": "9yihimn7fp6pquo",
-        "360p": "mczuk9va9186mcv"
+        image: "aiusnphkup1axtj"
     },
     B5uJjMEtx_o: {
-        image: "4746s1pm9bdz7zo",
+        "360p": "qc1w9kf3dbweg4i",
         "720p": "junl0rrelbl2uev",
-        "360p": "qc1w9kf3dbweg4i"
+        image: "4746s1pm9bdz7zo"
     },
     "blo-uPFR5h4": {
-        image: "jkd3x3merwqtl6i",
+        "360p": "2z61ae79ylub069",
         "720p": "5ipm9ie711znqbt",
-        "360p": "2z61ae79ylub069"
+        image: "jkd3x3merwqtl6i"
     },
     bwOw2KHq7GE: {
-        image: "0awbm0pzi4zf15i",
+        "360p": "1xguaolaot76qme",
         "720p": "xagc6optdb9ebk0",
-        "360p": "1xguaolaot76qme"
+        image: "0awbm0pzi4zf15i"
     },
     bZUtRuVnpwM: {
-        image: "x6dkboqfhgdtpny",
+        "360p": "fn0craaqpgiudj6",
         "720p": "zeba1jill444irn",
-        "360p": "fn0craaqpgiudj6"
+        image: "x6dkboqfhgdtpny"
     },
     ddxWJ4NxyDY: {
-        image: "0mqipznnq5xb4g9",
+        "360p": "lx0kjxkmpygejuc",
         "720p": "c3rn0oa2xdq86h2",
-        "360p": "lx0kjxkmpygejuc"
+        image: "0mqipznnq5xb4g9"
     },
     dHWLGQZs0ps: {
-        image: "1ec2wpe8w2p0v3a",
+        "360p": "c7rwos2k31w8x61",
         "720p": "h50wabcjx3v28f2",
-        "360p": "c7rwos2k31w8x61"
+        image: "1ec2wpe8w2p0v3a"
     },
-    dkO7I7yHu0o: {
-        image: "fc68thyght8lbt6",
-        "720p": "t9ec5pshkppkslk",
-        "360p": "6yv9x9xarfhro0s"
+    DItJPELXP7w: {
+        "360p": "n4g35mwac7yp9ga",
+        "720p": "s4l4donrm9ucez1",
+        image: "qvaur8ppu44vktd"
     },
     eNF7SBhJBb8: {
-        image: "d4zyb7d6sdzbhyj",
+        "360p": "vofi2tp51be9gbp",
         "720p": "5sbir2224v3jhqn",
-        "360p": "vofi2tp51be9gbp"
+        image: "d4zyb7d6sdzbhyj"
     },
     ENSbaRhEjyI: {
-        image: "anny07f90ou6pqq",
+        "360p": "ktx698l8taagzf5",
         "720p": "anp8thdki76bcra",
-        "360p": "ktx698l8taagzf5"
+        image: "anny07f90ou6pqq"
     },
     Eq2SiUFocK0: {
-        image: "ycvsh4idkh7q6x0",
+        "360p": "iw1e0y5ah9mfl1d",
         "720p": "cbzqzzbf24nwxmv",
-        "360p": "iw1e0y5ah9mfl1d"
+        image: "ycvsh4idkh7q6x0"
     },
     fkS2Go4_H7E: {
-        image: "kjo2vb4x5y69xo5",
+        "360p": "0m0xun2teyyhs09",
         "720p": "qvtc22q0m9cttc6",
-        "360p": "0m0xun2teyyhs09"
+        image: "kjo2vb4x5y69xo5"
     },
     fnSgeDrfOVo: {
-        image: "gcvqcpecy1brx28",
+        "360p": "up3jlcn572yxcqv",
         "720p": "h8n6imwbkmpbqwm",
-        "360p": "up3jlcn572yxcqv"
-    },
-    fyLTeiOpItU: {
-        image: "9pa2wya53btalfm",
-        "720p": "6z3jl16r9l7ceas",
-        "360p": "qep5kj1zbbt6ywk"
+        image: "gcvqcpecy1brx28"
     },
     gkrfuQMkE0k: {
-        image: "t6jf8kluyri5fqw",
+        "360p": "woh30odzjfcjw9a",
         "720p": "pwchjrhho39ogv6",
-        "360p": "woh30odzjfcjw9a"
-    },
-    GRyHlrJnV6Q: {
-        image: "g0y3z0pjngje5om",
-        "720p": "qjhfdbna63fp707",
-        "360p": "223w7omo4pmgy4h"
+        image: "t6jf8kluyri5fqw"
     },
     hmHHSjivjhU: {
-        image: "7q69xllwqhr3niw",
+        "360p": "2nwj7dfp97wp5iq",
         "720p": "grdxpyaq1u2or4j",
-        "360p": "2nwj7dfp97wp5iq"
+        image: "7q69xllwqhr3niw"
     },
     HzTSDjKV1dg: {
-        image: "vfnsm1rl2dlo4o8",
+        "360p": "4rht1oh1oev83if",
         "720p": "26c8x09409disaz",
-        "360p": "4rht1oh1oev83if"
+        image: "vfnsm1rl2dlo4o8"
     },
     INPjt9_TU4A: {
-        image: "y2dd6s89devutro",
+        "360p": "wsrorfpveuf75az",
         "720p": "m18vyrz9i4pafql",
-        "360p": "wsrorfpveuf75az"
-    },
-    IpwM9HEeup4: {
-        image: "uxfd8vtm9qjgcq3",
-        "720p": "q4v7gx1abqog5kw",
-        "360p": "w5oz5i4tjitxgug"
+        image: "y2dd6s89devutro"
     },
     Jh0ZOeUhlvU: {
-        image: "h40z3o3dmr3crrk",
+        "360p": "4dnn5qjqtoaeruy",
         "720p": "p89mn1jzwd3pvat",
-        "360p": "4dnn5qjqtoaeruy"
+        image: "h40z3o3dmr3crrk"
     },
     j22FJGJGzXo: {
-        image: "024no6ia77dq1u3",
+        "360p": "pjq71n9xz43cat3",
         "720p": "pqrqqln1a63e7it",
-        "360p": "pjq71n9xz43cat3"
+        image: "024no6ia77dq1u3"
     },
     jRWJ6RIquAA: {
-        image: "xkfaoce528bif8c",
+        "360p": "85n5t7j4r1faipv",
         "720p": "ru9pwpuq9gerpbt",
-        "360p": "85n5t7j4r1faipv"
-    },
-    k1ASomUAM34: {
-        image: "zxl4gf98mggf2al",
-        "720p": "evbpxd0yboc34e7",
-        "360p": "yrzq54hfagen97k"
+        image: "xkfaoce528bif8c"
     },
     "kDiyN5T-QKE": {
-        image: "tkwjefh2oh3dsnw",
+        "360p": "skm0ywllxmac1f3",
         "720p": "j8p6cflaazc3h0a",
-        "360p": "skm0ywllxmac1f3"
+        image: "tkwjefh2oh3dsnw"
     },
     "kFURYmGTe-U": {
-        image: "w1r9k1jo1bhtzgp",
+        "360p": "p0s72pt5g4erpjt",
         "720p": "62yfmgmx9sno58x",
-        "360p": "p0s72pt5g4erpjt"
-    },
-    kp6SULk09RY: {
-        image: "byrrww4b0r3pm6m",
-        "720p": "cooqryl07rl6j6e",
-        "360p": "4mf6ft9saho4gho"
-    },
-    lJN1n7ecLmY: {
-        image: "6jk2y7gadt6s9ut",
-        "720p": "5x2jtwzbwak28d3",
-        "360p": "9qgegk79110x3w2"
+        image: "w1r9k1jo1bhtzgp"
     },
     ljyiHCxHGfY: {
-        image: "c5o0eqlhp1462aj",
+        "360p": "yeh55y5dmugd0kr",
         "720p": "yi79jb7rm2ok6aa",
-        "360p": "yeh55y5dmugd0kr"
+        image: "c5o0eqlhp1462aj"
     },
     lRCZQdrR9Hk: {
-        image: "bjo21w5gbidr92y",
+        "360p": "yf9svvpzwe5iio7",
         "720p": "antjmfz4jgt7oo4",
-        "360p": "yf9svvpzwe5iio7"
+        image: "bjo21w5gbidr92y"
     },
     MAC_MKDRGcg: {
-        image: "hs916pb76uuzwmo",
+        "360p": "u5drphqn0i097py",
         "720p": "o6c2szjefwp35rs",
-        "360p": "u5drphqn0i097py"
+        image: "hs916pb76uuzwmo"
     },
     nT_tjIn3gic: {
-        image: "ca6vznkqvsz2z3b",
+        "360p": "nds9h874dweaypa",
         "720p": "zqe15ykuj4km6ya",
-        "360p": "nds9h874dweaypa"
+        image: "ca6vznkqvsz2z3b"
     },
     NUWFoBL8DEI: {
-        image: "ky10mgnjj4cs9f7",
+        "360p": "tvyttrzc196582n",
         "720p": "x4gicuiowjlz4j2",
-        "360p": "tvyttrzc196582n"
-    },
-    nYtkrABvBXw: {
-        image: "u0aa68emlowo1h9",
-        "720p": "mzrjsb82467q5sj",
-        "360p": "zs0yfxyck4bqbih"
+        image: "ky10mgnjj4cs9f7"
     },
     OLD1c_jrIOc: {
-        image: "094s28zqjk2642m",
+        "360p": "qpnb22o5ug8xkm7",
         "720p": "gw98xmpvp3on6xk",
-        "360p": "qpnb22o5ug8xkm7"
-    },
-    P1IQBJCoUTc: {
-        image: "rbxnurpsgmr3j5g",
-        "720p": "dh8c84bbnktk5rn",
-        "360p": "l4pnqdxrl8dnbsy"
+        image: "094s28zqjk2642m"
     },
     QMHNohViCrA: {
-        image: "v3p6d1oko500chq",
+        "360p": "vrkw8ez1pvs7d8u",
         "720p": "c635y1lfymr80h1",
-        "360p": "vrkw8ez1pvs7d8u"
-    },
-    QrPC6lvIAKE: {
-        image: "svqrq4dxca2hq5n",
-        "720p": "ug3kjcrmrmk5dep",
-        "360p": "9oydhf17ugy9695"
+        image: "v3p6d1oko500chq"
     },
     R1xR3ENkCDQ: {
-        image: "t7pxpzt3i1wbbf2",
+        "360p": "5anhle0k9bsxvdp",
         "720p": "0f2irtrea361zlz",
-        "360p": "5anhle0k9bsxvdp"
+        image: "t7pxpzt3i1wbbf2"
     },
     RBB_xdUILnc: {
-        image: "y9ewf3m8tdpruua",
+        "360p": "dhwwyc65fqa5uvi",
         "720p": "q79f9snbwkcd7gq",
-        "360p": "dhwwyc65fqa5uvi"
-    },
-    "rs8o-d7gkpo": {
-        image: "zgl8d9ftfx9hcpa",
-        "720p": "4lut2figpeazzas",
-        "360p": "vh2k8z2xoeka1m0"
+        image: "y9ewf3m8tdpruua"
     },
     t3xR5EYJvZY: {
-        image: "s4xrubcepdbmu6y",
+        "360p": "ikwncij8eqcsf4m",
         "720p": "fwq7gp45jjy24su",
-        "360p": "ikwncij8eqcsf4m"
+        image: "s4xrubcepdbmu6y"
     },
     THfbuFV16qo: {
-        image: "wzx2g5u4hb2mkww",
+        "360p": "2yessviylzzyz97",
         "720p": "4cbyfn32277v87j",
-        "360p": "2yessviylzzyz97"
+        image: "wzx2g5u4hb2mkww"
     },
     TLaLa_gu_l8: {
-        image: "829r32zade8hjd4",
+        "360p": "067zo7r471o7lr4",
         "720p": "ov3x0ry26iv59jw",
-        "360p": "067zo7r471o7lr4"
+        image: "829r32zade8hjd4"
     },
     "U-35RtXPAnQ": {
-        image: "sxbm03mttq4akow",
+        "360p": "meap38v968gyp8n",
         "720p": "m9qwttrsic672ci",
-        "360p": "meap38v968gyp8n"
+        image: "sxbm03mttq4akow"
     },
     UPXkt5_LW4M: {
-        image: "7le8n8mmx3zxsal",
+        "360p": "8auo7gjo2mi6ift",
         "720p": "e2f41zrn14wn2d9",
-        "360p": "8auo7gjo2mi6ift"
-    },
-    uxNjzX1V6uk: {
-        image: "4cykva70dzrw94i",
-        "720p": "zafg168z4xgkhv7",
-        "360p": "c8twp37rgd4nrfk"
+        image: "7le8n8mmx3zxsal"
     },
     wG0GrHzHxPM: {
-        image: "lwhnbwvl3lu8oec",
+        "360p": "4cntmj83r856gb7",
         "720p": "n28zu8lm65c1jf1",
-        "360p": "4cntmj83r856gb7"
+        image: "lwhnbwvl3lu8oec"
     },
     WJQl75vIWBw: {
-        image: "bi3hzdci3rwrryx",
+        "360p": "s9twq8njh8tudc9",
         "720p": "h8tko2l4q3vjag6",
-        "360p": "s9twq8njh8tudc9"
-    },
-    Ws126uyiS9g: {
-        image: "k7zvcwk0zlhbf7r",
-        "720p": "ve90skstto623so",
-        "360p": "q19ahtpc0ffrsk2"
+        image: "bi3hzdci3rwrryx"
     },
     xClz5CeRr60: {
-        image: "07pcgarcpr07ivz",
+        "360p": "ggle91bbibp5jvv",
         "720p": "eljxprss2liad5g",
-        "360p": "ggle91bbibp5jvv"
+        image: "07pcgarcpr07ivz"
     },
     xVhYdW1WXqk: {
-        image: "6cp72mzov8a8qu0",
+        "360p": "fq24unzgwitvvqv",
         "720p": "by88o3g8duouwul",
-        "360p": "fq24unzgwitvvqv"
+        image: "6cp72mzov8a8qu0"
+    },
+    "xZMfS-HXqXM": {
+        academy: true,
+        "360p": "1albsmx3p17ngkw",
+        "720p": "65ukulmygbt6wqz",
+        image: "u9inztw221daudp"
     },
     Y3yN0o9PJGE: {
-        image: "a9img0gvr9qffyq",
+        "360p": "eswornxsrgwyq20",
         "720p": "aymoz8ekj28zh28",
-        "360p": "eswornxsrgwyq20"
+        image: "a9img0gvr9qffyq"
     },
-    yzJaU1ZW1QU: {
-        image: "5fl468nggcch39q",
-        "720p": "x4i8fqm2v8gf9gx",
-        "360p": "xtz07okpyna7aga"
+    yCsI9dSOvK0: {
+        academy: true,
+        "360p": "wp5si9qmclzwbu3",
+        "720p": "ed1ud40u9gbx7o9",
+        image: "xmo3hfuh7srrxxp"
+    },
+    YjHQvrvnC9Y: {
+        academy: true,
+        "360p": "qj9vjec3mwjkqiy",
+        "720p": "a71ed1jj3phsxcy",
+        image: "02u523wdfiffes4"
     },
     z2Z0cfpBI3c: {
-        image: "l13s44ibe9v05f9",
+        "360p": "jfyfmcsfuibaj4r",
         "720p": "zjyr1uc8f5ot38p",
-        "360p": "jfyfmcsfuibaj4r"
+        image: "l13s44ibe9v05f9"
     },
     zAHVUuzrofM: {
-        image: "y848g9a8ziwncvk",
+        "360p": "0lg4ybonqhkxh6h",
         "720p": "mmkilgpdkzv51z0",
-        "360p": "0lg4ybonqhkxh6h"
+        image: "y848g9a8ziwncvk"
     },
     zJFq9IZO3Jo: {
-        image: "uhpxpk20l6sihnx",
+        "360p": "gmcuuawsd46lnns",
         "720p": "za5zuhx2pn69cy2",
-        "360p": "gmcuuawsd46lnns"
+        image: "uhpxpk20l6sihnx"
     },
     ZtIF83HYcOY: {
-        image: "hypoyc58gcfupzf",
+        "360p": "qtrdhmjdzo0qpzy",
         "720p": "wscjodb3dq8h68t",
-        "360p": "qtrdhmjdzo0qpzy"
+        image: "hypoyc58gcfupzf"
     }
 };

@@ -1,16 +1,18 @@
 ui.comment = {
+    hashIdentifier: /^\/(academy|videos)$/.test(location.pathname),
+    setEmptyValue: /^\/videos$/.test(location.pathname),
     load: function (container, avoidError) {
         "use strict";
 
         function config() {
             var identifier = "https://lea.laukstein.com" + location.pathname;
 
-            if (location.hash && location.pathname === "/academy") {
+            if (ui.comment.hashIdentifier && location.hash) {
                 identifier += "?" + ui.serialize(ui.hash({
                     hash: [location.hash, location.search].reduce(function (a, b) {
                         return a.length > b.length ? a : b;
                     })
-                }));
+                }), {setEmptyValue: ui.comment.setEmptyValue});
             }
 
             this.page.identifier = identifier;
@@ -24,12 +26,12 @@ ui.comment = {
             this.el = ui.d.getElementById("disqus_thread");
         }
         if (this.el) {
-            if (!window.disqus_config && ui.asyncScript) {
-                window.disqus_config = config; // eslint-disable-line
+            if (!ui.w.disqus_config && ui.asyncScript) {
+                ui.w.disqus_config = config; // eslint-disable-line
 
                 ui.asyncScript("https://lealaukstein.disqus.com/count.js", {id: "dsq-count-scr"});
                 ui.asyncScript("https://lealaukstein.disqus.com/embed.js", {"data-timestamp": +new Date});
-            } else if (window.DISQUS) {
+            } else if (ui.w.DISQUS) {
                 DISQUS.reset({
                     reload: true,
                     config: config
@@ -48,6 +50,23 @@ ui.comment = {
     },
     init: function () {
         "use strict";
+
+        if (this.hashIdentifier && location.search) {
+            var hash;
+
+            if (location.search.length > location.hash.length) {
+                hash = ui.serialize(ui.hash({hash: location.search}), {setEmptyValue: this.setEmptyValue});
+            } else {
+                hash = location.hash.replace(/^#/, "");
+            }
+            if (history.replaceState) {
+                history.replaceState("", ui.d.title, location.pathname + "#" + hash);
+            } else {
+                ui.w.location = location.pathname + "#" + hash;
+
+                return;
+            }
+        }
 
         this.load(null, true);
     }

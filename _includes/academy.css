@@ -193,9 +193,6 @@ button:not([data-plyr]):focus,
 .sidenav li {
     display: block;
 }
-.sidenav > li {
-    counter-reset: subitem;
-}
 .sidenav time {
     margin: 0;
     margin-right: .4em;
@@ -221,11 +218,6 @@ button:not([data-plyr]):focus,
     margin-left: .4em;
     float: right;
     font-weight: normal;
-}
-.sidenav li li a:before {
-    content: counters(subitem, ".") ". ";
-    font-weight: normal;
-    counter-increment: subitem;
 }
 .sidenav div,
 .sidenav a {

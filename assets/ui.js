@@ -432,10 +432,11 @@ window.ui = {
 
         return options.param ? obj[options.param] : obj;
     },
-    serialize: function (obj) {
+    serialize: function (obj, options) {
         "use strict";
 
         if (typeof obj === "object") {
+            options = options || {};
             var arr = Object.keys(obj),
                 result = [],
                 i;
@@ -443,6 +444,8 @@ window.ui = {
             for (i = 0; i < arr.length; i += 1) {
                 if (obj[arr[i]]) {
                     result.push(arr[i] + "=" + encodeURIComponent(obj[arr[i]]));
+                } else if (options.setEmptyValue) {
+                    result.push(arr[i]);
                 }
             }
 
