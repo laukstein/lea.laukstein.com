@@ -473,6 +473,8 @@ window.ui = {
         }
     },
     video: {
+        playlistLink: "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUNNsgimJtU1q1LUMVsq44Dg&maxResults=50&key=AIzaSyBt0-e3Ups6i4p8GQs811EarYbpMiPfxg4",
+        playlistLocalLink: "/assets/playlistItems.json",
         getData: function (id) {
             "use strict";
 
@@ -622,12 +624,13 @@ window.ui = {
                 }
             };
             loadImage.error = function (finalCall) {
+                // Use here loadImage instead of this
                 if (finalCall === true) {
-                    this.legacy(true);
+                    loadImage.legacy(true);
                 }
 
                 // console.log(e.target.src);
-                this.result(false);
+                loadImage.result(false);
             };
             loadImage.success = function (e) {
                 if (e.target.naturalWidth > 1) {
@@ -669,11 +672,11 @@ window.ui = {
 
                             return loadImage.result(!isFallback);
                         }).catch(function () {
-                            return /^https?:\/\/.*/.test(url) ? loadImage.call("/assets/playlistItems.json", true) : !hasStatus && loadImage.error(true);
+                            return /^https?:\/\/.*/.test(url) ? loadImage.call(self.playlistLocalLink, true) : !hasStatus && loadImage.error(true);
                         });
                     };
 
-                    this.call("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUNNsgimJtU1q1LUMVsq44Dg&maxResults=50&key=AIzaSyBt0-e3Ups6i4p8GQs811EarYbpMiPfxg4");
+                    this.call(self.playlistLink);
                 }
             };
 
@@ -685,7 +688,7 @@ window.ui = {
                 } else {
                     loadImage.error();
                 }
-            }, this.error);
+            }, loadImage.error);
 
             // TODO: when internet goes off, then remove the sessionStorage
 

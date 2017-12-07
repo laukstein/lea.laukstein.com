@@ -7,7 +7,8 @@ ui.videos = (function () {
         now = new Date,
         requestCountMax = 3,
         requestCount = 0,
-        cacheDays = 1;
+        cacheDays = 1,
+        request = {};
 
     function lazyload() {
         if (ui.w.IntersectionObserver && !lazyload.error) {
@@ -155,7 +156,7 @@ ui.videos = (function () {
             "</div>" +
             "<ul class=list>" + html + "</ul>";
     };
-    function paintUI(response) {
+    generateHTML.paintUI = function (response) {
         var url = location.hash,
             result;
 
@@ -167,7 +168,7 @@ ui.videos = (function () {
 
             if (result) {
                 if (url) {
-                    response.scrollTop = ui.d.body.scrollTop;
+                    response.scrollTop = ui.d.documentElement.scrollTop;
                 } else {
                     ui.d.title = pageTitle;
                 }
@@ -177,7 +178,11 @@ ui.videos = (function () {
                 }
 
                 container.innerHTML = url ? result : generateHTML.list(result);
-                ui.d.body.scrollTop = url ? 0 : response.scrollTop || 0;
+
+                setTimeout(function () {
+                    url = location.hash && location.hash.substring(1);
+                    ui.d.documentElement.scrollTop = url ? 0 : response.scrollTop || 0;
+                }, 10);
 
                 if (!ui.isLoaded) {
                     if (ui.video.youtubeSupport) {
@@ -215,18 +220,18 @@ ui.videos = (function () {
                 }
             }
         }
-    }
-    function request() {
-        ui.legacy(function () {
-            if (localStorage.videos) {
-                request.getData(localStorage.videos);
-            } else {
-                request.error();
-            }
-        });
+    };
+    request.call = function (url) {
+        delete localStorage.videos;
 
-        return {};
-    }
+        fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (response) {
+            return request.getData(response, true);
+        }).catch(function () {
+            return /^https?:\/\/.*/.test(url) ? request.call(ui.video.playlistLocalLink) : request.error();
+        });
+    };
     request.success = function (response) {
         response = response || {};
 
@@ -237,17 +242,17 @@ ui.videos = (function () {
         response.downloadTime = +now;
         localStorage.videos = JSON.stringify(response);
 
-        if (ui.videos) {
-            ui.videos = response;
+        ui.videos = response;
+
+        generateHTML.paintUI(response);
+
+        ui.videos = response;
+
+        ui.w.onhashchange = generateHTML.paintUI;
+
+        if (history.scrollRestoration) {
+            history.scrollRestoration = "manual";
         }
-
-        paintUI(response);
-
-        if (ui.videos) {
-            ui.videos = response;
-        }
-
-        ui.w.onhashchange = paintUI;
 
         return response;
     };
@@ -260,33 +265,42 @@ ui.videos = (function () {
         if (container) {
             container.innerHTML = "שגיאת שרת, <a href>נסה שוב</a> או מאוחר יותר.";
         }
-        if (ui.videos) {
-            ui.videos = response;
-        }
+
+        ui.videos = response;
 
         return response;
     };
-    request.getData = function (response) {
+    request.getData = function (response, isJSON) {
         requestCount += 1;
 
         if (requestCount > requestCountMax) {
             return this.error();
         } else if (response) {
             if (cacheAge(response) < cacheDays) {
+                if (isJSON) {
+                    return this.success(response);
+                }
+
                 try {
                     return this.success(JSON.parse(response));
                 } catch (e) {
-                    return this();
+                    return this.call(ui.video.playlistLink);
                 }
-            } else {
-                delete localStorage.videos;
             }
         }
 
-        return this();
+        return this.call(ui.video.playlistLink);
     };
 
-    if (!container) {
+    if (container) {
+        ui.legacy(function () {
+            if (localStorage.videos) {
+                request.getData(localStorage.videos);
+            } else {
+                request.error();
+            }
+        });
+    } else {
         console.error("Missing container element");
     }
     if (localStorage.videosDate) {
@@ -294,5 +308,5 @@ ui.videos = (function () {
         delete localStorage.videosDate;
     }
 
-    return container && request.getData(localStorage.videos);
+    return ui.videos || {};
 }());
