@@ -117,11 +117,28 @@ ui.videos = (function () {
         });
     };
     generateHTML.links = function (str) {
-        // Regex https://regex101.com/r/apPfwx/2
-        var regex = /(https?:\/\/[^\s:@.,]+\.+[a-z])[^<\s\\!,]{0,}[^<\s\\!|^.,?$]{1,}|[^\s:,/@\-0=]{1,}[a-z0-9\-.]\.com?\/*[^<\s\\!]{1,}[^<\s\\!|^.,$]/ig,
-            pattern = "<a href=\"$&\" rel=noopener target=_blank dir=auto>$&</a>";
+        var opt = {
+            link: {
+                // Testcase https://regex101.com/r/apPfwx/2
+                regex: /(https?:\/\/[^\s:@.,]+\.+[a-z])[^<\s\\!,]{0,}[^<\s\\!|^.,?$]{1,}|[^\s:,/@\-0=]{1,}[a-z0-9\-.]\.com?\/*[^<\s\\!]{1,}[^<\s\\!|^.,$]/ig,
+                pattern: "<a href=\"$&\" rel=noopener target=_blank dir=auto>$&</a>"
+            },
+            email: {
+                // Testcase http://regexr.com/3hn9l
+                regex: /([\w.\-+_]+)?\w+@[\w-_]+(\.\w+){1,}/gm,
+                pattern: "<a href=\"mailto:$&\" rel=noopener target=_blank dir=ltr>$&</a>"
+            },
+            phone: {
+                // Testcase https://regexr.com/3hnad
+                regex: /05\d{8}/gm,
+                pattern: "<a href=\"tel:$&\" rel=noopener target=_blank dir=ltr>$&</a>"
+            }
+        };
 
-        return str && str.replace(regex, pattern);
+        return str && str
+            .replace(opt.link.regex, opt.link.pattern)
+            .replace(opt.email.regex, opt.email.pattern)
+            .replace(opt.phone.regex, opt.phone.pattern);
     };
     generateHTML.image = function (obj) {
         obj.image = ui.video.youtubeSupport ? obj.image : ui.video.getData(obj.id).image;
