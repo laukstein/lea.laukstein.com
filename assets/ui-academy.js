@@ -278,10 +278,11 @@ ui.academy = {
             },
             "magic-closet": {
                 title: "ארון הקסמים",
-                pages: {}
+                video: "dMe80qKYnX8"
             },
             "modular-outfit": {
                 title: "יש לך מה ללבוש",
+                video: "_VYx-UC-VqU",
                 pages: {
                     "check-list": {
                         type: "document",
@@ -293,11 +294,11 @@ ui.academy = {
             },
             accessories: {
                 title: "התוספת שתופסת",
-                pages: {}
+                video: "fOYZbRKMYAE"
             },
             lingerie: {
                 title: "יסודות למראה חטוב",
-                pages: {}
+                video: "qk0-_Dnf3Z4"
             },
             bonuses: {
                 title: "בונוסים",
@@ -306,13 +307,7 @@ ui.academy = {
                     interval: 3,
                     format: "..."
                 },
-                pages: {
-                    underwear: {
-                        type: "document",
-                        title: "הלבשה תחתונה",
-                        value: "1waOmpJlmN6tRAn6M6scEUwbGN_OhvrFDdacIqJyGD5w"
-                    }
-                }
+                pages: {}
             }
         }
     },
