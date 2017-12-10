@@ -39,7 +39,7 @@
     margin-bottom: 1em;
     font-size: 1.75em;
 }
-.box a {
+.box .list a {
     display: inline-block;
     padding: .5em;
     font-size: 103%;

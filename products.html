@@ -25,7 +25,7 @@ imageHeight: 640
 
 <ol class="list list-boxes">{% for group in page.products %}
     <li class=box>
-        <h2 id={{ group.name }}>{{ group.title }}</h2>
+        <h2 id={{ group.name }}><a href=/{{ group.name }}>{{ group.title }}</a></h2>
         <ol class=list>
         {% assign pages=site.pages | sort: "order" %}{%
         for item in pages %}{%
