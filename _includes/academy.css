@@ -221,6 +221,9 @@ button.error:not([data-plyr]) {
     text-decoration: none;
     outline: none;
 }
+.sidenav .expand {
+    background-color: #eee;
+}
 .sidenav .active,
 .sidenav a:hover,
 .sidenav a:focus,
