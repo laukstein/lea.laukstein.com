@@ -1,5 +1,9 @@
 header .wrapper {
-    min-width: 16.5em;
+    min-width: 19em;
+}
+.logo {
+    z-index: 1;
+    background-color: #fff;
 }
 .content {
     overflow: hidden;
@@ -623,6 +627,9 @@ button[disabled]:not(:hover) {
 }
 
 @media (max-width: 54em) {
+    .nav a {
+        padding-right: 1.4em;
+    }
     .stretch header .wrapper {
         min-width: 24.779em;
     }
@@ -677,11 +684,6 @@ button[disabled]:not(:hover) {
                     0 0 27vw rgba(51,51,51,.3);
     }
 }
-@media (max-width: 33em) {
-    .logedin .nav a {
-        visibility: hidden;
-    }
-}
 @media (max-width: 28em) {
     .stretch .nav a {
         padding: 1em;
@@ -691,6 +693,7 @@ button[disabled]:not(:hover) {
     }
     .logo {
         width: 3.3em;
+        border-left: .3em solid #fff;
     }
 }
 @media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */
