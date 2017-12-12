@@ -520,7 +520,8 @@ ui.academy = {
         "use strict";
 
         return " onclick=ui.academy.select(this) onkeydown=ui.academy.key(event)" +
-            (session ? " data-session=" + session : "") + (page ? " data-page=" + page : "") + " tabindex=0";
+            (session ? " data-session=" + session : "") + (page ? " data-page=" + page : "") +
+            " tabindex=" + (page ? -1 : 0);
     },
     isLogged: function () {
         "use strict";
@@ -1276,6 +1277,12 @@ ui.academy = {
                 if (resetElement[key]) {
                     resetElement[key].classList.remove(className);
 
+                    if (resetElement[key].nextElementSibling && resetElement[key].nextElementSibling.tagName === "OL") {
+                        resetElement[key].nextElementSibling.querySelectorAll("a").forEach(function (a) {
+                            a.tabIndex = -1;
+                        });
+                    }
+
                     if (ui.d.activeElement === resetElement[key]) {
                         resetElement[key].blur();
                     }
@@ -1285,6 +1292,12 @@ ui.academy = {
                 }
                 if (el) {
                     el.classList.add(className);
+
+                    if (el.nextElementSibling && el.nextElementSibling.tagName === "OL") {
+                        el.nextElementSibling.querySelectorAll("a").forEach(function (a) {
+                            a.tabIndex = 0;
+                        });
+                    }
                 }
             }
         };

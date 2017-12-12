@@ -234,6 +234,8 @@ button.error:not([data-plyr]) {
     background-color: #569e9b;
     border-color: #569e9b;
 }
+.sidenav label:not(.expand) a {
+    pointer-events: none;
 }
 .sidenav label[onclick]:hover time,
 .sidenav label[onclick]:focus time,
@@ -247,12 +249,17 @@ button.error:not([data-plyr]) {
     border-top: 0;
 }
 .sidenav ol {
-    display: none;
-    box-suppress: discard;
-    margin-bottom: .4em;
+    overflow: hidden;
+    max-height: 0;
+    background-color: #eee;
+    -webkit-transition: max-height .25s;
+            transition: max-height .25s;
 }
 .sidenav .expand ~ ol {
-    display: block;
+    max-height: 10em;
+    -webkit-transition: max-height 1s;
+            transition: max-height 1s;
+}
 .sidenav ol li {
     border-top: 2px solid #f8f8f9;
 }
