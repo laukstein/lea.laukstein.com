@@ -380,11 +380,7 @@ ui.academy = {
 
             if ((this.hash.session === hash.session) &&
                 (this.hash.page === hash.page)) {
-                el.classList.toggle("expand");
-
-                if (this.bar && this.bar.checked) {
-                    this.bar.checked = false;
-                }
+                el.classList.add("expand");
             } else {
                 hash = ui.serialize(hash);
 
