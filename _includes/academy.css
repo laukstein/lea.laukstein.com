@@ -196,6 +196,7 @@ button.error:not([data-plyr]) {
     padding: 1em 1.2em;
     color: currentcolor;
     font-weight: bold;
+    outline: 0;
     cursor: pointer;
 }
 .sidenav label[disabled] {
