@@ -1295,7 +1295,7 @@ iframe {
     }
     .nav > .active:not(.subactive) > a {
         color: #fff;
-        background-color: #1e90ff;
+        background-color: #569e9b;
     }
     .subnav.subnav,
     .subnav-container.subnav-container {
@@ -1311,7 +1311,7 @@ iframe {
     }
     .subnav .active.active > a {
         color: #fff;
-        background-color: #1e90ff;
+        background-color: #569e9b;
     }
     .bar.bar {
         display: inline-block;
