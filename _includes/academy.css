@@ -167,6 +167,7 @@ button.error:not([data-plyr]) {
     margin-top: .8em;
     float: right;
     clear: both;
+    line-height: 1.2;
     white-space: nowrap;
     background-color: #fff;
 }
@@ -192,7 +193,7 @@ button.error:not([data-plyr]) {
 .sidenav label {
     display: block;
     position: relative;
-    padding: .9em 1.2em;
+    padding: 1em 1.2em;
     color: currentcolor;
     font-weight: bold;
     cursor: pointer;
@@ -248,11 +249,13 @@ button.error:not([data-plyr]) {
 }
 .sidenav .expand ~ ol {
     display: block;
+.sidenav ol li {
+    border-top: 2px solid #f8f8f9;
 }
 .sidenav ol a {
-    padding-top: .4em;
-    padding-bottom: .4em;
-    padding-right: 2.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-right: 2.45em;
 }
 .comment-container {
     width: calc(100% - 16.8em);
