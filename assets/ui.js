@@ -199,7 +199,7 @@ window.ui = {
             });
 
             // Sentry JavaScript client Raven.js https://docs.sentry.io/clients/javascript/install/
-            this.asyncScript("https://cdn.ravenjs.com/3.20.1/raven.min.js", {
+            this.asyncScript("https://cdn.ravenjs.com/3.21.0/raven.min.js", {
                 crossorigin: "anonymous",
                 onSuccess: function () {
                     if (window.Raven && Raven.config) {
