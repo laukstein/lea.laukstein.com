@@ -503,6 +503,10 @@ ui.academy = {
                     (this.firstSession ? 0 : this.data.interval))) +
                 (options.interval ? 0 : 10000000));
 
+        date.setDate(date.getUTCDate());
+        date.setHours(date.getUTCHours());
+        date.setMinutes(date.getUTCMinutes());
+
         return {
             enabled: +date <= +new Date,
             format: options.format || date.getUTCDate() + "/" + (date.getUTCMonth() + 1)
