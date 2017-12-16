@@ -226,13 +226,21 @@ button.error:not([data-plyr]) {
     outline: none;
 }
 .sidenav .expand {
-    background-color: #eee;
+    background-color: #d9e7e7;
 }
-.sidenav .active,
 .sidenav a:hover,
 .sidenav a:focus,
 .sidenav label[onclick]:hover,
-.sidenav label[onclick]:focus,
+.sidenav label[onclick]:focus {
+    color: #fff;
+    background-color: #569e9b;
+    border-color: #569e9b;
+}
+.sidenav .active.active.active {
+    color: #fff;
+    background-color: #438784;
+    border-color: #438784;
+}
 .nav-container .selected {
     color: #fff;
     background-color: #569e9b;
@@ -255,7 +263,7 @@ button.error:not([data-plyr]) {
 .sidenav ol {
     overflow: hidden;
     max-height: 0;
-    background-color: #eee;
+    background-color: #d9e7e7;
     -webkit-transition: max-height .25s;
             transition: max-height .25s;
 }
