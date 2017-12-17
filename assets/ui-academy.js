@@ -497,19 +497,18 @@ ui.academy = {
             delete this.firstSession;
         }
 
-        this.currentTime = !options.interval && this.currentTime || new Date(Math.max(this.data.startDate || 0, this.data.date));
+        this.currentTime = !options.interval && this.currentTime ||
+            new Date(Math.max(this.data.startDate || 0, this.data.date));
         var date = new Date(this.currentTime.setDate(this.currentTime.getDate() +
                 (options.interval ? options.interval * this.data.interval :
                     (this.firstSession ? 0 : this.data.interval))) +
                 (options.interval ? 0 : 10000000));
 
-        date.setDate(date.getUTCDate());
-        date.setHours(date.getUTCHours());
-        date.setMinutes(date.getUTCMinutes());
+        date.setHours(0, 0, 0, 0);
 
         return {
             enabled: +date <= +new Date,
-            format: options.format || date.getUTCDate() + "/" + (date.getUTCMonth() + 1)
+            format: options.format || date.getDate() + "/" + (date.getMonth() + 1)
         };
     },
     key: function (e) {
