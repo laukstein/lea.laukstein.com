@@ -590,6 +590,13 @@ svg {
     margin-left: -.1em;
 }
 
+.bonuses {
+    text-align: center;
+}
+.bonuses a {
+    color: #f58e84;
+}
+
 @keyframes shake {
     0%, 100% {
         transform: translateX(0);

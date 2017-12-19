@@ -307,7 +307,31 @@ ui.academy = {
                     interval: 3,
                     format: "..."
                 },
-                pages: {}
+                generateHTML: function () {
+                    "use strict";
+
+                    function addMonths(isoDate, numberMonths) {
+                        // Resource https://stackoverflow.com/questions/5645058/how-to-add-months-to-a-date-in-javascript#13633692
+                        var dateObject = new Date(isoDate),
+                            day = dateObject.getDate(),
+                            formatDate = ui.academy.formatDate;
+
+                        // avoid date calculation errors
+                        dateObject.setHours(20);
+
+                        // add months and set date to last day of the correct month
+                        dateObject.setMonth(dateObject.getMonth() + numberMonths + 1, 0);
+
+                        // set day number to min of either the original one or last day of month
+                        dateObject.setDate(Math.min(day, dateObject.getDate()));
+
+                        return formatDate(dateObject.getDate()) + "/" + formatDate(dateObject.getMonth() + 1) + "/" + dateObject.getFullYear();
+                    }
+
+                    return "<div class=\"form bonuses\">" +
+                        "    <h1><a href=/shopping target=_blank>סיבוב קניות - הנחה 50% בתוקף עד " + addMonths(ui.academy.data.startDate || ui.academy.data.date, 5) + "</a></h1>" +
+                        "</div>";
+                }
             }
         }
     },
@@ -1209,6 +1233,9 @@ ui.academy = {
                     if (!hash.session || hash.session && !hash.page) {
                         if (obj.video) {
                             result += this.videoTemplate(obj.video, obj.title, obj.pages);
+                        }
+                        if (typeof obj.generateHTML === "function") {
+                            result += obj.generateHTML();
                         }
 
                         // result += "<ol class=items dir=ltr>";
