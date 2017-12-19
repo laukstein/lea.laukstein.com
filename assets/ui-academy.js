@@ -322,6 +322,12 @@ ui.academy = {
         From Slides https://docs.google.com/presentation/d/{ id }/export/pdf */
         return "https://drive.google.com/uc?export=download&id=" + id;
     },
+    formatDate: function (number) {
+        "use strict";
+
+        // Leading zero https://stackoverflow.com/questions/6040515/how-do-i-get-month-and-date-of-javascript-in-2-digit-format#6040556
+        return ("0" + number).slice(-2);
+    },
     session: (function () {
         "use strict";
 
@@ -516,7 +522,7 @@ ui.academy = {
 
         return {
             enabled: +date <= +new Date,
-            format: options.format || date.getDate() + "/" + (date.getMonth() + 1)
+            format: options.format || this.formatDate(date.getDate()) + "/" + this.formatDate(date.getMonth() + 1)
         };
     },
     key: function (e) {
