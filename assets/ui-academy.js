@@ -123,23 +123,23 @@ ui.academy = {
                         final: {
                             hourglass: {
                                 title: "שעון חול",
-                                value: "1bcn85H0V-BfhQ_K8WoBfnuJYGoyicdKbx1BUtk-3-0o"
+                                value: "1r5TBnSpeNRjTmwIaoKkiiqBBzNhESmdj"
                             },
                             invertedTriangle: {
                                 title: "משולש הפוך",
-                                value: "1D9zt-uqJyT9YNCZHm6VBjJmbRovTJWad_wlP77Z23EI"
+                                value: "1_ekRaH2x8iP4jYovBSpVZuNUquO_WiJI"
                             },
                             triangle: {
                                 title: "משולש",
-                                value: "11ERkWQ_5EdOu67T_glBwUYgmBvtwmP-U3xpxaF6QK-w"
+                                value: "1ZFVcrckN8LhfZ8Gp9K7N1OUAn-BicVhD"
                             },
                             rounded: {
                                 title: "מעוגל",
-                                value: "1Dq2xJwSz9noiMjOC24esefAnvQn260zxA2YLrjqnrZ8"
+                                value: "1JWcPbgHI6uQRGVpr82zg5l79yDYYp39P"
                             },
                             square: {
                                 title: "מרובע",
-                                value: "1gKI_JUyD20fvq27_B3Kxq9vfJ6f99xLnnd1ht1vibhU"
+                                value: "1hRie1lANjULGnlUDrnUVPYjCxrD4n6Ws"
                             }
                         }
                     }
@@ -314,6 +314,14 @@ ui.academy = {
     hash: {},
     iconCheck: "<svg class=icon-check><use xlink:href=#check /></svg>",
     iconClose: "<svg class=icon-close><use xlink:href=#close /></svg>",
+    getDownloadLink: function (id) {
+        "use strict";
+
+        /* Download PDF
+        PDF file as is https://drive.google.com/uc?export=download&id={ id }
+        From Slides https://docs.google.com/presentation/d/{ id }/export/pdf */
+        return "https://drive.google.com/uc?export=download&id=" + id;
+    },
     session: (function () {
         "use strict";
 
@@ -748,7 +756,7 @@ ui.academy = {
                     (finalEl ? "" : "       <div class=close onclick=ui.academy.qa.reset(this) tabindex=0>" + ui.academy.iconClose +"</div>") +
                     "       <h1 class=nowrap>" + data.title + "</h1>" +
                     (finalEl ? "" : "       <p>שימי לב, אחרי הורדה לא ניתן לשנות קטגוריה</p>") +
-                    "       <div><a class=button" + (finalEl ? " href=\"https://drive.google.com/uc?export=download&id=" + data.value + "\" rel=noopener target=_blank" :
+                    "       <div><a class=button" + (finalEl ? " href=\"" + self.getDownloadLink(data.value) + "\" rel=noopener target=_blank" :
                         " onclick=\"ui.academy.qa.final(this, '" + type + "')\"") + " tabindex=0>" + (finalEl ? "להוריד סרגל צבעים" : "לקבל סרגל צבעים") + "</a></div>" +
                     "   </div>" +
                     "   </div>" +
@@ -946,7 +954,7 @@ ui.academy = {
                 "   <div class=table>" +
                 "   <div class=cel>" +
                 "       <h1>" + obj.result.format(obj.final[this.session.task.calculator].title) + "</h1>" +
-                "       <div><a class=button href=\"https://docs.google.com/presentation/d/" + obj.final[this.session.task.calculator].value + "/export/pdf\" rel=noopener target=_blank tabindex=0>" + obj.download + "</a></div>" +
+                "       <div><a class=button href=\"" + this.getDownloadLink(obj.final[this.session.task.calculator].value) + "\" rel=noopener target=_blank tabindex=0>" + obj.download + "</a></div>" +
                 "   </div>" +
                 "   </div>" +
                 "</div>";
@@ -1224,9 +1232,8 @@ ui.academy = {
                                         "<div class=space>" +
                                         "    <h1>" + obj.title + "</h1>" +
                                         "    <a class=button href=\"" + (obj.download ? obj.download.format(obj.value) :
-                                            "https://drive.google.com/uc?export=download&id=" + obj.value) +
-                                            "\" rel=noopener target=_blank download=\"" +
-                                            obj.title + ".pdf\" tabindex=0><b>להוריד " + obj.title + "</a>" +
+                                            this.getDownloadLink(obj.value)) +
+                                            "\" rel=noopener target=_blank tabindex=0><b>להוריד " + obj.title + "</a>" +
                                         "</div>";
                                     break;
                                 case "calculator":
