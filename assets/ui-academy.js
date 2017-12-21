@@ -294,11 +294,25 @@ ui.academy = {
             },
             accessories: {
                 title: "התוספת שתופסת",
-                video: "fOYZbRKMYAE"
+                video: "fOYZbRKMYAE",
+                pages: {
+                    "covers-shoes": {
+                        type: "video",
+                        title: "מטפחות ונעליים",
+                        value: "JWTBhFri44w"
+                    }
+                }
             },
             lingerie: {
                 title: "יסודות למראה חטוב",
-                video: "qk0-_Dnf3Z4"
+                video: "qk0-_Dnf3Z4",
+                pages: {
+                    material: {
+                        type: "video",
+                        title: "צבע, בד וגזרה בהלבשה תחתונה",
+                        value: "IpwM9HEeup4"
+                    }
+                }
             },
             bonuses: {
                 title: "בונוסים",
