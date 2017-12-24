@@ -1335,7 +1335,7 @@ ui.academy = {
                     resetElement[key].classList.remove(className);
 
                     if (resetElement[key].nextElementSibling && resetElement[key].nextElementSibling.tagName === "OL") {
-                        resetElement[key].nextElementSibling.querySelectorAll("a").forEach(function (a) {
+                        ui.form.list("a", resetElement[key].nextElementSibling).forEach(function (a) {
                             a.tabIndex = -1;
                         });
                     }
@@ -1351,7 +1351,7 @@ ui.academy = {
                     el.classList.add(className);
 
                     if (el.nextElementSibling && el.nextElementSibling.tagName === "OL") {
-                        el.nextElementSibling.querySelectorAll("a").forEach(function (a) {
+                        ui.form.list("a", el.nextElementSibling).forEach(function (a) {
                             a.tabIndex = 0;
                         });
                     }
