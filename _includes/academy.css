@@ -413,6 +413,12 @@ svg {
     vertical-align: top;
     box-sizing: border-box;
 }
+.button .icon-download {
+    width: 1.2em;
+    height: 1.5em;
+    margin: -.15em -.2em 0 .3em;
+    fill: #fff;
+}
 .qa label .icon-check {
     position: absolute;
     width: 1.55em;
@@ -555,6 +561,7 @@ svg {
     margin: 0;
     white-space: nowrap;
     transition: transform .35s cubic-bezier(.2,1,.4,1);
+    backface-visibility: hidden; /* Prevents wrapper disorder when hovered disabled button having animation */
     -webkit-transform: translateZ(0); /* Android 4.4.4 legacy */
         -ms-transform: translateZ(0); /* IE9 legacy */
             transform: translateX(0);
@@ -563,7 +570,7 @@ svg {
     display: inline-block;
     width: 100%;
     padding: 0;
-    margin: 1em 0;
+    margin: 1em 0.005em;
     vertical-align: top;
 }
 .sat .box .row {
@@ -572,6 +579,40 @@ svg {
     padding: 0;
     white-space: normal;
     box-sizing: border-box;
+}
+.sat .grid .box + .box {
+    margin-top: 0;
+}
+.sat .grid figure {
+    margin-bottom: 2em;
+}
+.sat .grid .label {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-bottom: 0;
+}
+.sat .grid .label:after {
+    content: "";
+    position: absolute;
+    top: -18.1em;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+.sat .grid input[disabled] ~ figure {
+    opacity: .3;
+    -webkit-filter: grayscale();
+            filter: grayscale();
+}
+.sat .grid input:checked ~ label {
+    box-shadow: none;
+}
+.sat .grid input:checked ~ .label:after {
+    border: 2px solid #569e9b;
+}
+.sat .grid ~ button[disabled] {
+    animation: none;
 }
 .sat .next {
         width: auto;
@@ -709,6 +750,9 @@ button[disabled]:not(:hover) {
     .logo {
         width: 3.3em;
         border-left: .3em solid #fff;
+    }
+    .sat .grid {
+        grid-template-columns: 100%;
     }
 }
 @media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */

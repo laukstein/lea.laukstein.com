@@ -257,39 +257,93 @@ ui.academy = {
                                     D: "בדרך כלל קונה פריטים ללא הדפס",
                                     E: "אוהבת חלק וגם אוהבת הדפס אתני"
                                 }
+                            }, {
+                                title: "באיזה סגנון את רואה את עצמך מתלבשת?",
+                                limit: "סמני תשובה אחת",
+                                showImage: true,
+                                condition: function (arr) {
+                                    "use strict";
+
+                                    var opt = {
+                                            C: ["C", "F"],
+                                            E: ["E", "G"],
+                                            CD: ["C", "D"]
+                                        },
+                                        final = ui.academy.data.session.style.pages.sat.final,
+                                        el = this.id && ui.d.getElementById(this.id),
+                                        res,
+                                        i;
+
+                                    arr = opt[JSON.stringify(arr).replace(/[[,\]"]/g, "")];
+                                    this.option = {};
+
+                                    if (Array.isArray(arr)) {
+                                        for (i = 0; i < arr.length; i += 1) {
+                                            this.option[arr[i]] = final[arr[i]];
+                                        }
+                                    }
+
+                                    res = !!Object.keys(this.option).length;
+
+                                    if (el && res && this.callback) {
+                                        el.innerHTML = this.callback.apply(null, this.params).replace(/^<li\b[^>]*>|<\/li>$/g, "");
+                                    }
+
+                                    return res;
+                                }
                             }
                         ],
                         success: {
                             title: "הסגנון שלך הוא {0}",
-                            link: "https://www.pinterest.com/lea0156/",
-                            value: "{0}סגנון-{1}/",
-                            result: "תמונות סגנון {0}",
-                            all: "תמונות לכל הסגנונות ב-{0}"
+                            button: "להוריד חוברת הסגנון"
                         },
                         final: {
-                            A: "יצירתי",
-                            B: "דרמטי",
-                            C: "רומנטי",
-                            D: "קלאסי",
-                            E: "טבעי"
+                            A: {
+                                title: "יצירתי",
+                                value: "1dl0GD7_hE4HgAwybk9wSbn_bke47V0cZ"
+                            },
+                            B: {
+                                title: "דרמטי",
+                                value: "1c4WdteW3cNCkpHWzHKmCPRtJsZvT_hKI"
+                            },
+                            C: {
+                                title: "רומנטי",
+                                value: "1MHFG3yneMT4H0FJOAVi_pqNlpjMQG7F7"
+                            },
+                            D: {
+                                title: "קלאסי",
+                                value: "1nWiD5zvvmDDsuaL_cMGvkBsWow0FuYPl"
+                            },
+                            E: {
+                                title: "טבעי",
+                                value: "1d8t_zlmBV8A6x8zVmdgG-YnQVm4JgoQd"
+                            },
+                            F: {
+                                title: "בוהומייני",
+                                value: "1uoqQj_hfra3Vp7ovrdQwVBgI2ga21HRR"
+                            },
+                            G: {
+                                title: "קז'ואל",
+                                value: "1Zxt08RVGwgyvCFBxt6v-U7pnuEWNx-g-"
+                            }
                         }
                     }
                 }
             },
             "magic-closet": {
                 title: "ארון הקסמים",
-                video: "dMe80qKYnX8"
+                video: "dMe80qKYnX8",
+                download: {
+                    title: "להוריד חוברת ארון הקסמים",
+                    value: "1Ee5Zh92agzw6qkRsKE40t4zpwiw-DQTg"
+                }
             },
             "modular-outfit": {
                 title: "יש לך מה ללבוש",
                 video: "_VYx-UC-VqU",
-                pages: {
-                    "check-list": {
-                        type: "document",
-                        title: "צ'ק ליסט למערכת לבוש יעילה",
-                        value: "1eSQaxVn2AKrwwrNafS0JnKTwjJzs50-7edCKn8kwkVs",
-                        download: "https://docs.google.com/document/d/{0}/export?format=pdf"
-                    }
+                download: {
+                    title: "להוריד חוברת מערכת פריטי בסיס",
+                    value: "1kTlj1ZOXh8YQQyJCRuwBoShIfGKkUpLp"
                 }
             },
             accessories: {
@@ -298,8 +352,12 @@ ui.academy = {
                 pages: {
                     "covers-shoes": {
                         type: "video",
-                        title: "מטפחות ונעליים",
-                        value: "JWTBhFri44w"
+                        title: "סרטון: מטפחות ונעליים",
+                        value: "JWTBhFri44w",
+                        download: {
+                            title: "להוריד חוברת אקססוריז",
+                            value: "1wPOeaV2Y1xKnOsoOR1VevgU-g0L95cGO"
+                        }
                     }
                 }
             },
@@ -309,8 +367,12 @@ ui.academy = {
                 pages: {
                     material: {
                         type: "video",
-                        title: "צבע, בד וגזרה בהלבשה תחתונה",
-                        value: "IpwM9HEeup4"
+                        title: "סרטון: צבע, בד וגזרה בהלבשה תחתונה",
+                        value: "IpwM9HEeup4",
+                        download: {
+                            title: "להוריד חוברת הלבשה תחתונה",
+                            value: "1E8QTzqkLoWk23ht-BUCHt77QRoYCOuhc"
+                        }
                     }
                 }
             },
@@ -350,15 +412,18 @@ ui.academy = {
         }
     },
     hash: {},
-    iconCheck: "<svg class=icon-check><use xlink:href=#check /></svg>",
-    iconClose: "<svg class=icon-close><use xlink:href=#close /></svg>",
-    getDownloadLink: function (id) {
+    getIcon: function (name) {
+        "use strict";
+
+        return "<svg class=icon-" + name + "><use xlink:href=#" + name + " /></svg>";
+    },
+    generateDownloadLink: function (id, title) {
         "use strict";
 
         /* Download PDF
         PDF file as is https://drive.google.com/uc?export=download&id={ id }
         From Slides https://docs.google.com/presentation/d/{ id }/export/pdf */
-        return "https://drive.google.com/uc?export=download&id=" + id;
+        return "<a class=button href=\"https://drive.google.com/uc?export=download&id=" + id + "\" rel=noopener target=_blank tabindex=0>" + this.getIcon("download") + title + "</a>";
     },
     formatDate: function (number) {
         "use strict";
@@ -633,7 +698,7 @@ ui.academy = {
 
                     for (page in pages) {
                         if (pages.hasOwnProperty(page)) {
-                            result += "    <li><a" + this.events(session, page) + ">" + pages[page].title.replace(/\n/g, " ") + "</a>";
+                            result += "    <li><a class=unselectable" + this.events(session, page) + ">" + pages[page].title.replace(/\n/g, " ") + "</a>";
                         }
                     }
 
@@ -716,7 +781,7 @@ ui.academy = {
                         "<li><input type=radio name=" + index + (id ? " id=" + id : "") + ">" +
                         "<label onclick=" + (data.final ?
                             "\"ui.academy.qa.dialog(event, " + index + ", '" + data.final + "')\"" :
-                            "ui.academy.qa.click(event) for=" + id) + ">" + ui.academy.iconCheck + data.title + "</label>";
+                            "ui.academy.qa.click(event) for=" + id) + ">" + self.getIcon("check") + data.title + "</label>";
                 }
                 if (Array.isArray(data.option)) {
                     index += 1;
@@ -797,11 +862,11 @@ ui.academy = {
                 result += "<div class=\"dialog" + (finalEl ? " final" : "") + "\">" +
                     "   <div class=table>" +
                     "   <div class=cel>" +
-                    (finalEl ? "" : "       <div class=close onclick=ui.academy.qa.reset(this) tabindex=0>" + ui.academy.iconClose +"</div>") +
+                    (finalEl ? "" : "       <div class=close onclick=ui.academy.qa.reset(this) tabindex=0>" + self.getIcon("close") + "</div>") +
                     "       <h1 class=nowrap>" + data.title + "</h1>" +
                     (finalEl ? "" : "       <p>שימי לב, אחרי הורדה לא ניתן לשנות קטגוריה</p>") +
-                    "       <div><a class=button" + (finalEl ? " href=\"" + self.getDownloadLink(data.value) + "\" rel=noopener target=_blank" :
-                        " onclick=\"ui.academy.qa.final(this, '" + type + "')\"") + " tabindex=0>" + (finalEl ? "להוריד סרגל צבעים" : "לקבל סרגל צבעים") + "</a></div>" +
+                    "       <div>" + (finalEl ? self.generateDownloadLink(data.value, "להוריד סרגל צבעים") :
+                        "<a class=button onclick=\"ui.academy.qa.final(this, '" + type + "')\" tabindex=0>לקבל סרגל צבעים</a>") + "</div>" +
                     "   </div>" +
                     "   </div>" +
                     "</div>";
@@ -998,7 +1063,7 @@ ui.academy = {
                 "   <div class=table>" +
                 "   <div class=cel>" +
                 "       <h1>" + obj.result.format(obj.final[this.session.task.calculator].title) + "</h1>" +
-                "       <div><a class=button href=\"" + this.getDownloadLink(obj.final[this.session.task.calculator].value) + "\" rel=noopener target=_blank tabindex=0>" + obj.download + "</a></div>" +
+                "       <div>" + this.generateDownloadLink(obj.final[this.session.task.calculator].value, obj.download) + "</div>" +
                 "   </div>" +
                 "   </div>" +
                 "</div>";
@@ -1039,48 +1104,77 @@ ui.academy = {
                 links,
                 form;
 
-            if (self.session.task && self.session.task.sat && self.session.task.sat.length) {
-                calculate = (function () {
-                    // http://www.jstips.co/en/javascript/flattening-multidimensional-arrays-in-javascript/
-                    var flattenArray = [].concat.apply([], self.session.task.sat),
-                        // http://stackoverflow.com/questions/840781/#24968449
-                        sumObject = flattenArray.map(function (name) {
+            calculate = function (arr) {
+                // http://www.jstips.co/en/javascript/flattening-multidimensional-arrays-in-javascript/
+                var flattenArray = [].concat.apply([], arr),
+                    // http://stackoverflow.com/questions/840781/#24968449
+                    sumObject = flattenArray.map(function (item) {
+                        if (typeof item === "object" && item.final) {
                             return {
-                                count: 1,
-                                name: name
+                                // Largest count, is the final result
+                                count: arr.length + 1,
+                                name: item.final
                             };
-                        }).reduce(function (a, b) {
-                            a[b.name] = (a[b.name] || 0) + b.count;
+                        }
 
-                            return a;
-                        }, {}),
-                        keys = Object.keys(sumObject),
-                        largest = Math.max.apply(null, keys.map(function (x) {
-                            return sumObject[x];
-                        })),
-                        res = keys.reduce(function (arr, key) {
-                            if (sumObject[key] === largest) {
-                                arr.push(key);
-                            }
+                        return {
+                            count: 1,
+                            name: item
+                        };
+                    }).reduce(function (a, b) {
+                        a[b.name] = (a[b.name] || 0) + b.count;
 
-                            return arr;
-                        }, []);
+                        return a;
+                    }, {}),
+                    keys = Object.keys(sumObject),
+                    largest = Math.max.apply(null, keys.map(function (x) {
+                        return sumObject[x];
+                    })),
+                    res = keys.reduce(function (val, key) {
+                        if (sumObject[key] === largest) {
+                            val.push(key);
+                        }
 
-                    return res.length > 2 ? ["A"] : res;
-                }());
+                        return val;
+                    }, []);
+
+                if (res.length > 2) {
+                    return ["A"];
+                } else if (res.length === 2) {
+                    // Compare Arrays https://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript#42186143
+                    switch (JSON.stringify(res).replace(/[[,\]]/g, "")) {
+                        case "AB":
+                        case "AC":
+                        case "AD":
+                        case "AE":
+                            return ["A"];
+                        case "BC":
+                        case "BD":
+                        case "BE":
+                            return ["B"];
+                        case "CE":
+                            return ["F"];
+                        case "DE":
+                            return ["G"];
+                    }
+                }
+
+                return res;
+            };
+
+            if (self.session.task && self.session.task.sat && self.session.task.sat.length) {
+                calculate = calculate(self.session.task.sat);
                 title = obj.success.title.format(calculate.map(function (x) {
-                    return obj.final[x];
+                    return obj.final[x].title;
                 }).join(" "));
                 links = calculate.map(function (x) {
-                    return "<a class=button href=\"" + obj.success.value.format(obj.success.link, obj.final[x]) + "\" rel=noopener target=_blank tabindex=0>" + obj.success.result.format(obj.final[x]) + "</a>";
+                    return self.generateDownloadLink(obj.final[x].value, obj.success.button);
                 }).join("");
-
                 result = "<div class=\"dialog final\">" +
                     "   <div class=table>" +
                     "   <div class=cel>" +
                     "       <h1>" + title + "</h1>" +
                     "       <div>" + links + "</div>" +
-                    "       <p>" + obj.success.all.format("<a href=\"" + obj.success.link + "\" rel=noopener target=_blank>Pinterest</a>") + "</p>" +
                     "   </div>" +
                     "   </div>" +
                     "</div>";
@@ -1113,72 +1207,110 @@ ui.academy = {
 
                     return null;
                 };
-                this.navigate = function (goNext) {
-                    var el = ui.d.getElementById("slide");
-
+                this.navigate = function (el) {
                     if (el) {
+                        var wrapper = ui.d.getElementById("slide"),
+                            goNext = el.hasAttribute("data-next"),
+                            schema = self.data.session.style.pages.sat.option;
+
                         if (goNext) {
-                            index += 1;
+                            if (index < schema.length - 1) {
+                                index += 1;
+                            }
                         } else {
+                            if (sum[index] && !Array.isArray(sum[index])) {
+                                sum.splice(index, 1);
+                            }
+
                             index -= 1;
                         }
 
-                        el.style[prefixer("transform")] = "translateX(" + (100 * index) + "%)";
+                        schema = schema[Math.abs(index)];
+
+                        if (schema && typeof schema.condition !== "function" || schema.condition(calculate(sum))) {
+                            if (wrapper) {
+                                wrapper.style[prefixer("transform")] = "translateX(" + (100 * index) + "%)";
+                            }
+                        } else {
+                            index -= 1;
+                            this.done(el);
+                        }
                     }
                 };
                 this.check = function (el) {
                     var handler = el.closest("[data-handler]"),
                         button = handler.querySelector("[data-next]"),
-                        uncheckedChecboxes = handler.querySelectorAll("input:not(:checked) ~ label"),
+                        maxCount = handler.getAttribute("data-max"),
                         data = ui.form.deserialize(handler),
                         keys = Object.keys(data),
                         count = keys.length,
+                        toggleAttribute,
                         i;
 
-                    sum[index] = keys;
+                    maxCount = maxCount ? Number(maxCount) - 1 : 1;
+                    toggleAttribute = function (arr) {
+                        for (i = 0; i < arr.length; i += 1) {
+                            if (count > maxCount) {
+                                arr[i].setAttribute("disabled", "");
+                            } else {
+                                arr[i].removeAttribute("disabled");
+                            }
+                        }
+                    };
 
+                    if (keys.length) {
+                        sum[index] = maxCount === 0 ? {final: keys[0]} : keys;
+                    } else if (sum[index] && !Array.isArray(sum[index])) {
+                        sum.splice(index, 1);
+                    }
                     if (count) {
                         button.removeAttribute("disabled");
                     } else {
                         button.setAttribute("disabled", "");
                     }
 
-                    for (i = 0; i < uncheckedChecboxes.length; i += 1) {
-                        if (count > 1) {
-                            uncheckedChecboxes[i].setAttribute("disabled", "");
-                        } else {
-                            uncheckedChecboxes[i].removeAttribute("disabled");
-                        }
-                    }
+                    toggleAttribute(ui.form.list("input:not(:checked)", handler));
+                    toggleAttribute(ui.form.list("input:not(:checked) ~ label", handler));
                 };
                 this.done = function (el) {
                     self.submit(el.closest("[data-handler]"), sum);
                 };
-                option = function (key, value) {
+                option = function (key, name, showImage) {
                     var id = self.uniqueID();
 
-                    return "<li>" +
+                    name = typeof name === "object" ? name.title : name;
+
+                    return "<li" + (showImage ? " class=box" : "") + ">" +
                         "    <input name=" + key + " id=" + id + " onclick=ui.academy.sat.check(this) type=checkbox>" +
-                        "    <label class=\"column label wrap\" for=" + id + ">" + ui.academy.iconCheck + value + "</label>" +
+                        (showImage ? "<figure><img class=absolute src=/assets/academy-style-" + key.toLowerCase() + ".jpg alt=\"" + name + "\"></figure>" : "") +
+                        "    <label class=\"column label wrap\" for=" + id + ">" + ui.academy.getIcon("check") + name + "</label>" +
                         "</li>";
                 };
                 group = function (data, n, len) {
-                    var arr = Object.keys(data.option),
+                    var arr = Object.keys(data.option || {}),
                         res = "",
+                        id = "",
                         i;
 
                     for (i = 0; i < arr.length; i += 1) {
-                        res += option(arr[i], data.option[arr[i]]);
+                        res += option(arr[i], data.option[arr[i]], data.showImage);
                     }
 
-                    return "<li class=qa data-handler>" +
+                    if (!data.hasOwnProperty("option")) {
+                        data.callback = group;
+                        data.params = arguments;
+                        data.id = self.uniqueID();
+                        id = " id=" + data.id + " data-max=1";
+                    }
+
+                    return "<li class=qa" + id + " data-handler>" +
                         "    <h4 class=wrap>" + n + ". " + data.title + "</h4>" +
-                        "    <small class=wrap><i>" + obj.limit + "</i></small>" +
-                        "    <ol>" + res + "</ol>" +
+                        "    <small class=wrap><i>" + (data.limit || obj.limit) + "</i></small>" +
+                        "    <ol" + (data.showImage ? " class=grid" : "") + ">" + res + "</ol>" +
                         (n === len ?
                             "    <button class=next onclick=ui.academy.sat.done(this) data-next disabled>" + obj.button + "</button>" :
-                            "    <button class=next onclick=ui.academy.sat.navigate(true) data-next disabled>" + obj.next + "</button>") +
-                        (n > 1 ? "    <span class=back onclick=ui.academy.sat.navigate() data-back>" + obj.back + "</span>" : "") +
+                            "    <button class=next onclick=ui.academy.sat.navigate(this) data-next disabled>" + obj.next + "</button>") +
+                        (n > 1 ? "    <span class=\"back unselectable\" onclick=ui.academy.sat.navigate(this) data-back>" + obj.back + "</span>" : "") +
                         "</li>";
                 };
                 form = function (data) {
@@ -1203,18 +1335,22 @@ ui.academy = {
                 "</div>";
         }
     },
-    videoTemplate: function (id, title, pages) {
+    videoTemplate: function (obj) {
         "use strict";
 
-        var buttons = "",
+        var id = obj.value || obj.video,
+            buttons = "",
             prop;
 
-        if (pages) {
-            for (prop in pages) {
-                if (pages.hasOwnProperty(prop)) {
-                    buttons += "<a class=button href=\"#session=" + ui.hash("session") + "&page=" + prop + "\">" + pages[prop].title + "</a>";
+        if (obj.pages) {
+            for (prop in obj.pages) {
+                if (obj.pages.hasOwnProperty(prop)) {
+                    buttons += "<a class=button href=\"#session=" + ui.hash("session") + "&page=" + prop + "\" tabindex=0>" + obj.pages[prop].title + "</a>";
                 }
             }
+        }
+        if (obj.download) {
+            buttons += this.generateDownloadLink(obj.download.value, obj.download.title);
         }
 
         return "<div class=video>" +
@@ -1222,7 +1358,7 @@ ui.academy = {
                 "<iframe src=\"https://www.youtube.com/embed/" + id + "?showinfo=0\" allowfullscreen></iframe>" :
                 ui.video.template(id)) +
             "</div>" +
-            "<div class=space><h1>" + title + "</h1>" + buttons + "</div>";
+            "<div class=space><h1>" + obj.title + "</h1>" + buttons + "</div>";
     },
     pageSession: function () {
         "use strict";
@@ -1246,7 +1382,7 @@ ui.academy = {
                 if (obj) {
                     if (!hash.session || hash.session && !hash.page) {
                         if (obj.video) {
-                            result += this.videoTemplate(obj.video, obj.title, obj.pages);
+                            result += this.videoTemplate(obj);
                         }
                         if (typeof obj.generateHTML === "function") {
                             result += obj.generateHTML();
@@ -1267,22 +1403,29 @@ ui.academy = {
                         if (obj && obj.type) {
                             switch (obj.type) {
                                 case "video":
-                                    result += this.videoTemplate(obj.value, obj.title);
+                                    result += this.videoTemplate(obj);
                                     break;
-                                case "document":
-                                    // width="640" height="480"
-                                    // http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
-                                    result += "<div class=video>" +
-                                        "    <iframe src=\"https://drive.google.com/file/d/" +
-                                            obj.value + "/preview\" allowfullscreen></iframe>" +
-                                        "</div>" +
-                                        "<div class=space>" +
-                                        "    <h1>" + obj.title + "</h1>" +
-                                        "    <a class=button href=\"" + (obj.download ? obj.download.format(obj.value) :
-                                            this.getDownloadLink(obj.value)) +
-                                            "\" rel=noopener target=_blank tabindex=0><b>להוריד " + obj.title + "</a>" +
-                                        "</div>";
-                                    break;
+                                // case "document":
+                                //     // Usage example
+                                //     //     "check-list": {
+                                //     //         type: "document",
+                                //     //         title: "צ'ק ליסט למערכת לבוש יעילה",
+                                //     //         value: "1eSQaxVn2AKrwwrNafS0JnKTwjJzs50-7edCKn8kwkVs",
+                                //     //         download: "https://docs.google.com/document/d/{0}/export?format=pdf"
+                                //     //     }
+                                //     // width="640" height="480"
+                                //     // http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
+                                //     result += "<div class=video>" +
+                                //         "    <iframe src=\"https://drive.google.com/file/d/" +
+                                //             obj.value + "/preview\" allowfullscreen></iframe>" +
+                                //         "</div>" +
+                                //         "<div class=space>" +
+                                //         "    <h1>" + obj.title + "</h1>" +
+                                //         "    <a class=button href=\"" + (obj.download ? obj.download.format(obj.value) :
+                                //             this.getDownloadLink(obj.value)) +
+                                //             "\" rel=noopener target=_blank tabindex=0><b>להוריד " + obj.title + "</a>" +
+                                //         "</div>";
+                                //     break;
                                 case "calculator":
                                 case "sat":
                                 case "qa":
