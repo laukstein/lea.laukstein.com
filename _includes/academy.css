@@ -585,6 +585,9 @@ svg {
 }
 .sat .grid figure {
     margin-bottom: 2em;
+    transition-property: opacity, filter;
+    transition-duration: .25s;
+    transition-timing-function: cubic-bezier(.2,1,.4,1);
 }
 .sat .grid .label {
     position: absolute;
@@ -610,9 +613,6 @@ svg {
 }
 .sat .grid input:checked ~ .label:after {
     border: 2px solid #569e9b;
-}
-.sat .grid ~ button[disabled] {
-    animation: none;
 }
 .sat .next {
         width: auto;
