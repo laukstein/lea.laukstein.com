@@ -602,8 +602,8 @@ svg {
 }
 .sat .grid input[disabled] ~ figure {
     opacity: .3;
-    -webkit-filter: grayscale();
-            filter: grayscale();
+    -webkit-filter: grayscale(1);
+            filter: grayscale(1);
 }
 .sat .grid input:checked ~ label {
     box-shadow: none;

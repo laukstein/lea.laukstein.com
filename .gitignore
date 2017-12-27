@@ -1,6 +1,8 @@
+Gemfile.lock
+vendor
 _site
+.bundle
 .sass-cache
 .jekyll-metadata
 *.bat
 ~*
-Gemfile.lock
