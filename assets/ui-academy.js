@@ -1515,20 +1515,25 @@ ui.academy = {
     reportError: function (type, data) {
         "use strict";
 
-        var self = this;
-
         delete localStorage.session;
         alert("טעות במערכת, נסי שוב מאוחר יותר");
 
-        fetch(self.fetch + "/error", {
-            method: "POST",
-            redirect: "error",
-            body: JSON.stringify({
-                schema: type,
-                email: self.session.email,
-                log: JSON.stringify(data, null, 2)
-            })
-        }).then(self.refresh).catch(self.refresh);
+        if (ui.environment === "prod") {
+            var self = this;
+
+            fetch(self.fetch + "/error", {
+                method: "POST",
+                redirect: "error",
+                body: JSON.stringify({
+                    schema: type,
+                    email: self.session.email,
+                    log: JSON.stringify(data, null, 2)
+                })
+            }).then(self.refresh).catch(self.refresh);
+        } else {
+            console.error(type, data);
+            this.refresh();
+        }
     },
     updateSession: function (data) {
         "use strict";
