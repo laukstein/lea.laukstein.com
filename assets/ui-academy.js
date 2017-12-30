@@ -924,7 +924,7 @@ ui.academy = {
             }).then(function (response) {
                 return response.json();
             }).then(function (json) {
-                return !json.error && json;
+                return json.error ? Promise.reject(json) : json;
             }).then(function (json) {
                 ui.academy.session = json;
                 localStorage.session = JSON.stringify(json);
@@ -1031,7 +1031,7 @@ ui.academy = {
                 }).then(function (response) {
                     return response.json();
                 }).then(function (json) {
-                    return !json.error && json;
+                    return json.error ? Promise.reject(json) : json;
                 }).then(function (json) {
                     ui.academy.session = json;
                     localStorage.session = JSON.stringify(json);
