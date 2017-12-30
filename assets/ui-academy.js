@@ -940,6 +940,7 @@ ui.academy = {
         var e = o instanceof Event && o,
             el = o && o.target || o,
             self = this,
+            type,
             data,
             page;
 
