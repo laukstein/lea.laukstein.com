@@ -3,7 +3,6 @@ no-alert: 0 */
 
 ui.academy = {
     data: {
-        startDate: 1513461600000, /* 2017/12/17 */
         interval: 7,
         init: {
             title: "ברוכה הבאה לקורס סטייל שבא מבפנים",
@@ -405,7 +404,7 @@ ui.academy = {
                     }
 
                     return "<div class=\"form bonuses\">" +
-                        "    <h1><a href=/shopping target=_blank>סיבוב קניות - הנחה 50% בתוקף עד " + addMonths(ui.academy.data.startDate || ui.academy.data.date, 5) + "</a></h1>" +
+                        "    <h1><a href=/shopping target=_blank>סיבוב קניות - הנחה 50% בתוקף עד " + addMonths(ui.academy.data.startDate, 5) + "</a></h1>" +
                         "</div>";
                 }
             }
@@ -541,14 +540,13 @@ ui.academy = {
             })
         }).then(function (response) {
             return response.json();
-        }).then(function (data) {
-            localStorage.session = JSON.stringify(data);
-
-            ui.setUser(data);
+        }).then(function (json) {
+            self.updateSession(json);
+            ui.setUser(json);
             ui.form.accessibility(true, null, true);
 
-            if (data.email && data.token) {
-                ui.academy.refresh();
+            if (json.email && json.token) {
+                self.refresh();
             } else if (self.button) {
                 self.button.classList.add("error");
                 self.button.innerHTML = "הפרטים שגויים, נסי שוב";
@@ -614,8 +612,7 @@ ui.academy = {
             delete this.firstSession;
         }
 
-        this.currentTime = !options.interval && this.currentTime ||
-            new Date(Math.max(this.data.startDate || 0, this.data.date));
+        this.currentTime = !options.interval && this.currentTime || new Date(this.data.startDate);
         var date = new Date(this.currentTime.setDate(this.currentTime.getDate() +
                 (options.interval ? options.interval * this.data.interval :
                     (this.firstSession ? 0 : this.data.interval))) +
@@ -646,8 +643,7 @@ ui.academy = {
     isLogged: function () {
         "use strict";
 
-        // IMPORTANT
-        this.data.date = this.session.created * 1000;
+        this.data.startDate = +new Date((this.session.startDate || this.session.created) * 1000).setHours(0, 0, 0, 0);
 
         ui.d.documentElement.classList.remove("stretch");
         ui.d.documentElement.classList.add("logedin");
@@ -746,11 +742,6 @@ ui.academy = {
             " style=\"background-image:url(" + url + ")\"><h3 class=nowrap dir=auto>" +
             obj.title.replace(/\n/g, " ") + "</h3></a>" : "";
     }, */
-    report: function (/* type, data */) {
-        "use strict";
-
-        // TBD: report error
-    },
     uniqueID: function () {
         "use strict";
 
@@ -904,9 +895,10 @@ ui.academy = {
             }
         };
         this.qa.final = function (el, value) {
-            var data = {
-                    email: ui.academy.session.email,
-                    token: ui.academy.session.token,
+            var type = "update",
+                data = {
+                    email: self.session.email,
+                    token: self.session.token,
                     data: {qa: value}
                 },
                 close = ui.d.querySelector(".qa .close");
@@ -917,7 +909,7 @@ ui.academy = {
 
             ui.form.accessibility(false, ui.d.querySelector(".qa"), true);
 
-            fetch(ui.academy.fetch + "/update", {
+            fetch(ui.academy.fetch + "/" + type, {
                 method: "POST",
                 redirect: "error",
                 body: JSON.stringify(data)
@@ -926,23 +918,14 @@ ui.academy = {
             }).then(function (json) {
                 return json.error ? Promise.reject(json) : json;
             }).then(function (json) {
-                ui.academy.session = json;
-                localStorage.session = JSON.stringify(json);
-
-                ui.academy.refresh();
+                self.updateSession(json);
+                self.refresh();
             }).catch(function () {
-                ui.academy.session.reportDate = new Date;
-                ui.academy.session.reportData = data;
-
                 if (el) {
                     el.remove();
                 }
 
-                delete localStorage.session;
-
-                alert("טעות במערכת, נסי שוב מאוחר יותר");
-                ui.academy.report("update", ui.academy.session);
-                ui.academy.refresh();
+                self.reportError(type, data);
             });
         };
 
@@ -966,8 +949,8 @@ ui.academy = {
         if (ui.form.valid(ui.form.list("[data-required]", el))) {
             page = ui.hash("page");
             data = {
-                email: ui.academy.session.email,
-                token: ui.academy.session.token,
+                email: self.session.email,
+                token: self.session.token,
                 data: {}
             };
 
@@ -1024,7 +1007,9 @@ ui.academy = {
             }
 
             if (data.data[page]) {
-                fetch(ui.academy.fetch + "/update", {
+                type = "update";
+
+                fetch(ui.academy.fetch + "/" + type, {
                     method: "POST",
                     redirect: "error",
                     body: JSON.stringify(data)
@@ -1033,19 +1018,10 @@ ui.academy = {
                 }).then(function (json) {
                     return json.error ? Promise.reject(json) : json;
                 }).then(function (json) {
-                    ui.academy.session = json;
-                    localStorage.session = JSON.stringify(json);
-
-                    ui.academy.refresh();
+                    self.updateSession(json);
+                    self.refresh();
                 }).catch(function () {
-                    ui.academy.session.reportDate = new Date;
-                    ui.academy.session.reportData = data;
-
-                    delete localStorage.session;
-
-                    alert("טעות במערכת, נסי שוב מאוחר יותר");
-                    ui.academy.report("update", ui.academy.session);
-                    ui.academy.refresh();
+                    self.reportError(type, data);
                 });
             }
         }
@@ -1535,6 +1511,69 @@ ui.academy = {
 
         this.pageSession();
     },
+    reportError: function (type, data) {
+        "use strict";
+
+        var self = this;
+
+        delete localStorage.session;
+        alert("טעות במערכת, נסי שוב מאוחר יותר");
+
+        fetch(self.fetch + "/error", {
+            method: "POST",
+            redirect: "error",
+            body: JSON.stringify({
+                schema: type,
+                email: self.session.email,
+                log: JSON.stringify(data, null, 2)
+            })
+        }).then(self.refresh).catch(self.refresh);
+    },
+    updateSession: function (data) {
+        "use strict";
+
+        if (typeof data === "object") {
+            this.session = data;
+            localStorage.session = JSON.stringify(data);
+            sessionStorage.validSessionTime = +new Date;
+        }
+    },
+    vertifySession: function (callback, force) {
+        "use strict";
+
+        if (!force && this.session.startDate &&
+            sessionStorage.validSessionTime &&
+            +new Date() - Number(sessionStorage.validSessionTime) < 86400000) {
+            if (typeof callback === "function") {
+                callback();
+            }
+        } else {
+            var self = this,
+                type = "vertify",
+                data = {
+                    email: self.session.email,
+                    token: self.session.token
+                };
+
+            fetch(self.fetch + "/" + type, {
+                method: "POST",
+                redirect: "error",
+                body: JSON.stringify(data)
+            }).then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                return json.error ? Promise.reject(json) : json;
+            }).then(function (json) {
+                self.updateSession(json);
+
+                if (typeof callback === "function") {
+                    callback();
+                }
+            }).catch(function () {
+                self.reportError(type, data);
+            });
+        }
+    },
     init: function () {
         "use strict";
 
@@ -1543,27 +1582,27 @@ ui.academy = {
         ui.legacy(function () {
             var loading = ui.d.getElementById("loading");
 
-            self.valid = !!self.session.email && !!self.session.token;
+            ui.form.el = ui.d.getElementById("form");
+            self.bar = ui.d.getElementById("bar");
+            self.button = ui.d.getElementById("button");
             self.content = ui.d.getElementById("content");
             self.details = ui.d.getElementById("details");
-            self.bar = ui.d.getElementById("bar");
+            self.email = ui.d.getElementById("email");
+            self.link = ui.d.getElementById("link");
+            self.pass = ui.d.getElementById("pass");
+            self.valid = !!self.session.email && !!self.session.token;
+
+            self.content.removeAttribute("hidden");
+            self.details.removeAttribute("hidden");
 
             if (loading) {
                 loading.remove();
             }
-
-            self.content.removeAttribute("hidden");
-
             if (self.valid) {
-                self.isLogged();
-                ui.identify.all();
-            } else {
-                ui.form.el = ui.d.getElementById("form");
-                self.button = ui.d.getElementById("button");
-                self.email = ui.d.getElementById("email");
-                self.pass = ui.d.getElementById("pass");
-                self.link = ui.d.getElementById("link");
-                self.details.removeAttribute("hidden");
+                self.vertifySession(function () {
+                    self.isLogged();
+                    ui.identify.all();
+                });
             }
 
             ui.w.onhashchange = ui.w.onhashchange || function () {
