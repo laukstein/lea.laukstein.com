@@ -110,10 +110,19 @@ button.spin.spin.spin:before {
     margin-top: 5em;
 }
 .subscribe dd {
-        width: 18em;
+        width: 20em;
     max-width: 100%;
     margin: 0;
     text-align: right;
+}
+.subscribe .session-error {
+    padding: .66em .75em;
+    margin: -1em 0 .4em;
+    color: #333;
+    line-height: 1.2;
+    text-shadow: none;
+    background-color: #fff;
+    box-sizing: border-box;
 }
 .subscribe label,
 .subscribe a {

@@ -1512,28 +1512,39 @@ ui.academy = {
 
         this.pageSession();
     },
+    sessionError: function () {
+        "use strict";
+
+        if (sessionStorage.sessionError) {
+            var el = ui.d.getElementById("session-error");
+
+            if (el) {
+                el.hidden = false;
+                el.innerHTML = sessionStorage.sessionError;
+                delete sessionStorage.sessionError;
+            }
+        }
+    },
     reportError: function (type, data) {
         "use strict";
 
-        delete localStorage.session;
-        alert("טעות במערכת, נסי שוב מאוחר יותר");
-
         if (ui.environment === "prod") {
-            var self = this;
-
-            fetch(self.fetch + "/error", {
-                method: "POST",
-                redirect: "error",
-                body: JSON.stringify({
+            if ("sendBeacon" in navigator) {
+                navigator.sendBeacon(this.fetch + "/error", JSON.stringify({
                     schema: type,
-                    email: self.session.email,
+                    email: this.session.email,
                     log: JSON.stringify(data, null, 2)
-                })
-            }).then(self.refresh).catch(self.refresh);
+                }));
+            }
         } else {
             console.error(type, data);
-            this.refresh();
         }
+
+        // Your session has expired, please login again
+        sessionStorage.sessionError = "זהינו שלא פעלת בחשבונך בדקות האחורנות. אנה התחברי שוב.";
+
+        delete localStorage.session;
+        this.refresh();
     },
     updateSession: function (data) {
         "use strict";
@@ -1610,6 +1621,8 @@ ui.academy = {
                     ui.identify.all();
                 });
             }
+
+            self.sessionError();
 
             ui.w.onhashchange = ui.w.onhashchange || function () {
                 self.toggleNav();
