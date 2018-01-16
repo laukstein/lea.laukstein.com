@@ -111,7 +111,7 @@ ui.academy = {
                         button: "הצג תוצאה",
                         notice: "שימי לב, חישוב ניתן רק לפעם אחת",
                         result: "את בעלת מבנה גוף {0}",
-                        download: "להוריד מדריך הגיזרות",
+                        download: "להורדת מדריך הגיזרות",
                         error: "שגיאה בחישוב, {0}נא לפנות ללאה{1}",
                         option: {
                             A: "היקף הכתפיים",
@@ -209,7 +209,7 @@ ui.academy = {
                                     B: "פריטים מיוחדים וגרנדיוזיים המושכים תשומת הלב",
                                     C: "שמלות נשיות וקלילות ומקושטות ועשויים מבדים קלילים",
                                     D: "חליפה אלגנטית ומחויטת או שמלה קלאסית וסולידית בשילוב תכשיטים אופנתיים",
-                                    E: "חצאית אלגנטית ערוכה ונוחה או מכנסיים בשילוב עם חולצה נוחה וחגיגית או טוניקה"
+                                    E: "חצאית אלגנטית ארוכה ונוחה או מכנסיים בשילוב עם חולצה נוחה וחגיגית או טוניקה"
                                 }
                             }, {
                                 title: "כיצד תתארי את הנעליים שלך?",
@@ -244,7 +244,7 @@ ui.academy = {
                                     A: "משתנה בהתאם למצב הרוח שלי",
                                     B: "משתנה בקביעות, משתנה בצבעוניות",
                                     C: "אוהבת להוציא שיער בצדדים. שיער ארוך",
-                                    D: "מעודן ומשתלב עם הלבוש שלך",
+                                    D: "מעודן ומשתלב עם הלבוש שלי",
                                     E: "דורש תחזוקה מינימלית"
                                 }
                             }, {
@@ -294,7 +294,7 @@ ui.academy = {
                         ],
                         success: {
                             title: "הסגנון שלך הוא {0}",
-                            button: "להוריד חוברת הסגנון"
+                            button: "להורדת חוברת הסגנון"
                         },
                         final: {
                             A: {
@@ -333,7 +333,7 @@ ui.academy = {
                 title: "ארון הקסמים",
                 video: "dMe80qKYnX8",
                 download: {
-                    title: "להוריד חוברת ארון הקסמים",
+                    title: "להורדת חוברת ארון הקסמים",
                     value: "1Ee5Zh92agzw6qkRsKE40t4zpwiw-DQTg"
                 }
             },
@@ -341,7 +341,7 @@ ui.academy = {
                 title: "יש לך מה ללבוש",
                 video: "_VYx-UC-VqU",
                 download: {
-                    title: "להוריד חוברת מערכת פריטי בסיס",
+                    title: "להורדת חוברת מערכת פריטי הבסיס",
                     value: "1kTlj1ZOXh8YQQyJCRuwBoShIfGKkUpLp"
                 }
             },
@@ -354,7 +354,7 @@ ui.academy = {
                         title: "סרטון: מטפחות ונעליים",
                         value: "JWTBhFri44w",
                         download: {
-                            title: "להוריד חוברת אקססוריז",
+                            title: "להורדת חוברת האקססוריז",
                             value: "1wPOeaV2Y1xKnOsoOR1VevgU-g0L95cGO"
                         }
                     }
@@ -369,7 +369,7 @@ ui.academy = {
                         title: "סרטון: צבע, בד וגזרה בהלבשה תחתונה",
                         value: "IpwM9HEeup4",
                         download: {
-                            title: "להוריד חוברת הלבשה תחתונה",
+                            title: "להורדת חוברת הלבשה התחתונה",
                             value: "1E8QTzqkLoWk23ht-BUCHt77QRoYCOuhc"
                         }
                     }
@@ -856,7 +856,7 @@ ui.academy = {
                     (finalEl ? "" : "       <div class=close onclick=ui.academy.qa.reset(this) tabindex=0>" + self.getIcon("close") + "</div>") +
                     "       <h1 class=nowrap>" + data.title + "</h1>" +
                     (finalEl ? "" : "       <p>שימי לב, אחרי הורדה לא ניתן לשנות קטגוריה</p>") +
-                    "       <div>" + (finalEl ? self.generateDownloadLink(data.value, "להוריד סרגל צבעים") :
+                    "       <div>" + (finalEl ? self.generateDownloadLink(data.value, "להורדת סרגל הצבעים") :
                         "<a class=button onclick=\"ui.academy.qa.final(this, '" + type + "')\" tabindex=0>לקבל סרגל צבעים</a>") + "</div>" +
                     "   </div>" +
                     "   </div>" +
@@ -1400,7 +1400,7 @@ ui.academy = {
                                 //         "    <h1>" + obj.title + "</h1>" +
                                 //         "    <a class=button href=\"" + (obj.download ? obj.download.format(obj.value) :
                                 //             this.getDownloadLink(obj.value)) +
-                                //             "\" rel=noopener target=_blank tabindex=0><b>להוריד " + obj.title + "</a>" +
+                                //             "\" rel=noopener target=_blank tabindex=0><b>להורדת " + obj.title + "</a>" +
                                 //         "</div>";
                                 //     break;
                                 case "calculator":
