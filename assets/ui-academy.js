@@ -552,7 +552,12 @@ ui.academy = {
                 self.button.innerHTML = "הפרטים שגויים, נסי שוב";
             }
         }).catch(function () {
-            alert("טעות במערכת, נסי שוב מאוחר יותר");
+            ui.form.accessibility(true, null, true);
+
+            if (self.button) {
+                self.button.classList.add("error");
+                self.button.innerHTML = "טעות במערכת, נסי שוב מאוחר יותר";
+            }
         });
     },
     forgot: function () {
@@ -592,7 +597,12 @@ ui.academy = {
                 self.button.innerHTML = "מייל לא רשום, נסי שוב";
             }
         }).catch(function () {
-            alert("טעות במערכת, נסי שוב מאוחר יותר");
+            ui.form.accessibility(true, null, true);
+
+            if (self.button) {
+                self.button.classList.add("error");
+                self.button.innerHTML = "טעות במערכת, נסי שוב מאוחר יותר";
+            }
         });
     },
     logout: function () {
