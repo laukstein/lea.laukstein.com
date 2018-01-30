@@ -1299,6 +1299,7 @@ iframe {
     }
     .subnav.subnav,
     .subnav-container.subnav-container {
+        text-align: right; /* Edge 16 compatibility */
         background-color: initial;
         box-shadow: none;
     }
