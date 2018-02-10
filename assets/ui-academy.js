@@ -467,7 +467,7 @@ ui.academy = {
             });
         });
     }()),
-    fetch: (function () {
+    endpoint: (function () {
         "use strict";
 
         var parts = location.host.split(".");
@@ -530,7 +530,7 @@ ui.academy = {
 
         var self = this;
 
-        fetch(self.fetch + "/login", {
+        fetch(self.endpoint + "/login", {
             method: "POST",
             // Prevent insecure redirects https://developer.mozilla.org/en-US/docs/Web/API/Response/redirected
             redirect: "error",
@@ -579,7 +579,7 @@ ui.academy = {
 
         var self = this;
 
-        fetch(self.fetch + "/forgot", {
+        fetch(self.endpoint + "/forgot", {
             method: "POST",
             redirect: "error",
             body: JSON.stringify({
@@ -919,7 +919,7 @@ ui.academy = {
 
             ui.form.accessibility(false, ui.d.querySelector(".qa"), true);
 
-            fetch(ui.academy.fetch + "/" + type, {
+            fetch(self.endpoint + "/" + type, {
                 method: "POST",
                 redirect: "error",
                 body: JSON.stringify(data)
@@ -1020,7 +1020,7 @@ ui.academy = {
             if (data.data[page]) {
                 type = "update";
 
-                fetch(ui.academy.fetch + "/" + type, {
+                fetch(self.endpoint + "/" + type, {
                     method: "POST",
                     redirect: "error",
                     body: JSON.stringify(data)
@@ -1540,7 +1540,7 @@ ui.academy = {
 
         if (ui.environment === "prod") {
             if ("sendBeacon" in navigator) {
-                navigator.sendBeacon(this.fetch + "/error", JSON.stringify({
+                navigator.sendBeacon(this.endpoint + "/error", JSON.stringify({
                     schema: type,
                     email: this.session.email,
                     log: JSON.stringify(data, null, 2)
@@ -1582,7 +1582,7 @@ ui.academy = {
                     token: self.session.token
                 };
 
-            fetch(self.fetch + "/" + type, {
+            fetch(self.endpoint + "/" + type, {
                 method: "POST",
                 redirect: "error",
                 body: JSON.stringify(data)

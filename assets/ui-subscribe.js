@@ -1,6 +1,6 @@
 ui.subscribe = {
     key: "2d8c12be3a09dc2eb907c9be7",
-    url: "https://laukstein.us13.list-manage.com/subscribe/post-json",
+    endpoint: "https://laukstein.us13.list-manage.com/subscribe/post-json",
     success: function (data) {
         "use strict";
 
@@ -65,7 +65,7 @@ ui.subscribe = {
 
                 if (this.name) {
                     this.active = true;
-                    this.el.action = this.url + "?u=" + this.key + "&id=" + this.name;
+                    this.el.action = this.endpoint + "?u=" + this.key + "&id=" + this.name;
                     this.el.addEventListener("submit", this.send);
                     this.required = ui.form.list("[data-required]");
                     var tel = ui.d.getElementById("tel");

@@ -1,6 +1,6 @@
 ui.contact = {
     key: "8a321b1a-8fa6-470f-91ab-fcbe92ffbfbf",
-    url: ui.form.server + "/contact",
+    endpoint: ui.form.endpoint + "/contact",
     success: function () {
         "use strict";
 
@@ -125,7 +125,7 @@ ui.contact = {
                 this.tel = ui.d.getElementById("tel");
                 this.message = ui.d.getElementById("message");
                 this.status = ui.d.getElementById("status");
-                this.el.action = this.url;
+                this.el.action = this.endpoint;
                 this.required = ui.form.list("[data-required]");
 
                 this.option();
