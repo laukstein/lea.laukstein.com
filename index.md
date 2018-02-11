@@ -2,7 +2,7 @@
 layout: default
 redirect_from: /recommendations
 description: סטיילינג לדתיות - זה לא רק הבגד - זה החיבור שלך לעצמך
-video: fkS2Go4_H7E
+video: lFkh-kMy-6Y
 pageName: landing
 subscribe: 70a2d0d976
 subscribe-success: המדריך כבר בדרך אליך

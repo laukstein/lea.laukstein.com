@@ -108,20 +108,10 @@ ui.videoLegacy = {
         "720p": "5sbir2224v3jhqn",
         image: "d4zyb7d6sdzbhyj"
     },
-    ENSbaRhEjyI: {
-        "360p": "ktx698l8taagzf5",
-        "720p": "anp8thdki76bcra",
-        image: "anny07f90ou6pqq"
-    },
     Eq2SiUFocK0: {
         "360p": "iw1e0y5ah9mfl1d",
         "720p": "cbzqzzbf24nwxmv",
         image: "ycvsh4idkh7q6x0"
-    },
-    fkS2Go4_H7E: {
-        "360p": "0m0xun2teyyhs09",
-        "720p": "qvtc22q0m9cttc6",
-        image: "kjo2vb4x5y69xo5"
     },
     fnSgeDrfOVo: {
         "360p": "up3jlcn572yxcqv",
@@ -190,6 +180,11 @@ ui.videoLegacy = {
         "360p": "p0s72pt5g4erpjt",
         "720p": "62yfmgmx9sno58x",
         image: "w1r9k1jo1bhtzgp"
+    },
+    "lFkh-kMy-6Y": {
+        "360p": "lzu9ujvp3v1t1pg",
+        "720p": "luvsvbnj7tbmwhg",
+        image: "l7871vzjr93td6d"
     },
     ljyiHCxHGfY: {
         "360p": "yeh55y5dmugd0kr",
@@ -281,6 +276,11 @@ ui.videoLegacy = {
         "360p": "ggle91bbibp5jvv",
         "720p": "eljxprss2liad5g",
         image: "07pcgarcpr07ivz"
+    },
+    XINXKzngHPU: {
+        "360p": "8hfdsuo3ptgzyr5",
+        "720p": "y421yik10qwsy6m",
+        image: "x7rzkh9b405ksh8"
     },
     xVhYdW1WXqk: {
         "360p": "fq24unzgwitvvqv",
