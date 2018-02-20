@@ -5,6 +5,7 @@ permalink: /:category/:title
 assets: /assets/
 timezone: UTC
 safe: true
+theme: false
 include: [_pages]
 markdown: kramdown
 kramdown:
