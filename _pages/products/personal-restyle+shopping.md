@@ -3,15 +3,16 @@ layout: product
 group: personal
 order: 4
 
-title: ארון + קניות
-permalink: /closet+shopping
-image: product-closet+shopping.jpg
+title: ריסטייל + קניות
+permalink: /restyle+shopping
+redirect_from: /closet+shopping
+image: product-restyle+shopping.jpg
 imageClass: contain
 imageWidth: 416
 imageHeight: 486
 duration: שני מפגשים, כל מפגש 3 שעות
-price: 1210
-discount: במקום 1500 ש"ח
+price: 960
+discount: במקום 1480 ש"ח
 location: בית שלך ומרכז קניות בגדים
 fit: נשים שהן מרוצות מארון הבגדים שלהן, אך מרגישות שחסרים סדר ופריטים משלימים
 details: מילוי שאלון, מיון ארון, ליווי בקניות, קבצים להורדה, המשך התיעצות בואטסאפ
@@ -21,7 +22,7 @@ goals: |
     * לתמוך בך לאורך הדרך
     * להתנסות ולתעד שילובים חדשים מהבגדים הקיימים והחדשים
     * להכיר חנויות אפשריות חדשות
-    * לעזור לזהות זגרות מתאימות בקלות בשלל הבגדים
+    * לעזור לזהות גזרות מתאימות בקלות בשלל הבגדים
     * ליצור רשימה לפרטי הלבוש למערכת מושלמת
 takeWith: |
     * אבחון מלא לסגנון, צבעים ומבנה גוף
