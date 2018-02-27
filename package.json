@@ -148,5 +148,7 @@
             "yoda": "error"
         }
     },
-    "eslintIgnore": ["**/*.min.js"]
+    "eslintIgnore": ["**/*.min.js"],
+    "author": "Binyamin Laukstein",
+    "license": "CC BY-NC-ND 4.0"
 }
