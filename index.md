@@ -63,14 +63,15 @@ css: |
                 grid-template-areas: "sidebar content" "sidebar headlines";
             }
             .landing .content {
-                display: -webkit-box;
                 grid-area: content;
                 grid-column: 1;
             }
             .landing form.subscribe {
                 grid-area: sidebar;
                 grid-column: 2;
-                margin: 2.3em 0;
+                width: 23.2em;
+                padding-top: 6vh;
+                margin: 2.3em auto 0;
             }
         }
     }

@@ -1,0 +1,16 @@
+---
+layout: default
+customLayout: true
+type: medium
+private: true
+className: no-padding
+comment: true
+---
+
+<article class="box card" dir=ltr>{%
+    if page.video %}{% include youtube.html id = page.video %}{% endif %}
+    <div class=content dir=rtl>
+        {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+        {{ content }}
+    </div>
+</article>

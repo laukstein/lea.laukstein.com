@@ -500,13 +500,13 @@ main .table.center {
 h1,
 h2 {
     margin-top: .2em;
-    margin-bottom: .2em;
+    margin-bottom: .4em;
     color: #f58e84;
-    line-height: 1.07;
+    line-height: 1;
 }
 h1:first-line,
 h2:first-line {
-    font-size: 150%;
+    font-size: 134%;
 }
 .wrapline,
 .box .item figure.flow + p {
@@ -523,7 +523,7 @@ h2:first-line {
     float: left;
 }
 h1 {
-    font-size: 1.9em;
+    font-size: 1.7em;
 }
 h2 {
     font-size: 1.24em;
@@ -554,7 +554,6 @@ form.subscribe {
 }
 
 .subscribe h1 {
-    font-size: 1.7em;
     margin-bottom: 0;
 }
 .subscribe p {
