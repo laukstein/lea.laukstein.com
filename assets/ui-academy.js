@@ -542,6 +542,7 @@ ui.academy = {
             return response.json();
         }).then(function (json) {
             self.updateSession(json);
+            self.pushSW({status: "login"});
             ui.setUser(json);
             ui.form.accessibility(true, null, true);
 
@@ -605,10 +606,15 @@ ui.academy = {
             }
         });
     },
-    logout: function () {
+    logout: function (preventPushSW) {
         "use strict";
 
         delete localStorage.session;
+
+        if (!preventPushSW) {
+            this.pushSW({status: "logout"});
+        }
+
         this.refresh(true);
     },
     date: function (options) {
@@ -1556,11 +1562,19 @@ ui.academy = {
         delete localStorage.session;
         this.refresh();
     },
-    updateSession: function (data) {
+    updateSession: function (data, preventPushSW) {
         "use strict";
 
         if (typeof data === "object") {
             data.dataTime = data.dataTime || +new Date;
+
+            if (!preventPushSW) {
+                this.pushSW({
+                    status: "update",
+                    data: data
+                });
+            }
+
             this.session = data;
             localStorage.session = JSON.stringify(data);
         }
@@ -1600,6 +1614,40 @@ ui.academy = {
             });
         }
     },
+    pushSW: function (data, fromOtherTab) {
+        "use strict";
+
+        if (typeof data === "object" && navigator.serviceWorker && navigator.serviceWorker.controller) {
+            if (ui.environment === "dev") {
+                console.log("ServiceWorker", data);
+            }
+            if (fromOtherTab) {
+                switch (data.status) {
+                    case "login":
+                        return location.reload();
+                    case "logout":
+                        return this.logout(true);
+                    case "update":
+                        return this.updateSession(data.data, true);
+                }
+            } else {
+                navigator.serviceWorker.controller.postMessage(data);
+            }
+        }
+    },
+    registerSW: function () {
+        "use strict";
+
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/sw.js").then(function () {
+                navigator.serviceWorker.addEventListener("message", function (e) {
+                    if (e.data) {
+                        ui.academy.pushSW(e.data, true);
+                    }
+                });
+            });
+        }
+    },
     init: function () {
         "use strict";
 
@@ -1620,6 +1668,8 @@ ui.academy = {
 
             self.content.removeAttribute("hidden");
             self.details.removeAttribute("hidden");
+
+            self.registerSW();
 
             if (loading) {
                 loading.remove();
