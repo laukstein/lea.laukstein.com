@@ -1630,6 +1630,13 @@ ui.academy = {
                     self.isLogged();
                     ui.identify.all();
                 });
+            } else if (self.session.email) {
+                self.email.value = self.session.email;
+
+                // setTimeout to avoid autofocus property
+                setTimeout(function () {
+                    self.pass.focus();
+                }, 0);
             }
 
             self.sessionError();
