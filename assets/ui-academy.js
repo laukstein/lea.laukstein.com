@@ -1560,17 +1560,16 @@ ui.academy = {
         "use strict";
 
         if (typeof data === "object") {
+            data.dataTime = data.dataTime || +new Date;
             this.session = data;
             localStorage.session = JSON.stringify(data);
-            sessionStorage.validSessionTime = +new Date;
         }
     },
     vertifySession: function (callback, force) {
         "use strict";
 
         if (!force && this.session.startDate &&
-            sessionStorage.validSessionTime &&
-            +new Date() - Number(sessionStorage.validSessionTime) < 86400000) {
+            +new Date() - Number(this.session.dataTime) < 86400000) {
             if (typeof callback === "function") {
                 callback();
             }
