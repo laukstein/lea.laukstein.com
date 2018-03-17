@@ -535,7 +535,7 @@ ui.academy = {
             // Prevent insecure redirects https://developer.mozilla.org/en-US/docs/Web/API/Response/redirected
             redirect: "error",
             body: JSON.stringify({
-                email: self.email.value,
+                email: self.email.value.toLowerCase(),
                 pass: self.pass.value
             })
         }).then(function (response) {
@@ -584,7 +584,7 @@ ui.academy = {
             method: "POST",
             redirect: "error",
             body: JSON.stringify({
-                email: self.email.value
+                email: self.email.value.toLowerCase()
             })
         }).then(function (response) {
             return response.json();
