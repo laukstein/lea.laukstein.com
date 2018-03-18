@@ -200,6 +200,7 @@ window.ui = {
 
             // Sentry JavaScript client Raven.js https://docs.sentry.io/clients/javascript/install/
             this.asyncScript("https://cdn.ravenjs.com/3.23.3/raven.min.js", {
+                integrity: "sha384-ZkmRFOU02jLMGwJ1TVVE2VuKNh5MqoQvRTXpxJ0jUsZZfAAcM+N9of8YHYX8qylq",
                 crossorigin: "anonymous",
                 onSuccess: function () {
                     if (window.Raven && Raven.config) {
