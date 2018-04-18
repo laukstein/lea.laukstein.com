@@ -786,9 +786,11 @@ ui.academy = {
                     id = !final && self.uniqueID();
                     result += (sameLoop ? "" : "<ol>") +
                         "<li><input type=radio name=" + index + (id ? " id=" + id : "") + ">" +
-                        "<label onclick=" + (data.final ?
+                        "<label onclick=" +
+                        (data.final ?
                             "\"ui.academy.qa.dialog(event, " + index + ", '" + data.final + "')\"" :
-                            "ui.academy.qa.click(event) for=" + id) + ">" + self.getIcon("check") + data.title + "</label>";
+                            "ui.academy.qa.click(event) for=" + id) +
+                        ">" + self.getIcon("check") + data.title + "</label>";
                 }
                 if (Array.isArray(data.option)) {
                     index += 1;
@@ -872,8 +874,10 @@ ui.academy = {
                     (finalEl ? "" : "       <div class=close onclick=ui.academy.qa.reset(this) tabindex=0>" + self.getIcon("close") + "</div>") +
                     "       <h1 class=nowrap>" + data.title + "</h1>" +
                     (finalEl ? "" : "       <p>שימי לב, אחרי הורדה לא ניתן לשנות קטגוריה</p>") +
-                    "       <div>" + (finalEl ? self.generateDownloadLink(data.value, "להורדת סרגל הצבעים") :
-                        "<a class=button onclick=\"ui.academy.qa.final(this, '" + type + "')\" tabindex=0>לקבל סרגל צבעים</a>") + "</div>" +
+                    "       <div>" +
+                    (finalEl ? self.generateDownloadLink(data.value, "להורדת סרגל הצבעים") :
+                        "<a class=button onclick=\"ui.academy.qa.final(this, '" + type + "')\" tabindex=0>לקבל סרגל צבעים</a>") +
+                    "</div>" +
                     "   </div>" +
                     "   </div>" +
                     "</div>";
