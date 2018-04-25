@@ -25,6 +25,6 @@ takeWith: |
     * המשך ליווי בואטסאפ
     * מועדון חברות עם מפגשי רענון
 button:
-    - paypal: TSSHY2HS9GVBS
+    - pelepay: FTh8zYah8klry1OczCSn28wmQ%2f9te0dw%2b5kqU7gofrNd4ydiwdfBhll1Qp7cTE9GilAqu5bQfy1jh74%2fa9Go2z0xGnp%2bQdygiJc9iELpozjK2mMC6iT%2f8%2f0XkNvj%2bLppQyRDYfgfisk%3d
       title: לתשלום 180 ש"ח
 ---

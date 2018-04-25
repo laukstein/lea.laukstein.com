@@ -38,6 +38,8 @@ if page.button %}{%
 for item in page.button %}{%
     if item.paypal %}
         <a rel=noopener href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id={{ item.paypal }}" class=button>{{ item.title }}</a>{%
+    endif %}{% if item.pelepay %}
+        <a rel=noopener href="https://www.pelepay.co.il/pay/secure.aspx?send={{ item.pelepay }}" class=button>{{ item.title }}</a>{%
     endif %}{% if item.more %}
         {{ item.more}}{%
     endif %}{%
