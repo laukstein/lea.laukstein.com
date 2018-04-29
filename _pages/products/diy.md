@@ -11,12 +11,12 @@ redirect_from:
     - /5min
     - /guide
 video: j22FJGJGzXo
-duration: 7 שבועות (מתחילות ב25/03)
-price: 770
+duration: 7 שבועות (מתחילות ב03/06)
+price: 615
+discount: מבצע עד 24/05, במקום 770 ש"ח
 extra: |
     * ליווי חופשי במהלך הקורס
     * תחילת ליווי מיום הרכישה
-    * שיעור מיוחד על בגדי החג
     * מפגש מסכם בסוף הקורס
 goals: |
     * להכיר את מבנה הגוף, צבעים והסגנון שלך
@@ -29,9 +29,9 @@ takeWith: תוכלי לעשות קניות חכמות וממוקדות, להכנ
 button:
     - more: <div class=headline>בואי תבחרי מה נוח לך</div>
     - paypal: WQ8BJBKUBHUNE
-      title: תשלום אחד 770
+      title: תשלום אחד 615
     - paypal: ELP92GH2ZJAAY
-      title: שלושה תשלומים 257
+      title: שלושה תשלומים 205
     - more: <p>לא בטוחה? רוצה להתיעץ איתי? תרימי טלפון <a href="tel:0585800020" target=_blank>058-5800020</a></p>
 css: |
     .sheet {
