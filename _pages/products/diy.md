@@ -11,9 +11,9 @@ redirect_from:
     - /5min
     - /guide
 video: j22FJGJGzXo
-duration: 7 שבועות (מתחילות ב03/06)
+duration: 7 שבועות (מתחילות ב10/06)
 price: 615
-discount: מבצע עד 24/05, במקום 770 ש"ח
+discount: מבצע עד 03/06, במקום 770 ש"ח
 extra: |
     * ליווי חופשי במהלך הקורס
     * תחילת ליווי מיום הרכישה
