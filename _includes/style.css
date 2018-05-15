@@ -1168,7 +1168,7 @@ iframe {
         }
     }
 }
-@-moz-document url-prefix() { /* Firefox */
+@supports (-moz-appearance: meterbar) { /* Firefox */
     label:active {
         background-color: transparent;
     }
