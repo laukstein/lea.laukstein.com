@@ -895,10 +895,6 @@ iframe {
     overflow: hidden;
     width: 100%;
     margin-top: 3em;
-    margin-bottom: 2em;
-}
-.comment iframe {
-    margin-bottom: -5.8em;
 }
 
 .sheet,
