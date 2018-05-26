@@ -33,12 +33,17 @@ array: []
                     if nav.hasSubnav %}{% capture subnavHTML %}
                 <ul class=subnav>{%
                     for subnav in pages %}{%
-                        if subnav.subnav == relative_url %}
+                        if subnav.subnav == relative_url %}{%
+                        unless subnav.private or subnav.draft %}
                     <li{% if subnav.url == page.url or subnav.group == page.group %}{% assign assign className = className | push: "subactive" %} class=active{% endif %}><a href="{{ subnav.url | relative_url }}">{% if subnav.title-short %}{{ subnav.title-short }}{% else %}{{ subnav.title }}{% endif %}</a></li>{%
+                        endunless %}{%
                         endif %}{%
                     endfor %}
                 </ul>
-            {% endcapture %}{% else %}{% assign subnavHTML = nil %}{% endif %}
+            {% endcapture %}{%
+                else %}{%
+                    assign subnavHTML = nil %}{%
+                endif %}
             <li{% if className.size > 0 %} class="{{ className | join: " " }}"{% endif %}><a href="{{ nav.url | relative_url }}">{{ nav.title }}</a>{{ subnavHTML }}</li>{%
                 endif %}{%
             endfor %}
