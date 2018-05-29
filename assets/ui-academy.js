@@ -476,7 +476,7 @@ ui.academy = {
             parts.shift();
         }
 
-        return location.protocol + "//lab." + parts.join(".") + "/academy";
+        return location.protocol + "//lab." + parts.join(".") + "/webhook";
     }()),
     dataset: function (el, prop) {
         "use strict";
