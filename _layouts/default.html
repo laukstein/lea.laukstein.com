@@ -127,7 +127,7 @@ endcase %}
 {% include core-footer.html %}{%
 include core-js.html %}{%
 if page.jsonld == nil and page.image or page.video %}
-    {% if layout.category == "products" %}
+    {% if layout.category == "products" or page.category == "products" %}
         {% capture jsonld %}
         {
             "@context": "http://schema.org/",
