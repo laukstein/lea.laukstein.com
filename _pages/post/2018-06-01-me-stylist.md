@@ -2,7 +2,7 @@
 layout: post
 permalink: /me-stylist
 date: 2018-06-01 18:29:00
-title: כל אשה צריכה רות
+title: איזו מין סטייליסטית אני?
 image: 2018-06-01-me-stylist.jpg
 imageWidth: 360
 imageClass: flow
