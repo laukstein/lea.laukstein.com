@@ -41,20 +41,30 @@ endfor %}<article class="box card" dir=ltr>
     <div class=content dir=rtl>
         <ul class="sheet sheet-fixed">{%
             for item in l10n %}{%
-                if item.name != "buttonType" and item.name != page.labelEscape %}
-                <li class=row>
-                    <div class="column label">{{ item.title }}</div>{%
-                    for page in data %}
-                    <div class=column data-label="{{ item.title }}">{%
-                        if item.name == "title" %}<h3><a href={{ page.url }}>{{ page.title-short | default: page.title }}</a></h3>{% else %}{%
-                        if page[item.name] contains "
+                if item.name != "buttonType" and item.name != page.labelEscape %}{%
+                    capture row %}{%
+                    for page in data %}{%
+                        capture column %}{%
+                            if item.name == "title" %}<h3><a href={{ page.url }}>{{ page.title-short | default: page.title }}</a></h3>{% else %}{%
+                            if page[item.name] contains "
 " %}{{ page[item.name] | markdownify }}{%
-                        else %}{{ page[item.name] }}{% endif %}{% endif %}{%
-                        if item.name == "price" %} ש"ח{%
-                            if page.discount %} <span class=nowrap>({{ page.discount }})</span>{% endif %}{%
-                        endif %}</div>{%
-                    endfor %}
+                            else %}{{ page[item.name] }}{% endif %}{% endif %}{%
+                            if item.name == "price" %} ש"ח{%
+                                if page.discount %} <span class=nowrap>({{ page.discount }})</span>{% endif %}{%
+                            endif %}{%
+                        endcapture %}{%
+                        if column.size > 0 %}
+                    <div class=column data-label="{{ item.title }}">{{ column }}</div>{%
+                        endif %}{%
+                    endfor %}{%
+                    endcapture %}{%
+
+                    if row.size > 0 %}
+                <li class=row>
+                    <div class="column label">{{ item.title }}</div>
+                    {{ row }}
                 </li>{%
+                    endif %}{%
                 endif %}{%
             endfor %}
         </ul>
