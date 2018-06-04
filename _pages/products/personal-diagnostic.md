@@ -3,7 +3,7 @@ layout: product
 group: personal
 order: 1
 
-title: אבחון אונליין
+title: אבחון על הקפה
 permalink: /diagnostic
 image: product-diagnostic.jpg
 imageWidth: 960
