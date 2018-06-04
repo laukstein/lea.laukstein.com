@@ -508,6 +508,9 @@ h1:first-line,
 h2:first-line {
     font-size: 134%;
 }
+h3 {
+    color: #569e9b;
+}
 .wrapline,
 .box .item figure.flow + p {
     display: table-cell;
@@ -983,8 +986,63 @@ iframe {
 .sticky-footer {
     position: sticky;
     bottom: 0;
+    padding: .2em 0;
+    margin: .5em 0;
     background-color: rgba(255,255,255,.8);
-    box-shadow: 0 -.7em 2.3em rgba(255,255,255,.8);
+    box-shadow: 0 0 1.4em .7em rgba(255,255,255,.8);
+}
+.sticky-footer .button {
+    margin-top: 0;
+}
+.recommendations {
+    padding: 2em;
+    margin: 1em -2em;
+    background-color: #eee;
+}
+.recommendation {
+    position: relative;
+    padding: 1em 1.2em;
+    margin: .6em 0;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 7.5px;
+    border-top-right-radius: 0;
+    box-shadow: 0 1px .5px rgba(0,0,0,.13);
+}
+.recommendation:before {
+    content: "";
+    position: absolute;
+    right: -12px;
+    top: 0;
+    border-style: solid;
+    border-width: 16px 12px 0 0;
+    border-color: #fff rgba(255,255,255,0) rgba(255,255,255,0) rgba(255,255,255,0);
+    filter: drop-shadow(0 1px .5px rgba(0,0,0,.13));
+}
+.recommendation p,
+.recommendation .field {
+    font-size: 80%;
+}
+.recommendation .profile {
+    display: table;
+    table-layout: fixed;
+    line-height: 1;
+}
+.recommendation img {
+    width: 3em;
+    height: 3em;
+    margin-left: .4em;
+    vertical-align: middle;
+    image-rendering: auto;
+    object-fit: fill;
+    border-radius: 50%;
+}
+.recommendation .details {
+    display: table-cell;
+    vertical-align: middle;
+}
+.recommendation .name {
+    font-weight: bold;
 }
 
 [data-placholder]:before {
@@ -1219,6 +1277,10 @@ iframe {
         padding-right: 2.8em;
         padding-left: 2.8em;
         background-color: #fff;
+    }
+    .recommendations {
+        margin-right: -2.8em;
+        margin-left: -2.8em;
     }
     .image + .content {
         padding-left: 2em;
