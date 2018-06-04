@@ -14,10 +14,13 @@ order: 3
 
 title: מסע אל ארון מדוייק
 title-short: קורס סטיילינג
+description: בעוד 7 שבועות יהיה לך ארון עם אך ורק בגדים מחמיאים לך, שמבטאים את מי שאת מבפנים
 permalink: /dora
 image: product-diy.jpg
 price: 618
 
+button: |
+    <a rel=noopener href="https://www.pelepay.co.il/pay/secure.aspx?send=FTh8zYah8klry1OczCSn28wmQ%2f9te0dw%2b5kqU7gofrPyeTA8AkayDUXitn4l9cACXS7Z90U%2fs5bxzDhoIiCwgA7DVzBwiAfSehXuyr6%2b2W5fUY2B3sc91VLN94q%2fxknFBglqdPRdu2cIrOoRI1Brgy9R%2favf%2fkJvr53dZFWnXoc%3d" class=button>תשלום 618 ₪ (20% הנחה)</a>
 css: |
     main {
         padding-top: 0;
@@ -78,8 +81,6 @@ css: |
         border-color: transparent;
         box-shadow: none;
     }
-button: |
-    <a rel=noopener href="https://www.pelepay.co.il/pay/secure.aspx?send=FTh8zYah8klry1OczCSn28wmQ%2f9te0dw%2b5kqU7gofrPyeTA8AkayDUXitn4l9cACXS7Z90U%2fs5bxzDhoIiCwgA7DVzBwiAfSehXuyr6%2b2W5fUY2B3sc91VLN94q%2fxknFBglqdPRdu2cIrOoRI1Brgy9R%2favf%2fkJvr53dZFWnXoc%3d" class=button>תשלום 618 ₪ (20% הנחה)</a>
 ---
 
 <article class="box card" dir=ltr>
@@ -87,11 +88,11 @@ button: |
         <a class=logo href=/ dir=rtl>
             <img src="/assets/logo.png" width="47" height="47" alt="סטיילינג לדתיות — לאה לאוקשטיין"><div>לאה לאוקשטיין</div>
         </a>
-        <img class=image src=/assets/product-diy.jpg alt="מסע אל ארון מדוייק">
+        <img class=image src=/assets/{{ page.image }} alt="{{ page.title }}">
     </figure>
     <div class=content dir=rtl>
-        <h1>מסע אל ארון מדוייק</h1>
-        <h3>בעוד 7 שבועות יהיה לך ארון עם אך ורק בגדים מחמיאים לך, שמבטאים את מי שאת מבפנים</h3>
+        <h1>{{ page.title }}</h1>
+        <h3>{{ page.description }}</h3>
         <p>פעם בשבוע תקבלי סרטון הדרכה ממוקד וחוברת עם המון דוגמאות ישירות אלייך במייל ובמקביל ליווי שלי בוואצאפ 24/7</p>
         <ul class=sheet>
             <li class=row>

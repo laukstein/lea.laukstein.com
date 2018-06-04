@@ -13,6 +13,7 @@ order: 3
 
 title: מסע אל ארון מדוייק
 title-short: קורס סטיילינג
+description: בעוד 7 שבועות יהיה לך ארון עם אך ורק בגדים מחמיאים לך, שמבטאים את מי שאת מבפנים
 permalink: /diy
 redirect_from:
     - /5min
@@ -21,6 +22,9 @@ redirect_from:
 image: product-diy.jpg
 price: 770
 
+button: |
+    <a rel=noopener href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WQ8BJBKUBHUNE" class=button>תשלום אחד 770 ₪</a>
+    <a rel=noopener href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ELP92GH2ZJAAY" class=button>ארבעה תשלומים 193 ₪</a>
 css: |
     main {
         padding-top: 0;
@@ -71,11 +75,11 @@ css: |
         <a class=logo href=/ dir=rtl>
             <img src="/assets/logo.png" width="47" height="47" alt="סטיילינג לדתיות — לאה לאוקשטיין"><div>לאה לאוקשטיין</div>
         </a>
-        <img class=image src=/assets/product-diy.jpg alt="מסע אל ארון מדוייק">
+        <img class=image src=/assets/{{ page.image }} alt="{{ page.title }}">
     </figure>
     <div class=content dir=rtl>
-        <h1>מסע אל ארון מדוייק</h1>
-        <h3>בעוד 7 שבועות יהיה לך ארון עם אך ורק בגדים מחמיאים לך, שמבטאים את מי שאת מבפנים</h3>
+        <h1>{{ page.title }}</h1>
+        <h3>{{ page.description }}</h3>
         <p>פעם בשבוע תקבלי סרטון הדרכה ממוקד וחוברת עם המון דוגמאות ישירות אלייך במייל ובמקביל ליווי שלי בוואצאפ 24/7</p>
         <ul class=sheet>
             <li class=row>
@@ -150,8 +154,7 @@ css: |
         </ul>
         <div class=headline>בואי תבחרי מה נוח לך</div>
         <div class=sticky-footer>
-            <a rel=noopener href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WQ8BJBKUBHUNE" class=button>תשלום אחד {{ page.price }}</a>
-            <a rel=noopener href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ELP92GH2ZJAAY" class=button>ארבעה תשלומים 193</a>
+            {{ page.button }}
         </div>
         <p>לא בטוחה? רוצה להתיעץ איתי? תרימי טלפון <a href="tel:0585800020" target=_blank>058-5800020</a></p>
         <div class=recommendations>
@@ -177,7 +180,6 @@ css: |
                 <p>בזכות הקורס של לאה, למדתי הרבה והבנתי מה מחמיא לי יותר ומה מחמיא לי פחות.<br>כיף גם שלמדתי איך לשלב צבעים מבלי להרגיש מוזר. אין סיכוי שהיתי מתלבשת ככה לפני כמה חודשים.<br>גם הקניות בחנויות ממוקדות יותר ואני קונה רק מה שצריך וכמה שצריך.<br>הקורס של לאה מכיף ומועיל מאוד. קיבלתי המון טיפים חשובים לכל אישה והכי חשוב: לאה היתה זמינה לכל שאלה, התייעצות או התלבטות.<br>תודה לך לאה.</p>
             </blockquote>
         </div>
-        <a rel=noopener href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WQ8BJBKUBHUNE" class=button>תשלום אחד {{ page.price }}</a>
-        <a rel=noopener href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ELP92GH2ZJAAY" class=button>ארבעה תשלומים 193</a>
+        {{ page.button }}
     </div>
 </article>
