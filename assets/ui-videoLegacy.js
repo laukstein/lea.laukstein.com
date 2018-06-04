@@ -5,6 +5,11 @@ camelcase: 0 */
 // JPG from https://img.youtube.com/vi/t3xR5EYJvZY/maxresdefault.jpg or /hqdefault.jpg
 
 ui.videoLegacy = {
+    "_p3HwrkRk3A": {
+        "360p": "uajnetp41452y0p",
+        "720p": "2ldmvifgwldg1pn",
+        image: "k0f9z5e9p733fib"
+    },
     "_VYx-UC-VqU": {
         academy: true,
         "360p": "j1hid2al98mr6wk",
@@ -21,6 +26,11 @@ ui.videoLegacy = {
         "360p": "304i390pjzdouib",
         "720p": "ot72jy98cndmqf8",
         image: "qxicgx6rjtge4dt"
+    },
+    "0tejXJKcMHw": {
+        "360p": "y7raetj5wbyi3bn",
+        "720p": "lwkjcv3b30kxne8",
+        image: "3vn7zwc00su47zm"
     },
     "0vO1VdF527o": {
         "360p": "7webmw06w5lzt9j",
@@ -236,11 +246,6 @@ ui.videoLegacy = {
         "360p": "dhwwyc65fqa5uvi",
         "720p": "q79f9snbwkcd7gq",
         image: "y9ewf3m8tdpruua"
-    },
-    SDwGLwq7bD4: {
-        "360p": "5n7l237h6pmazog",
-        "720p": "kojcrdl7a5yqm4r",
-        image: "f61ylx1nixg5doj"
     },
     t3xR5EYJvZY: {
         "360p": "ikwncij8eqcsf4m",
