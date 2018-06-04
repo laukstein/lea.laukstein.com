@@ -2,9 +2,11 @@ YAML schema
 
     layout: product
     group: workshop | personal | diy
+    id
     order
     title
     title-short
+    description
     permalink
     video
     image
@@ -22,7 +24,13 @@ YAML schema
         multi-line text
     takeWith: |
         multi-line text
+    recommendations:
+        - name
+          text
+    payment-details
     button:
+        - pelepay
+          title
         - paypal
           title
         - type: subscribe

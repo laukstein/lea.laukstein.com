@@ -2,7 +2,8 @@
     assign page = include.data %}{%
     assign l10n = site.data.l10n.product
 %}<article class="box card" dir=ltr>{%
-    if include.more %}
+    if include.more %}{%
+        assign title = page.title %}
     {% include youtube.html id = page.video %}{%
         include image.html
         title = page.title
@@ -11,10 +12,14 @@
         width = page.imageWidth
         height = page.imageHeight
         label = page.imageLabel
-    %}{%
+    %}{% else %}{%
+        assign title = page.title-short | default: page.title %}{%
     endif %}
     <div class=content dir=rtl>
-        {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+        {% if title %}<h1>{{ title }}</h1>{% endif %}{%
+        if include.more and page.description %}
+        <h3>{{ page.description }}</h3>{%
+        endif %}
         <ul class="sheet{% if include.more == nil %} sheet-fixed{% endif %}">{%
             for item in l10n %}{%
                 if item.name != "title" and item.name != "buttonType" and item.title and page[item.name] %}{%
@@ -32,7 +37,28 @@
                 endif %}{%
                 endif %}{%
             endfor %}
-        </ul>{% if include.more %}
+        </ul>{% if include.more %}{%
+            if page.recommendations %}
+        <div class=recommendations>{%
+                for item in page.recommendations %}
+            <blockquote class=recommendation>
+                <div class=profile>
+                    <img src=/assets/{{ item.image | default: "avatar.png" }}>
+                    <div class=details>
+                        <div class=name>{{ item.name }}</div>{%
+                        if item.field %}
+                        <div class=field>{{ item.field }}</div>{%
+                        endif %}
+                    </div>
+                </div>
+                {{ item.text | markdownify }}
+            </blockquote>{%
+                endfor %}
+        </div>{%
+            endif %}{%
+            if page.payment-details %}
+        {{ page.payment-details | markdownify }}{%
+            endif %}
         <div class=sticky-footer>{% endif %}{%
 if page.button %}{%
 for item in page.button %}{%
@@ -40,11 +66,11 @@ for item in page.button %}{%
         <a rel=noopener href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id={{ item.paypal }}" class=button>{{ item.title }}</a>{%
     endif %}{% if item.pelepay %}
         <a rel=noopener href="https://www.pelepay.co.il/pay/secure.aspx?send={{ item.pelepay }}" class=button>{{ item.title }}</a>{%
-    endif %}{% if item.more %}
-        {{ item.more}}{%
+    endif %}{% if item.more | markdownify %}
+        {{ item.more }}{%
     endif %}{%
 endfor %}{% else
-        %}<a class=button href=/contact#{{ page.url | remove: "/" }} tabindex=0>צרי קשר</a>{%
+        %}<a class=button href=/contact#{{ page.id | default: page.url | remove: "/" }} tabindex=0>צרי קשר</a>{%
         endif %}{% if include.more == nil %}
         <a class=more href={{ page.url }}>פרטים מלאים</a>
         <a class=absolute href={{ page.url }}></a>{% endif %}
