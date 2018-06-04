@@ -46,7 +46,7 @@ endfor %}<article class="box card" dir=ltr>
                     <div class="column label">{{ item.title }}</div>{%
                     for page in data %}
                     <div class=column data-label="{{ item.title }}">{%
-                        if item.name == "title" %}<h3><a href={{ page.url }}>{{ page[item.name] }}</a></h3>{% else %}{%
+                        if item.name == "title" %}<h3><a href={{ page.url }}>{{ page.title-short | default: page.title }}</a></h3>{% else %}{%
                         if page[item.name] contains "
 " %}{{ page[item.name] | markdownify }}{%
                         else %}{{ page[item.name] }}{% endif %}{% endif %}{%
