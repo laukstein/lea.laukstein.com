@@ -27,5 +27,5 @@ takeWith: |
     * רשימת פריטים מומלצים להשלמת תשעה פריטי החובה
 button:
     - pelepay: FTh8zYah8klry1OczCSn28wmQ%2f9te0dw%2b5kqU7gofrOrN8C543gGibXi%2b2w01aiWFErSiBuR0Q5IDqZnw5RbmYF73ajVdcDXZd9KaWSBsirxGYqGKqZYWg65KoIsgYLNe4%2fyHhGWjPI%3d
-      title: תשלום 530 ₪
+      title: לתשלום 530 ₪
 ---
