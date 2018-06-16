@@ -1,0 +1,13 @@
+{% if include.image
+    %}{{ include.image }}{%
+else if include.url and include.date %}{%
+    capture source
+        %}{{ include.date | date: "%Y-%m-%d" }}-{{ include.url | remove: "/" }}{{ include.suffix }}.jpg{%
+    endcapture %}{%
+    assign image = site.assets | append: source %}{%
+    for static_file in site.static_files %}{%
+        if static_file.path == image
+            %}{{ source }}{%
+        endif %}{%
+    endfor %}{%
+endif %}

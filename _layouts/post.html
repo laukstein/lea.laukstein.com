@@ -6,19 +6,29 @@ className: no-padding
 comment: true
 ---
 
-<article class=box>
+{% capture image %}{%
+    include get-image.html
+    url = page.url
+    date = page.date
+    image = page.image %}{%
+endcapture %}{%
+assign image = image | strip_newlines
+%}<article class=box>
     {%
         include image.html
         title = page.title
-        image = page.image
+        image = image
         width = page.imageWidth
         className = page.imageClass
         label = page.imageLabel
+        pageURL = page.url
+        pageDate = page.date
     %}
     <h1 class=wrapline>{{ page.title }}</h1>
-    {{ content }}
-    {% if page.date %}<div>{% include date.html value = page.date %}</div>{% endif %}
-    {% if page.imageList %}{% for item in page.imageList %}
+    {{ content }}{%
+    if page.date %}<div>{% include date.html value = page.date %}</div>{% endif %}{%
+    if page.imageList %}{%
+        for item in page.imageList %}
     <div class=item>{%
         include image.html
         title = item.label
@@ -27,6 +37,7 @@ comment: true
         width = item.width
         label = item.label
         text = item.text
-    %}</div>
-    {% endfor %}{% endif %}
+    %}</div>{%
+        endfor %}{%
+    endif %}
 </article>

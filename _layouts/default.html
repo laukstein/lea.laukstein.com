@@ -126,7 +126,17 @@ endcase %}
 </main>
 {% include core-footer.html %}{%
 include core-js.html %}{%
-if page.jsonld == nil and page.image or page.video %}
+
+capture image %}{%
+    include get-image.html
+    url = page.url
+    date = page.date
+    image = page.image %}{%
+endcapture %}{%
+assign image = image | strip_newlines
+
+%}{%
+if page.jsonld == nil and image or page.video %}
     {% if layout.category == "products" or page.category == "products" %}
         {% capture jsonld %}
         {
@@ -134,7 +144,7 @@ if page.jsonld == nil and page.image or page.video %}
             "@type": "Product",
             "name": "{{ title }}",
             "image": "{% if page.video %}https://img.youtube.com/vi/{{ page.video }}/0.jpg{%
-                else %}{{ site.url }}{{ site.assets }}{{ page.image }}{% endif %}",
+                else %}{{ site.url }}{{ site.assets }}{{ image }}{% endif %}",
             "offers": {
                 "@type": "Offer",
                 "price": "{{ page.price }}",
@@ -154,7 +164,7 @@ if page.jsonld == nil and page.image or page.video %}
             "headline": "{{ title }}",
             "image": {
                 "@type": "ImageObject",
-                "url": "{{ site.url }}{{ site.assets }}{{ page.image }}",
+                "url": "{{ site.url }}{{ site.assets }}{{ image }}",
                 "width": {% if page.imageWidth %}{{ page.imageWidth }}{% else %}960{% endif %},
                 "height": {% if page.imageHeight %}{{ page.imageHeight }}{% else %}540{% endif %}
             },
