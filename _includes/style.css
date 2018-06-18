@@ -685,9 +685,6 @@ textarea {
 .error ::placeholder  {
     color: #c00;
 }
-.success {
-    color: #160;
-}
 .error {
     color: #b00;
 }

@@ -108,12 +108,7 @@ case type %}{%
             </div>{%
         endif %}{%
         if page.subscribe %}
-{% include subscribe.html
-                id = page.subscribe
-                title = page.subscribe-title
-                success = page.subscribe-success
-                button = page.subscribe-button
-                requiredTel = page.subscribe-requiredTel %}{%
+{% include subscribe.html data = page.subscribe %}{%
         endif %}{%
         if page.headlines %}{%
             include headlines.html %}{%

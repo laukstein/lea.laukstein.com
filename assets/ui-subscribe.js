@@ -11,7 +11,14 @@ ui.subscribe = {
 
         if (data) {
             if (data.result === "success") {
-                message = "<h1 class=success>תודה</h1><p>" + (self.el.getAttribute("data-success") || "ההרשמה התבצע בהצלחה") + "</p>";
+                self.utmCampaign = self.el.getAttribute("data-utm_campaign");
+                self.redirectURL = "/success?utm_source=subscribe";
+
+                if (self.utmCampaign) {
+                    self.redirectURL += "&utm_campaign=" + self.utmCampaign;
+                }
+
+                location = self.redirectURL;
             } else if (data.msg && data.msg.indexOf("list-manage.com/subscribe/send-email")) {
                 message = "<h1 class=error>שגיאה...</h1><p>את כבר רשומה, תנסי עם <a href=" + location.href + ">אימייל אחר</a></p>";
             } else {

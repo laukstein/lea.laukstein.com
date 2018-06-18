@@ -3,14 +3,21 @@
 YAML schema
 
     layout: default | post | product | video
-    type: full | center | medium
-    permalink: /url
+    type:   full | center | medium
+    permalink:     /url
     redirect_from: /outdated-url
-    title: max 70-78 chars
-    titleLong: max 70-78 chars (overwrites page.title except in nav)
+    title:       max 70-78 chars
+    titleLong:   max 70-78 chars (overwrites page.title except in nav)
     description: max 170-200 chars
     date: YYYY-MM-DD HH:MM:SS
     private: true // default `false`, prevent page indexing
+    subscribe:
+        id: Mailchimp ID
+        utm_campaign: optional for Facebook Pixel
+        title:  differ form title
+        button: differ button text
+        autofocus: true   // default `false`
+        requiredTel: true // default `false`
     className: className
     css: |
         selector {
@@ -18,8 +25,8 @@ YAML schema
         }
     video: ID
     image: src
-    imageClass: className
-    imageWidth: Number
+    imageClass:  className
+    imageWidth:  Number
     imageHeight: Number
     imageLabel: "Author: Name <website>"
 
