@@ -65,10 +65,7 @@ ui.discount = {
     init: function () {
         "use strict";
 
-        window.onhashchange = window.onhashchange || function () {
-            ui.discount.run();
-        };
-
+        ui.w.addEventListener("hashchange", this.run);
         this.run();
     }
 };

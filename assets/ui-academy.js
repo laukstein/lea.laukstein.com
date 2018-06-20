@@ -517,7 +517,7 @@ ui.academy = {
         "use strict";
 
         if (stripHash) {
-            ui.w.location = location.pathname;
+            location = location.pathname;
         } else {
             location.reload();
         }
@@ -1523,7 +1523,7 @@ ui.academy = {
                         session + "\"][data-page=\"" + page + "\"]"));
                 }
             }
-            if (initLoad && !location.hash) {
+            if (initLoad === true && !location.hash) {
                 arr = this.sidenav.querySelectorAll("[data-session]:not([data-page])");
 
                 this.toggleNavClassName(arr[arr.length - 1]);
@@ -1692,11 +1692,8 @@ ui.academy = {
                 }, 0);
             }
 
+            ui.w.addEventListener("hashchange", self.toggleNav);
             self.sessionError();
-
-            ui.w.onhashchange = ui.w.onhashchange || function () {
-                self.toggleNav();
-            };
         });
     }
 };

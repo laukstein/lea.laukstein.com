@@ -11,7 +11,7 @@ ui.note = {
             }
         }
         if (!arguments.length) {
-            ui.w.onhashchange = ui.note.init;
+            ui.w.addEventListener("hashchange", ui.note.init);
         }
     }
 };

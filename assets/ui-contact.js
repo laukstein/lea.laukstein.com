@@ -130,8 +130,7 @@ ui.contact = {
 
                 this.option();
                 this.el.addEventListener("submit", this.send);
-
-                ui.w.onhashchange = this.option;
+                ui.w.addEventListener("hashchange", this.option);
 
                 if (this.tel) {
                     this.tel.addEventListener("keypress", ui.form.number, true);

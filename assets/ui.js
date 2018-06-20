@@ -614,8 +614,9 @@ window.ui = {
             loadImage.get = function (url, onload, onerror) {
                 var image = new Image();
 
-                image.onload = onload;
-                image.onerror = onerror;
+                image.addEventListener("load", onload);
+                image.addEventListener("error", onerror);
+
                 image.src = url;
             };
             loadImage.result = function (isLoaded) {

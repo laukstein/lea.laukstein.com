@@ -265,7 +265,7 @@ ui.videos = (function () {
 
         ui.videos = response;
 
-        ui.w.onhashchange = generateHTML.paintUI;
+        ui.w.addEventListener("hashchange", generateHTML.paintUI);
 
         if (history.scrollRestoration) {
             history.scrollRestoration = "manual";
