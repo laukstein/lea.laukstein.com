@@ -199,9 +199,9 @@ window.ui = {
             });
 
             // Sentry JavaScript client Raven.js https://docs.sentry.io/clients/javascript/install/
-            this.asyncScript("https://cdn.ravenjs.com/3.26.2/raven.min.js", {
+            this.asyncScript("https://cdn.ravenjs.com/3.26.3/raven.min.js", {
                 // Generator SRI hash https://www.srihash.org
-                integrity: "sha384-D6LXy67EIC102DTuqypxwQsTHgiatlbvg7q/1YAWFb6lRyZ1lIZ6bGDsX7jxHNKA",
+                integrity: "sha384-vHsM2QxnY2J6wHOask143CZjTiM+mGAMDXzs+JDs+4a0S0vx//ZCXCN56UNiuiMB",
                 crossorigin: "anonymous",
                 onSuccess: function () {
                     if (window.Raven && Raven.config) {
