@@ -627,7 +627,7 @@ window.ui = {
             };
             loadImage.error = function (finalCall) {
                 // Use here loadImage instead of this
-                if (finalCall === true) {
+                if (finalCall) {
                     loadImage.legacy(true);
                 }
 
