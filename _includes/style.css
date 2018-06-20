@@ -61,6 +61,7 @@ img {
 a {
     color: #00d;
     text-decoration: none;
+    text-decoration-skip-ink: none; /* Disable skipping descenders https://www.chromestatus.com/features/5631679087509504 */
     -webkit-box-decoration-break: clone; /* Chrome legacy, demo http://jsbin.com/xojoro/quiet */
             box-decoration-break: clone;
     outline: transparent solid 2px;
