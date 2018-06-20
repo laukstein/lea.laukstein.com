@@ -70,7 +70,7 @@ for item in page.button %}{%
         {{ item.more }}{%
     endif %}{%
 endfor %}{% else
-        %}<a class=button href=/contact#{{ page.id | default: page.url | remove: "/" }} tabindex=0>צרי קשר</a>{%
+        %}<a class=button href=/contact#{{ page.id | default: page.permalink | remove: "/" }} tabindex=0>צרי קשר</a>{%
         endif %}{% if include.more == nil %}
         <a class=more href={{ page.url }}>פרטים מלאים</a>
         <a class=absolute href={{ page.url }}></a>{% endif %}

@@ -13,7 +13,9 @@ products:
     - name: personal
       title: סטיילינג אישי
     - name: diy
-      title: עשי זאת בעצמך
+      title: מסע אל ארון מדוייק
+      title-short: קורס סטיילינג
+array: []
 css: |
     h3 {
         color: #333;
@@ -53,13 +55,28 @@ css: |
             <select id=subject name=subject>
                 <option>הנושא כללי</option>{%
                 for group in page.products %}
-                <optgroup label="{{ group.title }}">{%
-                assign pages=site.pages | sort: "order" %}{%
+                <optgroup label="{{ group.title-short | default: group.title }}">{%
+                    assign pages = site.pages | sort: "order" %}{%
+                    assign list = page.array %}{%
+
                     for item in pages %}{%
-                        if item.layout == "product" and item.group == group.name %}
-                    <option data-name={{ item.url | remove: "/" }}>{% if item.title-short %}{{ item.title-short }}{% else %}{{ item.title }}{% endif %}</option>{%
+                        if item.layout == "product" and item.group == group.name %}{%
+                            capture option %}
+                    <option data-name={{ item.url | remove: "/" }}>{%
+                                if item.title-short %}{{ item.title-short }}{%
+                                    else %}{{ item.title }}{%
+                                endif %}</option>{%
+                            endcapture %}{%
+                            assign list = list | push: option %}{%
                         endif %}{%
-                    endfor %}
+                    endfor %}{%
+
+                    if list.size == 0 %}{%
+                        capture option %}
+                    <option data-name={{ group.name | remove: "/" }}>{{ group.title }}</option>{%
+                        endcapture %}{%
+                        assign list = list | push: option %}{%
+                    endif %}{{ list | join: "" }}
                 </optgroup>{%
                 endfor %}
             </select>

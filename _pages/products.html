@@ -17,22 +17,37 @@ products:
     - name: personal
       title: סטיילינג אישי
     - name: diy
-      title: עשי זאת בעצמך
+      title: מסע אל ארון מדוייק
+      title-short: קורס סטיילינג
 image: products.jpg
 imageWidth: 1137
 imageHeight: 640
+array: []
 ---
 
-<ol class="list list-boxes">{% for group in page.products %}
+<ol class="list list-boxes">{%
+    for group in page.products %}
     <li class=box>
-        <h2 id={{ group.name }}><a href=/{{ group.name }}>{{ group.title }}</a></h2>
-        <ol class=list>
-        {% assign pages=site.pages | sort: "order" %}{%
+        <h2 id={{ group.name }}><a href=/{{ group.name }}>{{ group.title-short | default: group.title }}</a></h2>
+        <ol class=list>{%
+        assign pages=site.pages | sort: "order" %}{%
+        assign list = page.array %}{%
         for item in pages %}{%
-            if item.layout == "product" and item.group == group.name %}
-            <li><a href={{ item.url | prepend: site.baseurl }}>{% if item.title-short %}{{ item.title-short }}{% else %}{{ item.title }}{% endif %}</a>{%
+            if item.layout == "product" and item.group == group.name %}{%
+                capture option %}
+            <li><a href={{ item.url | prepend: site.baseurl }}>{{ item.title-short | default: item.title }}</a>{%
+                endcapture %}{%
+                assign list = list | push: option %}{%
             endif %}{%
-        endfor %}
+        endfor %}{%
+
+        if list.size == 0 %}{%
+            capture option %}
+            <li><a href={{ group.name | prepend: site.baseurl }}>{{ group.title }}</a>{%
+            endcapture %}{%
+            assign list = list | push: option %}{%
+        endif %}{{ list | join: "" }}
         </ol>
-    </li>
-{% endfor %}</ol>
+    </li>{%
+endfor %}
+</ol>
