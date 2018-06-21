@@ -1,6 +1,6 @@
 ﻿{
  "kind": "youtube#playlistItemListResponse",
- "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/yJSliDfpE9eDdUeh7CVQtNFQZqs\"",
+ "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/I-0dionabBuxiJEB4Ae4cFBiKks\"",
  "pageInfo": {
   "totalResults": 35,
   "resultsPerPage": 50
@@ -98,13 +98,13 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/gMBl1byRA3k-WqZ9ERVdxj7Hq2Q\"",
+   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/F-6vvgWJkyxu62d-0vaGSfGUN8U\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLlFDOHVveDJ4Qk1R",
    "snippet": {
     "publishedAt": "2018-02-27T13:10:43.000Z",
     "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
     "title": "טעימה מקורס \"סטייל שבא מבפנים\" 2018",
-    "description": "אנחנו מתחיול ב25.03!!!\nהרשמה המוזלת ממשיכה htttps://lea.laukstein.com/diy",
+    "description": "אנחנו מתחילות ב10.06!!!\nהרשמה המוזלת ממשיכה htttps://lea.laukstein.com/diy",
     "thumbnails": {
      "default": {
       "url": "https://i.ytimg.com/vi/QC8uox2xBMQ/default.jpg",
@@ -1328,13 +1328,13 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/Zlms1wyNDHW-TOfsO_cCvXczqHo\"",
+   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/sm2vrRgqBrZpGqcZpFdgRBilgn8\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmRIV0xHUVpzMHBz",
    "snippet": {
     "publishedAt": "2016-10-27T19:30:51.000Z",
     "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
     "title": "גשם הראשון!! איך מתלבשים?",
-    "description": "טיפים לתקופת המעבר - שגם חם וגם קר באותו יום!\nלהורדת המדריך - https://lea.laukstein.com\nלאה לאוקשטיין - מומחית לסטיילינג לדתיות\nמדריך ללבוש עסקי https://lea.laukstein.com/signup-business",
+    "description": "טיפים לתקופת המעבר - שגם חם וגם קר באותו יום!\nלהורדת המדריך - https://lea.laukstein.com\nלאה לאוקשטיין - מומחית לסטיילינג לדתיות",
     "thumbnails": {
      "default": {
       "url": "https://i.ytimg.com/vi/dHWLGQZs0ps/default.jpg",
