@@ -79,12 +79,12 @@ jsonld: |
     {
         "@context": "http://schema.org/",
         "@type": "Product",
-        "name": "סדרת סטיילינג לדתיות",
+        "name": "מדריך לארון מדוייק",
         "image": "https://img.youtube.com/vi/$video/0.jpg",
         "description": "מדריך בעל שלושה סרטונים על יסודות הסטיילינג",
         "offers": {
             "@type": "Offer",
-            "price": "0",
+            "price": "0.00",
             "priceCurrency": "ILS"
         }
     }
