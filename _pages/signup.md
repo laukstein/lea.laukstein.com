@@ -2,6 +2,8 @@
 layout: default
 redirect_from: /signup-business
 hiddenHeader: true
+
+title: מדריך לארון מדוייק
 description: סטיילינג לדתיות - מדריך לארון מדוייק
 video: lFkh-kMy-6Y
 subscribe:
