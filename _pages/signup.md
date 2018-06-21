@@ -35,16 +35,14 @@ css: |
         box-shadow: 0 0.8em 3em -1.7em rgba(0,0,0,0.4);
     }
     .cel.content {
-        border-top-left-radius: 7px;
-        border-top-right-radius: 7px;
+        border-radius: 0 7px 7px 0;
     }
     .cel.subscribe {
         padding-top: 5%;
         padding-bottom: 8%;
         margin-bottom: 2.5em;
         vertical-align: middle;
-        border-bottom-left-radius: 7px;
-        border-bottom-right-radius: 7px;
+        border-radius: 7px 0 0 7px;
     }
     .cel.subscribe h1 {
         color: #f58e84;
@@ -90,6 +88,12 @@ css: |
     @media (max-width: 72em) {
         .cel.cel {
             display: block;
+        }
+        .cel.content {
+            border-radius: 7px 7px 0 0;
+        }
+        .cel.subscribe {
+            border-radius: 0 0 7px 7px;
         }
     }
     @media (max-width: 46em) {
