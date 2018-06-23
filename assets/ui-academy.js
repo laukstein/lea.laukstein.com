@@ -1352,7 +1352,7 @@ ui.academy = {
 
         return "<div class=video>" +
             (ui.video.youtubeSupport ?
-                "<iframe src=\"https://www.youtube.com/embed/" + id + "?showinfo=0\" allowfullscreen></iframe>" :
+                "<iframe src=\"https://www.youtube.com/embed/" + id + "?showinfo=0\"  allow=\"autoplay; encrypted-media; fullscreen\" allowfullscreen></iframe>" :
                 ui.video.template(id)) +
             "</div>" +
             "<div class=space><h1>" + obj.title + "</h1>" + buttons + "</div>";
@@ -1414,7 +1414,7 @@ ui.academy = {
                                 //     // http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
                                 //     result += "<div class=video>" +
                                 //         "    <iframe src=\"https://drive.google.com/file/d/" +
-                                //             obj.value + "/preview\" allowfullscreen></iframe>" +
+                                //             obj.value + "/preview\" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>" +
                                 //         "</div>" +
                                 //         "<div class=space>" +
                                 //         "    <h1>" + obj.title + "</h1>" +
