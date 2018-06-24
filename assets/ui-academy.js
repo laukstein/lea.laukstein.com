@@ -1506,31 +1506,32 @@ ui.academy = {
     toggleNav: function (initLoad) {
         "use strict";
 
-        this.hash = ui.hash();
-
-        var session = this.hash.session,
-            page = this.hash.page,
-            obj = location.hash ? this.data.session[session] : this.data.init,
+        var self = ui.academy,
+            obj,
             arr;
 
-        if (this.sidenav) {
-            if (obj) {
-                this.toggleNavClassName(this.sidenav.querySelector(location.hash ?
-                    "[data-session=\"" + session + "\"]:not([data-page])" : "a"));
+        self.hash = ui.hash();
 
-                if (obj.pages && obj.pages[page]) {
-                    this.toggleNavClassName(this.sidenav.querySelector("[data-session=\"" +
-                        session + "\"][data-page=\"" + page + "\"]"));
+        if (self.sidenav) {
+            obj = location.hash ? self.data.session[self.hash.session] : self.data.init;
+
+            if (obj) {
+                self.toggleNavClassName(self.sidenav.querySelector(location.hash ?
+                    "[data-session=\"" + self.hash.session + "\"]:not([data-page])" : "a"));
+
+                if (obj.pages && obj.pages[self.hash.page]) {
+                    self.toggleNavClassName(self.sidenav.querySelector("[data-session=\"" +
+                        self.hash.session + "\"][data-page=\"" + self.hash.page + "\"]"));
                 }
             }
             if (initLoad === true && !location.hash) {
-                arr = this.sidenav.querySelectorAll("[data-session]:not([data-page])");
+                arr = self.sidenav.querySelectorAll("[data-session]:not([data-page])");
 
-                this.toggleNavClassName(arr[arr.length - 1]);
+                self.toggleNavClassName(arr[arr.length - 1]);
             }
         }
 
-        this.pageSession();
+        self.pageSession();
     },
     sessionError: function () {
         "use strict";
