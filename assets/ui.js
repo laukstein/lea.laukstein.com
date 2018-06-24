@@ -206,7 +206,7 @@ window.ui = {
                 onSuccess: function () {
                     if (window.Raven && Raven.config) {
                         Raven.config("https://1e8b57d9fb744a9ba1068e9b5cc5386c@sentry.io/156066", {
-                            environment: ui.environmen
+                            environment: ui.environment
                         }).install();
                         ui.identify.raven();
                     }
