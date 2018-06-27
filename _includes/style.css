@@ -1103,6 +1103,10 @@ iframe {
     }
 }
 
+[hidden][hidden] {
+    display: none;
+    box-suppress: discard;
+}
 .invisible {
     position: absolute;
     top: 0;
