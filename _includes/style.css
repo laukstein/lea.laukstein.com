@@ -256,7 +256,7 @@ a.logo {
     vertical-align: middle;
 }
 main {
-    display: block;
+    display: block; /* IE11 legacy */
         width: 100%;
     min-width: 12.6em;
     max-width: 84.78em;
