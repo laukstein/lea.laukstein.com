@@ -102,9 +102,6 @@ img {
     -webkit-user-drag: none;
             user-drag: none;
 }
-a img {
-    border: 0; /* IE10 fix */
-}
 header {
     position: fixed;
     z-index: 10;
@@ -696,7 +693,6 @@ button:not([data-plyr]),
     text-align: center;
     font-weight: bold;
     white-space: nowrap; /* Mobile button text wrapping fix for button */
-    word-wrap: normal; /* "nowrap" compatibility for IE9 */
     text-overflow: ellipsis;
     background-color: #569e9b;
     outline: transparent solid 2px;
@@ -1107,10 +1103,6 @@ iframe {
     }
 }
 
-[hidden][hidden] {
-    display: none;
-    box-suppress: discard;
-}
 .invisible {
     position: absolute;
     top: 0;
@@ -1120,20 +1112,10 @@ iframe {
     pointer-events: none;
 }
 
-@media (min-width:0\0) and (min-resolution: .001dpcm) { /* IE9 */
-    label {
-        display: table-cell;
-    }
-}
 @media (-ms-high-contrast: active), (-ms-high-contrast: none) { /* IE10+ */
-    a {
-        /* Remove IE10 :active gray background-color */
-        background-color: transparent;
-    }
     ::-ms-clear {
         /* Remove input x */
         display: none;
-        box-suppress: discard;
     }
     :-ms-input-placeholder {
         direction: rtl;
@@ -1182,7 +1164,6 @@ iframe {
         ::-ms-clear {
             /* Remove input x */
             display: none;
-            box-suppress: discard;
         }
     }
     @supports (not (-ms-accelerator: true)) and (not (-ms-ime-align: auto)) { /* Webkit, Safari 9+ */
