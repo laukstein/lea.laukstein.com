@@ -49,7 +49,7 @@ body {
     word-wrap: break-word;
     -ms-hyphenate-limit-chars: 6 3 2;
         hyphenate-limit-chars: 6 3 2;
-    -webkit-hyphens: auto;
+    -webkit-hyphens: auto; /* Safari legacy */
         -ms-hyphens: auto;
             hyphens: auto;
 }
@@ -62,16 +62,14 @@ a {
     color: #00d;
     text-decoration: none;
     text-decoration-skip-ink: none; /* Disable skipping descenders https://www.chromestatus.com/features/5631679087509504 */
-    -webkit-box-decoration-break: clone; /* Chrome legacy, demo http://jsbin.com/xojoro/quiet */
+    -webkit-box-decoration-break: clone; /* Chrome and Webkit legacy, demo http://jsbin.com/xojoro/quiet */
             box-decoration-break: clone;
     outline: transparent solid 2px;
-    -webkit-transition: outline .15s;
-            transition: outline .15s;
+    transition: outline .15s;
 }
 [tabindex="-1"] {
     outline: 0;
-    -webkit-transition: none;
-            transition: none;
+    transition: none;
 }
 a:hover,
 a:focus {
@@ -96,7 +94,7 @@ img {
     max-width: 100%;
     height: auto;
     vertical-align: top;
-    -ms-interpolation-mode: nearest-neighbor; /* IE8-IE11 legacy */
+    -ms-interpolation-mode: nearest-neighbor; /* IE8+ legacy */
     image-rendering: -webkit-optimize-contrast; /* Webkit will drop this property https://bugs.webkit.org/show_bug.cgi?id=97991#c5 */
     image-rendering: -moz-crisp-edges; /* Firefox legacy */
     image-rendering:      crisp-edges; /* Safari legacy */
@@ -222,12 +220,12 @@ footer a + a {
 }
 .external a {
     padding: 1.2em .35em;
-    -webkit-filter: grayscale(100%);
+    -webkit-filter: grayscale(100%); /* Samsung Internet 7.2 legacy */
             filter: grayscale(100%);
 }
 .external a:hover,
 .external a:active {
-    -webkit-filter: none;
+    -webkit-filter: none; /* Samsung Internet 7.2 legacy */
             filter: none;
 }
 [class*=icon-]:not(svg) {
@@ -249,7 +247,7 @@ a.logo {
 }
 .logo:hover,
 .logo:active {
-    -webkit-filter: grayscale(70%);
+    -webkit-filter: grayscale(70%); /* Samsung Internet 7.2 legacy */
             filter: grayscale(70%);
 }
 .logo img {
@@ -316,14 +314,12 @@ main {
 .items li:before,
 .box:before {
     left: 8px;
-    -webkit-transform: rotate(-2deg);
-            transform: rotate(-2deg);
+    transform: rotate(-2deg);
 }
 .items li:after,
 .box:after {
     right: 8px;
-    -webkit-transform: rotate(2deg);
-            transform: rotate(2deg);
+    transform: rotate(2deg);
 }
 article.box li {
     margin-top: .5em;
@@ -592,7 +588,6 @@ button:not([data-plyr]),
 .button {
         width: 20em;
     min-width: 9em;
-    max-width: 100%;
     max-width: calc(100vw - 4.2em);
     height: 2.674em; /* Mac Safari/Chrome <select> issue having same height as <input> */
     padding: .66em .75em;
@@ -615,8 +610,7 @@ textarea {
     border-left-color: #ccc;
     outline: transparent solid 1px;
     box-shadow: 1px 1px .1em rgba(0,0,0,.2);
-    -webkit-transition: outline .15s;
-            transition: outline .15s;
+    transition: outline .15s;
 }
 input:not([type=range]):focus,
 select:focus,
@@ -624,7 +618,6 @@ textarea:focus {
     position: relative;
     border-color: #00d;
     outline-color: #1e90ff;
-    box-shadow: 1px 1px 2em rgba(0,0,0,.15);
     box-shadow: 1px 1px .1em rgba(0,0,0,.2),
                 1px 1px 2em rgba(0,0,0,.15);
 }
@@ -707,8 +700,8 @@ button:not([data-plyr]),
     text-overflow: ellipsis;
     background-color: #569e9b;
     outline: transparent solid 2px;
-    -webkit-transition: outline .15s, background-color .15s;
-            transition: outline .15s, background-color .15s;
+    transition: outline .15s,
+                background-color .15s;
     cursor: pointer;
 }
 .button.button {
@@ -968,7 +961,8 @@ iframe {
 .image img {
     max-width: initial;
     vertical-align: bottom;
-    filter: saturate(1.5);
+    -webkit-filter: saturate(1.5); /* Samsung Internet 7.2 legacy */
+            filter: saturate(1.5);
 }
 .card .content {
     width: 100%;
@@ -1015,7 +1009,8 @@ iframe {
     border-style: solid;
     border-width: 16px 12px 0 0;
     border-color: #fff rgba(255,255,255,0) rgba(255,255,255,0) rgba(255,255,255,0);
-    filter: drop-shadow(0 1px .5px rgba(0,0,0,.13));
+    -webkit-filter: drop-shadow(0 1px .5px rgba(0,0,0,.13)); /* Samsung Internet 7.2 legacy */
+            filter: drop-shadow(0 1px .5px rgba(0,0,0,.13));
 }
 .recommendation p,
 .recommendation .field {
@@ -1073,7 +1068,8 @@ iframe {
 @supports (display: grid) {
     .grid {
         display: grid;
-        grid-gap: 1.2em;
+        grid-gap: 1.2em; /* Safari legacy */
+             gap: 1.2em;
         grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
     }
     .grid figure {
@@ -1324,8 +1320,7 @@ iframe {
         min-width: 9em;
         padding: 3.5em 0;
         text-align: right;
-        -webkit-transform: translateX(-100%);
-                transform: translateX(-100%);
+        transform: translateX(-100%);
         will-change: auto;
     }
     .nav li,
@@ -1390,54 +1385,47 @@ iframe {
         height: .211em;
         background-color: #333;
         border-radius: .5em;
-        -webkit-transition: width .1s, background-color 1ms, -webkit-transform .35s cubic-bezier(.2,1,.4,1);
-                transition: width .1s, background-color 1ms, transform .35s cubic-bezier(.2,1,.4,1);
+        transition: width .1s,
+                    background-color 1ms,
+                    transform .35s cubic-bezier(.2,1,.4,1);
         will-change: transform;
     }
     .bar span {
         position: relative;
         margin: 1.07em .65em 1.07em .55em;
-        -webkit-transform: translateY(0);
-                transform: translateY(0); /* Firefox 34 Nightly width fix */
-        -webkit-transition-duration: .15s;
-                transition-duration: .15s;
+        transform: translateY(0); /* Firefox 34 Nightly width fix */
+        transition-duration: .15s;
     }
     .bar span:before {
         content: "";
         position: absolute;
         right: 0;
         width: 1em;
-        -webkit-transform: translateY(-.42em);
-                transform: translateY(-.42em);
+        transform: translateY(-.42em);
     }
     .bar span:after {
         content: "";
         position: absolute;
         width: .4em;
-        -webkit-transform: translateY(.42em);
-                transform: translateY(.42em);
+        transform: translateY(.42em);
     }
     .bar-holder:checked ~ header .wrapper .bar span {
         background-color: transparent;
     }
     .bar-holder:checked ~ header .wrapper .bar span:before {
         width: 1.3em;
-        -webkit-transform: rotate3d(0,0,1,45deg);
-                transform: rotate3d(0,0,1,45deg);
+        transform: rotate3d(0,0,1,45deg);
     }
     .bar-holder:checked ~ header .wrapper .bar span:after {
         width: 1.3em;
-        -webkit-transform: rotate3d(0,0,1,-45deg);
-                transform: rotate3d(0,0,1,-45deg);
+        transform: rotate3d(0,0,1,-45deg);
     }
     .bar-holder:checked ~ header .wrapper .nav-container,
     .bar-holder:checked ~ main .container .nav-container {
         box-shadow: 0 0 4em rgba(51,51,51,.11),
                     0 0 12em rgba(51,51,51,.3);
-        -webkit-transform: none;
-                transform: none;
-        -webkit-transition: -webkit-transform .35s cubic-bezier(.2,1,.4,1);
-                transition: transform .35s cubic-bezier(.2,1,.4,1);
+        transform: none;
+        transition: transform .35s cubic-bezier(.2,1,.4,1);
     }
     .bar-holder:checked ~ header .wrapper .bar-close {
         display: block;
