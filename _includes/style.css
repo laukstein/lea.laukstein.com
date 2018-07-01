@@ -32,7 +32,7 @@ html {
     color: #333;
     font: 62.45% / 1.5 sans-serif;
     text-rendering: optimizeSpeed;
-    background-color: #f8f8f9;
+    background-color: #f3f4f7;
     touch-action: manipulation;
     cursor: default;
     caret-color: currentcolor;
@@ -115,6 +115,7 @@ header {
     white-space: nowrap;
     background-color: #fff;
     border-bottom: 1px solid #eee;
+    box-shadow: 0 .8em 3em -1.7em #484c57;
 }
 header a {
     display: block;
@@ -174,7 +175,7 @@ footer a + a {
 .bar:focus {
     color: inherit;
     text-decoration: none;
-    background-color: #f8f8f9;
+    background-color: #f3f4f7;
 }
 .subnav-container:hover,
 .subnav-container:not(:hover) > a:focus {
@@ -213,7 +214,7 @@ footer a + a {
     border-top: 1px solid #eee;
 }
 .subnav .active.active > a {
-    background-color: #f8f8f9;
+    background-color: #f3f4f7;
 }
 .external a {
     padding: 1.2em .35em;
@@ -283,6 +284,7 @@ main {
     width: 100%;
     padding: 2.1em;
     box-sizing: border-box;
+    box-shadow: 0 .8em 3em -1.7em rgba(0,0,0,.4);
 }
 .video + .box {
     margin-bottom: 3em;
@@ -293,30 +295,6 @@ main {
 }
 .box.no-padding {
     padding: 0;
-}
-.items li:before,
-.items li:after,
-.box:before,
-.box:after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    bottom: 15px;
-    width: 50%;
-    height: 20%;
-    max-width: 300px;
-    max-height: 100px;
-    box-shadow: 0 15px 10px rgba(51,51,51,.3);
-}
-.items li:before,
-.box:before {
-    left: 8px;
-    transform: rotate(-2deg);
-}
-.items li:after,
-.box:after {
-    right: 8px;
-    transform: rotate(2deg);
 }
 article.box li {
     margin-top: .5em;
@@ -350,7 +328,7 @@ article.box figure img {
 .box.card figure {
     max-width: 100%;
     margin: 0;
-    background-color: #f8f8f9;
+    background-color: #f3f4f7;
 }
 .box figure.flow {
     margin-left: 2.1em;
@@ -936,13 +914,12 @@ iframe {
     width: 100%;
     min-height: 21em;
     padding: 0;
-    box-shadow: 0 .8em 4em .2em rgba(0,0,0,.03);
 }
 .image {
     position: relative;
     display: table-cell;
     vertical-align: bottom;
-    background-color: #f8f8f9;
+    background-color: #f3f4f7;
 }
 .image:before {
     content: "";
@@ -951,7 +928,7 @@ iframe {
     bottom: 0;
     right: -3em;
     width: 3em;
-    background-image: linear-gradient(to right, #f8f8f9, rgba(248,248,249,0));
+    background-image: linear-gradient(to right, #f3f4f7, rgba(243,244,247,0));
     pointer-events: none;
 }
 .image img {
@@ -1326,7 +1303,7 @@ iframe {
     .nav.nav a:hover,
     .nav.nav a:focus,
     .subactive.subactive > a {
-        background-color: #f8f8f9;
+        background-color: #f3f4f7;
     }
     .nav > .active:not(.subactive) > a {
         color: #fff;
