@@ -7,7 +7,7 @@ ui.subscribe = {
         data = typeof data === "object" && !(data instanceof Event) ? data : undefined;
 
         var self = ui.subscribe,
-            message;
+            message = "";
 
         if (data) {
             if (data.result === "success") {
@@ -18,14 +18,15 @@ ui.subscribe = {
                     self.redirectURL += "&utm_campaign=" + self.utmCampaign;
                 }
 
+                message += "<p>טעינה...</p>";
                 location = self.redirectURL;
             } else if (data.msg && data.msg.indexOf("list-manage.com/subscribe/send-email")) {
-                message = "<h1 class=error>שגיאה...</h1><p>את כבר רשומה, תנסי עם <a href=" + location.href + ">אימייל אחר</a></p>";
+                message += "<h1 class=error>שגיאה...</h1><p>את כבר רשומה, תנסי עם <a href=" + location.href + ">אימייל אחר</a></p>";
             } else {
-                message = "<h1 class=error>שגיאה...</h1><p>בבקשה <a href=" + location.href + ">תנסי שוב</a> מאוחר יותר</p>";
+                message += "<h1 class=error>שגיאה...</h1><p>בבקשה <a href=" + location.href + ">תנסי שוב</a> מאוחר יותר</p>";
             }
         } else {
-            message = "<h1 class=error>שגיאה בשרת...</h1><p>ניתן להירשם דרך <a href=//www.facebook.com/LeaLaukstein/>LeaLaukstein</a> או <a href=" + location.href + ">תנסי שוב</a></p>";
+            message += "<h1 class=error>שגיאה בשרת...</h1><p>ניתן להירשם דרך <a href=//www.facebook.com/LeaLaukstein/>LeaLaukstein</a> או <a href=" + location.href + ">תנסי שוב</a></p>";
         }
 
         self.el.innerHTML = message;
