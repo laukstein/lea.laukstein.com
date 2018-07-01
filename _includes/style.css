@@ -1395,6 +1395,12 @@ iframe {
         z-index: -1;
     }
 }
+@media (max-width: 46em) {
+    .space {
+        padding-right: 1em;
+        padding-left: 1em;
+    }
+}
 @media (max-width: 35em) {
     .wrapline,
     .box .item figure.flow + p {
