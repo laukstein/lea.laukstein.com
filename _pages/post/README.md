@@ -4,11 +4,11 @@ YAML schema
     permalink
     date: YYYY-MM-DD HH:MM:SS
     title
-    image
-    imageWidth
-    imageClass: flow
-    imageLabel
-    imageList
+    image:
+        width
+        class: flow
+        label
+    imageList:
         - image
           label
           text

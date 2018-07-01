@@ -3,10 +3,10 @@ layout: post
 permalink: /hidabroot
 date: 2017-01-18 20:01:00
 title: ! "ראיון הדברות: גיורת סטייליסטית לאה לאוקשטיין"
-image: 2017-01-18-hidabroot.jpg
-imageWidth: 403
-imageClass: flow
-imageLabel: צילום לאה לאוקשטיין, ספר "ציוות ה"
+image:
+    width: 403
+    class: flow
+    label: צילום לאה לאוקשטיין, ספר "ציוות ה"
 ---
 
 בילדות אף פעם לא שמעתי מילה על יהודים.

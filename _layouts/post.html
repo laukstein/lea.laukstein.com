@@ -9,8 +9,7 @@ comment: true
 {% capture image %}{%
     include get-image.html
     url = page.url
-    date = page.date
-    image = page.image %}{%
+    date = page.date %}{%
 endcapture %}{%
 assign image = image | strip_newlines
 %}<article class=box>
@@ -18,9 +17,9 @@ assign image = image | strip_newlines
         include image.html
         title = page.title
         image = image
-        width = page.imageWidth
-        className = page.imageClass
-        label = page.imageLabel
+        width = page.image.width
+        className = page.image.class
+        label = page.image.label
         pageURL = page.url
         pageDate = page.date
     %}

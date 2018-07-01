@@ -13,14 +13,13 @@ for post in pages %}{%
         capture image %}{%
             include get-image.html
             url = post.url
-            date = post.date
-            image = post.image %}{%
+            date = post.date %}{%
         endcapture %}{%
         assign image = image | strip_newlines %}
 <blockquote class=box>
     <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>{% if image %}
-    <figure{% if post.imageClass %} class="{{ post.imageClass }}"{% endif %}>
-        <img src={{ site.assets }}{{ image }}{% if post.imageWidth %} width={{ post.imageWidth }}{% endif %} alt="{{ post.title }}">
+    <figure{% if post.image.class %} class="{{ post.image.class }}"{% endif %}>
+        <img src={{ site.assets }}{{ image }}{% if post.image.width %} width={{ post.image.width }}{% endif %} alt="{{ post.title }}">
     </figure>{% endif %}
     <h2 class=wrapline>{{ post.title }}</h2>
     <p>{{ post.content | markdownify | strip_html | truncatewords: 50, '... <a>המשך קריא</a>' }}</p>

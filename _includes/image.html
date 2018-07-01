@@ -4,11 +4,7 @@
         assign index = 0 %}{%
         for item in include.image %}
         <img src={{ site.assets }}{{ item }}{%
-            if include.width %} width={%
-                if include.width[index] %}{{ include.width[index] }}{%
-                else %}{{ include.width }}{%
-                endif %}{%
-            endif %}{%
+            if include.width %} width={{ include.width[index] | default: include.width}}{% endif %}{%
             if include.height %} height={{ include.height }}{% endif %} alt="{{ include.title }}">{%
             assign index = index | plus: 1 %}{%
         endfor %}{%

@@ -3,8 +3,8 @@ layout: post
 permalink: /shoemaker
 date: 2017-05-03 09:05:00
 title: למה הסנדלר הולך יחף?
-image: 2017-05-03-shoemaker.jpg
-imageLabel: "צילום: [Todd Quackenbush](https://unsplash.com/@toddquackenbush)"
+image:
+    label: "צילום: [Todd Quackenbush](https://unsplash.com/@toddquackenbush)"
 ---
 
 אני חושבת שזה לא בגלל שאין לו זמן בשביל עצמו (אבל חלקית גם זה נכון), אלא כי הוא מעורב רגשית, ויותר קשה לעזור לעצמך מאשר לאחרים.

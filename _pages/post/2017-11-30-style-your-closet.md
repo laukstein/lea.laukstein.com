@@ -3,7 +3,6 @@ layout: post
 permalink: /style-your-closet
 date: 2017-11-30 09:37:00
 title: סטייל שבא מהארון שלך
-image: 2017-11-30-style-your-closet.jpg
 imageList:
     - image: 2017-11-30-style-your-closet-1.jpg
       width: 304

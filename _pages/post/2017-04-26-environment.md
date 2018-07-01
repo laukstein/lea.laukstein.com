@@ -3,8 +3,8 @@ layout: post
 permalink: /environment
 date: 2017-04-26 13:40:00
 title: ארון "צנוע" ואיכות הסביבה
-image: 2017-04-26-environment.jpg
-imageLabel: "צילום: [Vivek Kumar](https://unsplash.com/@kumarvivek0811)"
+image:
+    label: "צילום: [Vivek Kumar](https://unsplash.com/@kumarvivek0811)"
 ---
 
 ידעת שפחות בגדים בארון זו תרומה לאיכות הסביבה?

@@ -3,8 +3,8 @@ layout: post
 permalink: /before-after
 date: 2017-10-01 12:37:00
 title: למה לפעמים הבגד לא תואם את מי שאנחנו באמת?
-image: 2017-10-01-before-after.jpg
-imageLabel: "צילום: מירי שמעונוביץ"
+image:
+    label: "צילום: מירי שמעונוביץ"
 imageList:
     - image: 2017-10-01-before-after-1.jpg
       className: last
