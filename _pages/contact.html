@@ -45,6 +45,10 @@ css: |
     .sheet .label {
         font-weight: normal;
     }
+    .sheet .column:not(.label) {
+        display: inline-block;
+        vertical-align: middle;
+    }
 ---
 
 <form class="cel space" id=contact method=post>
@@ -92,11 +96,11 @@ css: |
     <dl class="sheet sheet-fixed">
         <dt class="row label"><h3>לאה לאוקשטיין</h3></dt>
         <dd class=row>
-            <div class="column label">נייד</div>
+            <div class="column label" unselectable=on>נייד</div>
             <a class=column href=tel:0585800020 target=_blank>058-5800020</a>
         </dd>
         <dd class=row>
-            <div class="column label">דוא"ל</div>
+            <div class="column label" unselectable=on>דוא"ל</div>
             <a class=column href=mailto:lea@laukstein.com target=_blank>lea@laukstein.com</a>
         </dd>
     </dl>
