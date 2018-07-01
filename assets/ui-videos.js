@@ -167,9 +167,8 @@ ui.videos = (function () {
     };
     generateHTML.list = function (html) {
         return "<div class=space>" +
-            "    <h1>" + ui.d.title + "</h1>" +
             "    <p>סרטונים ביוטיוב</p>" +
-            "    <div id=g-ytsubscribe class=g-ytsubscribe data-channelid=UCNNsgimJtU1q1LUMVsq44Dg data-layout=default data-count=hidden></div>" +
+            "    <div id=g-ytsubscribe class=g-ytsubscribe data-channelid=UCNNsgimJtU1q1LUMVsq44Dg data-layout=full data-count=hidden></div>" +
             "</div>" +
             "<ul class=list>" + html + "</ul>";
     };
