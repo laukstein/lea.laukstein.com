@@ -24,17 +24,12 @@ for post in pages %}{%
         <a>המשך קריא</a>
         <div class=footer>{% include date.html value = post.date %}</div>
     </blockquote>{%
-        else %}{%
-            capture more %}{{ more }}<li><a href={{ post.url | prepend: site.baseurl }}>{{ post.title }}</a></li>{% endcapture %}{%
         endif %}{%
         assign index = index | plus: 1 %}{%
     endif %}{%
 endfor %}
-{% if more %}
-    <blockquote class="box footer">
-        <p>מאמרים נוספים</p>
-        <ol start={{ max | plus: 1 }}>{{ more }}</ol>
-    </blockquote>{%
+{% if index > max %}
+    <a class="footer button" href=/blog>מאמרים נוספים</a>{%
 endif %}
 </div>
 </div>
