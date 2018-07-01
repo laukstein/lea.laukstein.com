@@ -12,3 +12,6 @@ YAML schema
         - image
           label
           text
+    button:
+        title
+        url

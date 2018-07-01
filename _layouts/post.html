@@ -26,6 +26,11 @@ assign image = image | strip_newlines
     %}
     <h1 class=wrapline>{{ page.title }}</h1>
     {{ content }}{%
+    if page.button.url and page.button.title %}
+    <div class=sticky-footer>
+        <a class=button href={{ page.button.url }} tabindex=0>{{ page.button.title }}</a>
+    </div>{%
+    endif %}{%
     if page.date %}<div>{% include date.html value = page.date %}</div>{% endif %}{%
     if page.imageList %}{%
         for item in page.imageList %}
