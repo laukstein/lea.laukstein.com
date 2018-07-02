@@ -123,13 +123,17 @@ endcase %}
 include core-js.html %}{%
 
 capture image %}{%
-    include get-image.html
-    url = page.url
-    date = page.date
-    image = page.image %}{%
+    if page.video %}https://img.youtube.com/vi/{{ page.video }}/0.jpg{%
+    else %}{%
+        if page.layout == "post" %}{{ site.url }}{{ site.assets }}{%
+            include get-image.html
+            url = page.url
+            date = page.date %}{%
+        else if page.image and page.image.width == nil and page.image.class == nil and page.image.label == nil %}{{ site.url }}{{ site.assets }}{{ page.image }}{%
+        endif %}{%
+    endif %}{%
 endcapture %}{%
 assign image = image | strip_newlines
-
 %}{%
 if page.jsonld == nil and image or page.video %}{%
     if layout.category == "products" or page.category == "products" %}{%
@@ -138,9 +142,8 @@ if page.jsonld == nil and image or page.video %}{%
     "@context": "http://schema.org/",
     "@type": {{ page.jsonldType | default: "Product" }},
     "name": "{{ title }}",{% if page.description %}
-    "description": "{{ page.description }}",{% endif %}
-    "image": "{% if page.video %}https://img.youtube.com/vi/{{ page.video }}/0.jpg{%
-        else %}{{ site.url }}{{ site.assets }}{{ image }}{% endif %}",
+    "description": "{{ page.description }}",{% endif %}{% if image %}
+    "image": "{{ image }}",{% endif %}
     "offers": {
         "@type": "Offer",
         "price": "{{ page.price }}",
@@ -160,13 +163,8 @@ if page.jsonld == nil and image or page.video %}{%
         "@type": "WebPage",
         "@id": "{{ page.url | absolute_url | split: '?' | first }}"
     },
-    "headline": "{{ title }}",
-    "image": {
-        "@type": "ImageObject",
-        "url": "{{ site.url }}{{ site.assets }}{{ image }}",
-        "width": {% if page.imageWidth %}{{ page.imageWidth }}{% else %}960{% endif %},
-        "height": {% if page.imageHeight %}{{ page.imageHeight }}{% else %}540{% endif %}
-    },
+    "headline": "{{ title }}",{% if image %}
+    "image": "{{ image }}",{% endif %}
     "datePublished": "{{ page.date | replace: ' ', 'T' }}",
     "dateModified": "{{ page.date | replace: ' ', 'T' }}",
     "author": {
@@ -183,7 +181,7 @@ if page.jsonld == nil and image or page.video %}{%
             "height": 60
         }
     },
-    "description": "{{ post.content | strip_html | truncatewords: 25, '...' }}"
+    "description": "{{ page.content | strip_html | truncatewords: 25, '...' }}"
 }
 {% endcapture %}{%
     endif %}{%
