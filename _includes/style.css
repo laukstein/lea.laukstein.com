@@ -438,7 +438,7 @@ main .table.center {
     pointer-events: none;
 }
 .space {
-    padding: 6% 2.1em 3em;
+    padding: 2em 2.1em 3em;
     box-sizing: border-box;
 }
 .no-padding .space,
@@ -1037,6 +1037,26 @@ iframe {
 .grid figure {
     display: none;
 }
+.grid .more {
+    position: relative;
+    z-index: 1;
+}
+.grid blockquote {
+    padding-bottom: 3.4em;
+}
+.grid blockquote h2 {
+    margin-bottom: .8em;
+}
+.grid blockquote time {
+    margin-top: .4em;
+}
+.grid blockquote .footer {
+    position: absolute;
+    right: 2.1em;
+    left: 2.1em;
+    bottom: 1.3em;
+    white-space: nowrap;
+}
 
 @supports (display: grid) {
     .grid {
@@ -1044,6 +1064,11 @@ iframe {
         grid-gap: 1.2em; /* Safari legacy */
              gap: 1.2em;
         grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .grid .box + .box {
+        margin-top: 0;
     }
     .grid figure {
         overflow: hidden;
@@ -1057,6 +1082,13 @@ iframe {
         min-height: 100%;
         object-fit: cover;
         object-position: bottom;
+    }
+    .grid .clamp {
+        /* Wrap text max 2 lines */
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
     .grid .footer {
         grid-column: 1 / -1;
@@ -1197,7 +1229,7 @@ iframe {
 }
 
 @media (max-width: 56em) {
-    .cel {
+    .cel:not(.grid) {
         display: block;
     }
     .table.center .cel {
@@ -1206,8 +1238,16 @@ iframe {
     .content {
         width: auto;
     }
+    .space {
+        transition: padding-right .15s,
+                    padding-left .15s;
+    }
 }
 @media (max-width: 54em) {
+    .space {
+        padding-right: 1em;
+        padding-left: 1em;
+    }
     .subscribe h1 {
         font-size: 1.5em;
     }
@@ -1225,8 +1265,6 @@ iframe {
     .card {
         width: calc(100% + 4.2em);
         margin: 0 -2.1em;
-        background-color: transparent;
-        box-shadow: none;
     }
     .card .content {
         min-width: 0;
@@ -1393,12 +1431,6 @@ iframe {
         display: block;
         position: fixed;
         z-index: -1;
-    }
-}
-@media (max-width: 46em) {
-    .space {
-        padding-right: 1em;
-        padding-left: 1em;
     }
 }
 @media (max-width: 35em) {

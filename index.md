@@ -82,52 +82,9 @@ css: |
         display: block;
         margin-top: 2em;
     }
-    .headlines a.absolute {
-        z-index: 1;
-    }
-    .headlines .box {
-        padding-bottom: 3.2em;
-        box-shadow: 0 .8em 3em -1.7em rgba(0,0,0,.4);
-    }
-    .headlines .box:before,
-    .headlines .box:after {
-        display: none;
-    }
-    .headlines blockquote + blockquote {
-        margin-top: 0;
-    }
-    .headlines blockquote time {
-        margin-top: .4em;
-    }
-    .headlines blockquote:first-child {
-        margin-top: 1em;
-    }
-    .headlines blockquote:last-child {
-        margin-bottom: 3em;
-    }
-    .headlines .box .footer {
-        position: absolute;
-        right: 2.1em;
-        left: 2.1em;
-        bottom: 1.5em;
-        white-space: nowrap;
-    }
-    .headlines a:not([href]) {
-        white-space: nowrap;
-    }
     @supports (display: grid) {
         .headlines .grid {
             grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
-        }
-        .headlines .grid .box {
-            margin-top: 0;
-        }
-        .headlines .grid p {
-            /* Wrap text max 2 lines */
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
         }
         .headlines .footer {
             width: 10em;
@@ -154,11 +111,13 @@ css: |
             text-align: center;
         }
     }
-    @media (max-width: 46em) {
+    @media (max-width: 54em) {
         main {
             padding-right: 1em;
             padding-left: 1em;
         }
+    }
+    @media (max-width: 46em) {
         .cel.cel {
             min-width: 16em;
         }

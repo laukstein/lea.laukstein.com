@@ -1,6 +1,6 @@
 ---
 layout: default
-type: medium
+className: grid
 header: true
 order: 3
 
@@ -16,14 +16,15 @@ for post in pages %}{%
             date = post.date %}{%
         endcapture %}{%
         assign image = image | strip_newlines %}
-<blockquote class=box>
-    <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>{% if image %}
-    <figure{% if post.image.class %} class="{{ post.image.class }}"{% endif %}>
+<blockquote class=box>{% if image %}
+    <figure>
         <img src={{ site.assets }}{{ image }}{% if post.image.width %} width={{ post.image.width }}{% endif %} alt="{{ post.title }}">
     </figure>{% endif %}
-    <h2 class=wrapline>{{ post.title }}</h2>
-    <p>{{ post.content | markdownify | strip_html | truncatewords: 50, '... <a>המשך קריא</a>' }}</p>
-    <div>{% include date.html value = post.date %}</div>
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content | markdownify | strip_html | truncatewords: 50, '...' }}</p>
+    <div class=footer>{% include date.html value = post.date %}</div>
+    <a class=more href={{ post.url | prepend: site.baseurl }}>המשך קריא</a>
+    <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>
 </blockquote>{%
     endif %}{%
 endfor %}

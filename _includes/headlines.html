@@ -12,17 +12,17 @@ for post in pages %}{%
                 date = post.date %}{%
             endcapture %}{%
             assign image = image | strip_newlines %}
-    <blockquote class=box>
-        <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>{%
+    <blockquote class=box>{%
         if image %}
         <figure>
             <img class=absolute src={{ site.assets }}{{ image }}{% if post.image.width %} width={{ post.image.width }}{% endif %} alt="{{ post.title }}">
         </figure>{%
         endif %}
         <h2>{{ post.title }}</h2>
-        <p>{{ post.content | markdownify | strip_html | truncatewords: 20, ' ...' }}</p>
-        <a>המשך קריא</a>
+        <p class=clamp>{{ post.content | markdownify | strip_html | truncatewords: 20, ' ...' }}</p>
         <div class=footer>{% include date.html value = post.date %}</div>
+        <a class=more href={{ post.url | prepend: site.baseurl }}>המשך קריא</a>
+        <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>
     </blockquote>{%
         endif %}{%
         assign index = index | plus: 1 %}{%

@@ -3,10 +3,19 @@ layout: default
 customLayout: true
 category: products
 css: |
+    main {
+        display: table;
+        table-layout: fixed;
+    }
+    .table {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .space {
+        padding-bottom: 2em;
+    }
     .grid {
-        grid-template-columns: repeat(auto-fit, minmax(19.2em, 1fr));
-        padding-right: .4em;
-        padding-left: .4em;
+        max-width: 60em;
     }
     .grid .card {
         display: inline-block;
