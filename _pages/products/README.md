@@ -37,4 +37,7 @@ YAML schema
           title
           url
         - more: <html>
-    css
+    css: |
+        multi-line css
+    jsonldType
+    jsonldProperties

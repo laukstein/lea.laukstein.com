@@ -136,15 +136,19 @@ if page.jsonld == nil and image or page.video %}{%
         capture jsonld %}
 {
     "@context": "http://schema.org/",
-    "@type": "Product",
-    "name": "{{ title }}",
+    "@type": {{ page.jsonldType | default: "Product" }},
+    "name": "{{ title }}",{% if page.description %}
+    "description": "{{ page.description }}",{% endif %}
     "image": "{% if page.video %}https://img.youtube.com/vi/{{ page.video }}/0.jpg{%
         else %}{{ site.url }}{{ site.assets }}{{ image }}{% endif %}",
     "offers": {
         "@type": "Offer",
         "price": "{{ page.price }}",
-        "priceCurrency": "ILS"
-    }
+        "priceCurrency": "ILS",
+        "availability": "http://schema.org/InStock",
+        "url": "{{ site.url }}{{ page.url }}"
+    }{% if page.jsonldProperties %},
+    {{ page.jsonldProperties }}{% endif %}
 }
 {% endcapture %}{%
     else if layout.category == "blog" %}{%
