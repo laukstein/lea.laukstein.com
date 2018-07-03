@@ -17,7 +17,9 @@ css: |
     }
     .table.scale {
         display: block;
-        margin: 2em 0;
+        padding: 2em 0;
+        margin: auto;
+        box-sizing: border-box;
     }
     .cel.cel {
         overflow: hidden;
