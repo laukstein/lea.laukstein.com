@@ -20,11 +20,29 @@ layout: null
     for page in pages %}{%
         unless page.draft %}{%
             if page.category == null and page.title and page.order or page.url == '/privacy' or page.layout == 'products-compare' %}{%
-                assign relative_url = page.url | remove_first: '/' %}
+                assign relative_url = page.url | remove_first: '/' %}{%
+                capture image %}{%
+                    if page.video %}https://img.youtube.com/vi/{{ page.video }}/0.jpg{%
+                    else %}{%
+                        capture source %}{%
+                            if page.layout == "post" %}{%
+                                include get-image.html
+                                url = page.url
+                                date = page.date %}{%
+                            else if page.image and page.image.width == nil and page.image.class == nil and page.image.label == nil %}{{ page.image }}{%
+                            endif %}{%
+                        endcapture %}{%
+                        assign source = source | strip_newlines
+                        %}{% if source.size > 0 %}{{ site.url }}{{ site.assets }}{{ source }}{% endif %}{%
+                    endif %}{%
+                endcapture %}{%
+                if image.size == 0 %}{%
+                    assign image = nil %}{%
+                endif %}
     <url>
-        <loc>{{ site.url }}{{ page.url }}</loc>{% if page.image %}
+        <loc>{{ site.url }}{{ page.url }}</loc>{% if image %}
         <image:image>
-            <image:loc>{{ site.url }}{{ site.assets }}{{ page.image }}</image:loc>
+            <image:loc>{{ image }}</image:loc>
         </image:image>{% endif %}{% if page.video %}
         <video:video>
             <video:thumbnail_loc>https://img.youtube.com/vi/{{ page.video }}/0.jpg</video:thumbnail_loc>
@@ -34,12 +52,30 @@ layout: null
         <priority>1.0</priority>
     </url>{%
     for subpage in pages %}{%
-        if subpage.private == null %}{% if subpage.category == relative_url or relative_url == "blog" and subpage.layout == "post" %}
+        if subpage.private == null %}{% if subpage.category == relative_url or relative_url == "blog" and subpage.layout == "post" %}{%
+            capture image %}{%
+                if subpage.video %}https://img.youtube.com/vi/{{ subpage.video }}/0.jpg{%
+                else %}{%
+                    capture source %}{%
+                        if subpage.layout == "post" %}{%
+                            include get-image.html
+                            url = subpage.url
+                            date = subpage.date %}{%
+                        else if subpage.image and subpage.image.width == nil and subpage.image.class == nil and subpage.image.label == nil %}{{ subpage.image }}{%
+                        endif %}{%
+                    endcapture %}{%
+                    assign source = source | strip_newlines
+                    %}{% if source.size > 0 %}{{ site.url }}{{ site.assets }}{{ source }}{% endif %}{%
+                endif %}{%
+            endcapture %}{%
+            if image.size == 0 %}{%
+                assign image = nil %}{%
+            endif %}
     <url>
         <loc>{{ site.url }}{{ subpage.url }}</loc>{% if subpage.date %}
-        <lastmod>{{ subpage.date | date_to_xmlschema }}</lastmod>{% endif %}{% if subpage.image %}
+        <lastmod>{{ subpage.date | date_to_xmlschema }}</lastmod>{% endif %}{% if image %}
         <image:image>
-            <image:loc>{{ site.url }}{{ site.assets }}{{ subpage.image }}</image:loc>
+            <image:loc>{{ image }}</image:loc>
         </image:image>{% endif %}{% if subpage.video %}
         <video:video>
             <video:thumbnail_loc>https://img.youtube.com/vi/{{ subpage.video }}/0.jpg</video:thumbnail_loc>

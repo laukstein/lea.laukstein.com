@@ -125,16 +125,22 @@ include core-js.html %}{%
 capture image %}{%
     if page.video %}https://img.youtube.com/vi/{{ page.video }}/0.jpg{%
     else %}{%
-        if page.layout == "post" %}{{ site.url }}{{ site.assets }}{%
-            include get-image.html
-            url = page.url
-            date = page.date %}{%
-        else if page.image and page.image.width == nil and page.image.class == nil and page.image.label == nil %}{{ site.url }}{{ site.assets }}{{ page.image }}{%
-        endif %}{%
+        capture source %}{%
+            if page.layout == "post" %}{%
+                include get-image.html
+                url = page.url
+                date = page.date %}{%
+            else if page.image and page.image.width == nil and page.image.class == nil and page.image.label == nil %}{{ page.image }}{%
+            endif %}{%
+        endcapture %}{%
+        assign source = source | strip_newlines
+        %}{% if source.size > 0 %}{{ site.url }}{{ site.assets }}{{ source }}{% endif %}{%
     endif %}{%
 endcapture %}{%
-assign image = image | strip_newlines
-%}{%
+if image.size == 0 %}{%
+    assign image = nil %}{%
+endif %}{%
+
 if page.jsonld == nil and image or page.video %}{%
     if layout.category == "products" or page.category == "products" %}{%
         capture jsonld %}
