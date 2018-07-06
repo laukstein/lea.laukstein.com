@@ -15,6 +15,7 @@ array: []
             <img src={{ site.assets }}logo.png width=47 height=47 alt="{{ site.title }}"><div>לאה לאוקשטיין</div>
         </a>
         <ul class="nav nav-container" role=navigation dir=rtl>{%
+            assign breadcrumb = layout.array %}{%
             assign pages = site.pages | sort: "order" %}{%
 
             for nav in pages %}{%
@@ -35,7 +36,12 @@ array: []
                     for subnav in pages %}{%
                         if subnav.subnav == relative_url %}{%
                         unless subnav.private or subnav.draft %}
-                    <li{% if subnav.url == page.url or subnav.group == page.group %}{% assign assign className = className | push: "subactive" %} class=active{% endif %}><a href="{{ subnav.url | relative_url }}">{% if subnav.title-short %}{{ subnav.title-short }}{% else %}{{ subnav.title }}{% endif %}</a></li>{%
+                    <li{% capture subnavTitle %}{{ subnav.title-short | default: subnav.title }}{% endcapture %}{%
+                        if subnav.url == page.url or subnav.group == page.group %}{%
+                            assign listItem = site.url | append: subnav.url | append: "|" | append: subnavTitle %}{%
+                            assign breadcrumb = breadcrumb | push: listItem %}{%
+                            assign className = className | push: "subactive" %} class=active{%
+                        endif %}><a href="{{ subnav.url | relative_url }}">{{ subnavTitle }}</a></li>{%
                         endunless %}{%
                         endif %}{%
                     endfor %}
@@ -96,16 +102,14 @@ case type %}{%
             <div class="cel content{{ className }}">
                 {% include youtube.html id = page.video %}
                 {% if content.size > 1 %}
-                    <div class=box>
-                        {% if title %}<h1>{{ title }}</h1>{% endif %}
-                        {{ content }}
-                    </div>
+                    <div class=box>{%
+                    if title %}
+                        <h1>{{ title }}</h1>{%
+                    endif %}{{ content }}</div>
                 {% endif %}
             </div>{%
         else %}
-            <div class="cel content space{{ className }}">
-                {{ content }}
-            </div>{%
+            <div class="cel content space{{ className }}">{{ content }}</div>{%
         endif %}{%
         if page.subscribe %}
 {% include subscribe.html data = page.subscribe %}{%
@@ -123,45 +127,43 @@ endcase %}
 include core-js.html %}{%
 
 capture image %}{%
-    if page.video %}https://img.youtube.com/vi/{{ page.video }}/0.jpg{%
-    else %}{%
-        capture source %}{%
-            if page.layout == "post" %}{%
-                include get-image.html
+    include image-url.html
+
+    layout = page.layout
+    url = page.url
+    date = page.date
+    video = page.video
+    image = page.image
+    %}{%
+endcapture %}{%
+assign image = image | strip_newlines %}{%
+if image.size == 0 %}{% assign image = nil %}{% endif %}{%
+
+if page.jsonld == nil %}{%
+    if layout.category == "products" or page.category == "products" %}{%
+        capture jsonld %}{%
+            if page.subnav and page.group != "diy" %}
+{%
+                include products-jsonld.html
+                group = page.group %}{%
+            else if image or page.video %}
+{%
+                include product-jsonld.html
+
+                jsonldType = page.jsonldType
+                jsonldProperties = page.jsonldProperties
                 url = page.url
-                date = page.date %}{%
-            else if page.image and page.image.width == nil and page.image.class == nil and page.image.label == nil %}{{ page.image }}{%
+                title = title
+                description = page.description
+                price = page.price
+                image = image
+                breadcrumb = breadcrumb
+                %}{%
             endif %}{%
         endcapture %}{%
-        assign source = source | strip_newlines
-        %}{% if source.size > 0 %}{{ site.url }}{{ site.assets }}{{ source }}{% endif %}{%
-    endif %}{%
-endcapture %}{%
-if image.size == 0 %}{%
-    assign image = nil %}{%
-endif %}{%
-
-if page.jsonld == nil and image or page.video %}{%
-    if layout.category == "products" or page.category == "products" %}{%
-        capture jsonld %}
-{
-    "@context": "http://schema.org/",
-    "@type": {{ page.jsonldType | default: "Product" }},
-    "name": "{{ title }}",{% if page.description %}
-    "description": "{{ page.description }}",{% endif %}{% if image %}
-    "image": "{{ image }}",{% endif %}
-    "offers": {
-        "@type": "Offer",
-        "price": "{{ page.price }}",
-        "priceCurrency": "ILS",
-        "availability": "http://schema.org/InStock",
-        "url": "{{ site.url }}{{ page.url }}"
-    }{% if page.jsonldProperties %},
-    {{ page.jsonldProperties }}{% endif %}
-}
-{% endcapture %}{%
-    else if layout.category == "blog" %}{%
-        capture jsonld %}
+    else %}{%
+        if image or page.video %}{%
+            capture jsonld %}
 {
     "@context": "http://schema.org",
     "@type": "Article",
@@ -182,16 +184,40 @@ if page.jsonld == nil and image or page.video %}{%
         "name": "{{ site.title }}",
         "logo": {
             "@type": "ImageObject",
-            "url": "{{ site.url }}{{ site.assets }}hotlink-ok/logo.jpg",
+            "url": "{{ site.url | append: site.assets | append: "hotlink-ok/logo.jpg" }}",
             "width": 190,
             "height": 60
         }
     },
     "description": "{{ page.content | strip_html | truncatewords: 25, '...' }}"
 }
-{% endcapture %}{%
+{%          endcapture %}{%
+        else %}{%
+            if page.url == "/contact"%}{%
+            capture jsonld %}
+{
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "url": "{{ site.url }}",
+    "logo": "{{ site.url | append: site.assets | append: "hotlink-ok/logo.jpg" }}",
+    "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+972-58-580-0020",
+        "contactType": "customer service",
+        "areaServed": "IL",
+        "availableLanguage": [
+            "Hebrew",
+            "English",
+            "Russian"
+        ]
+    }]
+}
+{%          endcapture %}{%
+            endif %}{%
+        endif %}{%
     endif %}{%
 endif %}{%
+
 if jsonld or page.jsonld %}<script type="application/ld+json">{%
     unless jsonld %}{%
         assign jsonld=page.jsonld %}{%

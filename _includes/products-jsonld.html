@@ -1,0 +1,41 @@
+{% if include.group %}{%
+    assign jsonld = layout.array %}{%
+    assign pages = site.pages | sort: "order" %}{%
+
+    for item in pages %}{%
+        if item.order and item.subnav != "products" and item.group == include.group %}{%
+            capture listItem %}{%
+                assign title = item.titleLong | default: item.title %}{% capture image %}{%
+                    include image-url.html
+
+                    layout = item.layout
+                    url = item.url
+                    date = item.date
+                    video = item.video
+                    image = item.image
+                    %}{%
+                endcapture %}{%
+                assign image = image | strip_newlines %}{%
+                if image.size == 0 %}{% assign image = nil %}{% endif %}{%
+
+                include product-jsonld.html
+
+                jsonldType = item.jsonldType
+                jsonldProperties = item.jsonldProperties
+                url = item.url
+                title = title
+                description = item.description
+                price = item.price
+                image = image
+                %}{%
+            endcapture %}{%
+            assign listItem = listItem | replace: "}
+}
+", "}
+}" %}{%
+            assign jsonld = jsonld | push: listItem %}{%
+        endif %}{%
+    endfor %}{%
+
+    if jsonld.size > 0 %}[{{ jsonld | join: "," }}]{% endif %}{%
+endif %}

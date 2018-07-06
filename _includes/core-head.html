@@ -1,8 +1,4 @@
-{% if page.titleLong %}{%
-    assign title = page.titleLong %}{%
-else if page.title %}{%
-    assign title = page.title %}{%
-endif %}{%
+{% assign title = page.titleLong | default: page.title %}{%
 assign style = layout.style | uniq %}{% if page.style %}{%
 assign style = style | concat: page.style | uniq %}{% endif %}{%
 assign inlineCSS = layout.css | append: page.css | scssify %}{%
@@ -10,11 +6,12 @@ if style %}{%
     if jekyll.environment == "dev" %}{%
         for source in style %}{%
             capture css %}{{ css }}
-<link rel=stylesheet href={{ site.assets }}{{ source }}>{% endcapture %}{%
+<link rel=stylesheet href={{ site.assets }}{{ source }}>{%
+            endcapture %}{%
         endfor %}{%
         if inlineCSS.size > 0 %}{%
             capture css %}{{ css }}
-<style>{{ inlineCSS }}</style>{%
+<style>{{ inlineCSS | strip_newlines }}</style>{%
             endcapture %}{%
         endif %}{%
     else %}{%
@@ -22,7 +19,7 @@ if style %}{%
             {% capture css %}{{ css }}{% include {{ source }} %}{% endcapture %}{%
         endfor %}{%
         capture css %}
-<style>{{ css | scssify }}{{ inlineCSS }}</style>{%
+<style>{{ css | scssify }}{{ inlineCSS | strip_newlines }}</style>{%
         endcapture %}{%
     endif %}{%
 endif %}{%
@@ -30,7 +27,7 @@ endif %}{%
 capture head %}<!doctype html>
 <html{% if layout.className %} class="{{ layout.className }}"{% endif %} lang=he>
 <meta charset=utf-8>
-<title>{% if title %}{{ title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>{%
+<title>{{ title | default: site.title | escape }}</title>{%
 if page.description %}
 <meta name=description content="{{ page.description }}">{% endif %}{%
 if layout.private or page.private or page.draft %}

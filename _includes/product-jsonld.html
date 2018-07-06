@@ -1,0 +1,43 @@
+{% if include.breadcrumb %}{%
+    assign listItem = site.url | append: include.url | append: "|" | append: include.title %}{%
+    assign breadcrumb = include.breadcrumb | push: listItem %}{%
+    if breadcrumb.size > 1 %}[{% endif %}{%
+endif
+
+%}{
+    "@context": "http://schema.org",
+    "@type": {{ include.jsonldType | default: '"Product"' }},
+    "name": "{{ include.title }}",{% if include.description %}
+    "description": "{{ include.description }}",{% endif %}{% if include.image %}
+    "image": "{{ include.image }}",{% endif %}{% if include.price %}
+    "offers": {
+        "@type": "Offer",
+        "price": "{{ include.price }}",
+        "priceCurrency": "ILS",
+        "availability": "http://schema.org/InStock",
+        "url": "{{ site.url | append: include.url }}"
+    }{% endif %}{% if include.jsonldProperties %},
+    {{ include.jsonldProperties }}{% endif %}
+}{%
+
+if include.breadcrumb && breadcrumb.size > 1 %},{
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{%
+    assign position = 0 %}{%
+
+    for listItem in breadcrumb %}{%
+        assign position = position | plus: 1 %}{%
+        assign items = listItem | split: "|"
+
+        %}{
+        "@type": "ListItem",
+        "position": {{ position }},
+        "item": {
+            "@id": "{{ items[0] }}",
+            "name": "{{ items[1] }}"
+        }
+    }{% if position < breadcrumb.size %},{% endif %}{%
+    endfor %}]
+}]{%
+endif %}

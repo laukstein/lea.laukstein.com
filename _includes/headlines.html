@@ -27,8 +27,8 @@ for post in pages %}{%
         endif %}{%
         assign index = index | plus: 1 %}{%
     endif %}{%
-endfor %}
-{% if index > max %}
+endfor %}{%
+if index > max %}
     <a class="footer button" href=/blog>מאמרים נוספים</a>{%
 endif %}
 </div>

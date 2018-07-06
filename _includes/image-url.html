@@ -1,0 +1,13 @@
+{% if include.video %}https://img.youtube.com/vi/{{ include.video }}/0.jpg{%
+else %}{%
+    capture source %}{%
+        if include.layout == "post" %}{%
+            include get-image.html
+            url = include.url
+            date = include.date %}{%
+        else if include.image and include.image.width == nil and include.image.class == nil and include.image.label == nil %}{{ include.image }}{%
+        endif %}{%
+    endcapture %}{%
+    assign source = source | strip_newlines
+    %}{% if source.size > 0 %}{{ site.url | append: site.assets | append: source }}{% endif %}{%
+endif %}

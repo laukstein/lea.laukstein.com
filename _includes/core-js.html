@@ -1,18 +1,17 @@
-{%
-assign script = layout.script %}{% if script_template %}{%
+{% assign script = layout.script %}{% if script_template %}{%
 assign script_template = script_template | split: ", " %}{%
 assign script = script | concat: script_template | uniq %}{% endif %}{% if page.script %}{%
 assign script = script | concat: page.script | uniq %}{% endif %}{%
-if script %}
-    {% for source in script %}
-        {% if jekyll.environment == "dev" %}
+if script %}{%
+    for source in script %}{%
+        if jekyll.environment == "dev" %}
             {% capture js %}{{ js }}
-<script src={{ site.assets }}{{ source }}></script>{% endcapture %}
-        {% else %}
-            {% capture js %}{{ js }}{% include {{ source | replace: ".js", ".min.js" }} %}{% endcapture %}
-        {% endif %}
-    {% endfor %}
-    {% unless jekyll.environment == "dev" %}
-        {% capture js %}<script>{{ js }}</script>{% endcapture %}
-    {% endunless %}
-{% endif %}{{ js }}
+<script src={{ site.assets }}{{ source }}></script>{% endcapture %}{%
+        else %}
+            {% capture js %}{{ js }}{% include {{ source | replace: ".js", ".min.js" }} %}{% endcapture %}{%
+        endif %}{%
+    endfor %}{%
+    unless jekyll.environment == "dev" %}
+        {% capture js %}<script>{{ js }}</script>{% endcapture %}{%
+    endunless %}{%
+endif %}{{ js }}
