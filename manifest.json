@@ -5,7 +5,7 @@ layout: null
 {
     "lang": "he",
     "dir": "rtl",
-    "name": "סטיילינג לדתיות — לאה לאוקשטיין",
+    "name": "{{ site.title }}",
     "short_name": "סטיילינג לדתיות",
     "description": "סטיילינג לדתיות - זה לא רק הבגד - זה החיבור שלך לעצמך",
     "icons": [{
