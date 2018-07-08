@@ -39,6 +39,7 @@ css: |
     endif %}{%
 endfor %}<article class="box card" dir=ltr>
     <div class=content dir=rtl>
+        <h1>{{ page.title }}</h1>
         <ul class="sheet sheet-fixed">{%
             for item in l10n %}{%
                 if item.name != "buttonType" and item.name != page.labelEscape %}{%

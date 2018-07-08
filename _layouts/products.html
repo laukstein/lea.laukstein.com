@@ -60,11 +60,11 @@ css: |
 ---
 
 {%
-    assign url = page.url %}{%
-    assign title = page.title %}{%
-    assign pages = site.pages | sort: "order" %}
-{% for item in pages %}{%
+assign footer-url = page.url %}{%
+assign footer-title = page.title %}{%
+assign pages = site.pages | sort: "order" %}{%
+for item in pages %}{%
     if item.order and item.subnav != "products" and item.group == page.group %}{%
         include product.html data = item %}{%
     endif %}{%
-endfor %}<div class=footer><a href={{ url }}-compare>להשוואה כל "{{ title }}"</a></div>{{ content }}
+endfor %}<div class=footer><a href={{ footer-url }}-compare>השוואת {{ footer-title }}</a></div>{{ content }}

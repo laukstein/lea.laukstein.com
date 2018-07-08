@@ -2,6 +2,6 @@
 layout: products-compare
 group: workshop
 
-title: סדנאות
+title: השוואת סדנאות
 permalink: workshops-compare
 ---

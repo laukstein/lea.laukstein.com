@@ -2,6 +2,6 @@
 layout: products-compare
 group: personal
 
-title: סטיילינג אישי
+title: השוואת סטיילינג אישי
 permalink: personal-compare
 ---
