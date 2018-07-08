@@ -40,4 +40,5 @@ YAML schema
     css: |
         multi-line css
     jsonldType
+    jsonldGroup
     jsonldProperties

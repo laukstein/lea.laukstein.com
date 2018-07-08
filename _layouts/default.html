@@ -142,7 +142,7 @@ if image.size == 0 %}{% assign image = nil %}{% endif %}{%
 if page.jsonld == nil %}{%
     if layout.category == "products" or page.category == "products" %}{%
         capture jsonld %}{%
-            if page.subnav and page.group != "diy" %}
+            if page.jsonldGroup %}
 {%
                 include products-jsonld.html
                 group = page.group %}{%

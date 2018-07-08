@@ -2,6 +2,7 @@
 layout: products
 subnav: products
 group: workshop
+jsonldGroup: true
 order: 1
 
 title: סדנאות
