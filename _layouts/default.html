@@ -189,7 +189,7 @@ if page.jsonld == nil %}{%
             "height": 60
         }
     },
-    "description": "{{ page.content | strip_html | truncatewords: 25, '...' }}"
+    "description": "{{ page.content | strip_html | strip_newlines | escape | truncatewords: 25, '...' }}"
 }
 {%          endcapture %}{%
         else %}{%
