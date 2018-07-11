@@ -48,29 +48,46 @@ css: |
     .cel.subscribe input,
     .cel.subscribe button {
         max-width: 100%;
+        border-width: 2px;
+        border-radius: 4px;
+        outline: 0;
+        transition: color .15s,
+                    background-color .15s,
+                    border-color .15s,
+                    box-shadow .15s;
     }
     .cel.subscribe input {
         background-color: #f4ffff;
         border-color: #00b0a9;
-        box-shadow: 1px 1px .1em #b8c7c7;
+        box-shadow: none;
+    }
+    .cel.subscribe input:focus {
+        background-color: #fbffff;
+        border-color: #0f8fc4;
+        outline: 1px solid #1e90ff;
+        box-shadow: inset -1px -1px 0 1px #fff,
+                    2px 2px .3em rgba(101,79,72,.1),
+                    1px 1px 1.8em -.4em rgba(101,79,72,.4);
+    }
+    .cel.subscribe .error input {
+        background-color: #fffbfb;
+        border-color: #c00;
     }
     .cel.subscribe button {
         line-height: 1.11;
         background-color: #00b0a9;
-        border-width: 2px;
         border-color: rgba(0,0,0,.2);
         border-top-color: rgba(255,255,255,0);
         border-left-color: rgba(255,255,255,0);
-        border-radius: 4px;
-        outline: 0;
         box-shadow: inset -2px -2px 0 -1px rgba(255,255,255,.14), 1px 1px 2px rgba(0,0,0,.15);
     }
     .cel.subscribe button:before {
         line-height: .35;
     }
-    .cel.subscribe button:not(:active):hover {
+    .cel.subscribe button:not(:active):not([disabled]):hover {
         background-color: #09bab4;
     }
+    .cel.subscribe button:focus,
     .cel.subscribe button:hover:active {
         background-image: linear-gradient(rgba(100,100,100,.23), rgba(100,100,100,.23));
         border-color: transparent;
