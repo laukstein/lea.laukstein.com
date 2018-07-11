@@ -6,6 +6,7 @@ assets: /assets/
 timezone: UTC
 safe: true
 theme: false
+future: true
 include: [_pages]
 collections:
     pages:
