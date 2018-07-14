@@ -19,7 +19,7 @@ ui.subscribe = {
                 }
 
                 message += "<p>טעינה...</p>";
-                location = self.redirectURL;
+                ui.w.location = self.redirectURL;
             } else if (data.msg && data.msg.indexOf("list-manage.com/subscribe/send-email")) {
                 message += "<h1 class=error>שגיאה...</h1><p>את כבר רשומה, תנסי עם <a href=" + location.href + ">אימייל אחר</a></p>";
             } else {

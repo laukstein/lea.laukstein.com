@@ -517,7 +517,7 @@ ui.academy = {
         "use strict";
 
         if (stripHash) {
-            location = location.pathname;
+            ui.w.location = location.pathname;
         } else {
             location.reload();
         }
