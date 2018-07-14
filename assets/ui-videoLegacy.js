@@ -5,7 +5,7 @@ camelcase: 0 */
 // JPG from https://img.youtube.com/vi/t3xR5EYJvZY/maxresdefault.jpg or /hqdefault.jpg
 
 ui.videoLegacy = {
-    "_p3HwrkRk3A": {
+    _p3HwrkRk3A: {
         "360p": "uajnetp41452y0p",
         "720p": "2ldmvifgwldg1pn",
         image: "k0f9z5e9p733fib"
