@@ -529,7 +529,7 @@ window.ui = {
 
             var obj = this.getData(id);
 
-            return id ? "<video poster=\"" + obj.image + "\" preload=auto controls controlsList=nodownload>" +
+            return id ? "<video poster=\"" + obj.image + "\" preload=auto crossorigin playsinline controls controlsList=nodownload>" +
                 "    <source src=\"" + obj[this.size] + "\" type=\"video/mp4\">" +
                 "</video>" : "";
         },
@@ -538,16 +538,23 @@ window.ui = {
 
             if (!this.youtubeSupport) {
                 var success = function () {
-                    plyr.setup && plyr.setup({
-                        showPosterOnEnd: true,
-                        iconUrl: "/assets/plyr.svg",
-                        blankUrl: "/assets/blank.mp4",
-                        volume: 10
+                    var videos = Array.from(ui.d.querySelectorAll(".video video")),
+                        options = {
+                            controls: ["play-large", "play", "progress", "current-time", "mute", "volume", "pip", "airplay", "fullscreen"],
+                            resetOnEnd: true,
+                            iconUrl: "/assets/plyr.svg",
+                            blankUrl: "/assets/blank.mp4",
+                            volume: 10
+                        };
+
+                    videos.map(function (video) {
+                        return new Plyr(video, options); // eslint-disable-line new-cap
                     });
+
                     delete ui.video.youtubeSupportProgress;
                 };
 
-                if (ui.w.plyr) {
+                if (ui.w.Plyr) {
                     success();
                 } else if (!this.youtubeSupportProgress) {
                     this.youtubeSupportProgress = true;
@@ -582,7 +589,7 @@ window.ui = {
                     arr[i].outerHTML = self.template(arr[i].src.replace(/^.*\/embed\//, "").replace(/\?.*$/, ""));
                 }
 
-                if (!ui.w.plyr && !self.youtubeSupportProgress) {
+                if (!ui.w.Plyr && !self.youtubeSupportProgress) {
                     self.applyPlyr();
 
                     el = ui.d.createElement("link");

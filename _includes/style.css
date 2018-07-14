@@ -736,7 +736,7 @@ iframe {
     padding-top: 56.25%;
     clear: both;
 }
-.video video,
+.video > video,
 .video .plyr,
 .video iframe {
     position: absolute;
@@ -745,9 +745,6 @@ iframe {
     left: 0;
     height: 100%;
     background-color: #000;
-}
-.plyr__play-large {
-    cursor: pointer;
 }
 
 /* YouTube play button */
