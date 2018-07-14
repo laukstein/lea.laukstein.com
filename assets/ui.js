@@ -552,7 +552,7 @@ window.ui = {
                 } else if (!this.youtubeSupportProgress) {
                     this.youtubeSupportProgress = true;
 
-                    ui.asyncScript("/assets/plyr.js", success);
+                    ui.asyncScript("/assets/plyr.min.js", success);
                 }
             }
         },
