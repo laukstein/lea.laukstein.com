@@ -40,7 +40,7 @@ ui.videos = (function () {
     }
     lazyload.observer = ui.w.IntersectionObserver && new IntersectionObserver(function (changes) {
         changes.forEach(function (change) {
-            if (change.isIntersecting) {
+            if (change.isIntersecting && change.target.dataset.src) {
                 change.target.src = change.target.dataset.src;
                 change.target.removeAttribute("data-src");
                 lazyload.observer.unobserve(change.target);
@@ -143,13 +143,13 @@ ui.videos = (function () {
     generateHTML.image = function (obj) {
         obj.image = ui.video.youtubeSupport ? obj.image : ui.video.getData(obj.id).image;
 
-        return "<li class=box>" +
+        return obj.image ? "<li class=box>" +
             "    <figure class=play><img " + (ui.w.IntersectionObserver ? "data-" : "") + "src=\"" + obj.image + "\" alt=\"" + obj.title + "\"></figure>" +
             "    <a class=absolute href=\"#" + obj.id + "\" tabindex=0></a>" +
             "    <h2 class=wrapline>" + obj.title + "</h2>" +
             (obj.description ? "    <p>" + this.links(obj.description) + "</p>" : "") +
             (obj.date ? "    <div><time>" + obj.date + "</time></div>" : "") +
-            "</li>";
+            "</li>" : "";
     };
     generateHTML.video = function (obj) {
         ui.d.title = obj.title;
