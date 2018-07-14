@@ -773,7 +773,7 @@ window.ui = {
                 }
             });
         }
-        if (!self.w.fetch || !self.w.Promise || !Element.prototype.closest) {
+        if (!self.w.fetch || !self.w.Promise || !Array.from || !Element.prototype.closest) {
             self.asyncScript("/assets/legacy.js", function () {
                 self.video.youtubeSupport(self.legacy.__runAwaitList);
             });

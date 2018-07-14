@@ -1,3 +1,10 @@
+if (!Array.from) {
+    Array.from = function (object) {
+        "use strict";
+
+        return [].slice.call(object);
+    };
+}
 if (!Element.prototype.remove) {
     Object.defineProperty(Element.prototype, "remove", {
         value: function () {
