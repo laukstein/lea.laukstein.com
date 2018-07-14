@@ -476,7 +476,7 @@ ui.academy = {
             parts.shift();
         }
 
-        return location.protocol + "//lab." + parts.join(".") + "/webhook";
+        return "https://lab." + parts.join(".") + "/webhook";
     }()),
     dataset: function (el, prop) {
         "use strict";
@@ -1643,7 +1643,7 @@ ui.academy = {
     registerSW: function () {
         "use strict";
 
-        if ("serviceWorker" in navigator) {
+        if (location.protocol === "https:" && "serviceWorker" in navigator) {
             navigator.serviceWorker.register("/sw.js").then(function () {
                 navigator.serviceWorker.addEventListener("message", function (e) {
                     if (e.data) {
