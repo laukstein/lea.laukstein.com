@@ -1,14 +1,59 @@
 ﻿{
  "kind": "youtube#playlistItemListResponse",
- "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/E7EOcn6zQPpPH2HJyjd2_kJqMWM\"",
+ "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/WHia-ZVUGrtByhPIZW8nRzQBofU\"",
  "pageInfo": {
-  "totalResults": 36,
+  "totalResults": 37,
   "resultsPerPage": 50
  },
  "items": [
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/BDUS1q-_1x8eFd9n5zKrIXJ8tHM\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/6WGeVx2tOvkG01O-sUDQsArWeYI\"",
+   "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLnVRUEpWckZENTc4",
+   "snippet": {
+    "publishedAt": "2018-07-12T06:30:00.000Z",
+    "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
+    "title": "נפח לגובה או לצדדים? מדריך קצר לקשירת מטפחת 2018. לאה לאוקשטיין",
+    "description": "לקבלת מדריך לאיך לשלב 9 פריטים ל20 שילובים שונים:\nhttps://lea.laukstein.com/signup",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/uQPJVrFD578/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/uQPJVrFD578/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/uQPJVrFD578/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/uQPJVrFD578/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/uQPJVrFD578/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
+    "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
+    "position": 0,
+    "resourceId": {
+     "kind": "youtube#video",
+     "videoId": "uQPJVrFD578"
+    }
+   }
+  },
+  {
+   "kind": "youtube#playlistItem",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/XesfZeWdYai9G8Oko5fZouK9iX4\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLjVueTFjOTJQQ3FV",
    "snippet": {
     "publishedAt": "2018-07-06T10:53:33.000Z",
@@ -34,7 +79,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 0,
+    "position": 1,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "5ny1c92PCqU"
@@ -43,7 +88,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/mBbTAWHXe54H1PLKvYGk21bmD0o\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/aTinun1WYAP92Yy54wnY2F-A4SQ\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLjB0ZWpYSktjTUh3",
    "snippet": {
     "publishedAt": "2018-06-04T12:41:31.000Z",
@@ -79,7 +124,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 1,
+    "position": 2,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "0tejXJKcMHw"
@@ -88,7 +133,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/tiBIj-jqtAVOCbJzTncvOYIz-jc\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/dyZEcQ3oF0Q7cxOXAnxQ3EIqDJc\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLldfN3FBM09JSG1r",
    "snippet": {
     "publishedAt": "2018-05-02T08:01:07.000Z",
@@ -124,7 +169,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 2,
+    "position": 3,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "W_7qA3OIHmk"
@@ -133,7 +178,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/B5mcqZqN1HKRHKRbBX6xXHCp0jc\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/Il8jNA9xcv04jhskLEzXERq2kzU\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLlFDOHVveDJ4Qk1R",
    "snippet": {
     "publishedAt": "2018-02-27T13:10:43.000Z",
@@ -169,7 +214,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 3,
+    "position": 4,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "QC8uox2xBMQ"
@@ -178,7 +223,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/_17_b7Zjr1-H3Yn4sZ8y0LDpcZ8\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/aDLpTyf3Z-LmV1IKepxfSh29h9A\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLkRJdEpQRUxYUDd3",
    "snippet": {
     "publishedAt": "2017-12-06T05:30:01.000Z",
@@ -204,7 +249,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 4,
+    "position": 5,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "DItJPELXP7w"
@@ -213,7 +258,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/Es2_H9jPNaf2YCxGgHm09gAFD1k\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/uO7L9SqVW8NcLEx9HcjqA6x13sg\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmoyMkZKR0pHelhv",
    "snippet": {
     "publishedAt": "2017-11-21T18:06:01.000Z",
@@ -239,7 +284,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 5,
+    "position": 6,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "j22FJGJGzXo"
@@ -248,7 +293,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/pnM92nH31erFoq4cwKawAOD_Aiw\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/3EwXAo9KhgI-ZY9SgkO65WZoVGk\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLk9MRDFjX2pySU9j",
    "snippet": {
     "publishedAt": "2017-10-22T05:50:22.000Z",
@@ -284,7 +329,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 6,
+    "position": 7,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "OLD1c_jrIOc"
@@ -293,7 +338,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/_1PdHLONCCA81slMysKWZMCa9Zw\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/zu74N2KPGYdAYaihzflQm-7TAZo\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLjZ6X0hwdm1faV9V",
    "snippet": {
     "publishedAt": "2017-08-06T23:34:17.000Z",
@@ -329,7 +374,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 7,
+    "position": 8,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "6z_Hpvm_i_U"
@@ -338,7 +383,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/TuPvmmqcjbVbF8i94qYp-niGCYc\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/L_GHTiQLERc3Sc4-zDqrFE6ZtGk\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmZrUzJHbzRfSDdF",
    "snippet": {
     "publishedAt": "2017-07-22T21:59:40.000Z",
@@ -374,7 +419,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 8,
+    "position": 9,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "fkS2Go4_H7E"
@@ -383,7 +428,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/rhu1tkutaFfCwvZ0IHgVSefnMVE\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/VOBoqyGeRIPbiW_gPgU-_ZAJoZc\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLlp0SUY4M0hZY09Z",
    "snippet": {
     "publishedAt": "2017-06-30T09:56:15.000Z",
@@ -419,7 +464,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 9,
+    "position": 10,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "ZtIF83HYcOY"
@@ -428,7 +473,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/hD_zsMWZ6MajFn6y_LTXvawWj0Q\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/0YD6P7aomYtiIuDpH1P50oRE73Y\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLkFjSDBycks1YUtj",
    "snippet": {
     "publishedAt": "2017-06-09T12:11:27.000Z",
@@ -454,7 +499,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 10,
+    "position": 11,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "AcH0rrK5aKc"
@@ -463,7 +508,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/_Oq0ujNDLgChBUe3dpQgydUpQfs\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/JdYQcjRYIgCKlJR9UGyvf62RT8M\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLnhDbHo1Q2VScjYw",
    "snippet": {
     "publishedAt": "2017-06-06T08:22:47.000Z",
@@ -499,7 +544,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 11,
+    "position": 12,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "xClz5CeRr60"
@@ -508,7 +553,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/HaPS1HrIh6klweavRXRt8-Sj0Sk\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/_Cf-5Wg8IMHB7-hTdqcDb1h3G5Q\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLnhWaFlkVzFXWHFr",
    "snippet": {
     "publishedAt": "2017-05-21T07:00:02.000Z",
@@ -544,7 +589,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 12,
+    "position": 13,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "xVhYdW1WXqk"
@@ -553,7 +598,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/XeZ-Gs_TH5J8FQChv22Ix3BYBDE\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/cufTlU9h-Ao1x1OTjgEZ_Hy-KwE\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLnpKRnE5SVpPM0pv",
    "snippet": {
     "publishedAt": "2017-04-16T11:56:45.000Z",
@@ -589,7 +634,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 13,
+    "position": 14,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "zJFq9IZO3Jo"
@@ -598,7 +643,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/lfoK3m54fgmQpDRHrqj1OUy3f3I\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/Dx6UGPBrJBH6JNcSg2E2A6QK8Ow\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLjRId1RlWmlaSjRR",
    "snippet": {
     "publishedAt": "2017-03-31T11:08:53.000Z",
@@ -634,7 +679,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 14,
+    "position": 15,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "4HwTeZiZJ4Q"
@@ -643,7 +688,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/ZR5SUZDUPt-Wkxw_bGbRwDlZ4gQ\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/WlBiA-Ogs-bfwxD4IkGvXrfa6lI\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLlkzeU4wbzlQSkdF",
    "snippet": {
     "publishedAt": "2017-03-17T09:02:06.000Z",
@@ -679,7 +724,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 15,
+    "position": 16,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "Y3yN0o9PJGE"
@@ -688,7 +733,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/rMbVAUwsn0AoIU0R4227s9CT1rc\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/kpGNXeOnx9eB3Tlwff36QEJrKr4\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLnpBSFZVdXpyb2ZN",
    "snippet": {
     "publishedAt": "2017-03-01T13:36:38.000Z",
@@ -724,7 +769,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 16,
+    "position": 17,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "zAHVUuzrofM"
@@ -733,7 +778,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/bo2-wbAENX-wz1BdO4M9wu9RJ0k\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/qWXGt50fFM1uaHo2gYa7YfkcRIU\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmxqeWlIQ3hIR2ZZ",
    "snippet": {
     "publishedAt": "2017-02-09T14:45:24.000Z",
@@ -769,7 +814,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 17,
+    "position": 18,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "ljyiHCxHGfY"
@@ -778,7 +823,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/HPo4SfGAY2vU58GC8zsWOScL43c\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/Bg9fgXMJ4fB2vHOWKXpYuuSm2V0\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmVORjdTQmhKQmI4",
    "snippet": {
     "publishedAt": "2017-01-27T10:38:13.000Z",
@@ -814,7 +859,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 18,
+    "position": 19,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "eNF7SBhJBb8"
@@ -823,7 +868,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/lvQUKWIbFH2IOq8V_CN_8YCIW5o\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/eQkle2yZ8DsoozgcdrqeffzMSiU\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLlRMYUxhX2d1X2w4",
    "snippet": {
     "publishedAt": "2017-01-03T12:10:57.000Z",
@@ -859,7 +904,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 19,
+    "position": 20,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "TLaLa_gu_l8"
@@ -868,7 +913,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/nKRBtMk9zA-kaqmUjDH9UGRexGs\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/DykC_9uNVJKEYaELHTHP4nDvkIg\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLkpoMFpPZVVobHZV",
    "snippet": {
     "publishedAt": "2016-12-26T11:14:30.000Z",
@@ -904,7 +949,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 20,
+    "position": 21,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "Jh0ZOeUhlvU"
@@ -913,7 +958,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/vMFM8V1m4HqTpjeafNX6G-7hlAc\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/exKTwHr6W5in3uNf8QsvpN2Ppj4\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLnoyWjBjZnBCSTNj",
    "snippet": {
     "publishedAt": "2016-12-26T11:15:09.000Z",
@@ -949,7 +994,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 21,
+    "position": 22,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "z2Z0cfpBI3c"
@@ -958,7 +1003,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/I3ZoZDBi1bGbttG7bRnixSox9mY\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/4fFmX4S07uDhVbxhiA5ucO5rLmk\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLldKUWw3NXZJV0J3",
    "snippet": {
     "publishedAt": "2016-12-13T08:20:59.000Z",
@@ -994,7 +1039,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 22,
+    "position": 23,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "WJQl75vIWBw"
@@ -1003,7 +1048,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/V5_drUfuVPujFQMgn1x23gOv2Ao\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/z8Er4A7pFXeyfqgEzUe78SxYZtY\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLk1BQ19NS0RSR2Nn",
    "snippet": {
     "publishedAt": "2016-12-12T07:11:00.000Z",
@@ -1039,7 +1084,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 23,
+    "position": 24,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "MAC_MKDRGcg"
@@ -1048,7 +1093,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/x0ES7u4taUm_3uHPG4Vb610rqJI\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/aIfu3RQ1K1_sC2vLiRwrrStoHTI\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLkVxMlNpVUZvY0sw",
    "snippet": {
     "publishedAt": "2016-12-08T11:42:52.000Z",
@@ -1084,7 +1129,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 24,
+    "position": 25,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "Eq2SiUFocK0"
@@ -1093,7 +1138,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/tHDRpOUtrM0jWRI4Gymy6Ek6Y4I\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/BM-uJ9hAxGctt8pLDUwJHd8BtV8\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmxSQ1pRZHJSOUhr",
    "snippet": {
     "publishedAt": "2016-12-06T06:15:58.000Z",
@@ -1129,7 +1174,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 25,
+    "position": 26,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "lRCZQdrR9Hk"
@@ -1138,7 +1183,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/g9NtSMdNtuMyd2vATj1oLw2LaVw\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/VuyUpvK-n0dCndkZYV_Y28_1rxg\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmJaVXRSdVZucHdN",
    "snippet": {
     "publishedAt": "2016-12-04T06:31:00.000Z",
@@ -1174,7 +1219,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 26,
+    "position": 27,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "bZUtRuVnpwM"
@@ -1183,7 +1228,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/CG_lyMx3xQ97chpSMwS5pdWUIGQ\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/JnxO0C5h2QXcRDf-JmocYTbmkxM\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLlJCQl94ZFVJTG5j",
    "snippet": {
     "publishedAt": "2016-12-11T12:56:46.000Z",
@@ -1219,7 +1264,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 27,
+    "position": 28,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "RBB_xdUILnc"
@@ -1228,7 +1273,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/BjY1oArmyxSxmRnfPgHhhEOM1bs\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/mXStt1tJg5LSkRRaR-pYAMY1O50\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLjhHc3lveWdkdkdF",
    "snippet": {
     "publishedAt": "2016-11-30T07:51:34.000Z",
@@ -1264,7 +1309,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 28,
+    "position": 29,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "8GsyoygdvGE"
@@ -1273,7 +1318,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/o3oTmH-JYQvMWXDMoU2Kby_2qFg\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/rkZgloo2zNPUrzacUWy-JLuP1WQ\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLk5VV0ZvQkw4REVJ",
    "snippet": {
     "publishedAt": "2016-11-09T09:05:42.000Z",
@@ -1309,7 +1354,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 29,
+    "position": 30,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "NUWFoBL8DEI"
@@ -1318,7 +1363,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/W2gKxxsbxfCEtX53SHTgt0Eaiig\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/9PW3tdU1QYEN8gGjGOTWRJ8l9H0\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLjlLbFVoMDRjYm1R",
    "snippet": {
     "publishedAt": "2016-11-07T17:21:55.000Z",
@@ -1354,7 +1399,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 30,
+    "position": 31,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "9KlUh04cbmQ"
@@ -1363,7 +1408,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/whNsotDcxQHM-Aq0VvC53PD1udM\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/wJ_wbrCrSrZCzCDhe0PusJ4abYM\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmRIV0xHUVpzMHBz",
    "snippet": {
     "publishedAt": "2016-10-27T19:30:51.000Z",
@@ -1399,7 +1444,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 31,
+    "position": 32,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "dHWLGQZs0ps"
@@ -1408,7 +1453,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/ZdpcXsb-t94xoAQ4MXWJsZDUNY4\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/HURnm02SjnHy8bSFLwWB8S3UyjI\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmpSV0o2UklxdUFB",
    "snippet": {
     "publishedAt": "2016-09-24T20:41:58.000Z",
@@ -1444,7 +1489,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 32,
+    "position": 33,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "jRWJ6RIquAA"
@@ -1453,7 +1498,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/ohYV28_Ii4DsUzA1gCVOuzwZ5p0\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/Ff7pEE5Txr2cuyXAxa_DzuEvDcg\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLklOUGp0OV9UVTRB",
    "snippet": {
     "publishedAt": "2016-09-07T07:51:49.000Z",
@@ -1489,7 +1534,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 33,
+    "position": 34,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "INPjt9_TU4A"
@@ -1498,7 +1543,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/MexDhNcljUhfAMWr8qDFoYyFJkQ\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/-m6itJ7ux_VvruLjF6O5Q50wgvM\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLmJsby11UEZSNWg0",
    "snippet": {
     "publishedAt": "2016-08-06T19:02:42.000Z",
@@ -1534,7 +1579,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 34,
+    "position": 35,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "blo-uPFR5h4"
@@ -1543,7 +1588,7 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/BQT9K86zp1BAdnzdqJ2WVn-ufFY\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/nulRYlHa46UKwaWEb9RfkVFOd-k\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLlRIZmJ1RlYxNnFv",
    "snippet": {
     "publishedAt": "2016-07-24T07:45:35.000Z",
@@ -1579,7 +1624,7 @@
     },
     "channelTitle": "סטיילינג לדתיות – לאה לאוקשטיין",
     "playlistId": "UUNNsgimJtU1q1LUMVsq44Dg",
-    "position": 35,
+    "position": 36,
     "resourceId": {
      "kind": "youtube#video",
      "videoId": "THfbuFV16qo"
