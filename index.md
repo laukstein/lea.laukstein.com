@@ -156,10 +156,16 @@ jsonld: |
     [{
         "@context": "http://schema.org",
         "@type": "Organization",
-        "url": "https://lea.laukstein.com",
         "name": "סטיילינג לדתיות – לאה לאוקשטיין",
+        "url": "https://lea.laukstein.com",
         "email": "lea(at)laukstein.com",
         "logo": "https://lea.laukstein.com/assets/hotlink-ok/logo.jpg",
+        "sameAs": [
+            "https://plus.google.com/+לאהלאוקשטייןלוד",
+            "https://he-il.facebook.com/LeaLaukstein/",
+            "https://www.youtube.com/channel/UCNNsgimJtU1q1LUMVsq44Dg",
+            "https://www.pinterest.com/lealaukstein/"
+        ],
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+972-58-580-0020",

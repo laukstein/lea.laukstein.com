@@ -198,10 +198,16 @@ if page.jsonld == nil %}{%
 {
     "@context": "http://schema.org",
     "@type": "Organization",
-    "url": "{{ site.url }}",
     "name": "{{ site.title }}",
+    "url": "{{ site.url }}",
     "email": "lea(at)laukstein.com",
     "logo": "{{ site.url | append: site.assets | append: "hotlink-ok/logo.jpg" }}",
+    "sameAs": [
+        "https://plus.google.com/+לאהלאוקשטייןלוד",
+        "https://he-il.facebook.com/LeaLaukstein/",
+        "https://www.youtube.com/channel/UCNNsgimJtU1q1LUMVsq44Dg",
+        "https://www.pinterest.com/lealaukstein/"
+    ],
     "contactPoint": [{
         "@type": "ContactPoint",
         "telephone": "+972-58-580-0020",
