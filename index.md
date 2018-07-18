@@ -153,8 +153,26 @@ css: |
         }
     }
 jsonld: |
-    {
-        "@context": "http://schema.org/",
+    [{
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "url": "https://lea.laukstein.com",
+        "name": "סטיילינג לדתיות – לאה לאוקשטיין",
+        "email": "lea(at)laukstein.com",
+        "logo": "https://lea.laukstein.com/assets/hotlink-ok/logo.jpg",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+972-58-580-0020",
+            "contactType": "Customer service",
+            "areaServed": "IL",
+            "availableLanguage": [
+                "Hebrew",
+                "English",
+                "Russian"
+            ]
+        }
+    }, {
+        "@context": "http://schema.org",
         "@type": "Product",
         "name": "מדריך לארון מדוייק",
         "image": "https://img.youtube.com/vi/$video/0.jpg",
@@ -164,5 +182,5 @@ jsonld: |
             "price": "0.00",
             "priceCurrency": "ILS"
         }
-    }
+    }]
 ---

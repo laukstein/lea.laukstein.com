@@ -199,11 +199,13 @@ if page.jsonld == nil %}{%
     "@context": "http://schema.org",
     "@type": "Organization",
     "url": "{{ site.url }}",
+    "name": "{{ site.title }}",
+    "email": "lea(at)laukstein.com",
     "logo": "{{ site.url | append: site.assets | append: "hotlink-ok/logo.jpg" }}",
     "contactPoint": [{
         "@type": "ContactPoint",
         "telephone": "+972-58-580-0020",
-        "contactType": "customer service",
+        "contactType": "Customer service",
         "areaServed": "IL",
         "availableLanguage": [
             "Hebrew",
