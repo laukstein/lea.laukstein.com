@@ -3,7 +3,7 @@ assign style = layout.style | uniq %}{% if page.style %}{%
 assign style = style | concat: page.style | uniq %}{% endif %}{%
 assign inlineCSS = layout.css | append: page.css | scssify %}{%
 if style %}{%
-    if jekyll.environment == "dev" %}{%
+    if jekyll.environment == "dev" or jekyll.environment == "development" %}{%
         for source in style %}{%
             capture css %}{{ css }}
 <link rel=stylesheet href={{ site.assets }}{{ source }}>{%
