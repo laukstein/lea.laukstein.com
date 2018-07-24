@@ -14,6 +14,7 @@ redirect_from:
 products:
     - name: workshop
       title: סדנאות
+      url: workshops
     - name: personal
       title: סטיילינג אישי
     - name: diy
@@ -34,7 +35,7 @@ css: |
 <ol class="list list-boxes">{%
     for group in page.products %}
     <li class=box>
-        <h2 id={{ group.name }}><a href=/{{ group.name }}>{{ group.title-short | default: group.title }}</a></h2>
+        <h2 id={{ group.name }}><a href=/{{ group.url | default: group.name }}>{{ group.title-short | default: group.title }}</a></h2>
         <ol class=list>{%
         assign pages=site.pages | sort: "order" %}{%
         assign list = page.array %}{%
