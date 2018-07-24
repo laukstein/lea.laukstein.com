@@ -258,7 +258,19 @@ a.logo {
 }
 .logo div {
     display: inline-block;
+    line-height: .9;
     vertical-align: middle;
+}
+.logo .slogan {
+    display: block;
+    margin-top: .1em;
+    color: #8d5645;
+    font-size: 103%;
+}
+.logo .owner {
+    display: block;
+    color: #ed968d;
+    font-size: 90%;
 }
 main {
     display: block; /* IE11 legacy */
