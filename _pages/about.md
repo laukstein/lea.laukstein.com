@@ -7,6 +7,15 @@ title: אודות
 titleLong: סטיילינג לדתיות
 video: 4HwTeZiZJ4Q
 subscribe: 70a2d0d976
+css: |
+    @media (max-width: 54em) {
+        form.subscribe {
+                width: initial;
+            max-width: 23.2em;
+            padding-right: 1.6em;
+            padding-left: 1.6em;
+        }
+    }
 ---
 
 אני, **לאה לאוקשטיין**, אמנית וסטייליסטית, ילידת לטביה, חיה ויוצרת בלוד. מגיל צעיר מאוד,כבר מגיל שמונה, התחלתי לימודי אמנות ואופנה. לימודי סטיילינג למדתי בשנקר.

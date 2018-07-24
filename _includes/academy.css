@@ -8,6 +8,10 @@ header .wrapper {
 .content {
     overflow: hidden;
 }
+.space {
+    padding-right: 1.4em;
+    padding-left: 1.4em;
+}
 .stretch {
     overflow-y: auto;
         width: 100vw;
@@ -20,7 +24,8 @@ header .wrapper {
     width: 100vw;
 }
 .stretch .logo {
-    padding-right: 2.1em
+    padding-right: 2.1em;
+    padding-left: 0;
 }
 .logo {
     overflow: hidden;
@@ -29,6 +34,9 @@ header .wrapper {
 }
 .logo img {
     max-width: initial;
+}
+a.logo {
+    padding-left: 0;
 }
 .profile {
     display: inline-block;
@@ -169,6 +177,9 @@ button.error:not([data-plyr]) {
     display: block;
     padding-top: 0;
 }
+.column.content {
+    padding-left: 0;
+}
 .nav-container {
     z-index: 9;
     width: 16em;
@@ -292,11 +303,6 @@ button.error:not([data-plyr]) {
 .comment-container {
     width: calc(100% - 16.8em);
 }
-.comment {
-    padding-right: 2.1em;
-    padding-left: 2.1em;
-    box-sizing: border-box;
-}
 .medium.comment {
     max-width: 100%;
 }
@@ -309,6 +315,9 @@ button.error:not([data-plyr]) {
     bottom: 0;
     background: #88828c url(/assets/academy.jpg) center 3.7em no-repeat;
     background-size: cover;
+}
+h1 {
+    margin-top: .6em;
 }
 .items .cover {
     background-position: center;
@@ -329,8 +338,16 @@ button.error:not([data-plyr]) {
     text-shadow: 1px 1px 0 #fff;
     background-color: rgba(255,255,255,.8);
 }
+.comment {
+    padding-left: 1em;
+}
+.video {
+    border-left: .4em solid transparent;
+    box-sizing: border-box;
+}
 .form {
-    margin: 6% 2.1em;
+    margin: 6% 1.4em;
+    margin-left: .8em;
 }
 .form button.spin.spin.spin:before {
     margin: -.12em;
@@ -695,6 +712,11 @@ button[disabled]:not(:hover) {
     .nav a {
         padding-right: 1.4em;
     }
+    .subscribe.subscribe,
+    .video + .space {
+        padding-right: 1.4em;
+        padding-left: 1.4em;
+    }
     .stretch header .wrapper {
         min-width: 24.779em;
     }
@@ -747,6 +769,28 @@ button[disabled]:not(:hover) {
     .bar-holder:checked ~ main .container .nav-container {
         box-shadow: 0 0 4em rgba(51,51,51,.11),
                     0 0 27vw rgba(51,51,51,.3);
+    }
+    input:not([type=range]),
+    button:not([data-plyr]),
+    .button {
+        max-width: 100%;
+    }
+    .video {
+        border-left: 0;
+    }
+    .comment {
+        padding-left: 1.6em;
+    }
+    .form {
+        margin-left: 1.4em;
+    }
+    .subscribe.subscribe {
+        display: table-cell;
+        width: 19em;
+        padding-top: 1em;
+        padding-bottom: 3em;
+        float: none;
+        vertical-align: middle;
     }
 }
 @media (max-width: 28em) {

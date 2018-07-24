@@ -22,7 +22,7 @@ css: |
     }
     .table.scale {
         display: table-cell;
-        padding: 0 2em;
+        padding: 0 .8em;
         vertical-align: middle;
     }
     .cel.cel {
@@ -124,14 +124,25 @@ css: |
         main {
             padding-right: 1em;
             padding-left: 1em;
+            transition: padding-right .15s,
+                        padding-left .15s;
         }
     }
     @media (max-width: 46em) {
+        main {
+            padding-right: 0;
+            padding-left: 0;
+        }
+        .table.scale {
+            padding-bottom: .2em;
+        }
         .cel.cel {
             min-width: 16em;
         }
         .cel.subscribe {
-            margin-bottom: 1.5em;
+            padding-right: 1em;
+            padding-left: 1em;
+            margin-bottom: auto;
         }
         .cel.subscribe .confirm {
             text-indent: inherit;

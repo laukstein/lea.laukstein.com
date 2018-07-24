@@ -2,7 +2,9 @@
 @viewport {
     width: device-width;
 }
-
+:root {
+    text-decoration-skip-ink: none; /* Disable skipping descenders https://www.chromestatus.com/features/5631679087509504 */
+}
 html,
 body {
     height: 100%;
@@ -61,7 +63,6 @@ img {
 a {
     color: #00d;
     text-decoration: none;
-    text-decoration-skip-ink: none; /* Disable skipping descenders https://www.chromestatus.com/features/5631679087509504 */
     -webkit-box-decoration-break: clone; /* Chrome and Webkit legacy, demo http://jsbin.com/xojoro/quiet */
             box-decoration-break: clone;
     outline: transparent solid 2px;
@@ -240,6 +241,7 @@ footer a + a {
 }
 a.logo {
     float: right;
+    padding-left: .6em;
     color: #f58e84;
     text-decoration: none;
 }
@@ -249,7 +251,9 @@ a.logo {
             filter: grayscale(70%);
 }
 .logo img {
+    min-height: 47px;
     margin: .45em;
+    margin-left: .5em;
     vertical-align: middle;
 }
 .logo div {
@@ -642,6 +646,11 @@ textarea {
     box-sizing: content-box;
     box-shadow: none;
 }
+::selection {
+    color: initial;
+    text-shadow: none;
+    background-color: rgba(255,255,60,.3);
+}
 ::placeholder {
     direction: rtl;
     color: #333;
@@ -859,7 +868,10 @@ iframe {
 .comment {
     overflow: hidden;
     width: 100%;
+    padding-right: 1.6em;
+    padding-left: 1.6em;
     margin-top: 3em;
+    box-sizing: border-box;
 }
 
 .sheet,
@@ -1241,9 +1253,17 @@ iframe {
     }
 }
 @media (max-width: 54em) {
+    input:not([type=range]),
+    select,
+    textarea,
+    button:not([data-plyr]),
+    .button {
+        min-width: 16em;
+        max-width: calc(100vw - 3.2em);
+    }
     .space {
-        padding-right: 1em;
-        padding-left: 1em;
+        padding-right: 0;
+        padding-left: 0;
     }
     .subscribe h1 {
         font-size: 1.5em;
@@ -1259,30 +1279,52 @@ iframe {
     .image:before {
         display: none;
     }
-    .card {
-        width: calc(100% + 4.2em);
-        margin: 0 -2.1em;
+    .items li,
+    .box:not(.card) {
+        padding: 1.6em;
+    }
+    .box figure {
+        max-width: calc(100% + 3.2em);
+        min-height: 5em;
+        margin-top: -1.6em;
+        margin-right: -1.6em;
+        margin-left: -1.6em;
+    }
+    .box .item {
+        padding-top: 1.6em;
+        border-top: 0;
+    }
+    .box .item figure.last {
+        margin-bottom: -1.6em;
+    }
+    .box h1 {
+        margin-top: 0;
+        border-top-width: 0;
+    }
+    .grid .footer {
+        padding-right: 1.6em;
+        padding-left: 1.6em;
     }
     .card .content {
         min-width: 0;
-        padding-right: 2.8em;
-        padding-left: 2.8em;
+        padding: 1.6em;
         background-color: #fff;
     }
     .recommendations {
-        margin-right: -2.8em;
-        margin-left: -2.8em;
+        padding: 1.6em;
+        margin-right: -1.6em;
+        margin-left: -1.6em;
     }
     .image + .content {
         padding-left: 2em;
     }
     .sheet {
-        width: calc(100% + 5.6em);
-        margin: 1em -2.8em;
+        width: calc(100% + 3.2em);
+        margin: 1em -1.6em;
     }
     .row {
         display: block;
-        padding: .6em 2.8em;
+        padding: .6em 1.6em;
     }
     .column {
         display: table-row;
@@ -1297,6 +1339,7 @@ iframe {
         max-height: 50vh;
     }
 
+    /* Page header/navigation */
     .logo {
         position: relative;
         z-index: -1;

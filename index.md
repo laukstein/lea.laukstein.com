@@ -141,6 +141,8 @@ css: |
             min-width: 16em;
         }
         .cel.subscribe {
+            padding-right: 1em;
+            padding-left: 1em;
             margin-bottom: 1.5em;
         }
         .cel.subscribe .confirm {
