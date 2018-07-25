@@ -1,6 +1,3 @@
-header .wrapper {
-    min-width: 19em;
-}
 .logo {
     z-index: 1;
     background-color: #fff;
@@ -25,7 +22,6 @@ header .wrapper {
 }
 .stretch .logo {
     padding-right: 2.1em;
-    padding-left: 0;
 }
 .logo {
     overflow: hidden;
@@ -61,7 +57,7 @@ a.logo {
     justify-content: inherit;
     height: 2.3em;
 }
-.profile .cel.cel {
+.profile .cel.cel.cel {
     padding: 0;
     margin: 0;
 }
@@ -717,9 +713,6 @@ button[disabled]:not(:hover) {
         padding-right: 1.4em;
         padding-left: 1.4em;
     }
-    .stretch header .wrapper {
-        min-width: 24.779em;
-    }
     .logedin .nav {
         padding-left: 3em;
         background-color: transparent;
@@ -738,7 +731,7 @@ button[disabled]:not(:hover) {
         margin-right: -.5em;
     }
     .stretch .logo {
-        margin-right: 0;
+        padding-right: 1.6em;
     }
     .profile {
         padding-right: .5em;
@@ -770,11 +763,6 @@ button[disabled]:not(:hover) {
         box-shadow: 0 0 4em rgba(51,51,51,.11),
                     0 0 27vw rgba(51,51,51,.3);
     }
-    input:not([type=range]),
-    button:not([data-plyr]),
-    .button {
-        max-width: 100%;
-    }
     .video {
         border-left: 0;
     }
@@ -786,7 +774,8 @@ button[disabled]:not(:hover) {
     }
     .subscribe.subscribe {
         display: table-cell;
-        width: 19em;
+        width: 100%;
+        max-width: 19em;
         padding-top: 1em;
         padding-bottom: 3em;
         float: none;
@@ -794,11 +783,14 @@ button[disabled]:not(:hover) {
     }
 }
 @media (max-width: 28em) {
+    html:not(.stretch) .nav li {
+        display: none;
+    }
+    html:not(.stretch) .nav li:last-child {
+        display: list-item;
+    }
     .stretch .nav a {
         padding: 1em;
-    }
-    .stretch header .wrapper {
-        min-width: 18.5em;
     }
     .logo {
         width: 3.3em;

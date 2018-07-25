@@ -105,7 +105,7 @@ css: |
         .headlines .grid {
             grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
         }
-        .headlines .footer {
+        .headlines .footer.button {
             width: 10em;
             grid-column: 1;
         }

@@ -579,7 +579,7 @@ button:not([data-plyr]),
 .button {
         width: 20em;
     min-width: 9em;
-    max-width: calc(100vw - 4.2em);
+    max-width: 100%;
     height: 2.674em; /* Mac Safari/Chrome <select> issue having same height as <input> */
     padding: .66em .75em;
     font-size: 1em;
@@ -1062,16 +1062,16 @@ iframe {
     position: relative;
     z-index: 1;
 }
-.grid blockquote {
+.grid .box.box {
     padding-bottom: 3.4em;
 }
-.grid blockquote h2 {
+.grid .box h2 {
     margin-bottom: .8em;
 }
-.grid blockquote time {
+.grid .box time {
     margin-top: .4em;
 }
-.grid blockquote .footer {
+.grid .box .footer {
     position: absolute;
     right: 2.1em;
     left: 2.1em;
@@ -1130,6 +1130,8 @@ iframe {
     .table.center .cel.cel {
         display: block;
         max-width: 100%;
+        padding-right: 1.6em;
+        padding-left: 1.6em;
     }
 }
 
@@ -1265,14 +1267,6 @@ iframe {
     }
 }
 @media (max-width: 54em) {
-    input:not([type=range]),
-    select,
-    textarea,
-    button:not([data-plyr]),
-    .button {
-        min-width: 16em;
-        max-width: calc(100vw - 3.2em);
-    }
     .space {
         padding-right: 0;
         padding-left: 0;
@@ -1313,9 +1307,9 @@ iframe {
         margin-top: 0;
         border-top-width: 0;
     }
-    .grid .footer {
-        padding-right: 1.6em;
-        padding-left: 1.6em;
+    .grid .box .footer {
+        right: 1.6em;
+        left: 1.6em;
     }
     .card .content {
         min-width: 0;
