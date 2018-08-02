@@ -27,7 +27,6 @@ endif %}{%
 capture head %}<!doctype html>
 <html{% if layout.className %} class="{{ layout.className }}"{% endif %} lang=he>
 <meta charset=utf-8>
-<meta http-equiv=Content-Language content=he>
 <title>{{ title | default: site.title | escape }}</title>{%
 if page.description %}
 <meta name=description content="{{ page.description }}">{% endif %}{%
