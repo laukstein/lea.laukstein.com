@@ -166,7 +166,8 @@ jsonld: |
             "https://plus.google.com/+לאהלאוקשטייןלוד",
             "https://he-il.facebook.com/LeaLaukstein/",
             "https://www.youtube.com/channel/UCNNsgimJtU1q1LUMVsq44Dg",
-            "https://www.pinterest.com/lealaukstein/"
+            "https://www.pinterest.com/lealaukstein/",
+            "https://twitter.com/lealaukstein"
         ],
         "contactPoint": {
             "@type": "ContactPoint",
