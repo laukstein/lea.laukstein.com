@@ -9,12 +9,12 @@ array: []
 
 {% include core-head.html %}{% unless page.hiddenHeader %}<input class=bar-holder id=bar type=checkbox hidden>
 <header dir=ltr>
-    <div class=wrapper>
+    <div class=wrapper role=navigation>
         <label class=bar for=bar hidden><span></span></label>
         <a class="logo{% if page.url == "/" %} active{% endif %}" href="/" dir=rtl>
             <img src={{ site.assets }}logo.png width=47 height=47 alt="{{ site.title }}"><div><b class=slogan>לאה לאוקשטיין</b><span class=owner>סטייליסטית אישית</span></div>
         </a>
-        <ul class="nav nav-container" role=navigation dir=rtl>{%
+        <ul class="nav nav-container" dir=rtl>{%
             assign breadcrumb = layout.array %}{%
             assign pages = site.pages | sort: "order" %}{%
 
