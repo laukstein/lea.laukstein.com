@@ -27,11 +27,17 @@ endif %}{%
 capture head %}<!doctype html>
 <html{% if layout.className %} class="{{ layout.className }}"{% endif %} lang=he>
 <meta charset=utf-8>
-<title>{{ title | default: site.title | escape }}</title>{%
+<title>{{ title | default: site.title | escape }}</title>
+<meta property=og:title content="{{ title | default: site.title | escape }}">{%
 if page.description %}
-<meta name=description content="{{ page.description }}">{% endif %}{%
+<meta property=og:description name=description content="{{ page.description }}">{% endif %}{%
 if layout.private or page.private or page.draft %}
-<meta name=robots content=noindex>{% endif %}
+<meta name=robots content=noindex>
+<meta property=twitter:site content=@lealaukstein>{% endif %}{%
+if include.image %}
+<meta property=twitter:card content=summary_large_image>
+<meta property=og:image content={{ include.image }}>{% else %}
+<meta property=twitter:card content=summary>{% endif %}
 <meta name=viewport content="width=device-width,initial-scale=1">
 <link rel=canonical href={{ page.url | absolute_url | split: '?' | first }}>
 <link rel=manifest href=/manifest.json>

@@ -7,7 +7,21 @@ script:
 array: []
 ---
 
-{% include core-head.html %}{% unless page.hiddenHeader %}<input class=bar-holder id=bar type=checkbox hidden>
+{% capture image %}{%
+    include image-url.html
+
+    layout = page.layout
+    url = page.url
+    date = page.date
+    video = page.video
+    image = page.image
+    %}{%
+endcapture %}{%
+assign image = image | strip_newlines %}{%
+if image.size == 0 %}{% assign image = nil %}{% endif %}{%
+
+include core-head.html image = image %}{%
+unless page.hiddenHeader %}<input class=bar-holder id=bar type=checkbox hidden>
 <header dir=ltr>
     <div class=wrapper role=navigation>
         <label class=bar for=bar hidden><span></span></label>
@@ -123,21 +137,10 @@ case type %}{%
     endif %}{%
 endcase %}
 </main>
-{% include core-footer.html %}{%
+{%
+
+include core-footer.html %}{%
 include core-js.html %}{%
-
-capture image %}{%
-    include image-url.html
-
-    layout = page.layout
-    url = page.url
-    date = page.date
-    video = page.video
-    image = page.image
-    %}{%
-endcapture %}{%
-assign image = image | strip_newlines %}{%
-if image.size == 0 %}{% assign image = nil %}{% endif %}{%
 
 if page.jsonld == nil %}{%
     if layout.category == "products" or page.category == "products" %}{%
