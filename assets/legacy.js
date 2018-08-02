@@ -1,15 +1,11 @@
 if (!Array.from) {
     Array.from = function (object) {
-        "use strict";
-
         return [].slice.call(object);
     };
 }
 if (!Element.prototype.remove) {
     Object.defineProperty(Element.prototype, "remove", {
         value: function () {
-            "use strict";
-
             if (this.parentElement) {
                 this.parentElement.removeChild(this);
             }
@@ -64,8 +60,6 @@ if (!Element.prototype.matches) {
     if (!Element.prototype.matches) {
         Object.defineProperty(Element.prototype, "closest", {
             value: function (selector) {
-                "use strict";
-
                 var nodes = (this.parentNode || this.document).querySelectorAll(selector),
                     i = -1;
 
@@ -79,8 +73,6 @@ if (!Element.prototype.matches) {
 if (!Element.prototype.closest) {
     Object.defineProperty(Element.prototype, "closest", {
         value: function (selector) {
-            "use strict";
-
             var node = this;
 
             while (node) {
@@ -98,8 +90,6 @@ if (!Element.prototype.closest) {
 if (!("classList" in document.documentElement) && Element.prototype) {
     Object.defineProperty(Element.prototype, "classList", {
         get: function () {
-            "use strict";
-
             var self = this;
 
             function classlist() {
