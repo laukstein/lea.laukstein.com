@@ -6,7 +6,7 @@ layout: null
     "lang": "he",
     "dir": "rtl",
     "name": "{{ site.title }}",
-    "short_name": "סטיילינג לדתיות",
+    "short_name": "סטיילינג דתי",
     "description": "סטיילינג לדתיות - זה לא רק הבגד - זה החיבור שלך לעצמך",
     "icons": [{
         "src": "assets/icon.png",
