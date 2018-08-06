@@ -797,10 +797,39 @@ window.ui = {
             self.getUser();
             self.analytics();
 
-            var el = self.d.getElementById("bar-close");
+            var opt = {
+                el: self.d.getElementById("bar-close")
+            };
 
-            if (el) {
-                el.addEventListener("touchstart", el.click);
+            if (opt.el) {
+                opt.event = self.w.PointerEvent ? "pointerdown" : navigator.maxTouchPoints > 0 ||
+                    (self.w.matchMedia ? self.w.matchMedia("(pointer: coarse)").matches : "ontouchstart" in self.w) ?
+                    "touchstart" : "mousedown";
+                opt.options = opt.event !== "mousedown" && (function () {
+                    // Resource http://tonsky.me/blog/chrome-intervention/
+                    // Spec issue https://github.com/whatwg/dom/issues/491
+                    var passiveSupported = false,
+                        options;
+
+                    try {
+                        options = Object.defineProperty({}, "passive", {
+                            get: function () {
+                                passiveSupported = true;
+
+                                return passiveSupported;
+                            }
+                        });
+
+                        addEventListener("test", options, options);
+                        removeEventListener("test", options, options);
+                    } catch (err) {
+                        passiveSupported = false;
+                    }
+
+                    return passiveSupported;
+                }()) ? {passive: true} : true;
+
+                opt.el.addEventListener(opt.event, opt.el.click, opt.options);
             }
         });
     }
