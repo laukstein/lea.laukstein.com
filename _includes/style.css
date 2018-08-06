@@ -1132,6 +1132,7 @@ iframe {
         max-width: 100%;
         padding-right: 1.6em;
         padding-left: 1.6em;
+        box-sizing: border-box;
     }
 }
 
