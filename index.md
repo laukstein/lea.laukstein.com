@@ -3,6 +3,7 @@ layout: default
 redirect_from: /recommendations
 description: סטיילינג לדתיות - זה לא רק הבגד - זה החיבור שלך לעצמך
 video: lFkh-kMy-6Y
+videoTitle: סטייל שבא מבפנים
 pageName: landing
 subscribe:
     id: 70a2d0d976
