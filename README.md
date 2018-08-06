@@ -24,6 +24,7 @@ YAML schema
             rule: value;
         }
     video: ID
+    videoTitle: title of video
     image: src
     imageClass:  className
     imageWidth:  Number

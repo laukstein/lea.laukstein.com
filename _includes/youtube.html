@@ -1,5 +1,6 @@
-{% if include.id %}
+{% if include.id %}{%
+    assign title = include.title | default: page.videoTitle | default: page.title %}
     <div class=video>
-        <iframe src="https://www.youtube.com/embed/{{ include.id }}?showinfo=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+        <iframe{% if title %} title="{{ title }}"{% endif %} src="https://www.youtube.com/embed/{{ include.id }}?showinfo=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
     </div>{%
 endif %}
