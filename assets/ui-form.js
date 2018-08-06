@@ -90,6 +90,10 @@ ui.form = {
 
                     arr[i].parentNode.classList.add("error");
 
+                    if (!ui.d.activeElement || ui.d.activeElement.tagName !== "INPUT") {
+                        // Focus first error field
+                        arr[i].focus();
+                    }
                     if (error) {
                         arr[i].setAttribute("placeholder", error);
                     }
