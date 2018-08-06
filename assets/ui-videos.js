@@ -145,7 +145,7 @@ ui.videos = (function () {
 
         return obj.image ? "<li class=box>" +
             "    <figure class=play><img " + (ui.w.IntersectionObserver ? "data-" : "") + "src=\"" + obj.image + "\" alt=\"" + obj.title + "\"></figure>" +
-            "    <a class=absolute href=\"#" + obj.id + "\" tabindex=0></a>" +
+            "    <a class=absolute href=\"#" + obj.id + "\" aria-label=\"" + obj.title + "\" tabindex=0></a>" +
             "    <h2 class=wrapline>" + obj.title + "</h2>" +
             (obj.description ? "    <p>" + this.links(obj.description) + "</p>" : "") +
             (obj.date ? "    <div><time>" + obj.date + "</time></div>" : "") +

@@ -18,7 +18,7 @@ products:
     <li>
         <h3><a href={{ item.url | prepend: site.baseurl }}>{{ item.title }}</a></h3>
         <p>{{ item.price }} ש"ח {% if item.discount %} ({{ item.discount }}){% endif %}</p>
-        <a class=absolute href={{ item.url | prepend: site.baseurl }}></a>
+        <a class=absolute href={{ item.url | prepend: site.baseurl }} aria-label="{{ item.title | strip_html }}"></a>
     </li>{%
     endif %}{%
 endfor %}

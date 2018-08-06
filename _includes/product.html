@@ -73,7 +73,7 @@ endfor %}{% else
         %}<a class=button href=/contact#{{ page.id | default: page.permalink | remove: "/" }} tabindex=0>צרי קשר</a>{%
         endif %}{% if include.more == nil %}
         <a class=more href={{ page.url }}>פרטים מלאים</a>
-        <a class=absolute href={{ page.url }}></a>{% endif %}
+        <a class=absolute href={{ page.url }} aria-label="{{ page.title | strip_html }}"></a>{% endif %}
     </div>{% if include.more %}
     </div>{% endif %}
 </article>{%

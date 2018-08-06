@@ -22,7 +22,7 @@ for post in pages %}{%
         <p class=clamp>{{ post.content | markdownify | strip_html | truncatewords: 20, ' ...' }}</p>
         <div class=footer>{% include date.html value = post.date %}</div>
         <a class=more href={{ post.url | prepend: site.baseurl }}>המשך קריא</a>
-        <a class=absolute href={{ post.url | prepend: site.baseurl }} tabindex=0></a>
+        <a class=absolute href={{ post.url | prepend: site.baseurl }} aria-label="{{ post.title | strip_html }}" tabindex=0></a>
     </blockquote>{%
         endif %}{%
         assign index = index | plus: 1 %}{%
