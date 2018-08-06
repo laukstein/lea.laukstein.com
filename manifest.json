@@ -10,7 +10,12 @@ layout: null
     "description": "סטיילינג לדתיות - זה לא רק הבגד - זה החיבור שלך לעצמך",
     "icons": [{
         "src": "assets/icon.png",
-        "sizes": "192x192"
+        "sizes": "192x192",
+        "type": "image/png"
+    }, {
+        "src": "assets/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
     }],
     "scope": "/",
     "start_url": "/",
