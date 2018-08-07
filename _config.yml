@@ -7,7 +7,6 @@ timezone: UTC
 safe: true
 theme: false
 future: true
-include: [_pages]
 collections:
     pages:
         output: true
