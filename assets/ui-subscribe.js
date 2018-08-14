@@ -11,7 +11,6 @@ ui.subscribe = {
 
         if (data) {
             if (data.result === "success") {
-                self.utmCampaign = self.el.getAttribute("data-utm_campaign");
                 self.redirectURL = "/success?utm_source=subscribe";
 
                 if (self.utmCampaign) {
@@ -74,6 +73,15 @@ ui.subscribe = {
                 if (this.name) {
                     this.active = true;
                     this.el.action = this.endpoint + "?u=" + this.key + "&id=" + this.name;
+                    this.utmCampaign = ui.hash({
+                        hash: location.search,
+                        param: "utm_campaign"
+                    }) || self.el.getAttribute("data-utm_campaign");
+
+                    if (this.utmCampaign) {
+                        this.el.action += "&UTM=" + this.utmCampaign;
+                    }
+
                     this.el.addEventListener("submit", this.send);
                     this.required = ui.form.list("[data-required]");
                     var tel = ui.d.getElementById("tel");
