@@ -26,6 +26,7 @@ YAML schema
     video: ID
     videoTitle: title of video
     image: src
+    imageTitle:  image `alt` attribute value
     imageClass:  className
     imageWidth:  Number
     imageHeight: Number

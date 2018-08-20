@@ -6,9 +6,9 @@ order: 3
 title: סיבוב קניות
 permalink: /shopping
 image: product-shopping.jpg
-imageClass: contain
-imageWidth: 396
-imageHeight: 486
+imageTitle: ליווי סטיילינג בקניות
+imageWidth: 960
+imageHeight: 640
 price: 650
 extra: ליווי בואטסאפ חינם ללא הגבלה
 location: מרכז קניות בגדים

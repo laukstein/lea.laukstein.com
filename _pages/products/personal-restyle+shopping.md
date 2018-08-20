@@ -7,9 +7,9 @@ title: ריסטייל
 permalink: /restyle+shopping
 redirect_from: /closet+shopping
 image: product-restyle+shopping.jpg
-imageClass: contain
-imageWidth: 416
-imageHeight: 486
+imageTitle: מפגש ריסטייל (קניות + ארון)
+imageWidth: 960
+imageHeight: 640
 duration: שני מפגשים
 price: 890
 discount: במקום 1180 ש"ח

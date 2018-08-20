@@ -3,10 +3,11 @@
     assign l10n = site.data.l10n.product
 %}<article class="box card" dir=ltr>{%
     if include.more %}{%
-        assign title = page.title %}
+        assign title = page.title %}{%
+        assign imageTitle = page.imageTitle | default: page.title %}
     {% include youtube.html id = page.video %}{%
         include image.html
-        title = page.title
+        title = imageTitle
         image = page.image
         className = page.imageClass
         width = page.imageWidth
