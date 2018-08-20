@@ -3,7 +3,7 @@ layout: product
 group: personal
 order: 2
 
-title: מפגש ריסטייל
+title: מפגש ארון
 permalink: /restyle
 redirect_from: /closet
 video: ZtIF83HYcOY

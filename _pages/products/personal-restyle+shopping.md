@@ -3,7 +3,7 @@ layout: product
 group: personal
 order: 4
 
-title: ריסטייל + קניות
+title: ריסטייל
 permalink: /restyle+shopping
 redirect_from: /closet+shopping
 image: product-restyle+shopping.jpg
