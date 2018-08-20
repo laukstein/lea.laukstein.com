@@ -12,7 +12,7 @@ layout: null
         <video:video>
             <video:thumbnail_loc>https://img.youtube.com/vi/lFkh-kMy-6Y/0.jpg</video:thumbnail_loc>
             <video:title>{{ site.title }}</video:title>
-            <video:description>סטיילינג לדתיות - זה לא רק הבגד - זה החיבור שלך לעצמך</video:description>
+            <video:description>{{ site.description }}</video:description>
             <video:player_loc allow_embed="yes" autoplay="ap=1">https://www.youtube.com/v/lFkh-kMy-6Y</video:player_loc>
         </video:video>
     </url>{%
