@@ -76,7 +76,7 @@ ui.subscribe = {
                     this.utmCampaign = ui.hash({
                         hash: location.search,
                         param: "utm_campaign"
-                    }) || self.el.getAttribute("data-utm_campaign");
+                    }) || this.el.getAttribute("data-utm_campaign");
 
                     if (this.utmCampaign) {
                         this.el.action += "&UTM=" + this.utmCampaign;
