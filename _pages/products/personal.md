@@ -5,7 +5,7 @@ group: personal
 jsonldGroup: true
 order: 2
 
-title: סטיילינג אישי
+title: ליווי סטיילינג אישי
 permalink: personal
 className: grid
 ---

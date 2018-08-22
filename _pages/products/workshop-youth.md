@@ -3,7 +3,7 @@ layout: product
 group: workshop
 order: 1
 
-title: סדנה לנערות
+title: סדנת סטיילינג לנערות
 permalink: /workshop-youth
 video: AcH0rrK5aKc
 duration: 90 דקות

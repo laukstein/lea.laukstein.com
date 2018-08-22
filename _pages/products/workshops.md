@@ -5,7 +5,7 @@ group: workshop
 jsonldGroup: true
 order: 1
 
-title: סדנאות
+title: סדנאות סטיילינג
 permalink: workshops
 redirect_from: workshop+giyur
 className: grid

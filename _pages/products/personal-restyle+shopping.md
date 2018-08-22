@@ -3,11 +3,11 @@ layout: product
 group: personal
 order: 4
 
-title: ריסטייל
+title: ריסטייל (ארון + קניות)
 permalink: /restyle+shopping
 redirect_from: /closet+shopping
 image: product-restyle+shopping.jpg
-imageTitle: מפגש ריסטייל (קניות + ארון)
+imageTitle: מפגש ריסטייל (ארון + קניות)
 imageWidth: 960
 imageHeight: 640
 duration: שני מפגשים

@@ -1,6 +1,6 @@
 ﻿{
  "kind": "youtube#playlistItemListResponse",
- "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/WHia-ZVUGrtByhPIZW8nRzQBofU\"",
+ "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/mBeW2QZuZUSSgpEwjthPBBXImgo\"",
  "pageInfo": {
   "totalResults": 37,
   "resultsPerPage": 50
@@ -133,13 +133,13 @@
   },
   {
    "kind": "youtube#playlistItem",
-   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/dyZEcQ3oF0Q7cxOXAnxQ3EIqDJc\"",
+   "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/Rk_D7BBRCD4xQcprgPk9Pe5BX4o\"",
    "id": "VVVOTnNnaW1KdFUxcTFMVU1Wc3E0NERnLldfN3FBM09JSG1r",
    "snippet": {
     "publishedAt": "2018-05-02T08:01:07.000Z",
     "channelId": "UCNNsgimJtU1q1LUMVsq44Dg",
     "title": "איך לגלות אוצרות בארון הבגדים הקיים?",
-    "description": "לפרטים על פגישת ריסטייל https://lea.laukstein.com/restyle\n\nלקבלת מדריך סטיילינג ישיר למייל שלך https://lea.laukstein.com",
+    "description": "לפרטים על פגישת ריסטייל https://lea.laukstein.com/restyle+shopping\n\nלקבלת מדריך סטיילינג ישיר למייל שלך https://lea.laukstein.com",
     "thumbnails": {
      "default": {
       "url": "https://i.ytimg.com/vi/W_7qA3OIHmk/default.jpg",

@@ -3,7 +3,7 @@ layout: product
 group: workshop
 order: 2
 
-title: סדנה לנשים
+title: סדנת סטיילינג לנשים
 permalink: /workshop
 image: product-workshop.jpg
 imageClass: contain
