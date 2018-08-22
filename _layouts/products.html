@@ -17,6 +17,12 @@ css: |
     .grid {
         max-width: 60em;
     }
+    .grid .header {
+        margin-bottom: 1em;
+    }
+    .grid .header h1 {
+        color: #666;
+    }
     .grid .card {
         display: inline-block;
         width: 100%;
@@ -26,7 +32,7 @@ css: |
     }
     .grid .content {
         min-width: inherit;
-        padding: 1.5em 2em 6em;
+        padding: 1.5em 2em 4em;
     }
     .grid .more,
     .grid .button {
@@ -68,9 +74,13 @@ css: |
 {%
 assign footer-url = page.url %}{%
 assign footer-title = page.title %}{%
-assign pages = site.pages | sort: "order" %}{%
+assign pages = site.pages | sort: "order" %}
+<div class="span header row">
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.description }}</p>
+</div>{%
 for item in pages %}{%
     if item.order and item.subnav != "products" and item.group == page.group %}{%
         include product.html data = item %}{%
     endif %}{%
-endfor %}<div class=footer><a href={{ footer-url }}-compare>השוואת {{ footer-title }}</a></div>{{ content }}
+endfor %}<div class="span footer row"><a href={{ footer-url }}-compare>השוואת {{ footer-title }}</a></div>{{ content }}

@@ -20,7 +20,7 @@ for post in pages %}{%
         endif %}
         <h2>{{ post.title }}</h2>
         <p class=clamp>{{ post.content | markdownify | strip_html | truncatewords: 20, ' ...' }}</p>
-        <div class=footer>{% include date.html value = post.date %}</div>
+        <div class="span footer">{% include date.html value = post.date %}</div>
         <a class=more href={{ post.url | prepend: site.baseurl }}>המשך קריא</a>
         <a class=absolute href={{ post.url | prepend: site.baseurl }} aria-label="{{ post.title | strip_html }}" tabindex=0></a>
     </blockquote>{%
@@ -29,7 +29,7 @@ for post in pages %}{%
     endif %}{%
 endfor %}{%
 if index > max %}
-    <a class="footer button" href=/blog>מאמרים נוספים</a>{%
+    <a class="span footer button" href=/blog>מאמרים נוספים</a>{%
 endif %}
 </div>
 </div>

@@ -1111,7 +1111,7 @@ iframe {
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }
-    .grid .footer {
+    .grid .span {
         grid-column: 1 / -1;
     }
 
