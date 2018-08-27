@@ -1070,7 +1070,7 @@ ui.academy = {
             for (i = 0; i < arr.length; i += 1) {
                 result += "<li class=row>" +
                     "    <label class=\"column label\" for=" + arr[i] + ">" + obj.option[arr[i]] + "</label>" +
-                    "    <div class=column><input id=" + arr[i] + " name=" + arr[i] + " type=number min=50 max=200 maxlength=3 data-required" + (i ? "" : " autofocus") + "></div>" +
+                    "    <div class=column><input id=" + arr[i] + " name=" + arr[i] + " type=number inputmode=numeric min=50 max=200 maxlength=3 data-required" + (i ? "" : " autofocus") + "></div>" +
                     "</li>";
             }
 

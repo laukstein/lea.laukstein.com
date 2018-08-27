@@ -91,9 +91,9 @@ css: |
                 endfor %}
             </select>
         </dd>
-        <dd><label id=label-name for=name>שם</label><input id=name name=name placeholder=שם aria-labelledby=label-name data-error="תקליד שם" autocomplete=name dir=auto data-required autofocus>
-        <dd><label id=label-email for=email>אימייל</label><input id=email name=email type=email placeholder=אימייל aria-labelledby=label-email data-error="אימייל שגוי" autocomplete=email dir=ltr data-required>
-        <dd><label id=label-tel for=tel>נייד</label><input id=tel name=tel type=tel placeholder=נייד aria-labelledby=label-tel data-error="נייד שגוי" autocomplete=tel dir=ltr data-required>
+        <dd><label id=label-name for=name>שם</label><input id=name name=name placeholder=שם aria-labelledby=label-name data-error="תקליד שם" autocomplete=name inputmode=text dir=auto data-required autofocus>
+        <dd><label id=label-email for=email>אימייל</label><input id=email name=email type=email placeholder=אימייל aria-labelledby=label-email data-error="אימייל שגוי" autocomplete=email inputmode=email dir=ltr data-required>
+        <dd><label id=label-tel for=tel>נייד</label><input id=tel name=tel type=tel placeholder=נייד aria-labelledby=label-tel data-error="נייד שגוי" autocomplete=tel inputmode=tel dir=ltr data-required>
         <dd><label id=label-message for=message>תוכן</label><textarea id=message name=message placeholder=תוכן aria-labelledby=label-message data-error="הודעה קצרה מדי" rows=3 dir=rtl data-required></textarea>
         <dd><button formnovalidate>לשלוח הודעה</button>
         <dd id=status>

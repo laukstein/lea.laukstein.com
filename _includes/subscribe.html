@@ -7,15 +7,15 @@
     {% unless include.data.title %}<p>מדריך ליצירת ארון מדוייק מ9 פריטים בלבד</p>{% endunless %}
     <div class=invisible>
         <label id=label-name for=name>שם</label>
-        <input id=name tabindex=-1 name=FNAME placeholder="שם" aria-labelledby=label-name data-error="תקליד שם" autocomplete=name dir=auto>
+        <input id=name tabindex=-1 name=FNAME placeholder="שם" aria-labelledby=label-name data-error="תקליד שם" autocomplete=name inputmode=text dir=auto>
     </div>
     <div>
         <label id=label-email for=email>אימייל</label>
-        <input id=email name=EMAIL type=email placeholder="אימייל" aria-labelledby=label-email data-error="אימייל שגוי" autocomplete=email dir=ltr data-required{% if include.data.autofocus %} autofocus{% endif %}>
+        <input id=email name=EMAIL type=email placeholder="אימייל" aria-labelledby=label-email data-error="אימייל שגוי" autocomplete=email inputmode=email dir=ltr data-required{% if include.data.autofocus %} autofocus{% endif %}>
     </div>
     <div{% unless include.data.requiredTel %} class=invisible{% endunless %}>
         <label id=label-tel for=tel>נייד{% unless include.data.requiredTel %} (אופציונאלי){% endunless %}</label>
-        <input id=tel tabindex=-1 name=PHONE type=tel placeholder="נייד" aria-labelledby=label-tel{% if include.data.requiredTel %} data-error="נייד שגוי" data-required{% endif %} autocomplete=tel dir=ltr>
+        <input id=tel tabindex=-1 name=PHONE type=tel placeholder="נייד" aria-labelledby=label-tel{% if include.data.requiredTel %} data-error="נייד שגוי" data-required{% endif %} autocomplete=tel inputmode=tel dir=ltr>
     </div>
     <button formnovalidate>{% if include.data.button %}{{ include.data.button }}{% else %}להורדה בחינם{% endif %}</button>
     {% include confirm.html
