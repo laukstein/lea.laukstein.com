@@ -7,7 +7,7 @@ title: מפגש ארון
 permalink: /restyle
 redirect_from: /closet
 video: ZtIF83HYcOY
-price: 530
+price: 650
 extra: ליווי בואטסאפ חינם ללא הגבלה
 location: אצלך בבית
 goals: |
@@ -26,6 +26,6 @@ takeWith: |
     * תיעוד התהליך לשיחזור קל של השילובים המוצלחים
     * רשימת פריטים מומלצים להשלמת תשעה פריטי החובה
 button:
-    - pelepay: FTh8zYah8klry1OczCSn28wmQ%2f9te0dw%2b5kqU7gofrOrN8C543gGibXi%2b2w01aiWFErSiBuR0Q5IDqZnw5RbmYF73ajVdcDXZd9KaWSBsioLlDINvTKJMMoxAOEUaOY29TimdvbJsdE%3d
-      title: לתשלום 530 ₪
+    - pelepay: FTh8zYah8klry1OczCSn28wmQ%2f9te0dw%2b5kqU7gofrNusiy0YayK3qrS87H1K8kpbe9n8WZHBFPH8p7TjtNnqD4NBXA3avOejJceYG3osRz65XvkrJcYQ%2b2ob4o8JDRH
+      title: לתשלום 650 ₪
 ---

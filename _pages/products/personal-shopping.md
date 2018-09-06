@@ -9,7 +9,7 @@ image: product-shopping.jpg
 imageTitle: ליווי סטיילינג בקניות
 imageWidth: 960
 imageHeight: 640
-price: 650
+price: 750
 extra: ליווי בואטסאפ חינם ללא הגבלה
 location: מרכז קניות בגדים
 goals: |

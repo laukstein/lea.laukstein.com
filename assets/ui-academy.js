@@ -374,7 +374,7 @@ ui.academy = {
                         }
                     }
                 }
-            },
+            } /* ,
             bonuses: {
                 title: "בונוסים",
                 date: {
@@ -407,7 +407,7 @@ ui.academy = {
                         "    <h1><a href=/shopping target=_blank>סיבוב קניות - הנחה 50% בתוקף עד " + addMonths(ui.academy.data.startDate, 5) + "</a></h1>" +
                         "</div>";
                 }
-            }
+            } */
         }
     },
     hash: {},

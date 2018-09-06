@@ -1,18 +1,18 @@
 ---
 layout: product
 group: workshop
-order: 2
+order: 1
 
-title: סדנת סטיילינג לנשים
+title: סדנת סטיילינג נערות ונשים
 permalink: /workshop
-image: product-workshop.jpg
-imageClass: contain
-imageWidth: 239
-imageHeight: 486
+redirect_from:
+    - /workshop-youth
+    - /batmitzvah
+video: AcH0rrK5aKc
 duration: 90 דקות
 price: 1000
 extra: ניתן לשלב לצד הסדנה גם הרצאה על סיפור האישי
-fit: ערבי צוותים, ערבי נשים בקהילה, מסיבות יום הולדת
+fit: החל מגיל 11
 details: הרצאה, הדגמות ופעילויות
 goals: סדנה ייחודית שמחברת בין סטיילינג נכון לבין קבלה עצמית של הגוף ושל עצמינו. מבפנים ומבחוץ
 takeWith: |

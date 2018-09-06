@@ -11,8 +11,8 @@ imageTitle: מפגש ריסטייל (ארון + קניות)
 imageWidth: 960
 imageHeight: 640
 duration: שני מפגשים
-price: 890
-discount: במקום 1180 ש"ח
+price: 1150
+discount: במקום 1400 ש"ח
 extra: ליווי בואטסאפ חינם ללא הגבלה
 location: בית שלך ומרכז קניות בגדים
 goals: |
