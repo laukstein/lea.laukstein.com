@@ -1,0 +1,18 @@
+{% if include.data %}
+<div class=recommendations>{%
+        for item in include.data %}
+    <blockquote class=recommendation>
+        <div class=profile>
+            <img src=/assets/{{ item.image | default: "avatar.png" }}>
+            <div class=details>
+                <div class=name>{{ item.name }}</div>{%
+                if item.field %}
+                <div class=field>{{ item.field }}</div>{%
+                endif %}
+            </div>
+        </div>
+        {{ item.text | markdownify }}
+    </blockquote>{%
+        endfor %}
+</div>{%
+endif %}

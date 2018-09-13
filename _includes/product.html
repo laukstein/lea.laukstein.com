@@ -39,24 +39,7 @@
                 endif %}{%
             endfor %}
         </ul>{% if include.more %}{%
-            if page.recommendations %}
-        <div class=recommendations>{%
-                for item in page.recommendations %}
-            <blockquote class=recommendation>
-                <div class=profile>
-                    <img src=/assets/{{ item.image | default: "avatar.png" }}>
-                    <div class=details>
-                        <div class=name>{{ item.name }}</div>{%
-                        if item.field %}
-                        <div class=field>{{ item.field }}</div>{%
-                        endif %}
-                    </div>
-                </div>
-                {{ item.text | markdownify }}
-            </blockquote>{%
-                endfor %}
-        </div>{%
-            endif %}{%
+            include recommendation.html data = page.recommendations %}{%
             if page.payment-details %}
         {{ page.payment-details | markdownify }}{%
             endif %}

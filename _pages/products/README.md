@@ -26,6 +26,8 @@ YAML schema
         multi-line text
     recommendations:
         - name
+          field
+          image
           text
     payment-details
     button:
