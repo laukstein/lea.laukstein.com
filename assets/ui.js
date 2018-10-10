@@ -198,17 +198,18 @@ window.ui = {
                 }
             });
 
-            // Sentry JavaScript client Raven.js https://docs.sentry.io/clients/javascript/install/
-            this.asyncScript("https://cdn.ravenjs.com/3.27.0/raven.min.js", {
+            // Sentry SDK https://docs.sentry.io/quickstart/?platform=browser
+            this.asyncScript("https://browser.sentry-cdn.com/4.1.0/bundle.min.js", {
                 // Generator SRI hash https://www.srihash.org
-                integrity: "sha384-gnq8j+n3z7Vfgsl2ZmIRZtumzS05EKAhNoPa4vDhcq3rg1Pz6Tdg3LyYxcxTzzV8",
+                integrity: "sha384-mxndvYiIf9lQpp7xozknP9c+Aa0nLYEyE/M64QwefVie09YJYZ9WSWmLNkxR/mTQ",
                 crossorigin: "anonymous",
                 onSuccess: function () {
-                    if (window.Raven && Raven.config) {
-                        Raven.config("https://1e8b57d9fb744a9ba1068e9b5cc5386c@sentry.io/156066", {
+                    if (window.Sentry && Sentry.init) {
+                        Sentry.init({
+                            dsn: "https://1e8b57d9fb744a9ba1068e9b5cc5386c@sentry.io/156066",
                             environment: ui.environment
-                        }).install();
-                        ui.identify.raven();
+                        });
+                        ui.identify.sentry();
                     }
                 }
             });
@@ -308,13 +309,13 @@ window.ui = {
                 }
             });
         },
-        raven: function () {
+        sentry: function () {
             "use strict";
 
             this.track({
                 name: "Sentry",
                 condition: function (self) {
-                    return window.Raven && Raven.setUserContext && self.user.email;
+                    return window.Sentry && Sentry.configureScope && self.user.email;
                 },
                 params: function (self) {
                     var obj = {};
@@ -329,7 +330,9 @@ window.ui = {
                 },
                 callback: function (self) {
                     // https://docs.sentry.io/learn/context/
-                    Raven.setUserContext(this.params(self));
+                    Sentry.configureScope(function (scope) {
+                        scope.setUser(this.params(self));
+                    });
                 },
                 log: function (self) {
                     console.log("Sentry", this.params(self));
