@@ -330,8 +330,10 @@ window.ui = {
                 },
                 callback: function (self) {
                     // https://docs.sentry.io/learn/context/
+                    var root = this;
+
                     Sentry.configureScope(function (scope) {
-                        scope.setUser(this.params(self));
+                        scope.setUser(root.params(self));
                     });
                 },
                 log: function (self) {
