@@ -1,10 +1,13 @@
 /* eslint
 camelcase: 0 */
 
-// MP4 from http://video.genyoutube.net/t3xR5EYJvZY
-// JPG from https://img.youtube.com/vi/t3xR5EYJvZY/maxresdefault.jpg or /hqdefault.jpg
-
 ui.videoLegacy = {
+    _dohRGGGLmQ: {
+        academy: true,
+        "360p": "zdf5b51quzdvm5d",
+        "720p": "a7xa5t31txno9e4",
+        image: "eq1ahj30hq8oe0d"
+    },
     _p3HwrkRk3A: {
         "360p": "uajnetp41452y0p",
         "720p": "2ldmvifgwldg1pn",
@@ -15,12 +18,6 @@ ui.videoLegacy = {
         "360p": "j1hid2al98mr6wk",
         "720p": "sj967bkixkci1g1",
         image: "qmr51t62ws537a9"
-    },
-    "-GfNNMbAwI4": {
-        academy: true,
-        "360p": "r32h1ec1xx443wr",
-        "720p": "2td9xypuezwtuhs",
-        image: "ywxz197oe2as7h2"
     },
     "-UU-ePzH-m8": {
         "360p": "304i390pjzdouib",
@@ -46,6 +43,12 @@ ui.videoLegacy = {
         "360p": "s6alogdx8yurzag",
         "720p": "8r6fu92szl0jedn",
         image: "ftcnz9vd6o74c18"
+    },
+    "4kKzES9x35g": {
+        academy: true,
+        "360p": "j6kufw1vgm4eoxa",
+        "720p": "oh0hc2qj01pnktg",
+        image: "o3ashkzkle4xax1"
     },
     "5ny1c92PCqU": {
         "360p": "za9v8a3rrnbmqju",

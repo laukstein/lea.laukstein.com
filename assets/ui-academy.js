@@ -12,8 +12,13 @@ ui.academy = {
         session: {
             colours: {
                 title: "הצבע הזה הוא אני",
-                video: "-GfNNMbAwI4",
+                video: "4kKzES9x35g",
                 pages: {
+                    "color-plates": {
+                        type: "video",
+                        title: "סרטון: לוחות צבעים",
+                        value: "_dohRGGGLmQ"
+                    },
                     qa: {
                         type: "qa",
                         title: "שאלון:\nלאיזה קטגוריית צבעים את שייכת?",
@@ -1342,7 +1347,7 @@ ui.academy = {
         if (obj.pages) {
             for (prop in obj.pages) {
                 if (obj.pages.hasOwnProperty(prop)) {
-                    buttons += "<a class=button href=\"#session=" + ui.hash("session") + "&page=" + prop + "\" tabindex=0>" + obj.pages[prop].title + "</a>";
+                    buttons += "<a class=button href=\"#session=" + ui.hash("session") + "&page=" + prop + "\" tabindex=0>" + obj.pages[prop].title + "</a> ";
                 }
             }
         }
