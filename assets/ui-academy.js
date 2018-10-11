@@ -1357,7 +1357,7 @@ ui.academy = {
 
         return "<div class=video>" +
             (ui.video.youtubeSupport ?
-                "<iframe src=\"https://www.youtube.com/embed/" + id + "?showinfo=0\"  allow=\"autoplay; encrypted-media; fullscreen\" allowfullscreen></iframe>" :
+                "<iframe src=\"https://www.youtube.com/embed/" + id + "\"  allow=\"autoplay; encrypted-media; fullscreen\" allowfullscreen></iframe>" :
                 ui.video.template(id)) +
             "</div>" +
             "<div class=space><h1>" + obj.title + "</h1>" + buttons + "</div>";
