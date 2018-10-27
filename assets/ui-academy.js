@@ -151,7 +151,7 @@ ui.academy = {
             },
             style: {
                 title: "על טעם, ריח, ואופי",
-                video: "YjHQvrvnC9Y",
+                video: "06Q_GGX5KLQ",
                 pages: {
                     sat: {
                         type: "sat",
