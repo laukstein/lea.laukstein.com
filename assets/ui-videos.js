@@ -107,7 +107,7 @@ ui.videos = (function () {
             description: this.safe(obj.description).replace(/\n/g, "<br>"),
             date: (function () {
                 try {
-                    return new Date(obj.publishedAt).toLocaleDateString("he", {
+                    return obj.publishedAt && new Date(obj.publishedAt).toLocaleDateString("he", {
                         year: "numeric",
                         month: "long",
                         day: "numeric"
@@ -182,6 +182,9 @@ ui.videos = (function () {
         if (response && Array.isArray(response.items)) {
             result = generateHTML(response.items, url);
 
+            if (url && !result) {
+                result = generateHTML(request.private, url);
+            }
             if (result) {
                 if (url) {
                     response.scrollTop = ui.d.documentElement.scrollTop;
@@ -248,6 +251,37 @@ ui.videos = (function () {
             return /^https?:\/\/.*/.test(url) ? request.call(ui.video.playlistLocalLink) : request.error();
         });
     };
+    request.private = (function () {
+        var data = {
+                MJkf4wLvmd4: {
+                    image: "https://i.ytimg.com/vi/MJkf4wLvmd4/maxresdefault.jpg",
+                    title: "איך להכניס יותר צבע בלבוש שלך?",
+                    description: "רוצה לדעת אילו צבעים מתאימים לך - https://mailchi.mp/laukstein.com/colour-swatch",
+                    date: "2018-11-03T21:58:00.000Z"
+                }
+            },
+            generatedData = [];
+
+        Object.keys(data).forEach(function (key) {
+            generatedData.push({
+                snippet: {
+                    resourceId: {
+                        videoId: key
+                    },
+                    thumbnails: {
+                        maxres: {
+                            url: data[key].image
+                        }
+                    },
+                    title: data[key].title,
+                    description: data[key].description,
+                    publishedAt: data[key].date
+                }
+            });
+        });
+
+        return generatedData;
+    }());
     request.success = function (response) {
         response = response || {};
 
