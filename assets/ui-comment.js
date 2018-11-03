@@ -52,10 +52,17 @@ ui.comment = {
         "use strict";
 
         if (this.hashIdentifier && location.search) {
-            var hash;
+            var search = ui.hash({hash: location.search}),
+                hash;
 
-            if (location.search.length > location.hash.length) {
-                hash = ui.serialize(ui.hash({hash: location.search}), {setEmptyValue: this.setEmptyValue});
+            Object.keys(search).forEach(function (key) {
+                if (key.startsWith("utm_") || key.startsWith("mc_")) {
+                    delete search[key];
+                }
+            });
+
+            if (search.length && location.search.length > location.hash.length) {
+                hash = ui.serialize(ui.hash({hash: search}), {setEmptyValue: this.setEmptyValue});
             } else {
                 hash = location.hash.replace(/^#/, "");
             }
