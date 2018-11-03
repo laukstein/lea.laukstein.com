@@ -12,7 +12,7 @@ ui.academy = {
         session: {
             colours: {
                 title: "הצבע הזה הוא אני",
-                video: "4kKzES9x35g",
+                video: "6fuubXrOQ6c",
                 pages: {
                     "color-plates": {
                         type: "video",

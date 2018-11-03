@@ -50,12 +50,6 @@ ui.videoLegacy = {
         "720p": "8r6fu92szl0jedn",
         image: "ftcnz9vd6o74c18"
     },
-    "4kKzES9x35g": {
-        academy: true,
-        "360p": "j6kufw1vgm4eoxa",
-        "720p": "oh0hc2qj01pnktg",
-        image: "o3ashkzkle4xax1"
-    },
     "5ny1c92PCqU": {
         "360p": "za9v8a3rrnbmqju",
         "720p": "keblz9tovuwf4ue",
@@ -65,6 +59,11 @@ ui.videoLegacy = {
         "360p": "nb06z3mrgyyw64q",
         "720p": "nonbdehqvko7oco",
         image: "kawdewz3m6kdenf"
+    },
+    "6fuubXrOQ6c": {
+        "360p": "e29f2zasfjflvin",
+        "720p": "97uivinxxuj25gz",
+        image: "s99bb7n1azhpep5"
     },
     "6z_Hpvm_i_U": {
         "360p": "wdais2i91pfs62j",
