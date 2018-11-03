@@ -336,7 +336,7 @@ ui.academy = {
             },
             "magic-closet": {
                 title: "ארון הקסמים",
-                video: "dMe80qKYnX8",
+                video: "GLQhGx2ULRo",
                 download: {
                     title: "להורדת חוברת ארון הקסמים",
                     value: "1Ee5Zh92agzw6qkRsKE40t4zpwiw-DQTg"
