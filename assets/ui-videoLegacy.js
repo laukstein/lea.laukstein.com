@@ -99,7 +99,7 @@ ui.videoLegacy = {
     B0vuBvp3zXc: {
         "360p": "pgaqkjo4w1l2k7v",
         "720p": "k20tjz1kdsr6fnm",
-        image: "k20tjz1kdsr6fnm"
+        image: "otl0w54t3rglys2"
     },
     B5uJjMEtx_o: {
         "360p": "qc1w9kf3dbweg4i",
