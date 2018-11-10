@@ -784,7 +784,7 @@ window.ui = {
                 }
             });
         }
-        if (!self.w.fetch || !self.w.Promise || !Array.from || !Element.prototype.closest) {
+        if (!Array.from || !Array.prototype.includes || !self.w.fetch || !self.w.Promise || !String.prototype.startsWith) {
             self.asyncScript("/assets/legacy.js", function () {
                 self.video.youtubeSupport(self.legacy.__runAwaitList);
             });
