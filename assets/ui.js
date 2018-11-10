@@ -437,7 +437,7 @@ window.ui = {
 
         if (arr.length) {
             for (i = 0; i < arr.length; i += 1) {
-                pair = arr[i].split("=");
+                pair = arr[i].split(/\=(.+)/, 2);
 
                 if (pair[0]) {
                     obj[pair[0]] = this.isNumber(pair[1]) ? Number(pair[1]) : pair[1] && decodeURIComponent(pair[1]);
