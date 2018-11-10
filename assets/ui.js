@@ -767,11 +767,10 @@ window.ui = {
             this.w.console = {
                 log: function () {
                     return arguments;
-                },
-                error: function () {
-                    return arguments;
                 }
             };
+            this.w.console.warn = this.w.console.log;
+            this.w.console.error = this.w.console.log;
         }
         if (!String.prototype.format) {
             // Reference: http://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format
