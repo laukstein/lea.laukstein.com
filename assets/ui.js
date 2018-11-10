@@ -416,6 +416,14 @@ window.ui = {
 
         return this.identify.user;
     },
+    isNumber: function (str) {
+        "use strict";
+
+        // Is a number
+        return !isNaN(parseFloat(str)) && isFinite(str) &&
+            // Isn't a phone number that begins with "0"
+            (String(str).length === String(Number(str)).length || str.indexOf(".") > 0)
+    },
     hash: function (options /* param */) {
         "use strict";
 
@@ -432,7 +440,7 @@ window.ui = {
                 pair = arr[i].split("=");
 
                 if (pair[0]) {
-                    obj[pair[0]] = isNaN(pair[1]) ? pair[1] && decodeURIComponent(pair[1]) : Number(pair[1]);
+                    obj[pair[0]] = this.isNumber(pair[1]) ? Number(pair[1]) : pair[1] && decodeURIComponent(pair[1]);
                 }
             }
         }
