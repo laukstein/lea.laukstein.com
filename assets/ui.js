@@ -352,7 +352,7 @@ window.ui = {
             diff;
 
         try {
-            email = session && (session.email || session.EMAIL);
+            email = session && (session.email || session.EMAIL || "").toLowerCase();
             diff = email !== this.identify.user.email;
 
             this.getUser();
