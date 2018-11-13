@@ -373,10 +373,6 @@ blockquote.box.box figure img {
     object-fit: cover;
     object-position: top;
 }
-.box figure.contain img {
-    object-fit: contain;
-    object-position: 95%;
-}
 .box figcaption {
     margin-right: 2.1em;
     margin-left: 2.1em;
