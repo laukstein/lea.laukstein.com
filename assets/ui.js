@@ -257,9 +257,9 @@ window.ui = {
                 };
 
                 init();
-            } else if (self.user.email) {
+            } /* else if (self.user.email) {
                 options.log(self);
-            }
+            } */
         },
         fs: function () {
             "use strict";
