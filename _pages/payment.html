@@ -1,0 +1,28 @@
+---
+layout: default
+title: הפנית תשלום
+type: center
+private: true
+customLayout: true
+hiddenHeader: true
+style:
+    - loader.css
+script:
+    - ui-payment.js
+css: |
+    .table.center .cel.cel {
+        width: 100%;
+        padding-bottom: 37vh;
+        text-align: center;
+    }
+---
+
+<div class=unselectable id=status>
+    <div class=loader>
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"/>
+        </svg>
+    </div>
+    <div class=label>טעינת דף התשלום...</div>
+</div>
+<form name=pelepayform action="https://www.pelepay.co.il/pay/paypage.aspx" method=post></form>
