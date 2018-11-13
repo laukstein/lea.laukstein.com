@@ -316,7 +316,8 @@ article.box li {
     margin-top: .5em;
     margin-bottom: .5em;
 }
-.box figure {
+.box figure,
+.box .figure {
     max-width: calc(100% + 4.2em);
     min-height: 5em;
     margin: -2.1em -2.1em 1.2em;
@@ -1286,7 +1287,8 @@ iframe {
     .box:not(.card) {
         padding: 1.6em;
     }
-    .box figure {
+    .box figure,
+    .box .figure {
         max-width: calc(100% + 3.2em);
         min-height: 5em;
         margin-top: -1.6em;
