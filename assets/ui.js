@@ -422,7 +422,7 @@ window.ui = {
         // Is a number
         return !isNaN(parseFloat(str)) && isFinite(str) &&
             // Isn't a phone number that begins with "0"
-            (String(str).length === String(Number(str)).length || str.indexOf(".") > 0)
+            (String(str).length === String(Number(str)).length || str.indexOf(".") > 0);
     },
     hash: function (options /* param */) {
         "use strict";
@@ -437,7 +437,7 @@ window.ui = {
 
         if (arr.length) {
             for (i = 0; i < arr.length; i += 1) {
-                pair = arr[i].split(/\=(.+)/, 2);
+                pair = arr[i].split(/\x3D(.+)/, 2);
 
                 if (pair[0]) {
                     obj[pair[0]] = this.isNumber(pair[1]) ? Number(pair[1]) : pair[1] && decodeURIComponent(pair[1]);
