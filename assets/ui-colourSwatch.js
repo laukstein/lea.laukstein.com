@@ -440,7 +440,7 @@ ui.colourSwatch = ui.legacy(function () {
                     redirect: "error",
                     signal: signal,
                     body: JSON.stringify({
-                        transaction: hash.transaction,
+                        transaction: transaction,
                         value: value,
                         url: location.href
                     })
