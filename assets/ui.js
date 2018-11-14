@@ -546,11 +546,26 @@ window.ui = {
                 "    <source src=\"" + obj[this.size] + "\" type=\"video/mp4\">" +
                 "</video>" : "";
         },
+        youtubeConvert: function () {
+            "use strict";
+
+            var iframes = Array.from(ui.d.querySelectorAll(".video iframe")),
+                i;
+
+            for (i = 0; i < iframes.length; i += 1) {
+                iframes[i].outerHTML = this.template(iframes[i].src.replace(/^.*\/embed\//, "").replace(/\?.*$/, ""));
+            }
+        },
         applyPlyr: function () {
             "use strict";
 
-            if (!this.youtubeSupport) {
-                var success = function () {
+            var self = this,
+                success;
+
+            if (!self.youtubeSupport) {
+                success = function () {
+                    self.youtubeConvert();
+
                     var videos = Array.from(ui.d.querySelectorAll(".video video")),
                         options = {
                             controls: ["play-large", "play", "progress", "current-time", "mute", "volume", "pip", "airplay", "fullscreen"],
@@ -569,8 +584,8 @@ window.ui = {
 
                 if (ui.w.Plyr) {
                     success();
-                } else if (!this.youtubeSupportProgress) {
-                    this.youtubeSupportProgress = true;
+                } else if (!self.youtubeSupportProgress) {
+                    self.youtubeSupportProgress = true;
 
                     ui.asyncScript("/assets/plyr.polyfilled.min.js", success);
                 }
@@ -580,10 +595,7 @@ window.ui = {
             "use strict";
 
             var self = ui.video,
-                arr = ui.d.querySelectorAll(".video iframe"),
-                loadImage = {},
-                el,
-                i;
+                loadImage = {};
 
             loadImage.callback = function () {
                 self.youtubeSupport = false;
@@ -598,14 +610,13 @@ window.ui = {
                     }
                 }
 
-                for (i = 0; i < arr.length; i += 1) {
-                    arr[i].outerHTML = self.template(arr[i].src.replace(/^.*\/embed\//, "").replace(/\?.*$/, ""));
-                }
+                self.youtubeConvert();
 
                 if (!ui.w.Plyr && !self.youtubeSupportProgress) {
                     self.applyPlyr();
 
-                    el = ui.d.createElement("link");
+                    var el = ui.d.createElement("link");
+
                     el.href = "/assets/plyr.css";
                     el.rel = "stylesheet";
 
