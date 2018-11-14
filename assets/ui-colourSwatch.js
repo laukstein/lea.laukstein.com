@@ -48,8 +48,10 @@ ui.colourSwatch = ui.legacy(function () {
             wrapper.classList.remove("no-padding");
 
             if (err.message === "Failed to fetch") {
+                console.error(err.message);
                 str = "תקלה זמנית בשרת. תנסי שוב מאוחר יותר";
             } else if (err.message === "NetworkError when attempting to fetch resource.") {
+                console.error(err.message);
                 str = "תקלה בשרת. לשאלות <a href=/contact>צרי קשר</a>";
             }
 

@@ -14,8 +14,10 @@ ui.payment = ui.legacy(function () {
                 err = err || {};
 
                 if (err.message === "Failed to fetch") {
+                    console.error(err.message);
                     str = "תקלה זמנית בשרת. תנסי שוב מאוחר יותר";
                 } else if (err.message === "NetworkError when attempting to fetch resource.") {
+                    console.error(err.message);
                     str = "תקלה בשרת. לשאלות <a href=/contact>צרי קשר</a>";
                 } else {
                     str = err.message || str;
