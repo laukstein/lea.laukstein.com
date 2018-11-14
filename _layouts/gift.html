@@ -14,6 +14,12 @@ comment: true
     <div class=content dir=rtl>
         {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
         {{ content }}{%
-        include recommendation.html data = page.recommendations %}
+        include recommendation.html data = page.recommendations %}{%
+
+        if page.button %}{%
+            for item in page.button %}
+        <a class=button rel=noopener href="{{ item.url }}">{{ item.title }}</a>{%
+            endfor %}{%
+        endif %}
     </div>
 </article>
