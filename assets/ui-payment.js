@@ -1,7 +1,6 @@
 ui.payment = ui.legacy(function () {
     "use strict";
 
-    // Mailchimp variables https://mailchimp.com/help/all-the-merge-tags-cheat-sheet/
     // -> /payment#orderid=1&firstname=a&lastname=b&email=a@b.com&phone=0&utm_campaign=foo&utm_source=bar
     // <- /product?firstname=a&lastname=b&email=a@b.com&phone=0&payfor=product&custom=...&orderid=1...
     var getData,
@@ -98,7 +97,9 @@ ui.payment = ui.legacy(function () {
             ];
 
             hash = filterObj(hash, function (key) {
-                return urlParams.includes(key);
+                return urlParams.includes(key) &&
+                    // Escape MailChimp non-merged tags https://mailchimp.com/help/all-the-merge-tags-cheat-sheet/
+                    !/\*\|.*?\|\*/.test(hash[key]);
             });
 
             hash.token = Math.random().toString(16).substr(2, 8).toUpperCase();
