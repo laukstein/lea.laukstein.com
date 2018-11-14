@@ -101,9 +101,15 @@ ui.payment = ui.legacy(function () {
             ];
 
             hash = filterObj(hash, function (key) {
-                return urlParams.includes(key) &&
+                var res = urlParams.includes(key) &&
                     // Escape MailChimp non-merged tags https://mailchimp.com/help/all-the-merge-tags-cheat-sheet/
                     !/\*\|.*?\|\*/.test(hash[key]);
+
+                if (res && key.startsWith("utm_")) {
+                    console.log(key, hash[key]);
+                }
+
+                return res;
             });
 
             hash.token = Math.random().toString(16).substr(2, 8).toUpperCase();
