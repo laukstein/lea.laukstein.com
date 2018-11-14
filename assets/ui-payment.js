@@ -11,7 +11,15 @@ ui.payment = ui.legacy(function () {
         var status = ui.d.getElementById("status"),
             form = ui.d.pelepayform,
             hash = ui.hash(),
-            onError = function (str) {
+            onError = function (str, err) {
+                err = err || {};
+
+                if (err.message === "Failed to fetch") {
+                    str = "תקלה זמנית בשרת. תנסי שוב מאוחר יותר";
+                } else {
+                    str = err.message || str;
+                }
+
                 console.warn(hash);
                 status.innerHTML = "<div class=error>" + str +"</div>";
             },
@@ -102,7 +110,11 @@ ui.payment = ui.legacy(function () {
                 redirect: "error",
                 body: JSON.stringify(hash)
             }).then(function (response) {
-                return hash.token === session && response.status === 200 && response.json();
+                if (response.status === 200) {
+                    return hash.token === session && response.json();
+                }
+
+                return Promise.reject(new Error("Failed to fetch"));
             }).then(function (obj) {
                 var token = obj.custom && ui.hash({
                     hash: atob(obj.custom),
@@ -133,7 +145,7 @@ ui.payment = ui.legacy(function () {
                 }
             }).catch(function (err) {
                 if (hash.token === session) {
-                    onError(err.message || "תקלה בשרת. לשאלות <a href=/contact>תצרי קשר</a>");
+                    onError("תקלה בשרת. לשאלות <a href=/contact>תצרי קשר</a>", err);
                 }
             });
         } else {

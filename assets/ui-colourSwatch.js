@@ -40,20 +40,28 @@ ui.colourSwatch = ui.legacy(function () {
             fn(signal, session);
         }
     };
-    onError = function (str) {
-        console.warn(hash);
-        wrapper.classList.remove("no-padding");
+    onError = function (str, err) {
+        err = err || {};
 
-        unfilledForm = false;
-        status.innerHTML = "<div class=\"table center\">" +
-            "    <div class=cel>" +
-            "        <div class=error>" + str +"</div>" +
-            "    </div>" +
-            "</div>";
+        if (err.name !== "AbortError") {
+            console.warn(hash);
+            wrapper.classList.remove("no-padding");
 
-        if (controller) {
-            // Cancel fetch request
-            controller.abort();
+            if (err.message === "Failed to fetch") {
+                str = "תקלה זמנית בשרת. תנסי שוב מאוחר יותר";
+            }
+
+            unfilledForm = false;
+            status.innerHTML = "<div class=\"table center\">" +
+                "    <div class=cel>" +
+                "        <div class=error>" + str +"</div>" +
+                "    </div>" +
+                "</div>";
+
+            if (controller) {
+                // Cancel fetch request
+                controller.abort();
+            }
         }
     };
     getData = function () {
@@ -82,14 +90,18 @@ ui.colourSwatch = ui.legacy(function () {
                             signal: signal,
                             body: JSON.stringify({transaction: transaction})
                         }).then(function (response) {
-                            return token === session && response.status === 200 && response.json();
+                            if (response.status === 200) {
+                                return token === session && response.json();
+                            }
+
+                            return Promise.reject(new Error("Failed to fetch"));
                         }).then(function (json) {
                             return json.error ? Promise.reject(json) : json;
                         }).then(function (obj) {
                             generateLayout(obj, token);
                         }).catch(function (err) {
-                            if (token === session && err.name !== "AbortError") {
-                                onError("ההזמנה זו לא נמצא. לשאלות <a href=/contact>תצרי קשר</a>");
+                            if (token === session) {
+                                onError("ההזמנה זו לא נמצא. לשאלות <a href=/contact>תצרי קשר</a>", err);
                             }
                         });
                     });
@@ -158,7 +170,11 @@ ui.colourSwatch = ui.legacy(function () {
                         signal: signal,
                         body: JSON.stringify(hash)
                     }).then(function (response) {
-                        return token === session && response.status === 200 && response.json();
+                        if (response.status === 200) {
+                            return token === session && response.json();
+                        }
+
+                        return Promise.reject(new Error("Failed to fetch"));
                     }).then(function (obj) {
                         transaction = obj.transaction;
 
@@ -169,8 +185,8 @@ ui.colourSwatch = ui.legacy(function () {
 
                         generateLayout(obj, token);
                     }).catch(function (err) {
-                        if (token === session && err.name !== "AbortError") {
-                            onError("גישה לדף הזה מורשית רק דרך דף התשלום");
+                        if (token === session) {
+                            onError("גישה לדף הזה מורשית רק דרך דף התשלום", err);
                         }
                     });
                 });
@@ -425,14 +441,18 @@ ui.colourSwatch = ui.legacy(function () {
                         url: location.href
                     })
                 }).then(function (response) {
-                    return token === session && response.status === 200 && response.json();
+                    if (response.status === 200) {
+                        return token === session && response.json();
+                    }
+
+                    return Promise.reject(new Error("Failed to fetch"));
                 }).then(function (json) {
                     return json.error ? Promise.reject(json) : json;
                 }).then(function (obj) {
                     generateLayout(obj, token);
                 }).catch(function (err) {
-                    if (token === session && err.name !== "AbortError") {
-                        onError("תקלה בשרת, בבקשה <a href=/contacts>תצרי קשר</a> להמשך טיפול הזמנה");
+                    if (token === session) {
+                        onError("תקלה בשרת, בבקשה <a href=/contacts>תצרי קשר</a> להמשך טיפול הזמנה", err);
                     }
                 });
             });
