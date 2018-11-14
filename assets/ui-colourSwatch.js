@@ -222,6 +222,9 @@ ui.colourSwatch = ui.legacy(function () {
             setTimeout(function () {
                 if (!token || token === session) {
                     status.innerHTML = self.formStart();
+
+                    // YouTube fallback
+                    ui.video.applyPlyr();
                 }
             }, timer);
         }
