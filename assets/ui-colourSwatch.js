@@ -101,7 +101,7 @@ ui.colourSwatch = ui.legacy(function () {
                             generateLayout(obj, token);
                         }).catch(function (err) {
                             if (token === session) {
-                                onError("ההזמנה זו לא נמצא. לשאלות <a href=/contact>תצרי קשר</a>", err);
+                                onError("ההזמנה זו לא נמצא. לשאלות <a href=/contact>צרי קשר</a>", err);
                             }
                         });
                     });
@@ -452,7 +452,7 @@ ui.colourSwatch = ui.legacy(function () {
                     generateLayout(obj, token);
                 }).catch(function (err) {
                     if (token === session) {
-                        onError("תקלה בשרת, בבקשה <a href=/contacts>תצרי קשר</a> להמשך טיפול הזמנה", err);
+                        onError("תקלה בשרת, בבקשה <a href=/contacts>צרי קשר</a> להמשך טיפול הזמנה", err);
                     }
                 });
             });

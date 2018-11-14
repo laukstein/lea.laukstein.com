@@ -141,15 +141,15 @@ ui.payment = ui.legacy(function () {
 
                     form.submit();
                 } else {
-                    return Promise.reject(new Error("קישור תשלום לא קיים. לשאלות <a href=/contact>תצרי קשר</a"));
+                    return Promise.reject(new Error("קישור תשלום לא קיים. לשאלות <a href=/contact>צרי קשר</a"));
                 }
             }).catch(function (err) {
                 if (hash.token === session) {
-                    onError("תקלה בשרת. לשאלות <a href=/contact>תצרי קשר</a>", err);
+                    onError("תקלה בשרת. לשאלות <a href=/contact>צרי קשר</a>", err);
                 }
             });
         } else {
-            onError("קישור לא תקין. לשאלות <a href=/contact>תצרי קשר</a>");
+            onError("קישור לא תקין. לשאלות <a href=/contact>צרי קשר</a>");
         }
     };
 
