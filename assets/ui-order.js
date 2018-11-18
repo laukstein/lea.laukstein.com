@@ -69,8 +69,7 @@ ui.order = ui.legacy(function () {
         }
     };
     getData = function () {
-        var filterObj,
-            urlParams,
+        var urlParams,
             getOrder;
 
         wrapper.classList.remove("no-padding");
@@ -121,15 +120,6 @@ ui.order = ui.legacy(function () {
 
         if (location.search) {
             hash = ui.hash({hash: location.search});
-            filterObj = function (raw, condition) {
-                return Object.keys(raw).filter(function (key) {
-                    return condition(key, raw);
-                }).reduce(function (obj, key) {
-                    obj[key] = raw[key];
-
-                    return obj;
-                }, {});
-            };
             urlParams = [
                 "orderid",
                 "transaction",
@@ -153,7 +143,7 @@ ui.order = ui.legacy(function () {
             if (hash.email) {
                 hash.email = hash.email.toLowerCase();
 
-                ui.setUser(filterObj({
+                ui.setUser(ui.filterObj({
                     email: hash.email,
                     tel: hash.phone,
                     firstName: hash.firstname,
@@ -163,7 +153,7 @@ ui.order = ui.legacy(function () {
                 }));
             }
             if (hash.token === sessionStorage.paymentToken && hash.orderid && hash.email && hash.transaction) {
-                hash = filterObj(hash, function (key) {
+                hash = ui.filterObj(hash, function (key) {
                     return urlParams.includes(key);
                 });
 

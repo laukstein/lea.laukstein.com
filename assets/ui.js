@@ -469,6 +469,17 @@ window.ui = {
 
         return "";
     },
+    filterObj: function (raw, condition) {
+        "use strict";
+
+        return Object.keys(raw).filter(function (key) {
+            return condition(key, raw);
+        }).reduce(function (obj, key) {
+            obj[key] = raw[key];
+
+            return obj;
+        }, {});
+    },
     confirm: function (el) {
         "use strict";
 

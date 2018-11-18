@@ -26,15 +26,6 @@ ui.payment = ui.legacy(function () {
                 console.warn(hash);
                 status.innerHTML = "<div class=error>" + str +"</div>";
             },
-            filterObj = function (raw, condition) {
-                return Object.keys(raw).filter(function (key) {
-                    return condition(key, raw);
-                }).reduce(function (obj, key) {
-                    obj[key] = raw[key];
-
-                    return obj;
-                }, {});
-            },
             affiliate = location.search && ui.hash({
                 hash: location.search,
                 param: "affiliate"
@@ -71,7 +62,7 @@ ui.payment = ui.legacy(function () {
         if (hash.email) {
             hash.email = hash.email.toLowerCase();
 
-            ui.setUser(filterObj({
+            ui.setUser(ui.filterObj({
                 email: hash.email,
                 tel: hash.phone,
                 firstName: hash.firstname,
@@ -100,7 +91,7 @@ ui.payment = ui.legacy(function () {
                 "utm_source"
             ];
 
-            hash = filterObj(hash, function (key) {
+            hash = ui.filterObj(hash, function (key) {
                 var res = urlParams.includes(key) &&
                     // Escape MailChimp non-merged tags https://mailchimp.com/help/all-the-merge-tags-cheat-sheet/
                     !/\*\|.*?\|\*/.test(hash[key]);
