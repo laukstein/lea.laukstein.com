@@ -256,7 +256,7 @@ ui.videos = (function () {
                 MJkf4wLvmd4: {
                     image: "https://i.ytimg.com/vi/MJkf4wLvmd4/maxresdefault.jpg",
                     title: "איך להכניס יותר צבע בלבוש שלך?",
-                    description: "רוצה לדעת אילו צבעים מתאימים לך - https://mailchi.mp/laukstein.com/colour-swatch",
+                    description: "רוצה לדעת אילו צבעים מתאימים לך - https://lea.laukstein.com/color-swatch?campaign=youtube",
                     date: "2018-11-03T21:58:00.000Z"
                 }
             },
