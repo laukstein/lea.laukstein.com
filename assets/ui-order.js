@@ -456,19 +456,17 @@ ui.order = ui.legacy(function () {
 
         unfilledForm = true;
 
-        return "<div class=absolute>" +
-            "<div class=\"table\">" +
-            "    <div class=cel><p>תשלום בוצע בהצלחה. לסיום ההזמנה צפי בסרטון ומלאי שאלון</p></div>" +
-            "</div>" +
-            "</div>" +
-            "<div class=video dir=ltr>" +
+        return "<div class=video dir=ltr>" +
             "    <iframe title=\"ערכת &quot;צבע מבפנים&quot;\"" +
             " src=\"https://www.youtube.com/embed/ihxGT0A1OrE\"" +
             " allow=\"autoplay; encrypted-media; fullscreen\" allowfullscreen></iframe>" +
             "</div>" +
-            "<div class=\"content form qa\" dir=rtl>" +
+            "<div class=content dir=rtl>" +
             "    <h1 id=title>" + ui.d.title + "</h1>" +
-            "    <div class=figure>" + self.label(self.template, false) + "</div>" +
+            "    <div class=\"figure form qa\">" + self.label(self.template, false) + "</div>" +
+            "    <div class=\"figure footer\">לא בטוחה לאילו צבעים את שייכת?<br>שלחי לי תמונת פנים ברורה שצולמה באור היום לואטסאפ" +
+            " <a href=\"https://wa.me/972585800020\" target=_blank dir=auto>0585800020</a> או למייל" +
+            " <a href=\"mailto:lea@laukstein.com\" target=_blank dir=auto>lea@laukstein.com</a></div>" +
             "</div>";
     };
     generateLayout.formFinal = function (obj) {
