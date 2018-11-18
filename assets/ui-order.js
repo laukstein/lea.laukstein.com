@@ -1,4 +1,4 @@
-ui.colourSwatch = ui.legacy(function () {
+ui.order = ui.legacy(function () {
     "use strict";
 
     var endpoint = (function () {
@@ -332,7 +332,7 @@ ui.colourSwatch = ui.legacy(function () {
             return result;
         };
         ui.formClick = function (e) {
-            var el = e.target.tagName === "LABEL" ? e.target : e.target.closest("label"),
+            var el = e.currentTarget,
                 active = el.getAttribute("data-active") === "true",
                 arrB,
                 arr,
@@ -375,14 +375,13 @@ ui.colourSwatch = ui.legacy(function () {
                 }
             }
         };
-        ui.formDialog = function (e, index, type, finalEl) {
-            var el = finalEl || e.target,
+        ui.formDialog = function (e, index, type) {
+            var el = e.currentTarget,
                 title = self.valueLocale[type],
                 result = "";
 
-            if (!finalEl && e) {
-                ui.formClick(e);
-            }
+            ui.formClick(e);
+
             if (el && title) {
                 result += "<div class=dialog>" +
                     "   <div class=table>" +
@@ -394,10 +393,8 @@ ui.colourSwatch = ui.legacy(function () {
                     "   </div>" +
                     "</div>";
 
-                if (!finalEl) {
-                    el = index === 1 ? el.parentNode : el.parentNode.parentNode.parentNode;
-                    el.insertAdjacentHTML("afterbegin", result);
-                }
+                el = index === 1 ? el.parentNode : el.parentNode.parentNode.parentNode;
+                el.insertAdjacentHTML("afterbegin", result);
             }
 
             return result;
