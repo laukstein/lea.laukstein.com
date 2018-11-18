@@ -64,7 +64,7 @@ unless page.hiddenHeader %}<input class=bar-holder id=bar type=checkbox hidden>
                 else %}{%
                     assign subnavHTML = nil %}{%
                 endif %}
-            <li{% if className.size > 0 %} class="{{ className | join: " " }}"{% endif %}><a href="{{ nav.url | relative_url }}">{{ nav.title }}</a>{{ subnavHTML }}</li>{%
+            <li{% if className.size > 0 %} class="{{ className | join: " " }}"{% endif %}><a href="{{ nav.url | relative_url }}">{{ nav.title-short | default: nav.title }}</a>{{ subnavHTML }}</li>{%
                 endif %}{%
             endfor %}
             <li class=external><a rel=noopener href="https://www.facebook.com/LeaLaukstein/" title="פייסבוק" target=_blank><div class=icon-facebook></div></a></li>
