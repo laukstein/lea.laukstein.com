@@ -3,7 +3,7 @@ ui.colorSwatch = (function () {
 
     if (ui.hash({param: "transaction"})) {
         // Backwards compatibility due to renamed URLs
-        location = "/order#" + ui.serialize(ui.hash());
+        ui.w.location = "/order#" + ui.serialize(ui.hash());
     } else {
         var buttons = Array.from(ui.d.querySelectorAll(".x-button")),
             hash = ui.hash({hash: location.search}),
