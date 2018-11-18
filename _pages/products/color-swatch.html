@@ -13,14 +13,24 @@ description: ערכות צבע אישיות, כל אחת 42 צבעים אישי�
 permalink: /color-swatch
 image: product-color-swatch.jpg
 price: 79
+discount: מחיר השקה עד ל16 בדצמבר
 script:
     - ui-colorSwatch.js
 css: |
     main {
         padding-top: 0;
     }
+    .box img {
+        image-rendering: auto;
+    }
     .box {
         text-align: center;
+    }
+    .box .figure:not(img) {
+        margin-top: 1.2em;
+    }
+    .box .figure + .figure {
+        margin-top: -1.2em;
     }
     .box .table {
         text-align: right;
@@ -48,8 +58,11 @@ css: |
         background-color: #569e9b;
     }
     .button {
+        height: auto;
+        padding: .7em 1.2em;
         color: #fff;
         background-color: #3e5ea3;
+        border-radius: 1.3em;
     }
 ---
 
@@ -63,7 +76,7 @@ css: |
             <dd>קבלת פלאטה דיגיטאלית עם הצבעים שלך</dd>
             <dd>מדריך מעשי לשילובי צבעים כולל המחשות</dd>
             <dd>וכמובן הערכה הפיזית מגיעה אליך בדואר</dd>
-            <dd class=highlight>מחיר השקה בחודש נובמבר בלבד - 79 ש"ח</dd>
+            <dd class=highlight>{{ page.discount }} - 79 ש"ח</dd>
         </dl>
         <a class="button x-button" href=/payment#orderid=9264240E>אני רוצה לדעת מה הצבע שלי</a>
         <p class="block figure highlight">ברגע שתהיה לך ערכת צבע מבפנים לא תצטרכי להתלבט יותר ותמיד תדעי איזה צבע מתאים לך!</p>
@@ -100,7 +113,7 @@ css: |
             </div>
             <img class="cel flow" src=/assets/product-color-swatch2.jpg alt>
         </div>
-        <p class="block figure highlight">מחיר השקה בחודש נובמבר בלבד<br>79 ש"ח<br>(במקום 99 ש"ח)</p>
+        <p class="block figure highlight">{{ page.discount }}<br>79 ש"ח<br>(במקום 99 ש"ח)</p>
         <div>
             <img src=/assets/product-color-swatch-product.jpg alt>
             <p><b>איך זה עובד?</b><br>מיד אחרי התשלום, תקבלי קישור להדרכה מצולמת ומפורטת.<br>אחרי הצפיה תמלאי שאלון.<br>עד שבועים תקבלי בדואר ערכת צבעים אישית.</p>
@@ -110,13 +123,16 @@ css: |
             <p>מה הערכה כוללת?<br>תהליך של אבחון פלאטת הצבעים הנכונה שלך (סרטון הדרכה ושאלון)<br>קבלת פלאטה דיגיטאלית עם הצבעים שלך<br>מדריך מעשי לשילובי צבעים כולל המחשות<br>וכמובן הערכה הפיזית מגיעה אליך בדואר<br><b>חיר השקה בחודש נובמבר בלבד - 79 ש"ח</b></p>
             <a class="button x-button" href=/payment#orderid=9264240E>לתשלום 79 ש"ח</a>
         </div>
-        <div class=table>
-            <p class=cel><b>רחלי:</b><br>"הזמנתי שמלה מהממת מאינרנט. והיא מהממת!!! כל כך עזר לי לדעת איזה צבע אני צריכה לחפש. פשוט כל השמלות הלא נכונות פסלתי מיד… יצא מושלם!"</p>
-            <img class="cel flow" src=/assets/product-color-swatch-watsapp.jpg alt>
+        <div class=figure>
+            <div class=cel><img src=/assets/product-color-swatch-watsapp.jpg alt></div>
+            <div class=cel>
+                <div class=row><img src=/assets/product-color-swatch-facebook.png alt></div>
+                <p class=row><b>רחלי:</b><br>"הזמנתי שמלה מהממת מאינרנט. והיא מהממת!!!<br>כל כך עזר לי לדעת איזה צבע אני צריכה לחפש.<br>פשוט כל השמלות הלא נכונות פסלתי מיד… יצא מושלם!"</p>
+            </div>
         </div>
         <a class="button x-button" href=/payment#orderid=9264240E>לתשלום 79 ש"ח</a>
         <div>
-            <a class=logo href=/ dir=rtl><img src="/assets/logo.png" width="47" height="47" alt="{{ site.title }}"><div>לאה לאוקשטיין</div></a>
+            <a class=logo href=/ dir=rtl><img src="/assets/logo.png" width="47" height="47" alt="{{ site.title }}"><div><b>לאה לאוקשטיין</b></div></a>
         </div>
     </div>
 </article>
