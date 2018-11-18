@@ -1,13 +1,21 @@
-.label {
+.progress {
+    width: 100%;
+    padding-right: 2.5em;
+}
+.progress .label {
     display: inline-block;
+    margin-right: .4em;
     margin-left: 2em;
     font-weight: normal;
+    white-space: normal;
+    text-align: right;
+    vertical-align: middle;
 }
 .loader {
     display: inline-block;
     position: relative;
     width: 2em;
-    margin: .2em;
+    margin-right: -2.3em;
     vertical-align: middle;
 }
 .loader:before {
