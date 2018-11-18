@@ -2,7 +2,7 @@ ui.payment = ui.legacy(function () {
     "use strict";
 
     // -> /payment#orderid=1&firstname=a&lastname=b&email=a@b.com&phone=0&utm_campaign=foo&utm_source=bar
-    // <- /product?firstname=a&lastname=b&email=a@b.com&phone=0&payfor=product&custom=...&orderid=1...
+    // <- /order?firstname=a&lastname=b&email=a@b.com&phone=0&payfor=product&custom=...&orderid=1...
     var getData,
         session;
 
@@ -26,14 +26,6 @@ ui.payment = ui.legacy(function () {
                 console.warn(hash);
                 status.innerHTML = "<div class=error>" + str +"</div>";
             },
-            affiliate = location.search && ui.hash({
-                hash: location.search,
-                param: "affiliate"
-            }),
-            campaign = location.search && ui.hash({
-                hash: location.search,
-                param: "campaign"
-            }),
             orderHash = ui.serialize({orderid: hash.orderid}),
             urlParams,
             endpoint;
@@ -41,14 +33,6 @@ ui.payment = ui.legacy(function () {
         ui.pageProgress = ui.pageProgress || status.innerHTML;
         status.innerHTML = ui.pageProgress;
 
-        if (campaign) {
-            // Mailchimp affiliate campaign, link contains ?campaign=foo
-            hash.utm_campaign = campaign; // eslint-disable-line
-        }
-        if (affiliate) {
-            // Mailchimp affiliate source, link contains ?affiliate=bar
-            hash.utm_source = affiliate; // eslint-disable-line
-        }
         if (history.replaceState) {
             if (location.search) {
                 // Remove query string from URL
