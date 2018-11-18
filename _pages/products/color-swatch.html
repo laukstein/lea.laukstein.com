@@ -14,6 +14,7 @@ permalink: /color-swatch
 image: product-color-swatch.jpg
 price: 79
 discount: מחיר השקה עד ל16 בדצמבר
+buttonURL: /payment#orderid=9264240E
 script:
     - ui-colorSwatch.js
 css: |
@@ -78,7 +79,7 @@ css: |
             <dd>וכמובן הערכה הפיזית מגיעה אליך בדואר</dd>
             <dd class=highlight>{{ page.discount }} - 79 ש"ח</dd>
         </dl>
-        <a class="button x-button" href=/payment#orderid=9264240E>אני רוצה לדעת מה הצבע שלי</a>
+        <a class="button x-button" href="{{ page.buttonURL | escape }}">אני רוצה לדעת מה הצבע שלי</a>
         <p class="block figure highlight">ברגע שתהיה לך ערכת צבע מבפנים לא תצטרכי להתלבט יותר ותמיד תדעי איזה צבע מתאים לך!</p>
         <div class=table>
             <dl class=cel>
@@ -121,7 +122,7 @@ css: |
             <br>
             <h2>ערכת "צבע מבפנים" - ערכה אישית עם הצבעים שלך</h2>
             <p>מה הערכה כוללת?<br>תהליך של אבחון פלאטת הצבעים הנכונה שלך (סרטון הדרכה ושאלון)<br>קבלת פלאטה דיגיטאלית עם הצבעים שלך<br>מדריך מעשי לשילובי צבעים כולל המחשות<br>וכמובן הערכה הפיזית מגיעה אליך בדואר<br><b>{{ page.discount }} - 79 ש"ח</b></p>
-            <a class="button x-button" href=/payment#orderid=9264240E>לתשלום 79 ש"ח</a>
+            <a class="button x-button" href="{{ page.buttonURL | escape }}">לתשלום 79 ש"ח</a>
         </div>
         <div class=figure>
             <div class=cel><img src=/assets/product-color-swatch-watsapp.jpg alt></div>
@@ -130,7 +131,7 @@ css: |
                 <p class=row><b>רחלי:</b><br>"הזמנתי שמלה מהממת מאינרנט. והיא מהממת!!!<br>כל כך עזר לי לדעת איזה צבע אני צריכה לחפש.<br>פשוט כל השמלות הלא נכונות פסלתי מיד… יצא מושלם!"</p>
             </div>
         </div>
-        <a class="button x-button" href=/payment#orderid=9264240E>לתשלום 79 ש"ח</a>
+        <a class="button x-button" href="{{ page.buttonURL | escape }}">לתשלום 79 ש"ח</a>
         <div>
             <a class=logo href=/ dir=rtl><img src="/assets/logo.png" width="47" height="47" alt="{{ site.title }}"><div><b>לאה לאוקשטיין</b></div></a>
         </div>
