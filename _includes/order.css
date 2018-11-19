@@ -14,6 +14,10 @@
     height: 100%;
     border-radius: .6em;
 }
+.table.scale:not(.no-padding) .box .video {
+    border-radius: .6em .6em 0 0;
+    overflow: hidden;
+}
 .box .figure {
     margin-top: 1.5em;
     margin-bottom: 0;
@@ -27,6 +31,9 @@
     font-size: 97%;
     background-color: #f3f4f7;
     border-radius: 0 0 .6em .6em;
+}
+.box time {
+    margin: .4em 0;
 }
 .qa ol,
 .qa input:checked ~ ol {
@@ -174,11 +181,6 @@
                 0 .4em 1em rgba(85,85,85,.22),
                 0 .2em 2em -.9em #555;
 }
-.dialog.final {
-    height: 100%;
-    background-color: transparent;
-    box-shadow: none;
-}
 .dialog.dialog.dialog ~ * {
     display: none;
 }
@@ -211,15 +213,6 @@
 .dialog .close:focus .icon-close {
     fill: #555;
 }
-.dialog.final .context {
-    max-width: 27em;
-    padding-right: 1.5em;
-    margin: auto;
-    text-align: right;
-}
-.dialog.final time {
-    margin: .4em 0;
-}
 .dialog button {
         width: auto;
     max-width: 100%;
@@ -246,4 +239,7 @@
     background-image: linear-gradient(rgba(100,100,100,.23), rgba(100,100,100,.23));
     border-color: transparent;
     box-shadow: none;
+}
+.dialog .progress {
+    padding-top: 2em;
 }
