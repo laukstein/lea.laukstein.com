@@ -15,10 +15,10 @@ ui.payment = ui.legacy(function () {
 
                 if (err.message === "Failed to fetch") {
                     console.error(err.message);
-                    str = "תקלה זמנית בשרת. תנסי שוב מאוחר יותר";
+                    str = "ישנה תקלה זמנית בשרת. אנא נסי שוב מאוחר יותר";
                 } else if (err.message === "NetworkError when attempting to fetch resource.") {
                     console.error(err.message);
-                    str = "תקלה בשרת. לשאלות <a href=/contact>צרי קשר</a>";
+                    str = "ישנה תקלה בשרת. לשאלות אנא <a href=/contact>צרי קשר</a>";
                 } else {
                     str = err.message || str;
                 }
@@ -127,15 +127,15 @@ ui.payment = ui.legacy(function () {
 
                     form.submit();
                 } else {
-                    return Promise.reject(new Error("קישור תשלום לא קיים. לשאלות <a href=/contact>צרי קשר</a"));
+                    return Promise.reject(new Error("קישור לתשלום לא קיים. לשאלות <a href=/contact>צרי קשר</a"));
                 }
             }).catch(function (err) {
                 if (hash.token === session) {
-                    onError("תקלה בשרת. לשאלות <a href=/contact>צרי קשר</a>", err);
+                    onError("ישנה תקלה בשרת. לשאלות אנא <a href=/contact>צרי קשר</a>", err);
                 }
             });
         } else {
-            onError("קישור לא תקין. לשאלות <a href=/contact>צרי קשר</a>");
+            onError("קישור לא תקין. לשאלות אנא <a href=/contact>צרי קשר</a>");
         }
     };
 
