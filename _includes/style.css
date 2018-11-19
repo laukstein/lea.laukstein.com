@@ -963,6 +963,11 @@ iframe {
     vertical-align: top;
     box-sizing: border-box;
 }
+.card .content .figure {
+    max-width: calc(100% + 4em);
+    margin-right: -2em;
+    margin-left: -2em;
+}
 .image + .content {
     padding-left: 1em;
 }
@@ -1314,6 +1319,11 @@ iframe {
         min-width: 0;
         padding: 1.6em;
         background-color: #fff;
+    }
+    .card .content .figure {
+        max-width: calc(100% + 3.2em);
+        margin-right: -1.6em;
+        margin-left: -1.6em;
     }
     .recommendations {
         padding: 1.6em;
