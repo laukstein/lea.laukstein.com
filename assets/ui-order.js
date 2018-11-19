@@ -13,15 +13,29 @@ ui.order = ui.legacy(function () {
         }()),
         wrapper = ui.d.querySelector(".table.scale"),
         status = ui.d.getElementById("status"),
+        locale = {},
         generateLayout,
         unfilledForm,
         transaction,
         controller,
         onlyFetch,
         session,
-        onError,
         getData,
         hash;
+
+    locale.toContact = " לשאלות אנא <a href=/contact>צרי קשר</a>";
+
+    Object.assign(locale, {
+        notFound: "הזמנה זו לא נמצאה." + locale.toContact,
+        notPermitted: "פעולה לא מאושרת." + locale.toContact,
+        networkError: "ישנה תקלה בשרת." + locale.toContact,
+        networkOutage: "ישנה תקלה זמנית בשרת. אנא נסי שוב מאוחר יותר",
+        unauthorized: "גישה רק ללקוחות <a href=/colour>" + ui.d.title + "</a>",
+        accessRevoked: "גישה לדף זה מורשית רק דרך דף התשלום",
+        paymentSuccess: "תשלום בוצע בהצלחה. לסיום ההזמנה צפי בסרטון ומלאי את השאלון",
+        serverError: "ישנה תקלה בשרת, אנא <a href=/contacts>צרי קשר</a> להמשך הטיפול בהזמנה",
+        incompleteSubmission: "תהליך ההזמנה לא הסתיים, האם ברצונך לסגור כעט?"
+    });
 
     onlyFetch = function (fn) {
         var signal;
@@ -41,19 +55,28 @@ ui.order = ui.legacy(function () {
             fn(signal, session);
         }
     };
-    onError = function (str, err) {
+    onlyFetch.onError = function (str, err) {
         err = err || {};
 
         if (err.name !== "AbortError") {
             console.warn(hash);
             wrapper.classList.remove("no-padding");
 
-            if (err.message === "Failed to fetch") {
-                console.error(err.message);
-                str = "תקלה זמנית בשרת. תנסי שוב מאוחר יותר";
-            } else if (err.message === "NetworkError when attempting to fetch resource.") {
-                console.error(err.message);
-                str = "תקלה בשרת. לשאלות <a href=/contact>צרי קשר</a>";
+            switch (err.message) {
+                case "notFound":
+                case "notPermitted":
+                case "serverError":
+                    console.error(err.message);
+                    str = locale[err.message];
+                    break;
+                case "Failed to fetch":
+                    console.error(err.message);
+                    str = locale.networkOutage;
+                    break;
+                case "NetworkError when attempting to fetch resource.":
+                    console.error(err.message);
+                    str = locale.networkError;
+                    break;
             }
 
             unfilledForm = false;
@@ -69,6 +92,18 @@ ui.order = ui.legacy(function () {
             }
         }
     };
+    onlyFetch.verifyStatus = function (response, token, errorType) {
+        switch (response.status) {
+            case 200:
+                return token === session && response.json();
+            case 400:
+                return Promise.reject(new Error(errorType));
+            case 503:
+                return Promise.reject(new Error("serverError"));
+            default:
+                return Promise.reject(new Error("Failed to fetch"));
+        }
+    };
     getData = function () {
         var urlParams,
             getOrder;
@@ -78,6 +113,10 @@ ui.order = ui.legacy(function () {
         session = undefined;
         ui.pageProgress = ui.pageProgress || status.innerHTML;
         status.innerHTML = ui.pageProgress;
+
+        if (generateLayout.timer) {
+            clearTimeout(generateLayout.timer);
+        }
 
         getOrder = function () {
             unfilledForm = false;
@@ -94,18 +133,14 @@ ui.order = ui.legacy(function () {
                             signal: signal,
                             body: JSON.stringify({transaction: transaction})
                         }).then(function (response) {
-                            if (response.status === 200) {
-                                return token === session && response.json();
-                            }
-
-                            return Promise.reject(new Error("Failed to fetch"));
+                            return onlyFetch.verifyStatus(response, token, "notFound");
                         }).then(function (json) {
                             return json.error ? Promise.reject(json) : json;
                         }).then(function (obj) {
                             generateLayout(obj, token);
                         }).catch(function (err) {
                             if (token === session) {
-                                onError("ההזמנה זו לא נמצא. לשאלות <a href=/contact>צרי קשר</a>", err);
+                                onlyFetch.onError(locale.notFound, err);
                             }
                         });
                     });
@@ -114,7 +149,7 @@ ui.order = ui.legacy(function () {
                 }
             }
 
-            onError("גישה רק ללקוחות <a href=/colour>" + ui.d.title + "</a>");
+            onlyFetch.onError(locale.unauthorized);
 
             return false;
         };
@@ -165,11 +200,7 @@ ui.order = ui.legacy(function () {
                         signal: signal,
                         body: JSON.stringify(hash)
                     }).then(function (response) {
-                        if (response.status === 200) {
-                            return token === session && response.json();
-                        }
-
-                        return Promise.reject(new Error("Failed to fetch"));
+                        return onlyFetch.verifyStatus(response, token, "notPermitted");
                     }).then(function (obj) {
                         transaction = obj.transaction;
 
@@ -181,7 +212,7 @@ ui.order = ui.legacy(function () {
                         generateLayout(obj, token);
                     }).catch(function (err) {
                         if (token === session) {
-                            onError("גישה לדף הזה מורשית רק דרך דף התשלום", err);
+                            onlyFetch.onError(locale.accessRevoked, err);
                         }
                     });
                 });
@@ -196,21 +227,26 @@ ui.order = ui.legacy(function () {
     };
     generateLayout = function (obj, token) {
         var self = generateLayout,
+            content = ui.d.getElementById("content"),
             timer = 0,
             label;
 
         if (obj && obj.valueLocale) {
-            status.innerHTML = self.formFinal(obj);
+            if (content) {
+                content.outerHTML = self.formFinal(obj);
+            } else {
+                status.innerHTML = self.formFinal(obj, true);
+            }
         } else {
             label = ui.d.getElementById("label");
 
             if (label) {
                 // timeout with details for better UX
-                label.innerHTML = "תשלום בוצע בהצלחה. לסיום ההזמנה צפי בסרטון ומלאי שאלון";
+                label.innerHTML = locale.paymentSuccess;
                 timer = 3500;
             }
 
-            setTimeout(function () {
+            self.timer = setTimeout(function () {
                 if (!token || token === session) {
                     status.innerHTML = self.formStart();
 
@@ -228,6 +264,11 @@ ui.order = ui.legacy(function () {
         mixed: "את בעלת צבעים מעורבים",
         warm: "את בעלת צבעים חמים"
     };
+    generateLayout.video = "<div class=video dir=ltr>" +
+        "    <iframe title=\"ערכת &quot;צבע מבפנים&quot;\"" +
+        " src=\"https://www.youtube.com/embed/ihxGT0A1OrE\"" +
+        " allow=\"autoplay; encrypted-media; fullscreen\" allowfullscreen></iframe>" +
+        "</div>";
     generateLayout.uniqueID = function () {
         return Math.random().toString(16).substr(2, 8);
     };
@@ -376,7 +417,7 @@ ui.order = ui.legacy(function () {
             if (el && title) {
                 result += "<div class=dialog>" +
                     "   <div class=table>" +
-                    "   <div class=cel>" +
+                    "   <div class=cel id=result>" +
                     "       <div class=close onclick=ui.formReset(this) tabindex=0>" + self.getIcon("close") + "</div>" +
                     "       <h1>" + title + "</h1>" +
                     "       <button onclick=\"ui.formSubmit(this, '" + type + "')\">אישור</button>" +
@@ -415,14 +456,17 @@ ui.order = ui.legacy(function () {
             }
         };
         ui.formSubmit = function (el, value) {
-            wrapper.classList.remove("no-padding");
+            var result = ui.d.getElementById("result"),
+                startTime = +new Date,
+                label;
 
-            status.innerHTML = ui.pageProgress;
+            if (result) {
+                result.innerHTML = ui.pageProgress;
+                label = ui.d.getElementById("label");
 
-            var label = ui.d.getElementById("label");
-
-            if (label) {
-                label.innerHTML = "סיום";
+                if (label) {
+                    label.innerHTML = "סיום";
+                }
             }
 
             onlyFetch(function (signal, token) {
@@ -436,18 +480,16 @@ ui.order = ui.legacy(function () {
                         url: location.href
                     })
                 }).then(function (response) {
-                    if (response.status === 200) {
-                        return token === session && response.json();
-                    }
-
-                    return Promise.reject(new Error("Failed to fetch"));
+                    return onlyFetch.verifyStatus(response, token, "notPermitted");
                 }).then(function (json) {
                     return json.error ? Promise.reject(json) : json;
                 }).then(function (obj) {
-                    generateLayout(obj, token);
+                    self.timer = setTimeout(function () {
+                        generateLayout(obj, token);
+                    }, 2500 - (+new Date - startTime) || 0);
                 }).catch(function (err) {
                     if (token === session) {
-                        onError("תקלה בשרת, בבקשה <a href=/contacts>צרי קשר</a> להמשך טיפול הזמנה", err);
+                        onlyFetch.onError(locale.serverError, err);
                     }
                 });
             });
@@ -457,43 +499,33 @@ ui.order = ui.legacy(function () {
 
         unfilledForm = true;
 
-        return "<div class=video dir=ltr>" +
-            "    <iframe title=\"ערכת &quot;צבע מבפנים&quot;\"" +
-            " src=\"https://www.youtube.com/embed/ihxGT0A1OrE\"" +
-            " allow=\"autoplay; encrypted-media; fullscreen\" allowfullscreen></iframe>" +
-            "</div>" +
-            "<div class=content dir=rtl>" +
+        return self.video +
+            "<div class=content id=content dir=rtl>" +
             "    <h1 id=title>" + ui.d.title + "</h1>" +
             "    <div class=\"figure form qa\">" + self.label(self.template, false) + "</div>" +
-            "    <div class=\"figure footer\">לא בטוחה לאילו צבעים את שייכת?<br>שלחי לי תמונת פנים ברורה שצולמה באור היום לואטסאפ" +
+            "    <div class=\"figure footer\">לא בטוחה לאלו צבעים את שייכת?<br>שלחי לי תמונת פנים ברורה שצולמה באור היום לוואטסאפ" +
             " <a href=\"https://wa.me/972585800020\" target=_blank dir=auto>0585800020</a> או למייל" +
             " <a href=\"mailto:lea@laukstein.com\" target=_blank dir=auto>lea@laukstein.com</a></div>" +
             "</div>";
     };
-    generateLayout.formFinal = function (obj) {
-        var result = "",
+    generateLayout.formFinal = function (obj, includeVideo) {
+        var self = generateLayout,
+            result = "",
             date = "";
 
         if (obj.valueLocale) {
             if (obj.modified) {
                 date = new Date(obj.modified);
                 date = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
-                date = "<time>ההזמנה בוצע ב" + date + "</time>";
+                date = "<time>ההזמנה בוצעה ב " + date + "</time>";
             }
-
-            wrapper.classList.remove("no-padding");
 
             unfilledForm = false;
 
-            result += "<div class=\"dialog final\">" +
-                "   <div class=table>" +
-                "   <div class=cel>" +
-                "   <div class=context>" +
-                "       <h1>" + obj.valueLocale + "</h1>" +
-                "       <p>" + (obj.descriptionLocale || "").replace(/\n/g, "<br>") + "</p>" + date +
-                "   </div>" +
-                "   </div>" +
-                "   </div>" +
+            result += (includeVideo ? self.video : "") +
+                "<div class=content>" +
+                "   <h1>" + obj.valueLocale + "</h1>" +
+                "   <p>" + (obj.descriptionLocale || "").replace(/\n/g, "<br>") + "</p>" + date +
                 "</div>";
         } else {
             result += generateLayout();
@@ -506,7 +538,7 @@ ui.order = ui.legacy(function () {
     ui.w.addEventListener("beforeunload", function (e) {
         if (unfilledForm) {
             e.preventDefault();
-            e.returnValue = "תהליך ההזמנה לא הסתיים, ברצונך לסגור כעט?";
+            e.returnValue = locale.incompleteSubmission;
 
             return e.returnValue;
         }
