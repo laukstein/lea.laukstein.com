@@ -207,7 +207,8 @@ window.ui = {
                     if (window.Sentry && Sentry.init) {
                         Sentry.init({
                             dsn: "https://1e8b57d9fb744a9ba1068e9b5cc5386c@sentry.io/156066",
-                            environment: ui.environment
+                            environment: ui.environment,
+                            whitelistUrls: [/lea\.laukstein\.com/]
                         });
                         ui.identify.sentry();
                     }
