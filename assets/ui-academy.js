@@ -362,6 +362,11 @@ ui.academy = {
                             title: "להורדת חוברת האקססוריז",
                             value: "1wPOeaV2Y1xKnOsoOR1VevgU-g0L95cGO"
                         }
+                    },
+                    "match-headcover": {
+                        type: "video",
+                        title: "בונוס: התאמה למבני הפנים",
+                        value: "XW4S6zGtGic"
                     }
                 }
             },

@@ -352,6 +352,12 @@ ui.videoLegacy = {
         "720p": "by88o3g8duouwul",
         image: "6cp72mzov8a8qu0"
     },
+    XW4S6zGtGic: {
+        academy: true,
+        "360p": "jfw6ztexvtu01se",
+        "720p": "ujm1dsahiip1nqm",
+        image: "gcve3xpn3mwgs5y"
+    },
     "xZMfS-HXqXM": {
         academy: true,
         "360p": "1albsmx3p17ngkw",
