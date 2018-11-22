@@ -13,6 +13,7 @@ ui.order = ui.legacy(function () {
         }()),
         wrapper = ui.d.querySelector(".table.scale"),
         status = ui.d.getElementById("status"),
+        events = {},
         locale = {},
         generateLayout,
         unfilledForm,
@@ -20,7 +21,6 @@ ui.order = ui.legacy(function () {
         controller,
         onlyFetch,
         session,
-        getData,
         hash;
 
     locale.toContact = " לשאלות אנא <a href=/contact>צרי קשר</a>";
@@ -104,7 +104,7 @@ ui.order = ui.legacy(function () {
                 return Promise.reject(new Error("Failed to fetch"));
         }
     };
-    getData = function () {
+    events.getData = function () {
         var urlParams,
             getOrder;
 
@@ -225,6 +225,23 @@ ui.order = ui.legacy(function () {
 
         return hash;
     };
+    events.alert = function (e) {
+        if (unfilledForm) {
+            e.preventDefault();
+            e.returnValue = locale.incompleteSubmission;
+
+            return e.returnValue;
+        }
+    };
+    events.remind = function () {
+        if (unfilledForm && events.remind.done !== transaction) {
+            events.remind.done = transaction;
+            navigator.sendBeacon(endpoint + "/payment/reminder", JSON.stringify({
+                transaction: transaction,
+                url: location.href
+            }));
+        }
+    };
     generateLayout = function (obj, token) {
         var self = generateLayout,
             content = ui.d.getElementById("content"),
@@ -274,6 +291,8 @@ ui.order = ui.legacy(function () {
     };
     generateLayout.formStart = function () {
         var self = generateLayout;
+
+        unfilledForm = true;
 
         self.template = {
             option: [{
@@ -495,9 +514,65 @@ ui.order = ui.legacy(function () {
             });
         };
 
-        wrapper.classList.add("no-padding");
+        (function () {
+            var eventListenerOption,
+                lastAction,
+                update,
+                start,
+                reset;
 
-        unfilledForm = true;
+            eventListenerOption = (function () {
+                // Resource http://tonsky.me/blog/chrome-intervention/
+                // Spec issue https://github.com/whatwg/dom/issues/491
+                var passiveSupported = false,
+                    options;
+
+                try {
+                    options = Object.defineProperty({}, "passive", {
+                        get: function () {
+                            passiveSupported = true;
+
+                            return passiveSupported;
+                        }
+                    });
+
+                    addEventListener("test", options, options);
+                    removeEventListener("test", options, options);
+                } catch (err) {
+                    passiveSupported = false;
+                }
+
+                return passiveSupported ? {passive: true} : true;
+            }());
+            start = setInterval(function () {
+                if (!unfilledForm) {
+                    reset();
+                }
+                if (Math.round((new Date() - lastAction) / 60000) >= 60) {
+                    // Send reminding message after 1h inactivity, checked every 4min
+                    reset();
+                    events.remind();
+                }
+            }, 240000);
+            update = function () {
+                if (unfilledForm) {
+                    lastAction = new Date();
+                }
+            };
+            reset = function () {
+                if (start) {
+                    ui.w.removeEventListener("pointerdown", update, eventListenerOption);
+                    ui.w.removeEventListener("pointermove", update, eventListenerOption);
+                    clearTimeout(start);
+                    start = undefined;
+                }
+            };
+
+            ui.w.addEventListener("pointerdown", update, eventListenerOption);
+            ui.w.addEventListener("pointermove", update, eventListenerOption);
+        }());
+
+        wrapper.classList.add("no-padding");
 
         return self.video +
             "<div class=content id=content dir=rtl>" +
@@ -534,23 +609,9 @@ ui.order = ui.legacy(function () {
         return result;
     };
 
-    ui.w.addEventListener("hashchange", getData);
-    ui.w.addEventListener("beforeunload", function (e) {
-        if (unfilledForm) {
-            e.preventDefault();
-            e.returnValue = locale.incompleteSubmission;
+    ui.w.addEventListener("hashchange", events.getData);
+    ui.w.addEventListener("beforeunload", events.alert);
+    ui.w.addEventListener("unload", events.remind);
 
-            return e.returnValue;
-        }
-    });
-    ui.w.addEventListener("unload", function () {
-        if (unfilledForm) {
-            navigator.sendBeacon(endpoint + "/payment/reminder", JSON.stringify({
-                transaction: transaction,
-                url: location.href
-            }));
-        }
-    });
-
-    return getData();
+    return events.getData();
 });
