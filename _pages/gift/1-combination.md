@@ -8,7 +8,7 @@ description: מפגש אבחון על הקפה במשך שעה
 video: _p3HwrkRk3A
 button:
     - title: אני רוצה לדעת מה הצבע שלי
-      url: https://mailchi.mp/laukstein.com/colour?campaign=newsubscriber
+      url: /color-swatch?campaign=newsubscriber
 ---
 
 אחת השאלות שאני נשאלת הכי הרבה ע"י לקוחות היא מה הצבע שמתאים לי?
