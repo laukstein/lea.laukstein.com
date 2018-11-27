@@ -106,6 +106,7 @@ ui.order = ui.legacy(function () {
     };
     events.getData = function () {
         var urlParams,
+            shortURL,
             getOrder;
 
         wrapper.classList.remove("no-padding");
@@ -167,6 +168,17 @@ ui.order = ui.legacy(function () {
                 "utm_campaign"
             ];
 
+            shortURL = function (encodedTransaction) {
+                if (encodedTransaction && encodedTransaction !== transaction) {
+                    transaction = encodedTransaction;
+
+                    if (history.replaceState) {
+                        // Remove query string from URL
+                        history.replaceState("", ui.d.title, location.pathname + "#transaction=" + transaction);
+                    }
+                }
+            };
+
             if (hash.custom) {
                 // decode to reach token, utm_source, utm_campaign
                 Object.assign(hash, ui.hash({hash: atob(hash.custom)}));
@@ -188,6 +200,9 @@ ui.order = ui.legacy(function () {
                     return !!obj[key];
                 }));
             }
+
+            shortURL(btoa(hash.transaction));
+
             if (hash.token === sessionStorage.paymentToken && hash.orderid && hash.email && hash.transaction) {
                 hash = ui.filterObj(hash, function (key) {
                     return urlParams.includes(key);
@@ -202,13 +217,7 @@ ui.order = ui.legacy(function () {
                     }).then(function (response) {
                         return onlyFetch.verifyStatus(response, token, "notPermitted");
                     }).then(function (obj) {
-                        transaction = obj.transaction;
-
-                        if (history.replaceState) {
-                            // Remove query string from URL
-                            history.replaceState("", ui.d.title, location.pathname + "#transaction=" + transaction);
-                        }
-
+                        shortURL(obj.transaction);
                         generateLayout(obj, token);
                     }).catch(function (err) {
                         if (token === session) {
