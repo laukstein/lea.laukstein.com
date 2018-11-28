@@ -431,7 +431,7 @@ window.ui = {
         options = typeof options === "string" ? {param: options} : options || {};
         options.hash = typeof options.hash === "string" ? options.hash : location.hash;
 
-        var arr = options.hash.replace(/^\??#?!?/, "").split("&"),
+        var arr = options.hash.replace(/^\??#?!?/, "").split(/\?|#|&/),
             obj = {},
             pair,
             i;
@@ -440,7 +440,7 @@ window.ui = {
             for (i = 0; i < arr.length; i += 1) {
                 pair = arr[i].split(/\x3D(.+)/, 2);
 
-                if (pair[0]) {
+                if (pair[0] && !obj.hasOwnProperty(pair[0])) {
                     obj[pair[0]] = this.isNumber(pair[1]) ? Number(pair[1]) : pair[1] && decodeURIComponent(pair[1]);
                 }
             }
