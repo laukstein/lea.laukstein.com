@@ -16,6 +16,17 @@ ui.success = (function () {
                 }
             }
         }
+        if (hash.email) {
+            // Identify user from Pelepay success page query
+            ui.setUser(ui.filterObj({
+                email: hash.email.toLowerCase(),
+                tel: hash.phone,
+                firstName: hash.firstname,
+                lastName: hash.lastname
+            }, function (key, obj) {
+                return !!obj[key];
+            }));
+        }
 
         locale = locale || init.l10n.default;
 
