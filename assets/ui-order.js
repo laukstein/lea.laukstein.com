@@ -599,7 +599,7 @@ ui.order = ui.legacy(function () {
 
         if (obj.valueLocale) {
             if (obj.modified) {
-                date = new Date(obj.modified);
+                date = new Date(obj.modified * 1000);
                 date = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
                 date = "<time>ההזמנה בוצעה ב " + date + "</time>";
             }
