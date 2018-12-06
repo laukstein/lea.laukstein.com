@@ -422,6 +422,9 @@ cite:before {
     width: 100%;
 }
 .table.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: auto;
     margin: auto;
 }
@@ -439,6 +442,13 @@ main .table.center {
 .table.center .cel {
     padding-bottom: 5vh;
     vertical-align: middle;
+}
+.table.center .cel.cel {
+    display: block;
+    max-width: 100%;
+    padding-right: 1.6em;
+    padding-left: 1.6em;
+    box-sizing: border-box;
 }
 .content {
     display: block;
@@ -1121,20 +1131,6 @@ iframe {
         .grid {
             grid-template-columns: initial;
         }
-    }
-}
-@supports (display: flex) {
-    .table.center {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .table.center .cel.cel {
-        display: block;
-        max-width: 100%;
-        padding-right: 1.6em;
-        padding-left: 1.6em;
-        box-sizing: border-box;
     }
 }
 

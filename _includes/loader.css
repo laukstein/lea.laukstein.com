@@ -49,10 +49,6 @@
     }
 }
 @keyframes dash {
-    0% {
-        stroke-dasharray: 1, 200;
-        stroke-dashoffset: 0;
-    }
     50% {
         stroke-dasharray: 89, 200;
         stroke-dashoffset: -35px;
@@ -60,5 +56,11 @@
     100% {
         stroke-dasharray: 89, 200;
         stroke-dashoffset: -124px;
+    }
+}
+
+@media (-ms-high-contrast: active), (-ms-high-contrast: none) { /* IE10+ */
+    .path {
+        stroke-dasharray: 89, 200;
     }
 }
