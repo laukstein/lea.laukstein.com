@@ -28,9 +28,11 @@
     margin-top: .2em;
     margin-bottom: -2.1em;
     color: #666;
-    font-size: 97%;
     background-color: #f3f4f7;
     border-radius: 0 0 .6em .6em;
+}
+.box .figure.footer .notice {
+    font-size: 97%;
 }
 .box time {
     margin: .4em 0;

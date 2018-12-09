@@ -587,9 +587,11 @@ ui.order = ui.legacy(function () {
             "<div class=content id=content dir=rtl>" +
             "    <h1 id=title>" + ui.d.title + "</h1>" +
             "    <div class=\"figure form qa\">" + self.label(self.template, false) + "</div>" +
-            "    <div class=\"figure footer\">לא בטוחה לאלו צבעים את שייכת?<br>שלחי לי תמונת פנים ברורה שצולמה באור היום לוואטסאפ" +
+            "    <div class=\"figure footer\">" +
+            "        <div class=notice>לא בטוחה לאלו צבעים את שייכת?<br>שלחי לי תמונת פנים ברורה שצולמה באור היום לוואטסאפ" +
             " <a href=\"https://wa.me/972585800020\" target=_blank dir=auto>0585800020</a> או למייל" +
             " <a href=\"mailto:lea@laukstein.com\" target=_blank dir=auto>lea@laukstein.com</a></div>" +
+            "    </div>" +
             "</div>";
     };
     generateLayout.formFinal = function (obj, includeVideo) {
