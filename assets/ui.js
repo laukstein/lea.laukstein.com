@@ -1,7 +1,7 @@
 window.ui = {
     w: window,
     d: document,
-    environment: location.host === "lea.laukstein.com" ? "prod" : "dev",
+    environment: location.hostname === "lea.laukstein.com" ? "prod" : "dev",
     awaitCallback: [],
     has: {
         classList: "classList" in document.documentElement

@@ -57,7 +57,7 @@ ui.payment = ui.legacy(function () {
         }
         if (hash.orderid && form) {
             endpoint = (function () {
-                var parts = location.host.split(".");
+                var parts = location.hostname.split(".");
 
                 while (parts.length > 2) {
                     parts.shift();

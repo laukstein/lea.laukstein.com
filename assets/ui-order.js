@@ -3,7 +3,7 @@ ui.order = ui.legacy(function () {
 
     // -> /order?Response=000&ConfirmationCode=1&index=2&amount=3.00&firstname=foo&lastname=bar&email=a@b.com&phone=0&payfor=product&custom=dXRt...&orderid=1
     var endpoint = (function () {
-            var parts = location.host.split(".");
+            var parts = location.hostname.split(".");
 
             while (parts.length > 2) {
                 parts.shift();

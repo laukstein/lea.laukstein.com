@@ -480,7 +480,7 @@ ui.academy = {
     endpoint: (function () {
         "use strict";
 
-        var parts = location.host.split(".");
+        var parts = location.hostname.split(".");
 
         while (parts.length > 2) {
             parts.shift();
