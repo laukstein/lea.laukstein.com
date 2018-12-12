@@ -4,6 +4,8 @@ url: https://lea.laukstein.com
 enforce_ssl: lea.laukstein.com
 permalink: /:category/:title
 assets: /assets/
+github: [metadata]
+repository: laukstein/lea.laukstein.com
 timezone: UTC
 safe: true
 theme: false
