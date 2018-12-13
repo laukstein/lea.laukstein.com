@@ -94,9 +94,8 @@
     border-color: #569e9b;
 }
 .qa label[disabled][disabled][disabled] {
-    opacity: .4;
+    opacity: .8;
     background-color: transparent;
-    pointer-events: none;
 }
 .qa input:checked ~ label {
     font-weight: bold;
@@ -131,7 +130,7 @@
                 border-color .24s,
                 box-shadow .15s ease-in-out;
 }
-.qa label:hover .checkbox {
+.qa label:not([disabled]):hover .checkbox {
     color: #2196f3;
     box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
 }

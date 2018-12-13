@@ -391,73 +391,98 @@ ui.order = ui.legacy(function () {
 
             return result;
         };
-        ui.formClick = function (e) {
+        ui.clickedInsideForm = function (e) {
             var el = e.currentTarget,
-                active = el.getAttribute("data-active") === "true",
-                arrB,
-                arr,
-                i,
-                o;
+                active;
 
-            if (active) {
-                e.preventDefault();
+            if (el && el.hasAttribute("disabled")) {
+                // Reset form in middle
+                active = el.parentNode.parentNode.querySelector("input:checked");
+                active = active && active.nextElementSibling || el.parentNode.parentNode.querySelector(".close");
 
-                arr = el.parentNode.querySelectorAll("[data-active]");
+                if (active) {
+                    e.preventDefault();
+                    active.click();
 
-                for (i = 0; i < arr.length; i += 1) {
-                    arr[i].removeAttribute("data-active");
+                    return false;
                 }
-
-                arr = el.parentNode.querySelectorAll("input:checked");
-
-                for (i = 0; i < arr.length; i += 1) {
-                    arr[i].checked = false;
-                }
-            } else {
-                el.setAttribute("data-active", "true");
             }
 
-            arr = el.parentNode.parentNode.children;
+            return true;
+        };
+        ui.formClick = function (e) {
+            if (ui.clickedInsideForm(e)) {
+                var el = e.currentTarget,
+                    active = el.getAttribute("data-active") === "true",
+                    arrB,
+                    arr,
+                    i,
+                    o;
 
-            for (i = 0; i < arr.length; i += 1) {
-                if (!active && arr[i] === el.parentNode) {
-                    el.removeAttribute("disabled");
+                if (active) {
+                    e.preventDefault();
+
+                    arr = el.parentNode.querySelectorAll("[data-active]");
+
+                    for (i = 0; i < arr.length; i += 1) {
+                        arr[i].removeAttribute("data-active");
+                    }
+
+                    arr = el.parentNode.querySelectorAll("input:checked");
+
+                    for (i = 0; i < arr.length; i += 1) {
+                        arr[i].checked = false;
+                    }
                 } else {
-                    arrB = arr[i].querySelectorAll("label");
+                    el.setAttribute("data-active", "true");
+                }
 
-                    for (o = 0; o < arrB.length; o += 1) {
-                        if (active) {
-                            arrB[o].removeAttribute("disabled");
-                        } else {
-                            arrB[o].setAttribute("disabled", "");
+                arr = el.parentNode.parentNode.children;
+
+                for (i = 0; i < arr.length; i += 1) {
+                    if (!active && arr[i] === el.parentNode) {
+                        el.removeAttribute("disabled");
+                    } else {
+                        arrB = arr[i].querySelectorAll("label");
+
+                        for (o = 0; o < arrB.length; o += 1) {
+                            if (active) {
+                                arrB[o].removeAttribute("disabled");
+                            } else {
+                                arrB[o].setAttribute("disabled", "");
+                            }
                         }
                     }
                 }
             }
         };
         ui.formDialog = function (e, index, type) {
-            var el = e.currentTarget,
-                title = self.valueLocale[type],
-                result = "";
+            if (ui.clickedInsideForm(e)) {
+                var el = e.currentTarget,
+                    title = self.valueLocale[type],
+                    result = "";
 
-            ui.formClick(e);
+                ui.formClick(e);
 
-            if (el && title) {
-                result += "<div class=dialog>" +
-                    "   <div class=table>" +
-                    "   <div class=cel id=result>" +
-                    "       <div class=close onclick=ui.formReset(this) tabindex=0>" + self.getIcon("close") + "</div>" +
-                    "       <h1>" + title + "</h1>" +
-                    "       <button onclick=\"ui.formSubmit(this, '" + type + "')\">אישור</button>" +
-                    "   </div>" +
-                    "   </div>" +
-                    "</div>";
+                if (el && title) {
+                    result += "<div class=dialog>" +
+                        "   <div class=table>" +
+                        "   <div class=cel id=result>" +
+                        "       <div class=close onclick=ui.formReset(this) tabindex=0>" + self.getIcon("close") + "</div>" +
+                        "       <h1>" + title + "</h1>" +
+                        "       <button onclick=\"ui.formSubmit(this, '" + type + "')\">אישור</button>" +
+                        "   </div>" +
+                        "   </div>" +
+                        "</div>";
 
-                el = index === 1 ? el.parentNode : el.parentNode.parentNode.parentNode;
-                el.insertAdjacentHTML("afterbegin", result);
+                    el = index === 1 ? el.parentNode : el.parentNode.parentNode.parentNode;
+                    el.insertAdjacentHTML("afterbegin", result);
+                }
+
+                return result;
             }
 
-            return result;
+            return "";
         };
         ui.formReset = function (el) {
             if (el) {
