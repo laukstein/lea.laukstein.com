@@ -12,8 +12,8 @@ title-short: ערכת צבעים
 description: ערכות צבע אישיות, כל אחת 42 צבעים אישיים
 permalink: /color-swatch
 image: product-color-swatch.jpg
-price: 79
-discount: מחיר השקה עד ל16 בדצמבר
+price: 99
+priceLine: ההשקעה שלך 99 ש"ח בלבד
 buttonURL: /payment#orderid=9264240E
 script:
     - ui-colorSwatch.js
@@ -77,7 +77,7 @@ css: |
             <dd>קבלת פלאטה דיגיטאלית עם הצבעים שלך</dd>
             <dd>מדריך מעשי לשילובי צבעים כולל המחשות</dd>
             <dd>וכמובן הערכה הפיזית מגיעה אליך בדואר</dd>
-            <dd class=highlight>{{ page.discount }} - 79 ש"ח</dd>
+            <dd class=highlight>{{ page.priceLine }}</dd>
         </dl>
         <a class="button x-button" href="{{ page.buttonURL | escape }}">אני רוצה לדעת מה הצבע שלי</a>
         <p class="block figure highlight">ברגע שתהיה לך ערכת צבע מבפנים לא תצטרכי להתלבט יותר ותמיד תדעי איזה צבע מתאים לך!</p>
@@ -114,15 +114,15 @@ css: |
             </div>
             <img class="cel flow" src=/assets/product-color-swatch2.jpg alt>
         </div>
-        <p class="block figure highlight">{{ page.discount }}<br>79 ש"ח<br>(במקום 99 ש"ח)</p>
+        <p class="block figure highlight">{{ page.priceLine }}</p>
         <div>
             <img src=/assets/product-color-swatch-product.jpg alt>
             <p><b>איך זה עובד?</b><br>מיד אחרי התשלום, תקבלי קישור להדרכה מצולמת ומפורטת.<br>אחרי הצפיה תמלאי שאלון.<br>עד שבועים תקבלי בדואר ערכת צבעים אישית.</p>
             <p>יש סך הכל 6 ערכות שונות<br>כל ערכה כוללת 42 צבעים שונים<br><b>ואת תקבלי את הערכה עם כל הצבעים שמתאימים לך</b></p>
             <br>
             <h2>ערכת "צבע מבפנים" - ערכה אישית עם הצבעים שלך</h2>
-            <p>מה הערכה כוללת?<br>תהליך של אבחון פלאטת הצבעים הנכונה שלך (סרטון הדרכה ושאלון)<br>קבלת פלאטה דיגיטאלית עם הצבעים שלך<br>מדריך מעשי לשילובי צבעים כולל המחשות<br>וכמובן הערכה הפיזית מגיעה אליך בדואר<br><b>{{ page.discount }} - 79 ש"ח</b></p>
-            <a class="button x-button" href="{{ page.buttonURL | escape }}">לתשלום 79 ש"ח</a>
+            <p>מה הערכה כוללת?<br>תהליך של אבחון פלאטת הצבעים הנכונה שלך (סרטון הדרכה ושאלון)<br>קבלת פלאטה דיגיטאלית עם הצבעים שלך<br>מדריך מעשי לשילובי צבעים כולל המחשות<br>וכמובן הערכה הפיזית מגיעה אליך בדואר<br><b>{{ page.priceLine }}</b></p>
+            <a class="button x-button" href="{{ page.buttonURL | escape }}">לתשלום {{ page.price }} ש"ח</a>
         </div>
         <div class=figure>
             <div class=cel><img src=/assets/product-color-swatch-watsapp.jpg alt></div>
@@ -131,7 +131,7 @@ css: |
                 <p class=row><b>רחלי:</b><br>"הזמנתי שמלה מהממת מאינרנט. והיא מהממת!!!<br>כל כך עזר לי לדעת איזה צבע אני צריכה לחפש.<br>פשוט כל השמלות הלא נכונות פסלתי מיד… יצא מושלם!"</p>
             </div>
         </div>
-        <a class="button x-button" href="{{ page.buttonURL | escape }}">לתשלום 79 ש"ח</a>
+        <a class="button x-button" href="{{ page.buttonURL | escape }}">לתשלום {{ page.price }} ש"ח</a>
         <div>
             <a class=logo href=/ dir=rtl><img src="/assets/logo.png" width="47" height="47" alt="{{ site.title }}"><div><b>לאה לאוקשטיין</b></div></a>
         </div>
