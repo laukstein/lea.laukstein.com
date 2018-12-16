@@ -441,7 +441,9 @@ window.ui = {
                 pair = arr[i].split(/\x3D(.+)/, 2);
 
                 if (pair[0] && !obj.hasOwnProperty(pair[0])) {
-                    obj[pair[0]] = this.isNumber(pair[1]) ? Number(pair[1]) : pair[1] && decodeURIComponent(pair[1]);
+                    obj[pair[0]] = this.isNumber(pair[1]) ? Number(pair[1]) :
+                        // Percent-decoding https://github.com/MithrilJS/mithril.js/issues/2060
+                        pair[1] && pair[1].replace(/(?:%[a-f0-9]+)+/gim, decodeURIComponent);
                 }
             }
         }
