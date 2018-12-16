@@ -200,9 +200,9 @@ ui.order = ui.legacy(function () {
                     return !!obj[key];
                 }));
             }
-
-            shortURL(btoa(hash.transaction));
-
+            if (hash.transaction) {
+                shortURL(btoa(hash.transaction));
+            }
             if (hash.token === sessionStorage.paymentToken && hash.orderid && hash.email && hash.transaction) {
                 hash = ui.filterObj(hash, function (key) {
                     return urlParams.includes(key);
