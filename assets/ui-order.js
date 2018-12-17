@@ -163,13 +163,16 @@ ui.order = ui.legacy(function () {
             hash = ui.hash({hash: location.search});
             urlParams = [
                 "orderid",
+                "service",
                 "transaction",
+                "amount",
                 "email",
                 "phone",
                 "firstname",
                 "lastname",
-                "utm_source",
-                "utm_campaign"
+                "startDate",
+                "utm_campaign",
+                "utm_source"
             ];
 
             shortURL = function (encodedTransaction) {
@@ -184,7 +187,7 @@ ui.order = ui.legacy(function () {
             };
 
             if (hash.custom) {
-                // decode to reach token, utm_source, utm_campaign
+                // decode to reach token, utm_campaign, utm_source
                 Object.assign(hash, ui.hash({hash: atob(hash.custom)}));
                 delete hash.custom;
             }
@@ -265,7 +268,7 @@ ui.order = ui.legacy(function () {
             if (content) {
                 content.outerHTML = self.formFinal(obj);
             } else {
-                status.innerHTML = self.formFinal(obj, true);
+                status.innerHTML = self.formFinal(obj, obj.service === "color-swatch");
             }
         } else {
             label = ui.d.getElementById("label");
@@ -639,8 +642,8 @@ ui.order = ui.legacy(function () {
             date = "";
 
         if (obj.valueLocale) {
-            if (obj.modified) {
-                date = new Date(obj.modified * 1000);
+            if (obj.date) {
+                date = new Date(obj.date * 1000);
                 date = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
                 date = "<time>ההזמנה בוצעה ב " + date + "</time>";
             }
@@ -648,7 +651,7 @@ ui.order = ui.legacy(function () {
             unfilledForm = false;
 
             result += (includeVideo ? self.video : "") +
-                "<div class=content>" +
+                "<div class=" + (obj.service === "color-swatch" ? "content" : "\"content center\"") + ">" +
                 "   <h1>" + obj.valueLocale + "</h1>" +
                 "   <p>" + (obj.descriptionLocale || "").replace(/\n/g, "<br>") + "</p>" + date +
                 "</div>";

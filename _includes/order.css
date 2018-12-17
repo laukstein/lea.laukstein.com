@@ -5,6 +5,9 @@
         height: 100%;
     min-height: inherit;
 }
+.content.center {
+    text-align: center;
+}
 .box {
     /* Firefox 63 legacy */
     display: flex;
