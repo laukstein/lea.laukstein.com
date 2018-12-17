@@ -40,6 +40,8 @@ ui.order = ui.legacy(function () {
     onlyFetch = function (fn) {
         var signal;
 
+        delete ui.inProgress;
+
         if (ui.w.AbortController) {
             if (controller) {
                 // Cancel the previous request
@@ -57,6 +59,8 @@ ui.order = ui.legacy(function () {
     };
     onlyFetch.onError = function (str, err) {
         err = err || {};
+
+        delete ui.inProgress;
 
         if (err.name !== "AbortError") {
             console.warn(hash);
@@ -396,6 +400,13 @@ ui.order = ui.legacy(function () {
                 active;
 
             if (el && el.hasAttribute("disabled")) {
+                if (ui.inProgress) {
+                    // Disallow reset form while form submit in progress
+                    e.preventDefault();
+
+                    return false;
+                }
+
                 // Reset form in middle
                 active = el.parentNode.parentNode.querySelector("input:checked");
                 active = active && active.nextElementSibling || el.parentNode.parentNode.querySelector(".close");
@@ -523,6 +534,8 @@ ui.order = ui.legacy(function () {
             }
 
             onlyFetch(function (signal, token) {
+                ui.inProgress = true;
+
                 fetch(endpoint + "/payment/update", {
                     method: "POST",
                     redirect: "error",
@@ -539,6 +552,7 @@ ui.order = ui.legacy(function () {
                 }).then(function (obj) {
                     self.timer = setTimeout(function () {
                         generateLayout(obj, token);
+                        delete ui.inProgress;
                     }, 2500 - (+new Date - startTime) || 0);
                 }).catch(function (err) {
                     if (token === session) {
