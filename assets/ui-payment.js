@@ -3,29 +3,26 @@ ui.payment = ui.legacy(function () {
 
     // -> /payment#orderid=1&firstname=a&lastname=b&email=a@b.com&phone=0&utm_campaign=foo&utm_source=bar
     // <- /order?firstname=a&lastname=b&email=a@b.com&phone=0&payfor=product&custom=...&orderid=1...
-    var getData,
+    var status = ui.d.getElementById("status"),
+        locale = {},
+        controller,
+        getData,
         session;
 
+    locale.toContact = " לשאלות אנא <a href=/contact>צרי קשר</a>";
+
+    Object.assign(locale, {
+        notFound: "הזמנה זו לא נמצאה." + locale.toContact,
+        networkError: "ישנה תקלה בשרת." + locale.toContact,
+        networkOutage: "ישנה תקלה זמנית בשרת. אנא נסי שוב מאוחר יותר",
+        serverError: "ישנה תקלה בשרת, אנא <a href=/contacts>צרי קשר</a> להמשך הטיפול בהזמנה",
+        invalidRequest: "קישור לא תקין." + locale.toContact,
+        hijacking: "ישנה תקלה, אנא <a href=/contacts>צרי קשר</a> להמשך הטיפול בהזמנה"
+    });
+
     getData = function () {
-        var status = ui.d.getElementById("status"),
-            form = ui.d.pelepayform,
+        var form = ui.d.pelepayform,
             hash = ui.hash(),
-            onError = function (str, err) {
-                err = err || {};
-
-                if (err.message === "Failed to fetch") {
-                    console.error(err.message);
-                    str = "ישנה תקלה זמנית בשרת. אנא נסי שוב מאוחר יותר";
-                } else if (err.message === "NetworkError when attempting to fetch resource.") {
-                    console.error(err.message);
-                    str = "ישנה תקלה בשרת. לשאלות אנא <a href=/contact>צרי קשר</a>";
-                } else {
-                    str = err.message || str;
-                }
-
-                console.warn(hash);
-                status.innerHTML = "<div class=error>" + str +"</div>";
-            },
             orderHash = ui.serialize({orderid: hash.orderid}),
             urlParams,
             endpoint;
@@ -87,55 +84,119 @@ ui.payment = ui.legacy(function () {
                 return res;
             });
 
-            hash.token = Math.random().toString(16).substr(2, 8).toUpperCase();
-            // Ignore previous fetch requests
-            session = hash.token;
+            getData.onlyFetch(function (signal, token) {
+                hash.token = token;
 
-            fetch(endpoint + "/payment", {
-                method: "POST",
-                redirect: "error",
-                body: JSON.stringify(hash)
-            }).then(function (response) {
-                if (response.status === 200) {
-                    return hash.token === session && response.json();
-                }
-
-                return Promise.reject(new Error("Failed to fetch"));
-            }).then(function (obj) {
-                var token = obj.custom && ui.hash({
-                    hash: atob(obj.custom),
-                    param: "token"
-                });
-
-                if (hash.token === token) {
-                    ui.payment = obj;
-                    // Prevent fraud activity
-                    sessionStorage.paymentToken = token;
-
-                    Object.keys(obj).forEach(function (key) {
-                        var input = ui.d.createElement("input");
-
-                        input.type = "hidden";
-                        input.name = key;
-                        input.value = obj[key];
-
-                        form.appendChild(input);
+                fetch(endpoint + "/payment", {
+                    method: "POST",
+                    redirect: "error",
+                    body: JSON.stringify(hash)
+                }).then(function (response) {
+                    return getData.verifyStatus(response, token, "notFound");
+                }).then(function (json) {
+                    return json.error ? Promise.reject(json) : json;
+                }).then(function (obj) {
+                    var paymentToken = obj.custom && ui.hash({
+                        hash: atob(obj.custom),
+                        param: "token"
                     });
 
-                    console.log("Payment " + obj.orderid + " " + obj.email);
-                    console.log(obj);
+                    if (!paymentToken) {
+                        return Promise.reject(new Error("serverError"));
+                    } else if (paymentToken === token) {
+                        ui.payment = obj;
+                        // Use to prevent fraud activity
+                        sessionStorage.paymentToken = paymentToken;
 
-                    form.submit();
-                } else {
-                    return Promise.reject(new Error("קישור לתשלום לא קיים. לשאלות <a href=/contact>צרי קשר</a"));
-                }
-            }).catch(function (err) {
-                if (hash.token === session) {
-                    onError("ישנה תקלה בשרת. לשאלות אנא <a href=/contact>צרי קשר</a>", err);
-                }
+                        Object.keys(obj).forEach(function (key) {
+                            var input = ui.d.createElement("input");
+
+                            input.type = "hidden";
+                            input.name = key;
+                            input.value = obj[key];
+
+                            form.appendChild(input);
+                        });
+
+                        console.log("Payment " + obj.orderid + " " + obj.email);
+                        console.log(obj);
+
+                        form.submit();
+                    } else {
+                        return Promise.reject(new Error("hijacking"));
+                    }
+                }).catch(function (err) {
+                    if (token === session) {
+                        getData.onError(locale.notFound, err, hash);
+                    }
+                });
             });
         } else {
-            onError("קישור לא תקין. לשאלות אנא <a href=/contact>צרי קשר</a>");
+            getData.onError(locale.invalidRequest, undefined, hash);
+        }
+    };
+
+    getData.onlyFetch = function (fn) {
+        var signal;
+
+        if (ui.w.AbortController) {
+            if (controller) {
+                // Cancel the previous request
+                controller.abort();
+            }
+
+            // Make fetch cancelable https://www.loxodrome.io/post/cancelling-requests/
+            controller = new AbortController();
+            signal = controller.signal;
+        }
+        if (typeof fn === "function") {
+            // uniqueID
+            session = Math.random().toString(16).substr(2, 8).toUpperCase();
+
+            fn(signal, session);
+        }
+    };
+    getData.onError = function (str, err, hash) {
+        err = err || {};
+
+        if (err.name !== "AbortError") {
+            console.warn(hash);
+
+            switch (err.message) {
+                case "notFound":
+                case "serverError":
+                case "hijacking":
+                    console.error(err.message);
+                    str = locale[err.message];
+                    break;
+                case "Failed to fetch":
+                    console.error(err.message);
+                    str = locale.networkOutage;
+                    break;
+                case "NetworkError when attempting to fetch resource.":
+                    console.error(err.message);
+                    str = locale.networkError;
+                    break;
+            }
+
+            status.innerHTML = "<div class=error>" + str +"</div>";
+
+            if (controller) {
+                // Cancel fetch request
+                controller.abort();
+            }
+        }
+    };
+    getData.verifyStatus = function (response, token, errorType) {
+        switch (response.status) {
+            case 200:
+                return token === session && response.json();
+            case 400:
+                return Promise.reject(new Error(errorType));
+            case 503:
+                return Promise.reject(new Error("serverError"));
+            default:
+                return Promise.reject(new Error("Failed to fetch"));
         }
     };
 
