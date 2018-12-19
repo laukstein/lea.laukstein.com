@@ -187,10 +187,22 @@ jsonld: |
         "name": "מדריך לארון מדוייק",
         "image": "https://img.youtube.com/vi/$video/0.jpg",
         "description": "מדריך בעל שלושה סרטונים על יסודות הסטיילינג",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "reviewCount": "16791"
+        },
+        "brand": {
+            "@type": "Thing",
+            "name": "מדריך לארון מדוייק"
+        },
         "offers": {
             "@type": "Offer",
             "price": "0.00",
-            "priceCurrency": "ILS"
+            "priceCurrency": "ILS",
+            "priceValidUntil": "2033-01-01",
+            "availability": "http://schema.org/InStock",
+            "url": "https://lea.laukstein.com"
         }
     }]
 ---
