@@ -36,7 +36,7 @@
     animation: rotate 1.5s linear infinite;
 }
 .path {
-    stroke: #09bab4;
+    stroke: #00b0a9;
     stroke-width: 5px;
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;

@@ -283,6 +283,8 @@ ui.order = ui.legacy(function () {
                 if (!token || token === session) {
                     status.innerHTML = self.formStart();
 
+                    self.addEvents();
+
                     // YouTube fallback
                     ui.video.applyPlyr();
                 }
@@ -311,258 +313,173 @@ ui.order = ui.legacy(function () {
         unfilledForm = true;
 
         self.template = {
-            option: [{
-                title: "האם צבע השיער שלך שחור או חום כהה?",
-                option: [{
-                    title: "העיניים שלך מבריקות, בולטות, בצבע ירוק כהה, ירוק זית? האם יש קונטראסט בין הלבן בעיניים לבין האישון?",
-                    final: "clear"
-                }, {
-                    title: "העיניים שלך בצבע חום כהה?",
-                    final: "deep"
-                }, {
-                    title: "העיניים שלך בהירות, בצבע כחול, ירוק בהיר או אפור בהיר?",
-                    final: "bright"
-                }]
-            }, {
-                title: "האם צבע השיער שלך בלונד בהיר, אפור בהיר, חום בהיר?",
-                option: [{
-                    title: "העיניים שלך בהירות בצבעים כחול, אפור או ירוק בהיר?",
-                    final: "bright"
-                }, {
-                    title: "העיניים שלך בצבע חום בהיר, מתמזגות עם צבע השיער?",
-                    final: "mixed"
-                }]
-            }, {
-                title: "האם צבע השיער שלך חום בינוני או עכברי, אפור בינוני, בלונד אפורי, בלונד כהה?",
-                option: [{
-                    title: "העיניים שלך בהירות בצבעים כחול בהיר, אפור או ירוק בהיר?",
-                    final: "bright"
-                }, {
-                    title: "העיניים שלך חום בהיר, מתמזג עם צבע השיער?",
-                    final: "mixed"
-                }]
-            }, {
-                title: "האם צבע השיער שלך ג'ינג'י, דבש, ערמוני, והעיניים שלך ירוק חם כהה, חום ירקרק, חום דבש, כחול ירוק?",
-                final: "warm"
-            }, {
-                title: "האם צבע השיער שלך חום אפרפר (עכברי), בלונדי-אפרורי, כסוף, שיבה אפור, והצבע העיניים שלך כחול או חום או ירקרק?",
-                final: "cold"
-            }]
-        };
-        self.getIcon = function (name) {
-            return "<svg class=icon-" + name + "><use xlink:href=#" + name + " /></svg>";
-        };
-        self.label = function (data, index, sameLoop) {
-            var skipLoop = index !== false,
-                result = "",
-                final,
-                key,
-                id;
-
-            index = index || 0;
-
-            if (skipLoop && !sameLoop) {
-                index += 1;
-            }
-            if (data) {
-                if (skipLoop) {
-                    final = !data.option;
-                    id = !final && self.uniqueID();
-                    result += (sameLoop ? "" : "<ol>") +
-                        "<li><input type=radio name=" + index + (id ? " id=" + id : "") + ">" +
-                        "<label onclick=" +
-                        (data.final ?
-                            "\"ui.formDialog(event, " + index + ", '" + data.final + "')\"" :
-                            "ui.formClick(event) for=" + id) +
-                        "><div class=checkbox></div>" + data.title + "</label>";
+            hair: {
+                title: "באיזה צבע השיער שלך?",
+                placeholder: "לבחור צבע השיער",
+                option: {
+                    black: "שחור",
+                    darkBrown: "חום כהה",
+                    mediumBrown: "חום בינוני",
+                    lightBrown: "חום בהיר",
+                    honey: "דבש",
+                    brightBlond: "בלונד בהיר",
+                    darkBlond: "בלונד כהה",
+                    redhead: "ג'ינג'י",
+                    chestnut: "ערמוני",
+                    blondeGray: "בלונד אפור",
+                    lightGray: "אפור בהיר",
+                    mediumGray: "אפור בינוני",
+                    grayGray: "שיבה אפור",
+                    mousey: "עכברי",
+                    silver: "כסוף"
                 }
-                if (Array.isArray(data.option)) {
-                    index += 1;
-                    result += "<ol>";
+            },
+            eyes: {
+                title: "באיזה צבע העיניים שלך?",
+                placeholder: "לבחור צבע העיניים",
+                option: {
+                    brown: "חום",
+                    darkBrown: "חום כהה",
+                    honeyBrown: "חום דבש",
+                    greenishBrown: "חום ירקרק",
+                    lightGray: "אפור בהיר",
+                    greenish: "ירקרק",
+                    brightGreen: "ירוק בהיר",
+                    oliveGreen: "ירוק זית",
+                    darkGreen: "ירוק כהה",
+                    blue: "כחול",
+                    lightBlue: "כחול בהיר",
+                    blueGreen: "כחול ירוק"
+                }
+            },
+            skin: {
+                title: "מה גוון העור שלך?",
+                placeholder: "לבחור גוון העור",
+                option: {
+                    tan: "שזוף",
+                    bright: "בהיר",
+                    dark: "כהה"
+                }
+            }
+        };
+        self.value = {};
+        self.button = "אשר הזמנה";
 
-                    for (key in data.option) {
-                        if (data.option.hasOwnProperty(key)) {
-                            result += self.label(data.option[key], index, true);
+        self.form = function (obj) {
+            var result = "",
+                field,
+                value;
+
+            result += "<ul>";
+
+            for (field in obj) {
+                if (obj.hasOwnProperty(field)) {
+                    result += "<li>" +
+                        "<h3>" + obj[field].title + "</h3>" +
+                        "<select name=" + field + " required>" +
+                        "    <option class=placeholder value=\"\">" + obj[field].placeholder + "</option>";
+
+                    for (value in obj[field].option) {
+                        if (obj[field].option.hasOwnProperty(value)) {
+                            result += "    <option value=" + value + ">" + obj[field].option[value] + "</option>";
                         }
                     }
 
-                    result += "</ol>";
-                } else if (data.option) {
-                    result += self.label(data.option, index);
-                }
-                if (skipLoop) {
-                    result += "</li>" +
-                        (sameLoop ? "" : "</ol>");
+                    result += "</select>" +
+                        "</li>";
                 }
             }
 
-            return result;
+            result += "</ul>" +
+                "<button>" + self.button + "</button>";
+
+            return "<form class=\"form cs\" name=cs method=post novalidate>" + result + "</form>";
         };
-        ui.clickedInsideForm = function (e) {
-            var el = e.currentTarget,
-                active;
+        self.addEvents = function () {
+            ui.d.forms.cs.addEventListener("submit", self.addEvents.submit);
 
-            if (el && el.hasAttribute("disabled")) {
-                if (ui.inProgress) {
-                    // Disallow reset form while form submit in progress
-                    e.preventDefault();
-
-                    return false;
-                }
-
-                // Reset form in middle
-                active = el.parentNode.parentNode.querySelector("input:checked");
-                active = active && active.nextElementSibling || el.parentNode.parentNode.querySelector(".close");
-
-                if (active) {
-                    e.preventDefault();
-                    active.click();
-
-                    return false;
-                }
-            }
-
-            return true;
+            Object.keys(self.template).forEach(function (field) {
+                ui.d.forms.cs[field].addEventListener("change", self.addEvents.change);
+            });
         };
-        ui.formClick = function (e) {
-            if (ui.clickedInsideForm(e)) {
-                var el = e.currentTarget,
-                    active = el.getAttribute("data-active") === "true",
-                    arrB,
-                    arr,
-                    i,
-                    o;
-
-                if (active) {
-                    e.preventDefault();
-
-                    arr = el.parentNode.querySelectorAll("[data-active]");
-
-                    for (i = 0; i < arr.length; i += 1) {
-                        arr[i].removeAttribute("data-active");
-                    }
-
-                    arr = el.parentNode.querySelectorAll("input:checked");
-
-                    for (i = 0; i < arr.length; i += 1) {
-                        arr[i].checked = false;
-                    }
-                } else {
-                    el.setAttribute("data-active", "true");
-                }
-
-                arr = el.parentNode.parentNode.children;
-
-                for (i = 0; i < arr.length; i += 1) {
-                    if (!active && arr[i] === el.parentNode) {
-                        el.removeAttribute("disabled");
-                    } else {
-                        arrB = arr[i].querySelectorAll("label");
-
-                        for (o = 0; o < arrB.length; o += 1) {
-                            if (active) {
-                                arrB[o].removeAttribute("disabled");
-                            } else {
-                                arrB[o].setAttribute("disabled", "");
-                            }
-                        }
-                    }
-                }
-            }
-        };
-        ui.formDialog = function (e, index, type) {
-            if (ui.clickedInsideForm(e)) {
-                var el = e.currentTarget,
-                    title = self.valueLocale[type],
-                    result = "";
-
-                ui.formClick(e);
-
-                if (el && title) {
-                    result += "<div class=dialog>" +
-                        "   <div class=table>" +
-                        "   <div class=cel id=result>" +
-                        "       <div class=close onclick=ui.formReset(this) tabindex=0>" + self.getIcon("close") + "</div>" +
-                        "       <h1>" + title + "</h1>" +
-                        "       <button onclick=\"ui.formSubmit(this, '" + type + "')\">אישור</button>" +
-                        "   </div>" +
-                        "   </div>" +
-                        "</div>";
-
-                    el = index === 1 ? el.parentNode : el.parentNode.parentNode.parentNode;
-                    el.insertAdjacentHTML("afterbegin", result);
-                }
-
-                return result;
-            }
-
-            return "";
-        };
-        ui.formReset = function (el) {
-            if (el) {
-                el.parentNode.parentNode.parentNode.remove();
-            }
-
-            var arr = ui.d.querySelectorAll(".qa [disabled]"),
-                i;
-
-            for (i = 0; i < arr.length; i += 1) {
-                arr[i].removeAttribute("disabled");
-            }
-
-            arr = ui.d.querySelectorAll(".qa input:checked");
-
-            for (i = 0; i < arr.length; i += 1) {
-                arr[i].checked = false;
-            }
-
-            arr = ui.d.querySelectorAll(".qa [data-active]");
-
-            for (i = 0; i < arr.length; i += 1) {
-                arr[i].removeAttribute("data-active");
-            }
-        };
-        ui.formSubmit = function (el, value) {
-            var result = ui.d.getElementById("result"),
+        self.addEvents.submit = function (e) {
+            var content = ui.d.getElementById("content"),
                 startTime = +new Date,
+                valid = true,
                 label;
 
-            if (result) {
-                result.innerHTML = ui.pageProgress;
-                label = ui.d.getElementById("label");
+            e.preventDefault();
 
-                if (label) {
-                    label.innerHTML = "סיום";
+            Object.keys(self.template).forEach(function (field) {
+                if (!self.value[field]) {
+                    valid = false;
+                    ui.d.forms.cs[field].classList.add("error");
                 }
+            });
+
+            if (valid) {
+                if (content) {
+                    content.innerHTML = ui.pageProgress;
+                    label = ui.d.getElementById("label");
+
+                    if (label) {
+                        label.innerHTML = "סיום הזמנה";
+                    }
+                }
+
+                onlyFetch(function (signal, token) {
+                    ui.inProgress = true;
+
+                    fetch(endpoint + "/payment/update", {
+                        method: "POST",
+                        redirect: "error",
+                        signal: signal,
+                        body: JSON.stringify({
+                            transaction: transaction,
+                            service: "color-swatch",
+                            value: JSON.stringify(self.value),
+                            url: location.href
+                        })
+                    }).then(function (response) {
+                        return onlyFetch.verifyStatus(response, token, "notPermitted");
+                    }).then(function (json) {
+                        return json.error ? Promise.reject(json) : json;
+                    }).then(function (obj) {
+                        self.timer = setTimeout(function () {
+                            generateLayout(obj, token);
+                            delete ui.inProgress;
+                        }, 2500 - (+new Date - startTime) || 0);
+                    }).catch(function (err) {
+                        if (token === session) {
+                            onlyFetch.onError(locale.serverError, err);
+                        }
+                    });
+                });
+            } else {
+                console.warn("Incomplete submission");
+            }
+        };
+        self.addEvents.change = function (e) {
+            var el = e.target;
+
+            if (el.value) {
+                self.value[el.name] = el.value;
+            } else {
+                delete self.value[el.name];
             }
 
-            onlyFetch(function (signal, token) {
-                ui.inProgress = true;
+            // Sort object by key
+            self.value = Object.keys(self.value).sort().reduce(function (result, key) {
+                result[key] = self.value[key];
 
-                fetch(endpoint + "/payment/update", {
-                    method: "POST",
-                    redirect: "error",
-                    signal: signal,
-                    body: JSON.stringify({
-                        transaction: transaction,
-                        value: value,
-                        url: location.href
-                    })
-                }).then(function (response) {
-                    return onlyFetch.verifyStatus(response, token, "notPermitted");
-                }).then(function (json) {
-                    return json.error ? Promise.reject(json) : json;
-                }).then(function (obj) {
-                    self.timer = setTimeout(function () {
-                        generateLayout(obj, token);
-                        delete ui.inProgress;
-                    }, 2500 - (+new Date - startTime) || 0);
-                }).catch(function (err) {
-                    if (token === session) {
-                        onlyFetch.onError(locale.serverError, err);
-                    }
-                });
-            });
+                return result;
+            }, {});
+
+            if (el.value) {
+                el.classList.remove("error");
+            }
+
+            console.log(self.value);
         };
 
         (function () {
@@ -627,8 +544,7 @@ ui.order = ui.legacy(function () {
 
         return self.video +
             "<div class=content id=content dir=rtl>" +
-            "    <h1 id=title>" + ui.d.title + "</h1>" +
-            "    <div class=\"figure form qa\">" + self.label(self.template, false) + "</div>" +
+            "    <h1 id=title>" + ui.d.title + "</h1>" + self.form(self.template) +
             "    <div class=\"figure footer\">" +
             "        <div class=notice>לא בטוחה לאלו צבעים את שייכת?<br>שלחי לי תמונת פנים ברורה שצולמה באור היום לוואטסאפ" +
             " <a href=\"https://wa.me/972585800020\" target=_blank dir=auto>0585800020</a> או למייל" +
