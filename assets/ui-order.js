@@ -393,7 +393,7 @@ ui.order = ui.legacy(function () {
             result += "</ul>" +
                 "<button>" + self.button + "</button>";
 
-            return "<form class=\"form cs\" name=cs method=post novalidate>" + result + "</form>";
+            return "<form class=\"unselectable form cs\" name=cs method=post novalidate>" + result + "</form>";
         };
         self.addEvents = function () {
             ui.d.forms.cs.addEventListener("submit", self.addEvents.submit);
