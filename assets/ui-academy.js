@@ -1011,7 +1011,7 @@ ui.academy = {
                             return "invertedTriangle";
                         } else if (A < B && !comp(A, B)) {
                             return "triangle";
-                        } else if (comp(A, B) && (A < C && !comp(A, C) || B < C && !comp(B, C))) {
+                        } else if (comp(A, B) && (A < C && !comp(A, C) || B < C && !comp(B, C)) || C > D) {
                             return "rounded";
                         }
 
