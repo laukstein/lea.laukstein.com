@@ -141,8 +141,8 @@ ui.academy = {
                                 title: "מעוגל",
                                 value: "1JWcPbgHI6uQRGVpr82zg5l79yDYYp39P"
                             },
-                            square: {
-                                title: "מרובע",
+                            rectangle: {
+                                title: "ישר",
                                 value: "1hRie1lANjULGnlUDrnUVPYjCxrD4n6Ws"
                             }
                         }
@@ -1004,7 +1004,7 @@ ui.academy = {
                             status;
 
                         if (comp(A, B) && comp(A, C) && comp(A, D) && comp(B, C) && comp(B, D) && comp(C, D)) {
-                            return "square";
+                            return "rectangle";
                         } else if (comp(A, B) && (A > C && !comp(A, C) || B > C && !comp(B, C))) {
                             return "hourglass";
                         } else if ((A > B && !comp(A, B)) || (D > B && !comp(D, B))) {
