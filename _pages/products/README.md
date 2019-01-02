@@ -31,13 +31,8 @@ YAML schema
           text
     payment-details
     button:
-        - pelepay
+        - orderid
           title
-        - paypal
-          title
-        - type: subscribe
-          title
-          url
         - more: <html>
     css: |
         multi-line css

@@ -9,10 +9,10 @@ ui.success = (function () {
             locale = init.l10n[hash.utm_source];
 
             if (locale) {
-                if (hash.utm_campaign) {
+                if (hash.utm_campaign && locale[hash.utm_campaign]) {
                     locale = locale[hash.utm_campaign];
                 } else {
-                    locale = init.l10n[hash.utm_source].default;
+                    locale = locale.default;
                 }
             }
         }
@@ -44,9 +44,8 @@ ui.success = (function () {
         // Strings https://docs.google.com/spreadsheets/d/1wsVz9kItQUj-taqEil9wRLJJ7kGqxDeWRgKYSjnThy0
         default: "ההרשמה הסתיימה בהצלחה",
         products: {
-            default: "ההרשמה התבצע בהצלחה, תתקשרי כדי לתאם פגישה 058-5800020",
-            diy: "ההרשמה הסתיימה בהצלחה, תכף תקבלי מייל עם כל הפרטים",
-            shopping: "התשלום בוצע בהצלחה"
+            default: "ההרשמה התבצע בהצלחה, תתקשרי כדי לתאם פגישה <a href=\"tel:0585800020\">058-5800020</a>",
+            diy: "ההרשמה הסתיימה בהצלחה, תכף תקבלי מייל עם כל הפרטים"
         },
         subscribe: {
             default: "המדריך כבר בדרך אליך"

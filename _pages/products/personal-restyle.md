@@ -26,6 +26,5 @@ takeWith: |
     * תיעוד התהליך לשיחזור קל של השילובים המוצלחים
     * רשימת פריטים מומלצים להשלמת תשעה פריטי החובה
 button:
-    - pelepay: FTh8zYah8klry1OczCSn28wmQ%2f9te0dw%2b5kqU7gofrNusiy0YayK3qrS87H1K8kpbe9n8WZHBFPH8p7TjtNnqD4NBXA3avOejJceYG3osRz65XvkrJcYQ%2b2ob4o8JDRH
-      title: לתשלום 650 ₪
+    - orderid: 2FFC6801
 ---
