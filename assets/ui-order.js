@@ -160,6 +160,8 @@ ui.order = ui.legacy(function () {
         };
 
         if (location.search) {
+            console.log(location.href);
+
             hash = ui.hash({hash: location.search});
             urlParams = [
                 "orderid",

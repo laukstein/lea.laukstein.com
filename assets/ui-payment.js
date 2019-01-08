@@ -32,6 +32,8 @@ ui.payment = ui.legacy(function () {
 
         if (history.replaceState) {
             if (location.search) {
+                console.log(location.href);
+
                 // Remove query string from URL
                 history.replaceState("", ui.d.title, location.pathname + location.hash);
             }
