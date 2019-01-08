@@ -903,5 +903,58 @@ window.ui = {
         });
     }
 };
+ui.cookie = (function () {
+    "use strict";
+
+    var res = function (obj /* or key */, expires) {
+        // obj => {key: value} or key/s
+        // expires => N seconds, default 1 day
+
+        if (typeof obj === "object" && !Array.isArray(obj)) {
+            var key,
+                val;
+
+            expires = ui.isNumber(expires) ? expires : 86400;
+            expires = new Date(new Date() * 1 + expires * 1000).toUTCString();
+
+            for (key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    val = typeof obj[key] === "object" ? JSON.stringify(obj[key]) : obj[key];
+                    ui.d.cookie = encodeURIComponent(key) + "=" +
+                        encodeURIComponent(val) + ";expires=" + expires + ";secure;samesite=strict";
+                }
+            }
+        }
+
+        return ui.hash({
+            getCookie: true,
+            param: typeof obj === "string" || Array.isArray(obj) ? obj : undefined
+        });
+    };
+
+    res.remove = function (key) {
+        var obj = {};
+
+        if (key) {
+            if (Array.isArray(key)) {
+                key.forEach(function (pair) {
+                    obj[pair] = "";
+                });
+            } else {
+                obj[key] = "";
+            }
+        } else {
+            key = ui.d.cookie.split("; ");
+
+            key.forEach(function (pair) {
+                obj[pair.split(/\x3D(.+)/, 1)[0]] = "";
+            });
+        }
+
+        return ui.cookie(obj, -1);
+    };
+
+    return res;
+}());
 
 ui.init();
