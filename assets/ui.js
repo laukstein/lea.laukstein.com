@@ -436,13 +436,18 @@ window.ui = {
             return false;
         }
     },
-    hash: function (options /* param */) {
+    hash: function (opt /* param */) {
         "use strict";
 
-        options = typeof options === "string" ? {param: options} : options || {};
-        options.hash = typeof options.hash === "string" ? options.hash : location.hash;
+        // opt => key | hash, param, getCookie
+        opt = typeof opt === "string" || Array.isArray(opt) ? {param: opt} : opt || {};
 
-        var arr = options.hash.replace(/^\??#?!?/, "").split(/\?|#|&/),
+        if (typeof opt.hash !== "string") {
+            opt.hash = opt.getCookie ? ui.d.cookie : location.hash;
+        }
+
+        var arr = opt.getCookie ? opt.hash.split("; ") :
+                opt.hash.replace(/^\??#?!?/, "").split(/\?|#|&/),
             obj = {},
             pair,
             i;
@@ -452,14 +457,30 @@ window.ui = {
                 pair = arr[i].split(/\x3D(.+)/, 2);
 
                 if (pair[0] && !obj.hasOwnProperty(pair[0])) {
-                    obj[pair[0]] = this.isNumber(pair[1]) ? Number(pair[1]) :
+                    pair[0] = decodeURIComponent(pair[0]);
+
+                    if (this.isNumber(pair[1])) {
+                        obj[pair[0]] = Number(pair[1]);
+                    } else {
                         // Percent-decoding https://github.com/MithrilJS/mithril.js/issues/2060
-                        pair[1] && pair[1].replace(/(?:%[a-f0-9]+)+/gim, decodeURIComponent);
+                        pair[1] = pair[1] && pair[1].replace(/(?:%[a-f0-9]+)+/gim, decodeURIComponent);
+
+                        if (pair[1] && this.isObj(pair[1])) {
+                            pair[1] = JSON.parse(pair[1]);
+                        }
+
+                        obj[pair[0]] = pair[1];
+                    }
                 }
             }
         }
+        if (Array.isArray(opt.param)) {
+            return this.filterObj(obj, function (key) {
+                return opt.param.includes(key);
+            });
+        }
 
-        return options.param ? obj[options.param] : obj;
+        return opt.param ? obj[opt.param] : obj;
     },
     serialize: function (obj, options) {
         "use strict";
