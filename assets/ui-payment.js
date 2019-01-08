@@ -111,8 +111,9 @@ ui.payment = ui.legacy(function () {
                         return Promise.reject(new Error("serverError"));
                     } else if (paymentToken === token) {
                         ui.payment = obj;
-                        // Use to prevent fraud activity
-                        sessionStorage.paymentToken = paymentToken;
+
+                        // Use to prevent fraud activity, token with 2 days expiration
+                        ui.cookie({paymentToken: paymentToken}, 172800);
 
                         Object.keys(obj).forEach(function (key) {
                             var input = ui.d.createElement("input");

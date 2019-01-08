@@ -212,7 +212,7 @@ ui.order = ui.legacy(function () {
             if (hash.transaction) {
                 shortURL(btoa(hash.transaction));
             }
-            if (hash.token === sessionStorage.paymentToken && hash.orderid && hash.email && hash.transaction) {
+            if (hash.token === ui.cookie("paymentToken") && hash.orderid && hash.email && hash.transaction) {
                 hash = ui.filterObj(hash, function (key) {
                     return urlParams.includes(key);
                 });
