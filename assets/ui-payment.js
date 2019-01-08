@@ -38,6 +38,10 @@ ui.payment = ui.legacy(function () {
                 history.replaceState("", ui.d.title, location.pathname + location.hash);
             }
             if (orderHash && orderHash !== location.hash.substring(1)) {
+                if (!location.search) {
+                    console.log(location.href);
+                }
+
                 // Hide private details from URL
                 history.replaceState("", ui.d.title, location.pathname + "#" + orderHash);
             }
