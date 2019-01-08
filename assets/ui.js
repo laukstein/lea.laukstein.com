@@ -947,7 +947,7 @@ ui.cookie = (function () {
             key = ui.d.cookie.split("; ");
 
             key.forEach(function (pair) {
-                obj[pair.split(/\x3D(.+)/, 1)[0]] = "";
+                obj[decodeURIComponent(pair.split(/\x3D(.+)/, 1)[0])] = "";
             });
         }
 
