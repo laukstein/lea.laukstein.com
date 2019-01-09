@@ -42,6 +42,7 @@ exclude:
     - Gemfile.lock
     - LICENSE
     - node_modules
+    - package.json
     - vendor/*
     - /*README.md
     - .*
