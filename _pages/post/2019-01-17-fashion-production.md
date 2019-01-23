@@ -7,11 +7,12 @@ image:
     width: 360
     class: flow
 imageList:
-     - 2019-01-17-fashion-production-1a.jpg
-     - 2019-01-17-fashion-production-1b.jpg
-      width: 359
-      className: flow auto-width
-      label: "צילום: שלומית טויזר"
+    - image:
+      - 2019-01-17-fashion-production-1a.jpg
+      - 2019-01-17-fashion-production-1b.jpg
+    width: 359
+    className: flow auto-width
+    label: "צילום: שלומית טויזר"
 ---
 
 כשרונית טורוול ביקשה ממני ביחד איתה להרים פרויקט חדש, התרגשתי מאוד. היא תאפר, אני אלביש, ונתעד הכל. אני עושה כזה דבר בעצם בפעם הראשונה, והחלטתי ללכת על זה עד הסוף - להלביש את הדוגמנית הנבחרת מא' ועד ת'.
