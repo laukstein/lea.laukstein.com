@@ -174,7 +174,7 @@ if page.jsonld == nil %}{%
         "@type": "WebPage",
         "@id": "{{ page.url | absolute_url | split: '?' | first }}"
     },
-    "headline": "{{ title }}",{% if image %}
+    "headline": "{{ title | escape }}",{% if image %}
     "image": "{{ image }}",{% endif %}
     "datePublished": "{{ page.date | replace: ' ', 'T' }}",
     "dateModified": "{{ page.date | replace: ' ', 'T' }}",
@@ -184,7 +184,7 @@ if page.jsonld == nil %}{%
     },
     "publisher": {
         "@type": "Organization",
-        "name": "{{ site.title }}",
+        "name": "{{ site.title | escape }}",
         "logo": {
             "@type": "ImageObject",
             "url": "{{ site.url | append: site.assets | append: "hotlink-ok/logo.jpg" }}",
@@ -201,7 +201,7 @@ if page.jsonld == nil %}{%
 {
     "@context": "http://schema.org",
     "@type": "Organization",
-    "name": "{{ site.title }}",
+    "name": "{{ site.title | escape }}",
     "url": "{{ site.url }}",
     "email": "lea(at)laukstein.com",
     "logo": "{{ site.url | append: site.assets | append: "hotlink-ok/logo.jpg" }}",

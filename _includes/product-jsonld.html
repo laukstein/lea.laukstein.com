@@ -7,8 +7,8 @@ endif
 %}{
     "@context": "http://schema.org",
     "@type": {{ include.jsonldType | default: '"Product"' }},
-    "name": "{{ include.title }}",{% if include.description %}
-    "description": "{{ include.description }}",{% endif %}{% if include.image %}
+    "name": "{{ include.title | escape }}",{% if include.description %}
+    "description": "{{ include.description | escape }}",{% endif %}{% if include.image %}
     "image": "{{ include.image }}",{% endif %}{% if include.price %}
     "offers": {
         "@type": "Offer",
@@ -35,7 +35,7 @@ if include.breadcrumb && breadcrumb.size > 1 %},{
         "position": {{ position }},
         "item": {
             "@id": "{{ items[0] }}",
-            "name": "{{ items[1] }}"
+            "name": "{{ items[1] | escape }}"
         }
     }{% if position < breadcrumb.size %},{% endif %}{%
     endfor %}]
