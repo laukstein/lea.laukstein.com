@@ -69,8 +69,8 @@ window.ui = {
                         options.onError();
                     }
                 };
-                onReadyStateChange = function () {
-                    if (this.readyState === "complete" || this.readyState === "loaded") {
+                onReadyStateChange = function (e) {
+                    if (e.readyState === "complete" || e.readyState === "loaded") {
                         onLoad();
                     }
                 };
