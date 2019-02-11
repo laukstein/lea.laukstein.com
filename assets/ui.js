@@ -120,29 +120,44 @@ window.ui = {
             });
 
             if (!window.FS) {
-                this.asyncScript("https://www.fullstory.com/s/fs.js", {
+                this.asyncScript("https://fullstory.com/s/fs.js", {
                     onStart: function () {
                         window._fs_debug = false; // eslint-disable-line
-                        window._fs_host = "www.fullstory.com"; // eslint-disable-line
+                        window._fs_host = "fullstory.com"; // eslint-disable-line
                         window._fs_org = "3YG86"; // eslint-disable-line
                         window._fs_namespace = "FS"; // eslint-disable-line
-                        var g = window[window._fs_namespace || "FS"] = function (a, b) { // eslint-disable-line
+                        var g = window[window._fs_namespace] = function (a, b, s) { // eslint-disable-line
                             if (g.q) {
-                                g.q.push([a, b]);
+                                g.q.push([a, b, s]);
                             } else if (g._api) {
-                                g._api(a, b);
+                                g._api(a, b, s);
                             }
                         };
                         g.q = [];
-                        g.setUserVars = function (v) {
-                            g("user", v);
+                        g.setUserVars = function (v, s) {
+                            g("user", v, s);
                         };
-                        g.identify = function (i, v) {
-                            g("user", {uid: i});
+                        g.identify = function (i, v, s) {
+                            g("user", {uid: i}, s);
 
                             if (v) {
-                                g.setUserVars(v);
+                                g("user", v, s);
                             }
+                        };
+                        g.event = function (i, v, s) {
+                            g("event", {
+                                n: i,
+                                p: v
+                            }, s);
+                        };
+                        g.shutdown = function () {
+                            g("rec", false);
+                        };
+                        g.restart = function () {
+                            g("rec", true);
+                        };
+                        g.consent = function (a) {
+                            g("consent", !arguments.length || a);
                         };
                         g.identifyAccount = function (i, v) {
                             o = "account";
@@ -151,20 +166,7 @@ window.ui = {
 
                             g(o, v);
                         };
-                        g.clearUserCookie = function (c, d, i) {
-                            if (!c || ui.d.cookie.match("fs_uid=[`;`]*`[`;`]*`[`;`]*`")) {
-                                d = n.domain;
-
-                                while (1) { // eslint-disable-line
-                                    n.cookie = "fs_uid=;domain=" + d + ";path=/;expires=" + new Date(0).toUTCString();
-                                    i = d.indexOf(".");
-
-                                    if (i < 0) break;
-
-                                    d = d.slice(i + 1);
-                                }
-                            }
-                        };
+                        g.clearUserCookie = function () {}; // eslint-disable-line
                     },
                     onSuccess: function () {
                         ui.identify.fs();
