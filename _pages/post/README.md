@@ -15,3 +15,5 @@ YAML schema
     button:
         title
         url
+
+Fit image in 960px width when landscape, 540px height when portrait.
