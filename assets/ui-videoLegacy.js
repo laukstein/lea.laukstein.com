@@ -110,6 +110,11 @@ ui.videoLegacy = {
         "720p": "5ipm9ie711znqbt",
         image: "jkd3x3merwqtl6i"
     },
+    Bq09Vz70xVo: {
+        "360p": "i1rx2xp7eo6puxt",
+        "720p": "k37hsm9jdjc0tp1",
+        image: "knfw9oeys5e6pae"
+    },
     bwOw2KHq7GE: {
         "360p": "1xguaolaot76qme",
         "720p": "xagc6optdb9ebk0",
@@ -119,6 +124,11 @@ ui.videoLegacy = {
         "360p": "fn0craaqpgiudj6",
         "720p": "zeba1jill444irn",
         image: "x6dkboqfhgdtpny"
+    },
+    cKrSFnEt0_8: {
+        "360p": "u0pr1shr15fa1m1",
+        "720p": "milwg3f8qbxjzod",
+        image: "kamk3cr6nztsfyk"
     },
     ddxWJ4NxyDY: {
         "360p": "lx0kjxkmpygejuc",
