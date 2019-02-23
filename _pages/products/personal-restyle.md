@@ -7,7 +7,7 @@ title: מפגש ארון
 permalink: /restyle
 redirect_from: /closet
 video: ZtIF83HYcOY
-price: 650
+price: 750
 extra: ליווי בואטסאפ חינם ללא הגבלה
 location: אצלך בבית
 goals: |
