@@ -8,11 +8,6 @@ ui.videoLegacy = {
         "720p": "a7xa5t31txno9e4",
         image: "eq1ahj30hq8oe0d"
     },
-    _p3HwrkRk3A: {
-        "360p": "uajnetp41452y0p",
-        "720p": "2ldmvifgwldg1pn",
-        image: "k0f9z5e9p733fib"
-    },
     "_VYx-UC-VqU": {
         academy: true,
         "360p": "j1hid2al98mr6wk",
@@ -124,6 +119,11 @@ ui.videoLegacy = {
         "360p": "fn0craaqpgiudj6",
         "720p": "zeba1jill444irn",
         image: "x6dkboqfhgdtpny"
+    },
+    Cjc17QOoTog: {
+        "360p": "wmhzndvcs717wdl",
+        "720p": "fblzh9kok9y7q41",
+        image: "l7871vzjr93td6d"
     },
     cKrSFnEt0_8: {
         "360p": "u0pr1shr15fa1m1",
@@ -240,11 +240,6 @@ ui.videoLegacy = {
         "720p": "62yfmgmx9sno58x",
         image: "w1r9k1jo1bhtzgp"
     },
-    "lFkh-kMy-6Y": {
-        "360p": "lzu9ujvp3v1t1pg",
-        "720p": "luvsvbnj7tbmwhg",
-        image: "l7871vzjr93td6d"
-    },
     ljyiHCxHGfY: {
         "360p": "yeh55y5dmugd0kr",
         "720p": "yi79jb7rm2ok6aa",
@@ -291,6 +286,11 @@ ui.videoLegacy = {
         "360p": "vrkw8ez1pvs7d8u",
         "720p": "c635y1lfymr80h1",
         image: "v3p6d1oko500chq"
+    },
+    "qUwVyb18N-E": {
+        "360p": "uufx31fptap76dk",
+        "720p": "itzqcjop0c22hu0",
+        image: "k0f9z5e9p733fib"
     },
     R1xR3ENkCDQ: {
         "360p": "5anhle0k9bsxvdp",

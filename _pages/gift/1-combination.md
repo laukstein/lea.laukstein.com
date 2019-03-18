@@ -5,7 +5,7 @@ id: diagnostic
 private: true
 title: להתלבש לפי הפנימיות והחיצוניות שלך
 description: מפגש אבחון על הקפה במשך שעה
-video: _p3HwrkRk3A
+video: qUwVyb18N-E
 button:
     - title: אני רוצה לדעת מה הצבע שלי
       url: /color-swatch?campaign=newsubscriber

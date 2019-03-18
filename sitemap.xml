@@ -10,10 +10,10 @@ layout: null
         <loc>{{ site.url }}/</loc>
         <priority>1.0</priority>
         <video:video>
-            <video:thumbnail_loc>https://img.youtube.com/vi/lFkh-kMy-6Y/0.jpg</video:thumbnail_loc>
+            <video:thumbnail_loc>https://img.youtube.com/vi/Cjc17QOoTog/0.jpg</video:thumbnail_loc>
             <video:title>{{ site.title }}</video:title>
             <video:description>{{ site.description }}</video:description>
-            <video:player_loc allow_embed="yes" autoplay="ap=1">https://www.youtube.com/v/lFkh-kMy-6Y</video:player_loc>
+            <video:player_loc allow_embed="yes" autoplay="ap=1">https://www.youtube.com/v/Cjc17QOoTog</video:player_loc>
         </video:video>
     </url>{%
     assign pages=site.pages | sort: "date" | sort: "order" %}{%
