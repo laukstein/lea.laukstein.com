@@ -51,6 +51,31 @@ ui.videos = (function () {
         threshold: 0.01
     });
 
+    function sortProperties(obj, sortedByKey) {
+        // Ref https://gist.github.com/umidjons/9614157#gistcomment-1774654
+        var sortable = [],
+            result = {},
+            key;
+
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                sortable.push([key, obj[key]]);
+            }
+        }
+
+        sortable.sort(function (a, b) {
+            var x = a[1][sortedByKey],
+                y = b[1][sortedByKey];
+
+            return x < y ? 1 : x > y ? -1 : 0;
+        });
+
+        sortable.forEach(function (item) {
+            result[item[0]] = item[1];
+        });
+
+        return result;
+    }
     function cacheAge(response) {
         var start,
             end;
@@ -69,23 +94,69 @@ ui.videos = (function () {
 
         return Math.abs(Math.floor((end - start) / 8.64e+7));
     }
-    function generateHTML(arr, url) {
+    function generateHTML(items, url) {
         var result = "",
+            sortedItems,
             isStopLoop,
             obj,
             i;
 
-        for (i = 0; !isStopLoop && i < arr.length; i += 1) {
-            obj = arr[i].snippet;
+        if (ui.videos.legacy) {
+            if (url) {
+                // Allow access all except "academy" videos
+                if (items[url] && !items[url].academy) {
+                    obj = items[url];
+                    obj.resourceId = {
+                        videoId: url
+                    };
+                    result += generateHTML.loop(obj, "video");
+                }
+            } else {
+                // List only "public" videos
+                sortedItems = sortProperties(ui.filterObj(items, function (key, item) {
+                    return item[key].public;
+                }), "publishedAt");
 
-            if (obj) {
-                if (url) {
-                    if (obj.resourceId && obj.resourceId.videoId === url) {
-                        result += generateHTML.loop(obj, "video");
-                        isStopLoop = true;
-                    }
-                } else {
+                Object.keys(sortedItems).forEach(function (key) {
+                    obj = sortedItems[key];
+                    obj.resourceId = {
+                        videoId: key
+                    };
                     result += generateHTML.loop(obj, "image");
+                });
+            }
+        } else {
+            for (i = 0; !isStopLoop && i < items.length; i += 1) {
+                obj = items[i].snippet;
+
+                if (obj) {
+                    if (url) {
+                        if (obj.resourceId && obj.resourceId.videoId === url) {
+                            result += generateHTML.loop(obj, "video");
+                            isStopLoop = true;
+                        } else if (ui.videosList && ui.videosList[url] && !ui.videosList[url].academy) {
+                            // Convert to YouTube playlistItems.json format
+                            obj = ui.videosList[url];
+                            result += generateHTML([{
+                                snippet: {
+                                    resourceId: {
+                                        videoId: url
+                                    },
+                                    thumbnails: {
+                                        maxres: {
+                                            url: obj.image
+                                        }
+                                    },
+                                    title: obj.title,
+                                    description: obj.description,
+                                    publishedAt: obj.publishedAt
+                                }
+                            }], url);
+                            isStopLoop = true;
+                        }
+                    } else {
+                        result += generateHTML.loop(obj, "image");
+                    }
                 }
             }
         }
@@ -93,6 +164,10 @@ ui.videos = (function () {
         return result;
     }
     generateHTML.safe = function (str) {
+        if (str === undefined) {
+            return "";
+        }
+
         return String(str).replace(/&/g, "&amp;").replace(/"/g, "&quot;")
             .replace(/'/g, "&apos;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     };
@@ -152,7 +227,7 @@ ui.videos = (function () {
             "</li>" : "";
     };
     generateHTML.video = function (obj) {
-        ui.d.title = obj.title;
+        ui.d.title = obj.title || "סרטון";
 
         return "<article class=\"box card\" dir=ltr>" +
             "    <div class=video>" +
@@ -179,12 +254,9 @@ ui.videos = (function () {
         url = url && url.substring(1);
         response = ui.videos || response;
 
-        if (response && Array.isArray(response.items)) {
+        if (response && typeof response.items === "object") {
             result = generateHTML(response.items, url);
 
-            if (url && !result) {
-                result = generateHTML(request.private, url);
-            }
             if (result) {
                 if (url) {
                     response.scrollTop = ui.d.documentElement.scrollTop;
@@ -247,41 +319,8 @@ ui.videos = (function () {
             return response.json();
         }).then(function (response) {
             return request.getData(response, true);
-        }).catch(function () {
-            return /^https?:\/\/.*/.test(url) ? request.call(ui.video.playlistLocalLink) : request.error();
-        });
+        }).catch(request.local);
     };
-    request.private = (function () {
-        var data = {
-                MJkf4wLvmd4: {
-                    image: "https://i.ytimg.com/vi/MJkf4wLvmd4/maxresdefault.jpg",
-                    title: "איך להכניס יותר צבע בלבוש שלך?",
-                    description: "רוצה לדעת אילו צבעים מתאימים לך - https://lea.laukstein.com/color-swatch?campaign=youtube",
-                    date: "2018-11-03T21:58:00.000Z"
-                }
-            },
-            generatedData = [];
-
-        Object.keys(data).forEach(function (key) {
-            generatedData.push({
-                snippet: {
-                    resourceId: {
-                        videoId: key
-                    },
-                    thumbnails: {
-                        maxres: {
-                            url: data[key].image
-                        }
-                    },
-                    title: data[key].title,
-                    description: data[key].description,
-                    publishedAt: data[key].date
-                }
-            });
-        });
-
-        return generatedData;
-    }());
     request.success = function (response) {
         response = response || {};
 
@@ -341,13 +380,38 @@ ui.videos = (function () {
 
         return this.call(ui.video.playlistLink);
     };
+    request.local = function () {
+        if (!sessionStorage["ui.videosList"] && ui.videosList) {
+            sessionStorage["ui.videosList"] = JSON.stringify(ui.videosList);
+        }
+
+        return request.legacy();
+    };
+    request.legacy = function () {
+        if (typeof ui.videosList === "object" && Object.keys(ui.videosList).length) {
+            // Workaround ISP Etrog blocking YouTube and local playlistItems.json due to containing YouTube URLs
+            ui.videos = {
+                legacy: true,
+                items: ui.videosList
+            };
+
+            generateHTML.paintUI(ui.videos);
+            ui.w.addEventListener("hashchange", generateHTML.paintUI);
+
+            if (history.scrollRestoration) {
+                history.scrollRestoration = "manual";
+            }
+        } else {
+            return request.error();
+        }
+    };
 
     if (container) {
         ui.legacy(function () {
             if (localStorage.videos) {
                 request.getData(localStorage.videos);
             } else {
-                request.error();
+                request.legacy();
             }
         });
     } else {

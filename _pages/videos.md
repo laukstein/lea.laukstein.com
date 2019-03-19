@@ -6,6 +6,7 @@ order: 2
 title: סרטונים
 script:
     - ui-comment.js
+    - ui-videosList.js
     - ui-videos.js
 css: |
     .space {

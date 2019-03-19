@@ -537,11 +537,11 @@ window.ui = {
     },
     video: {
         playlistLink: "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUNNsgimJtU1q1LUMVsq44Dg&maxResults=50&key=AIzaSyBt0-e3Ups6i4p8GQs811EarYbpMiPfxg4",
-        playlistLocalLink: "/assets/playlistItems.json",
+        playlistLocal: "/assets/ui-videosList.js",
         getData: function (id) {
             "use strict";
 
-            var obj = ui.videoLegacy && ui.videoLegacy[id] || {},
+            var obj = ui.videosList && ui.videosList[id] || {},
                 res = {},
                 prop;
 
@@ -627,13 +627,13 @@ window.ui = {
                         return new Plyr(video, options); // eslint-disable-line new-cap
                     });
 
-                    delete ui.video.youtubeSupportProgress;
+                    delete ui.video.youtubeSupportInProgress;
                 };
 
                 if (ui.w.Plyr) {
                     success();
-                } else if (!self.youtubeSupportProgress) {
-                    self.youtubeSupportProgress = true;
+                } else if (!self.youtubeSupportInProgress) {
+                    self.youtubeSupportInProgress = true;
 
                     ui.asyncScript("/assets/plyr.polyfilled.min.js", success);
                 }
@@ -648,19 +648,19 @@ window.ui = {
             loadImage.callback = function () {
                 self.youtubeSupport = false;
 
-                if (ui.videoLegacy) {
-                    sessionStorage["ui.videoLegacy"] = JSON.stringify(ui.videoLegacy);
+                if (ui.videosList) {
+                    sessionStorage["ui.videosList"] = JSON.stringify(ui.videosList);
                 } else {
                     try {
-                        ui.videoLegacy = JSON.parse(sessionStorage["ui.videoLegacy"]);
+                        ui.videosList = JSON.parse(sessionStorage["ui.videosList"]);
                     } catch (e) {
-                        ui.videoLegacy = {};
+                        ui.videosList = {};
                     }
                 }
 
                 self.youtubeConvert();
 
-                if (!ui.w.Plyr && !self.youtubeSupportProgress) {
+                if (!ui.w.Plyr && !self.youtubeSupportInProgress) {
                     self.applyPlyr();
 
                     var el = ui.d.createElement("link");
@@ -671,10 +671,7 @@ window.ui = {
                     ui.d.body.appendChild(el);
                 }
 
-                // Don't apply too many FS.setUserVars until FullStory supports UserVars removal
-                // if (!self.youtubeSupport && ui.w.FS && FS.setUserVars) {
-                //     FS.setUserVars({youTube_bool: false}); // eslint-disable-line
-                // }
+                loadImage.legacyCallback();
 
                 return self.youtubeSupport;
             };
@@ -684,9 +681,7 @@ window.ui = {
                 }
             };
 
-            if (sessionStorage["ui.videoLegacy"] && sessionStorage.youtubeSupport === "false") {
-                loadImage.legacyCallback();
-
+            if (sessionStorage["ui.videosList"] && sessionStorage.isYouTubeSupported === "false") {
                 return loadImage.callback();
             }
 
@@ -699,10 +694,16 @@ window.ui = {
                 image.src = url;
             };
             loadImage.result = function (isLoaded) {
-                sessionStorage.youtubeSupport = !!isLoaded;
+                sessionStorage.isYouTubeSupported = !!isLoaded;
 
+                if (!isLoaded) {
+                    console.warn("YouTube blocked");
+                }
+                if (ui.w.FS && FS.setUserVars) {
+                    FS.setUserVars({isYouTubeSupported_bool: !!isLoaded}); // eslint-disable-line
+                }
                 if (!isLoaded && self.youtubeSupport) {
-                    ui.asyncScript("/assets/ui-videoLegacy.js", this.callback);
+                    ui.asyncScript(self.playlistLocal, this.callback);
                 }
             };
             loadImage.error = function (finalCall) {
@@ -711,7 +712,6 @@ window.ui = {
                     loadImage.legacy(true);
                 }
 
-                // console.log(e.target.src);
                 loadImage.result(false);
             };
             loadImage.success = function (e) {
@@ -741,7 +741,7 @@ window.ui = {
                         this.legacyCallback();
                     }
                 } else {
-                    this.call = function (url, isFallback) {
+                    this.call = function (url) {
                         fetch(url).then(function (response) {
                             return response.json();
                         }).then(function (response) {
@@ -752,9 +752,9 @@ window.ui = {
                                 legacyCallback();
                             }
 
-                            return loadImage.result(!isFallback);
+                            return loadImage.result(true);
                         }).catch(function () {
-                            return /^https?:\/\/.*/.test(url) ? loadImage.call(self.playlistLocalLink, true) : !hasStatus && loadImage.error(true);
+                            return /^https?:\/\/.*/.test(url) ? loadImage.result() : !hasStatus && loadImage.error(true);
                         });
                     };
 
@@ -763,9 +763,9 @@ window.ui = {
             };
 
             loadImage.get("https://www.youtube.com/favicon.ico", function (e) {
-                // ISP Etrog <https://www.etrog.net.il> blocker will return 1x1px image
+                // ISP Etrog <https://www.etrog.net.il> blocker returns 1x1px image
                 if (e.target.naturalWidth > 1) {
-                    // Software Nativ <https://www.enativ.com> blocks www.googleapis.com API
+                    // Software Nativ <https://www.enativ.com> blocks www.googleapis.com API, returning warning HTML
                     loadImage.legacy();
                 } else {
                     loadImage.error();
@@ -858,54 +858,9 @@ window.ui = {
         } else {
             self.video.youtubeSupport(self.legacy.__runAwaitList);
         }
-    },
-    init: function () {
-        "use strict";
-
-        var self = this;
-
-        this.legacy(function () {
-            self.getUser();
-            self.analytics();
-
-            var opt = {
-                el: self.d.getElementById("bar-close")
-            };
-
-            if (opt.el) {
-                opt.event = self.w.PointerEvent ? "pointerdown" : navigator.maxTouchPoints > 0 ||
-                    (self.w.matchMedia ? self.w.matchMedia("(pointer: coarse)").matches : "ontouchstart" in self.w) ?
-                    "touchstart" : "mousedown";
-                opt.options = opt.event !== "mousedown" && (function () {
-                    // Resource http://tonsky.me/blog/chrome-intervention/
-                    // Spec issue https://github.com/whatwg/dom/issues/491
-                    var passiveSupported = false,
-                        options;
-
-                    try {
-                        options = Object.defineProperty({}, "passive", {
-                            get: function () {
-                                passiveSupported = true;
-
-                                return passiveSupported;
-                            }
-                        });
-
-                        addEventListener("test", options, options);
-                        removeEventListener("test", options, options);
-                    } catch (err) {
-                        passiveSupported = false;
-                    }
-
-                    return passiveSupported;
-                }()) ? {passive: true} : true;
-
-                opt.el.addEventListener(opt.event, opt.el.click, opt.options);
-            }
-        });
     }
 };
-ui.cookie = (function () {
+ui.cookie = (function (self) {
     "use strict";
 
     var res = function (obj /* or key */, expires) {
@@ -916,19 +871,19 @@ ui.cookie = (function () {
             var key,
                 val;
 
-            expires = ui.isNumber(expires) ? expires : 86400;
+            expires = self.isNumber(expires) ? expires : 86400;
             expires = new Date(new Date() * 1 + expires * 1000).toUTCString();
 
             for (key in obj) {
                 if (obj.hasOwnProperty(key)) {
                     val = typeof obj[key] === "object" ? JSON.stringify(obj[key]) : obj[key];
-                    ui.d.cookie = encodeURIComponent(key) + "=" +
+                    self.d.cookie = encodeURIComponent(key) + "=" +
                         encodeURIComponent(val) + ";expires=" + expires + ";secure;samesite=strict";
                 }
             }
         }
 
-        return ui.hash({
+        return self.hash({
             getCookie: true,
             param: typeof obj === "string" || Array.isArray(obj) ? obj : undefined
         });
@@ -946,17 +901,58 @@ ui.cookie = (function () {
                 obj[key] = "";
             }
         } else {
-            key = ui.d.cookie.split("; ");
+            key = self.d.cookie.split("; ");
 
             key.forEach(function (pair) {
                 obj[decodeURIComponent(pair.split(/\x3D(.+)/, 1)[0])] = "";
             });
         }
 
-        return ui.cookie(obj, -1);
+        return self.cookie(obj, -1);
     };
 
     return res;
-}());
+}(ui));
+ui.init = (function (self) {
+    "use strict";
 
-ui.init();
+    self.legacy(function () {
+        self.getUser();
+        self.analytics();
+
+        var opt = {
+            el: self.d.getElementById("bar-close")
+        };
+
+        if (opt.el) {
+            opt.event = self.w.PointerEvent ? "pointerdown" : navigator.maxTouchPoints > 0 ||
+                (self.w.matchMedia ? self.w.matchMedia("(pointer: coarse)").matches : "ontouchstart" in self.w) ?
+                "touchstart" : "mousedown";
+            opt.options = opt.event !== "mousedown" && (function () {
+                // Resource http://tonsky.me/blog/chrome-intervention/
+                // Spec issue https://github.com/whatwg/dom/issues/491
+                var passiveSupported = false,
+                    options;
+
+                try {
+                    options = Object.defineProperty({}, "passive", {
+                        get: function () {
+                            passiveSupported = true;
+
+                            return passiveSupported;
+                        }
+                    });
+
+                    addEventListener("test", options, options);
+                    removeEventListener("test", options, options);
+                } catch (err) {
+                    passiveSupported = false;
+                }
+
+                return passiveSupported;
+            }()) ? {passive: true} : true;
+
+            opt.el.addEventListener(opt.event, opt.el.click, opt.options);
+        }
+    });
+}(ui));
