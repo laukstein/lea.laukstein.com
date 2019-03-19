@@ -13,7 +13,16 @@
         },
         "plugins": ["compat"],
         "settings": {
-            "polyfills": ["fetch", "intersectionobserver", "promises", "serviceworkers"]
+            "polyfills": [
+                "Array.from",
+                "fetch",
+                "history.scrollRestoration",
+                "IntersectionObserver",
+                "navigator.connection",
+                "navigator.maxTouchPoints",
+                "promises",
+                "serviceworkers"
+            ]
         },
         "rules": {
             "accessor-pairs": "error",
