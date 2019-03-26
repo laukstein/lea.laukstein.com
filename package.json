@@ -1,6 +1,9 @@
 {
     "name": "Lea STYLE",
     "private": true,
+    "homepage": "https://lea.laukstein.com",
+    "author": "Binyamin Laukstein",
+    "license": "CC BY-NC-ND 4.0",
     "browserslist": ["> 1%", "last 1 version"],
     "eslintConfig": {
         "env": {
@@ -166,7 +169,5 @@
             }
         ]
     },
-    "eslintIgnore": ["**/*.min.js"],
-    "author": "Binyamin Laukstein",
-    "license": "CC BY-NC-ND 4.0"
+    "eslintIgnore": ["**/*.min.js"]
 }
