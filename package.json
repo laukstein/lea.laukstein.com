@@ -1,5 +1,6 @@
 {
     "name": "Lea STYLE",
+    "private": true,
     "browserslist": ["> 1%", "last 1 version"],
     "eslintConfig": {
         "env": {
