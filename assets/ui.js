@@ -201,9 +201,9 @@ window.ui = {
             });
 
             // Sentry SDK https://docs.sentry.io/quickstart/?platform=browser
-            this.asyncScript("https://browser.sentry-cdn.com/4.6.5/bundle.min.js", {
+            this.asyncScript("https://browser.sentry-cdn.com/4.6.6/bundle.min.js", {
                 // Generator SRI hash https://www.srihash.org
-                integrity: "sha384-YglxbmfKMHIH+eDATXRzbR5MTJ3wh6jDiB2TjHWrNtTsHaXbhnwQ2tSZ+DtIfQBy",
+                integrity: "sha384-2Cv5k3R17ppwnY2sy1wy62XDBgKAAnCs1WTYWCl/vIuTpvhx2MlvreCjTVwTZ/Xj",
                 crossorigin: "anonymous",
                 onSuccess: function () {
                     if (window.Sentry && Sentry.init) {
