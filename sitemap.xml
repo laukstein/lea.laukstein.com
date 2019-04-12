@@ -10,7 +10,7 @@ layout: null
         <loc>{{ site.url }}/</loc>
         <priority>1.0</priority>
         <video:video>
-            <video:thumbnail_loc>https://img.youtube.com/vi/Cjc17QOoTog/0.jpg</video:thumbnail_loc>
+            <video:thumbnail_loc>https://i.ytimg.com/vi/Cjc17QOoTog/0.jpg</video:thumbnail_loc>
             <video:title>{{ site.title }}</video:title>
             <video:description>{{ site.description }}</video:description>
             <video:player_loc allow_embed="yes" autoplay="ap=1">https://www.youtube.com/v/Cjc17QOoTog</video:player_loc>
@@ -22,7 +22,7 @@ layout: null
             if page.category == null and page.title and page.order or page.url == '/privacy' or page.layout == 'products-compare' %}{%
                 assign relative_url = page.url | remove_first: '/' %}{%
                 capture image %}{%
-                    if page.video %}https://img.youtube.com/vi/{{ page.video }}/0.jpg{%
+                    if page.video %}https://i.ytimg.com/vi/{{ page.video }}/0.jpg{%
                     else %}{%
                         capture source %}{%
                             if page.layout == "post" %}{%
@@ -45,7 +45,7 @@ layout: null
             <image:loc>{{ image }}</image:loc>
         </image:image>{% endif %}{% if page.video %}
         <video:video>
-            <video:thumbnail_loc>https://img.youtube.com/vi/{{ page.video }}/0.jpg</video:thumbnail_loc>
+            <video:thumbnail_loc>https://i.ytimg.com/vi/{{ page.video }}/0.jpg</video:thumbnail_loc>
             <video:title>{{ page.title }}</video:title>
             <video:player_loc allow_embed="yes" autoplay="ap=1">https://www.youtube.com/v/{{ page.video }}</video:player_loc>
         </video:video>{% endif %}
@@ -54,7 +54,7 @@ layout: null
     for subpage in pages %}{%
         if subpage.private == null %}{% if subpage.category == relative_url or relative_url == "blog" and subpage.layout == "post" %}{%
             capture image %}{%
-                if subpage.video %}https://img.youtube.com/vi/{{ subpage.video }}/0.jpg{%
+                if subpage.video %}https://i.ytimg.com/vi/{{ subpage.video }}/0.jpg{%
                 else %}{%
                     capture source %}{%
                         if subpage.layout == "post" %}{%
@@ -78,7 +78,7 @@ layout: null
             <image:loc>{{ image }}</image:loc>
         </image:image>{% endif %}{% if subpage.video %}
         <video:video>
-            <video:thumbnail_loc>https://img.youtube.com/vi/{{ subpage.video }}/0.jpg</video:thumbnail_loc>
+            <video:thumbnail_loc>https://i.ytimg.com/vi/{{ subpage.video }}/0.jpg</video:thumbnail_loc>
             <video:title>{{ subpage.title }}</video:title>
             <video:player_loc allow_embed="yes" autoplay="ap=1">https://www.youtube.com/v/{{ subpage.video }}</video:player_loc>
         </video:video>{% endif %}

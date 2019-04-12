@@ -747,7 +747,7 @@ ui.academy = {
         if (obj.value) {
             switch (obj.type) {
                 case "video":
-                    url = ui.video.youtubeSupport ? "https://img.youtube.com/vi/" + obj.value + "/maxresdefault.jpg" : ui.video.getData(obj.value).image;
+                    url = ui.video.youtubeSupport ? "https://i.ytimg.com/vi/" + obj.value + "/maxresdefault.jpg" : ui.video.getData(obj.value).image;
                     break;
                 case "document":
                 case "calculator":
