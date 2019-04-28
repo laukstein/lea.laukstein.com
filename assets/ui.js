@@ -202,9 +202,9 @@ window.ui = {
 
             // Sentry SDK https://docs.sentry.io/quickstart/?platform=browser
             // Latest version https://github.com/getsentry/sentry-javascript/releases
-            this.asyncScript("https://browser.sentry-cdn.com/5.1.0/bundle.min.js", {
+            this.asyncScript("https://browser.sentry-cdn.com/5.1.1/bundle.min.js", {
                 // Generator SRI hash https://www.srihash.org
-                integrity: "sha384-xTbANCE0PmEEKm8FbcF410tt93VUza59AVguNb2JsffjXKDxH4rh7HMeX4n7W9fU",
+                integrity: "sha384-0znzoqUbyftJkpWmb2rwYMxJPeLAtl8wmfD0G4i/CDmRyIfpdx3yOg7xt0Mf1B4w",
                 crossorigin: "anonymous",
                 onSuccess: function () {
                     if (window.Sentry && Sentry.init) {
