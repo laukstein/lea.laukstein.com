@@ -185,7 +185,7 @@ jsonld: |
         "@context": "http://schema.org",
         "@type": "Product",
         "name": "מדריך לארון מדוייק",
-        "image": "https://img.youtube.com/vi/$video/0.jpg",
+        "image": "https://i.ytimg.com/vi/$video/0.jpg",
         "description": "מדריך בעל שלושה סרטונים על יסודות הסטיילינג",
         "aggregateRating": {
             "@type": "AggregateRating",
