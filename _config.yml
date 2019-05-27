@@ -18,6 +18,7 @@ markdown: kramdown
 kramdown:
     input: GFM
     hard_wrap: true
+excerpt_separator: "\n"
 sass:
     sass_dir: assets
     style: compressed
