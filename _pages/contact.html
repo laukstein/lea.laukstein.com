@@ -72,7 +72,7 @@ css: |
                     for item in pages %}{%
                         if item.layout == "product" and item.group == group.name %}{%
                             capture option %}
-                    <option data-name={{ item.url | remove: "/" }}>{%
+                    <option data-name="{{ item.url | remove: "/" }}">{%
                                 if item.title-short %}{{ item.title-short }}{%
                                     else %}{{ item.title }}{%
                                 endif %}</option>{%
@@ -83,7 +83,7 @@ css: |
 
                     if list.size == 0 %}{%
                         capture option %}
-                    <option data-name={{ group.name | remove: "/" }}>{{ group.title }}</option>{%
+                    <option data-name="{{ group.name | remove: "/" }}">{{ group.title }}</option>{%
                         endcapture %}{%
                         assign list = list | push: option %}{%
                     endif %}{{ list | join: "" }}
