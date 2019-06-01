@@ -282,7 +282,7 @@ window.ui = {
                         obj.displayName = self.user.fullName;
                     }
                     if (self.user.phone) {
-                        obj.phone_str = self.user.phone; // eslint-disable-line
+                        obj.phone_str = String(self.user.phone); // eslint-disable-line
                     }
 
                     return obj;
