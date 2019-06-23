@@ -1,6 +1,3 @@
-/* eslint
-no-alert: 0 */
-
 ui.academy = {
     data: {
         interval: 7,
@@ -707,7 +704,7 @@ ui.academy = {
         result += "<ol class=sidenav dir=rtl>";
 
         for (session in obj) {
-            if (obj.hasOwnProperty(session)) {
+            if (Object.prototype.hasOwnProperty.call(obj, session)) {
                 date = this.date(obj[session].date);
                 result += "    <li" + (session === current ? " class=expand" : "") + ">" +
                     "<label" + (date.enabled ? this.events(session) : " disabled") + ">" +
@@ -719,7 +716,7 @@ ui.academy = {
                     result += "<ol>";
 
                     for (page in pages) {
-                        if (pages.hasOwnProperty(page)) {
+                        if (Object.prototype.hasOwnProperty.call(pages, page)) {
                             result += "    <li><a class=unselectable" + this.events(session, page) + ">" + pages[page].title.replace(/\n/g, " ") + "</a>";
                         }
                     }
@@ -807,7 +804,7 @@ ui.academy = {
                     result += "<ol>";
 
                     for (key in data.option) {
-                        if (data.option.hasOwnProperty(key)) {
+                        if (Object.prototype.hasOwnProperty.call(data.option, key)) {
                             result += label(data.option[key], index, true);
                         }
                     }
@@ -1303,7 +1300,7 @@ ui.academy = {
                         res += option(arr[i], data.option[arr[i]], data.showImage);
                     }
 
-                    if (!data.hasOwnProperty("option")) {
+                    if (!Object.prototype.hasOwnProperty.call(data, "option")) {
                         data.callback = group;
                         data.params = arguments;
                         data.id = self.uniqueID();
@@ -1351,7 +1348,7 @@ ui.academy = {
 
         if (obj.pages) {
             for (prop in obj.pages) {
-                if (obj.pages.hasOwnProperty(prop)) {
+                if (Object.prototype.hasOwnProperty.call(obj.pages, prop)) {
                     buttons += "<a class=button href=\"#session=" + ui.hash("session") + "&page=" + prop + "\" tabindex=0>" + obj.pages[prop].title + "</a> ";
                 }
             }

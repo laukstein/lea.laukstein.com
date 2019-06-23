@@ -1,4 +1,4 @@
-if (!Object.hasOwnProperty("assign")) {
+if (!Object.assign) {
     // IE legacy, resource https://github.com/rubennorte/es6-object-assign/blob/master/index.js
     Object.defineProperty(Object, "assign", {
         configurable: true,

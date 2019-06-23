@@ -254,10 +254,13 @@ ui.order = ui.legacy(function () {
     events.remind = function () {
         if (unfilledForm && events.remind.done !== transaction) {
             events.remind.done = transaction;
-            navigator.sendBeacon(endpoint + "/payment/reminder", JSON.stringify({
-                transaction: transaction,
-                url: location.href
-            }));
+
+            if (navigator.sendBeacon) {
+                navigator.sendBeacon(endpoint + "/payment/reminder", JSON.stringify({
+                    transaction: transaction,
+                    url: location.href
+                }));
+            }
         }
     };
     generateLayout = function (obj, token) {
@@ -375,14 +378,14 @@ ui.order = ui.legacy(function () {
             result += "<ul>";
 
             for (field in obj) {
-                if (obj.hasOwnProperty(field)) {
+                if (Object.prototype.hasOwnProperty.call(obj, field)) {
                     result += "<li>" +
                         "<h3>" + obj[field].title + "</h3>" +
                         "<select name=" + field + " required>" +
                         "    <option class=placeholder value=\"\">" + obj[field].placeholder + "</option>";
 
                     for (value in obj[field].option) {
-                        if (obj[field].option.hasOwnProperty(value)) {
+                        if (Object.prototype.hasOwnProperty.call(obj[field].option, value)) {
                             result += "    <option value=" + value + ">" + obj[field].option[value] + "</option>";
                         }
                     }

@@ -1,6 +1,3 @@
-/* eslint
-camelcase: 0 */
-
 ui.videosList = {
     _dohRGGGLmQ: {
         academy: true,

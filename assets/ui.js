@@ -29,7 +29,7 @@ window.ui = {
 
             if (Object.keys(params).length) {
                 for (key in params) {
-                    if (params.hasOwnProperty(key)) {
+                    if (Object.prototype.hasOwnProperty.call(params, key)) {
                         script.setAttribute(key, params[key]);
                     }
                 }
@@ -122,17 +122,18 @@ window.ui = {
             if (!window.FS) {
                 this.asyncScript("https://fullstory.com/s/fs.js", {
                     onStart: function () {
-                        window._fs_debug = false; // eslint-disable-line
-                        window._fs_host = "fullstory.com"; // eslint-disable-line
-                        window._fs_org = "3YG86"; // eslint-disable-line
-                        window._fs_namespace = "FS"; // eslint-disable-line
-                        var g = window[window._fs_namespace] = function (a, b, s) { // eslint-disable-line
+                        window._fs_debug = false;
+                        window._fs_host = "fullstory.com";
+                        window._fs_org = "3YG86";
+                        window._fs_namespace = "FS";
+                        var g = window[window._fs_namespace] = function (a, b, s) {
                             if (g.q) {
                                 g.q.push([a, b, s]);
                             } else if (g._api) {
                                 g._api(a, b, s);
                             }
                         };
+
                         g.q = [];
                         g.setUserVars = function (v, s) {
                             g("user", v, s);
@@ -166,7 +167,7 @@ window.ui = {
 
                             g(o, v);
                         };
-                        g.clearUserCookie = function () {}; // eslint-disable-line
+                        g.clearUserCookie = function () { /**/ };
                     },
                     onSuccess: function () {
                         ui.identify.fs();
@@ -188,7 +189,7 @@ window.ui = {
                             }
                         };
 
-                        window._fbq = window._fbq || n; // eslint-disable-line
+                        window._fbq = window._fbq || n;
                         n.push = n;
                         n.loaded = true;
                         n.version = "2.0";
@@ -282,7 +283,7 @@ window.ui = {
                         obj.displayName = self.user.fullName;
                     }
                     if (self.user.phone) {
-                        obj.phone_str = String(self.user.phone); // eslint-disable-line
+                        obj.phone_str = String(self.user.phone);
                     }
 
                     return obj;
@@ -459,7 +460,7 @@ window.ui = {
             for (i = 0; i < arr.length; i += 1) {
                 pair = arr[i].split(/\x3D(.+)/, 2);
 
-                if (pair[0] && !obj.hasOwnProperty(pair[0])) {
+                if (pair[0] && !Object.prototype.hasOwnProperty.call(obj, pair[0])) {
                     pair[0] = decodeURIComponent(pair[0]);
 
                     if (this.isNumber(pair[1])) {
@@ -547,7 +548,7 @@ window.ui = {
                 prop;
 
             for (prop in obj) {
-                if (obj.hasOwnProperty(prop)) {
+                if (Object.prototype.hasOwnProperty.call(obj, prop)) {
                     res[prop] = "https://dl.dropboxusercontent.com/s/" + obj[prop] +
                         "/" + id + (prop === "image" ? ".jpg" : "-" + prop + ".mp4");
                 }
@@ -625,7 +626,7 @@ window.ui = {
                         };
 
                     videos.map(function (video) {
-                        return new Plyr(video, options); // eslint-disable-line new-cap
+                        return new Plyr(video, options);
                     });
 
                     delete ui.video.youtubeSupportInProgress;
@@ -701,7 +702,7 @@ window.ui = {
                     console.warn("YouTube blocked");
                 }
                 if (ui.w.FS && FS.setUserVars) {
-                    FS.setUserVars({isYouTubeSupported_bool: !!isLoaded}); // eslint-disable-line
+                    FS.setUserVars({isYouTubeSupported_bool: !!isLoaded});
                 }
                 if (!isLoaded && self.youtubeSupport) {
                     ui.asyncScript(self.playlistLocal, this.callback);
@@ -876,7 +877,7 @@ ui.cookie = (function (self) {
             expires = new Date(new Date() * 1 + expires * 1000).toUTCString();
 
             for (key in obj) {
-                if (obj.hasOwnProperty(key)) {
+                if (Object.prototype.hasOwnProperty.call(obj, key)) {
                     val = typeof obj[key] === "object" ? JSON.stringify(obj[key]) : obj[key];
                     self.d.cookie = encodeURIComponent(key) + "=" +
                         encodeURIComponent(val) + ";expires=" + expires + ";secure;samesite=strict";

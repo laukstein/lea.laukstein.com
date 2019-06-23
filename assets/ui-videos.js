@@ -58,7 +58,7 @@ ui.videos = (function () {
             key;
 
         for (key in obj) {
-            if (obj.hasOwnProperty(key)) {
+            if (Object.prototype.hasOwnProperty.call(obj, key)) {
                 sortable.push([key, obj[key]]);
             }
         }

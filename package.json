@@ -18,13 +18,18 @@
         "plugins": ["compat"],
         "settings": {
             "polyfills": [
+                "AbortController",
                 "Array.from",
                 "fetch",
                 "history.scrollRestoration",
                 "IntersectionObserver",
                 "navigator.connection",
                 "navigator.maxTouchPoints",
-                "promises",
+                "navigator.sendBeacon",
+                "navigator.serviceWorker",
+                "Object.assign",
+                "Promise",
+                "Promise.reject",
                 "serviceworkers"
             ]
         },
@@ -55,7 +60,7 @@
             "keyword-spacing": "error",
             "line-comment-position": "error",
             "linebreak-style": "error",
-            "lines-around-comment": ["error", {"allowBlockStart": true, "ignorePattern": "{"}],
+            "lines-around-comment": ["error", {"allowBlockStart": true, "ignorePattern": "\\{"}],
             "lines-around-directive": "error",
             "max-depth": ["error", 6],
             "max-nested-callbacks": "error",
