@@ -95,7 +95,7 @@ window.ui = {
                     if (window.bugsnag) {
                         window.bugsnagClient = bugsnag({
                             apiKey: "99f662f6b9f9aa6eb92495f72b147a04",
-                            beforeSend: report => {
+                            beforeSend: function (report) {
                                 // https://help.fullstory.com/integrate-ref/bugsnag
                                 if (window.FS && FS.getCurrentSessionURL) {
                                     var urlAtTime = FS.getCurrentSessionURL(true);
