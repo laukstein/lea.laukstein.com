@@ -135,15 +135,15 @@ window.ui = {
                         };
 
                         g.q = [];
-                        g.setUserVars = function (v, s) {
-                            g("user", v, s);
-                        };
                         g.identify = function (i, v, s) {
                             g("user", {uid: i}, s);
 
                             if (v) {
                                 g("user", v, s);
                             }
+                        };
+                        g.setUserVars = function (v, s) {
+                            g("user", v, s);
                         };
                         g.event = function (i, v, s) {
                             g("event", {
@@ -161,11 +161,10 @@ window.ui = {
                             g("consent", !arguments.length || a);
                         };
                         g.identifyAccount = function (i, v) {
-                            o = "account";
                             v = v || {};
                             v.acctId = i;
 
-                            g(o, v);
+                            g("account", v);
                         };
                         g.clearUserCookie = function () { /**/ };
                     },
