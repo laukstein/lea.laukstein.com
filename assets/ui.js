@@ -89,6 +89,30 @@ window.ui = {
         "use strict";
 
         if (this.environment === "prod") {
+            // Bugsnag https://docs.bugsnag.com/platforms/javascript/
+            this.asyncScript("https://d2wy8f7a9ursnm.cloudfront.net/v6/bugsnag.min.js", {
+                onSuccess: function () {
+                    if (window.bugsnag) {
+                        window.bugsnagClient = bugsnag({
+                            apiKey: "99f662f6b9f9aa6eb92495f72b147a04",
+                            beforeSend: report => {
+                                // https://help.fullstory.com/integrate-ref/bugsnag
+                                if (window.FS && FS.getCurrentSessionURL) {
+                                    var urlAtTime = FS.getCurrentSessionURL(true);
+
+                                    if (urlAtTime) {
+                                        report.updateMetaData("FullStory", {
+                                            urlAtTime: urlAtTime
+                                        });
+                                    }
+                                }
+                            }
+                        });
+                        ui.identify.bugsnag();
+                    }
+                }
+            });
+
             // https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id
             this.asyncScript("https://www.google-analytics.com/analytics.js", {
                 onSuccess: function () {
@@ -119,60 +143,58 @@ window.ui = {
                 remove: true
             });
 
-            if (!window.FS) {
-                this.asyncScript("https://fullstory.com/s/fs.js", {
-                    onStart: function () {
-                        window._fs_debug = false;
-                        window._fs_host = "fullstory.com";
-                        window._fs_org = "3YG86";
-                        window._fs_namespace = "FS";
-                        var g = window[window._fs_namespace] = function (a, b, s) {
-                            if (g.q) {
-                                g.q.push([a, b, s]);
-                            } else if (g._api) {
-                                g._api(a, b, s);
-                            }
-                        };
+            this.asyncScript("https://fullstory.com/s/fs.js", {
+                onStart: function () {
+                    window._fs_debug = false;
+                    window._fs_host = "fullstory.com";
+                    window._fs_org = "3YG86";
+                    window._fs_namespace = "FS";
+                    var g = window[window._fs_namespace] = function (a, b, s) {
+                        if (g.q) {
+                            g.q.push([a, b, s]);
+                        } else if (g._api) {
+                            g._api(a, b, s);
+                        }
+                    };
 
-                        g.q = [];
-                        g.identify = function (i, v, s) {
-                            g("user", {uid: i}, s);
+                    g.q = [];
+                    g.identify = function (i, v, s) {
+                        g("user", {uid: i}, s);
 
-                            if (v) {
-                                g("user", v, s);
-                            }
-                        };
-                        g.setUserVars = function (v, s) {
+                        if (v) {
                             g("user", v, s);
-                        };
-                        g.event = function (i, v, s) {
-                            g("event", {
-                                n: i,
-                                p: v
-                            }, s);
-                        };
-                        g.shutdown = function () {
-                            g("rec", false);
-                        };
-                        g.restart = function () {
-                            g("rec", true);
-                        };
-                        g.consent = function (a) {
-                            g("consent", !arguments.length || a);
-                        };
-                        g.identifyAccount = function (i, v) {
-                            v = v || {};
-                            v.acctId = i;
+                        }
+                    };
+                    g.setUserVars = function (v, s) {
+                        g("user", v, s);
+                    };
+                    g.event = function (i, v, s) {
+                        g("event", {
+                            n: i,
+                            p: v
+                        }, s);
+                    };
+                    g.shutdown = function () {
+                        g("rec", false);
+                    };
+                    g.restart = function () {
+                        g("rec", true);
+                    };
+                    g.consent = function (a) {
+                        g("consent", !arguments.length || a);
+                    };
+                    g.identifyAccount = function (i, v) {
+                        v = v || {};
+                        v.acctId = i;
 
-                            g("account", v);
-                        };
-                        g.clearUserCookie = function () { /**/ };
-                    },
-                    onSuccess: function () {
-                        ui.identify.fs();
-                    }
-                });
-            }
+                        g("account", v);
+                    };
+                    g.clearUserCookie = function () { /**/ };
+                },
+                onSuccess: function () {
+                    ui.identify.fs();
+                }
+            });
 
             // Facebook Pixel https://www.facebook.com/business/help/952192354843755
             this.asyncScript("https://connect.facebook.net/en_US/fbevents.js", {
@@ -197,24 +219,6 @@ window.ui = {
 
                     fbq("init", "1265828396834846");
                     fbq("track", "PageView");
-                }
-            });
-
-            // Sentry SDK https://docs.sentry.io/quickstart/?platform=browser
-            // Latest version https://github.com/getsentry/sentry-javascript/releases
-            this.asyncScript("https://browser.sentry-cdn.com/5.4.3/bundle.min.js", {
-                // Generator SRI hash https://www.srihash.org
-                integrity: "sha384-YLYTaH73bJr+7YcmMXQTyCWmoIsJbvwtEwW/agYTQWJQc8DbESn0+2L3Za38uPZN",
-                crossorigin: "anonymous",
-                onSuccess: function () {
-                    if (window.Sentry && Sentry.init) {
-                        Sentry.init({
-                            dsn: "https://1e8b57d9fb744a9ba1068e9b5cc5386c@sentry.io/156066",
-                            environment: ui.environment,
-                            whitelistUrls: [/lea\.laukstein\.com/]
-                        });
-                        ui.identify.sentry();
-                    }
                 }
             });
         } else {
@@ -265,6 +269,51 @@ window.ui = {
                 options.log(self);
             } */
         },
+        bugsnag: function () {
+            "use strict";
+
+            this.track({
+                name: "Bugsnag",
+                condition: function (self) {
+                    return window.bugsnagClient && self.user.email;
+                },
+                params: function (self) {
+                    var obj = {};
+
+                    obj.email = self.user.email;
+
+                    if (self.user.fullName) {
+                        obj.name = self.user.fullName;
+                    }
+
+                    return obj;
+                },
+                callback: function (self) {
+                    // https://docs.bugsnag.com/platforms/javascript/#setting-a-user-on-the-client
+                    bugsnagClient.user = this.params(self);
+                },
+                log: function (self) {
+                    console.log("Bugsnag", this.params(self));
+                }
+            });
+        },
+        ga: function () {
+            "use strict";
+
+            this.track({
+                name: "Google Analytics",
+                condition: function (self) {
+                    return window.ga && self.user.email;
+                },
+                callback: function (self) {
+                    // https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#user_id
+                    ga("set", "userId", self.user.email);
+                },
+                log: function (self) {
+                    console.log("Google Analytics", self.user.email);
+                }
+            });
+        },
         fs: function () {
             "use strict";
 
@@ -293,55 +342,6 @@ window.ui = {
                 },
                 log: function (self) {
                     console.log("FullStory", self.user.email, this.params(self));
-                }
-            });
-        },
-        ga: function () {
-            "use strict";
-
-            this.track({
-                name: "Google Analytics",
-                condition: function (self) {
-                    return window.ga && self.user.email;
-                },
-                callback: function (self) {
-                    // https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#user_id
-                    ga("set", "userId", self.user.email);
-                },
-                log: function (self) {
-                    console.log("Google Analytics", self.user.email);
-                }
-            });
-        },
-        sentry: function () {
-            "use strict";
-
-            this.track({
-                name: "Sentry",
-                condition: function (self) {
-                    return window.Sentry && Sentry.configureScope && self.user.email;
-                },
-                params: function (self) {
-                    var obj = {};
-
-                    obj.email = self.user.email;
-
-                    if (self.user.fullName) {
-                        obj.username = self.user.fullName;
-                    }
-
-                    return obj;
-                },
-                callback: function (self) {
-                    // https://docs.sentry.io/learn/context/
-                    var root = this;
-
-                    Sentry.configureScope(function (scope) {
-                        scope.setUser(root.params(self));
-                    });
-                },
-                log: function (self) {
-                    console.log("Sentry", this.params(self));
                 }
             });
         },
