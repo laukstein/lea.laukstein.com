@@ -180,6 +180,9 @@ window.ui = {
                     g.restart = function () {
                         g("rec", true);
                     };
+                    g.log = function (a, b) {
+                        g("log", [a, b]);
+                    };
                     g.consent = function (a) {
                         g("consent", !arguments.length || a);
                     };
