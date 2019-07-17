@@ -145,6 +145,8 @@ window.ui = {
 
             this.asyncScript("https://fullstory.com/s/fs.js", {
                 onStart: function () {
+                    // https://help.fullstory.com/using/recording-iframes
+                    window._fs_run_in_iframe = true;
                     window._fs_debug = false;
                     window._fs_host = "fullstory.com";
                     window._fs_org = "3YG86";
