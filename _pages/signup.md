@@ -5,7 +5,7 @@ hiddenHeader: true
 
 title: מדריך לארון מדוייק
 description: סטיילינג לדתיות - מדריך לארון מדוייק
-video: Cjc17QOoTog
+video: oJqYt6ybTV0
 subscribe:
     id: 70a2d0d976
     autofocus: true
