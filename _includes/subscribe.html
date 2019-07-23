@@ -4,7 +4,7 @@
         assign script_template = "ui-form.js, ui-subscribe.js"
 %}<form class="cel space subscribe" id=subscribe name={{ id }}{% if include.data.utm_campaign %} data-utm_campaign="{{ include.data.utm_campaign }}"{% endif %} method=post>
     <h1{% if include.data.requiredTel %} class=inherit{% endif %}>{% if include.data.title %}{{ include.data.title }}{% else %}סטייל שבא מבפנים{% endif %}</h1>
-    {% unless include.data.title %}<p>מדריך ליצירת ארון מדוייק מ9 פריטים בלבד</p>{% endunless %}
+    {% unless include.data.title %}<p>מדריך לתכנון ארון מדויק לפי סדר היום שלך</p>{% endunless %}
     <div class=invisible>
         <label id=label-name for=name>שם</label>
         <input id=name tabindex=-1 name=FNAME placeholder="שם" aria-labelledby=label-name data-error="תקליד שם" autocomplete=name inputmode=text dir=auto>
