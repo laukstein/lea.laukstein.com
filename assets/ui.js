@@ -596,7 +596,7 @@ window.ui = {
 
             var obj = this.getData(id);
 
-            return id ? "<video poster=\"" + obj.image + "\" preload=auto crossorigin playsinline controls controlsList=nodownload>" +
+            return id ? "<video data-id=" + id + " poster=\"" + obj.image + "\" preload=auto crossorigin playsinline controls controlsList=nodownload>" +
                 "    <source src=\"" + obj[this.size] + "\" type=\"video/mp4\">" +
                 "</video>" : "";
         },
@@ -630,7 +630,17 @@ window.ui = {
                         };
 
                     videos.map(function (video) {
-                        return new Plyr(video, options);
+                        var config = Object.assign({}, options);
+
+                        if (video.getAttribute("data-id") === "oJqYt6ybTV0") {
+                            // Signup video preview thumbnails https://github.com/sampotts/plyr#preview-thumbnails
+                            config.previewThumbnails = {
+                                enabled: true,
+                                src: "/assets/thumbnails.vtt"
+                            };
+                        }
+
+                        return new Plyr(video, config);
                     });
 
                     delete ui.video.youtubeSupportInProgress;
