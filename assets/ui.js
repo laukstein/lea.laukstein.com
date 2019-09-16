@@ -951,7 +951,7 @@ ui.init = (function (self) {
                     options;
 
                 try {
-                    options = Object.defineProperty({}, "passive", {
+                    options = Object.defineProperty({}, "passive", { // eslint-disable-line accessor-pairs
                         get: function () {
                             passiveSupported = true;
 
