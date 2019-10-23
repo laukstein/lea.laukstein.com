@@ -5,7 +5,7 @@
 endif
 
 %}{
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": {{ include.jsonldType | default: '"Product"' }},
     "name": "{{ include.title | escape }}",{% if include.description %}
     "description": "{{ include.description | escape }}",{% endif %}{% if include.image %}
@@ -14,14 +14,14 @@ endif
         "@type": "Offer",
         "price": "{{ include.price }}",
         "priceCurrency": "ILS",
-        "availability": "http://schema.org/InStock",
+        "availability": "https://schema.org/InStock",
         "url": "{{ site.url | append: include.url }}"
     }{% endif %}{% if include.jsonldProperties %},
     {{ include.jsonldProperties }}{% endif %}
 }{%
 
 if include.breadcrumb && breadcrumb.size > 1 %},{
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [{%
     assign position = 0 %}{%

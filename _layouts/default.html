@@ -168,7 +168,7 @@ if page.jsonld == nil %}{%
         if image or page.video %}{%
             capture jsonld %}
 {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -199,7 +199,7 @@ if page.jsonld == nil %}{%
             if page.url == "/contact"%}{%
             capture jsonld %}
 {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "Organization",
     "name": "{{ site.title | escape }}",
     "url": "{{ site.url }}",

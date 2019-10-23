@@ -157,7 +157,7 @@ css: |
     }
 jsonld: |
     [{
-        "@context": "http://schema.org",
+        "@context": "https://schema.org",
         "@type": "Organization",
         "name": "סטיילינג לדתיות – לאה לאוקשטיין",
         "url": "https://lea.laukstein.com",
@@ -182,7 +182,7 @@ jsonld: |
             ]
         }
     }, {
-        "@context": "http://schema.org",
+        "@context": "https://schema.org",
         "@type": "Product",
         "name": "מדריך לארון מדוייק",
         "image": "https://i.ytimg.com/vi/$video/0.jpg",
@@ -201,7 +201,7 @@ jsonld: |
             "price": "0.00",
             "priceCurrency": "ILS",
             "priceValidUntil": "2033-01-01",
-            "availability": "http://schema.org/InStock",
+            "availability": "https://schema.org/InStock",
             "url": "https://lea.laukstein.com"
         }
     }]

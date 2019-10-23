@@ -155,7 +155,7 @@ css: |
     }
 jsonld: |
     {
-        "@context": "http://schema.org/",
+        "@context": "https://schema.org",
         "@type": "Product",
         "name": "מדריך לארון מדוייק",
         "image": "https://i.ytimg.com/vi/$video/0.jpg",
