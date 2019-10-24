@@ -631,7 +631,7 @@ option {
     overflow: hidden;
 
     /* Match to parent element width (currently supported only on Firefox) */
-    /* Chrome max-width issue https://code.google.com/p/chromium/issues/detail?id=82253 */
+    /* Chrome max-width issue https://bugs.chromium.org/p/chromium/issues/detail?id=82253 */
     min-width: 100%;
     max-width: 0;
 
@@ -643,7 +643,7 @@ option {
 }
 textarea {
     overflow-x: hidden;
-    /* overflow-y: scroll; */ /* Causes placholder dislocation on Chrome */
+    /* overflow-y: scroll; */ /* Causes placeholder dislocation on Chrome */
         height: auto;
     min-height: 4.95em;
     max-height: 13em;
