@@ -164,8 +164,7 @@ jsonld: |
         "email": "lea(at)laukstein.com",
         "logo": "https://lea.laukstein.com/assets/hotlink-ok/logo.jpg",
         "sameAs": [
-            "https://plus.google.com/+לאהלאוקשטייןלוד",
-            "https://he-il.facebook.com/LeaLaukstein/",
+            "https://www.facebook.com/LeaLaukstein/",
             "https://www.youtube.com/channel/UCNNsgimJtU1q1LUMVsq44Dg",
             "https://www.pinterest.com/lealaukstein/",
             "https://twitter.com/lealaukstein"
