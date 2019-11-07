@@ -18,7 +18,7 @@ ui.academy = {
                     },
                     qa: {
                         type: "qa",
-                        title: "שאלון:\nלאיזה קטגוריית צבעים את שייכת?",
+                        title: "מחשבון: צבעים",
                         value: "academy-colours.jpg",
                         option: [
                             {
@@ -106,9 +106,9 @@ ui.academy = {
                 title: "כמה טוב להיות את!",
                 video: "xZMfS-HXqXM",
                 pages: {
-                    calculator: {
-                        type: "calculator",
-                        title: "מחשבון:\nתאבחני את מבנה הגוף שלך",
+                    bodyType: {
+                        type: "bodyType",
+                        title: "מחשבון: מבנה הגוף",
                         value: "1gKI_JUyD20fvq27_B3Kxq9vfJ6f99xLnnd1ht1vibhU",
                         button: "הצג תוצאה",
                         notice: "שימי לב, חישוב ניתן רק לפעם אחת",
@@ -116,31 +116,115 @@ ui.academy = {
                         download: "להורדת מדריך הגיזרות",
                         error: "שגיאה בחישוב, {0}נא לפנות ללאה{1}",
                         option: {
-                            A: "היקף הכתפיים",
-                            B: "היקף היריכיים",
-                            C: "היקף המותן",
-                            D: "היקף החזה"
+                            height: "הגובה",
+                            shoulders: "היקף הכתפיים",
+                            bust: "היקף החזה",
+                            waist: "היקף המותניים",
+                            hips: "היקף הירכיים"
                         },
                         final: {
                             hourglass: {
                                 title: "שעון חול",
-                                value: "1r5TBnSpeNRjTmwIaoKkiiqBBzNhESmdj"
+                                value: "1r5TBnSpeNRjTmwIaoKkiiqBBzNhESmdj",
+                                text: [
+                                    "מכיוון שהמבנה שלך הוא מאוזן, כל גזרה תחמיא לך.",
+                                    "עלייך להדגיש את קו המותן שלך – כדי לשמור על הפרופורציות הטבעיות והיפות שלך.",
+                                    "בנוסף הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
+                                    "את בעלת מבנה גוף רזה – בדים מחויטים יחמיאו לך."
+                                ]
                             },
-                            invertedTriangle: {
+                            hourglassrounded: {
+                                title: "שעון חול מעוגל",
+                                value: "1r5TBnSpeNRjTmwIaoKkiiqBBzNhESmdj",
+                                text: [
+                                    "מכיוון שהמבנה שלך הוא מאוזן, כל גזרה תחמיא לך.",
+                                    "עלייך להדגיש את קו המותן שלך – כדי לשמור על הפרופורציות הטבעיות והיפות שלך.",
+                                    "בנוסף הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
+                                    "את בעלת מבנה גוף מתעגל – בדים רכים ונשפכים יחמיאו לך במיוחד."
+                                ]
+                            },
+                            invertedtriangle: {
                                 title: "משולש הפוך",
-                                value: "1_ekRaH2x8iP4jYovBSpVZuNUquO_WiJI"
+                                value: "1_ekRaH2x8iP4jYovBSpVZuNUquO_WiJI",
+                                text: [
+                                    "עלייך להדגיש את קו המותן שלך – כדי לחלק את הגוף לפרופורציות הנכונות ⅓ ו2/3. " +
+                                    "הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
+                                    "כדי ליצור מראה מאוזן של שעון חול – לבשי פריטים היוצרים קווי אורך בפלג הגוף העליון, " +
+                                    "כמו עליונית פתוחה או שרשרת ארוכה.",
+                                    "לאיזון, צרי נפח בפלג גוף התחתון שלך.",
+                                    "את בעלת מבנה גוף רזה – בדים מחויטים יחמיאו לך.",
+                                    "שימי לב שהתפר המחבר בין השרוול לכתף ממוקם בדיוק בעצם הכתף."
+                                ]
                             },
-                            triangle: {
-                                title: "משולש",
-                                value: "1ZFVcrckN8LhfZ8Gp9K7N1OUAn-BicVhD"
-                            },
-                            rounded: {
-                                title: "מעוגל",
-                                value: "1JWcPbgHI6uQRGVpr82zg5l79yDYYp39P"
+                            invertedtrianglerounded: {
+                                title: "משולש הפוך מעוגל",
+                                value: "1_ekRaH2x8iP4jYovBSpVZuNUquO_WiJI",
+                                text: [
+                                    "עלייך להדגיש את קו המותן שלך – כדי לחלק את הגוף לפרופורציות הנכונות ⅓ ו2/3. " +
+                                    "הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
+                                    "כדי ליצור מראה מאוזן של שעון חול – לבשי פריטים היוצרים קווי אורך בפלג הגוף העליון, " +
+                                    "כמו עליונית פתוחה או שרשרת ארוכה.",
+                                    "לאיזון, צרי נפח בפלג גוף התחתון שלך",
+                                    "את בעלת מבנה גוף מתעגל – בדים רכים ונשפכים יחמיאו לך במיוחד.",
+                                    "שימי לב שהתפר המחבר בין השרוול לכתף ממוקם בדיוק בעצם הכתף."
+                                ]
                             },
                             rectangle: {
                                 title: "ישר",
-                                value: "1hRie1lANjULGnlUDrnUVPYjCxrD4n6Ws"
+                                value: "1hRie1lANjULGnlUDrnUVPYjCxrD4n6Ws",
+                                text: [
+                                    "עלייך להדגיש את קו המותן שלך – כדי לחלק את הגוף לפרופורציות הנכונות ⅓ ו2/3. " +
+                                    "הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
+                                    "לבשי פריטים בעלי נפח בכתפיים – כדי לייצר מראה גוף מאוזן של שעון חול.",
+                                    "פריטים המרחיבים את הירכיים יוסיפו לאיזון.",
+                                    "את בעלת מבנה גוף רזה וישר – בדים מחויטים יחמיאו לך."
+                                ]
+                            },
+                            rectanglerounded: {
+                                title: "ישר מעוגל",
+                                value: "1hRie1lANjULGnlUDrnUVPYjCxrD4n6Ws",
+                                text: [
+                                    "עלייך להדגיש את קו המותן שלך – כדי לחלק את הגוף לפרופורציות הנכונות ⅓ ו2/3. " +
+                                    "הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
+                                    "לבשי פריטים בעלי נפח בכתפיים – כדי לייצר מראה גוף מאוזן של שעון חול.",
+                                    "פריטים המרחיבים את הירכיים יוסיפו לאיזון.",
+                                    "את בעלת מבנה גוף מתעגל – בדים רכים ונשפכים יחמיאו לך במיוחד."
+                                ]
+                            },
+                            round: {
+                                title: "מעוגל",
+                                value: "1JWcPbgHI6uQRGVpr82zg5l79yDYYp39P",
+                                text: [
+                                    "עלייך להדגיש את קו המותן שלך – כדי לחלק את הגוף לפרופורציות הנכונות ⅓ ו2/3. " +
+                                    "הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
+                                    "כדי ליצור מראה מאוזן של שעון חול – לבשי פריטים היוצרים קווי אורך בפלג הגוף העליון, " +
+                                    "כמו עליונית פתוחה או שרשרת ארוכה.",
+                                    "לאיזון, תדגישי את פלג הגוף התחתון שלך.",
+                                    "את בעלת מבנה גוף מתעגל – בדים רכים ונשפכים יחמיאו לך במיוחד.",
+                                    "שימי לב שהתפר המחבר בין השרוול לכתף ממוקם בדיוק בעצם הכתף."
+                                ]
+                            },
+                            triangle: {
+                                title: "משולש",
+                                value: "1ZFVcrckN8LhfZ8Gp9K7N1OUAn-BicVhD",
+                                text: [
+                                    "עלייך להדגיש את קו המותן שלך – כדי לחלק את הגוף לפרופורציות הנכונות ⅓ ו2/3. " +
+                                    "הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
+                                    "לבשי פריטים בעלי נפח בכתפיים – כדי לייצר מראה גוף מאוזן של שעון חול.",
+                                    "בחרי בגדים שלא ייצמדו לירכיים, כדי לא להדגיש את פלג הגוף הרחב שלך.",
+                                    "את בעלת מבנה גוף רזה וישר – בדים מחויטים יחמיאו לך."
+                                ]
+                            },
+                            trianglerounded: {
+                                title: "משולש מעוגל",
+                                value: "1ZFVcrckN8LhfZ8Gp9K7N1OUAn-BicVhD",
+                                text: [
+                                    "עלייך להדגיש את קו המותן שלך – כדי לחלק את הגוף לפרופורציות הנכונות ⅓ ו2/3. " +
+                                    "הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
+                                    "לבשי פריטים בעלי נפח בכתפיים – כדי לייצר מראה גוף מאוזן של שעון חול.",
+                                    "בחרי בגדים שלא ייצמדו לירכיים, כדי לא להדגיש את פלג הגוף הרחב שלך.",
+                                    "את בעלת מבנה גוף מתעגל – בדים רכים ונשפכים יחמיאו לך במיוחד."
+                                ]
                             }
                         }
                     }
@@ -152,7 +236,7 @@ ui.academy = {
                 pages: {
                     sat: {
                         type: "sat",
-                        title: "שאלון:\nמצאי את סגנון הלבוש שלך",
+                        title: "מחשבון: סגנון הלבוש",
                         next: "המשך",
                         back: "חזור",
                         button: "הצג תוצאה",
@@ -381,7 +465,13 @@ ui.academy = {
                         }
                     }
                 }
-            } /* ,
+            },
+            /* closet: {
+                title: "ארון מדויק",
+                shortTitle: "ברוכה הבאה",
+                video: "",
+                pages: {}
+            } ,
             bonuses: {
                 title: "בונוסים",
                 date: {
@@ -747,7 +837,7 @@ ui.academy = {
                     url = ui.video.youtubeSupport ? "https://i.ytimg.com/vi/" + obj.value + "/maxresdefault.jpg" : ui.video.getData(obj.value).image;
                     break;
                 case "document":
-                case "calculator":
+                case "bodyType":
                     // Params https://pgenom.com/community/threads/гуглодиск-как-хостинг-картинок-файловый-хостинг.1236/
                     url = "https://drive.google.com/thumbnail?authuser=0&sz=w640&id=" + obj.value;
                     break;
@@ -985,53 +1075,16 @@ ui.academy = {
             ui.form.accessibility(false, el, true, page === "sat" && "label");
 
             switch (page) {
-                case "calculator":
-                    data.data[page] = (function () {
-                        post = ui.form.deserialize(el);
-                        var A = post.A,
-                            B = post.B,
-                            C = post.C,
-                            D = post.D,
-                            tolerance = 8,
-                            comp = function (a, b) {
-                                // Compare with tolerance
-                                return a === false ? false : Math.abs((a || 0) - (b || 0)) <= (tolerance || 0);
-                            },
-                            button,
-                            status;
-
-                        if (comp(A, B) && comp(A, C) && comp(A, D) && comp(B, C) && comp(B, D) && comp(C, D)) {
-                            return "rectangle";
-                        } else if (comp(A, B) && (A > C && !comp(A, C) || B > C && !comp(B, C))) {
-                            return "hourglass";
-                        } else if ((A > B && !comp(A, B)) || (D > B && !comp(D, B))) {
-                            return "invertedTriangle";
-                        } else if (A < B && !comp(A, B)) {
-                            return "triangle";
-                        } else if (comp(A, B) && (A < C && !comp(A, C) || B < C && !comp(B, C)) || C > D) {
-                            return "rounded";
-                        }
-
-                        // C > D
-                        ui.form.accessibility(true, el, true);
-
-                        button = el.querySelector("button");
-                        status = el.querySelector("[data-status]");
-
-                        if (status) {
-                            status.innerHTML = "<b>" + self.data.session["body-shape"].pages[page].error.format("<a href=\"/contact#diy\" target=_blank>", "</a>") + "</b>";
-                            status.classList.add("error");
-                        }
-                        if (button) {
-                            button.classList.add("error");
-                        }
-                    }());
+                case "bodyType":
+                    data.data[page] = ui.form.deserialize(el);
                     break;
                 case "sat":
                     data.data[page] = post;
+
                     el.closest("[data-handler]")
                         .querySelector("[data-back]")
                         .remove();
+                    break;
             }
 
             if (data.data[page]) {
@@ -1054,32 +1107,44 @@ ui.academy = {
             }
         }
     },
-    calculator: function (obj) {
+    bodyType: function (obj) {
         "use strict";
 
-        var result = "",
-            arr,
-            i;
+        var bodyType = this.submit.bodyType(this.session.task && (this.session.task.bodyType || this.session.task.calculator)),
+            result = "",
+            size = {
+                height: {
+                    min: 145,
+                    max: 280
+                },
+                default: {
+                    min: 50,
+                    max: 320
+                }
+            };
 
-        if (this.session.task && this.session.task.calculator && obj.final[this.session.task.calculator]) {
+        if (obj.final[bodyType]) {
             // Google docs links http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
             result = "<div class=\"dialog final\">" +
                 "   <div class=table>" +
                 "   <div class=cel>" +
-                "       <h1>" + obj.result.format(obj.final[this.session.task.calculator].title) + "</h1>" +
-                "       <div>" + this.generateDownloadLink(obj.final[this.session.task.calculator].value, obj.download) + "</div>" +
+                "       <h1>" + obj.result.format(obj.final[bodyType].title) + "</h1>" +
+                "       <ol>" +
+                "           <li>" + obj.final[bodyType].text.join("</li>\n<li>") + "</li>" +
+                "       </ol>" +
+                "       <div>" + this.generateDownloadLink(obj.final[bodyType].value, obj.download) + "</div>" +
                 "   </div>" +
                 "   </div>" +
                 "</div>";
         } else {
-            arr = Object.keys(obj.option);
-
-            for (i = 0; i < arr.length; i += 1) {
+            Object.keys(obj.option).forEach(function (option, index) {
                 result += "<li class=row>" +
-                    "    <label class=\"column label\" for=" + arr[i] + ">" + obj.option[arr[i]] + "</label>" +
-                    "    <div class=column><input id=" + arr[i] + " name=" + arr[i] + " type=number inputmode=numeric min=50 max=200 maxlength=3 data-required" + (i ? "" : " autofocus") + "></div>" +
+                    "    <label class=\"column label\" for=" + option + ">" + obj.option[option] + "</label>" +
+                    "    <div class=column><input id=" + option + " name=" + option +
+                    " type=number inputmode=numeric min=" + (size[option] || size.default).min +
+                    " max=" + (size[option] || size.default).max + " maxlength=3 dir=ltr data-required" + (index ? "" : " autofocus") + "></div>" +
                     "</li>";
-            }
+            });
 
             result = "<form onsubmit=ui.academy.submit(event) method=post novalidate>" +
                 "    <ul class=sheet>" + result + "</ul>" +
@@ -1430,7 +1495,7 @@ ui.academy = {
                                 //             "\" rel=noopener target=_blank tabindex=0><b>להורדת " + obj.title + "</a>" +
                                 //         "</div>";
                                 //     break;
-                                case "calculator":
+                                case "bodyType":
                                 case "sat":
                                 case "qa":
                                     result += this[obj.type].ui ? this[obj.type].ui(obj) : this[obj.type](obj);
@@ -1704,6 +1769,89 @@ ui.academy = {
             self.sessionError();
         });
     }
+};
+ui.academy.submit.bodyType = function (data) {
+    "use strict";
+
+    // Copyright © 2019 OFITT. All rights reserved.
+    if (!data) {
+        return data;
+    }
+    if (typeof data === "string") {
+        switch (data) {
+            case "invertedTriangle":
+                return "invertedtriangle";
+            case "rounded":
+                return "round";
+            default:
+                return data;
+        }
+    }
+
+    var a = data.shoulders,
+        b = data.bust,
+        c = data.waist,
+        d = data.hips,
+        fn = {
+            range: function (x, min, max) {
+                return x >= min && x <= max;
+            },
+            perc: function () {
+                var args = Array.prototype.slice.call(arguments).map(function (val) {
+                        return Number(val);
+                    }),
+                    min = Math.min.apply(null, args),
+                    max = Math.max.apply(null, args),
+                    multiply = args.length === 2 && args[0] < args[1] ? -1 : 1;
+
+                return Math.round(((max - min) / max) * 100) * multiply;
+            },
+            filterObj: function (obj, condition) {
+                return Object.keys(obj || {})
+                    .filter(function (key) {
+                        return condition ? condition(key, obj) : obj[key];
+                    })
+                    .reduce(function (newObj, key) {
+                        newObj[key] = obj[key];
+
+                        return newObj;
+                    }, {});
+            }
+        },
+        obj = {
+            minAll: Math.min(a, b, c, d),
+            maxAll: Math.max(a, b, c, d),
+            maxAB2D: fn.perc(Math.max(a, b), d)
+        },
+        res = {
+            round: fn.perc(c, Math.min(a, b, d)) > 5 &&
+                fn.perc(Math.max(a, b), Math.min(c, d)) < 11 &&
+                fn.perc(c, d) > 0
+        };
+
+    if (!res.round) {
+        res.hourglass = Math.abs(obj.maxAB2D) < 11 &&
+            fn.perc(b, d) < 11 &&
+            Math.abs(obj.maxAB2D) < 11 &&
+            fn.perc(c, Math.round(Math.max(a, b, d))) < -29;
+        res.invertedtriangle = fn.perc(Math.max(a, b), d) > 10;
+        res.rectangle = Math.abs(obj.maxAB2D) < 11 &&
+            fn.range(fn.perc(c, Math.max(a, b, d)), -29, 5);
+        res.rounded = obj.maxAll > 100;
+        res.triangle = fn.perc(d, Math.max(a, b)) > 10;
+    }
+
+    res.result = Object.keys(fn.filterObj(res, function (key) {
+        return key !== "rounded";
+    })).filter(function (key) {
+        return res[key];
+    }).join("");
+
+    if (res.rounded) {
+        res.result += "rounded";
+    }
+
+    return res.result;
 };
 
 ui.academy.init();

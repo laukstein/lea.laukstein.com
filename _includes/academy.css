@@ -13,7 +13,6 @@
     overflow-y: auto;
         width: 100vw;
     max-width: 100%;
-    background-color: #88828c;
 }
 .stretch header,
 .stretch main,
@@ -354,6 +353,9 @@ h1 {
     padding: 0;
     margin: auto;
 }
+.qa input:checked ~ ol {
+    padding: 2px;
+}
 .qa > ol {
     margin: 1em auto;
 }
@@ -469,7 +471,7 @@ svg {
 .dialog {
     position: relative;
     z-index: 1;
-    height: 15em;
+    min-height: 15em;
     padding: 1em;
     text-align: center;
     background-color: #fff;
@@ -477,8 +479,12 @@ svg {
     box-shadow: 0 -1px 0 #eee, 1px 2px 2px #aaa;
 }
 .dialog.final {
+    text-align: right;
     background-color: transparent;
     box-shadow: none;
+}
+.dialog.final ol {
+    padding-right: 1.3em;
 }
 .dialog.dialog.dialog ~ * {
     display: none;
@@ -620,10 +626,10 @@ svg {
 .sat .grid .label:after {
     content: "";
     position: absolute;
-    top: -18.1em;
+    top: -19.5em;
     right: 0;
+    bottom: -2px;
     left: 0;
-    bottom: 0;
 }
 .sat .grid input[disabled] ~ figure {
     opacity: .3;
