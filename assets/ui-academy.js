@@ -1731,7 +1731,16 @@ ui.academy = {
         var self = this;
 
         ui.legacy(function () {
-            var loading = ui.d.getElementById("loading");
+            var removeLoader = function () {
+                var loading = ui.d.getElementById("loading");
+
+                if (loading) {
+                    loading.remove();
+                }
+
+                self.content.removeAttribute("hidden");
+                self.details.removeAttribute("hidden");
+            };
 
             ui.form.el = ui.d.getElementById("form");
             self.bar = ui.d.getElementById("bar");
@@ -1743,26 +1752,25 @@ ui.academy = {
             self.pass = ui.d.getElementById("pass");
             self.valid = !!self.session.email && !!self.session.token;
 
-            self.content.removeAttribute("hidden");
-            self.details.removeAttribute("hidden");
-
             self.registerSW();
 
-            if (loading) {
-                loading.remove();
-            }
             if (self.valid) {
                 self.vertifySession(function () {
+                    removeLoader();
                     self.isLogged();
                     ui.identify.all();
                 });
             } else if (self.session.email) {
+                removeLoader();
+
                 self.email.value = self.session.email;
 
                 // setTimeout to avoid autofocus property
                 setTimeout(function () {
                     self.pass.focus();
                 }, 0);
+            } else {
+                removeLoader();
             }
 
             ui.w.addEventListener("hashchange", self.toggleNav);
