@@ -1047,7 +1047,7 @@ ui.academy = {
         };
 
         return "<div class=\"form qa\">" +
-            "    <h1>" + obj.title.replace(/\n/g, "<br>") + "</h1>" +
+            "    <h1>" + obj.title + "</h1>" +
             (this.session.task && this.session.task.qa ? this.qa.dialog(null, 0, this.session.task.qa, true) : label(obj, false)) +
             "</div>";
     },
@@ -1107,55 +1107,141 @@ ui.academy = {
             }
         }
     },
-    bodyType: function (obj) {
-        "use strict";
+    bodyType: {
+        ui: function (obj) {
+            "use strict";
 
-        var bodyType = this.submit.bodyType(this.session.task && (this.session.task.bodyType || this.session.task.calculator)),
-            result = "",
-            size = {
-                height: {
-                    min: 145,
-                    max: 280
-                },
-                default: {
-                    min: 50,
-                    max: 320
-                }
-            };
+            var self = ui.academy,
+                bodyType = this.submit(self.session.task && (self.session.task.bodyType || self.session.task.calculator)),
+                result = "",
+                size = {
+                    height: {
+                        min: 145,
+                        max: 280
+                    },
+                    default: {
+                        min: 50,
+                        max: 320
+                    }
+                };
 
-        if (obj.final[bodyType]) {
-            // Google docs links http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
-            result = "<div class=\"dialog final\">" +
-                "   <div class=table>" +
-                "   <div class=cel>" +
-                "       <h1>" + obj.result.format(obj.final[bodyType].title) + "</h1>" +
-                "       <ol>" +
-                "           <li>" + obj.final[bodyType].text.join("</li>\n<li>") + "</li>" +
-                "       </ol>" +
-                "       <div>" + this.generateDownloadLink(obj.final[bodyType].value, obj.download) + "</div>" +
-                "   </div>" +
-                "   </div>" +
+            if (obj.final[bodyType]) {
+                // Google docs links http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
+                result = "<div class=\"dialog final\">" +
+                    "   <div class=table>" +
+                    "   <div class=cel>" +
+                    "       <h1>" + obj.result.format(obj.final[bodyType].title) + "</h1>" +
+                    "       <ol>" +
+                    "           <li>" + obj.final[bodyType].text.join("</li>\n<li>") + "</li>" +
+                    "       </ol>" +
+                    "       <div>" + self.generateDownloadLink(obj.final[bodyType].value, obj.download) + "</div>" +
+                    "   </div>" +
+                    "   </div>" +
+                    "</div>";
+            } else {
+                Object.keys(obj.option).forEach(function (option, index) {
+                    result += "<li class=row>" +
+                        "    <label class=\"column label\" for=" + option + ">" + obj.option[option] + "</label>" +
+                        "    <div class=column><input id=" + option + " name=" + option +
+                        " type=number inputmode=numeric min=" + (size[option] || size.default).min +
+                        " max=" + (size[option] || size.default).max + " maxlength=3 dir=ltr data-required" + (index ? "" : " autofocus") + "></div>" +
+                        "</li>";
+                });
+
+                result = "<form onsubmit=ui.academy.submit(event) method=post novalidate>" +
+                    "    <ul class=sheet>" + result + "</ul>" +
+                    "    <div data-status><small><i>" + obj.notice + "</i></small></div>" +
+                    "    <button>" + obj.button + "</button>" +
+                    "</form>";
+            }
+
+            return "<div class=\"form calculator\">" +
+                "    <h1>" + obj.title + "</h1>" + result +
                 "</div>";
-        } else {
-            Object.keys(obj.option).forEach(function (option, index) {
-                result += "<li class=row>" +
-                    "    <label class=\"column label\" for=" + option + ">" + obj.option[option] + "</label>" +
-                    "    <div class=column><input id=" + option + " name=" + option +
-                    " type=number inputmode=numeric min=" + (size[option] || size.default).min +
-                    " max=" + (size[option] || size.default).max + " maxlength=3 dir=ltr data-required" + (index ? "" : " autofocus") + "></div>" +
-                    "</li>";
-            });
+        },
+        submit: function (data) {
+            "use strict";
 
-            result = "<form onsubmit=ui.academy.submit(event) method=post novalidate>" +
-                "    <ul class=sheet>" + result + "</ul>" +
-                "    <div data-status><small><i>" + obj.notice + "</i></small></div>" +
-                "    <button>" + obj.button + "</button>" +
-                "</form>";
+            // Copyright © 2019 OFITT. All rights reserved.
+            if (!data) {
+                return data;
+            }
+            if (typeof data === "string") {
+                switch (data) {
+                    case "invertedTriangle":
+                        return "invertedtriangle";
+                    case "rounded":
+                        return "round";
+                    default:
+                        return data;
+                }
+            }
+
+            var a = data.shoulders,
+                b = data.bust,
+                c = data.waist,
+                d = data.hips,
+                fn = {
+                    range: function (x, min, max) {
+                        return x >= min && x <= max;
+                    },
+                    perc: function () {
+                        var args = Array.prototype.slice.call(arguments).map(function (val) {
+                                return Number(val);
+                            }),
+                            min = Math.min.apply(null, args),
+                            max = Math.max.apply(null, args),
+                            multiply = args.length === 2 && args[0] < args[1] ? -1 : 1;
+
+                        return Math.round(((max - min) / max) * 100) * multiply;
+                    },
+                    filterObj: function (obj, condition) {
+                        return Object.keys(obj || {})
+                            .filter(function (key) {
+                                return condition ? condition(key, obj) : obj[key];
+                            })
+                            .reduce(function (newObj, key) {
+                                newObj[key] = obj[key];
+
+                                return newObj;
+                            }, {});
+                    }
+                },
+                obj = {
+                    minAll: Math.min(a, b, c, d),
+                    maxAll: Math.max(a, b, c, d),
+                    maxAB2D: fn.perc(Math.max(a, b), d)
+                },
+                res = {
+                    round: fn.perc(c, Math.min(a, b, d)) > 5 &&
+                        fn.perc(Math.max(a, b), Math.min(c, d)) < 11 &&
+                        fn.perc(c, d) > 0
+                };
+
+            if (!res.round) {
+                res.hourglass = Math.abs(obj.maxAB2D) < 11 &&
+                    fn.perc(b, d) < 11 &&
+                    Math.abs(obj.maxAB2D) < 11 &&
+                    fn.perc(c, Math.round(Math.max(a, b, d))) < -29;
+                res.invertedtriangle = fn.perc(Math.max(a, b), d) > 10;
+                res.rectangle = Math.abs(obj.maxAB2D) < 11 &&
+                    fn.range(fn.perc(c, Math.max(a, b, d)), -29, 5);
+                res.rounded = obj.maxAll > 100;
+                res.triangle = fn.perc(d, Math.max(a, b)) > 10;
+            }
+
+            res.result = Object.keys(fn.filterObj(res, function (key) {
+                return key !== "rounded";
+            })).filter(function (key) {
+                return res[key];
+            }).join("");
+
+            if (res.rounded) {
+                res.result += "rounded";
+            }
+
+            return res.result;
         }
-
-        return "<div class=\"form calculator\">" +
-            "    <h1>" + obj.title.replace(/\n/g, "<br>") + "</h1>" + result +
-            "</div>";
     },
     sat: {
         ui: function (obj) {
@@ -1400,7 +1486,7 @@ ui.academy = {
             }
 
             return "<div class=\"form sat\">" +
-                "    <h1>" + obj.title.replace(/\n/g, "<br>") + "</h1>" + result +
+                "    <h1>" + obj.title + "</h1>" + result +
                 "</div>";
         }
     },
@@ -1777,89 +1863,6 @@ ui.academy = {
             self.sessionError();
         });
     }
-};
-ui.academy.submit.bodyType = function (data) {
-    "use strict";
-
-    // Copyright © 2019 OFITT. All rights reserved.
-    if (!data) {
-        return data;
-    }
-    if (typeof data === "string") {
-        switch (data) {
-            case "invertedTriangle":
-                return "invertedtriangle";
-            case "rounded":
-                return "round";
-            default:
-                return data;
-        }
-    }
-
-    var a = data.shoulders,
-        b = data.bust,
-        c = data.waist,
-        d = data.hips,
-        fn = {
-            range: function (x, min, max) {
-                return x >= min && x <= max;
-            },
-            perc: function () {
-                var args = Array.prototype.slice.call(arguments).map(function (val) {
-                        return Number(val);
-                    }),
-                    min = Math.min.apply(null, args),
-                    max = Math.max.apply(null, args),
-                    multiply = args.length === 2 && args[0] < args[1] ? -1 : 1;
-
-                return Math.round(((max - min) / max) * 100) * multiply;
-            },
-            filterObj: function (obj, condition) {
-                return Object.keys(obj || {})
-                    .filter(function (key) {
-                        return condition ? condition(key, obj) : obj[key];
-                    })
-                    .reduce(function (newObj, key) {
-                        newObj[key] = obj[key];
-
-                        return newObj;
-                    }, {});
-            }
-        },
-        obj = {
-            minAll: Math.min(a, b, c, d),
-            maxAll: Math.max(a, b, c, d),
-            maxAB2D: fn.perc(Math.max(a, b), d)
-        },
-        res = {
-            round: fn.perc(c, Math.min(a, b, d)) > 5 &&
-                fn.perc(Math.max(a, b), Math.min(c, d)) < 11 &&
-                fn.perc(c, d) > 0
-        };
-
-    if (!res.round) {
-        res.hourglass = Math.abs(obj.maxAB2D) < 11 &&
-            fn.perc(b, d) < 11 &&
-            Math.abs(obj.maxAB2D) < 11 &&
-            fn.perc(c, Math.round(Math.max(a, b, d))) < -29;
-        res.invertedtriangle = fn.perc(Math.max(a, b), d) > 10;
-        res.rectangle = Math.abs(obj.maxAB2D) < 11 &&
-            fn.range(fn.perc(c, Math.max(a, b, d)), -29, 5);
-        res.rounded = obj.maxAll > 100;
-        res.triangle = fn.perc(d, Math.max(a, b)) > 10;
-    }
-
-    res.result = Object.keys(fn.filterObj(res, function (key) {
-        return key !== "rounded";
-    })).filter(function (key) {
-        return res[key];
-    }).join("");
-
-    if (res.rounded) {
-        res.result += "rounded";
-    }
-
-    return res.result;
 };
 
 ui.academy.init();
