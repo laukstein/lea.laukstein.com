@@ -1,3 +1,12 @@
+if (!Object.values) {
+    Object.values = function (target) {
+        "use strict";
+
+        return Object.keys(target).map(function (key) {
+            return target[key];
+        });
+    };
+}
 if (!Object.assign) {
     // IE legacy, resource https://github.com/rubennorte/es6-object-assign/blob/master/index.js
     Object.defineProperty(Object, "assign", {
@@ -231,6 +240,9 @@ if (!("classList" in document.documentElement) && Element.prototype) {
                     ~index ? classes.splice(index, 1) : classes.push(value);
                 })
             };
+        },
+        set: function () {
+            "use strict";
         }
     });
 }

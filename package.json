@@ -28,6 +28,7 @@
                 "navigator.sendBeacon",
                 "navigator.serviceWorker",
                 "Object.assign",
+                "Object.values",
                 "Promise",
                 "Promise.reject",
                 "serviceworkers"
