@@ -32,6 +32,12 @@ ui.videosList = {
         description: "אין ספור צבעים!!!\n\nרוצה לדעת איך לשלב 9 פריטים כך, שתקבלי 20 שילובים שונים?\nתורידי את המדריך עכשיו בכתובת https://lea.laukstein.com",
         publishedAt: "2018-06-04T12:41:31.000Z"
     },
+    "2_QEgMc6ieg": {
+        academy: true,
+        "360p": "x0upd4uysr1c6xg",
+        "720p": "3bx2w8sdl749pu4",
+        image: "eon9iij2pryve94"
+    },
     "4HwTeZiZJ4Q": {
         public: true,
         "360p": "s6alogdx8yurzag",
@@ -213,6 +219,12 @@ ui.videosList = {
         description: "לאה לאוקשטיין - סטיילינג לדתיות\nלקבלת מדריך ביסודות הסטיילינג - https://lea.laukstein.com",
         publishedAt: "2016-12-08T11:42:52.000Z"
     },
+    FiMXsvqCDZ8: {
+        academy: true,
+        "360p": "9i4l7d2m8bx4cp9",
+        "720p": "icx2rbt6qnq1lj1",
+        image: "zpc72ons6f5nd5d"
+    },
     fOYZbRKMYAE: {
         academy: true,
         "360p": "cwcm1yvxhrz2oju",
@@ -302,6 +314,12 @@ ui.videosList = {
         title: "איך לדעת מה יש ומה עדיין חסר בארון?",
         description: "https://lea.laukstein.com/gift/closet"
     },
+    KzC7tJRjxqc: {
+        academy: true,
+        "360p": "od6yjk5sylt95lf",
+        "720p": "ygpcossxx409t7b",
+        image: "i1c4rx20d3a9mcn"
+    },
     ljyiHCxHGfY: {
         public: true,
         "360p": "yeh55y5dmugd0kr",
@@ -377,6 +395,15 @@ ui.videosList = {
         description: "סרטון חדש שיעזור לך לבחור מעיל נכון למבנה הגוף שלך!\nלקבלת יעוץ מותאם אישית לך - צרי קשר 0585800020\nלהורדת מדריך החינמי - https://lea.laukstein.com",
         publishedAt: "2017-10-22T05:50:22.000Z"
     },
+    "qiJP-Zfuc0c": {
+        public: true,
+        "360p": "ujnsrdnjc0mo3w3",
+        "720p": "yjjkzhh60f3b7nh",
+        image: "4sjcfzsdi4zop3f",
+        title: "כלל חדש לשילוב הדפסים",
+        description: "לקבלת מדריך ליצירת ארון מדוייק לפי פעילויות השונות שלך כנסי:\nhttps://lea.laukstein.com/signup",
+        publishedAt: "2019-08-04T05:00:04.000Z"
+    },
     QMHNohViCrA: {
         "360p": "vrkw8ez1pvs7d8u",
         "720p": "c635y1lfymr80h1",
@@ -424,6 +451,15 @@ ui.videosList = {
         title: "למה פסי רוחב מחמיאים ואפה להניח אותם?",
         description: "לאה לאוקשטיין - סטיילינג לדתיות\nלהורדת מדריך ביסודות הסטיילינג - https://lea.laukstein.com",
         publishedAt: "2017-01-03T12:10:57.000Z"
+    },
+    TZgdqWkcgMM: {
+        public: true,
+        "360p": "po2kjxitanibess",
+        "720p": "ylbvajxt1qeqvwe",
+        image: "vuoi306hpgal0g6",
+        title: "!פריטים מחמיאים במלתחה חורפית",
+        description: "לקבלת מדריך על בניית ארון מדוייק לפי סדר ופעילויות היום שליך\nhttps://lea.laukstein.com/signup",
+        publishedAt: "2019-12-05T19:52:53.000Z"
     },
     "U-35RtXPAnQ": {
         "360p": "meap38v968gyp8n",
@@ -546,5 +582,11 @@ ui.videosList = {
         title: "אילו אוצרות יש בארון הבגדים שלך?",
         description: "הכי כיף, שכול השפע הזה כבר נמצא בארון של בת חן! אלו בגדים שלה! ומצאנו שילובים חדשים ומקוריים לבגדים שנתקעו בארון!\n\nלמזמינות סידור ארון מצולם בוידאו - הנחה משמעותית.\nלפרטים: https://lea.laukstein.com",
         publishedAt: "2017-06-30T09:56:15.000Z"
+    },
+    ZzK_ol7qLPs: {
+        academy: true,
+        "360p": "rcjznmyb6gnkq5j",
+        "720p": "kjj5937iuwmygne",
+        image: "4q77b43njv6aacm"
     }
 };
