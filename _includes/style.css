@@ -56,7 +56,9 @@ body {
             hyphens: auto;
 }
 a,
-img {
+img,
+.unselectable,
+[unselectable] {
     -webkit-user-drag: none;
             user-drag: none;
 }
@@ -99,8 +101,6 @@ img {
     image-rendering: -webkit-optimize-contrast; /* Webkit will drop this property https://bugs.webkit.org/show_bug.cgi?id=97991#c5 */
     image-rendering: crisp-edges; /* Firefox, Safari legacy */
     image-rendering: pixelated; /* Chrome; Eaquals non standard "optimizeSpeed" */
-    -webkit-user-drag: none;
-            user-drag: none;
 }
 header {
     position: fixed;
@@ -628,6 +628,7 @@ select {
     color: #fff;
     background-color: #1e90ff;
     border-color: #1e90ff;
+    cursor: pointer;
 }
 optgroup {
     color: initial;
@@ -903,6 +904,7 @@ iframe {
     display: table;
     width: 100%;
     margin: 0;
+    list-style: none;
     word-break: normal;
     word-break: keep-all;
     vertical-align: top;
@@ -920,6 +922,7 @@ iframe {
 .row,
 .sheet-fixed .row {
     display: table-row-group;
+    table-layout: fixed;
     border-top: 1px solid #eee;
 }
 .row:first-child {
@@ -929,6 +932,7 @@ iframe {
 .sheet-fixed .column {
     display: table-cell;
     padding: .4em;
+    white-space: normal;
 }
 .label {
     font-weight: bold;
