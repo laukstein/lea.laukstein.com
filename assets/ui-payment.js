@@ -186,6 +186,10 @@ ui.payment = ui.legacy(function () {
                     break;
             }
 
+            if (console.trace) {
+                console.trace();
+            }
+
             status.innerHTML = "<div class=error>" + str +"</div>";
 
             if (controller) {

@@ -83,6 +83,10 @@ ui.order = ui.legacy(function () {
                     break;
             }
 
+            if (console.trace) {
+                console.trace();
+            }
+
             unfilledForm = false;
             status.innerHTML = "<div class=\"table center\">" +
                 "    <div class=cel>" +
