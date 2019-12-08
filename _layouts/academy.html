@@ -31,14 +31,14 @@ script:
 </div>
 <div class="table scale" id=content hidden>
     <div class="cel content"></div>
-    <form class="cel space subscribe" id=form onsubmit=ui.academy.login(event) method=post>
+    <form class="cel space subscribe" id=form onsubmit=return method=post>
         <dl>
             <dt><h1>קורס דיגיטאלי<br>סטייל שבא מבפנים</h1>
             <dd class=session-error id=session-error hidden>
             <dd><label for=email>אימייל</label><input id=email name=email type=email placeholder=אימייל autocomplete="username email" inputmode=email dir=ltr required autofocus>
             <dd><label for=pass>סיסמה</label><input id=pass name=password type=password placeholder=סיסמה autocomplete=current-password minlength=5 dir=ltr required>
             <dd><button id=button>כניסה לפורטל</button>
-            <dd><a id=link onclick=ui.academy.forgot()>שכחת סיסמא?</a>
+            <dd><a id=link>שכחת סיסמא?</a>
         </dl>
     </form>
     <div class=bg></div>
@@ -52,6 +52,9 @@ script:
     </symbol>
     <symbol id="check" viewbox="0 0 512 512">
         <path d="M386 78l94 86-272 270L30 256l89-89 89 89L386 78z"/>
+    </symbol>
+    <symbol id="error" viewBox="0 0 512 512">
+        <path d="M256.2 447H79c-9.4 0-22.5-2-31-6-9.6-6-14-13.6-15.5-26-1.2-10 1-19 5.5-29 4.5-9.4 122.2-210.7 175.6-302.4 5-8.6 10.8-16.4 18.8-22.5 16-12 35.8-10 50.6 4 6.3 6 11.2 13 15.5 20l124 212 46.6 80c5 8 9 17 11 26 3 15-3 31-14 39-9 6-16 6-27 6H257zm-40-290l10 150h59l10-150h-79zm16 232.5l.2.3c13 13.2 34.4 13 47-.7l1.8-1c12.2-13 12-33-.7-46h-.2c-13.3-13-34.8-13-48 0h-.2c-13 14-13 36 0 49z"/>
     </symbol>
 </svg>
 {% include core-footer.html %}{%

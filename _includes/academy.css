@@ -60,11 +60,14 @@ a.logo {
     padding: 0;
     margin: 0;
 }
-.profile .nowrap {
+.nowrap {
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.profile .nowrap {
     max-width: 10em;
     margin-top: .2em;
-    text-overflow: ellipsis;
 }
 .profile small {
     color: #00d;
@@ -222,12 +225,18 @@ button.error:not([data-plyr]) {
     color: #aaa;
     cursor: default;
 }
-.sidenav li label:before {
+.sidenav.counter label:before {
     content: counters(item, ".") ".";
     counter-increment: item;
     margin-left: .4em;
     float: right;
     font-weight: normal;
+}
+.sidenav:not(.counter) label {
+    padding-right: 2.45em;
+}
+.sidenav:not(.counter) ol {
+    border-top: 2px solid #eee;
 }
 .sidenav div,
 .sidenav a {
@@ -240,7 +249,7 @@ button.error:not([data-plyr]) {
     text-decoration: none;
     outline: none;
 }
-.sidenav .expand {
+.sidenav.counter .expand {
     background-color: #d9e7e7;
 }
 .sidenav a:hover,
@@ -279,11 +288,12 @@ button.error:not([data-plyr]) {
     overflow: hidden;
     max-height: 0;
     background-color: #d9e7e7;
-    -webkit-transition: max-height .25s;
-            transition: max-height .25s;
+    will-change: transform;
+    -webkit-transition: max-height .11s;
+            transition: max-height .11s;
 }
 .sidenav .expand ~ ol {
-    max-height: 10em;
+    max-height: 30em;
     -webkit-transition: max-height 1s;
             transition: max-height 1s;
 }
@@ -347,6 +357,9 @@ h1 {
 .form button.spin.spin.spin:before {
     margin: -.12em;
     margin-left: .3em;
+}
+.qa {
+    list-style: none;
 }
 .qa ol,
 .qa input:checked ~ ol {
@@ -434,8 +447,18 @@ h1 {
                 1px 2px 1px #aaa;
 }
 svg {
+    fill: currentcolor;
     vertical-align: top;
     box-sizing: border-box;
+}
+svg[class*=icon-] {
+    vertical-align: middle;
+}
+.icon-error {
+    vertical-align: middle;
+    width: 1.2em;
+    height: 1.2em;
+    margin-left: .25em;
 }
 .button .icon-download {
     width: 1.2em;
@@ -468,6 +491,15 @@ svg {
     color: #fff;
     transition: color .15s cubic-bezier(.2,1,.4,1);
 }
+
+select.unselected {
+    color: #000;
+    background-color: #fff;
+    border-color: #999;
+    border-top-color: #ccc;
+    border-left-color: #ccc;
+}
+
 .dialog {
     position: relative;
     z-index: 1;
@@ -560,6 +592,119 @@ svg {
     margin-top: .55em;
 }
 
+.sum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sum .table {
+    padding: 0;
+    /* table-layout: auto; */
+}
+.sum .column {
+    width: auto;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+.sum .column:last-child {
+    padding-left: 0;
+}
+.sum .table.result .column {
+    padding: .4em;
+}
+.sum .field-wrap {
+    overflow: hidden;
+}
+.sum .label,
+.sum input,
+.sum select {
+    min-width: 0;
+        width: 100%;
+    font-weight: bold;
+}
+.sum .label {
+    font-weight: normal;
+}
+.sum .row:not(:first-child) .label {
+    margin-top: .5em;
+}
+.sum .remove {
+    position: relative;
+    top: -.3em;
+    min-width: auto;
+    height: 100%;
+    padding-right: .4em;
+    padding-left: .4em;
+    margin-right: .3em;
+    float: left;
+    color: #b00;
+    background-color: transparent;
+    border-radius: .4em;
+    transition: background-color .15s cubic-bezier(.2,1,.4,1);
+}
+.sum .remove:hover,
+.sum .remove:focus {
+    background-color: #ffdfdb;
+}
+.sum .remove:active {
+    background-color: #ffc2bd;
+}
+.sum input {
+    font-size: 1em;
+}
+.sum input:-ms-input-placeholder {
+    color: rgba(51,51,51,.62);
+}
+.sum input::-webkit-input-placeholder {
+    color: rgba(51,51,51,.62);
+}
+.sum input::placeholder {
+    color: rgba(51,51,51,.62);
+}
+.sum input::-webkit-inner-spin-button,
+.sum input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+.sum button,
+.sum .error {
+    margin-top: .8em;
+}
+.sum button {
+    width: auto;
+}
+.sheet.sheet-zebra {
+    word-break: normal;
+}
+.sheet-zebra .labels {
+    font-weight: bold;
+    background-color: #ddd;
+}
+.sheet-zebra .row:not(.labels):nth-child(odd) {
+    background-color: #fff;
+}
+.sheet-zebra .column:not(:last-child) {
+    border-left: 1px solid #ccc;
+}
+.sheet-zebra .column.name {
+    width: 35%;
+}
+.footer-link {
+    display: inline-block;
+    margin-top: 1.2em;
+}
+.pinterest.pinterest.pinterest > span {
+    overflow: visible;
+    max-width: 100%;
+    background: transparent;
+    box-shadow: none;
+}
+.pinterest.pinterest.pinterest > span > span:nth-child(2) {
+    overflow: visible;
+    height: auto !important;
+}
+
 .sat form {
     overflow: hidden;
 }
@@ -582,24 +727,29 @@ svg {
 .sat .label[disabled][disabled] {
     border-color: #ddd;
 }
-.sat .wrapper {
+.swipe-pages {
     display: inline-block;
     width: 100%;
     padding: 0;
     margin: 0;
     white-space: nowrap;
     transition: transform .35s cubic-bezier(.2,1,.4,1);
-    backface-visibility: hidden; /* Prevents wrapper disorder when hovered disabled button having animation */
+    /* backface-visibility: hidden; // Prevents wrapper disorder when hovered disabled button having animation */
     -webkit-transform: translateZ(0); /* Android 4.4.4 legacy */
         -ms-transform: translateZ(0); /* IE9 legacy */
             transform: translateX(0);
 }
-.sat .qa {
+.swipe-pages .page {
     display: inline-block;
     width: 100%;
     padding: 0;
     margin: 1em 0.005em;
     vertical-align: top;
+}
+.swipe-pages .content {
+    max-width: 19em;
+        width: auto;
+    margin: auto;
 }
 .sat .box .row {
     display: block;
@@ -646,7 +796,7 @@ svg {
         width: auto;
     min-width: 7em;
 }
-.sat .back {
+.back {
     display: inline-block;
     margin: .8em 1.2em;
     color: #aaa;
@@ -777,6 +927,19 @@ button[disabled]:not(:hover) {
     }
     .form {
         margin-left: 1.4em;
+    }
+    .swipe-pages {
+        width: calc(100% + 3.2em);
+        margin-right: -1.6em;
+        margin-left: -1.6em;
+    }
+    .swipe-pages .content {
+        max-width: 100%;
+        padding-right: 1.6em;
+        padding-left: 1.6em;
+    }
+    .swipe-pages .row {
+        padding: 0;
     }
     .subscribe.subscribe {
         display: table-cell;
