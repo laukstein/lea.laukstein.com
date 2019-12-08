@@ -69,7 +69,9 @@ ui.form = {
         "use strict";
 
         var flag = true,
+            invalid,
             error,
+            value,
             i;
 
         if (Array.isArray(arr) && arr.length) {
@@ -80,24 +82,33 @@ ui.form = {
                 }
             }
             for (i = 0; i < arr.length; i += 1) {
-                if (!arr[i].value ||
-                    arr[i].type === "email" && !/^\S+@\S+\.\S+$/.test(arr[i].value) ||
-                    arr[i].type === "tel" && !/^(\+972(-)?|0)([1-468-9](-)?\d{7}|(5|7)[0-9](-)?\d{7})$/.test(arr[i].value) ||
-                    arr[i].name === "message" && arr[i].value.length < 5 ||
+                if (arr[i].tagName === "SELECT") {
+                    value = arr[i].options[arr[i].selectedIndex].getAttribute("value");
+                } else {
+                    value = arr[i].value.trim();
+                }
+                if (!value ||
+                    arr[i].type === "email" && !/^\S+@\S+\.\S+$/.test(value) ||
+                    arr[i].type === "tel" && !/^(\+972(-)?|0)([1-468-9](-)?\d{7}|(5|7)[0-9](-)?\d{7})$/.test(value) ||
+                    arr[i].name === "message" && value.length < 5 ||
                     !arr[i].validity || !arr[i].validity.valid) {
                     error = arr[i].getAttribute("data-error");
                     flag = false;
 
                     arr[i].parentNode.classList.add("error");
 
-                    if (!ui.d.activeElement || ui.d.activeElement.tagName !== "INPUT") {
-                        // Focus first error field
-                        arr[i].focus();
+                    if (!invalid && (!ui.d.activeElement || ui.d.activeElement.tagName !== "INPUT")) {
+                        invalid = arr[i];
                     }
                     if (error) {
                         arr[i].setAttribute("placeholder", error);
                     }
                 }
+            }
+
+            if (invalid) {
+                // Focus first error field
+                invalid.focus();
             }
 
             return flag;
