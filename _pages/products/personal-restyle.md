@@ -9,7 +9,7 @@ redirect_from: /closet
 video: ZtIF83HYcOY
 price: 750
 extra: ליווי בואטסאפ חינם ללא הגבלה
-location: אצלך בבית
+location: אזור הצפון
 goals: |
     * להעמיק בקבלה ובהכרות עם מבנה הגוף, הצבעים והסגנון האישי שלך
     * להכיר שילובי צבעים חדשים
