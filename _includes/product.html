@@ -44,21 +44,11 @@
         {{ page.payment-details | markdownify }}{%
             endif %}
         <div class=sticky-footer>{% endif %}{%
-if page.button %}{%
-for item in page.button %}{%
-    if item.orderid %}
-        <a href="/payment#orderid={{ item.orderid }}" class=button>{%
-            if item.title %}{{ item.title }}{%
-            else %}לתשלום {{ page.price }} ש"ח{%
-            endif %}</a>{%
-    endif %}{% if item.more | markdownify %}
-        {{ item.more }}{%
-    endif %}{%
-endfor %}{% else
-        %}<a class=button href=/contact#{{ page.id | default: page.permalink | remove: "/" }} tabindex=0>צרי קשר</a>{%
-        endif %}{% if include.more == nil %}
+            include button.html data = page %}{%
+            if include.more == nil %}
         <a class=more href={{ page.url }}>פרטים מלאים</a>
-        <a class=absolute href={{ page.url }} aria-label="{{ page.title | strip_html }}"></a>{% endif %}
+        <a class=absolute href={{ page.url }} aria-label="{{ page.title | strip_html }}"></a>{%
+            endif %}
     </div>{% if include.more %}
     </div>{% endif %}
 </article>{%
