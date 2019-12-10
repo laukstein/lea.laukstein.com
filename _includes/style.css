@@ -1145,7 +1145,6 @@ iframe {
 
 [hidden][hidden] {
     display: none;
-    box-suppress: discard;
 }
 .invisible {
     position: absolute;
@@ -1366,7 +1365,6 @@ iframe {
     }
     .nav > .active:after {
         display: none;
-        box-suppress: discard;
     }
     .nav-container {
         direction: ltr;
