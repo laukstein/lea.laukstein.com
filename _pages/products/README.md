@@ -24,6 +24,7 @@ YAML schema
         multi-line text
     takeWith: |
         multi-line text
+    notice
     recommendations:
         - name
           field

@@ -38,7 +38,9 @@
                 endif %}{%
                 endif %}{%
             endfor %}
-        </ul>{% if include.more %}{%
+        </ul>{% if page.notice %}
+        <div class=product-notice>{{ page.notice | markdownify }}</div>{%
+        endif %}{% if include.more %}{%
             include recommendation.html data = page.recommendations %}{%
             if page.payment-details %}
         {{ page.payment-details | markdownify }}{%
