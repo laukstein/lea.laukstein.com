@@ -697,6 +697,7 @@ select.unselected {
 .pinterest.pinterest.pinterest > span {
     overflow: visible;
     max-width: 100%;
+        width: 100% !important;
     background: transparent;
     box-shadow: none;
 }
