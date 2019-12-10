@@ -174,7 +174,6 @@ footer a + a,
     padding: 1em 1.4em;
     color: inherit;
 }
-.subnav-container:hover,
 .nav a:not([rel=noopener]):hover,
 .nav a:not([rel=noopener]):focus,
 .bar:hover,
@@ -183,14 +182,10 @@ footer a + a,
     text-decoration: none;
     background-color: #f3f4f7;
 }
-.subnav-container:hover,
-.subnav-container:not(:hover) > a:focus {
-    box-shadow: 0 2em 4em rgba(36,45,54,.2);
-}
-.nav > .active.active > a {
+.nav .active.active > a {
     color: #f58e84;
 }
-.nav > .active:after {
+.nav .active:after {
     content: "";
     display: block;
     position: absolute;
@@ -200,27 +195,9 @@ footer a + a,
     height: .2em;
     background-color: #f58e84;
 }
-.subnav {
+.subnav-container > a,
+.subnav-container.active:after {
     display: none;
-    position: absolute;
-    z-index: 1;
-    right: 0;
-    text-align: initial;
-    background-color: #fff;
-    box-shadow: 0 3em 6em rgba(36,45,54,.5);
-}
-.subnav-container:hover .subnav,
-.subnav-container > a:hover ~ .subnav,
-.subnav-container > a:focus ~ .subnav,
-.subnav:hover {
-    display: block;
-}
-.subnav li {
-    float: none;
-    border-top: 1px solid #eee;
-}
-.subnav .active.active > a {
-    background-color: #f3f4f7;
 }
 .external a {
     padding: 1.2em .35em;
@@ -1258,6 +1235,49 @@ iframe {
     }
 }
 
+@media (max-width: 86em) {
+    .subnav-container:hover {
+        color: inherit;
+        text-decoration: none;
+        background-color: #f3f4f7;
+    }
+    .subnav-container:hover,
+    .subnav-container:not(:hover) > a:focus {
+        box-shadow: 0 2em 4em rgba(36,45,54,.2);
+    }
+    .subnav {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        text-align: initial;
+        background-color: #fff;
+        box-shadow: 0 3em 6em rgba(36,45,54,.5);
+    }
+    .subnav-container > a,
+    .subnav-container.active:after {
+        display: block;
+    }
+    .subnav-container .active:after {
+        display: none;
+    }
+    .subnav-container .active.active a {
+        color: initial;
+    }
+    .subnav-container:hover .subnav,
+    .subnav-container > a:hover ~ .subnav,
+    .subnav-container > a:focus ~ .subnav,
+    .subnav:hover {
+        display: block;
+    }
+    .subnav li {
+        float: none;
+        border-top: 1px solid #eee;
+    }
+    .subnav .active.active > a {
+        background-color: #f3f4f7;
+    }
+}
 @media (max-width: 56em) {
     .cel:not(.grid) {
         display: block;

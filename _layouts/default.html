@@ -39,10 +39,7 @@ unless page.hiddenHeader %}<input class=bar-holder id=bar type=checkbox hidden>
                     if nav.hasSubnav %}{%
                         assign className = className | push: "subnav-container" %}{%
                     endif %}{%
-                    if relative_url == "products" and nav.products %}{%
-                        assign className = className | push: "notice" %}{%
-                    endif %}{%
-                    if nav.url == page.url or layout.category == relative_url %}{%
+                    if nav.url == page.url %}{%
                         assign className = className | push: "active" %}{%
                     endif %}{%
                     if nav.hasSubnav %}{% capture subnavHTML %}
@@ -54,7 +51,7 @@ unless page.hiddenHeader %}<input class=bar-holder id=bar type=checkbox hidden>
                         if subnav.url == page.url or subnav.group == page.group %}{%
                             assign listItem = site.url | append: subnav.url | append: "|" | append: subnavTitle %}{%
                             assign breadcrumb = breadcrumb | push: listItem %}{%
-                            assign className = className | push: "subactive" %} class=active{%
+                            assign className = className | push: "subactive" | push: "active" | uniq %} class=active{%
                         endif %}><a href="{{ subnav.url | relative_url }}">{{ subnavTitle }}</a></li>{%
                         endunless %}{%
                         endif %}{%
