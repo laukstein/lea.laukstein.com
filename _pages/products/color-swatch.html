@@ -1,9 +1,8 @@
 ---
 layout: default
 customLayout: true
-type: medium
-hiddenHeader: true
 className: no-padding
+type: medium
 header: true
 order: 0
 
@@ -18,9 +17,6 @@ buttonURL: /payment#orderid=9264240E
 script:
     - ui-colorSwatch.js
 css: |
-    main {
-        padding-top: 0;
-    }
     .box img {
         image-rendering: auto;
     }
@@ -133,7 +129,7 @@ css: |
         </div>
         <a class="button x-button" href="{{ page.buttonURL | escape }}">לתשלום {{ page.price }}.00 ש"ח</a>
         <div>
-            <a class=logo href=/ dir=rtl><img src="/assets/logo.png" width="47" height="47" alt="{{ site.title }}"><div><b>לאה לאוקשטיין</b></div></a>
+            <a class=logo href=/ dir=rtl><img src="/assets/logo.png" width=47 height=47 alt="{{ site.title }}"><div><b>לאה לאוקשטיין</b></div></a>
         </div>
     </div>
 </article>

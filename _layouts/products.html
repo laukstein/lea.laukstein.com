@@ -11,8 +11,12 @@ css: |
         display: table-cell;
         vertical-align: middle;
     }
+    .table.scale {
+        vertical-align: top;
+    }
     .space {
-        padding-bottom: 2em;
+        padding-top: 3em;
+        padding-bottom: 3em;
     }
     .grid {
         max-width: 60em;
@@ -62,6 +66,17 @@ css: |
     }
     .grid .footer a {
         color: #02a;
+    }
+    .product-notice {
+        margin-bottom: -1em;
+    }
+    .product-notice a {
+        position: relative;
+        z-index: 1;
+    }
+    .product-notice:hover ~ a.absolute {
+        outline-color: #1e90ff;
+        outline-style: solid;
     }
     @media (max-width: 54em) {
         .card .content {

@@ -11,5 +11,7 @@ css: |
     }
 ---
 
-{% include product.html data = page more = true %}
+{% if page.customLayout != true %}{%
+    include product.html data = page more = true %}{%
+endif %}
 {{ content }}

@@ -70,9 +70,6 @@ recommendations2:
 button:
     - orderid: 164A4754
 css: |
-    main {
-        padding-top: 0;
-    }
     .table.no-padding.space {
         display: block;
     }
@@ -83,7 +80,7 @@ css: |
         max-height: initial;
         background-color: #eee;
     }
-    .logo.logo.logo {
+    main .logo.logo.logo {
         position: absolute;
         z-index: 1;
         right: 0;
@@ -94,7 +91,7 @@ css: |
         -webkit-mask-image: linear-gradient(to right, transparent, #000 2.5em);
                 mask-image: linear-gradient(to right, transparent, #000 2.5em);
     }
-    .logo.logo.logo img {
+    main .logo.logo.logo img {
         display: inline-block;
         width: auto;
         margin: .45em;
@@ -113,7 +110,7 @@ css: |
         font-size: 130%;
     }
     @media (max-width: 54em) {
-        .logo.logo.logo img {
+        main .logo.logo.logo img {
             margin-right: .2em;
         }
     }
@@ -128,7 +125,7 @@ jsonldProperties: |
 
 <article class="box card" dir=ltr>
     <figure>
-        <a class=logo href=/ dir=rtl>
+        <a class=logo href=/ dir=rtl hidden>
             <img src="/assets/logo.png" width="47" height="47" alt="{{ site.title }}"><div>לאה לאוקשטיין</div>
         </a>
         <img class=image src=/assets/{{ page.image }} alt="{{ page.title }}">
