@@ -32,7 +32,7 @@ YAML schema
     imageHeight: Number
     imageLabel: "Author: Name <website>"
 
-Differ production and development environment with `SET JEKYLL_ENV=prod | dev` before `jekyll serve`.
+Differ production and development environment with `SET JEKYLL_ENV=prod | dev` before `jekyll serve` or uncomment `environment: development` in _config.yml.
 
 Used APIs: YouTube, Disqus, MailChimp, Mailgun, Pelepay, Bugsnag, Google Analytics, FullStory, Facebook Pixel, and private APIs.
 

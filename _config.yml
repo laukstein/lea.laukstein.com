@@ -6,6 +6,7 @@ permalink: /:category/:title
 assets: /assets/
 github: [metadata]
 repository: laukstein/lea.laukstein.com
+# environment: development
 timezone: UTC
 safe: true
 theme: false
