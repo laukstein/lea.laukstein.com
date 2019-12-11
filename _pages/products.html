@@ -17,9 +17,8 @@ products:
       url: workshops
     - name: personal
       title: ליווי סטיילינג אישי
-    - name: diy
-      title: מסע אל ארון מדוייק
-      title-short: קורס סטיילינג
+    - name: online
+      title: קורסים בסטיילינג
 image: products.jpg
 imageWidth: 1137
 imageHeight: 640
@@ -39,6 +38,7 @@ css: |
         <ol class=list>{%
         assign pages=site.pages | sort: "order" %}{%
         assign list = page.array %}{%
+
         for item in pages %}{%
             if item.layout == "product" and item.group == group.name %}{%
                 capture option %}

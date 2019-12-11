@@ -1,7 +1,7 @@
 YAML schema
 
     layout: product
-    group: workshop | personal | diy
+    group: workshop | personal | online
     id
     order
     title

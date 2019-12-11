@@ -3,8 +3,7 @@ layout: product
 group: personal
 order: 1
 
-title: להתלבש לפי הפנימיות והחיצוניות שלך
-title-short: אבחון על הקפה
+title: אבחון אונליין
 description: מפגש אבחון אונליין במשך שעה
 permalink: /diagnostic
 image: product-diagnostic.jpg

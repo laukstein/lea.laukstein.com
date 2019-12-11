@@ -5,7 +5,6 @@ order: 2
 
 title: מפגש ארון
 permalink: /restyle
-redirect_from: /closet
 video: ZtIF83HYcOY
 price: 800
 max_payments: 3
