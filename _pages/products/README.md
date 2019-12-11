@@ -36,6 +36,7 @@ YAML schema
         - orderid
           title
         - more: <html>
+    redirectURL
     css: |
         multi-line css
     jsonldType

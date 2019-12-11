@@ -7,7 +7,11 @@ script:
 array: []
 ---
 
-{% capture image %}{%
+{% if page.redirectURL
+%}<link rel=canonical href="{{ page.redirectURL }}">
+<script>window.location="{{ page.redirectURL }}";</script>
+<meta http-equiv="refresh" content="0; url={{ page.redirectURL }}">{%
+endif %}{% capture image %}{%
     include image-url.html
 
     layout = page.layout
