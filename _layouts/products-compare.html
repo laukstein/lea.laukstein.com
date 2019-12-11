@@ -71,7 +71,12 @@ endfor %}<article class="box card" dir=ltr>
                             if item.name == "title" %}<h3><a href={{ page.url }}>{{ page.title-short | default: page.title }}</a></h3>{% else %}{%
                             if page[item.name] contains "
 " %}{{ page[item.name] | markdownify }}{%
-                            else %}{{ page[item.name] }}{% endif %}{% endif %}{%
+                            else %}{%
+                                if item.name == "price" %}{% include price.html data=page %}{%
+                                else %}{{ page[item.name] }}{%
+                                endif %}{%
+                            endif %}{%
+                            endif %}{%
                             if item.name == "price" %} ש"ח{%
                                 if page.discount %} <span class=nowrap>({{ page.discount }})</span>{% endif %}{%
                             endif %}{%

@@ -30,7 +30,11 @@
                     <div class=column>{%
                         if page[item.name] contains "
 " %}{{ page[item.name] | markdownify }}{%
-                        else %}{{ page[item.name] }}{% endif %}{%
+                        else %}{%
+                            if item.name == "price" %}{% include price.html data=page %}{%
+                            else %}{{ page[item.name] }}{%
+                            endif %}{%
+                        endif %}{%
                         if item.name == "price" %} ש"ח{%
                             if page.discount %} ({{ page.discount }}){% endif %}{%
                         endif %}</div>

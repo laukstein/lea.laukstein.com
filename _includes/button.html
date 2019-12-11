@@ -1,11 +1,28 @@
 {% if include.data %}{%
     if include.data.button %}{%
     for item in include.data.button %}{%
-        if item.orderid %}
-            <a href="/payment#orderid={{ item.orderid }}" class=button>{%
-                if item.title %}{{ item.title }}{%
-                else %}לתשלום {{ page.price }} ש"ח{%
-                endif %}</a>{%
+        if item.orderid and page.price %}{%
+            if include.data.max_payments > 1 %}{%
+                case include.data.max_payments %}{%
+                    when 2 %}{%
+                        assign count = "שני" %}{%
+                    when 3 %}{%
+                        assign count = "שלושה" %}{%
+                    when 4 %}{%
+                        assign count = "ארבעה" %}{%
+                    when 5 %}{%
+                        assign count = "חמישה" %}{%
+                    when 6 %}{%
+                        assign count = "שישה" %}{%
+                endcase %}{%
+                capture text %}ב{{ count }} תשלומים {% include price.html data=include.data calc=true %} ₪{% endcapture %}{%
+            else %}{%
+                if item.title %}{%
+                    assign text = item.title %}{%
+                else %}{%
+                    capture text %}לתשלום {% include price.html data=include.data %} ₪{% endcapture %}{%
+                endif %}{%
+            endif %}<a href="/payment#orderid={{ item.orderid }}" class=button>{{ text }}</a>{%
         endif %}{% if item.more | markdownify %}
             {{ item.more }}{%
         endif %}{%

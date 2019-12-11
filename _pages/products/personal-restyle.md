@@ -7,7 +7,8 @@ title: מפגש ארון
 permalink: /restyle
 redirect_from: /closet
 video: ZtIF83HYcOY
-price: 750
+price: 800
+max_payments: 3
 extra: ליווי בואטסאפ חינם ללא הגבלה
 location: אזור הצפון
 goals: |
@@ -27,7 +28,7 @@ takeWith: |
     * רשימת פריטים מומלצים להשלמת תשעה פריטי החובה
 notice: |
     לא גרה בצפון? או רוצה לחסוך?
-    [תנסי מיני קורס "ארון מדויק" לעבודה עצמית ב450 ש"ח](/closet)
+    [תנסי מיני קורס "ארון מדויק" לעבודה עצמית ב450.00 ש"ח](/closet)
 button:
     - orderid: 2FFC6801
 ---

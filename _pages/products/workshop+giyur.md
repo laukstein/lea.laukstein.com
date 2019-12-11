@@ -11,7 +11,7 @@ imageWidth: 960
 imageHeight: 540
 duration: 120 דקות
 price: 1500
-discount: במקום 2000 ש"ח
+discount: במקום 2000.00 ש"ח
 fit: החל מגיל 11
 details: הרצאה וסדנת סטיילינג פעילה
 goals: הרצאה אוצמתית שלפעמים היא מצחיקה מאוד ולפעמים עצובה מאוד

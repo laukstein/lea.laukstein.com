@@ -10,6 +10,7 @@ imageTitle: ליווי סטיילינג בקניות
 imageWidth: 960
 imageHeight: 640
 price: 850
+max_payments: 3
 extra: ליווי בואטסאפ חינם ללא הגבלה
 location: אזור הצפון
 goals: |

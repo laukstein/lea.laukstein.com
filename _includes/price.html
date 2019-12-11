@@ -1,0 +1,12 @@
+{% if include.data and include.data.price %}{%
+    assign price = include.data.price %}{%
+    if include.calc and include.data.max_payments > 1 %}{%
+        assign max_payments = include.data.max_payments | times: 1.0 %}{%
+        assign price = price | divided_by: max_payments | money_without_currency | round: 2 %}{%
+    endif %}{%
+    comment %}https://stackoverflow.com/questions/37862167/trailing-zeros-in-jekyll-liquid{% endcomment %}{%
+    assign price_split = price | round: 2 | split: "." %}{%
+    assign integral = price_split[0] %}{%
+    assign fractional = price_split[1] | append: "00" | truncate: 2, ""
+    %}{{ integral }}.{{ fractional }}{%
+endif %}

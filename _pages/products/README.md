@@ -15,6 +15,7 @@ YAML schema
     imageHeight
     duration
     price
+    max_payments
     discount
     location
     extra
