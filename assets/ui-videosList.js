@@ -238,12 +238,6 @@ ui.videosList = {
         title: "שליש הראשון",
         description: "https://lea.laukstein.com/private/pregnancy"
     },
-    GLQhGx2ULRo: {
-        academy: true,
-        "360p": "aqjsia5h6ejwdtn",
-        "720p": "atk0w1m1n0joohk",
-        image: "jqvohvn1dafr8ae"
-    },
     hmHHSjivjhU: {
         "360p": "2nwj7dfp97wp5iq",
         "720p": "grdxpyaq1u2or4j",
@@ -306,13 +300,6 @@ ui.videosList = {
         "360p": "ma0n0j1nzie3i4q",
         "720p": "4guwb74g8hm1y8p",
         image: "6ve07m9bjqux681"
-    },
-    "kDiyN5T-QKE": {
-        "360p": "skm0ywllxmac1f3",
-        "720p": "j8p6cflaazc3h0a",
-        image: "tkwjefh2oh3dsnw",
-        title: "איך לדעת מה יש ומה עדיין חסר בארון?",
-        description: "https://lea.laukstein.com/gift/closet"
     },
     KzC7tJRjxqc: {
         academy: true,
@@ -415,8 +402,7 @@ ui.videosList = {
         "360p": "uufx31fptap76dk",
         "720p": "itzqcjop0c22hu0",
         image: "k0f9z5e9p733fib",
-        title: "להתלבש לפי הפנימיות והחיצוניות שלך",
-        description: "מפגש אבחון על הקפה במשך שעה\nhttps://lea.laukstein.com/gift/combination"
+        title: "ארון מדויק מ9 פריטים בלבד"
     },
     RBB_xdUILnc: {
         public: true,
@@ -461,13 +447,6 @@ ui.videosList = {
         description: "לקבלת מדריך על בניית ארון מדוייק לפי סדר ופעילויות היום שליך\nhttps://lea.laukstein.com/signup",
         publishedAt: "2019-12-05T19:52:53.000Z"
     },
-    "U-35RtXPAnQ": {
-        "360p": "meap38v968gyp8n",
-        "720p": "m9qwttrsic672ci",
-        image: "sxbm03mttq4akow",
-        title: "התאמת לבוש מחמיא למבנה גוף שלך",
-        description: "https://lea.laukstein.com/gift/matching"
-    },
     uQPJVrFD578: {
         public: true,
         "360p": "15aylva37b40wx9",
@@ -494,13 +473,6 @@ ui.videosList = {
         title: "איך לגלות אוצרות בארון הבגדים הקיים?",
         description: "לפרטים על פגישת ריסטייל https://lea.laukstein.com/restyle+shopping\n\nלקבלת מדריך סטיילינג ישיר למייל שלך https://lea.laukstein.com",
         publishedAt: "2018-05-02T08:01:07.000Z"
-    },
-    wG0GrHzHxPM: {
-        "360p": "4cntmj83r856gb7",
-        "720p": "n28zu8lm65c1jf1",
-        image: "lwhnbwvl3lu8oec",
-        title: "אני רוצה לעזור לך ליישם את הידע שרכשת!",
-        description: "https://lea.laukstein.com/gift/meeting"
     },
     WJQl75vIWBw: {
         public: true,
