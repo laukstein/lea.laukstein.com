@@ -15,12 +15,14 @@
                     when 6 %}{%
                         assign count = "שישה" %}{%
                 endcase %}{%
-                capture text %}ב{{ count }} תשלומים {% include price.html data=include.data calc=true %} ₪{% endcapture %}{%
+                capture price %}{% include price.html data=include.data calc=true %}{% endcapture %}{%
+                capture text %}ב{{ count }} תשלומים {{ price | strip_newlines }} ₪{% endcapture %}{%
             else %}{%
                 if item.title %}{%
                     assign text = item.title %}{%
                 else %}{%
-                    capture text %}לתשלום {% include price.html data=include.data %} ₪{% endcapture %}{%
+                    capture price %}{% include price.html data=include.data %}{% endcapture %}{%
+                    capture text %}לתשלום {{ price | strip_newlines }} ₪{% endcapture %}{%
                 endif %}{%
             endif %}<a href="/payment#orderid={{ item.orderid }}" class=button>{{ text }}</a>{%
         endif %}{% if item.more | markdownify %}
