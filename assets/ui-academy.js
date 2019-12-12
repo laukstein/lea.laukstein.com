@@ -1479,21 +1479,22 @@
     inner.pageUI.clothesSum = function (schema) {
         var self = inner.pageUI.clothesSum,
             sessionValue = inner.sessionData.task && inner.sessionData.task.clothesSum,
-            value = JSON.parse(JSON.stringify(sessionValue || {})),
             fn = {};
 
-        if (!value.activity) {
-            value.activity = {};
+        self.value = JSON.parse(JSON.stringify(sessionValue || {}));
+
+        if (!self.value.activity) {
+            self.value.activity = {};
         }
-        if (!value.question) {
-            value.question = {};
+        if (!self.value.question) {
+            self.value.question = {};
         }
 
         self.fn = {};
         fn.activityField = function (currentValue, index) {
             var id = Math.random().toString(16).substr(2, 8),
                 option = schema.activity.option,
-                values = value.activity,
+                values = self.value.activity,
                 field = "",
                 placeholder,
                 seleced,
@@ -1521,7 +1522,7 @@
         fn.number = function (val) {
             return val && String(Number(val)) === val ? Number(val) : val;
         };
-        fn.sum = function () {
+        self.fn.sum = function () {
             var handler = ui.d.getElementById("clothesSum"),
                 fields = ui.form.list("input[type=number]", handler);
 
@@ -1538,7 +1539,7 @@
                 }
             };
 
-            value.activity = {};
+            self.value.activity = {};
 
             fields.forEach(function (el) {
                 var li = el.closest("li"),
@@ -1547,12 +1548,12 @@
                     currentValue = fn.number(el.value.trim());
 
                 if (name && currentValue && currentValue === Number(currentValue)) {
-                    if (value.activity[name]) {
+                    if (self.value.activity[name]) {
                         // Sum multiple fields with same name
-                        currentValue += value.activity[name];
+                        currentValue += self.value.activity[name];
                     }
 
-                    value.activity[name] = currentValue;
+                    self.value.activity[name] = currentValue;
                 }
             });
         };
@@ -1561,7 +1562,7 @@
                 return "<p class=error data-error hidden>" + inner.generateIcon("error") + schema[type].error + "</p>";
             },
             question: function (type) {
-                var values = value[type],
+                var values = self.value[type],
                     keys = Object.keys(schema[type].option);
 
                 fn[type] = function (key) {
@@ -1593,7 +1594,7 @@
                     "</ul>";
             },
             activity: function (type) {
-                var values = value[type],
+                var values = self.value[type],
                     fields = Object.keys(values).concat(Object.keys(schema[type].option));
 
                 fields = fields.filter(function (item, pos) {
@@ -1624,7 +1625,7 @@
                         table = li.parentNode;
 
                     li.remove();
-                    fn.sum();
+                    self.fn.sum();
 
                     if (table.childElementCount < 2) {
                         self.fn.addActivity(table);
@@ -1711,10 +1712,10 @@
         fn.isValid = {
             question: function (type) {
                 // return ui.form.valid(ui.form.list("[data-required]", ui.d.getElementById(type)));
-                return Object.keys(schema[type].option).length === Object.keys(value[type]).length;
+                return Object.keys(schema[type].option).length === Object.keys(self.value[type]).length;
             },
             activity: function (type) {
-                return !!Object.keys(value[type]).length;
+                return !!Object.keys(self.value[type]).length;
             },
             all: function () {
                 return fn.isValid.question("question") && fn.isValid.activity("activity");
@@ -1797,10 +1798,10 @@
                     },
                     summary;
 
-                Object.keys(value.activity).forEach(function (key) {
-                    var multiply = key === "shabbat" ? value.question.shabbat : 1,
+                Object.keys(self.value.activity).forEach(function (key) {
+                    var multiply = key === "shabbat" ? self.value.question.shabbat : 1,
                         add = hasDress ? 2 : 0,
-                        sets = (value.activity[key] * multiply) + add;
+                        sets = (self.value.activity[key] * multiply) + add;
 
                     val.activity.push(Object.assign({
                         name: key,
@@ -1813,7 +1814,7 @@
                 }, 0);
 
                 Object.keys(option).forEach(function (key) {
-                    if (key !== "cover" || value.question.cover === "yes") {
+                    if (key !== "cover" || self.value.question.cover === "yes") {
                         val.adds.push({
                             name: key,
                             sets: Math.max(1, Math.round((summary * option[key].perc) / 100))
@@ -1850,7 +1851,7 @@
             return style;
         };
         fn.hasDress = function () {
-            return value.question.dress === "shabbat" || value.question.dress === "yes";
+            return self.value.question.dress === "shabbat" || self.value.question.dress === "yes";
         };
         self.fn.edit = function (e) {
             var option = schema.activity.option,
@@ -1869,7 +1870,7 @@
 
                         if (currentValue) {
                             label.hidden = false;
-                            value.question[el.name] = currentValue;
+                            self.value.question[el.name] = currentValue;
                             el.classList.remove("unselected");
 
                             if (error) {
@@ -1877,7 +1878,7 @@
                             }
                         } else {
                             label.hidden = true;
-                            delete value.question[el.name];
+                            delete self.value.question[el.name];
                             el.classList.add("unselected");
                         }
 
@@ -1887,9 +1888,9 @@
                             el.parentNode.innerHTML = fn.activityField(currentValue);
                         }
 
-                        fn.sum();
+                        self.fn.sum();
 
-                        if (error && Object.keys(value.activity).length) {
+                        if (error && Object.keys(self.value.activity).length) {
                             error.hidden = true;
                         }
                     }
@@ -1907,7 +1908,7 @@
                             }
                         }
 
-                        fn.sum();
+                        self.fn.sum();
                     });
 
                     break;
@@ -1937,7 +1938,7 @@
             }
             if (type === "activity") {
                 if (fn.isValid[type](type)) {
-                    if (JSON.stringify(value) === JSON.stringify(inner.sessionData.task && inner.sessionData.task.clothesSum || {})) {
+                    if (JSON.stringify(self.value) === JSON.stringify(inner.sessionData.task && inner.sessionData.task.clothesSum || {})) {
                         // Value hasn't been changed
                         e.preventDefault();
                     } else {
@@ -2434,7 +2435,7 @@
                     data.data[page] = ui.form.deserialize(el);
                     break;
                 case "clothesSum":
-                    data.data[page] = inner[page].value;
+                    data.data[page] = inner.pageUI[page].value;
                     break;
                 case "sat":
                     data.data[page] = post;
