@@ -43,7 +43,7 @@
                 endif %}{%
             endfor %}
         </ul>{% if page.notice %}
-        <div class=product-notice>{{ page.notice | markdownify | replace: "“", "&quot;" | replace: "”", "&quot;" }}</div>{%
+        <div class=product-notice>{{ page.notice | markdownify | replace: "<br />", "<br>" | replace: "“", "&quot;" | replace: "”", "&quot;" | strip_newlines }}</div>{%
         endif %}{% if include.more %}{%
             include recommendation.html data = page.recommendations %}{%
             if page.payment-details %}
