@@ -141,7 +141,7 @@
                             (dateObject.enabled ? fn.generateEvents(sessionValue) : " disabled") + ">" +
                         "<time>" + dateObject.format + "</time><div>" + session[sessionValue].title + "</div>" +
                         "</label>" +
-                        fn.generatePage(session[sessionValue], sessionValue, dateParams) +
+                        fn.generatePage(session[sessionValue], sessionValue, dateObject) +
                         "</li>";
                 }
             }
