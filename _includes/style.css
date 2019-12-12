@@ -715,6 +715,14 @@ button.next:before {
     line-height: .45;
     font-family: monospace;
 }
+.buttons-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2em;
+    margin-top: auto;
+}
 [disabled][disabled][disabled][disabled] {
     color: #aaa;
     text-shadow: 0 1px 0 #fff;

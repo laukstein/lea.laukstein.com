@@ -50,9 +50,13 @@
         {{ page.payment-details | markdownify }}{%
             endif %}
         <div class=sticky-footer>{% endif %}{%
+            if include.more == nil %}
+        <div class=buttons-footer>{%
+            endif %}{%
             include button.html data = page %}{%
             if include.more == nil %}
-        <a class=more href={{ page.url }}>פרטים מלאים</a>
+            <a class=more href={{ page.url }}>פרטים מלאים</a>
+        </div>
         <a class=absolute href={{ page.url }} aria-label="{{ page.title | strip_html }}"></a>{%
             endif %}
     </div>{% if include.more %}

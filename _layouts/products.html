@@ -27,31 +27,33 @@ css: |
     .grid .header h1 {
         color: #666;
     }
-    .grid .card {
+    .grid .box.card {
+        overflow: hidden;
         display: inline-block;
         width: 100%;
         min-width: 17em;
         min-height: inherit;
+        padding-bottom: 0;
         margin: 0;
     }
     .grid .content {
+        display: flex;
+        flex-direction: column;
         min-width: inherit;
-        padding: 1.5em 2em 4em;
+        height: 100%;
+        padding: 1.5em 2em;
     }
     .grid .more,
-    .grid .button {
-        position: absolute;
+    .grid .button,
+    .product-notice a {
+        position: relative;
         z-index: 1;
-    }
-    .grid .more {
-        left: 2.8em;
-        bottom: 2.65em;
     }
     .grid .more:hover {
         text-decoration: underline;
     }
     .grid .button {
-        bottom: 1.4em;
+        margin-left: .6em;
     }
     .grid .label {
         padding-left: 0;
@@ -69,10 +71,6 @@ css: |
     }
     .product-notice {
         margin-bottom: -1em;
-    }
-    .product-notice a {
-        position: relative;
-        z-index: 1;
     }
     .product-notice:hover ~ a.absolute {
         outline-color: #1e90ff;
