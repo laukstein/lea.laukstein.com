@@ -5,10 +5,10 @@ order: 2
 
 title: מיני קורס ארון מדויק
 permalink: /closet
-redirectURL: https://mailchi.mp/adf663cdd992/lp0qtlpx0p
+redirectURL: https://mailchi.mp/laukstein.com/closet
 image: product-diy.jpg
 duration: שלוש שעות
-price: 450
+price: 360
 max_payments: 2
 extra: |
     * מחשבון מבנה הגוף וחוברת עם גזרות המחמיאות בדיוק לך
