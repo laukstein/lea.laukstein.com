@@ -929,7 +929,7 @@ button[disabled]:not(:hover) {
     .form {
         margin-left: 1.4em;
     }
-    .swipe-pages {
+    .swipe-pages.full {
         width: calc(100% + 3.2em);
         margin-right: -1.6em;
         margin-left: -1.6em;

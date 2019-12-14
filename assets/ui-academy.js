@@ -858,7 +858,7 @@
                                                     E: ["E", "G"],
                                                     CD: ["C", "D"]
                                                 },
-                                                final = inner.pageSchema.session.style.pages.sat.final,
+                                                final = ui.academy.schema.final,
                                                 el = this.id && ui.d.getElementById(this.id),
                                                 res,
                                                 i;
@@ -1971,7 +1971,7 @@
         return "<div class=\"form sum\">" +
             "    <h1>" + schema.title + "</h1>" +
             "    <form name=clothesSum onsubmit=ui.academy.formSubmit(event) autocomplete=off method=post novalidate>" +
-            "        <ul class=\"sheet swipe-pages\" id=slide style=\"" + self.fn.slideStyle(true) + "\">" + fn.html.all() + "</ul>" +
+            "        <ul class=\"sheet swipe-pages full\" id=slide style=\"" + self.fn.slideStyle(true) + "\">" + fn.html.all() + "</ul>" +
             "    </form>" +
             "</div>";
     };
@@ -2065,7 +2065,7 @@
                 if (el) {
                     var wrapper = ui.d.getElementById("slide"),
                         goNext = el.hasAttribute("data-next"),
-                        optSchema = inner.pageSchema.session.style.pages.sat.option;
+                        optSchema = ui.academy.schema.option;
 
                     if (goNext) {
                         if (index < optSchema.length - 1) {
