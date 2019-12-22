@@ -207,10 +207,8 @@ ui.order = ui.legacy(function () {
                 ui.setUser(ui.filterObj({
                     email: hash.email,
                     tel: hash.phone,
-                    firstName: hash.firstname,
-                    lastName: hash.lastname
-                }, function (key, obj) {
-                    return !!obj[key];
+                    firstname: hash.firstname,
+                    lastname: hash.lastname
                 }));
             }
             if (hash.transaction) {

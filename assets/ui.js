@@ -516,7 +516,7 @@ window.ui = {
         "use strict";
 
         return Object.keys(raw).filter(function (key) {
-            return condition(key, raw);
+            return condition ? condition(key, raw) : raw[key];
         }).reduce(function (obj, key) {
             obj[key] = raw[key];
 
