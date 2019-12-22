@@ -110,8 +110,8 @@ ui.payment = ui.legacy(function () {
                     } else if (paymentToken === token) {
                         ui.payment = obj;
 
-                        // Use to prevent fraud activity, token with 2 days expiration
-                        ui.cookie({paymentToken: paymentToken}, 172800);
+                        // Use to prevent fraud activity, token with 3 days expiration
+                        ui.cookie({paymentToken: paymentToken}, 259200);
 
                         Object.keys(obj).forEach(function (key) {
                             var input = ui.d.createElement("input");
