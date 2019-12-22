@@ -414,7 +414,7 @@
                                 url = "https://drive.google.com/thumbnail?authuser=0&sz=w640&id=" + obj.value;
                                 break;
                             case "sat":
-                            case "qa":
+                            case "colorSwatch":
                                 url = "/assets/" + obj.value;
                                 break;
                             default:
@@ -522,8 +522,6 @@
                                 title: "לוחות צבעים",
                                 video: "_dohRGGGLmQ"
                             },
-                            qa: {
-                                type: "qa",
                                 title: "מחשבון צבעים",
                                 value: "academy-colours.jpg",
                                 option: [
@@ -541,6 +539,7 @@
                                             {
                                                 title: "העיניים שלך בהירות, בצבע כחול, ירוק בהיר או אפור בהיר?",
                                                 final: "bright"
+                            colorSwatch: {
                                             }
                                         ]
                                     },
@@ -1150,9 +1149,9 @@
 
         return html;
     };
-    inner.pageUI.qa = function (schema) {
-        var self = inner.pageUI.qa,
-            sessionValue = inner.sessionData.task && inner.sessionData.task.qa,
+    inner.pageUI.colorSwatch = function (schema) {
+        var self = inner.pageUI.colorSwatch,
+            sessionValue = inner.sessionData.task && inner.sessionData.task.colorSwatch,
             fn = {};
 
         fn.label = function (data, index, sameLoop) {

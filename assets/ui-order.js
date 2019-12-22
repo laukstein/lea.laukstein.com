@@ -169,7 +169,7 @@ ui.order = ui.legacy(function () {
             hash = ui.hash({hash: location.search});
             urlParams = [
                 "orderid",
-                "service",
+                "package",
                 "transaction",
                 "amount",
                 "email",
@@ -271,11 +271,17 @@ ui.order = ui.legacy(function () {
             timer = 0,
             label;
 
-        if (obj && obj.valueLocale) {
+        ui.setUser(ui.filterObj({
+            email: obj.email,
+            firstname: obj.firstname,
+            lastname: obj.lastname
+        }));
+
+        if (obj && obj.value) {
             if (content) {
                 content.outerHTML = self.formFinal(obj);
             } else {
-                status.innerHTML = self.formFinal(obj, obj.service === "color-swatch");
+                status.innerHTML = self.formFinal(obj, obj.package === "colorSwatch");
             }
         } else {
             label = ui.d.getElementById("label");
@@ -297,14 +303,6 @@ ui.order = ui.legacy(function () {
                 }
             }, timer);
         }
-    };
-    generateLayout.valueLocale = {
-        bright: "את בעלת צבעים בהירים",
-        clear: "את בעלת צבעים צלולים",
-        cold: "את בעלת צבעים קרים",
-        deep: "את בעלת צבעים עמוקים",
-        mixed: "את בעלת צבעים מעורבים",
-        warm: "את בעלת צבעים חמים"
     };
     generateLayout.video = "<div class=video dir=ltr>" +
         "    <iframe title=\"ערכת &quot;צבע מבפנים&quot;\"" +
@@ -443,7 +441,7 @@ ui.order = ui.legacy(function () {
                         signal: signal,
                         body: JSON.stringify({
                             transaction: transaction,
-                            service: "color-swatch",
+                            package: "colorSwatch",
                             value: JSON.stringify(self.value),
                             url: location.href
                         })
@@ -564,7 +562,7 @@ ui.order = ui.legacy(function () {
             result = "",
             date = "";
 
-        if (obj.valueLocale) {
+        if (obj.value) {
             if (obj.date) {
                 date = new Date(obj.date * 1000);
                 date = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
@@ -574,9 +572,9 @@ ui.order = ui.legacy(function () {
             unfilledForm = false;
 
             result += (includeVideo ? self.video : "") +
-                "<div class=" + (obj.service === "color-swatch" ? "content" : "\"content center\"") + ">" +
-                "   <h1>" + obj.valueLocale + "</h1>" +
-                "   <p>" + (obj.descriptionLocale || "").replace(/\n/g, "<br>") + "</p>" + date +
+                "<div class=" + (obj.package === "colorSwatch" ? "content" : "\"content center\"") + ">" +
+                "   <h1>" + obj.value.title + "</h1>" +
+                "   <p>" + (obj.value.description || "").replace(/\n/g, "<br>") + "</p>" + date +
                 "</div>";
         } else {
             result += generateLayout();
