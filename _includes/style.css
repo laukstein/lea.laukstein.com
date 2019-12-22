@@ -108,6 +108,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
+    max-width: 100vw;
     padding-right: .5em;
     padding-left: .5em;
     font-weight: bold;
@@ -566,9 +567,9 @@ select,
 textarea,
 button:not([data-plyr]),
 .button {
-        width: 20em;
+        width: 100%;
     min-width: 9em;
-    max-width: 100%;
+    max-width: 20em;
     height: 2.674em; /* Mac Safari/Chrome <select> issue having same height as <input> */
     padding: .66em .75em;
     font-size: 1em;
@@ -1303,14 +1304,10 @@ iframe {
         width: auto;
     }
     .space {
-        transition: padding-right .15s,
-                    padding-left .15s;
-    }
-}
-@media (max-width: 54em) {
-    .space {
+        padding-top: 1em;
         padding-right: 0;
         padding-left: 0;
+        transition: padding .15s;
     }
     .subscribe h1 {
         font-size: 1.5em;
@@ -1408,8 +1405,9 @@ iframe {
         top: 0;
         left: 0;
         bottom: 0;
-        width: 72%;
         min-width: 12.4em;
+        max-width: 100vw;
+            width: 72%;
         padding: 3.5em 0;
         text-align: right;
         transform: translateX(-100%);
@@ -1524,6 +1522,21 @@ iframe {
         position: fixed;
         z-index: -1;
     }
+
+    @media (hover: none) { /* Is touch device */
+        /* Prevent mobile devices to zoom-in screen when focused input field */
+        main {
+            transition: padding-right .15s,
+                        padding-left .15s;
+        }
+        main:focus-within {
+            padding-right: 0;
+            padding-left: 0;
+        }
+        input:focus {
+            font-size: 18px;
+        }
+    }
 }
 @media (max-width: 35em) {
     .wrapline,
@@ -1535,6 +1548,16 @@ iframe {
     }
     .box figure.flow.flow {
         margin-left: -2.1em;
+    }
+    main {
+        padding-top: 4.3em;
+    }
+    .sheet ul {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    footer {
+        margin-top: -4.2em;
     }
     footer .wrapper {
         display: flex;

@@ -527,87 +527,59 @@
                                 title: "לוחות צבעים",
                                 video: "_dohRGGGLmQ"
                             },
-                                title: "מחשבון צבעים",
-                                value: "academy-colours.jpg",
-                                option: [
-                                    {
-                                        title: "האם צבע השיער שלך שחור או חום כהה?",
-                                        option: [
-                                            {
-                                                title: "העיניים שלך מבריקות, בולטות, בצבע ירוק כהה, ירוק זית? האם יש קונטראסט בין הלבן בעיניים לבין האישון?",
-                                                final: "clear"
-                                            },
-                                            {
-                                                title: "העיניים שלך בצבע חום כהה?",
-                                                final: "deep"
-                                            },
-                                            {
-                                                title: "העיניים שלך בהירות, בצבע כחול, ירוק בהיר או אפור בהיר?",
-                                                final: "bright"
                             colorSwatch: {
+                                title: "ערכת \"צבע מבפנים\"",
+                                question: {
+                                    option: {
+                                        hair: {
+                                            question: "באיזה צבע השיער שלך?",
+                                            answer: {
+                                                black: "שחור",
+                                                darkBrown: "חום כהה",
+                                                mediumBrown: "חום בינוני",
+                                                lightBrown: "חום בהיר",
+                                                honey: "דבש",
+                                                brightBlond: "בלונד בהיר",
+                                                darkBlond: "בלונד כהה",
+                                                redhead: "ג'ינג'י",
+                                                chestnut: "ערמוני",
+                                                blondeGray: "בלונד אפור",
+                                                lightGray: "אפור בהיר",
+                                                mediumGray: "אפור בינוני",
+                                                grayGray: "שיבה אפור",
+                                                mousey: "עכברי",
+                                                silver: "כסוף"
                                             }
-                                        ]
-                                    },
-                                    {
-                                        title: "האם צבע השיער שלך בלונד בהיר, אפור בהיר, חום בהיר?",
-                                        option: [
-                                            {
-                                                title: "העיניים שלך בהירות בצבעים כחול, אפור או ירוק בהיר?",
-                                                final: "bright"
-                                            },
-                                            {
-                                                title: "העיניים שלך בצבע חום בהיר, מתמזגות עם צבע השיער?",
-                                                final: "mixed"
+                                        },
+                                        eyes: {
+                                            question: "באיזה צבע העיניים שלך?",
+                                            answer: {
+                                                brown: "חום",
+                                                darkBrown: "חום כהה",
+                                                honeyBrown: "חום דבש",
+                                                greenishBrown: "חום ירקרק",
+                                                lightGray: "אפור בהיר",
+                                                greenish: "ירקרק",
+                                                brightGreen: "ירוק בהיר",
+                                                oliveGreen: "ירוק זית",
+                                                darkGreen: "ירוק כהה",
+                                                blue: "כחול",
+                                                lightBlue: "כחול בהיר",
+                                                blueGreen: "כחול ירוק"
                                             }
-                                        ]
-                                    },
-                                    {
-                                        title: "האם צבע השיער שלך חום בינוני או עכברי, אפור בינוני, בלונד אפורי, בלונד כהה?",
-                                        option: [
-                                            {
-                                                title: "העיניים שלך בהירות בצבעים כחול בהיר, אפור או ירוק בהיר?",
-                                                final: "bright"
-                                            },
-                                            {
-                                                title: "העיניים שלך חום בהיר, מתמזג עם צבע השיער?",
-                                                final: "mixed"
+                                        },
+                                        skin: {
+                                            question: "מה גוון העור שלך?",
+                                            answer: {
+                                                tan: "שזוף",
+                                                bright: "בהיר",
+                                                dark: "כהה"
                                             }
-                                        ]
+                                        }
                                     },
-                                    {
-                                        title: "האם צבע השיער שלך ג'ינג'י, דבש, ערמוני, והעיניים שלך ירוק חם כהה, חום ירקרק, חום דבש, כחול ירוק?",
-                                        final: "warm"
-                                    },
-                                    {
-                                        title: "האם צבע השיער שלך חום אפרפר (עכברי), בלונדי-אפרורי, כסוף, שיבה אפור, והצבע העיניים שלך כחול או חום או ירקרק?",
-                                        final: "cold"
-                                    }
-                                ],
-                                final: {
-                                    clear: {
-                                        title: "את צלולה",
-                                        value: "1RBWFZEoSG2IBhZWX74-bFerykqF1sJns"
-                                    },
-                                    deep: {
-                                        title: "את עמוקה",
-                                        value: "1dB3YO4ph2X6G-5ljir0RLUUQn3l7tkTZ"
-                                    },
-                                    bright: {
-                                        title: "את בהירה",
-                                        value: "1F1juuLT-pHxU4FVlLEFXamQKesNd3AzO"
-                                    },
-                                    mixed: {
-                                        title: "את מעורבת",
-                                        value: "1bmSwDG6GGggZTUuNjDHxZNMSlwYa8SuW"
-                                    },
-                                    warm: {
-                                        title: "את חמה",
-                                        value: "1lml4F6bRh9yiz47x-t7Xs5sWjlo1mE9i"
-                                    },
-                                    cold: {
-                                        title: "את קרה",
-                                        value: "1OOitln7OtHB7qvUqvhvkHI7XnmLLwPUR"
-                                    }
+                                    address: "כתובת מלאה לשליחת דואר",
+                                    error: "תעני על כל השאלות",
+                                    button: "אשר הזמנה"
                                 }
                             }
                         }
@@ -1154,195 +1126,139 @@
     inner.pageUI.colorSwatch = function (schema) {
         var self = inner.pageUI.colorSwatch,
             sessionValue = inner.sessionData.task && inner.sessionData.task.colorSwatch,
+            question = schema.question,
             fn = {};
 
-        fn.label = function (data, index, sameLoop) {
-            var skipLoop = index !== false,
-                result = "",
-                final,
-                key,
-                id;
-
-            index = index || 0;
-
-            if (skipLoop && !sameLoop) {
-                index += 1;
-            }
-            if (data) {
-                if (skipLoop) {
-                    final = !data.option;
-                    id = !final && inner.generateID();
-                    result += (sameLoop ? "" : "<ol>") +
-                        "<li><input type=radio name=" + index + (id ? " id=" + id : "") + ">" +
-                        "<label onclick=" +
-                        (data.final ?
-                            "\"ui.academy.fn.dialog(event, " + index + ", '" + data.final + "')\"" :
-                            "ui.academy.fn.click(event) for=" + id) +
-                        ">" + inner.generateIcon("check") + data.title + "</label>";
-                }
-                if (Array.isArray(data.option)) {
-                    index += 1;
-                    result += "<ol>";
-
-                    for (key in data.option) {
-                        if (Object.prototype.hasOwnProperty.call(data.option, key)) {
-                            result += fn.label(data.option[key], index, true);
-                        }
-                    }
-
-                    result += "</ol>";
-                } else if (data.option) {
-                    result += fn.label(data.option, index);
-                }
-                if (skipLoop) {
-                    result += "</li>" +
-                        (sameLoop ? "" : "</ol>");
-                }
-            }
-
-            return result;
-        };
         self.fn = {};
-        self.fn.click = function (e) {
-            var el = e.target.tagName === "LABEL" ? e.target : e.target.closest("label"),
-                active = inner.getDataAttribute(el, "active") === "true",
-                arrB,
-                arr,
-                i,
-                o;
+        self.value = {};
 
-            if (active) {
-                e.preventDefault();
 
-                arr = el.parentNode.querySelectorAll("[data-active]");
+        fn.question = function (field) {
+            var obj = question.option[field],
+                option = function (value) {
+                    return "<option value=" + value + ">" + obj.answer[value] + "</option>";
+                };
 
-                for (i = 0; i < arr.length; i += 1) {
-                    arr[i].removeAttribute("data-active");
-                }
+            return "<li class=\"row qa\">" +
+                "    <div class=label hidden>" + obj.question + "</div>" +
+                "    <select class=unselected name=" + field +
+                " onchange=ui.academy.fn.edit(event) data-question data-required required>" +
+                "        <option>" + obj.question + "</option>" +
+                Object.keys(obj.answer).map(option).join("\n") +
+                "    </select>" +
+                "</li>";
+        };
+        self.fn.edit = function (e) {
+            var el = e.target,
+                handler = el.closest("[data-handler]"),
+                error = handler.querySelector("[data-error]:not([hidden])"),
+                currentValue,
+                label;
 
-                arr = el.parentNode.querySelectorAll("input:checked");
+            switch (el.tagName) {
+                case "SELECT":
+                    currentValue = el.options[el.selectedIndex].getAttribute("value");
+                    label = el.parentNode.querySelector(".label");
 
-                for (i = 0; i < arr.length; i += 1) {
-                    arr[i].checked = false;
-                }
-            } else {
-                el.setAttribute("data-active", "true");
-            }
+                    if (currentValue) {
+                        label.hidden = false;
+                        self.value[el.name] = currentValue;
+                        el.classList.remove("unselected");
 
-            arr = el.parentNode.parentNode.children;
-
-            for (i = 0; i < arr.length; i += 1) {
-                if (!active && arr[i] === el.parentNode) {
-                    el.removeAttribute("disabled");
-                } else {
-                    arrB = arr[i].querySelectorAll("label");
-
-                    for (o = 0; o < arrB.length; o += 1) {
-                        if (active) {
-                            arrB[o].removeAttribute("disabled");
-                        } else {
-                            arrB[o].setAttribute("disabled", "");
+                        if (error) {
+                            error.hidden = true;
                         }
+                    } else {
+                        label.hidden = true;
+                        delete self.value[el.name];
+                        el.classList.add("unselected");
                     }
-                }
+
+                    break;
+                case "TEXTAREA":
+                    currentValue = el.value.trim();
+
+                    if (currentValue.length > 5) {
+                        self.value[el.name] = currentValue;
+
+                        if (error) {
+                            error.hidden = true;
+                        }
+                    } else {
+                        delete self.value[el.name];
+                    }
+
+                    break;
+            }
+
+            el.parentNode.classList.remove("error");
+
+            // Sort object by key
+            self.value = Object.keys(self.value).sort().reduce(function (result, key) {
+                result[key] = self.value[key];
+
+                return result;
+            }, {});
+        };
+        self.fn.submit = function (e) {
+            var el = e.target,
+                keyMandatory = Object.keys(question.option),
+                keyValue = Object.keys(self.value),
+                error = el.parentNode.querySelector("[data-error][hidden]");
+
+            keyMandatory.push("address");
+
+            if (error && keyMandatory.filter(function (key) {
+                return !keyValue.includes(key);
+            }).length) {
+                error.hidden = false;
             }
         };
-        self.fn.dialog = function (e, index, type, finalEl) {
-            var el = finalEl || e.target,
-                data = schema.final[type],
-                result = "";
-
-            if (!finalEl && e) {
-                self.fn.click(e);
-            }
-            if (el && data) {
-                result += "<div class=\"dialog" + (finalEl ? " final" : "") + "\">" +
-                    "   <div class=table>" +
-                    "   <div class=cel>" +
-                    (finalEl ? "" : "       <div class=close onclick=ui.academy.fn.reset(this) tabindex=0>" + inner.generateIcon("close") + "</div>") +
-                    "       <h1 class=nowrap>" + data.title + "</h1>" +
-                    (finalEl ? "" : "       <p>שימי לב, אחרי הורדה לא ניתן לשנות קטגוריה</p>") +
-                    "       <div>" +
-                    (finalEl ? inner.generateDownloadLink(data.value, "להורדת סרגל הצבעים") :
-                        "<a class=button onclick=\"ui.academy.fn.final(this, '" + type + "')\" tabindex=0>לקבל סרגל צבעים</a>") +
-                    "</div>" +
-                    "   </div>" +
-                    "   </div>" +
-                    "</div>";
-
-                if (!finalEl) {
-                    el = index === 1 ? el.parentNode : el.parentNode.parentNode.parentNode;
-                    el.insertAdjacentHTML("afterbegin", result);
-                }
-            }
-
-            return result;
+        fn.form = function () {
+            return "<div class=\"form sum\">" +
+                "<h1>" + schema.title + "</h1>" +
+                "<form name=colorSwatch onsubmit=ui.academy.formSubmit(event) autocomplete=off method=post novalidate>" +
+                "<ul class=\"sheet swipe-pages full\">" +
+                "    <li class=page data-handler>" +
+                "        <ul class=\"table content\">" +
+                Object.keys(question.option).map(fn.question).join("\n") +
+                "            <li class=\"row qa\">" +
+                "                <textarea name=address oninput=ui.academy.fn.edit(event) placeholder=\"" +
+                question.address + "\" autocomplete=\"shipping street-address\" rows=3 dir=rtl data-required></textarea>" +
+                "            </li>" +
+                "            <li class=\"row qa\">" +
+                "                        <p class=error data-error hidden>" + inner.generateIcon("error") + question.error + "</p>" +
+                "                <button onclick=ui.academy.fn.submit(event)>" + question.button + "</button>" +
+                "            </li>" +
+                "            <li class=\"row qa\">" +
+                "                <p>לא בטוחה לאלו צבעים את שייכת? שלחי לי תמונת פנים ברורה שצולמה באור היום לוואטסאפ" +
+                " <a href=\"https://wa.me/972585800020\" target=_blank dir=auto>0585800020</a> או למייל" +
+                " <a href=\"mailto:lea@laukstein.com\" target=_blank dir=auto>lea@laukstein.com</a></p>" +
+                "            </li>" +
+                "        </ul>" +
+                "    </li>" +
+                "</ul>" +
+                "</form>" +
+                "</div>";
         };
-        self.fn.reset = function (el) {
-            if (el) {
-                el.parentNode.parentNode.parentNode.remove();
+        fn.final = function () {
+            var date = "";
+
+            if (sessionValue.date) {
+                date = new Date(sessionValue.date * 1000);
+                date = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+                date = " ההזמנה בוצעה ב " + date + ".";
             }
 
-            var arr = ui.d.querySelectorAll(".qa [disabled]"),
-                i;
-
-            for (i = 0; i < arr.length; i += 1) {
-                arr[i].removeAttribute("disabled");
-            }
-
-            arr = ui.d.querySelectorAll(".qa input:checked");
-
-            for (i = 0; i < arr.length; i += 1) {
-                arr[i].checked = false;
-            }
-
-            arr = ui.d.querySelectorAll(".qa [data-active]");
-
-            for (i = 0; i < arr.length; i += 1) {
-                arr[i].removeAttribute("data-active");
-            }
-        };
-        self.fn.final = function (el, value) {
-            var type = "update",
-                data = {
-                    email: inner.sessionData.email,
-                    token: inner.sessionData.token,
-                    data: {qa: value}
-                },
-                close = ui.d.querySelector(".qa .close");
-
-            if (close) {
-                close.remove();
-            }
-
-            ui.form.accessibility(false, ui.d.querySelector(".qa"), true);
-
-            fetch(inner.endpoint + "/" + type, {
-                method: "POST",
-                redirect: "error",
-                body: JSON.stringify(data)
-            }).then(function (response) {
-                return response.json();
-            }).then(function (json) {
-                return json.error ? Promise.reject(json) : json;
-            }).then(function (json) {
-                inner.sessionUpdate(json);
-                outer.sessionRefresh();
-            }).catch(function () {
-                if (el) {
-                    el.remove();
-                }
-
-                inner.sessionErrorReport(type, data);
-            });
+            return "<div class=form>" +
+                "<h3>" + schema.title + "</h3>" +
+                "<h1>" + sessionValue.title + "</h1>" +
+                "<p>" + (sessionValue.description || "").replace(/\n/g, "<br>") + date + "</p>" +
+                inner.generateDownloadLink(sessionValue.link, "להורדת סרגל הצבעים") +
+                "</div>";
         };
 
-        return "<div class=\"form qa\">" +
-            "    <h1>" + schema.title + "</h1>" +
-            (sessionValue ?
-                self.fn.dialog(null, 0, sessionValue, true) :
-                fn.label(schema, false)) +
-            "</div>";
+        return sessionValue ? fn.final() : fn.form();
     };
     inner.pageUI.bodyType = function (schema) {
         var self = inner.pageUI.bodyType,
@@ -2438,6 +2354,11 @@
                 case "clothesSum":
                     data.data[page] = inner.pageUI[page].value;
                     break;
+                case "colorSwatch":
+                    data.data[page] = Object.assign({
+                        date: Math.floor(+new Date / 1000)
+                    }, inner.pageUI[page].value);
+                    break;
                 case "sat":
                     data.data[page] = post;
 
@@ -2465,6 +2386,8 @@
                 }).catch(function () {
                     inner.sessionErrorReport(type, data);
                 });
+            } else {
+                console.error(page, data.data[page]);
             }
         }
     };

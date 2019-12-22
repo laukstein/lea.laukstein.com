@@ -14,6 +14,7 @@ css: |
             max-width: 23.2em;
             padding-right: 1.6em;
             padding-left: 1.6em;
+            margin-bottom: 4em;
         }
     }
 ---

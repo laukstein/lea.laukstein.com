@@ -5,6 +5,9 @@
 .content {
     overflow: hidden;
 }
+.copyright {
+    color: #fff;
+}
 .space {
     padding-right: 1.4em;
     padding-left: 1.4em;
@@ -85,6 +88,9 @@ a.logo {
     color: #fff;
     text-shadow: 1px 1px 1px #333;
 }
+.subscribe dl {
+    width: 100%;
+}
 .spin.spin.spin:before {
     content: "";
     display: inline-block;
@@ -116,8 +122,8 @@ button.spin.spin.spin:before {
     margin-top: 5em;
 }
 .subscribe dd {
-        width: 20em;
-    max-width: 100%;
+        width: 100%;
+    max-width: 20em;
     margin: 0;
     text-align: right;
 }
@@ -166,9 +172,6 @@ button.error:not([data-plyr]) {
     left: 0;
     width: 100vw;
     height: 100vh;
-}
-.qa .column.label {
-    width: inherit;
 }
 .column.nav-container,
 .column.content {
@@ -359,7 +362,19 @@ h1 {
     margin-left: .3em;
 }
 .qa {
+    display: flex;
+    flex-direction: column;
     list-style: none;
+    white-space: normal;
+}
+.qa li {
+    position: relative;
+    flex: 1;
+    margin: 0;
+    list-style-type: none;
+}
+.qa .column.label {
+    width: inherit;
 }
 .qa ol,
 .qa input:checked ~ ol {
@@ -381,17 +396,6 @@ h1 {
 }
 .qa input:checked ~ ol {
     display: block;
-}
-.qa li {
-    position: relative;
-    flex: 1;
-    margin: 0;
-    list-style-type: none;
-}
-.qa a {
-    visibility: hidden;
-    margin-right: .4em;
-    float: left;
 }
 .qa input {
     display: none;
@@ -511,6 +515,7 @@ select.unselected {
     box-shadow: 0 -1px 0 #eee, 1px 2px 2px #aaa;
 }
 .dialog.final {
+    padding: 0;
     text-align: right;
     background-color: transparent;
     box-shadow: none;
@@ -748,9 +753,11 @@ select.unselected {
     vertical-align: top;
 }
 .swipe-pages .content {
-    max-width: 21em;
-        width: auto;
+    overflow: visible;
+    max-width: 100%;
+        width: 21em;
     margin: auto;
+    box-sizing: border-box;
 }
 .sat .box .row {
     display: block;
@@ -861,14 +868,26 @@ button[disabled]:not(:hover) {
     animation-name: none;
 }
 
-@media (max-width: 54em) {
+@media (max-width: 56em) {
     .nav a {
         padding-right: 1.4em;
+    }
+    .table.scale {
+        display: flex;
     }
     .subscribe.subscribe,
     .video + .space {
         padding-right: 1.4em;
         padding-left: 1.4em;
+    }
+    .subscribe.subscribe {
+        display: flex;
+        width: 100%;
+        max-width: 22.8em;
+        padding-top: 1em;
+        padding-bottom: 3em;
+        float: none;
+        vertical-align: middle;
     }
     .logedin .nav {
         padding-left: 3em;
@@ -935,21 +954,11 @@ button[disabled]:not(:hover) {
         margin-left: -1.6em;
     }
     .swipe-pages .content {
-        max-width: 100%;
         padding-right: 1.6em;
         padding-left: 1.6em;
     }
     .swipe-pages .row {
         padding: 0;
-    }
-    .subscribe.subscribe {
-        display: table-cell;
-        width: 100%;
-        max-width: 19em;
-        padding-top: 1em;
-        padding-bottom: 3em;
-        float: none;
-        vertical-align: middle;
     }
 }
 @media (max-width: 28em) {
