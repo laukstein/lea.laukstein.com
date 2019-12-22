@@ -102,7 +102,7 @@
             return new Date(+new Date(startDate * 1000).setHours(0, 0, 0, 0));
         };
         fn.generatePage = function (schema, sessionValue, dateObject) {
-            var pages = schema.pages,
+            var pages = schema.page,
                 html = "",
                 page;
 
@@ -380,12 +380,17 @@
         }
 
         var schema = inner.getCurrentSchema(),
+            hashURL = ui.hash(),
             result = "";
 
         delete outer.schema;
         delete outer.fn;
 
-        if (schema && (!inner.hashData.session || !inner.el.sidenav ||
+        if (schema && schema.page && inner.hashData.page && !schema.page[inner.hashData.page]) {
+            // Trying to open invalid page
+            delete hashURL.page;
+            location.hash = ui.serialize(hashURL);
+        } else if (schema && (!inner.hashData.session || !inner.el.sidenav ||
             inner.el.sidenav.querySelector("[data-session=\"" + inner.hashData.session + "\"]:not([data-page])"))) {
             if (inner.el.bar && inner.el.bar.checked) {
                 inner.el.bar.checked = false;
@@ -439,14 +444,14 @@
                 result += "</ol>"; */
             } else {
                 if (inner.hashData.session) {
-                    schema = schema.pages && schema.pages[inner.hashData.page];
+                    schema = schema.page && schema.page[inner.hashData.page];
                 }
                 if (schema) {
                     outer.schema = schema;
 
                     if (schema.video) {
                         result += inner.pageUI.generateVideo(schema);
-                    } else if (typeof inner.pageUI[schema.type] === "function") {
+                    } else if (typeof inner.pageUI[hashURL.page] === "function") {
                         // // "document":
                         // // Usage example
                         // //     "check-list": {
@@ -467,10 +472,10 @@
                         //         inner.getDownloadLink(schema.value)) +
                         //         "\" rel=noopener target=_blank tabindex=0><b>להורדת " + schema.title + "</a>" +
                         //     "</div>";
-                        result += inner.pageUI[schema.type](schema);
+                        result += inner.pageUI[hashURL.page](schema);
 
-                        if (inner.pageUI[schema.type].fn) {
-                            outer.fn = inner.pageUI[schema.type].fn;
+                        if (inner.pageUI[hashURL.page].fn) {
+                            outer.fn = inner.pageUI[hashURL.page].fn;
                         }
                     }
                     if (schema.pinterest) {
@@ -491,7 +496,7 @@
                 }
             }
             if (schema) {
-                if (schema.video || schema.type === "video") {
+                if (schema.video) {
                     ui.video.applyPlyr();
                 }
                 if (ui.comment) {
@@ -517,7 +522,7 @@
                     colours: {
                         title: "הצבע הזה הוא אני",
                         video: "6fuubXrOQ6c",
-                        pages: {
+                        page: {
                             colorPlates: {
                                 title: "לוחות צבעים",
                                 video: "_dohRGGGLmQ"
@@ -610,9 +615,8 @@
                     bodyShape: {
                         title: "כמה טוב להיות את!",
                         video: "xZMfS-HXqXM",
-                        pages: {
+                        page: {
                             bodyType: {
-                                type: "bodyType",
                                 title: "מחשבון מבנה הגוף",
                                 value: "1gKI_JUyD20fvq27_B3Kxq9vfJ6f99xLnnd1ht1vibhU",
                                 button: "הצג תוצאה",
@@ -738,9 +742,8 @@
                     style: {
                         title: "על טעם, ריח, ואופי",
                         video: "06Q_GGX5KLQ",
-                        pages: {
+                        page: {
                             sat: {
-                                type: "sat",
                                 title: "מחשבון סגנון הלבוש",
                                 next: "המשך",
                                 back: "חזור",
@@ -924,7 +927,7 @@
                         text: "מיני קורס \"קניות לשב אחרי שלב\" הוא למעשה תיעוד של סיבוב קניות אמיתי." +
                               " הקורס מלמד איך מזהים את הבגד שיחמיא לך, עוד לפני שמודדים. ההשקעה שלך," +
                               " בתור משתתפת מיני קורס \"ארון מדויק\" 380 ~(במקום 450)~",
-                        pages: {
+                        page: {
                             clearingCloset: {
                                 title: "פינוי ארון",
                                 video: "FiMXsvqCDZ8"
@@ -939,7 +942,6 @@
                                 }
                             },
                             clothesSum: {
-                                type: "clothesSum",
                                 title: "מחשבון כמויות הבגדים",
                                 question: {
                                     option: {
@@ -1046,7 +1048,7 @@
                     accessories: {
                         title: "התוספת שתופסת",
                         video: "fOYZbRKMYAE",
-                        pages: {
+                        page: {
                             coversShoes: {
                                 title: "מטפחות ונעליים",
                                 video: "JWTBhFri44w",
@@ -1064,7 +1066,7 @@
                     lingerie: {
                         title: "יסודות למראה חטוב",
                         video: "qk0-_Dnf3Z4",
-                        pages: {
+                        page: {
                             material: {
                                 title: "צבע, בד וגזרה בהלבשה תחתונה",
                                 video: "IpwM9HEeup4",
@@ -1133,11 +1135,11 @@
             // Markdown https://stackoverflow.com/questions/10168285/markdown-to-convert-double-asterisks-to-bold-text-in-javascript
             html += "<p>" + schema.text.replace(/~(\S(.*?\S)?)~/gm, "<s>$1</s>") + "</p>";
         }
-        if (schema.pages) {
-            for (prop in schema.pages) {
-                if (Object.prototype.hasOwnProperty.call(schema.pages, prop)) {
+        if (schema.page) {
+            for (prop in schema.page) {
+                if (Object.prototype.hasOwnProperty.call(schema.page, prop)) {
                     html += "<a class=button href=\"#session=" + inner.hashData.session +
-                        "&page=" + prop + "\" tabindex=0>" + schema.pages[prop].title + "</a> ";
+                        "&page=" + prop + "\" tabindex=0>" + schema.page[prop].title + "</a> ";
                 }
             }
         }
@@ -2311,7 +2313,7 @@
                 inner.toggleNav.applyClass(inner.el.sidenav.querySelector(location.hash ?
                     "[data-session=\"" + inner.hashData.session + "\"]:not([data-page])" : "a"));
 
-                if (obj.pages && obj.pages[inner.hashData.page]) {
+                if (obj.page && obj.page[inner.hashData.page]) {
                     inner.toggleNav.applyClass(inner.el.sidenav.querySelector("[data-session=\"" +
                         inner.hashData.session + "\"][data-page=\"" + inner.hashData.page + "\"]"));
                 }
@@ -2471,7 +2473,7 @@
             hasFullPackage = userDefaultPackage === inner.pageSchema.fullPackage;
 
         // Map page sessions schema
-        inner.pageSchema.package.full.session.closet.pages.bodyType = inner.pageSchema.package.full.session.bodyShape.pages.bodyType;
+        inner.pageSchema.package.full.session.closet.page.bodyType = inner.pageSchema.package.full.session.bodyShape.page.bodyType;
         inner.pageSchema.package.closet = inner.pageSchema.package.full.session.closet;
 
         Object.keys(inner.pageSchema.package).forEach(function (key) {
