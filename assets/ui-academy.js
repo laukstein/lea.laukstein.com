@@ -25,6 +25,9 @@
                 delete localStorage[sessionName];
             }
 
+            if (!result.task) {
+                result.task = {};
+            }
             if (typeof callback === "function") {
                 return callback(result);
             }
@@ -264,6 +267,11 @@
             }
 
             inner.sessionData = data;
+
+            if (!inner.sessionData.task) {
+                inner.sessionData.task = {};
+            }
+
             localStorage.session = JSON.stringify(data);
         }
     };
@@ -1125,13 +1133,12 @@
     };
     inner.pageUI.colorSwatch = function (schema) {
         var self = inner.pageUI.colorSwatch,
-            sessionValue = inner.sessionData.task && inner.sessionData.task.colorSwatch,
+            sessionValue = inner.sessionData.task.colorSwatch,
             question = schema.question,
             fn = {};
 
         self.fn = {};
         self.value = {};
-
 
         fn.question = function (field) {
             var obj = question.option[field],
@@ -1262,7 +1269,7 @@
     };
     inner.pageUI.bodyType = function (schema) {
         var self = inner.pageUI.bodyType,
-            sessionValue = inner.sessionData.task && (inner.sessionData.task.bodyType || inner.sessionData.task.calculator),
+            sessionValue = inner.sessionData.task.bodyType,
             result = "",
             size = {
                 height: {
@@ -1395,7 +1402,7 @@
     };
     inner.pageUI.clothesSum = function (schema) {
         var self = inner.pageUI.clothesSum,
-            sessionValue = inner.sessionData.task && inner.sessionData.task.clothesSum,
+            sessionValue = inner.sessionData.task.clothesSum,
             fn = {};
 
         self.value = JSON.parse(JSON.stringify(sessionValue || {}));
@@ -1855,7 +1862,7 @@
             }
             if (type === "activity") {
                 if (fn.isValid[type](type)) {
-                    if (JSON.stringify(self.value) === JSON.stringify(inner.sessionData.task && inner.sessionData.task.clothesSum || {})) {
+                    if (JSON.stringify(self.value) === JSON.stringify(inner.sessionData.task.clothesSum || {})) {
                         // Value hasn't been changed
                         e.preventDefault();
                     } else {
@@ -1894,7 +1901,7 @@
     };
     inner.pageUI.sat = function (schema) {
         var self = inner.pageUI.sat,
-            sessionValue = inner.sessionData.task && inner.sessionData.task.sat,
+            sessionValue = inner.sessionData.task.sat,
             result = "",
             index = 0,
             sum = [],
