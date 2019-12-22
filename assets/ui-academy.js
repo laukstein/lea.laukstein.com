@@ -60,7 +60,7 @@
             "    <img src=\"https://gravatar.com/avatar/" + inner.sessionData.avatar + "?s=42&r=g&d=mm\">" +
             "    <div class=\"table center\">" +
             "        <div class=cel>" +
-            (inner.sessionData.firstName ? "            <div class=nowrap dir=auto>" + inner.sessionData.firstName + "</div>" : "") +
+            (inner.sessionData.firstname ? "<div class=nowrap dir=auto>" + inner.sessionData.firstname + "</div>" : "") +
             "            <small onclick=ui.academy.sessionLogout()>התנתקי</small>" +
             "        </div>" +
             "    </div>" +

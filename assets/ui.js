@@ -287,8 +287,8 @@ window.ui = {
 
                     obj.email = self.user.email;
 
-                    if (self.user.fullName) {
-                        obj.name = self.user.fullName;
+                    if (self.user.fullname) {
+                        obj.name = self.user.fullname;
                     }
 
                     return obj;
@@ -332,8 +332,8 @@ window.ui = {
 
                     obj.email = self.user.email;
 
-                    if (self.user.fullName) {
-                        obj.displayName = self.user.fullName;
+                    if (self.user.fullname) {
+                        obj.displayName = self.user.fullname;
                     }
                     if (self.user.phone) {
                         obj.phone_str = String(self.user.phone);
@@ -381,16 +381,16 @@ window.ui = {
                 if (session.tel || session.PHONE) {
                     user.phone = session.tel || session.PHONE;
                 }
-                if (session.name || session.FNAME || session.firstName) {
-                    name.push(session.name || session.FNAME || session.firstName);
-                    user.firstName = session.name || session.FNAME || session.firstName;
+                if (session.name || session.FNAME || session.firstname) {
+                    name.push(session.name || session.FNAME || session.firstname);
+                    user.firstname = session.name || session.FNAME || session.firstname;
                 }
-                if (session.lastName) {
-                    name.push(session.lastName);
-                    user.lastName = session.lastName;
+                if (session.lastname) {
+                    name.push(session.lastname);
+                    user.lastname = session.lastname;
                 }
-                if (name.length && (!user.fullName || session.lastName)) {
-                    user.fullName = name.join(" ");
+                if (name.length && (!user.fullname || session.lastname)) {
+                    user.fullname = name.join(" ");
                 }
 
                 this.identify.user = user;
