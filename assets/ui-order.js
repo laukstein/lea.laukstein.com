@@ -16,6 +16,7 @@ ui.order = ui.legacy(function () {
         events = {},
         locale = {},
         generateLayout,
+        isRegistered,
         unfilledForm,
         transaction,
         controller,
@@ -169,14 +170,15 @@ ui.order = ui.legacy(function () {
             hash = ui.hash({hash: location.search});
             urlParams = [
                 "orderid",
-                "package",
                 "transaction",
                 "amount",
+                "package",
+                "subscribe",
+                "startDate",
                 "email",
                 "phone",
                 "firstname",
                 "lastname",
-                "startDate",
                 "utm_campaign",
                 "utm_source"
             ];
@@ -254,22 +256,38 @@ ui.order = ui.legacy(function () {
         }
     };
     events.remind = function () {
-        if (unfilledForm && events.remind.done !== transaction) {
-            events.remind.done = transaction;
+        if (unfilledForm) {
+            if (events.remind.done !== transaction) {
+                events.remind.done = transaction;
 
-            if (navigator.sendBeacon) {
-                navigator.sendBeacon(endpoint + "/payment/reminder", JSON.stringify({
-                    transaction: transaction,
-                    url: location.href
-                }));
+                if (navigator.sendBeacon) {
+                    navigator.sendBeacon(endpoint + "/payment/reminder", JSON.stringify({
+                        transaction: transaction,
+                        url: location.href
+                    }));
+                }
             }
+        } else if (!isRegistered && transaction && hash && navigator.sendBeacon) {
+            // Make sure order is registered also if browser is closed
+            navigator.sendBeacon(endpoint + "/payment/register", JSON.stringify(hash));
+        }
+    };
+    events.updateHTML = function (html) {
+        var content = ui.d.getElementById("content");
+
+        if (!html) {
+            html = "";
+        }
+        if (content) {
+            content.outerHTML = html;
+        } else {
+            status.innerHTML = html;
         }
     };
     generateLayout = function (obj, token) {
         var self = generateLayout,
-            content = ui.d.getElementById("content"),
-            timer = 0,
-            label;
+            packageName = obj.package || "colorSwatch",
+            layout = {};
 
         ui.setUser(ui.filterObj({
             email: obj.email,
@@ -277,38 +295,52 @@ ui.order = ui.legacy(function () {
             lastname: obj.lastname
         }));
 
-        if (obj && obj.value) {
-            if (content) {
-                content.outerHTML = self.formFinal(obj);
+        self.updateHTML = function () {
+            events.updateHTML(self.formFinal(obj));
+        };
+
+        layout.full = self.updateHTML;
+        layout.closet = self.updateHTML;
+        layout.colorSwatch = function () {
+            var timer = 0,
+                label;
+
+            if (obj.value) {
+                self.updateHTML();
             } else {
-                status.innerHTML = self.formFinal(obj, obj.package === "colorSwatch");
-            }
-        } else {
-            label = ui.d.getElementById("label");
+                label = ui.d.getElementById("label");
 
-            if (label) {
-                // timeout with details for better UX
-                label.innerHTML = locale.paymentSuccess;
-                timer = 3500;
-            }
-
-            self.timer = setTimeout(function () {
-                if (!token || token === session) {
-                    status.innerHTML = self.formStart();
-
-                    self.addEvents();
-
-                    // YouTube fallback
-                    ui.video.applyPlyr();
+                if (label) {
+                    // timeout with details for better UX
+                    label.innerHTML = locale.paymentSuccess;
+                    timer = 3500;
                 }
-            }, timer);
+
+                self.timer = setTimeout(function () {
+                    if (!token || token === session) {
+                        status.innerHTML = self.formStart();
+
+                        self.addEvents();
+
+                        // YouTube fallback
+                        ui.video.applyPlyr();
+                    }
+                }, timer);
+            }
+        };
+
+        if (layout[packageName]) {
+            layout[packageName]();
         }
     };
-    generateLayout.video = "<div class=video dir=ltr>" +
-        "    <iframe title=\"ערכת &quot;צבע מבפנים&quot;\"" +
-        " src=\"https://www.youtube.com/embed/ihxGT0A1OrE\"" +
-        " allow=\"autoplay; encrypted-media; fullscreen\" allowfullscreen></iframe>" +
-        "</div>";
+    generateLayout.video = function () {
+        return ui.d.getElementById("video") ? "" :
+            "<div class=video id=video dir=ltr>" +
+            "    <iframe title=\"ערכת &quot;צבע מבפנים&quot;\"" +
+            " src=\"https://www.youtube.com/embed/ihxGT0A1OrE\"" +
+            " allow=\"autoplay; encrypted-media; fullscreen\" allowfullscreen></iframe>" +
+            "</div>";
+    };
     generateLayout.uniqueID = function () {
         return Math.random().toString(16).substr(2, 8);
     };
@@ -442,7 +474,7 @@ ui.order = ui.legacy(function () {
                         body: JSON.stringify({
                             transaction: transaction,
                             package: "colorSwatch",
-                            value: JSON.stringify(self.value),
+                            value: self.value,
                             url: location.href
                         })
                     }).then(function (response) {
@@ -547,7 +579,7 @@ ui.order = ui.legacy(function () {
 
         wrapper.classList.add("no-padding");
 
-        return self.video +
+        return self.video() +
             "<div class=content id=content dir=rtl>" +
             "    <h1 id=title>" + ui.d.title + "</h1>" + self.form(self.template) +
             "    <div class=\"figure footer\">" +
@@ -557,21 +589,30 @@ ui.order = ui.legacy(function () {
             "    </div>" +
             "</div>";
     };
-    generateLayout.formFinal = function (obj, includeVideo) {
+    generateLayout.formFinal = function (obj) {
         var self = generateLayout,
             result = "",
-            date = "";
+            date = "",
+            addLeadingZeros;
 
-        if (obj.value) {
+        isRegistered = obj.package !== "colorSwatch" || !!obj.value;
+
+        if (isRegistered) {
             if (obj.date) {
+                addLeadingZeros = function (num) {
+                    // https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date
+                    return ("0" + String(num)).slice(-2);
+                };
                 date = new Date(obj.date * 1000);
-                date = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+                date = addLeadingZeros(date.getDate()) +
+                    "/" + addLeadingZeros(date.getMonth() + 1) +
+                    "/" + date.getFullYear();
                 date = "<time>ההזמנה בוצעה ב " + date + "</time>";
             }
 
             unfilledForm = false;
 
-            result += (includeVideo ? self.video : "") +
+            result += (obj.package === "colorSwatch" ? self.video() : "") +
                 "<div class=" + (obj.package === "colorSwatch" ? "content" : "\"content center\"") + ">" +
                 "   <h1>" + obj.value.title + "</h1>" +
                 "   <p>" + (obj.value.description || "").replace(/\n/g, "<br>") + "</p>" + date +
