@@ -206,6 +206,7 @@ button.error:not([data-plyr]) {
     padding: 0;
 }
 .sidenav li {
+    position: relative;
     display: block;
 }
 .sidenav time {
@@ -312,6 +313,37 @@ button.error:not([data-plyr]) {
     content: attr(data-highlight);
     margin-left: .8em;
     font-weight: normal;
+}
+.sidenav .link-download {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.1em;
+    height: 2.1em;
+    padding: 0 .45em;
+    margin-top: .5em;
+    margin-left: .5em;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.sidenav .link-download + .link-download {
+    left: 2.3em;
+}
+.sidenav .active .link-download,
+.sidenav .active ~ .link-download,
+.sidenav .unselectable:hover ~ .link-download {
+    color: #fff;
+}
+.sidenav label:not(.active) .link-download:hover {
+    background-color: #438784;
+}
+.sidenav label .link-download.link-download {
+    left: 3.4em;
+    pointer-events: all;
+}
+.sidenav .link-download svg {
+    width: 100%;
+    height: 100%;
 }
 .comment-container {
     width: calc(100% - 16.8em);
