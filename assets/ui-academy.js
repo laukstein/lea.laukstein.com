@@ -1115,6 +1115,13 @@
         }
     };
     inner.pageUI = {};
+    inner.pageUI.getDownloadLink = function (schema) {
+        if (schema && schema.download) {
+            return inner.generateDownloadLink(schema.download, schema.download.title);
+        }
+
+        return "";
+    };
     inner.pageUI.generateVideo = function (schema) {
         var id = schema.value || schema.video,
             html = "",
@@ -1145,10 +1152,8 @@
                 }
             }
         }
-        if (schema.download) {
-            html += inner.generateDownloadLink(schema.download.value, schema.download.title);
-        }
 
+        html += inner.pageUI.getDownloadLink(schema);
         html += "</div>";
 
         return html;
@@ -1283,7 +1288,7 @@
                 "<h3>" + schema.title + "</h3>" +
                 "<h1>" + sessionValue.title + "</h1>" +
                 "<p>" + (sessionValue.description || "").replace(/\n/g, "<br>") + date + "</p>" +
-                inner.generateDownloadLink(sessionValue.link, "להורדת סרגל הצבעים") +
+                inner.generateDownloadLink(sessionValue, "להורדת סרגל הצבעים") +
                 "</div>";
         };
 
@@ -1397,7 +1402,7 @@
                 "       <ol>" +
                 "           <li>" + schema.final[sessionValue].text.join("</li>\n<li>") + "</li>" +
                 "       </ol>" +
-                "       <div>" + inner.generateDownloadLink(schema.final[sessionValue].value, schema.download) + "</div>" +
+                "       <div>" + inner.generateDownloadLink(sessionValue, schema.download) + "</div>" +
                 "   </div>" +
                 "   </div>" +
                 "</div>";
@@ -2001,7 +2006,7 @@
                 "   <div class=table>" +
                 "   <div class=cel>" +
                 "       <h1>" + title + "</h1>" +
-                "       <div>" + links + "</div>" +
+                "       <div>" + inner.generateDownloadLink(sessionValue, schema.downloadButton) + "</div>" +
                 "   </div>" +
                 "   </div>" +
                 "</div>";
@@ -2170,12 +2175,23 @@
     inner.generateIcon = function (name) {
         return "<svg class=icon-" + name + "><use xlink:href=#" + name + " /></svg>";
     };
-    inner.generateDownloadLink = function (id, title) {
+    inner.generateDownloadLink = function (obj, text) {
         /* Download PDF
         PDF file as is https://drive.google.com/uc?export=download&id={ id }
         From Slides https://docs.google.com/presentation/d/{ id }/export/pdf */
-        return "<a class=button href=\"https://drive.google.com/uc?export=download&id=" + id +
-            "\" rel=noopener target=_blank tabindex=0>" + inner.generateIcon("download") + title + "</a>";
+        if (!obj || !text || !obj.link) {
+            return "";
+        }
+        if (Array.isArray(obj.link)) {
+            // Multiple links
+            return obj.link.map(function (link) {
+                return inner.generateDownloadLink({link: link}, text);
+            }).join("");
+        }
+
+        return "<a class=button href=\"" + obj.link + "\" rel=noopener target=_blank tabindex=0>" +
+            inner.generateIcon("download") + text + "</a>";
+    };
     inner.generateDownloadIcon = function (link) {
         if (!link) {
             return "";
