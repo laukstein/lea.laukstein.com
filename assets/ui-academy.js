@@ -436,9 +436,8 @@
             if (!inner.hashData.session || inner.hashData.session && !inner.hashData.page) {
                 outer.schema = schema;
 
-                if (schema.video) {
-                    result += inner.pageUI.generateVideo(schema);
-                }
+                result += inner.pageUI.generateHTML(schema);
+
                 if (typeof schema.generateHTML === "function") {
                     result += schema.generateHTML();
                 }
@@ -487,9 +486,7 @@
                 if (schema) {
                     outer.schema = schema;
 
-                    if (schema.video) {
-                        result += inner.pageUI.generateVideo(schema);
-                    } else if (typeof inner.pageUI[hashURL.page] === "function") {
+                    if (typeof inner.pageUI[hashURL.page] === "function") {
                         // // "document":
                         // // Usage example
                         // //     "check-list": {
@@ -515,6 +512,8 @@
                         if (inner.pageUI[hashURL.page].fn) {
                             outer.fn = inner.pageUI[hashURL.page].fn;
                         }
+                    } else {
+                        result += inner.pageUI.generateHTML(schema);
                     }
                     if (schema.pinterest) {
                         result += "<div class=pinterest><a data-pin-do=embedBoard data-pin-board-width=900 data-pin-scale-height=631" +
@@ -1037,38 +1036,42 @@
 
         return "";
     };
-    inner.pageUI.generateVideo = function (schema) {
-        var id = schema.value || schema.video,
+    inner.pageUI.generateHTML = function (schema) {
+        var id = schema.video,
             html = "",
             prop;
 
-        html += "<div class=video>";
+        if (schema.video) {
+            html += "<div class=video>";
 
-        if (ui.video.youtubeSupport) {
-            html += "<iframe src=\"https://www.youtube.com/embed/" + id +
-                "\" allow=\"autoplay; encrypted-media; fullscreen\" allowfullscreen></iframe>";
-        } else {
-            html += ui.video.template(id);
+            if (ui.video.youtubeSupport) {
+                html += "<iframe src=\"https://www.youtube.com/embed/" + id +
+                    "\" allow=\"autoplay; encrypted-media; fullscreen\" allowfullscreen></iframe>";
+            } else {
+                html += ui.video.template(id);
+            }
+
+            html += "</div>";
         }
+        if (schema.video || schema.text || schema.download) {
+            html += "<div class=space>" +
+                "<h1>" + schema.title + "</h1>";
 
-        html += "</div>" +
-            "<div class=space>" +
-            "<h1>" + schema.title + "</h1>";
-
-        if (schema.text) {
-            html += "<p>" + inner.pageUI.markdown(schema.text) + "</p>";
-        }
-        if (schema.page) {
-            for (prop in schema.page) {
-                if (Object.prototype.hasOwnProperty.call(schema.page, prop)) {
-                    html += "<a class=button href=\"#session=" + inner.hashData.session +
-                        "&page=" + prop + "\" tabindex=0>" + schema.page[prop].title + "</a> ";
+            if (schema.text) {
+                html += "<p>" + inner.pageUI.markdown(schema.text) + "</p>";
+            }
+            if (schema.page) {
+                for (prop in schema.page) {
+                    if (Object.prototype.hasOwnProperty.call(schema.page, prop)) {
+                        html += "<a class=button href=\"#session=" + inner.hashData.session +
+                            "&page=" + prop + "\" tabindex=0>" + schema.page[prop].title + "</a> ";
+                    }
                 }
             }
-        }
 
-        html += inner.pageUI.getDownloadLink(schema);
-        html += "</div>";
+            html += inner.pageUI.getDownloadLink(schema);
+            html += "</div>";
+        }
 
         return html;
     };
