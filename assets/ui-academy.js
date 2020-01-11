@@ -96,7 +96,9 @@
 
             return {
                 enabled: +date <= +new Date,
-                format: opt.format || inner.formatDate(date.getDate()) + "/" + inner.formatDate(date.getMonth() + 1)
+                format: opt.format ||
+                    inner.addLeadingZeros(date.getDate()) +
+                    "/" + inner.addLeadingZeros(date.getMonth() + 1)
             };
         };
         fn.packageStartDate = function (packageName) {
@@ -448,7 +450,7 @@
                                 // Params https://pgenom.com/community/threads/гуглодиск-как-хостинг-картинок-файловый-хостинг.1236/
                                 url = "https://drive.google.com/thumbnail?authuser=0&sz=w640&id=" + obj.value;
                                 break;
-                            case "sat":
+                            case "dressStyle":
                             case "colorSwatch":
                                 url = "/assets/" + obj.value;
                                 break;
@@ -615,7 +617,7 @@
                         }
                     },
                     bodyShape: {
-                        title: "כמה טוב להיות את!",
+                        title: "כמה טוב להיות את",
                         video: "xZMfS-HXqXM",
                         page: {
                             bodyType: {
@@ -632,111 +634,6 @@
                                     bust: "היקף החזה",
                                     waist: "היקף המותניים",
                                     hips: "היקף הירכיים"
-                                },
-                                final: {
-                                    hourglass: {
-                                        title: "שעון חול",
-                                        value: "1r5TBnSpeNRjTmwIaoKkiiqBBzNhESmdj",
-                                        text: [
-                                            "מכיוון שהמבנה שלך הוא מאוזן, כל גזרה תחמיא לך.",
-                                            "עלייך להדגיש את קו המותן שלך – כדי לשמור על הפרופורציות הטבעיות והיפות שלך.",
-                                            "בנוסף הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
-                                            "את בעלת מבנה גוף רזה – בדים מחויטים יחמיאו לך."
-                                        ]
-                                    },
-                                    hourglassrounded: {
-                                        title: "שעון חול מעוגל",
-                                        value: "1r5TBnSpeNRjTmwIaoKkiiqBBzNhESmdj",
-                                        text: [
-                                            "מכיוון שהמבנה שלך הוא מאוזן, כל גזרה תחמיא לך.",
-                                            "עלייך להדגיש את קו המותן שלך – כדי לשמור על הפרופורציות הטבעיות והיפות שלך.",
-                                            "בנוסף הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
-                                            "את בעלת מבנה גוף מתעגל – בדים רכים ונשפכים יחמיאו לך במיוחד."
-                                        ]
-                                    },
-                                    invertedtriangle: {
-                                        title: "משולש הפוך",
-                                        value: "1_ekRaH2x8iP4jYovBSpVZuNUquO_WiJI",
-                                        text: [
-                                            "עלייך להדגיש את קו המותן שלך – כדי לחלק את הגוף לפרופורציות הנכונות ⅓ ו2/3. " +
-                                            "הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
-                                            "כדי ליצור מראה מאוזן של שעון חול – לבשי פריטים היוצרים קווי אורך בפלג הגוף העליון, " +
-                                            "כמו עליונית פתוחה או שרשרת ארוכה.",
-                                            "לאיזון, צרי נפח בפלג גוף התחתון שלך.",
-                                            "את בעלת מבנה גוף רזה – בדים מחויטים יחמיאו לך.",
-                                            "שימי לב שהתפר המחבר בין השרוול לכתף ממוקם בדיוק בעצם הכתף."
-                                        ]
-                                    },
-                                    invertedtrianglerounded: {
-                                        title: "משולש הפוך מעוגל",
-                                        value: "1_ekRaH2x8iP4jYovBSpVZuNUquO_WiJI",
-                                        text: [
-                                            "עלייך להדגיש את קו המותן שלך – כדי לחלק את הגוף לפרופורציות הנכונות ⅓ ו2/3. " +
-                                            "הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
-                                            "כדי ליצור מראה מאוזן של שעון חול – לבשי פריטים היוצרים קווי אורך בפלג הגוף העליון, " +
-                                            "כמו עליונית פתוחה או שרשרת ארוכה.",
-                                            "לאיזון, צרי נפח בפלג גוף התחתון שלך",
-                                            "את בעלת מבנה גוף מתעגל – בדים רכים ונשפכים יחמיאו לך במיוחד.",
-                                            "שימי לב שהתפר המחבר בין השרוול לכתף ממוקם בדיוק בעצם הכתף."
-                                        ]
-                                    },
-                                    rectangle: {
-                                        title: "ישר",
-                                        value: "1hRie1lANjULGnlUDrnUVPYjCxrD4n6Ws",
-                                        text: [
-                                            "עלייך להדגיש את קו המותן שלך – כדי לחלק את הגוף לפרופורציות הנכונות ⅓ ו2/3. " +
-                                            "הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
-                                            "לבשי פריטים בעלי נפח בכתפיים – כדי לייצר מראה גוף מאוזן של שעון חול.",
-                                            "פריטים המרחיבים את הירכיים יוסיפו לאיזון.",
-                                            "את בעלת מבנה גוף רזה וישר – בדים מחויטים יחמיאו לך."
-                                        ]
-                                    },
-                                    rectanglerounded: {
-                                        title: "ישר מעוגל",
-                                        value: "1hRie1lANjULGnlUDrnUVPYjCxrD4n6Ws",
-                                        text: [
-                                            "עלייך להדגיש את קו המותן שלך – כדי לחלק את הגוף לפרופורציות הנכונות ⅓ ו2/3. " +
-                                            "הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
-                                            "לבשי פריטים בעלי נפח בכתפיים – כדי לייצר מראה גוף מאוזן של שעון חול.",
-                                            "פריטים המרחיבים את הירכיים יוסיפו לאיזון.",
-                                            "את בעלת מבנה גוף מתעגל – בדים רכים ונשפכים יחמיאו לך במיוחד."
-                                        ]
-                                    },
-                                    round: {
-                                        title: "מעוגל",
-                                        value: "1JWcPbgHI6uQRGVpr82zg5l79yDYYp39P",
-                                        text: [
-                                            "עלייך להדגיש את קו המותן שלך – כדי לחלק את הגוף לפרופורציות הנכונות ⅓ ו2/3. " +
-                                            "הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
-                                            "כדי ליצור מראה מאוזן של שעון חול – לבשי פריטים היוצרים קווי אורך בפלג הגוף העליון, " +
-                                            "כמו עליונית פתוחה או שרשרת ארוכה.",
-                                            "לאיזון, תדגישי את פלג הגוף התחתון שלך.",
-                                            "את בעלת מבנה גוף מתעגל – בדים רכים ונשפכים יחמיאו לך במיוחד.",
-                                            "שימי לב שהתפר המחבר בין השרוול לכתף ממוקם בדיוק בעצם הכתף."
-                                        ]
-                                    },
-                                    triangle: {
-                                        title: "משולש",
-                                        value: "1ZFVcrckN8LhfZ8Gp9K7N1OUAn-BicVhD",
-                                        text: [
-                                            "עלייך להדגיש את קו המותן שלך – כדי לחלק את הגוף לפרופורציות הנכונות ⅓ ו2/3. " +
-                                            "הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
-                                            "לבשי פריטים בעלי נפח בכתפיים – כדי לייצר מראה גוף מאוזן של שעון חול.",
-                                            "בחרי בגדים שלא ייצמדו לירכיים, כדי לא להדגיש את פלג הגוף הרחב שלך.",
-                                            "את בעלת מבנה גוף רזה וישר – בדים מחויטים יחמיאו לך."
-                                        ]
-                                    },
-                                    trianglerounded: {
-                                        title: "משולש מעוגל",
-                                        value: "1ZFVcrckN8LhfZ8Gp9K7N1OUAn-BicVhD",
-                                        text: [
-                                            "עלייך להדגיש את קו המותן שלך – כדי לחלק את הגוף לפרופורציות הנכונות ⅓ ו2/3. " +
-                                            "הדגשת מותן יוצרת אשליה של גוף צר וארוך יותר.",
-                                            "לבשי פריטים בעלי נפח בכתפיים – כדי לייצר מראה גוף מאוזן של שעון חול.",
-                                            "בחרי בגדים שלא ייצמדו לירכיים, כדי לא להדגיש את פלג הגוף הרחב שלך.",
-                                            "את בעלת מבנה גוף מתעגל – בדים רכים ונשפכים יחמיאו לך במיוחד."
-                                        ]
-                                    }
                                 }
                             }
                         }
@@ -745,7 +642,7 @@
                         title: "על טעם, ריח, ואופי",
                         video: "06Q_GGX5KLQ",
                         page: {
-                            sat: {
+                            dressStyle: {
                                 title: "מחשבון סגנון הלבוש",
                                 next: "המשך",
                                 back: "חזור",
@@ -886,39 +783,46 @@
                                         }
                                     }
                                 ],
-                                success: {
-                                    title: "הסגנון שלך הוא {0}",
-                                    button: "להורדת חוברת הסגנון"
-                                },
-                                final: {
-                                    A: {
-                                        title: "יצירתי",
-                                        value: "1dl0GD7_hE4HgAwybk9wSbn_bke47V0cZ"
-                                    },
-                                    B: {
-                                        title: "דרמטי",
-                                        value: "1c4WdteW3cNCkpHWzHKmCPRtJsZvT_hKI"
-                                    },
-                                    C: {
-                                        title: "רומנטי",
-                                        value: "1MHFG3yneMT4H0FJOAVi_pqNlpjMQG7F7"
-                                    },
-                                    D: {
-                                        title: "קלאסי",
-                                        value: "1nWiD5zvvmDDsuaL_cMGvkBsWow0FuYPl"
-                                    },
-                                    E: {
-                                        title: "טבעי",
-                                        value: "1d8t_zlmBV8A6x8zVmdgG-YnQVm4JgoQd"
-                                    },
-                                    F: {
-                                        title: "בוהומייני",
-                                        value: "1uoqQj_hfra3Vp7ovrdQwVBgI2ga21HRR"
-                                    },
-                                    G: {
-                                        title: "קז'ואל",
-                                        value: "1Zxt08RVGwgyvCFBxt6v-U7pnuEWNx-g-"
-                                    }
+                                downloadButton: "להורדת חוברת הסגנון"
+                            }
+                        }
+                    },
+                    modularOutfit: {
+                        title: "יש לך מה ללבוש",
+                        video: "_VYx-UC-VqU",
+                        download: {
+                            title: "להורדת חוברת מערכת פריטי הבסיס",
+                            link: "https://drive.google.com/uc?export=download&id=1kTlj1ZOXh8YQQyJCRuwBoShIfGKkUpLp"
+                        }
+                    },
+                    accessories: {
+                        title: "התוספת שתופסת",
+                        video: "fOYZbRKMYAE",
+                        page: {
+                            coversShoes: {
+                                title: "מטפחות ונעליים",
+                                video: "JWTBhFri44w",
+                                download: {
+                                    title: "להורדת חוברת האקססוריז",
+                                    link: "https://drive.google.com/uc?export=download&id=1wPOeaV2Y1xKnOsoOR1VevgU-g0L95cGO"
+                                }
+                            },
+                            matchHeadcover: {
+                                title: "בונוס התאמה למבני הפנים",
+                                video: "XW4S6zGtGic"
+                            }
+                        }
+                    },
+                    lingerie: {
+                        title: "יסודות למראה חטוב",
+                        video: "qk0-_Dnf3Z4",
+                        page: {
+                            material: {
+                                title: "הלבשה תחתונה",
+                                video: "IpwM9HEeup4",
+                                download: {
+                                    title: "להורדת חוברת הלבשה התחתונה",
+                                    link: "https://drive.google.com/uc?export=download&id=1E8QTzqkLoWk23ht-BUCHt77QRoYCOuhc"
                                 }
                             }
                         }
@@ -926,9 +830,9 @@
                     closet: {
                         title: "ארון מדויק",
                         video: "KzC7tJRjxqc",
-                        text: "מיני קורס \"קניות לשב אחרי שלב\" הוא למעשה תיעוד של סיבוב קניות אמיתי." +
-                              " הקורס מלמד איך מזהים את הבגד שיחמיא לך, עוד לפני שמודדים. ההשקעה שלך," +
-                              " בתור משתתפת מיני קורס \"ארון מדויק\" 380 ~(במקום 450)~",
+                        text: "מיני קורס *\"קניות ממוקדות\"* הוא למעשה תיעוד של סיבוב קניות אמיתי." +
+                              " הקורס מלמד איך מזהים את הבגד שיחמיא לך, עוד לפני שמודדים." +
+                              " בתור משתתפת מיני קורס \"ארון מדויק\" מגיע לך הנחה של 20% על קורס קניות.",
                         page: {
                             clearingCloset: {
                                 title: "פינוי ארון",
@@ -1038,46 +942,6 @@
                                 pinterest: "https://www.pinterest.com/lealaukstein/סטייל-בחורף/"
                             }
                         }
-                    },
-                    modularOutfit: {
-                        title: "יש לך מה ללבוש",
-                        video: "_VYx-UC-VqU",
-                        download: {
-                            title: "להורדת חוברת מערכת פריטי הבסיס",
-                            value: "1kTlj1ZOXh8YQQyJCRuwBoShIfGKkUpLp"
-                        }
-                    },
-                    accessories: {
-                        title: "התוספת שתופסת",
-                        video: "fOYZbRKMYAE",
-                        page: {
-                            coversShoes: {
-                                title: "מטפחות ונעליים",
-                                video: "JWTBhFri44w",
-                                download: {
-                                    title: "להורדת חוברת האקססוריז",
-                                    value: "1wPOeaV2Y1xKnOsoOR1VevgU-g0L95cGO"
-                                }
-                            },
-                            matchHeadcover: {
-                                title: "בונוס התאמה למבני הפנים",
-                                video: "XW4S6zGtGic"
-                            }
-                        }
-                    },
-                    lingerie: {
-                        title: "יסודות למראה חטוב",
-                        video: "qk0-_Dnf3Z4",
-                        page: {
-                            material: {
-                                title: "צבע, בד וגזרה בהלבשה תחתונה",
-                                video: "IpwM9HEeup4",
-                                download: {
-                                    title: "להורדת חוברת הלבשה התחתונה",
-                                    value: "1E8QTzqkLoWk23ht-BUCHt77QRoYCOuhc"
-                                }
-                            }
-                        }
                     } /* ,
                     bonuses: {
                         title: "בונוסים",
@@ -1090,8 +954,7 @@
                             function addMonths(isoDate, numberMonths) {
                                 // Resource https://stackoverflow.com/questions/5645058/how-to-add-months-to-a-date-in-javascript#13633692
                                 var dateObject = new Date(isoDate),
-                                    day = dateObject.getDate(),
-                                    formatDate = inner.formatDate;
+                                    day = dateObject.getDate();
 
                                 // avoid date calculation errors
                                 dateObject.setHours(20);
@@ -1102,7 +965,9 @@
                                 // set day number to min of either the original one or last day of month
                                 dateObject.setDate(Math.min(day, dateObject.getDate()));
 
-                                return formatDate(dateObject.getDate()) + "/" + formatDate(dateObject.getMonth() + 1) + "/" + dateObject.getFullYear();
+                                return inner.addLeadingZeros(dateObject.getDate()) +
+                                    "/" + inner.addLeadingZeros(dateObject.getMonth() + 1) +
+                                    "/" + dateObject.getFullYear();
                             }
 
                             return "<div class=\"form bonuses\">" +
@@ -1115,6 +980,16 @@
         }
     };
     inner.pageUI = {};
+    inner.pageUI.markdown = function (str) {
+        if (!str) {
+            return str;
+        }
+
+        // Markdown https://stackoverflow.com/questions/10168285/markdown-to-convert-double-asterisks-to-bold-text-in-javascript
+        return str
+            .replace(/\*(\S(.*?\S)?)\*/gm, "<b>$1</b>")
+            .replace(/~(\S(.*?\S)?)~/gm, "<s>$1</s>");
+    };
     inner.pageUI.getDownloadLink = function (schema) {
         if (schema && schema.download) {
             return inner.generateDownloadLink(schema.download, schema.download.title);
@@ -1141,8 +1016,7 @@
             "<h1>" + schema.title + "</h1>";
 
         if (schema.text) {
-            // Markdown https://stackoverflow.com/questions/10168285/markdown-to-convert-double-asterisks-to-bold-text-in-javascript
-            html += "<p>" + schema.text.replace(/~(\S(.*?\S)?)~/gm, "<s>$1</s>") + "</p>";
+            html += "<p>" + inner.pageUI.markdown(schema.text) + "</p>";
         }
         if (schema.page) {
             for (prop in schema.page) {
@@ -1157,6 +1031,22 @@
         html += "</div>";
 
         return html;
+    };
+    inner.pageUI.generateDate = function (sessionValue, text) {
+        var date = "";
+
+        if (sessionValue && sessionValue.date) {
+            date = new Date(sessionValue.date * 1000);
+            date = inner.addLeadingZeros(date.getDate()) +
+                "/" + inner.addLeadingZeros(date.getMonth() + 1) +
+                "/" + date.getFullYear();
+
+            if (typeof text === "string") {
+                date = text.format(date);
+            }
+        }
+
+        return date;
     };
     inner.pageUI.colorSwatch = function (schema) {
         var self = inner.pageUI.colorSwatch,
@@ -1276,18 +1166,12 @@
                 "</div>";
         };
         fn.final = function () {
-            var date = "";
-
-            if (sessionValue.date) {
-                date = new Date(sessionValue.date * 1000);
-                date = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
-                date = " ההזמנה בוצעה ב " + date + ".";
-            }
-
             return "<div class=form>" +
                 "<h3>" + schema.title + "</h3>" +
                 "<h1>" + sessionValue.title + "</h1>" +
-                "<p>" + (sessionValue.description || "").replace(/\n/g, "<br>") + date + "</p>" +
+                "<p>" +
+                (sessionValue.description || "").replace(/\n/g, "<br>") +
+                inner.pageUI.generateDate(sessionValue, " ההזמנה בוצעה ב {0}.") + "</p>" +
                 inner.generateDownloadLink(sessionValue, "להורדת סרגל הצבעים") +
                 "</div>";
         };
@@ -1295,8 +1179,7 @@
         return sessionValue ? fn.final() : fn.form();
     };
     inner.pageUI.bodyType = function (schema) {
-        var self = inner.pageUI.bodyType,
-            sessionValue = inner.sessionData.task.bodyType,
+        var sessionValue = inner.sessionData.task.bodyType,
             result = "",
             size = {
                 height: {
@@ -1309,100 +1192,17 @@
                 }
             };
 
-        self.fn = {};
-        self.fn.submit = function (data) {
-            // Copyright © 2019 OFITT. All rights reserved.
-            if (!data) {
-                return data;
-            }
-            if (typeof data === "string") {
-                switch (data) {
-                    case "invertedTriangle":
-                        return "invertedtriangle";
-                    case "rounded":
-                        return "round";
-                    default:
-                        return data;
-                }
-            }
-
-            var a = data.shoulders,
-                b = data.bust,
-                c = data.waist,
-                d = data.hips,
-                fn = {
-                    range: function (x, min, max) {
-                        return x >= min && x <= max;
-                    },
-                    perc: function () {
-                        var args = Array.prototype.slice.call(arguments).map(function (val) {
-                                return Number(val);
-                            }),
-                            min = Math.min.apply(null, args),
-                            max = Math.max.apply(null, args),
-                            multiply = args.length === 2 && args[0] < args[1] ? -1 : 1;
-
-                        return Math.round(((max - min) / max) * 100) * multiply;
-                    },
-                    filterObj: function (obj, condition) {
-                        return Object.keys(obj || {})
-                            .filter(function (key) {
-                                return condition ? condition(key, obj) : obj[key];
-                            })
-                            .reduce(function (newObj, key) {
-                                newObj[key] = obj[key];
-
-                                return newObj;
-                            }, {});
-                    }
-                },
-                calc = {
-                    minAll: Math.min(a, b, c, d),
-                    maxAll: Math.max(a, b, c, d),
-                    maxAB2D: fn.perc(Math.max(a, b), d)
-                },
-                res = {
-                    round: fn.perc(c, Math.min(a, b, d)) > 5 &&
-                        fn.perc(Math.max(a, b), Math.min(c, d)) < 11 &&
-                        fn.perc(c, d) > 0
-                };
-
-            if (!res.round) {
-                res.hourglass = Math.abs(calc.maxAB2D) < 11 &&
-                    fn.perc(b, d) < 11 &&
-                    Math.abs(calc.maxAB2D) < 11 &&
-                    fn.perc(c, Math.round(Math.max(a, b, d))) < -29;
-                res.invertedtriangle = fn.perc(Math.max(a, b), d) > 10;
-                res.rectangle = Math.abs(calc.maxAB2D) < 11 &&
-                    fn.range(fn.perc(c, Math.max(a, b, d)), -29, 5);
-                res.rounded = calc.maxAll > 100;
-                res.triangle = fn.perc(d, Math.max(a, b)) > 10;
-            }
-
-            res.result = Object.keys(fn.filterObj(res, function (key) {
-                return key !== "rounded";
-            })).filter(function (key) {
-                return res[key];
-            }).join("");
-
-            if (res.rounded) {
-                res.result += "rounded";
-            }
-
-            return res.result;
-        };
-        sessionValue = self.fn.submit(sessionValue);
-
-        if (schema.final[sessionValue]) {
+        if (sessionValue) {
             // Google docs links http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
             result = "<div class=\"dialog final\">" +
                 "   <div class=table>" +
                 "   <div class=cel>" +
-                "       <h1>" + schema.result.format(schema.final[sessionValue].title) + "</h1>" +
+                "       <h1>" + schema.result.format(sessionValue.title) + "</h1>" +
                 "       <ol>" +
-                "           <li>" + schema.final[sessionValue].text.join("</li>\n<li>") + "</li>" +
+                "           <li>" + sessionValue.text.join("</li>\n<li>") + "</li>" +
                 "       </ol>" +
                 "       <div>" + inner.generateDownloadLink(sessionValue, schema.download) + "</div>" +
+                inner.pageUI.generateDate(sessionValue, "<time>בקשה נקלטה ב {0}.</time>") +
                 "   </div>" +
                 "   </div>" +
                 "</div>";
@@ -1926,87 +1726,21 @@
             "    </form>" +
             "</div>";
     };
-    inner.pageUI.sat = function (schema) {
-        var self = inner.pageUI.sat,
-            sessionValue = inner.sessionData.task.sat,
+    inner.pageUI.dressStyle = function (schema) {
+        var self = inner.pageUI.dressStyle,
+            sessionValue = inner.sessionData.task.dressStyle,
             result = "",
             index = 0,
             sum = [],
-            fn = {},
-            title,
-            links;
+            fn = {};
 
-        fn.calc = function (arr) {
-            // http://www.jstips.co/en/javascript/flattening-multidimensional-arrays-in-javascript/
-            var flattenArray = [].concat.apply([], arr),
-                // http://stackoverflow.com/questions/840781/#24968449
-                sumObject = flattenArray.map(function (item) {
-                    if (typeof item === "object" && item.final) {
-                        return {
-                            // Largest count, is the final result
-                            count: arr.length + 1,
-                            name: item.final
-                        };
-                    }
-
-                    return {
-                        count: 1,
-                        name: item
-                    };
-                }).reduce(function (a, b) {
-                    a[b.name] = (a[b.name] || 0) + b.count;
-
-                    return a;
-                }, {}),
-                keys = Object.keys(sumObject),
-                largest = Math.max.apply(null, keys.map(function (x) {
-                    return sumObject[x];
-                })),
-                res = keys.reduce(function (val, key) {
-                    if (sumObject[key] === largest) {
-                        val.push(key);
-                    }
-
-                    return val;
-                }, []);
-
-            if (res.length > 2) {
-                return ["A"];
-            } else if (res.length === 2) {
-                // Compare Arrays https://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript#42186143
-                switch (JSON.stringify(res).replace(/[[,\]]/g, "")) {
-                    case "AB":
-                    case "AC":
-                    case "AD":
-                    case "AE":
-                        return ["A"];
-                    case "BC":
-                    case "BD":
-                    case "BE":
-                        return ["B"];
-                    case "CE":
-                        return ["F"];
-                    case "DE":
-                        return ["G"];
-                }
-            }
-
-            return res;
-        };
-
-        if (sessionValue && sessionValue.length) {
-            fn.calc.value = fn.calc(sessionValue);
-            title = schema.success.title.format(fn.calc.value.map(function (x) {
-                return schema.final[x].title;
-            }).join(" "));
-            links = fn.calc.value.map(function (x) {
-                return inner.generateDownloadLink(schema.final[x].value, schema.success.button);
-            }).join("");
+        if (sessionValue) {
             result = "<div class=\"dialog final\">" +
                 "   <div class=table>" +
                 "   <div class=cel>" +
-                "       <h1>" + title + "</h1>" +
+                "       <h1>" + sessionValue.title + "</h1>" +
                 "       <div>" + inner.generateDownloadLink(sessionValue, schema.downloadButton) + "</div>" +
+                inner.pageUI.generateDate(sessionValue, "<time>בקשה נקלטה ב {0}.</time>") +
                 "   </div>" +
                 "   </div>" +
                 "</div>";
@@ -2079,6 +1813,63 @@
             };
             self.fn.done = function (el) {
                 outer.formSubmit(el.closest("[data-handler]"), sum);
+            };
+            fn.calc = function (arr) {
+                // http://www.jstips.co/en/javascript/flattening-multidimensional-arrays-in-javascript/
+                var flattenArray = [].concat.apply([], arr),
+                    // http://stackoverflow.com/questions/840781/#24968449
+                    sumObject = flattenArray.map(function (item) {
+                        if (typeof item === "object" && item.final) {
+                            return {
+                                // Largest count, is the final result
+                                count: arr.length + 1,
+                                name: item.final
+                            };
+                        }
+
+                        return {
+                            count: 1,
+                            name: item
+                        };
+                    }).reduce(function (a, b) {
+                        a[b.name] = (a[b.name] || 0) + b.count;
+
+                        return a;
+                    }, {}),
+                    keys = Object.keys(sumObject),
+                    largest = Math.max.apply(null, keys.map(function (x) {
+                        return sumObject[x];
+                    })),
+                    res = keys.reduce(function (val, key) {
+                        if (sumObject[key] === largest) {
+                            val.push(key);
+                        }
+
+                        return val;
+                    }, []);
+
+                if (res.length > 2) {
+                    return ["A"];
+                } else if (res.length === 2) {
+                    // Compare Arrays https://stackoverflow.com/questions/7837456/how-to-compare-arrays-in-javascript#42186143
+                    switch (JSON.stringify(res).replace(/[[,\]]/g, "")) {
+                        case "AB":
+                        case "AC":
+                        case "AD":
+                        case "AE":
+                            return ["A"];
+                        case "BC":
+                        case "BD":
+                        case "BE":
+                            return ["B"];
+                        case "CE":
+                            return ["F"];
+                        case "DE":
+                            return ["G"];
+                    }
+                }
+
+                return res;
             };
             fn.option = function (key, name, showImage) {
                 var id = inner.generateID();
@@ -2236,9 +2027,9 @@
 
         return null;
     };
-    inner.formatDate = function (number) {
-        // Leading zero https://stackoverflow.com/questions/6040515/how-do-i-get-month-and-date-of-javascript-in-2-digit-format#6040556
-        return ("0" + number).slice(-2);
+    inner.addLeadingZeros = function (num) {
+        // https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date
+        return ("0" + String(num)).slice(-2);
     };
     inner.htmlSafe = function (str) {
         if (!str) {
@@ -2400,11 +2191,13 @@
                 data: {}
             };
 
-            ui.form.accessibility(false, el, true, page === "sat" && "label");
+            ui.form.accessibility(false, el, true, page === "dressStyle" && "label");
 
             switch (page) {
                 case "bodyType":
-                    data.data[page] = ui.form.deserialize(el);
+                    data.data[page] = Object.assign({
+                        date: Math.floor(+new Date / 1000)
+                    }, ui.form.deserialize(el));
                     break;
                 case "clothesSum":
                     data.data[page] = inner.pageUI[page].value;
@@ -2414,8 +2207,11 @@
                         date: Math.floor(+new Date / 1000)
                     }, inner.pageUI[page].value);
                     break;
-                case "sat":
-                    data.data[page] = post;
+                case "dressStyle":
+                    data.data[page] = {
+                        date: Math.floor(+new Date / 1000),
+                        value: post
+                    };
 
                     el.closest("[data-handler]")
                         .querySelector("[data-back]")
