@@ -518,7 +518,7 @@
                     }
                     if (schema.pinterest) {
                         result += "<div class=pinterest><a data-pin-do=embedBoard data-pin-board-width=900 data-pin-scale-height=631" +
-                            " data-pin-scale-width=115 href=\"" + inner.htmlSafe(schema.pinterest) + "\">" + schema.pinterest + "</a></div>";
+                            " data-pin-scale-width=115 href=\"" + inner.htmlSafe(schema.pinterest) + "\"><span class=spin> " + schema.pinterest + "</span></a></div>";
                     }
                 }
             }
