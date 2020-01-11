@@ -141,6 +141,7 @@
         };
         fn.generateSession = function (session, packageName) {
             var dateParams = {},
+                highlight = "",
                 html = "",
                 sessionValue,
                 dateObject,
@@ -156,6 +157,10 @@
                     dateParams.firstSession = !Object.prototype.hasOwnProperty.call(dateParams, "firstSession");
                     dateObject = fn.generateDateObject(dateParams);
 
+                    if (typeof session[sessionValue].highlight === "function") {
+                        highlight = session[sessionValue].highlight();
+                        highlight = highlight ? " data-highlight=\"" + highlight + "\"" : "";
+                    }
                     if (session[sessionValue].download && typeof session[sessionValue].download.link === "string") {
                         link = session[sessionValue].download.link;
                     } else {
@@ -165,7 +170,8 @@
                     html += "<li>" +
                         "<label" + (sessionValue === currentSession ? " class=expand" : "") +
                             (dateObject.enabled ? fn.generateEvents(sessionValue) : " disabled") + ">" +
-                        "<time>" + dateObject.format + "</time><div>" + session[sessionValue].title + "</div>" +
+                        "<time>" + dateObject.format + "</time>" +
+                        "<div" + highlight + ">" + session[sessionValue].title + "</div>" +
                         inner.generateDownloadIcon(link) +
                         "</label>" +
                         fn.generatePage(session[sessionValue], sessionValue, dateObject) +
@@ -829,6 +835,11 @@
                     },
                     closet: {
                         title: "ארון מדויק",
+                        highlight: function () {
+                            if (outer.package === inner.pageSchema.fullPackage) {
+                                return "בונוס";
+                            }
+                        },
                         video: "KzC7tJRjxqc",
                         text: "מיני קורס *\"קניות ממוקדות\"* הוא למעשה תיעוד של סיבוב קניות אמיתי." +
                               " הקורס מלמד איך מזהים את הבגד שיחמיא לך, עוד לפני שמודדים." +
@@ -2257,6 +2268,8 @@
                 delete inner.pageSchema.package[key];
             }
         });
+
+        outer.package = inner.getUserDefaultPackage(inner.sessionData);
     };
     inner.init = function () {
         ui.legacy(function () {

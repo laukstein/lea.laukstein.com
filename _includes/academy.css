@@ -308,6 +308,11 @@ button.error:not([data-plyr]) {
     padding-bottom: 1em;
     padding-right: 2.45em;
 }
+.sidenav [data-highlight]:before {
+    content: attr(data-highlight);
+    margin-left: .8em;
+    font-weight: normal;
+}
 .comment-container {
     width: calc(100% - 16.8em);
 }
