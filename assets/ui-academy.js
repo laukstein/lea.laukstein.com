@@ -996,10 +996,39 @@
             return str;
         }
 
-        // Markdown https://stackoverflow.com/questions/10168285/markdown-to-convert-double-asterisks-to-bold-text-in-javascript
+        var format = {
+            bold: {
+                // Markdown https://stackoverflow.com/questions/10168285/markdown-to-convert-double-asterisks-to-bold-text-in-javascript
+                regex: /\*(\S(.*?\S)?)\*/gm,
+                pattern: "<b>$1</b>"
+            },
+            strikethrough: {
+                regex: /~(\S(.*?\S)?)~/gm,
+                pattern: "<s>$1</s>"
+            },
+            link: {
+                // Testcase https://regex101.com/r/apPfwx/2
+                regex: /(https?:\/\/[^\s:@.,]+\.+[a-z])[^<\s\\!,]{0,}[^<\s\\!|^.,?$]{1,}|[^\s:,/@\-0=]{1,}[a-z0-9\-.]\.com?\/*[^<\s\\!]{1,}[^<\s\\!|^.,$]/ig,
+                pattern: "<a href=\"$&\" rel=noopener target=_blank dir=auto>$&</a>"
+            },
+            email: {
+                // Testcase http://regexr.com/3hn9l
+                regex: /([\w.\-+_]+)?\w+@[\w-_]+(\.\w+){1,}/gm,
+                pattern: "<a href=\"mailto:$&\" rel=noopener target=_blank dir=ltr>$&</a>"
+            },
+            phone: {
+                // Testcase https://regexr.com/3hnad
+                regex: /05\d{8}/gm,
+                pattern: "<a href=\"tel:$&\" rel=noopener target=_blank dir=ltr>$&</a>"
+            }
+        };
+
         return str
-            .replace(/\*(\S(.*?\S)?)\*/gm, "<b>$1</b>")
-            .replace(/~(\S(.*?\S)?)~/gm, "<s>$1</s>");
+            .replace(format.bold.regex, format.bold.pattern)
+            .replace(format.strikethrough.regex, format.strikethrough.pattern)
+            .replace(format.link.regex, format.link.pattern)
+            .replace(format.email.regex, format.email.pattern)
+            .replace(format.phone.regex, format.phone.pattern);
     };
     inner.pageUI.getDownloadLink = function (schema) {
         if (schema && schema.download) {
