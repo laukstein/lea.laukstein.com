@@ -127,7 +127,7 @@
 
                         html += "<li>" +
                             "<a class=unselectable" + fn.generateEvents(sessionValue, page) + ">" +
-                            "<div>" + pages[page].title + "</div>" +
+                            "<div>" + (pages[page].shortTitle || pages[page].title) + "</div>" +
                             "</a>" +
                             inner.generateDownloadIcon(link) +
                             "</li>";
@@ -171,7 +171,7 @@
                         "<label" + (sessionValue === currentSession ? " class=expand" : "") +
                             (dateObject.enabled ? fn.generateEvents(sessionValue) : " disabled") + ">" +
                         "<time>" + dateObject.format + "</time>" +
-                        "<div" + highlight + ">" + session[sessionValue].title + "</div>" +
+                        "<div" + highlight + ">" + (session[sessionValue].shortTitle || session[sessionValue].title) + "</div>" +
                         inner.generateDownloadIcon(link) +
                         "</label>" +
                         fn.generatePage(session[sessionValue], sessionValue, dateObject) +
@@ -823,7 +823,8 @@
                         video: "qk0-_Dnf3Z4",
                         page: {
                             material: {
-                                title: "הלבשה תחתונה",
+                                title: "צבע, בד וגזרה בהלבשה תחתונה",
+                                shortTitle: "הלבשה תחתונה",
                                 video: "IpwM9HEeup4",
                                 download: {
                                     title: "להורדת חוברת הלבשה התחתונה",
