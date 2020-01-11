@@ -1453,6 +1453,7 @@
                         "        <li class=\"row labels\">" + schema[type].label.map(fn.label).join("\n") + "</li>" +
                         data.map(fn.group).join("\n") +
                         "    </ul>" +
+                        inner.pageUI.generateDate(sessionValue, "<time>בקשה נקלטה ב {0}.</time>") +
                         "    <a class=footer-link onclick=ui.academy.fn.slide()>" + schema[type].button.retry + "</a>" +
                         "</div>";
                 }
@@ -2211,7 +2212,9 @@
                     }, ui.form.deserialize(el));
                     break;
                 case "clothesSum":
-                    data.data[page] = inner.pageUI[page].value;
+                    data.data[page] = Object.assign({
+                        date: Math.floor(+new Date / 1000)
+                    }, inner.pageUI[page].value);
                     break;
                 case "colorSwatch":
                     data.data[page] = Object.assign({
