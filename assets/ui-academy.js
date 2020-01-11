@@ -835,7 +835,8 @@
                         }
                     },
                     closet: {
-                        title: "ארון מדויק",
+                        title: "מיני קורס ארון מדויק",
+                        shortTitle: "ארון מדויק",
                         highlight: function () {
                             if (outer.package === inner.pageSchema.fullPackage) {
                                 return "בונוס";
