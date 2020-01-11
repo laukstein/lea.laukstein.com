@@ -107,6 +107,7 @@
         fn.generatePage = function (schema, sessionValue, dateObject) {
             var pages = schema.page,
                 html = "",
+                link,
                 page;
 
             if (pages && (!dateObject || dateObject.enabled)) {
@@ -114,8 +115,20 @@
 
                 for (page in pages) {
                     if (Object.prototype.hasOwnProperty.call(pages, page)) {
-                        html += "<li><a class=unselectable" + fn.generateEvents(sessionValue, page) + ">" +
-                            pages[page].title + "</a></li>";
+                        if (schema.page[page].download && typeof schema.page[page].download.link === "string") {
+                            link = schema.page[page].download.link;
+                        } else if (inner.sessionData.task[page] && typeof inner.sessionData.task[page].link === "string") {
+                            link = inner.sessionData.task[page].link;
+                        } else {
+                            link = undefined;
+                        }
+
+                        html += "<li>" +
+                            "<a class=unselectable" + fn.generateEvents(sessionValue, page) + ">" +
+                            "<div>" + pages[page].title + "</div>" +
+                            "</a>" +
+                            inner.generateDownloadIcon(link) +
+                            "</li>";
                     }
                 }
 
@@ -128,7 +141,8 @@
             var dateParams = {},
                 html = "",
                 sessionValue,
-                dateObject;
+                dateObject,
+                link;
 
             dateParams.startDate = fn.packageStartDate(packageName);
 
@@ -139,10 +153,18 @@
                     dateParams.sessionInterval = session[sessionValue].date && session[sessionValue].date.sessionInterval;
                     dateParams.firstSession = !Object.prototype.hasOwnProperty.call(dateParams, "firstSession");
                     dateObject = fn.generateDateObject(dateParams);
+
+                    if (session[sessionValue].download && typeof session[sessionValue].download.link === "string") {
+                        link = session[sessionValue].download.link;
+                    } else {
+                        link = undefined;
+                    }
+
                     html += "<li>" +
                         "<label" + (sessionValue === currentSession ? " class=expand" : "") +
                             (dateObject.enabled ? fn.generateEvents(sessionValue) : " disabled") + ">" +
                         "<time>" + dateObject.format + "</time><div>" + session[sessionValue].title + "</div>" +
+                        inner.generateDownloadIcon(link) +
                         "</label>" +
                         fn.generatePage(session[sessionValue], sessionValue, dateObject) +
                         "</li>";
@@ -918,7 +940,7 @@
                                 video: "ZzK_ol7qLPs",
                                 download: {
                                     title: "להורדת חוברת ארון הקסמים",
-                                    value: "1Ee5Zh92agzw6qkRsKE40t4zpwiw-DQTg"
+                                    link: "https://drive.google.com/uc?export=download&id=1Ee5Zh92agzw6qkRsKE40t4zpwiw-DQTg"
                                 }
                             },
                             clothesSum: {
@@ -2154,6 +2176,16 @@
         From Slides https://docs.google.com/presentation/d/{ id }/export/pdf */
         return "<a class=button href=\"https://drive.google.com/uc?export=download&id=" + id +
             "\" rel=noopener target=_blank tabindex=0>" + inner.generateIcon("download") + title + "</a>";
+    inner.generateDownloadIcon = function (link) {
+        if (!link) {
+            return "";
+        }
+        if (Array.isArray(link)) {
+            return link.map(inner.generateDownloadIcon).filter(Boolean).join("");
+        }
+
+        return "<a class=link-download href=\"" + link + "\" rel=noopener target=_blank tabindex=-1>" +
+            inner.generateIcon("download") + "</a>";
     };
     inner.getDataAttribute = function (el, prop) {
         if (el && el.nodeType === 1) {
