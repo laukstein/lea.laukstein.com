@@ -157,8 +157,9 @@
                     dateParams.firstSession = !Object.prototype.hasOwnProperty.call(dateParams, "firstSession");
                     dateObject = fn.generateDateObject(dateParams);
 
-                    if (typeof session[sessionValue].highlight === "function") {
-                        highlight = session[sessionValue].highlight();
+                    if (session[sessionValue].highlight) {
+                        highlight = typeof session[sessionValue].highlight === "function" ?
+                            session[sessionValue].highlight() : session[sessionValue].highlight;
                         highlight = highlight ? " data-highlight=\"" + highlight + "\"" : "";
                     }
                     if (session[sessionValue].download && typeof session[sessionValue].download.link === "string") {
@@ -953,6 +954,12 @@
                                 pinterest: "https://www.pinterest.com/lealaukstein/סטייל-בחורף/"
                             }
                         }
+                    },
+                    consult: {
+                        title: "שיחת ייעוץ של שעה",
+                        shortTitle: "שיחת ייעוץ",
+                        highlight: "בונוס",
+                        text: "לתיאום שיחה של שעה צורי קשר במייל lea@laukstein.com או 0585800020."
                     } /* ,
                     bonuses: {
                         title: "בונוסים",
