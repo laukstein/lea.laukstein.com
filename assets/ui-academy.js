@@ -6,552 +6,12 @@
 
     inner.el = {};
     inner.hashData = {};
-    inner.endpoint = (function () {
-        var parts = location.hostname.split(".");
-
-        while (parts.length > 2) {
-            parts.shift();
-        }
-
-        return "https://lab." + parts.join(".") + "/webhook";
-    }());
-    inner.sessionData = (function () {
-        function getData(sessionName, callback) {
-            var result = {};
-
-            try {
-                result = JSON.parse(localStorage[sessionName]);
-            } catch (e) {
-                delete localStorage[sessionName];
-            }
-
-            if (!result.task) {
-                result.task = {};
-            }
-            if (typeof callback === "function") {
-                return callback(result);
-            }
-
-            return result;
-        }
-
-        // localStorage renaming backwards compatibility, 2017/04/30
-        return getData("session", function (session) {
-            if (session.email && session.token) {
-                return session;
-            }
-
-            return getData("user", function (user) {
-                if (user.email && user.token) {
-                    localStorage.session = localStorage.user;
-
-                    delete localStorage.user;
-                    ui.setUser(user);
-                }
-
-                return user;
-            });
-        });
-    }());
-    inner.sessionLogedin = function () {
-        ui.d.documentElement.classList.remove("stretch");
-        ui.d.documentElement.classList.add("logedin");
-        inner.el.details.remove();
-
-        inner.el.account = ui.d.getElementById("account");
-        inner.el.account.outerHTML = "<div class=profile>" +
-            "    <img src=\"https://gravatar.com/avatar/" + inner.sessionData.avatar + "?s=42&r=g&d=mm\">" +
-            "    <div class=\"table center\">" +
-            "        <div class=cel>" +
-            (inner.sessionData.firstname ? "<div class=nowrap dir=auto>" + inner.sessionData.firstname + "</div>" : "") +
-            "            <small onclick=ui.academy.sessionLogout()>התנתקי</small>" +
-            "        </div>" +
-            "    </div>" +
-            "</div>";
-
-        delete inner.el.details;
-        delete inner.el.account;
-
-        var currentSession = inner.hashData.session,
-            packages = inner.pageSchema.package,
-            fn = {};
-
-        fn.generateEvents = function (sessionValue, pageValue) {
-            return " onclick=ui.academy.navClick(this)" +
-                " onkeydown=ui.academy.navKeydown(event)" +
-                (sessionValue ? " data-session=" + sessionValue : "") +
-                (pageValue ? " data-page=" + pageValue : "") +
-                " tabindex=" + (pageValue ? -1 : 0);
-        };
-        fn.generateDateObject = function (opt) {
-            // opt => startDate, sessionInterval, firstSession
-            opt = opt || {};
-
-            var date = new Date(opt.startDate.setDate(opt.startDate.getDate() +
-                    (opt.sessionInterval ? opt.sessionInterval * inner.pageSchema.sessionInterval :
-                        (opt.firstSession ? 0 : inner.pageSchema.sessionInterval))) +
-                    (opt.sessionInterval ? 0 : 10000000));
-
-            date.setHours(0, 0, 0, 0);
-
-            return {
-                enabled: +date <= +new Date,
-                format: opt.format ||
-                    inner.addLeadingZeros(date.getDate()) +
-                    "/" + inner.addLeadingZeros(date.getMonth() + 1)
-            };
-        };
-        fn.packageStartDate = function (packageName) {
-            var startDate = inner.sessionData.startDate || inner.sessionData.package[packageName] || inner.sessionData.created;
-
-            return new Date(+new Date(startDate * 1000).setHours(0, 0, 0, 0));
-        };
-        fn.generatePage = function (schema, sessionValue, dateObject) {
-            var pages = schema.page,
-                html = "",
-                link,
-                page;
-
-            if (pages && (!dateObject || dateObject.enabled)) {
-                html += "<ol>";
-
-                for (page in pages) {
-                    if (Object.prototype.hasOwnProperty.call(pages, page)) {
-                        if (schema.page[page].download && typeof schema.page[page].download.link === "string") {
-                            link = schema.page[page].download.link;
-                        } else if (inner.sessionData.task[page] && typeof inner.sessionData.task[page].link === "string") {
-                            link = inner.sessionData.task[page].link;
-                        } else {
-                            link = undefined;
-                        }
-
-                        html += "<li>" +
-                            "<a class=unselectable" + fn.generateEvents(sessionValue, page) + ">" +
-                            "<div>" + (pages[page].shortTitle || pages[page].title) + "</div>" +
-                            "</a>" +
-                            inner.generateDownloadIcon(link) +
-                            "</li>";
-                    }
-                }
-
-                html += "</ol>";
-            }
-
-            return html;
-        };
-        fn.generateSession = function (session, packageName) {
-            var dateParams = {},
-                highlight = "",
-                html = "",
-                sessionValue,
-                dateObject,
-                link;
-
-            dateParams.startDate = fn.packageStartDate(packageName);
-
-            html += "<ol class=\"sidenav counter\" dir=rtl>";
-
-            for (sessionValue in session) {
-                if (Object.prototype.hasOwnProperty.call(session, sessionValue)) {
-                    dateParams.sessionInterval = session[sessionValue].date && session[sessionValue].date.sessionInterval;
-                    dateParams.firstSession = !Object.prototype.hasOwnProperty.call(dateParams, "firstSession");
-                    dateObject = fn.generateDateObject(dateParams);
-
-                    if (session[sessionValue].highlight) {
-                        highlight = typeof session[sessionValue].highlight === "function" ?
-                            session[sessionValue].highlight() : session[sessionValue].highlight;
-                        highlight = highlight ? " data-highlight=\"" + highlight + "\"" : "";
-                    }
-                    if (session[sessionValue].download && typeof session[sessionValue].download.link === "string") {
-                        link = session[sessionValue].download.link;
-                    } else {
-                        link = undefined;
-                    }
-
-                    html += "<li>" +
-                        "<label" + (sessionValue === currentSession ? " class=expand" : "") +
-                            (dateObject.enabled ? fn.generateEvents(sessionValue) : " disabled") + ">" +
-                        "<time>" + dateObject.format + "</time>" +
-                        "<div" + highlight + ">" + (session[sessionValue].shortTitle || session[sessionValue].title) + "</div>" +
-                        inner.generateDownloadIcon(link) +
-                        "</label>" +
-                        fn.generatePage(session[sessionValue], sessionValue, dateObject) +
-                        "</li>";
-                }
-            }
-
-            html += "</ol>";
-
-            return html;
-        };
-        fn.generatePackage = function (packageName) {
-            var schema = packages[packageName],
-                html = "";
-
-            if (schema.session) {
-                html += "<div class=sidenav dir=rtl>" +
-                    "<a class=active" + fn.generateEvents() + ">" +
-                    "<label>" + (schema.shortTitle || schema.title) + "</label>" +
-                    "</a>" +
-                    "</div>" +
-                    fn.generateSession(schema.session, packageName);
-            } else {
-                html += "<ol class=sidenav dir=rtl>" +
-                    "<li>" +
-                    "<label class=\"expand selected active\"" + fn.generateEvents(packageName) + ">" + schema.title + "</label>" +
-                    fn.generatePage(schema, packageName) +
-                    "</li>" +
-                    "</ol>";
-            }
-
-            return html;
-        };
-
-        inner.el.content.outerHTML = "<div class=container>" +
-            "    <div class=\"column nav-container\" id=sidenav role=navigation dir=ltr>" +
-            Object.keys(packages).map(fn.generatePackage).join("\n") +
-            "    </div>" +
-            "    <div class=\"column content\" id=content></div>" +
-            "</div>";
-
-        inner.el.content = ui.d.getElementById("content");
-        inner.el.sidenav = ui.d.getElementById("sidenav");
-
-        inner.toggleNav(true);
-    };
-    outer.sessionRefresh = function (stripHash) {
-        if (stripHash) {
-            ui.w.location = location.pathname;
-        } else {
-            location.reload();
-        }
-    };
-    inner.sessionLogin = function (e) {
-        e.preventDefault();
-        ui.form.accessibility(false, null, true);
-
-        fetch(inner.endpoint + "/login", {
-            method: "POST",
-            // Prevent insecure redirects https://developer.mozilla.org/en-US/docs/Web/API/Response/redirected
-            redirect: "error",
-            body: JSON.stringify({
-                email: inner.el.email.value.toLowerCase(),
-                pass: inner.el.pass.value
-            })
-        }).then(function (response) {
-            return response.json();
-        }).then(function (json) {
-            inner.sessionUpdate(json);
-            inner.workerUpdate({status: "login"});
-            ui.setUser(json);
-            ui.form.accessibility(true, null, true);
-
-            if (json.email && json.token) {
-                outer.sessionRefresh();
-            } else if (inner.el.button) {
-                inner.el.button.classList.add("error");
-                inner.el.button.innerHTML = "הפרטים שגויים, נסי שוב";
-            }
-        }).catch(function () {
-            ui.form.accessibility(true, null, true);
-
-            if (inner.el.button) {
-                inner.el.button.classList.add("error");
-                inner.el.button.innerHTML = "טעות במערכת, נסי שוב מאוחר יותר";
-            }
-        });
-    };
-    outer.sessionLogout = function (preventPushSW) {
-        delete localStorage.session;
-
-        if (!preventPushSW) {
-            inner.workerUpdate({status: "logout"});
-        }
-
-        outer.sessionRefresh(true);
-    };
-    inner.getUserDefaultPackage = function (userData) {
-        if (userData && userData.package) {
-            if (Object.keys(userData.package).includes(inner.pageSchema.fullPackage)) {
-                return inner.pageSchema.fullPackage;
-            }
-
-            var packages = Object.keys(inner.pageSchema.package),
-                i;
-
-            for (i = 0; i < packages.length; i += 1) {
-                if (userData.package[packages[i]]) {
-                    return packages[i];
-                }
-            }
-        }
-
-        return "";
-    };
-    inner.sessionUpdate = function (data, preventPushSW) {
-        if (typeof data === "object") {
-            if (!preventPushSW) {
-                inner.workerUpdate({
-                    status: "update",
-                    data: data
-                });
-            }
-
-            inner.sessionData = data;
-
-            if (!inner.sessionData.task) {
-                inner.sessionData.task = {};
-            }
-
-            localStorage.session = JSON.stringify(data);
-        }
-    };
-    inner.sessionVerify = function (onSuccess) {
-        var type = "verify",
-            data = {
-                email: inner.sessionData.email,
-                token: inner.sessionData.token
-            };
-
-        fetch(inner.endpoint + "/" + type, {
-            method: "POST",
-            redirect: "error",
-            body: JSON.stringify(data)
-        }).then(function (response) {
-            return response.json();
-        }).then(function (json) {
-            var userDefaultPackage = inner.getUserDefaultPackage(json);
-
-            if (json.error || !userDefaultPackage) {
-                return Promise.reject(json);
-            }
-
-            inner.sessionUpdate(json);
-
-            if (typeof onSuccess === "function") {
-                onSuccess(userDefaultPackage);
-            }
-
-            return Promise.resolve(json);
-        }).catch(function (err) {
-            console.error(err);
-            inner.sessionErrorReport(type, data);
-        });
-    };
-    inner.sessionForgot = function () {
-        inner.el.form.removeEventListener("submit", inner.sessionLogin);
-        inner.el.form.addEventListener("submit", inner.sessionRemind);
-        inner.el.email.focus();
-        inner.el.pass.parentNode.remove();
-        inner.el.button.innerHTML = "שלח לי סיסמא";
-        inner.el.button.classList.remove("error");
-        inner.el.link.innerHTML = "לנסות להתחבר מחדש";
-        inner.el.link.removeEventListener("click", inner.sessionForgot);
-        inner.el.link.addEventListener("click", outer.sessionRefresh);
-    };
-    inner.sessionRemind = function (e) {
-        e.preventDefault();
-        ui.form.accessibility(false, null, true);
-
-        fetch(inner.endpoint + "/forgot", {
-            method: "POST",
-            redirect: "error",
-            body: JSON.stringify({
-                email: inner.el.email.value.toLowerCase()
-            })
-        }).then(function (response) {
-            return response.json();
-        }).then(function (data) {
-            ui.form.accessibility(true, null, true);
-
-            if (data.success) {
-                inner.el.form.innerHTML = "<h2>פרטי גישה נשלחו למייל שלך</h2><a onclick=ui.academy.sessionRefresh(true)>לנסות להתחבר</a>";
-            } else {
-                inner.el.button.classList.add("error");
-                inner.el.button.innerHTML = "מייל לא רשום, נסי שוב";
-            }
-        }).catch(function () {
-            ui.form.accessibility(true, null, true);
-
-            if (inner.el.button) {
-                inner.el.button.classList.add("error");
-                inner.el.button.innerHTML = "טעות במערכת, נסי שוב מאוחר יותר";
-            }
-        });
-    };
-    inner.sessionError = function () {
-        if (sessionStorage.sessionError) {
-            var el = ui.d.getElementById("session-error");
-
-            if (el) {
-                el.hidden = false;
-                el.innerHTML = sessionStorage.sessionError;
-                delete sessionStorage.sessionError;
-            }
-        }
-    };
-    inner.sessionErrorReport = function (type, data) {
-        if (ui.environment === "prod") {
-            if ("sendBeacon" in navigator) {
-                navigator.sendBeacon(inner.endpoint + "/error", JSON.stringify({
-                    schema: type,
-                    email: inner.sessionData.email,
-                    log: JSON.stringify(data, null, 2)
-                }));
-            }
-        } else {
-            console.error(type, data);
-
-            if (console.trace) {
-                console.trace();
-            }
-        }
-
-        // Your session has expired, please login again
-        sessionStorage.sessionError = "זהינו שלא פעלת בחשבונך בדקות האחורנות. אנה התחברי שוב.";
-
-        delete localStorage.session;
-        outer.sessionRefresh();
-    };
-    inner.sessionPage = function () {
-        if (!inner.valid || !inner.el.content) {
-            return;
-        }
-
-        var schema = inner.getCurrentSchema(),
-            hashURL = ui.hash(),
-            result = "";
-
-        delete outer.schema;
-        delete outer.fn;
-
-        if (schema && schema.page && inner.hashData.page && !schema.page[inner.hashData.page]) {
-            // Trying to open invalid page
-            delete hashURL.page;
-            location.hash = ui.serialize(hashURL);
-        } else if (schema && (!inner.hashData.session || !inner.el.sidenav ||
-            inner.el.sidenav.querySelector("[data-session=\"" + inner.hashData.session + "\"]:not([data-page])"))) {
-            if (inner.el.bar && inner.el.bar.checked) {
-                inner.el.bar.checked = false;
-            }
-            if (!inner.hashData.session || inner.hashData.session && !inner.hashData.page) {
-                outer.schema = schema;
-
-                result += inner.pageUI.generateHTML(schema);
-
-                if (typeof schema.generateHTML === "function") {
-                    result += schema.generateHTML();
-                }
-
-                /* generateVideoList = function (obj, schema, page) {
-                    var url = "";
-
-                    if (obj.value) {
-                        switch (obj.type) {
-                            case "video":
-                                url = ui.video.youtubeSupport ? "https://i.ytimg.com/vi/" + obj.value + "/maxresdefault.jpg" : ui.video.getData(obj.value).image;
-                                break;
-                            case "document":
-                            case "bodyType":
-                                // Params https://pgenom.com/community/threads/гуглодиск-как-хостинг-картинок-файловый-хостинг.1236/
-                                url = "https://drive.google.com/thumbnail?authuser=0&sz=w640&id=" + obj.value;
-                                break;
-                            case "dressStyle":
-                            case "colorSwatch":
-                                url = "/assets/" + obj.value;
-                                break;
-                            default:
-                                url = "";
-                        }
-                    }
-
-                    // YouTube image sizes http://stackoverflow.com/questions/2068344
-                    return obj ? "<a class=\"absolute cover\"" + fn.generateEvents(schema, page) +
-                        " style=\"background-image:url(" + url + ")\"><h3 class=nowrap dir=auto>" +
-                        obj.title.replace(/\n/g, " ") + "</h3></a>" : "";
-                };
-
-                result += "<ol class=items dir=ltr>";
-
-                for (prop in schema) {
-                    if (schema.hasOwnProperty(prop)) {
-                        result += "    <li>" + generateVideoList(schema[prop], inner.hashData.session, prop) + "</li>";
-                    }
-                }
-
-                result += "</ol>"; */
-            } else {
-                if (inner.hashData.session) {
-                    schema = schema.page && schema.page[inner.hashData.page];
-                }
-                if (schema) {
-                    outer.schema = schema;
-
-                    if (typeof inner.pageUI[hashURL.page] === "function") {
-                        // // "document":
-                        // // Usage example
-                        // //     "check-list": {
-                        // //         type: "document",
-                        // //         title: "צ'ק ליסט למערכת לבוש יעילה",
-                        // //         value: "1eSQaxVn2AKrwwrNafS0JnKTwjJzs50-7edCKn8kwkVs",
-                        // //         download: "https://docs.google.com/document/d/{0}/export?format=pdf"
-                        // //     }
-                        // // width="640" height="480"
-                        // // http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
-                        // result += "<div class=video>" +
-                        //     "    <iframe src=\"https://drive.google.com/file/d/" +
-                        //         schema.value + "/preview\" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>" +
-                        //     "</div>" +
-                        //     "<div class=space>" +
-                        //     "    <h1>" + schema.title + "</h1>" +
-                        //     "    <a class=button href=\"" + (schema.download ? schema.download.format(schema.value) :
-                        //         inner.getDownloadLink(schema.value)) +
-                        //         "\" rel=noopener target=_blank tabindex=0><b>להורדת " + schema.title + "</a>" +
-                        //     "</div>";
-                        result += inner.pageUI[hashURL.page](schema);
-
-                        if (inner.pageUI[hashURL.page].fn) {
-                            outer.fn = inner.pageUI[hashURL.page].fn;
-                        }
-                    } else {
-                        result += inner.pageUI.generateHTML(schema);
-                    }
-                    if (schema.pinterest) {
-                        result += "<div class=pinterest><a data-pin-do=embedBoard data-pin-board-width=900 data-pin-scale-height=631" +
-                            " data-pin-scale-width=115 href=\"" + inner.htmlSafe(schema.pinterest) + "\"><span class=spin> " + schema.pinterest + "</span></a></div>";
-                    }
-                }
-            }
-
-            inner.el.content.innerHTML = result;
-
-            if (schema.pinterest) {
-                // Pinterest widget https://developers.pinterest.com/tools/widget-builder/
-                if (ui.w.PinUtils) {
-                    PinUtils.build();
-                } else {
-                    ui.asyncScript("https://assets.pinterest.com/js/pinit.js");
-                }
-            }
-            if (schema) {
-                if (schema.video) {
-                    ui.video.applyPlyr();
-                }
-                if (ui.comment) {
-                    ui.comment.load(inner.el.content);
-                }
-            } else if (ui.comment) {
-                ui.comment.remove();
-            }
-        } else {
-            outer.sessionRefresh(true);
-        }
-    };
     inner.pageSchema = {
         fullPackage: "full",
         sessionInterval: 7,
         package: {
             closet: undefined,
+            shopping: undefined,
             full: {
                 title: "ברוכה הבאה לקורס סטייל שבא מבפנים",
                 shortTitle: "סטייל שבא מבפנים",
@@ -843,7 +303,7 @@
                             }
                         },
                         video: "KzC7tJRjxqc",
-                        text: "מיני קורס *\"קניות ממוקדות\"* הוא למעשה תיעוד של סיבוב קניות אמיתי." +
+                        text: "מיני קורס קניות ממוקדות הוא למעשה תיעוד של סיבוב קניות אמיתי." +
                               " הקורס מלמד איך מזהים את הבגד שיחמיא לך, עוד לפני שמודדים." +
                               " בתור משתתפת מיני קורס \"ארון מדויק\" מגיע לך הנחה של 20% על קורס קניות.",
                         page: {
@@ -956,6 +416,42 @@
                             }
                         }
                     },
+                    shopping: {
+                        title: "מיני קורס קניות ממוקדות",
+                        shortTitle: "קניות ממוקדות",
+                        highlight: function () {
+                            if (outer.package === inner.pageSchema.fullPackage) {
+                                return "בונוס";
+                            }
+                        },
+                        video: "ar7Ly0L-LVk",
+                        text: "מיני קורס ארון מדויק הוא למעשה תיעוד של סידור ארון אמיתי." +
+                            " הקורס מלמד לבנות ארון בגדים מדויק - לזהות פריטים מדליקים," +
+                            " להוציא פריטים שלא מחמיאים, לסדר שהכל יהיה נגיש," +
+                            " ולבנות רשימת קניות בהתאם לכל סוגי הפעילויות שלך." +
+                            "\nבתור משתתפת מיני קורס \"קניות ממוקדות\" מגיע לך הנחה של 20% על הקורס ארון.",
+                        page: {
+                            shoppingList: {
+                                title: "רשימת קניות",
+                                video: "H-jZdaa00jE"
+                            },
+                            internalExternal: {
+                                title: "פנימיות וחיצוניות",
+                                video: "9ybTp1UqeCU"
+                            },
+                            colorSwatch: undefined,
+                            bodyType: undefined,
+                            dressStyle: undefined,
+                            doShopping: {
+                                title: "תכלס קניות",
+                                video: "dA13_gg6bA8"
+                            },
+                            onlineShopping: {
+                                title: "קניות אונליין",
+                                video: "9MQ6oTxeKMU"
+                            }
+                        }
+                    },
                     consult: {
                         title: "שיחת ייעוץ של שעה",
                         shortTitle: "שיחת ייעוץ",
@@ -998,13 +494,576 @@
             }
         }
     };
+    inner.endpoint = (function () {
+        var parts = location.hostname.split(".");
+
+        while (parts.length > 2) {
+            parts.shift();
+        }
+
+        return "https://lab." + parts.join(".") + "/webhook";
+    }());
+    inner.sessionData = (function () {
+        function getData(sessionName, callback) {
+            var result = {};
+
+            try {
+                result = JSON.parse(localStorage[sessionName]);
+            } catch (e) {
+                delete localStorage[sessionName];
+            }
+
+            if (!result.task) {
+                result.task = {};
+            }
+            if (typeof callback === "function") {
+                return callback(result);
+            }
+
+            return result;
+        }
+
+        // localStorage renaming backwards compatibility, 2017/04/30
+        return getData("session", function (session) {
+            if (session.email && session.token) {
+                return session;
+            }
+
+            return getData("user", function (user) {
+                if (user.email && user.token) {
+                    localStorage.session = localStorage.user;
+
+                    delete localStorage.user;
+                    ui.setUser(user);
+                }
+
+                return user;
+            });
+        });
+    }());
+    inner.sessionLogedin = function () {
+        ui.d.documentElement.classList.remove("stretch");
+        ui.d.documentElement.classList.add("logedin");
+        inner.el.details.remove();
+
+        inner.el.account = ui.d.getElementById("account");
+        inner.el.account.outerHTML = "<div class=profile>" +
+            "    <img src=\"https://gravatar.com/avatar/" + inner.sessionData.avatar + "?s=42&r=g&d=mm\">" +
+            "    <div class=\"table center\">" +
+            "        <div class=cel>" +
+            (inner.sessionData.firstname ? "<div class=nowrap dir=auto>" + inner.sessionData.firstname + "</div>" : "") +
+            "            <small onclick=ui.academy.sessionLogout()>התנתקי</small>" +
+            "        </div>" +
+            "    </div>" +
+            "</div>";
+
+        delete inner.el.details;
+        delete inner.el.account;
+
+        var currentSession = inner.hashData.session,
+            packages = inner.pageSchema.package,
+            fn = {};
+
+        fn.generateEvents = function (sessionValue, pageValue) {
+            return " onclick=ui.academy.navClick(this)" +
+                " onkeydown=ui.academy.navKeydown(event)" +
+                (sessionValue ? " data-session=" + sessionValue : "") +
+                (pageValue ? " data-page=" + pageValue : "") +
+                " tabindex=" + (pageValue ? -1 : 0);
+        };
+        fn.generateDateObject = function (opt) {
+            // opt => startDate, sessionInterval, firstSession
+            opt = opt || {};
+
+            var date = new Date(opt.startDate.setDate(opt.startDate.getDate() +
+                    (opt.sessionInterval ? opt.sessionInterval * inner.pageSchema.sessionInterval :
+                        (opt.firstSession ? 0 : inner.pageSchema.sessionInterval))) +
+                    (opt.sessionInterval ? 0 : 10000000));
+
+            date.setHours(0, 0, 0, 0);
+
+            return {
+                enabled: +date <= +new Date,
+                format: opt.format ||
+                    inner.addLeadingZeros(date.getDate()) +
+                    "/" + inner.addLeadingZeros(date.getMonth() + 1)
+            };
+        };
+        fn.packageStartDate = function (packageName) {
+            var startDate = inner.sessionData.startDate || inner.sessionData.package[packageName] || inner.sessionData.created;
+
+            return new Date(+new Date(startDate * 1000).setHours(0, 0, 0, 0));
+        };
+        fn.generatePage = function (schema, sessionValue, dateObject) {
+            var pages = schema.page,
+                html = "",
+                link,
+                page;
+
+            if (pages && (!dateObject || dateObject.enabled)) {
+                html += "<ol>";
+
+                for (page in pages) {
+                    if (Object.prototype.hasOwnProperty.call(pages, page)) {
+                        if (schema.page[page].download && typeof schema.page[page].download.link === "string") {
+                            link = schema.page[page].download.link;
+                        } else if (inner.sessionData.task[page] && inner.sessionData.task[page].link) {
+                            link = inner.sessionData.task[page].link;
+                        } else {
+                            link = undefined;
+                        }
+
+                        html += "<li>" +
+                            "<a class=unselectable" + fn.generateEvents(sessionValue, page) + ">" +
+                            "<div>" + (pages[page].shortTitle || pages[page].title) + "</div>" +
+                            "</a>" +
+                            inner.generateDownloadIcon(link) +
+                            "</li>";
+                    }
+                }
+
+                html += "</ol>";
+            }
+
+            return html;
+        };
+        fn.generateSession = function (session, packageName) {
+            var dateParams = {},
+                highlight = "",
+                html = "",
+                sessionValue,
+                dateObject,
+                link;
+
+            dateParams.startDate = fn.packageStartDate(packageName);
+
+            html += "<ol class=\"sidenav counter\" dir=rtl>";
+
+            for (sessionValue in session) {
+                if (Object.prototype.hasOwnProperty.call(session, sessionValue)) {
+                    dateParams.sessionInterval = session[sessionValue].date && session[sessionValue].date.sessionInterval;
+                    dateParams.firstSession = !Object.prototype.hasOwnProperty.call(dateParams, "firstSession");
+                    dateObject = fn.generateDateObject(dateParams);
+
+                    if (session[sessionValue].highlight) {
+                        highlight = typeof session[sessionValue].highlight === "function" ?
+                            session[sessionValue].highlight() : session[sessionValue].highlight;
+                        highlight = highlight ? " data-highlight=\"" + highlight + "\"" : "";
+                    }
+                    if (session[sessionValue].download && typeof session[sessionValue].download.link === "string") {
+                        link = session[sessionValue].download.link;
+                    } else {
+                        link = undefined;
+                    }
+
+                    html += "<li>" +
+                        "<label" + (sessionValue === currentSession ? " class=expand" : "") +
+                            (dateObject.enabled ? fn.generateEvents(sessionValue) : " disabled") + ">" +
+                        "<time>" + dateObject.format + "</time>" +
+                        "<div" + highlight + ">" + (session[sessionValue].shortTitle || session[sessionValue].title) + "</div>" +
+                        inner.generateDownloadIcon(link) +
+                        "</label>" +
+                        fn.generatePage(session[sessionValue], sessionValue, dateObject) +
+                        "</li>";
+                }
+            }
+
+            html += "</ol>";
+
+            return html;
+        };
+        fn.generatePackage = function (packageName) {
+            var schema = packages[packageName],
+                html = "";
+
+            if (schema.session) {
+                html += "<div class=sidenav dir=rtl>" +
+                    "<a class=active" + fn.generateEvents() + ">" +
+                    "<label>" + (schema.shortTitle || schema.title) + "</label>" +
+                    "</a>" +
+                    "</div>" +
+                    fn.generateSession(schema.session, packageName);
+            } else {
+                html += "<ol class=sidenav dir=rtl>" +
+                    "<li>" +
+                    "<label class=\"expand selected active\"" + fn.generateEvents(packageName) + ">" +
+                    (schema.shortTitle || schema.title) +
+                    "</label>" +
+                    fn.generatePage(schema, packageName) +
+                    "</li>" +
+                    "</ol>";
+            }
+
+            return html;
+        };
+
+        inner.el.content.outerHTML = "<div class=container>" +
+            "    <div class=\"column nav-container\" id=sidenav role=navigation dir=ltr>" +
+            Object.keys(packages).map(fn.generatePackage).join("\n") +
+            "    </div>" +
+            "    <div class=\"column content\" id=content></div>" +
+            "</div>";
+
+        inner.el.content = ui.d.getElementById("content");
+        inner.el.sidenav = ui.d.getElementById("sidenav");
+
+        inner.toggleNav(true);
+    };
+    outer.sessionRefresh = function (stripHash) {
+        if (stripHash) {
+            ui.w.location = location.pathname;
+        } else {
+            location.reload();
+        }
+    };
+    inner.sessionLogin = function (e) {
+        e.preventDefault();
+        ui.form.accessibility(false, null, true);
+
+        fetch(inner.endpoint + "/login", {
+            method: "POST",
+            // Prevent insecure redirects https://developer.mozilla.org/en-US/docs/Web/API/Response/redirected
+            redirect: "error",
+            body: JSON.stringify({
+                email: inner.el.email.value.toLowerCase(),
+                pass: inner.el.pass.value
+            })
+        }).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            inner.sessionUpdate(json);
+            inner.workerUpdate({status: "login"});
+            ui.setUser(json);
+            ui.form.accessibility(true, null, true);
+
+            if (json.email && json.token) {
+                outer.sessionRefresh();
+            } else if (inner.el.button) {
+                inner.el.button.classList.add("error");
+                inner.el.button.innerHTML = "הפרטים שגויים, נסי שוב";
+            }
+        }).catch(function () {
+            ui.form.accessibility(true, null, true);
+
+            if (inner.el.button) {
+                inner.el.button.classList.add("error");
+                inner.el.button.innerHTML = "טעות במערכת, נסי שוב מאוחר יותר";
+            }
+        });
+    };
+    outer.sessionLogout = function (preventPushSW) {
+        delete localStorage.session;
+
+        if (!preventPushSW) {
+            inner.workerUpdate({status: "logout"});
+        }
+
+        outer.sessionRefresh(true);
+    };
+    inner.getUserCurrentPackage = function (userData) {
+        if (userData && userData.package) {
+            if (Object.keys(userData.package).includes(inner.pageSchema.fullPackage)) {
+                return inner.pageSchema.fullPackage;
+            }
+
+            var packages = Object.keys(inner.pageSchema.package),
+                packageNames = Object.keys(userData.package).filter(function (packageName) {
+                    return packages.includes(packageName);
+                });
+
+            if (packageNames.length > 1) {
+                return packageNames;
+            }
+
+            return packageNames[0];
+        }
+
+        return "";
+    };
+    inner.getUserDefaultPackage = function (userData) {
+        var packageName = inner.getUserCurrentPackage(userData);
+
+        if (Array.isArray(packageName)) {
+            if (inner.hashData.session && packageName.includes(inner.hashData.session)) {
+                // Current session based on URL
+                return inner.hashData.session;
+            }
+
+            return packageName.reduce(function (a, b) {
+                return userData.package[a] > userData.package[b] ? a : b;
+            });
+        }
+
+        return packageName;
+    };
+    inner.sessionUpdate = function (data, preventPushSW) {
+        if (typeof data === "object") {
+            if (!preventPushSW) {
+                inner.workerUpdate({
+                    status: "update",
+                    data: data
+                });
+            }
+
+            inner.sessionData = data;
+
+            if (!inner.sessionData.task) {
+                inner.sessionData.task = {};
+            }
+
+            localStorage.session = JSON.stringify(data);
+        }
+    };
+    inner.sessionVerify = function (onSuccess) {
+        var type = "verify",
+            data = {
+                email: inner.sessionData.email,
+                token: inner.sessionData.token
+            };
+
+        fetch(inner.endpoint + "/" + type, {
+            method: "POST",
+            redirect: "error",
+            body: JSON.stringify(data)
+        }).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            var userDefaultPackage = inner.getUserDefaultPackage(json);
+
+            if (json.error || !userDefaultPackage) {
+                return Promise.reject(json);
+            }
+
+            inner.sessionUpdate(json);
+
+            if (typeof onSuccess === "function") {
+                onSuccess(userDefaultPackage);
+            }
+
+            return Promise.resolve(json);
+        }).catch(function (err) {
+            console.error(err);
+            inner.sessionErrorReport(type, data);
+        });
+    };
+    inner.sessionForgot = function () {
+        inner.el.form.removeEventListener("submit", inner.sessionLogin);
+        inner.el.form.addEventListener("submit", inner.sessionRemind);
+        inner.el.email.focus();
+        inner.el.pass.parentNode.remove();
+        inner.el.button.innerHTML = "שלח לי סיסמא";
+        inner.el.button.classList.remove("error");
+        inner.el.link.innerHTML = "לנסות להתחבר מחדש";
+        inner.el.link.removeEventListener("click", inner.sessionForgot);
+        inner.el.link.addEventListener("click", outer.sessionRefresh);
+    };
+    inner.sessionRemind = function (e) {
+        e.preventDefault();
+        ui.form.accessibility(false, null, true);
+
+        fetch(inner.endpoint + "/forgot", {
+            method: "POST",
+            redirect: "error",
+            body: JSON.stringify({
+                email: inner.el.email.value.toLowerCase()
+            })
+        }).then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            ui.form.accessibility(true, null, true);
+
+            if (data.success) {
+                inner.el.form.innerHTML = "<h2>פרטי גישה נשלחו למייל שלך</h2><a onclick=ui.academy.sessionRefresh(true)>לנסות להתחבר</a>";
+            } else {
+                inner.el.button.classList.add("error");
+                inner.el.button.innerHTML = "מייל לא רשום, נסי שוב";
+            }
+        }).catch(function () {
+            ui.form.accessibility(true, null, true);
+
+            if (inner.el.button) {
+                inner.el.button.classList.add("error");
+                inner.el.button.innerHTML = "טעות במערכת, נסי שוב מאוחר יותר";
+            }
+        });
+    };
+    inner.sessionError = function () {
+        if (sessionStorage.sessionError) {
+            var el = ui.d.getElementById("session-error");
+
+            if (el) {
+                el.hidden = false;
+                el.innerHTML = sessionStorage.sessionError;
+                delete sessionStorage.sessionError;
+            }
+        }
+    };
+    inner.sessionErrorReport = function (type, data) {
+        if (ui.environment === "prod") {
+            if ("sendBeacon" in navigator) {
+                navigator.sendBeacon(inner.endpoint + "/error", JSON.stringify({
+                    schema: type,
+                    email: inner.sessionData.email,
+                    log: JSON.stringify(data, null, 2)
+                }));
+            }
+        } else {
+            console.error(type, data);
+
+            if (console.trace) {
+                console.trace();
+            }
+        }
+
+        // Your session has expired, please login again
+        sessionStorage.sessionError = "זהינו שלא פעלת בחשבונך בדקות האחורנות. אנה התחברי שוב.";
+
+        delete localStorage.session;
+        outer.sessionRefresh();
+    };
+    inner.sessionPage = function () {
+        if (!inner.valid || !inner.el.content) {
+            return;
+        }
+
+        var schema = inner.getCurrentSchema(),
+            result = "";
+
+        delete outer.schema;
+        delete outer.fn;
+
+        if (schema && schema.page && inner.hashData.page && !schema.page[inner.hashData.page]) {
+            // Trying to open invalid page
+            delete inner.hashData.page;
+            location.hash = ui.serialize(inner.hashData);
+        } else if (schema && (!inner.hashData.session || !inner.el.sidenav ||
+            inner.el.sidenav.querySelector("[data-session=\"" + inner.hashData.session + "\"]:not([data-page])"))) {
+            if (inner.el.bar && inner.el.bar.checked) {
+                inner.el.bar.checked = false;
+            }
+            if (!inner.hashData.session || inner.hashData.session && !inner.hashData.page) {
+                outer.schema = schema;
+
+                result += inner.pageUI.generateHTML(schema);
+
+                if (typeof schema.generateHTML === "function") {
+                    result += schema.generateHTML();
+                }
+
+                /* generateVideoList = function (obj, schema, page) {
+                    var url = "";
+
+                    if (obj.value) {
+                        switch (obj.type) {
+                            case "video":
+                                url = ui.video.youtubeSupport ? "https://i.ytimg.com/vi/" + obj.value + "/maxresdefault.jpg" : ui.video.getData(obj.value).image;
+                                break;
+                            case "document":
+                            case "bodyType":
+                                // Params https://pgenom.com/community/threads/гуглодиск-как-хостинг-картинок-файловый-хостинг.1236/
+                                url = "https://drive.google.com/thumbnail?authuser=0&sz=w640&id=" + obj.value;
+                                break;
+                            case "dressStyle":
+                            case "colorSwatch":
+                                url = "/assets/" + obj.value;
+                                break;
+                            default:
+                                url = "";
+                        }
+                    }
+
+                    // YouTube image sizes http://stackoverflow.com/questions/2068344
+                    return obj ? "<a class=\"absolute cover\"" + fn.generateEvents(schema, page) +
+                        " style=\"background-image:url(" + url + ")\"><h3 class=nowrap dir=auto>" +
+                        obj.title.replace(/\n/g, " ") + "</h3></a>" : "";
+                };
+
+                result += "<ol class=items dir=ltr>";
+
+                for (prop in schema) {
+                    if (schema.hasOwnProperty(prop)) {
+                        result += "    <li>" + generateVideoList(schema[prop], inner.hashData.session, prop) + "</li>";
+                    }
+                }
+
+                result += "</ol>"; */
+            } else {
+                if (inner.hashData.session) {
+                    schema = schema.page && schema.page[inner.hashData.page];
+                }
+                if (schema) {
+                    outer.schema = schema;
+
+                    if (typeof inner.pageUI[inner.hashData.page] === "function") {
+                        // // "document":
+                        // // Usage example
+                        // //     "check-list": {
+                        // //         type: "document",
+                        // //         title: "צ'ק ליסט למערכת לבוש יעילה",
+                        // //         value: "1eSQaxVn2AKrwwrNafS0JnKTwjJzs50-7edCKn8kwkVs",
+                        // //         download: "https://docs.google.com/document/d/{0}/export?format=pdf"
+                        // //     }
+                        // // width="640" height="480"
+                        // // http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
+                        // result += "<div class=video>" +
+                        //     "    <iframe src=\"https://drive.google.com/file/d/" +
+                        //         schema.value + "/preview\" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>" +
+                        //     "</div>" +
+                        //     "<div class=space>" +
+                        //     "    <h1>" + schema.title + "</h1>" +
+                        //     "    <a class=button href=\"" + (schema.download ? schema.download.format(schema.value) :
+                        //         inner.getDownloadLink(schema.value)) +
+                        //         "\" rel=noopener target=_blank tabindex=0><b>להורדת " + schema.title + "</a>" +
+                        //     "</div>";
+                        result += inner.pageUI[inner.hashData.page](schema);
+
+                        if (inner.pageUI[inner.hashData.page].fn) {
+                            outer.fn = inner.pageUI[inner.hashData.page].fn;
+                        }
+                    } else {
+                        result += inner.pageUI.generateHTML(schema);
+                    }
+                    if (schema.pinterest) {
+                        result += "<div class=pinterest><a data-pin-do=embedBoard data-pin-board-width=900 data-pin-scale-height=631" +
+                            " data-pin-scale-width=115 href=\"" + inner.htmlSafe(schema.pinterest) + "\"><span class=spin> " + schema.pinterest + "</span></a></div>";
+                    }
+                }
+            }
+
+            inner.el.content.innerHTML = result;
+
+            if (schema.pinterest) {
+                // Pinterest widget https://developers.pinterest.com/tools/widget-builder/
+                if (ui.w.PinUtils) {
+                    PinUtils.build();
+                } else {
+                    ui.asyncScript("https://assets.pinterest.com/js/pinit.js");
+                }
+            }
+            if (schema) {
+                if (schema.video) {
+                    ui.video.applyPlyr();
+                }
+                if (ui.comment) {
+                    ui.comment.load(inner.el.content);
+                }
+            } else if (ui.comment) {
+                ui.comment.remove();
+            }
+        } else {
+            outer.sessionRefresh(true);
+        }
+    };
     inner.pageUI = {};
-    inner.pageUI.markdown = function (str) {
-        if (!str) {
-            return str;
+    inner.pageUI.markdown = function (text) {
+        if (!text) {
+            return text;
         }
 
         var format = {
+            newline: function (str) {
+                return "<p dir=auto>" + str + "</p>";
+            },
             bold: {
                 // Markdown https://stackoverflow.com/questions/10168285/markdown-to-convert-double-asterisks-to-bold-text-in-javascript
                 regex: /\*(\S(.*?\S)?)\*/gm,
@@ -1031,7 +1090,7 @@
             }
         };
 
-        return str
+        return text.split("\n").map(format.newline).join("\n")
             .replace(format.bold.regex, format.bold.pattern)
             .replace(format.strikethrough.regex, format.strikethrough.pattern)
             .replace(format.link.regex, format.link.pattern)
@@ -1067,7 +1126,7 @@
                 "<h1>" + schema.title + "</h1>";
 
             if (schema.text) {
-                html += "<p>" + inner.pageUI.markdown(schema.text) + "</p>";
+                html += inner.pageUI.markdown(schema.text);
             }
             if (schema.page) {
                 for (prop in schema.page) {
@@ -2037,11 +2096,11 @@
             inner.generateIcon("download") + text + "</a>";
     };
     inner.generateDownloadIcon = function (link) {
-        if (!link) {
-            return "";
-        }
         if (Array.isArray(link)) {
             return link.map(inner.generateDownloadIcon).filter(Boolean).join("");
+        }
+        if (!link || typeof link !== "string") {
+            return "";
         }
 
         return "<a class=link-download href=\"" + link + "\" rel=noopener target=_blank tabindex=-1>" +
@@ -2301,9 +2360,13 @@
         var userPackages = Object.keys(inner.sessionData.package),
             hasFullPackage = userDefaultPackage === inner.pageSchema.fullPackage;
 
-        // Map page sessions schema
+        // Page schema mapping
         inner.pageSchema.package.full.session.closet.page.bodyType = inner.pageSchema.package.full.session.bodyShape.page.bodyType;
+        inner.pageSchema.package.full.session.shopping.page.bodyType = inner.pageSchema.package.full.session.bodyShape.page.bodyType;
+        inner.pageSchema.package.full.session.shopping.page.colorSwatch = inner.pageSchema.package.full.session.colours.page.colorSwatch;
+        inner.pageSchema.package.full.session.shopping.page.dressStyle = inner.pageSchema.package.full.session.style.page.dressStyle;
         inner.pageSchema.package.closet = inner.pageSchema.package.full.session.closet;
+        inner.pageSchema.package.shopping = inner.pageSchema.package.full.session.shopping;
 
         Object.keys(inner.pageSchema.package).forEach(function (key) {
             if (!userPackages.includes(key) ||
@@ -2313,7 +2376,11 @@
             }
         });
 
-        outer.package = inner.getUserDefaultPackage(inner.sessionData);
+        // inner.pageSchema.intro = ...
+        // inner.pageSchema.session = ...
+        // inner.pageSchema.bonus = ...
+
+        outer.package = inner.getUserCurrentPackage(inner.sessionData);
     };
     inner.init = function () {
         ui.legacy(function () {

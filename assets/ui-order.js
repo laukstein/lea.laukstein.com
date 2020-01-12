@@ -301,6 +301,7 @@ ui.order = ui.legacy(function () {
 
         layout.full = self.updateHTML;
         layout.closet = self.updateHTML;
+        layout.shopping = self.updateHTML;
         layout.colorSwatch = function () {
             var timer = 0,
                 label;

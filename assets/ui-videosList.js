@@ -97,6 +97,18 @@ ui.videosList = {
         description: "ראיון משותף  - סטייליסטית לאה לאוקשטיין ומיטל טולדנו, מאמנת אישית לנשים שרוצות לחיות את הטוב.\nלהורדת בנק הוויות http://meital.vp4.me/havayot\nלהורדת מדריך סטיילינג לדתיות  https://lea.laukstein.com",
         publishedAt: "2016-11-07T17:21:55.000Z"
     },
+    "9MQ6oTxeKMU": {
+        academy: true,
+        "360p": "drv2yr00fd73f30",
+        "720p": "kxofamhxl664jrd",
+        image: "ohgjowh6ke3rwvq"
+    },
+    "9ybTp1UqeCU": {
+        academy: true,
+        "360p": "omx4n1kfbtfg1wy",
+        "720p": "8omvg9909w79l35",
+        image: "qsz6z2l3tn9mbv7"
+    },
     AcH0rrK5aKc: {
         public: true,
         "360p": "mczuk9va9186mcv",
@@ -114,6 +126,12 @@ ui.videosList = {
         title: "איך להכניס חשק לארון הבגדים שלך?",
         description: "למדריך על 9 פריטי הבסיס - https://lea.laukstein.com/signup",
         publishedAt: "2018-10-14T04:00:00.000Z"
+    },
+    "ar7Ly0L-LVk": {
+        academy: true,
+        "360p": "25clu25yu0z8dh3",
+        "720p": "snskf5ljvgrqojr",
+        image: "3v78c8u5jxpeamk"
     },
     B0vuBvp3zXc: {
         public: true,
@@ -176,6 +194,12 @@ ui.videosList = {
         description: "עוד לא ניסית את OFITT?\nhttps://ofitt.com",
         publishedAt: "2019-07-09T21:50:09.000Z"
     },
+    dA13_gg6bA8: {
+        academy: true,
+        "360p": "8d4pl8zki64l7l2",
+        "720p": "v3dbl2ojtwmqlnv",
+        image: "obzsgcm80trgmt2"
+    },
     ddxWJ4NxyDY: {
         "360p": "lx0kjxkmpygejuc",
         "720p": "c3rn0oa2xdq86h2",
@@ -237,6 +261,12 @@ ui.videosList = {
         image: "t6jf8kluyri5fqw",
         title: "שליש הראשון",
         description: "https://lea.laukstein.com/private/pregnancy"
+    },
+    "H-jZdaa00jE": {
+        academy: true,
+        "360p": "1hsyujwmglcrgqu",
+        "720p": "7zctzd9ceiylpy1",
+        image: "bol4umotwkxoyv4"
     },
     hmHHSjivjhU: {
         "360p": "2nwj7dfp97wp5iq",
