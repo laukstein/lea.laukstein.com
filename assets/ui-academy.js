@@ -95,7 +95,7 @@
                                 download: "להורדת מדריך הגיזרות",
                                 error: "שגיאה בחישוב, {0}נא לפנות ללאה{1}",
                                 option: {
-                                    height: "הגובה",
+                                    height: "הגובה (ס\"מ)",
                                     shoulders: "היקף הכתפיים",
                                     bust: "היקף החזה",
                                     waist: "היקף המותניים",
@@ -298,14 +298,19 @@
                         title: "מיני קורס ארון מדויק",
                         shortTitle: "ארון מדויק",
                         highlight: function () {
-                            if (outer.package === inner.pageSchema.fullPackage) {
+                            if (inner.containsPackage(inner.pageSchema.fullPackage)) {
                                 return "בונוס";
                             }
                         },
                         video: "KzC7tJRjxqc",
-                        text: "מיני קורס קניות ממוקדות הוא למעשה תיעוד של סיבוב קניות אמיתי." +
-                              " הקורס מלמד איך מזהים את הבגד שיחמיא לך, עוד לפני שמודדים." +
-                              " בתור משתתפת מיני קורס \"ארון מדויק\" מגיע לך הנחה של 20% על קורס קניות.",
+                        text: function () {
+                            if (!inner.containsPackage(inner.pageSchema.fullPackage) &&
+                                !inner.containsPackage("shopping")) {
+                                return "מיני קורס קניות ממוקדות הוא למעשה תיעוד של סיבוב קניות אמיתי." +
+                                    " הקורס מלמד איך מזהים את הבגד שיחמיא לך, עוד לפני שמודדים." +
+                                    " בתור משתתפת מיני קורס ארון מדויק מגיע לך הנחה של [20% על קורס קניות](/payment#orderid=66321B17).";
+                            }
+                        },
                         page: {
                             clearingCloset: {
                                 title: "פינוי ארון",
@@ -420,16 +425,21 @@
                         title: "מיני קורס קניות ממוקדות",
                         shortTitle: "קניות ממוקדות",
                         highlight: function () {
-                            if (outer.package === inner.pageSchema.fullPackage) {
+                            if (inner.containsPackage(inner.pageSchema.fullPackage)) {
                                 return "בונוס";
                             }
                         },
                         video: "ar7Ly0L-LVk",
-                        text: "מיני קורס ארון מדויק הוא למעשה תיעוד של סידור ארון אמיתי." +
-                            " הקורס מלמד לבנות ארון בגדים מדויק - לזהות פריטים מדליקים," +
-                            " להוציא פריטים שלא מחמיאים, לסדר שהכל יהיה נגיש," +
-                            " ולבנות רשימת קניות בהתאם לכל סוגי הפעילויות שלך." +
-                            "\nבתור משתתפת מיני קורס \"קניות ממוקדות\" מגיע לך הנחה של 20% על הקורס ארון.",
+                        text: function () {
+                            if (!inner.containsPackage(inner.pageSchema.fullPackage) &&
+                                !inner.containsPackage("closet")) {
+                                return "מיני קורס ארון מדויק הוא למעשה תיעוד של סידור ארון אמיתי." +
+                                    " הקורס מלמד לבנות ארון בגדים מדויק - לזהות פריטים מדליקים," +
+                                    " להוציא פריטים שלא מחמיאים, לסדר שהכל יהיה נגיש," +
+                                    " ולבנות רשימת קניות בהתאם לכל סוגי הפעילויות שלך." +
+                                    "\nבתור משתתפת מיני קורס קניות ממוקדות מגיע לך הנחה של [20% על הקורס ארון](/payment#orderid=8A572215).";
+                            }
+                        },
                         page: {
                             shoppingList: {
                                 title: "רשימת קניות",
@@ -760,6 +770,13 @@
 
         outer.sessionRefresh(true);
     };
+    inner.containsPackage = function (packageName) {
+        if (Array.isArray(outer.package)) {
+            return outer.package.includes(packageName);
+        }
+
+        return outer.package === packageName;
+    };
     inner.getUserCurrentPackage = function (userData) {
         if (userData && userData.package) {
             if (Object.keys(userData.package).includes(inner.pageSchema.fullPackage)) {
@@ -1074,9 +1091,20 @@
                 pattern: "<s>$1</s>"
             },
             link: {
-                // Testcase https://regex101.com/r/apPfwx/2
-                regex: /(https?:\/\/[^\s:@.,]+\.+[a-z])[^<\s\\!,]{0,}[^<\s\\!|^.,?$]{1,}|[^\s:,/@\-0=]{1,}[a-z0-9\-.]\.com?\/*[^<\s\\!]{1,}[^<\s\\!|^.,$]/ig,
-                pattern: "<a href=\"$&\" rel=noopener target=_blank dir=auto>$&</a>"
+                // Testcase https://regex101.com/r/apPfwx/4
+                // https://davidwells.io/snippets/regex-match-markdown-links
+                regex: /\[([\s\d\w\u0590-\u05FF%-_]+)\]\(((?:\/|https?:\/\/)[\w\d./?=#]+)\)|(https?:\/\/[^\s:@.,]+\.+[a-z])[^<\s\\!,]{0,}[^<\s\\!|^.,?$]{1,}|[^\s:,/@\-0=]{1,}[a-z0-9\-.]\.com?\/*[^<\s\\!]{1,}[^<\s\\!|^.,$]/ig,
+                pattern: function () {
+                    var a = ui.d.createElement("a");
+
+                    a.href = arguments[2] || arguments[3];
+                    a.rel = "noopener";
+                    a.target = "_blank";
+                    a.dir = "auto";
+                    a.textContent = arguments[1] || a.href;
+
+                    return a.outerHTML;
+                }
             },
             email: {
                 // Testcase http://regexr.com/3hn9l
@@ -1105,21 +1133,23 @@
         return "";
     };
     inner.pageUI.generateHTML = function (schema) {
-        var id = schema.video,
-            html = "",
+        var html = "",
             prop;
 
         if (schema.video) {
             html += "<div class=video>";
 
             if (ui.video.youtubeSupport) {
-                html += "<iframe src=\"https://www.youtube.com/embed/" + id +
+                html += "<iframe src=\"https://www.youtube.com/embed/" + schema.video +
                     "\" allow=\"autoplay; encrypted-media; fullscreen\" allowfullscreen></iframe>";
             } else {
-                html += ui.video.template(id);
+                html += ui.video.template(schema.video);
             }
 
             html += "</div>";
+        }
+        if (typeof schema.text === "function") {
+            schema.text = schema.text();
         }
         if (schema.video || schema.text || schema.download) {
             html += "<div class=space>" +

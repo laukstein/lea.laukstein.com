@@ -327,7 +327,7 @@ button.error:not([data-plyr]) {
     box-sizing: border-box;
 }
 .sidenav .link-download + .link-download {
-    left: 2.3em;
+    left: 2.1em;
 }
 .sidenav .active .link-download,
 .sidenav .active ~ .link-download,
