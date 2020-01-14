@@ -165,7 +165,7 @@ ui.order = ui.legacy(function () {
         };
 
         if (location.search) {
-            console.log(location.href);
+            ui.log(location.href);
 
             hash = ui.hash({hash: location.search});
             urlParams = [
@@ -517,7 +517,7 @@ ui.order = ui.legacy(function () {
                 el.classList.remove("error");
             }
 
-            console.log(self.value);
+            ui.log(self.value);
         };
 
         (function () {

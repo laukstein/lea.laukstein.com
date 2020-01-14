@@ -6,6 +6,20 @@ window.ui = {
     has: {
         classList: "classList" in document.documentElement
     },
+    log: function (data) {
+        "use strict";
+
+        console.log(data);
+
+        if (window.FS) {
+            try {
+                FS.log(data);
+            } catch (err) {
+                console.error(err);
+                console.trace();
+            }
+        }
+    },
     asyncScript: function (src/* , success, options |, options */) {
         "use strict";
 
@@ -854,6 +868,7 @@ window.ui = {
             };
             this.w.console.warn = this.w.console.log;
             this.w.console.error = this.w.console.log;
+            this.w.console.trace = this.w.console.log;
         }
         if (!String.prototype.format) {
             // Reference: http://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format
