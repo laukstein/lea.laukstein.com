@@ -908,8 +908,9 @@ ui.cookie = (function (self) {
             for (key in obj) {
                 if (Object.prototype.hasOwnProperty.call(obj, key)) {
                     val = typeof obj[key] === "object" ? JSON.stringify(obj[key]) : obj[key];
+                    // Notice: "samesite=strict" doesn't work on iOS Safari 13.3 - will not set the cookie
                     self.d.cookie = encodeURIComponent(key) + "=" +
-                        encodeURIComponent(val) + ";expires=" + expires + ";secure;samesite=strict";
+                        encodeURIComponent(val) + ";expires=" + expires + ";secure;samesite=lax";
                 }
             }
         }
