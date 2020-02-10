@@ -638,8 +638,8 @@ window.ui = {
                         options = {
                             controls: ["play-large", "play", "progress", "current-time", "mute", "volume", "pip", "airplay", "fullscreen"],
                             resetOnEnd: true,
-                            iconUrl: "/assets/plyr.svg",
-                            blankUrl: "/assets/blank.mp4",
+                            iconUrl: "/assets/plyr/plyr.svg",
+                            blankUrl: "/assets/plyr/blank.mp4",
                             volume: 10
                         };
 
@@ -650,7 +650,7 @@ window.ui = {
                             // Signup video preview thumbnails https://github.com/sampotts/plyr#preview-thumbnails
                             config.previewThumbnails = {
                                 enabled: true,
-                                src: "/assets/thumbnails.vtt"
+                                src: "/assets/plyr/thumbnails.vtt"
                             };
                         }
 
@@ -665,7 +665,7 @@ window.ui = {
                 } else if (!self.youtubeSupportInProgress) {
                     self.youtubeSupportInProgress = true;
 
-                    ui.asyncScript("/assets/plyr.polyfilled.min.js", success);
+                    ui.asyncScript("/assets/plyr/plyr.polyfilled.min.js", success);
                 }
             }
         },
@@ -695,7 +695,7 @@ window.ui = {
 
                     var el = ui.d.createElement("link");
 
-                    el.href = "/assets/plyr.css";
+                    el.href = "/assets/plyr/plyr.css";
                     el.rel = "stylesheet";
 
                     ui.d.body.appendChild(el);

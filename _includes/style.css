@@ -766,6 +766,9 @@ iframe {
     height: 100%;
     background-color: #000;
 }
+.video .plyr video {
+    height: auto;
+}
 
 /* YouTube play button */
 .play {
