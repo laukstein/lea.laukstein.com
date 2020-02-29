@@ -157,7 +157,9 @@ window.ui = {
                 remove: true
             });
 
-            this.asyncScript("https://fullstory.com/s/fs.js", {
+            window._fs_script = "edge.fullstory.com/s/fs.js";
+
+            this.asyncScript("https://" + window._fs_script, {
                 onStart: function () {
                     // https://help.fullstory.com/using/recording-iframes
                     window._fs_run_in_iframe = true;
@@ -209,6 +211,15 @@ window.ui = {
                         g("account", v);
                     };
                     g.clearUserCookie = function () { /**/ };
+                    g._w = {};
+                    g._w.XMLHttpRequest = window.XMLHttpRequest;
+
+                    if (window.fetch) {
+                        g._w.fetch = window.fetch;
+                        window.fetch = function () {
+                            return g._w.fetch.apply(this, arguments);
+                        };
+                    }
                 },
                 onSuccess: function () {
                     ui.identify.fs();
