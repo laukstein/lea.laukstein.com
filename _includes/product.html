@@ -1,7 +1,9 @@
 {% if include.data %}{%
     assign page = include.data %}{%
     assign l10n = site.data.l10n.product
-%}<article class="box card" dir=ltr>{%
+%}<article class="box card"{%
+    if page.ribbon %} data-ribbon="{{ page.ribbon }}"{% endif %} dir=ltr>{%
+
     if include.more %}{%
         assign title = page.title %}{%
         assign imageTitle = page.imageTitle | default: page.title %}

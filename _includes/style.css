@@ -196,6 +196,14 @@ footer a + a,
     height: .2em;
     background-color: #f58e84;
 }
+.nav [data-ribbon]:before {
+    content: "";
+    top: .3em;
+    left: -2.6em;
+    width: 4em;
+    height: 1.1em;
+    transform: rotate(-33deg);
+}
 .subnav-container > a,
 .subnav-container.active:after {
     display: none;
@@ -1037,6 +1045,31 @@ iframe {
 }
 .recommendation .name {
     font-weight: bold;
+}
+
+[data-ribbon] {
+    overflow: hidden;
+    position: relative;
+}
+[data-ribbon]:before {
+    content: attr(data-ribbon);
+    position: absolute;
+    z-index: 1;
+    top: 1.6em;
+    left: -2.2em;
+    padding-right: 2.1em;
+    padding-left: 2.1em;
+    color: #fff;
+    font-weight: bold;
+    font-size: 107%;
+    line-height: 2.1;
+    text-align: center;
+    text-indent: .25em;
+    letter-spacing: .03em;
+    word-spacing: .05em;
+    transform: rotate(-45deg);
+    background-color: #eb3434;
+    pointer-events: none;
 }
 
 [data-placholder]:before {

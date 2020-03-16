@@ -17,6 +17,7 @@ YAML schema
     price
     max_payments
     discount
+    ribbon
     location
     extra
     fit

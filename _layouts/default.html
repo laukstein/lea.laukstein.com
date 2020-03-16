@@ -56,7 +56,9 @@ unless page.hiddenHeader %}<input class=bar-holder id=bar type=checkbox hidden>
                             assign listItem = site.url | append: subnav.url | append: "|" | append: subnavTitle %}{%
                             assign breadcrumb = breadcrumb | push: listItem %}{%
                             assign className = className | push: "subactive" | push: "active" | uniq %} class=active{%
-                        endif %}><a href="{{ subnav.url | relative_url }}">{{ subnavTitle }}</a></li>{%
+                        endif %}><a href="{{ subnav.url | relative_url }}"{%
+                            if subnav.ribbon %} data-ribbon{%
+                            endif %}>{{ subnavTitle }}</a></li>{%
                         endunless %}{%
                         endif %}{%
                     endfor %}
