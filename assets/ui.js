@@ -104,14 +104,16 @@ window.ui = {
 
         if (this.environment === "prod") {
             // Bugsnag https://docs.bugsnag.com/platforms/javascript/
-            this.asyncScript("https://d2wy8f7a9ursnm.cloudfront.net/v6/bugsnag.min.js", {
+            this.asyncScript("https://d2wy8f7a9ursnm.cloudfront.net/v7/bugsnag.min.js", {
                 onSuccess: function () {
-                    if (window.bugsnag) {
-                        window.bugsnagClient = bugsnag({
+                    if (window.Bugsnag && typeof Bugsnag.start === "function") {
+                        Bugsnag.start({
                             apiKey: "99f662f6b9f9aa6eb92495f72b147a04",
-                            beforeSend: function (report) {
+                            autoTrackSessions: false,
+                            collectUserIp: false,
+                            onError: function (report) {
                                 // https://help.fullstory.com/integrate-ref/bugsnag
-                                if (window.FS && FS.getCurrentSessionURL) {
+                                if (report && window.FS && FS.getCurrentSessionURL) {
                                     var urlAtTime = FS.getCurrentSessionURL(true);
 
                                     if (urlAtTime) {
@@ -305,7 +307,7 @@ window.ui = {
             this.track({
                 name: "Bugsnag",
                 condition: function (self) {
-                    return window.bugsnagClient && self.user.email;
+                    return self.user.email && window.Bugsnag && typeof Bugsnag.setUser === "function";
                 },
                 params: function (self) {
                     var obj = {};
@@ -319,8 +321,10 @@ window.ui = {
                     return obj;
                 },
                 callback: function (self) {
-                    // https://docs.bugsnag.com/platforms/javascript/#setting-a-user-on-the-client
-                    bugsnagClient.user = this.params(self);
+                    var params = this.params(self);
+
+                    // https://docs.bugsnag.com/platforms/javascript/customizing-error-reports/#adding-user-data
+                    Bugsnag.setUser(params.email, params.email, params.name);
                 },
                 log: function (self) {
                     console.log("Bugsnag", this.params(self));
