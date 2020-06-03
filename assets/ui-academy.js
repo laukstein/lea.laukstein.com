@@ -505,7 +505,7 @@
         }
     };
     inner.endpoint = (function () {
-        var parts = location.hostname.split(".");
+        var parts = (location.hostname || location.host).split("."); // eslint-disable-line compat/compat
 
         while (parts.length > 2) {
             parts.shift();
