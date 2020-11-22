@@ -96,7 +96,7 @@ css: |
     }
     .cel.subscribe .confirm {
         text-align: center;
-        text-indent: calc(-13em / 2);
+        text-indent: calc(-10.6em / 2);
     }
     .headlines {
         display: block;
