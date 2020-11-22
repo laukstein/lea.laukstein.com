@@ -231,7 +231,7 @@ ui.videos = (function () {
 
         return "<article class=\"box card\" dir=ltr>" +
             "    <div class=video>" +
-                (ui.video.youtubeSupport ? "<iframe src=\"https://www.youtube.com/embed/" + obj.id + "?autoplay=1\" allow=\"autoplay; encrypted-media; fullscreen\" allowfullscreen></iframe>" : ui.video.template(obj.id)) +
+                (ui.video.youtubeSupport ? "<iframe src=\"https://www.youtube.com/embed/" + obj.id + "?autoplay=1\" allow=\"autoplay; encrypted-media; picture-in-picture; fullscreen\" allowfullscreen></iframe>" : ui.video.template(obj.id)) +
             "    </div>" +
             "    <div class=content dir=rtl>" +
             "        <h1>" + obj.title + "</h1>" +

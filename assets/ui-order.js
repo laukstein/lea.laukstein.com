@@ -339,7 +339,7 @@ ui.order = ui.legacy(function () {
             "<div class=video id=video dir=ltr>" +
             "    <iframe title=\"ערכת &quot;צבע מבפנים&quot;\"" +
             " src=\"https://www.youtube.com/embed/ihxGT0A1OrE\"" +
-            " allow=\"autoplay; encrypted-media; fullscreen\" allowfullscreen></iframe>" +
+            " allow=\"autoplay; encrypted-media; picture-in-picture; fullscreen\" allowfullscreen></iframe>" +
             "</div>";
     };
     generateLayout.uniqueID = function () {

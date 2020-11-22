@@ -1030,8 +1030,8 @@
                         // // width="640" height="480"
                         // // http://blog.appsevents.com/2014/04/how-to-bypass-google-drive-viewer-and.html
                         // result += "<div class=video>" +
-                        //     "    <iframe src=\"https://drive.google.com/file/d/" +
-                        //         schema.value + "/preview\" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>" +
+                        //     "    <iframe src=\"https://drive.google.com/file/d/" + schema.value + "/preview\"" +
+                        //         " allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>" +
                         //     "</div>" +
                         //     "<div class=space>" +
                         //     "    <h1>" + schema.title + "</h1>" +
@@ -1147,8 +1147,8 @@
             html += "<div class=video>";
 
             if (ui.video.youtubeSupport) {
-                html += "<iframe src=\"https://www.youtube.com/embed/" + schema.video +
-                    "\" allow=\"autoplay; encrypted-media; fullscreen\" allowfullscreen></iframe>";
+                html += "<iframe src=\"https://www.youtube.com/embed/" + schema.video + "\"" +
+                    " allow=\"autoplay; encrypted-media; picture-in-picture; fullscreen\" allowfullscreen></iframe>";
             } else {
                 html += ui.video.template(schema.video);
             }
