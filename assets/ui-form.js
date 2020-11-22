@@ -43,16 +43,16 @@ ui.form = {
     paste: function (e) {
         "use strict";
 
-        var val;
-
         if (e) {
+            var val;
+
             if (e.clipboardData) {
                 val = e.clipboardData.getData("text/plain");
             } else if (window.clipboardData) {
                 val = clipboardData.getData("Text");
             }
             if (val) {
-                self.number(e, val);
+                ui.form.number(e, val);
             } else {
                 e.preventDefault();
             }
