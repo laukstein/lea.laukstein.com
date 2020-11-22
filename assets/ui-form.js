@@ -48,8 +48,8 @@ ui.form = {
         if (e) {
             if (e.clipboardData) {
                 val = e.clipboardData.getData("text/plain");
-            } else if (this.w.clipboardData) {
-                val = this.w.clipboardData.getData("Text");
+            } else if (window.clipboardData) {
+                val = clipboardData.getData("Text");
             }
             if (val) {
                 self.number(e, val);
