@@ -194,6 +194,9 @@ window.ui = {
                             p: v
                         }, s);
                     };
+                    g.anonymize = function () {
+                        g.identify(false);
+                    };
                     g.shutdown = function () {
                         g("rec", false);
                     };
@@ -213,6 +216,9 @@ window.ui = {
                         g("account", v);
                     };
                     g.clearUserCookie = function () { /**/ };
+                    g.setVars = function (n, p) {
+                        g("setVars", [n, p]);
+                    };
                     g._w = {};
                     g._w.XMLHttpRequest = window.XMLHttpRequest;
 
