@@ -171,6 +171,12 @@ footer a + a,
     position: relative;
     float: right;
 }
+.nav li:not(.external):not(.subnav-container) {
+    border-right: 1px solid #eee;
+}
+.nav.nav > li:first-child {
+    border-right: none;
+}
 .nav a {
     padding: 1em 1.4em;
     color: inherit;
@@ -182,6 +188,7 @@ footer a + a,
     color: inherit;
     text-decoration: none;
     background-color: #f3f4f7;
+    box-shadow: 0 0 0 1px #f3f4f7;
 }
 .nav .active.active > a {
     color: #f58e84;
@@ -1284,6 +1291,9 @@ iframe {
 }
 
 @media (max-width: 86em) {
+    .subnav-container {
+        border-right: 1px solid #eee;
+    }
     .subnav-container:hover {
         color: inherit;
         text-decoration: none;
@@ -1445,6 +1455,9 @@ iframe {
         text-align: right;
         transform: translateX(-100%);
         will-change: auto;
+    }
+    .nav.nav li {
+        border-right: none;
     }
     .nav li,
     .subnav.subnav li:first-child {
