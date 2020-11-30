@@ -112,7 +112,7 @@ window.ui = {
                             autoTrackSessions: false,
                             collectUserIp: false,
                             onError: function (report) {
-                                // https://help.fullstory.com/integrate-ref/bugsnag
+                                // https://help.fullstory.com/hc/en-us/articles/360020827233
                                 if (report && window.FS && FS.getCurrentSessionURL) {
                                     var urlAtTime = FS.getCurrentSessionURL(true);
 
@@ -163,7 +163,7 @@ window.ui = {
 
             this.asyncScript("https://" + window._fs_script, {
                 onStart: function () {
-                    // https://help.fullstory.com/using/recording-iframes
+                    // https://help.fullstory.com/hc/en-us/articles/360020622514
                     window._fs_run_in_iframe = true;
                     window._fs_debug = false;
                     window._fs_host = "fullstory.com";
@@ -377,7 +377,7 @@ window.ui = {
                     return obj;
                 },
                 callback: function (self) {
-                    // http://help.fullstory.com/develop-js/identify
+                    // https://developer.fullstory.com/identify
                     FS.identify(self.user.email, this.params(self));
                 },
                 log: function (self) {
