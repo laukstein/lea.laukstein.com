@@ -123,6 +123,7 @@ ui.payment = ui.legacy(function () {
                             form.appendChild(input);
                         });
 
+                        ui.log("Invalid token " + paymentToken);
                         console.log("Payment " + obj.orderid + " " + obj.email);
                         console.log(obj);
 
