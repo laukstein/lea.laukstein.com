@@ -377,7 +377,7 @@ window.ui = {
                     return obj;
                 },
                 callback: function (self) {
-                    // http://help.fullstory.com/develop-js/identify
+                    // https://developer.fullstory.com/identify
                     FS.identify(self.user.email, this.params(self));
                 },
                 log: function (self) {
