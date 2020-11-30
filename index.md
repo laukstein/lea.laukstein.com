@@ -119,6 +119,8 @@ css: |
             border-radius: 7px 7px 0 0;
         }
         .cel.subscribe {
+            padding-right: 1em;
+            padding-left: 1em;
             border-radius: 0 0 7px 7px;
         }
         .headlines {
@@ -142,8 +144,6 @@ css: |
             min-width: 16em;
         }
         .cel.subscribe {
-            padding-right: 1em;
-            padding-left: 1em;
             margin-bottom: 1.5em;
         }
         .cel.subscribe .confirm {
