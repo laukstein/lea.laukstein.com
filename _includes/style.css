@@ -1304,6 +1304,7 @@ iframe {
         box-shadow: 0 2em 4em rgba(36,45,54,.2);
     }
     .subnav {
+        overflow: hidden;
         display: none;
         position: absolute;
         z-index: 1;
@@ -1456,7 +1457,7 @@ iframe {
         transform: translateX(-100%);
         will-change: auto;
     }
-    .nav.nav li {
+    .nav.nav.nav li {
         border-right: none;
     }
     .nav li,
