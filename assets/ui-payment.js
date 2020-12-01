@@ -7,7 +7,8 @@ ui.payment = ui.legacy(function () {
         locale = {},
         controller,
         getData,
-        session;
+        session,
+        hash;
 
     locale.toContact = " לשאלות אנא <a href=/contact>צרי קשר</a>";
 
@@ -16,30 +17,30 @@ ui.payment = ui.legacy(function () {
         networkError: "ישנה תקלה בשרת." + locale.toContact,
         networkOutage: "ישנה תקלה זמנית בשרת. אנא נסי שוב מאוחר יותר",
         serverError: "ישנה תקלה בשרת, אנא <a href=/contacts>צרי קשר</a> להמשך הטיפול בהזמנה",
-        invalidRequest: "קישור לא תקין." + locale.toContact,
-        hijacking: "ישנה תקלה, אנא <a href=/contacts>צרי קשר</a> להמשך הטיפול בהזמנה"
+        invalidRequest: "קישור לא תקין." + locale.toContact
     });
 
     getData = function () {
         var form = ui.d.pelepayform,
-            hash = ui.hash(),
-            orderHash = ui.serialize({orderid: hash.orderid}),
+            orderHash,
             urlParams,
             endpoint;
 
+        hash = ui.hash();
+        orderHash = ui.serialize({orderid: hash.orderid});
         ui.pageProgress = ui.pageProgress || status.innerHTML;
         status.innerHTML = ui.pageProgress;
 
         if (history.replaceState) {
             if (location.search) {
-                console.log(location.href);
+                ui.log(location.href);
 
                 // Remove query string from URL
                 history.replaceState("", ui.d.title, location.pathname + location.hash);
             }
             if (orderHash && orderHash !== location.hash.substring(1)) {
                 if (!location.search) {
-                    console.log(location.href);
+                    ui.log(location.href);
                 }
 
                 // Hide private details from URL
@@ -64,7 +65,8 @@ ui.payment = ui.legacy(function () {
                     parts.shift();
                 }
 
-                return "https://lab." + parts.join(".") + "/webhook";
+                // return "https://lab." + parts.join(".") + "/webhook";
+                return "https://lab.alaukstein.com/webhook";
             }());
             urlParams = [
                 "orderid",
@@ -82,7 +84,7 @@ ui.payment = ui.legacy(function () {
                     !/\*\|.*?\|\*/.test(hash[key]);
 
                 if (res && key.startsWith("utm_")) {
-                    console.log(key, hash[key]);
+                    ui.log(key, hash[key]);
                 }
 
                 return res;
@@ -100,18 +102,8 @@ ui.payment = ui.legacy(function () {
                 }).then(function (json) {
                     return json.error ? Promise.reject(json) : json;
                 }).then(function (obj) {
-                    var paymentToken = obj.custom && ui.hash({
-                        hash: atob(obj.custom),
-                        param: "token"
-                    });
-
-                    if (!paymentToken) {
-                        return Promise.reject(new Error("serverError"));
-                    } else if (paymentToken === token) {
+                    if (obj.custom) {
                         ui.payment = obj;
-
-                        // Use to prevent fraud activity, token with 3 days expiration
-                        ui.cookie({paymentToken: paymentToken}, 259200);
 
                         Object.keys(obj).forEach(function (key) {
                             var input = ui.d.createElement("input");
@@ -123,22 +115,21 @@ ui.payment = ui.legacy(function () {
                             form.appendChild(input);
                         });
 
-                        ui.log("Invalid token " + paymentToken);
-                        console.log("Payment " + obj.orderid + " " + obj.email);
+                        ui.log("Payment " + obj.orderid + (obj.email ? " " + obj.email : ""));
                         console.log(obj);
 
                         form.submit();
                     } else {
-                        return Promise.reject(new Error("hijacking"));
+                        return Promise.reject(new Error("serverError"));
                     }
                 }).catch(function (err) {
                     if (token === session) {
-                        getData.onError(locale.notFound, err, hash);
+                        getData.onError(locale.notFound, err);
                     }
                 });
             });
         } else {
-            getData.onError(locale.invalidRequest, undefined, hash);
+            getData.onError(locale.invalidRequest);
         }
     };
 
@@ -160,7 +151,7 @@ ui.payment = ui.legacy(function () {
             fn(signal, session);
         }
     };
-    getData.onError = function (str, err, hash) {
+    getData.onError = function (str, err) {
         err = err || {};
 
         if (err.name !== "AbortError") {
@@ -169,7 +160,6 @@ ui.payment = ui.legacy(function () {
             switch (err.message) {
                 case "notFound":
                 case "serverError":
-                case "hijacking":
                     console.error(err.message);
                     str = locale[err.message];
                     break;
