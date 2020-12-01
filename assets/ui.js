@@ -174,6 +174,7 @@ window.ui = {
                     window._fs_host = "fullstory.com";
                     window._fs_org = "3YG86";
                     window._fs_namespace = "FS";
+                    /* eslint-disable id-length */
                     var g = window[window._fs_namespace] = function (a, b, s) {
                         if (g.q) {
                             g.q.push([a, b, s]);
@@ -233,6 +234,7 @@ window.ui = {
                             return g._w.fetch.apply(this, arguments);
                         };
                     }
+                    /* eslint-enable id-length */
                 },
                 onSuccess: function () {
                     ui.identify.fs();
@@ -242,6 +244,7 @@ window.ui = {
             // Facebook Pixel https://www.facebook.com/business/help/952192354843755
             this.asyncScript("https://connect.facebook.net/en_US/fbevents.js", {
                 onStart: function () {
+                    /* eslint-disable id-length */
                     var n;
 
                     if (!window.fbq) {
@@ -259,6 +262,7 @@ window.ui = {
                         n.version = "2.0";
                         n.queue = [];
                     }
+                    /* eslint-enable id-length */
 
                     fbq("init", "1265828396834846");
                     fbq("track", "PageView");
