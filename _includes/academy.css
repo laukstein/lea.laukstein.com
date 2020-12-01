@@ -181,6 +181,10 @@ button.error:not([data-plyr]) {
 .column.content {
     padding-left: 0;
 }
+.nav.nav.nav li:first-child,
+.logedin .nav.nav li:nth-child(2) {
+    border-right: none;
+}
 .nav-container {
     z-index: 9;
     width: 16em;
@@ -906,33 +910,18 @@ button[disabled]:not(:hover) {
     animation-name: none;
 }
 
-@media (max-width: 56em) {
+@media (max-width: 60em) {
     .nav a {
         padding-right: 1.4em;
-    }
-    .table.scale {
-        display: flex;
-    }
-    .subscribe.subscribe,
-    .video + .space {
-        padding-right: 1.4em;
-        padding-left: 1.4em;
-    }
-    .subscribe.subscribe {
-        display: flex;
-        width: 100%;
-        max-width: 22.8em;
-        padding-top: 1em;
-        padding-bottom: 3em;
-        float: none;
-        vertical-align: middle;
     }
     .logedin .nav {
         padding-left: 3em;
         background-color: transparent;
     }
-    .nav li {
+    .nav.nav.nav li {
         float: right;
+        border-top: none;
+        border-right: 1px solid #eee;
     }
     .stretch .bar.bar {
         display: none;
@@ -953,6 +942,38 @@ button[disabled]:not(:hover) {
     .profile .nowrap {
         max-width: 3em;
     }
+    .nav-container {
+        display: block;
+        top: 3.75em;
+            width: 100vw;
+        max-width: 24em;
+        order: 2;
+        float: none;
+        background-color: #fff;
+    }
+    .bar-holder:checked ~ main .container .nav-container {
+        box-shadow: 0 0 4em rgba(51,51,51,.11),
+                    0 0 27vw rgba(51,51,51,.3);
+    }
+}
+@media (max-width: 56em) {
+    .table.scale {
+        display: flex;
+    }
+    .subscribe.subscribe,
+    .video + .space {
+        padding-right: 1.4em;
+        padding-left: 1.4em;
+    }
+    .subscribe.subscribe {
+        display: flex;
+        width: 100%;
+        max-width: 22.8em;
+        padding-top: 1em;
+        padding-bottom: 3em;
+        float: none;
+        vertical-align: middle;
+    }
     .container {
         display: flex;
         flex-direction: column;
@@ -960,22 +981,11 @@ button[disabled]:not(:hover) {
     .column {
         padding: 0;
     }
-    .nav-container,
     .comment-container {
         display: block;
         order: 2;
         width: auto;
         float: none;
-    }
-    .nav-container {
-        top: 3.75em;
-            width: 100vw;
-        max-width: 24em;
-        background-color: #fff;
-    }
-    .bar-holder:checked ~ main .container .nav-container {
-        box-shadow: 0 0 4em rgba(51,51,51,.11),
-                    0 0 27vw rgba(51,51,51,.3);
     }
     .video {
         border-left: 0;
@@ -997,6 +1007,11 @@ button[disabled]:not(:hover) {
     }
     .swipe-pages .row {
         padding: 0;
+    }
+}
+@media (max-width: 35em) {
+    main {
+        padding-top: 3.7em;
     }
 }
 @media (max-width: 28em) {

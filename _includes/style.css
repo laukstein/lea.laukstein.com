@@ -1290,7 +1290,7 @@ iframe {
     }
 }
 
-@media (max-width: 86em) {
+@media (max-width: 87em) {
     .subnav-container {
         border-right: 1px solid #eee;
     }
@@ -1337,102 +1337,8 @@ iframe {
         background-color: #f3f4f7;
     }
 }
-@media (max-width: 56em) {
-    .cel:not(.grid) {
-        display: block;
-    }
-    .table.center .cel {
-        display: table-cell;
-    }
-    .content {
-        width: auto;
-    }
-    .space {
-        padding-top: 1em;
-        padding-right: 0;
-        padding-left: 0;
-        transition: padding .15s;
-    }
-    .subscribe h1 {
-        font-size: 1.5em;
-    }
-    img {
-        /* Prevent downsized pixelated scale */
-        image-rendering: auto;
-    }
-    .image {
-        display: block;
-        text-align: center;
-    }
-    .image:before {
-        display: none;
-    }
-    .items li,
-    .box:not(.card) {
-        padding: 1.6em;
-    }
-    .box figure,
-    .box .figure {
-        max-width: calc(100% + 3.2em);
-        min-height: 5em;
-        margin-top: -1.6em;
-        margin-right: -1.6em;
-        margin-left: -1.6em;
-    }
-    .box .item {
-        padding-top: 1.6em;
-        border-top: 0;
-    }
-    .box .item figure.last {
-        margin-bottom: -1.6em;
-    }
-    .box h1 {
-        margin-top: 0;
-        border-top-width: 0;
-    }
-    .grid .box .footer {
-        right: 1.6em;
-        left: 1.6em;
-    }
-    .card .content {
-        min-width: 0;
-        padding: 1.6em;
-        background-color: #fff;
-    }
-    .card .content .figure {
-        max-width: calc(100% + 3.2em);
-        margin-right: -1.6em;
-        margin-left: -1.6em;
-    }
-    .recommendations {
-        padding: 1.6em;
-        margin-right: -1.6em;
-        margin-left: -1.6em;
-    }
-    .image + .content {
-        padding-left: 2em;
-    }
-    .sheet {
-        width: calc(100% + 3.2em);
-        margin: 1em -1.6em;
-    }
-    .row {
-        display: block;
-        padding: .6em 1.6em;
-    }
-    .column {
-        display: table-row;
-    }
-    .items li {
-        min-width: 16em;
-        min-height: 16em;
-    }
-    .image img {
-            width: auto;
-        max-width: 100%;
-        max-height: 50vh;
-    }
 
+@media (max-width: 60em) {
     /* Page header/navigation */
     .logo {
         position: relative;
@@ -1568,6 +1474,102 @@ iframe {
         display: block;
         position: fixed;
         z-index: -1;
+    }
+}
+@media (max-width: 56em) {
+    .cel:not(.grid) {
+        display: block;
+    }
+    .table.center .cel {
+        display: table-cell;
+    }
+    .content {
+        width: auto;
+    }
+    .space {
+        padding-top: 1em;
+        padding-right: 0;
+        padding-left: 0;
+        transition: padding .15s;
+    }
+    .subscribe h1 {
+        font-size: 1.5em;
+    }
+    img {
+        /* Prevent downsized pixelated scale */
+        image-rendering: auto;
+    }
+    .image {
+        display: block;
+        text-align: center;
+    }
+    .image:before {
+        display: none;
+    }
+    .items li,
+    .box:not(.card) {
+        padding: 1.6em;
+    }
+    .box figure,
+    .box .figure {
+        max-width: calc(100% + 3.2em);
+        min-height: 5em;
+        margin-top: -1.6em;
+        margin-right: -1.6em;
+        margin-left: -1.6em;
+    }
+    .box .item {
+        padding-top: 1.6em;
+        border-top: 0;
+    }
+    .box .item figure.last {
+        margin-bottom: -1.6em;
+    }
+    .box h1 {
+        margin-top: 0;
+        border-top-width: 0;
+    }
+    .grid .box .footer {
+        right: 1.6em;
+        left: 1.6em;
+    }
+    .card .content {
+        min-width: 0;
+        padding: 1.6em;
+        background-color: #fff;
+    }
+    .card .content .figure {
+        max-width: calc(100% + 3.2em);
+        margin-right: -1.6em;
+        margin-left: -1.6em;
+    }
+    .recommendations {
+        padding: 1.6em;
+        margin-right: -1.6em;
+        margin-left: -1.6em;
+    }
+    .image + .content {
+        padding-left: 2em;
+    }
+    .sheet {
+        width: calc(100% + 3.2em);
+        margin: 1em -1.6em;
+    }
+    .row {
+        display: block;
+        padding: .6em 1.6em;
+    }
+    .column {
+        display: table-row;
+    }
+    .items li {
+        min-width: 16em;
+        min-height: 16em;
+    }
+    .image img {
+            width: auto;
+        max-width: 100%;
+        max-height: 50vh;
     }
 
     @media (hover: none) { /* Is touch device */

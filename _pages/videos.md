@@ -15,7 +15,7 @@ css: |
     .box.card {
         margin-top: -2em;
     }
-    @media (max-width: 54em) {
+    @media (max-width: 56em) {
         .no-padding .space {
             padding-right: 1.6em;
             padding-left: 1.6em;

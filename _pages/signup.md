@@ -120,7 +120,7 @@ css: |
             border-radius: 0 0 7px 7px;
         }
     }
-    @media (max-width: 54em) {
+    @media (max-width: 56em) {
         main {
             padding-right: 1em;
             padding-left: 1em;

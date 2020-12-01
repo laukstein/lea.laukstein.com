@@ -45,7 +45,7 @@
     font-size: 103%;
 }
 
-@media (max-width: 54em) {
+@media (max-width: 56em) {
     main {
         background-color: #e2e1e7;
     }
