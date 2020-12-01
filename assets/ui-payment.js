@@ -65,8 +65,7 @@ ui.payment = ui.legacy(function () {
                     parts.shift();
                 }
 
-                // return "https://lab." + parts.join(".") + "/webhook";
-                return "https://lab.alaukstein.com/webhook";
+                return "https://lab." + parts.join(".") + "/webhook";
             }());
             urlParams = [
                 "orderid",
