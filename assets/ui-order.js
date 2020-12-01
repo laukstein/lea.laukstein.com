@@ -84,6 +84,17 @@ ui.order = ui.legacy(function () {
                     break;
             }
 
+            if (window.FS) {
+                try {
+                    // Log error in Fullstory
+                    FS.event("ConnectionError", ui.filterObj({
+                        transaction_str: hash && hash.transaction,
+                        order_error_str: err.message
+                    }));
+                } catch (error) {
+                    console.error(error);
+                }
+            }
             if (console.trace) {
                 console.trace();
             }

@@ -173,6 +173,17 @@ ui.payment = ui.legacy(function () {
                     break;
             }
 
+            if (window.FS) {
+                try {
+                    // Log error in Fullstory
+                    FS.event("ConnectionError", ui.filterObj({
+                        payment_id_str: hash && hash.orderid,
+                        payment_error_str: err.message
+                    }));
+                } catch (error) {
+                    console.error(error);
+                }
+            }
             if (console.trace) {
                 console.trace();
             }
