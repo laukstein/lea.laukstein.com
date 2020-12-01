@@ -1391,7 +1391,7 @@
 
         self.fn = {};
         fn.activityField = function (currentValue, index) {
-            var id = Math.random().toString(16).substr(2, 8),
+            var id = ui.generateID(),
                 option = schema.activity.option,
                 values = self.value.activity,
                 field = "",
@@ -2021,7 +2021,7 @@
                 return res;
             };
             fn.option = function (key, name, showImage) {
-                var id = inner.generateID();
+                var id = ui.generateID();
 
                 name = typeof name === "object" ? name.title : name;
 
@@ -2044,7 +2044,7 @@
                 if (!Object.prototype.hasOwnProperty.call(data, "option")) {
                     data.callback = fn.group;
                     data.params = arguments;
-                    data.id = inner.generateID();
+                    data.id = ui.generateID();
                     id = " id=" + data.id + " data-max=1";
                 }
 
@@ -2108,9 +2108,6 @@
                 navigator.serviceWorker.controller.postMessage(data);
             }
         }
-    };
-    inner.generateID = function () {
-        return Math.random().toString(16).substr(2, 8);
     };
     inner.generateIcon = function (name) {
         return "<svg class=icon-" + name + "><use xlink:href=#" + name + " /></svg>";

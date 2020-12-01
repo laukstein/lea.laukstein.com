@@ -156,9 +156,7 @@ ui.payment = ui.legacy(function () {
             signal = controller.signal;
         }
         if (typeof fn === "function") {
-            // uniqueID
-            session = Math.random().toString(16).substr(2, 8).toUpperCase();
-
+            session = ui.generateID();
             fn(signal, session);
         }
     };

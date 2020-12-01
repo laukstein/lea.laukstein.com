@@ -54,7 +54,7 @@ ui.order = ui.legacy(function () {
             signal = controller.signal;
         }
         if (typeof fn === "function") {
-            session = generateLayout.uniqueID();
+            session = ui.generateID();
             fn(signal, session);
         }
     };
@@ -341,9 +341,6 @@ ui.order = ui.legacy(function () {
             " src=\"https://www.youtube.com/embed/ihxGT0A1OrE\"" +
             " allow=\"autoplay; encrypted-media; picture-in-picture; fullscreen\" allowfullscreen></iframe>" +
             "</div>";
-    };
-    generateLayout.uniqueID = function () {
-        return Math.random().toString(16).substr(2, 8);
     };
     generateLayout.formStart = function () {
         var self = generateLayout;

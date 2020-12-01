@@ -20,6 +20,11 @@ window.ui = {
             }
         }
     },
+    generateID: function () {
+        "use strict";
+
+        return Math.random().toString(16).substr(2, 8).toUpperCase();
+    },
     asyncScript: function (src/* , success, options |, options */) {
         "use strict";
 

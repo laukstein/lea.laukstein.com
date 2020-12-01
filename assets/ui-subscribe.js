@@ -46,7 +46,7 @@ ui.subscribe = {
             ui.setUser(self.session);
 
             script = ui.d.createElement("script");
-            script.src = self.el.action + "&" + ui.form.serialize(self.el) + "&b_" + self.key + "_" + self.name + "&_=" + Math.random().toString(16).substr(2, 8) + "&c=ui.subscribe.success";
+            script.src = self.el.action + "&" + ui.form.serialize(self.el) + "&b_" + self.key + "_" + self.name + "&_=" + ui.generateID() + "&c=ui.subscribe.success";
             script.addEventListener("error", self.success);
             head = ui.d.getElementsByTagName("head")[0];
 
