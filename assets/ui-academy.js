@@ -468,12 +468,6 @@
                                 video: "9MQ6oTxeKMU"
                             }
                         }
-                    },
-                    consult: {
-                        title: "שיחת ייעוץ של שעה",
-                        shortTitle: "שיחת ייעוץ",
-                        highlight: "בונוס",
-                        text: "לתיאום שיחה של שעה צורי קשר במייל lea@laukstein.com או 0585800020."
                     } /* ,
                     bonuses: {
                         title: "בונוסים",
