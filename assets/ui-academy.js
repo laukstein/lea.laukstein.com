@@ -753,7 +753,11 @@
                 inner.el.button.classList.add("error");
                 inner.el.button.innerHTML = "הפרטים שגויים, נסי שוב";
             }
-        }).catch(function () {
+        }).catch(function (error) {
+            // Unable to login due to server error
+            ui.log("Unable to login");
+            ui.log(error);
+
             ui.form.accessibility(true, e.target, true);
 
             if (inner.el.button) {
