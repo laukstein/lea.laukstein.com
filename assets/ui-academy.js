@@ -729,7 +729,7 @@
     };
     inner.sessionLogin = function (e) {
         e.preventDefault();
-        ui.form.accessibility(false, null, true);
+        ui.form.accessibility(false, e.target, true);
 
         fetch(inner.endpoint + "/login", {
             method: "POST",
@@ -745,7 +745,7 @@
             inner.sessionUpdate(json);
             inner.workerUpdate({status: "login"});
             ui.setUser(json);
-            ui.form.accessibility(true, null, true);
+            ui.form.accessibility(true, e.target, true);
 
             if (json.email && json.token) {
                 outer.sessionRefresh();
@@ -754,7 +754,7 @@
                 inner.el.button.innerHTML = "הפרטים שגויים, נסי שוב";
             }
         }).catch(function () {
-            ui.form.accessibility(true, null, true);
+            ui.form.accessibility(true, e.target, true);
 
             if (inner.el.button) {
                 inner.el.button.classList.add("error");
@@ -877,7 +877,7 @@
     };
     inner.sessionRemind = function (e) {
         e.preventDefault();
-        ui.form.accessibility(false, null, true);
+        ui.form.accessibility(false, e.target, true);
 
         fetch(inner.endpoint + "/forgot", {
             method: "POST",
@@ -888,7 +888,7 @@
         }).then(function (response) {
             return response.json();
         }).then(function (data) {
-            ui.form.accessibility(true, null, true);
+            ui.form.accessibility(true, e.target, true);
 
             if (data.success) {
                 inner.el.form.innerHTML = "<h2>פרטי גישה נשלחו למייל שלך</h2><a onclick=ui.academy.sessionRefresh(true)>לנסות להתחבר</a>";
@@ -897,7 +897,7 @@
                 inner.el.button.innerHTML = "מייל לא רשום, נסי שוב";
             }
         }).catch(function () {
-            ui.form.accessibility(true, null, true);
+            ui.form.accessibility(true, e.target, true);
 
             if (inner.el.button) {
                 inner.el.button.classList.add("error");
