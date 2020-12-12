@@ -243,7 +243,7 @@ ui.videosList = {
         description: "לאה לאוקשטיין - סטיילינג לדתיות\nלקבלת מדריך ביסודות הסטיילינג - https://lea.laukstein.com",
         publishedAt: "2016-12-08T11:42:52.000Z"
     },
-    FiMXsvqCDZ8: {
+    fc_7yrjcIsI: {
         academy: true,
         "360p": "9i4l7d2m8bx4cp9",
         "720p": "icx2rbt6qnq1lj1",
@@ -274,6 +274,12 @@ ui.videosList = {
         image: "7q69xllwqhr3niw",
         title: "צבעים",
         description: "https://lea.laukstein.com/private/workshop-digital-offline"
+    },
+    hRpkpX8ZZ24: {
+        academy: true,
+        "360p": "rcjznmyb6gnkq5j",
+        "720p": "kjj5937iuwmygne",
+        image: "4q77b43njv6aacm"
     },
     ihxGT0A1OrE: {
         private: true,
@@ -330,12 +336,6 @@ ui.videosList = {
         "360p": "ma0n0j1nzie3i4q",
         "720p": "4guwb74g8hm1y8p",
         image: "6ve07m9bjqux681"
-    },
-    KzC7tJRjxqc: {
-        academy: true,
-        "360p": "od6yjk5sylt95lf",
-        "720p": "ygpcossxx409t7b",
-        image: "i1c4rx20d3a9mcn"
     },
     ljyiHCxHGfY: {
         public: true,
@@ -411,6 +411,12 @@ ui.videosList = {
         title: "איזה מעיל יתאים לך?",
         description: "סרטון חדש שיעזור לך לבחור מעיל נכון למבנה הגוף שלך!\nלקבלת יעוץ מותאם אישית לך - צרי קשר 0585800020\nלהורדת מדריך החינמי - https://lea.laukstein.com",
         publishedAt: "2017-10-22T05:50:22.000Z"
+    },
+    "QE3PAdPPK-k": {
+        academy: true,
+        "360p": "od6yjk5sylt95lf",
+        "720p": "ygpcossxx409t7b",
+        image: "i1c4rx20d3a9mcn"
     },
     "qiJP-Zfuc0c": {
         public: true,
@@ -584,11 +590,5 @@ ui.videosList = {
         title: "אילו אוצרות יש בארון הבגדים שלך?",
         description: "הכי כיף, שכול השפע הזה כבר נמצא בארון של בת חן! אלו בגדים שלה! ומצאנו שילובים חדשים ומקוריים לבגדים שנתקעו בארון!\n\nלמזמינות סידור ארון מצולם בוידאו - הנחה משמעותית.\nלפרטים: https://lea.laukstein.com",
         publishedAt: "2017-06-30T09:56:15.000Z"
-    },
-    ZzK_ol7qLPs: {
-        academy: true,
-        "360p": "rcjznmyb6gnkq5j",
-        "720p": "kjj5937iuwmygne",
-        image: "4q77b43njv6aacm"
     }
 };

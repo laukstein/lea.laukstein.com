@@ -309,7 +309,7 @@
                                 return "בונוס";
                             }
                         },
-                        video: "KzC7tJRjxqc",
+                        video: "QE3PAdPPK-k",
                         text: function () {
                             if (!inner.containsPackage(inner.pageSchema.fullPackage) &&
                                 !inner.containsPackage("shopping")) {
@@ -321,12 +321,12 @@
                         page: {
                             clearingCloset: {
                                 title: "פינוי ארון",
-                                video: "FiMXsvqCDZ8"
+                                video: "fc_7yrjcIsI"
                             },
                             bodyType: undefined,
                             orderCloset: {
                                 title: "סדר תכלס",
-                                video: "ZzK_ol7qLPs",
+                                video: "hRpkpX8ZZ24",
                                 download: {
                                     title: "להורדת חוברת ארון הקסמים",
                                     link: "https://drive.google.com/uc?export=download&id=1Ee5Zh92agzw6qkRsKE40t4zpwiw-DQTg"
