@@ -11,31 +11,14 @@ redirect_from:
     - /coach
     - /workshop-digital
     - /workshop-digital-offline
-products:
-    - name: online
-      title: קורסים בסטיילינג
-    - name: workshop
-      title: סדנאות סטיילינג
-      url: workshops
-    - name: personal
-      title: ליווי סטיילינג אישי
 image: products.jpg
 imageWidth: 1137
 imageHeight: 640
 array: []
-css: |
-    @media (max-width: 56em) {
-        .cel:not(.grid) {
-            display: table-cell;
-        }
-        .box {
-            box-shadow: none;
-        }
-    }
 ---
 
-<ol class="list list-boxes">{%
-    for group in page.products %}
+<ol class="list list-boxes grid">{%
+    for group in site.data.l10n.products %}
     <li class=box>
         <h2 id={{ group.name }}><a href=/{{ group.url | default: group.name }}>{{ group.title-short | default: group.title }}</a></h2>
         <ol class=list>{%

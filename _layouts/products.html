@@ -95,7 +95,7 @@ css: |
 ---
 
 {%
-assign footer-url = page.url %}{%
+assign footer-url = page.url | append: "-compare" %}{%
 assign footer-title = page.title %}{%
 assign pages = site.pages | sort: "order" %}
 <div class="span header row">
@@ -106,4 +106,8 @@ for item in pages %}{%
     if item.order and item.subnav != "products" and item.group == page.group %}{%
         include product.html data = item %}{%
     endif %}{%
-endfor %}<div class="span footer row"><a href={{ footer-url }}-compare>השוואת {{ footer-title }}</a></div>{{ content }}
+    if item.url == footer-url %}{%
+        capture compare-url %}<div class="span footer row"><a href={{ footer-url }}>השוואת {{ footer-title }}</a></div>{%
+        endcapture %}{%
+    endif %}{%
+endfor %}{{ compare-url }}{{ content }}

@@ -2,6 +2,7 @@
 layout: default
 header: true
 order: 4
+navClassName: hide-ondesktop
 
 title: מי אני?
 title-short: אודות

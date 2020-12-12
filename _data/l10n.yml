@@ -1,3 +1,14 @@
+products:
+    - name: online
+      title: קורסים בסטיילינג
+    - name: workshop
+      title: סדנאות סטיילינג
+      url: workshops
+    - name: personal
+      title: ליווי סטיילינג אישי
+    - name: stylist
+      title: לסטייליסטיות
+
 product:
     - name: title
     - name: duration

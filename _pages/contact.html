@@ -7,13 +7,6 @@ title: צרי קשר
 script:
     - ui-form.js
     - ui-contact.js
-products:
-    - name: online
-      title: קורסים בסטיילינג
-    - name: workshop
-      title: סדנאות סטיילינג
-    - name: personal
-      title: ליווי סטיילינג אישי
 array: []
 css: |
     h1 {
@@ -63,7 +56,7 @@ css: |
             <label id=label-subject for=subject>הנושא</label>
             <select id=subject name=subject aria-labelledby=label-subject>
                 <option>הנושא כללי</option>{%
-                for group in page.products %}
+                for group in site.data.l10n.products %}
                 <optgroup label="{{ group.title-short | default: group.title }}">{%
                     assign pages = site.pages | sort: "order" %}{%
                     assign list = page.array %}{%
@@ -99,7 +92,7 @@ css: |
     </dl>
     <div class=profile></div>
     <dl class="sheet sheet-fixed">
-        <dt class="row label"><h3>לאה לאוקשטיין</h3></dt>
+        <dt class="row label"><h3><a href=/about>לאה לאוקשטיין</a></h3></dt>
         <dd class=row>
             <div class="column label" unselectable=on>נייד</div>
             <a class=column href=tel:0585800020 target=_blank>058-5800020</a>

@@ -5,9 +5,6 @@
 .content {
     overflow: hidden;
 }
-.copyright {
-    color: #fff;
-}
 .space {
     padding-right: 1.4em;
     padding-left: 1.4em;
@@ -1009,9 +1006,10 @@ button[disabled]:not(:hover) {
         padding: 0;
     }
 }
-@media (max-width: 35em) {
+@media (max-width: 38em) {
     main {
         padding-top: 3.7em;
+        padding-bottom: 4.6em;
     }
 }
 @media (max-width: 28em) {

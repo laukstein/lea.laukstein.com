@@ -1,75 +1,45 @@
 .full {
     background: top no-repeat url(/assets/products.jpg);
-    background-size: cover;
+    background-size: contain;
 }
 .cel {
     display: table-cell;
+    width: 100%;
     vertical-align: bottom;
     border: 0;
-    background: bottom no-repeat radial-gradient(ellipse at bottom, rgba(57,63,68,.3), rgba(0,0,0,0) 60%);
-    background-size: 100vw 40vh;
 }
 .list-boxes {
-    position: relative;
-    z-index: 1;
-    display: table;
-    table-layout: fixed;
+    grid-template-columns: repeat(auto-fit, minmax(27em, 1fr));
     width: 100%;
-    line-height: 1.3;
-    vertical-align: bottom;
-}
-.list {
-    margin-bottom: .85em;
-}
-.box {
-    display: table-cell;
-    padding-right: 1.1em;
-    padding-left: 1.1em;
-    text-align: center;
-    background-clip: padding-box;
+    margin: auto 0 0;
     border: 0 solid transparent;
     border-width: .8em;
+    line-height: 1.3;
+    text-align: center;
+    vertical-align: bottom;
+    box-sizing: border-box;
+}
+.list-boxes .box {
+    max-width: calc(100vw - 2.7em);
+    padding: 2em;
     border-radius: 1em;
 }
-.box + .box {
-    margin-top: 0;
-}
-.box h2 {
+.list-boxes h2 {
     margin-top: .3em;
     margin-bottom: 1em;
     font-size: 1.75em;
 }
-.box .list a {
+.list-boxes .list {
+    margin: 0;
+}
+.list-boxes .list a {
     display: inline-block;
     padding: .5em;
     font-size: 103%;
 }
 
 @media (max-width: 56em) {
-    main {
-        background-color: #e2e1e7;
-    }
-    main:before {
-        content: "";
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        /* Fixed background isn't supported on mobile */
-        background: center 3.75em no-repeat url(/assets/products.jpg);
-        background-size: contain;
-    }
-    .full {
-        background: none;
-    }
-    .cel {
-        background: none;
-    }
     .list-boxes {
-        margin-top: calc(100% / 4.2);
-    }
-    .box {
-        display: table-caption;
+        margin-bottom: 2em;
     }
 }

@@ -145,6 +145,7 @@ footer .wrapper a {
     color: #666;
     font-size: 96%;
 }
+.stretch.stretch footer .wrapper .copyright,
 .stretch.stretch footer .wrapper a {
     color: #fff;
 }
@@ -1290,7 +1291,12 @@ iframe {
     }
 }
 
-@media (max-width: 87em) {
+@media (min-width: 90.01em) {
+    .hide-ondesktop.hide-ondesktop {
+        display: none;
+    }
+}
+@media (max-width: 90em) {
     .subnav-container {
         border-right: 1px solid #eee;
     }
@@ -1339,6 +1345,7 @@ iframe {
 }
 
 @media (max-width: 60em) {
+    /* Mobile UI */
     /* Page header/navigation */
     .logo {
         position: relative;
@@ -1587,7 +1594,7 @@ iframe {
         }
     }
 }
-@media (max-width: 35em) {
+@media (max-width: 38em) {
     .wrapline,
     .box .item figure.flow + p {
         display: inherit;
@@ -1597,9 +1604,6 @@ iframe {
     }
     .box figure.flow.flow {
         margin-left: -2.1em;
-    }
-    main {
-        padding-top: 4.3em;
     }
     .sheet ul {
         padding-right: 0;

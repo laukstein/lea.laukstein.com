@@ -39,7 +39,7 @@ unless page.hiddenHeader %}<input class=bar-holder id=bar type=checkbox hidden>
             for nav in pages %}{%
                 if nav.header and nav.title %}{%
                     assign relative_url = nav.url | remove_first: "/" %}{%
-                    assign className = layout.array %}{%
+                    assign className = "" | split: "" | push: nav.navClassName | compact %}{%
                     if nav.hasSubnav %}{%
                         assign className = className | push: "subnav-container" %}{%
                     endif %}{%
@@ -50,12 +50,16 @@ unless page.hiddenHeader %}<input class=bar-holder id=bar type=checkbox hidden>
                 <ul class=subnav>{%
                     for subnav in pages %}{%
                         if subnav.subnav == relative_url %}{%
-                        unless subnav.private or subnav.draft %}
+                        unless subnav.private or subnav.draft %}{%
+                        assign navClassName = "" | split: "" | push: subnav.navClassName | compact %}
                     <li{% capture subnavTitle %}{{ subnav.title-short | default: subnav.title }}{% endcapture %}{%
                         if subnav.url == page.url or subnav.group == page.group %}{%
                             assign listItem = site.url | append: subnav.url | append: "|" | append: subnavTitle %}{%
                             assign breadcrumb = breadcrumb | push: listItem %}{%
-                            assign className = className | push: "subactive" | push: "active" | uniq %} class=active{%
+                            assign className = className | push: "subactive" | push: "active" | uniq %}{%
+                            assign navClassName = navClassName | push: "active" | uniq %}{%
+                        endif %}{%
+                        if navClassName.size > 0 %} class="{{ navClassName | join: " " }}"{%
                         endif %}><a href="{{ subnav.url | relative_url }}"{%
                             if subnav.ribbon %} data-ribbon{%
                             endif %}>{{ subnavTitle }}</a></li>{%
