@@ -46,6 +46,9 @@ unless page.hiddenHeader %}<input class=bar-holder id=bar type=checkbox hidden>
                     if nav.url == page.url %}{%
                         assign className = className | push: "active" %}{%
                     endif %}{%
+                    if nav.url == "/blog" and page.layout == "post" %}{%
+                        assign className = className | push: "subactive" | push: "active" | uniq %}{%
+                    endif %}{%
                     if nav.hasSubnav %}{% capture subnavHTML %}
                 <ul class=subnav>{%
                     for subnav in pages %}{%
