@@ -1,6 +1,17 @@
 .logo {
+    overflow: hidden;
+    position: relative;
     z-index: 1;
-    background-color: #fff;
+    direction: rtl;
+}
+.stretch .logo {
+    padding-right: 2.1em;
+}
+.logo img {
+    max-width: initial;
+}
+a.logo {
+    padding-left: 0;
 }
 .content {
     overflow: hidden;
@@ -18,20 +29,6 @@
 .stretch main,
 .stretch .bg {
     width: 100vw;
-}
-.stretch .logo {
-    padding-right: 2.1em;
-}
-.logo {
-    overflow: hidden;
-    direction: rtl;
-    position: relative;
-}
-.logo img {
-    max-width: initial;
-}
-a.logo {
-    padding-left: 0;
 }
 .profile {
     display: inline-block;
@@ -1008,7 +1005,6 @@ button[disabled]:not(:hover) {
 }
 @media (max-width: 38em) {
     main {
-        padding-top: 3.7em;
         padding-bottom: 4.6em;
     }
 }
@@ -1024,7 +1020,7 @@ button[disabled]:not(:hover) {
     }
     .logo {
         width: 3.3em;
-        border-left: .3em solid #fff;
+        border-left: .3em solid transparent;
     }
     .sat .grid {
         grid-template-columns: 100%;

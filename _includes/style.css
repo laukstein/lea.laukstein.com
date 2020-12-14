@@ -277,9 +277,9 @@ main {
     min-width: 12.6em;
     max-width: 84.78em;
     min-height: 100%;
-    padding-top: 3.7em;
     padding-bottom: 2.6em;
     margin: auto;
+    border-top: 3.7em solid #fff;
     box-sizing: border-box;
     -webkit-user-select: text; /* Safari legacy */
        -moz-user-select: text;
@@ -1290,6 +1290,35 @@ iframe {
         border: 0;
     }
 }
+
+/* @supports (backdrop-filter: blur()) or (-webkit-backdrop-filter: blur()) {
+    // Header menu with backdrop effect
+    header {
+        background-color: rgba(255,255,255,.80);
+        -webkit-backdrop-filter: saturate(180%) blur(1.4em);
+                backdrop-filter: saturate(180%) blur(1.4em);
+    }
+    .nav,
+    .subnav {
+        background-color: transparent;
+    }
+    .nav li:not(.external):not(.subnav-container) {
+        border-right-color: rgba(183,183,183,.11);
+    }
+    .nav a:not([rel=noopener]):hover,
+    .nav a:not([rel=noopener]):focus,
+    .bar:hover,
+    .bar:focus {
+        background-color: rgba(230,232,240,.41);
+        box-shadow: 0 0 0 1px rgba(230,232,240,.41);
+    }
+    @media (max-width: 60em) {
+        .nav-container {
+            height: 100vh;
+            background-color: #fff;
+        }
+    }
+} */
 
 @media (min-width: 90.01em) {
     .hide-ondesktop.hide-ondesktop {
