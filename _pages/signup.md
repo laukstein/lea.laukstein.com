@@ -16,9 +16,9 @@ css: |
         table-layout: fixed;
             width: 100%;
         min-width: 0;
-        padding-top: 0;
-        margin: auto;
         min-height: 100vh;
+        margin: auto;
+        border-top: 0;
     }
     .table.scale {
         display: table-cell;
@@ -99,7 +99,7 @@ css: |
     }
     .cel.subscribe .confirm {
         text-align: center;
-        text-indent: calc(-13em / 2);
+        text-indent: calc(-10.6em / 2);
     }
     footer {
         padding: 0;
@@ -117,6 +117,8 @@ css: |
             border-radius: 7px 7px 0 0;
         }
         .cel.subscribe {
+            padding-right: 1em;
+            padding-left: 1em;
             border-radius: 0 0 7px 7px;
         }
     }
@@ -140,8 +142,6 @@ css: |
             min-width: 16em;
         }
         .cel.subscribe {
-            padding-right: 1em;
-            padding-left: 1em;
             margin-bottom: auto;
         }
         .cel.subscribe .confirm {
