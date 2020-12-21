@@ -18,6 +18,21 @@ css: |
         padding-top: 3em;
         padding-bottom: 3em;
     }
+    img.fill-background {
+        position: fixed;
+        z-index: -1;
+        top: 3.7em;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        object-fit: cover;
+        object-position: top center;
+    }
+    .grid.fill-background .header {
+        padding: 1.5em 2em;
+        text-shadow: -1px 1px rgba(255,255,255,.4);
+        background-color: rgba(255,255,255,.87);
+    }
     .grid {
         max-width: 60em;
     }

@@ -136,7 +136,7 @@ footer {
     line-height: 2.2;
     text-align: left;
     text-overflow: ellipsis;
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(0,0,0,.02);
 }
 .stretch footer {
     border-top-color: transparent;

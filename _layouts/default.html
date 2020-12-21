@@ -132,7 +132,10 @@ case type %}{%
                     endif %}{{ content }}</div>
                 {% endif %}
             </div>{%
-        else %}
+        else %}{%
+        if page.image %}
+            <img class=fill-background src={{ site.assets }}{{ page.image }} alt="{{ page.title | escape }}">{%
+        endif %}
             <div class="cel content space{{ className }}">{{ content }}</div>{%
         endif %}{%
         if page.subscribe %}
