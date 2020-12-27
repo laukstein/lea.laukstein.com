@@ -26,7 +26,7 @@ endif %}{%
 
 capture head %}<!doctype html>
 <html{% if layout.className %} class="{{ layout.className }}"{% endif %} lang=he>
-<head prefix="og: http://ogp.me/ns/article#">
+<head prefix="og: https://ogp.me/ns/article#">
 <meta charset=utf-8>
 <title>{{ title | default: site.title | escape }}</title>
 <meta property=og:title content="{{ title | default: site.title | escape }}">{%
