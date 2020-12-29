@@ -1608,8 +1608,8 @@ iframe {
         max-height: 50vh;
     }
 
-    @media (hover: none) { /* Is touch device */
-        /* Prevent mobile devices to zoom-in screen when focused input field */
+    /* @media (hover: none) { // Is touch device
+        // Prevent mobile devices to zoom-in screen when focused input field
         main {
             transition: padding-right .15s,
                         padding-left .15s;
@@ -1621,7 +1621,7 @@ iframe {
         input:focus {
             font-size: 18px;
         }
-    }
+    } */
 }
 @media (max-width: 38em) {
     .wrapline,
