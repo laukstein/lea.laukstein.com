@@ -116,13 +116,14 @@ window.ui = {
                             apiKey: "99f662f6b9f9aa6eb92495f72b147a04",
                             autoTrackSessions: false,
                             collectUserIp: false,
-                            onError: function (report) {
+                            onError: function (event) {
                                 // https://help.fullstory.com/hc/en-us/articles/360020827233
-                                if (report && window.FS && FS.getCurrentSessionURL) {
+                                // https://docs.bugsnag.com/platforms/javascript/customizing-error-reports/
+                                if (event && window.FS && typeof FS.getCurrentSessionURL === "function") {
                                     var urlAtTime = FS.getCurrentSessionURL(true);
 
                                     if (urlAtTime) {
-                                        report.updateMetaData("FullStory", {
+                                        event.addMetadata("fullstory", {
                                             urlAtTime: urlAtTime
                                         });
                                     }
