@@ -23,6 +23,7 @@
                 "fetch",
                 "history.scrollRestoration",
                 "IntersectionObserver",
+                "location.hostname",
                 "navigator.connection",
                 "navigator.maxTouchPoints",
                 "navigator.sendBeacon",
