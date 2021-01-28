@@ -5,7 +5,7 @@ ui.discount = {
         "use strict";
 
         try {
-            /* MailChimp tags http://kb.mailchimp.com/merge-tags/all-the-merge-tags-cheat-sheet
+            /* Mailchimp tags http://kb.mailchimp.com/merge-tags/all-the-merge-tags-cheat-sheet
                #discount=*|DATE:U|*   => date
                #discount=*|DATE:U|*-2 => date - 2 days
                #discount=1478448145-2 */

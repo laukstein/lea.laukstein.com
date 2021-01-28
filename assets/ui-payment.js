@@ -79,7 +79,7 @@ ui.payment = ui.legacy(function () {
 
             hash = ui.filterObj(hash, function (key) {
                 var res = urlParams.includes(key) &&
-                    // Escape MailChimp non-merged tags https://mailchimp.com/help/all-the-merge-tags-cheat-sheet/
+                    // Escape Mailchimp non-merged tags https://mailchimp.com/help/all-the-merge-tags-cheat-sheet/
                     !/\*\|.*?\|\*/.test(hash[key]);
 
                 if (res && key.startsWith("utm_")) {
