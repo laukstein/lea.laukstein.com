@@ -10,7 +10,7 @@ image: product-diagnostic.jpg
 imageWidth: 960
 imageHeight: 540
 duration: 60 דקות
-price: 200
+price: 250
 extra: |
     * ליווי בואטסאפ חינם ללא הגבלה
     * מועדון חברות עם מפגשי רענון
