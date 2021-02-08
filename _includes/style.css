@@ -279,7 +279,7 @@ main {
     min-height: 100%;
     padding-bottom: 2.6em;
     margin: auto;
-    border-top: 3.7em solid #fff;
+    border-top: 3.7em solid transparent;
     box-sizing: border-box;
     -webkit-user-select: text; /* Safari legacy */
        -moz-user-select: text;
