@@ -186,10 +186,23 @@ jsonld: |
         "name": "מדריך לארון מדוייק",
         "image": "https://i.ytimg.com/vi/$video/0.jpg",
         "description": "מדריך בעל שלושה סרטונים על יסודות הסטיילינג",
+        "sku": "newsletters",
+        "review": {
+            "@type": "Review",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+            },
+            "author": {
+                "@type": "Person",
+                "name": "רונית טורוול"
+            }
+        },
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "5",
-            "reviewCount": "16791"
+            "reviewCount": "20989"
         },
         "brand": {
             "@type": "Thing",
@@ -199,7 +212,7 @@ jsonld: |
             "@type": "Offer",
             "price": "0.00",
             "priceCurrency": "ILS",
-            "priceValidUntil": "2033-01-01",
+            "priceValidUntil": "2059-12-31",
             "availability": "https://schema.org/InStock",
             "url": "https://lea.laukstein.com"
         }

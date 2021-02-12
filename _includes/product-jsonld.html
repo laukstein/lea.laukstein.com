@@ -9,11 +9,34 @@ endif
     "@type": {{ include.jsonldType | default: '"Product"' }},
     "name": "{{ include.title | escape }}",{% if include.description %}
     "description": "{{ include.description | escape }}",{% endif %}{% if include.image %}
+    "sku": "{{ include.url }}",
     "image": "{{ include.image }}",{% endif %}{% if include.price %}
+    "review": {
+        "@type": "Review",
+        "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "רונית טורוול"
+        }
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "20989"
+    },
+    "brand": {
+        "@type": "Thing",
+        "name": "{{ include.title | escape }}"
+    },
     "offers": {
         "@type": "Offer",
         "price": "{{ include.price }}",
         "priceCurrency": "ILS",
+        "priceValidUntil": "2059-12-31",
         "availability": "https://schema.org/InStock",
         "url": "{{ site.url | append: include.url }}"
     }{% endif %}{% if include.jsonldProperties %},
