@@ -400,10 +400,10 @@ blockquote {
 blockquote +  blockquote {
     margin-top: 2.4em;
 }
-blockquote > *:not(figure.flow):not(div):not(span):not(img):not(code):first-child {
+blockquote > *:not(figure):not(div):not(span):not(img):not(code):first-child {
     padding-top: .4em;
 }
-blockquote > *:not(figure.flow):not(div):not(span):not(img):not(code):last-child {
+blockquote > *:not(figure):not(div):not(span):not(img):not(code):last-child {
     padding-bottom: .52em;
 }
 cite {
