@@ -41,4 +41,4 @@ Differ production and development environment with `SET JEKYLL_ENV=prod | dev` b
 
 Used APIs: YouTube, Disqus, Mailchimp, Mailgun, Pelepay, Bugsnag, Google Analytics, FullStory, Facebook Pixel, and private APIs.
 
-Released under the [CC BY-NC-ND 4.0 License](LICENSE). © 2019 לאה לאוקשטיין
+Released under the [CC BY-NC-ND 4.0 License](LICENSE). © 2022 לאה לאוקשטיין
