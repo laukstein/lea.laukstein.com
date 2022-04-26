@@ -176,5 +176,9 @@
             }
         ]
     },
-    "eslintIgnore": ["**/*.min.js"]
+    "eslintIgnore": ["**/*.min.js"],
+    "scripts": {
+        "prod": "SET JEKYLL_ENV=dev && bundle exec jekyll serve --force_polling --incremental --host lea.prod.laukstein.com --port 80",
+        "dev": "SET JEKYLL_ENV=prod && bundle exec jekyll serve --force_polling --incremental --host lea.dev.laukstein.com --port 80"
+    }
 }

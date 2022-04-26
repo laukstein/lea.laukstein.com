@@ -1,0 +1,27 @@
+root = true
+
+[*]
+charset = utf-8
+curly_bracket_next_line = false
+end_of_line = lf
+indent_brace_style = 1TBS BSD KNF
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+max_line_length = 120
+quote_type = double
+spaces_around_operators = true
+spaces_around_brackets = outside
+trim_trailing_whitespace = true
+trim_trailing_white_space_on_save = true
+
+[*.js]
+curly_bracket_next_line = false
+spaces_around_operators = true
+spaces_around_brackets = inside
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.yml]
+indent_size = 2
