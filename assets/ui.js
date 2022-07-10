@@ -753,6 +753,8 @@ window.ui = {
                 image.addEventListener("error", onerror);
 
                 image.src = url;
+
+                return image;
             };
             loadImage.result = function (isLoaded) {
                 sessionStorage.isYouTubeSupported = !!isLoaded;
@@ -803,29 +805,45 @@ window.ui = {
                     }
                 } else {
                     this.call = function (url) {
+                        var onError = function () {
+                            return /^https?:\/\/.*/.test(url) ? loadImage.result() : !hasStatus && loadImage.error(true);
+                        };
+
                         fetch(url).then(function (response) {
                             return response.json();
                         }).then(function (response) {
-                            response.downloadTime = +new Date;
-                            localStorage.videos = JSON.stringify(response);
-
-                            if (typeof legacyCallback === "function") {
-                                legacyCallback();
+                            if (!(response && Array.isArray(response.items))) {
+                                return Promise.reject(response);
                             }
 
-                            return loadImage.result(true);
-                        }).catch(function () {
-                            return /^https?:\/\/.*/.test(url) ? loadImage.result() : !hasStatus && loadImage.error(true);
-                        });
+                            try {
+                                return loadImage.get(response.items[0].snippet.thumbnails.default.url, function (event) {
+                                    if (event.target.naturalWidth > 1) {
+                                        response.downloadTime = Number(new Date);
+                                        localStorage.videos = JSON.stringify(response);
+
+                                        if (typeof legacyCallback === "function") {
+                                            legacyCallback();
+                                        }
+
+                                        loadImage.result(true);
+                                    } else {
+                                        onError();
+                                    }
+                                }, onError);
+                            } catch (error) {
+                                return Promise.reject();
+                            }
+                        }).catch(onError);
                     };
 
                     this.call(self.playlistLink);
                 }
             };
 
-            loadImage.get("https://www.youtube.com/favicon.ico", function (e) {
+            loadImage.get("https://www.youtube.com/favicon.ico", function (event) {
                 // ISP Etrog <https://www.etrog.net.il> blocker returns 1x1px image
-                if (e.target.naturalWidth > 1) {
+                if (event.target.naturalWidth > 1) {
                     // Software Nativ <https://www.enativ.com> blocks www.googleapis.com API, returning warning HTML
                     loadImage.legacy();
                 } else {
