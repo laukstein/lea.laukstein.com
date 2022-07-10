@@ -15,7 +15,6 @@
         "parserOptions": {
             "ecmaVersion": 8
         },
-        "plugins": ["compat"],
         "settings": {
             "polyfills": [
                 "AbortController",
@@ -50,13 +49,13 @@
             "comma-spacing": "error",
             "comma-style": "error",
             "computed-property-spacing": "error",
-            "compat/compat": "error",
             "dot-notation": "error",
             "eol-last": "error",
             "eqeqeq": "error",
             "func-call-spacing": "error",
             "func-name-matching": "error",
             "guard-for-in": "error",
+            "id-length": "off",
             "indent": ["error", 4, {"SwitchCase": 1}],
             "key-spacing": "error",
             "keyword-spacing": "error",

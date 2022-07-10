@@ -30,7 +30,7 @@ ui.comment = {
                 ui.w.disqus_config = config;
 
                 ui.asyncScript("https://lealaukstein.disqus.com/count.js", {id: "dsq-count-scr"});
-                ui.asyncScript("https://lealaukstein.disqus.com/embed.js", {"data-timestamp": +new Date});
+                ui.asyncScript("https://lealaukstein.disqus.com/embed.js", {"data-timestamp": Number(new Date)});
             } else if (ui.w.DISQUS) {
                 DISQUS.reset({
                     reload: true,

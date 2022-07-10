@@ -506,7 +506,7 @@
         }
     };
     inner.endpoint = (function () {
-        var parts = (location.hostname || location.host).split("."); // eslint-disable-line compat/compat
+        var parts = (location.hostname || location.host).split(".");
 
         while (parts.length > 2) {
             parts.shift();
@@ -594,7 +594,7 @@
             date.setHours(0, 0, 0, 0);
 
             return {
-                enabled: +date <= +new Date,
+                enabled: Number(date) <= Number(new Date),
                 format: opt.format ||
                     inner.addLeadingZeros(date.getDate()) +
                     "/" + inner.addLeadingZeros(date.getMonth() + 1)
@@ -603,7 +603,7 @@
         fn.packageStartDate = function (packageName) {
             var startDate = inner.sessionData.startDate || inner.sessionData.package[packageName] || inner.sessionData.created;
 
-            return new Date(+new Date(startDate * 1000).setHours(0, 0, 0, 0));
+            return new Date(Number(Date(startDate * 1000).setHours(0, 0, 0, 0)));
         };
         fn.generatePage = function (schema, sessionValue, dateObject) {
             var pages = schema.page,
@@ -2340,22 +2340,22 @@
             switch (page) {
                 case "bodyType":
                     data.data[page] = Object.assign({
-                        date: Math.floor(+new Date / 1000)
+                        date: Math.floor(Number(new Date) / 1000)
                     }, ui.form.deserialize(el));
                     break;
                 case "clothesSum":
                     data.data[page] = Object.assign({
-                        date: Math.floor(+new Date / 1000)
+                        date: Math.floor(Number(new Date) / 1000)
                     }, inner.pageUI[page].value);
                     break;
                 case "colorSwatch":
                     data.data[page] = Object.assign({
-                        date: Math.floor(+new Date / 1000)
+                        date: Math.floor(Number(new Date) / 1000)
                     }, inner.pageUI[page].value);
                     break;
                 case "dressStyle":
                     data.data[page] = {
-                        date: Math.floor(+new Date / 1000),
+                        date: Math.floor(Number(new Date) / 1000),
                         value: post
                     };
 

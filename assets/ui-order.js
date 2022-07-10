@@ -450,7 +450,7 @@ ui.order = ui.legacy(function () {
         };
         self.addEvents.submit = function (e) {
             var content = ui.d.getElementById("content"),
-                startTime = +new Date,
+                startTime = Number(new Date),
                 valid = true,
                 label;
 
@@ -494,7 +494,7 @@ ui.order = ui.legacy(function () {
                         self.timer = setTimeout(function () {
                             generateLayout(obj, token);
                             delete ui.inProgress;
-                        }, 2500 - (+new Date - startTime) || 0);
+                        }, 2500 - (Number(new Date) - startTime) || 0);
                     }).catch(function (err) {
                         if (token === session) {
                             onlyFetch.onError(locale.serverError, err);

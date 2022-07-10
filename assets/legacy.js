@@ -228,7 +228,7 @@ if (!("classList" in document.documentElement) && Element.prototype) {
                     ~index || classes.push(value);
                 }),
                 contains: function (value) {
-                    return !!~classlist().indexOf(value);
+                    return classlist().indexOf(value) !== -1;
                 },
                 item: function (index) {
                     return classlist()[index] || null;

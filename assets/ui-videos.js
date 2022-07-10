@@ -328,7 +328,7 @@ ui.videos = (function () {
             return this.error(response);
         }
 
-        response.downloadTime = +now;
+        response.downloadTime = Number(now);
         localStorage.videos = JSON.stringify(response);
 
         ui.videos = response;

@@ -416,7 +416,7 @@ window.ui = {
                     user = this.identify.user;
                 }
 
-                user.date = +new Date;
+                user.date = Number(new Date);
                 user.referrer = location.href;
                 user.email = email;
 
@@ -952,7 +952,7 @@ ui.cookie = (function (self) {
                 val;
 
             expires = self.isNumber(expires) ? expires : 86400;
-            expires = new Date(new Date() * 1 + expires * 1000).toUTCString();
+            expires = new Date(Number(new Date) + expires * 1000).toUTCString();
 
             for (key in obj) {
                 if (Object.prototype.hasOwnProperty.call(obj, key)) {
