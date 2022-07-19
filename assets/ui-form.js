@@ -16,7 +16,6 @@ ui.has.valid = function (fn) {
     }
 };
 ui.form = {
-    endpoint: location.protocol + "//lab." + location.hostname.split(".").slice(-2).join("."),
     list: function (selector, container) {
         "use strict";
 

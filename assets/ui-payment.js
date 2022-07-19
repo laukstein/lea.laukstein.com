@@ -23,8 +23,7 @@ ui.payment = ui.legacy(function () {
     getData = function () {
         var form = ui.d.pelepayform,
             orderHash,
-            urlParams,
-            endpoint;
+            urlParams;
 
         hash = ui.hash();
         orderHash = ui.serialize({orderid: hash.orderid});
@@ -58,15 +57,6 @@ ui.payment = ui.legacy(function () {
             }));
         }
         if (hash.orderid && form) {
-            endpoint = (function () {
-                var parts = location.hostname.split(".");
-
-                while (parts.length > 2) {
-                    parts.shift();
-                }
-
-                return "https://lab." + parts.join(".") + "/webhook";
-            }());
             urlParams = [
                 "orderid",
                 "email",
@@ -92,7 +82,7 @@ ui.payment = ui.legacy(function () {
             getData.onlyFetch(function (signal, token) {
                 hash.token = token;
 
-                fetch(endpoint + "/payment", {
+                fetch(ui.endpoint + "/payment", {
                     method: "POST",
                     redirect: "error",
                     body: JSON.stringify(hash)

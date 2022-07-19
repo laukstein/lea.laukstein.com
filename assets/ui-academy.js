@@ -505,15 +505,6 @@
             }
         }
     };
-    inner.endpoint = (function () {
-        var parts = (location.hostname || location.host).split(".");
-
-        while (parts.length > 2) {
-            parts.shift();
-        }
-
-        return "https://lab." + parts.join(".") + "/webhook";
-    }());
     inner.sessionData = (function () {
         function getData(sessionName, callback) {
             var result = {};
@@ -731,7 +722,7 @@
         e.preventDefault();
         ui.form.accessibility(false, e.target, true);
 
-        fetch(inner.endpoint + "/login", {
+        fetch(ui.endpoint + "/login", {
             method: "POST",
             // Prevent insecure redirects https://developer.mozilla.org/en-US/docs/Web/API/Response/redirected
             redirect: "error",
@@ -843,7 +834,7 @@
                 token: inner.sessionData.token
             };
 
-        fetch(inner.endpoint + "/" + type, {
+        fetch(ui.endpoint + "/" + type, {
             method: "POST",
             redirect: "error",
             body: JSON.stringify(data)
@@ -883,7 +874,7 @@
         e.preventDefault();
         ui.form.accessibility(false, e.target, true);
 
-        fetch(inner.endpoint + "/forgot", {
+        fetch(ui.endpoint + "/forgot", {
             method: "POST",
             redirect: "error",
             body: JSON.stringify({
@@ -923,7 +914,7 @@
     inner.sessionErrorReport = function (type, data) {
         if (ui.environment === "prod") {
             if ("sendBeacon" in navigator) {
-                navigator.sendBeacon(inner.endpoint + "/error", JSON.stringify({
+                navigator.sendBeacon(ui.endpoint + "/error", JSON.stringify({
                     schema: type,
                     email: inner.sessionData.email,
                     log: JSON.stringify(data, null, 2)
@@ -2369,7 +2360,7 @@
             if (data.data[page]) {
                 type = "update";
 
-                fetch(inner.endpoint + "/" + type, {
+                fetch(ui.endpoint + "/" + type, {
                     method: "POST",
                     redirect: "error",
                     body: JSON.stringify(data)

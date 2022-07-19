@@ -2,6 +2,7 @@ window.ui = {
     w: window,
     d: document,
     environment: location.hostname === "lea.laukstein.com" ? "prod" : "dev",
+    endpoint: "https://lab.laukstein.com/webhook",
     awaitCallback: [],
     has: {
         classList: "classList" in document.documentElement

@@ -2,16 +2,7 @@ ui.order = ui.legacy(function () {
     "use strict";
 
     // -> /order?Response=000&ConfirmationCode=1&index=2&amount=3.00&firstname=foo&lastname=bar&email=a@b.com&phone=0&payfor=product&custom=dXRt...&orderid=1
-    var endpoint = (function () {
-            var parts = location.hostname.split(".");
-
-            while (parts.length > 2) {
-                parts.shift();
-            }
-
-            return "https://lab." + parts.join(".") + "/webhook";
-        }()),
-        wrapper = ui.d.querySelector(".table.scale"),
+    var wrapper = ui.d.querySelector(".table.scale"),
         status = ui.d.getElementById("status"),
         events = {},
         locale = {},
@@ -148,7 +139,7 @@ ui.order = ui.legacy(function () {
 
                 if (transaction) {
                     onlyFetch(function (signal, token) {
-                        fetch(endpoint + "/payment/order", {
+                        fetch(ui.endpoint + "/payment/order", {
                             method: "POST",
                             redirect: "error",
                             signal: signal,
@@ -233,7 +224,7 @@ ui.order = ui.legacy(function () {
                 });
 
                 onlyFetch(function (signal, token) {
-                    fetch(endpoint + "/payment/register", {
+                    fetch(ui.endpoint + "/payment/register", {
                         method: "POST",
                         redirect: "error",
                         signal: signal,
@@ -272,7 +263,7 @@ ui.order = ui.legacy(function () {
                 events.remind.done = transaction;
 
                 if (navigator.sendBeacon) {
-                    navigator.sendBeacon(endpoint + "/payment/reminder", JSON.stringify({
+                    navigator.sendBeacon(ui.endpoint + "/payment/reminder", JSON.stringify({
                         transaction: transaction,
                         url: location.href
                     }));
@@ -280,7 +271,7 @@ ui.order = ui.legacy(function () {
             }
         } else if (!isRegistered && transaction && hash && navigator.sendBeacon) {
             // Make sure order is registered also if browser is closed
-            navigator.sendBeacon(endpoint + "/payment/register", JSON.stringify(hash));
+            navigator.sendBeacon(ui.endpoint + "/payment/register", JSON.stringify(hash));
         }
     };
     events.updateHTML = function (html) {
@@ -476,7 +467,7 @@ ui.order = ui.legacy(function () {
                 onlyFetch(function (signal, token) {
                     ui.inProgress = true;
 
-                    fetch(endpoint + "/payment/update", {
+                    fetch(ui.endpoint + "/payment/update", {
                         method: "POST",
                         redirect: "error",
                         signal: signal,
