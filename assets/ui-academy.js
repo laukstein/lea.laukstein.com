@@ -603,7 +603,7 @@
         fn.packageStartDate = function (packageName) {
             var startDate = inner.sessionData.startDate || inner.sessionData.package[packageName] || inner.sessionData.created;
 
-            return new Date(Number(Date(startDate * 1000).setHours(0, 0, 0, 0)));
+            return new Date(Number(new Date(startDate * 1000).setHours(0, 0, 0, 0)));
         };
         fn.generatePage = function (schema, sessionValue, dateObject) {
             var pages = schema.page,
