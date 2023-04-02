@@ -697,7 +697,7 @@ window.ui = {
                 } else if (!self.youtubeSupportInProgress) {
                     self.youtubeSupportInProgress = true;
 
-                    ui.asyncScript("/assets/plyr/plyr.polyfilled.min.js", success);
+                    ui.asyncScript("/assets/plyr/plyr.min.js", success);
                 }
             }
         },
