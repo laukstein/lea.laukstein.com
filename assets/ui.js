@@ -143,9 +143,9 @@ window.ui = {
                         dataLayer.push(arguments);
                     };
                     gtag("js", new Date());
-                    gtag("config", "G-PFVPM1DDTP", ui.identify.user.email && {
+                    gtag("config", "G-PFVPM1DDTP", ui.identify.user.email ? {
                         user_id: ui.identify.user.email
-                    });
+                    } : {});
                 },
                 onSuccess: function () {
                     ui.identify.ga();
