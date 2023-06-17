@@ -136,34 +136,20 @@ window.ui = {
                 }
             });
 
-            // https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id
-            this.asyncScript("https://www.google-analytics.com/analytics.js", {
-                onSuccess: function () {
-                    if (window.ga) {
-                        ga("create", "UA-11883501-1", "laukstein.com", {
-                            clientId: localStorage.gaClientId,
-                            storage: "none",
-                            userId: ui.identify.user.email
-                        });
-
-                        if (!localStorage.gaClientId) {
-                            ga(function (tracker) {
-                                localStorage.gaClientId = tracker.get("clientId");
-                            });
-                        }
-
-                        // Page tracking
-                        // https://developers.google.com/analytics/devguides/collection/analyticsjs/pages
-                        ga("send", {
-                            hitType: "pageview",
-                            title: ui.d.title,
-                            page: location.pathname
-                        });
-
-                        ui.identify.ga();
-                    }
+            this.asyncScript("https://www.googletagmanager.com/gtag/js?id=G-PFVPM1DDTP", {
+                onStart: function () {
+                    window.dataLayer = window.dataLayer || [];
+                    window.gtag = function () {
+                        dataLayer.push(arguments);
+                    };
+                    gtag("js", new Date());
+                    gtag("config", "G-PFVPM1DDTP", ui.identify.user.email && {
+                        user_id: ui.identify.user.email
+                    });
                 },
-                remove: true
+                onSuccess: function () {
+                    ui.identify.ga();
+                }
             });
 
             window._fs_script = "edge.fullstory.com/s/fs.js";
@@ -354,11 +340,10 @@ window.ui = {
             this.track({
                 name: "Google Analytics",
                 condition: function (self) {
-                    return window.ga && self.user.email;
+                    return window.gtag && self.user.email;
                 },
                 callback: function (self) {
-                    // https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#user_id
-                    ga("set", "userId", self.user.email);
+                    gtag("set", {user_id: self.user.email});
                 },
                 log: function (self) {
                     console.log("Google Analytics", self.user.email);
