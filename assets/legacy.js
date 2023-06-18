@@ -247,3 +247,9 @@ if (!navigator.sendBeacon) {
         return true;
     };
 }
+if (window.gtag) {
+    gtag("event", "legacy", {
+        page_location: location.href,
+        user_agent: navigator.userAgent
+    });
+}
