@@ -1,8 +1,8 @@
+"use strict";
+
 ui.note = {
     el: ui.d.getElementById("note"),
     init: function () {
-        "use strict";
-
         if (ui.note.el) {
             if (location.hash === "#paypal") {
                 ui.note.el.removeAttribute("hidden", "");

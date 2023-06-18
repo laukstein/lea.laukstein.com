@@ -1,6 +1,6 @@
-ui.order = ui.legacy(function () {
-    "use strict";
+"use strict";
 
+ui.order = ui.legacy(function () {
     // -> /order?Response=000&ConfirmationCode=1&index=2&amount=3.00&firstname=foo&lastname=bar&email=a@b.com&phone=0&payfor=product&custom=dXRt...&orderid=1
     var wrapper = ui.d.querySelector(".table.scale"),
         status = ui.d.getElementById("status"),

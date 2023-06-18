@@ -1,6 +1,6 @@
-ui.has.valid = function (fn) {
-    "use strict";
+"use strict";
 
+ui.has.valid = function (fn) {
     try {
         return fn();
     } catch (e) {
@@ -17,8 +17,6 @@ ui.has.valid = function (fn) {
 };
 ui.form = {
     list: function (selector, container) {
-        "use strict";
-
         if (!container && !this.el || !selector) {
             return [];
         }
@@ -28,8 +26,6 @@ ui.form = {
         return arr.length ? Array.from && Array.from(arr) || [].slice.call(arr) : [];
     },
     number: function (e, val) {
-        "use strict";
-
         if (e) {
             try {
                 val = val || String.fromCharCode(e.keyCode || e.which);
@@ -40,8 +36,6 @@ ui.form = {
         }
     },
     paste: function (e) {
-        "use strict";
-
         if (e) {
             var val;
 
@@ -58,15 +52,11 @@ ui.form = {
         }
     },
     drop: function (e) {
-        "use strict";
-
         if (e) {
             e.preventDefault();
         }
     },
     valid: function (arr) {
-        "use strict";
-
         var flag = true,
             invalid,
             error,
@@ -116,8 +106,6 @@ ui.form = {
         return true;
     },
     serialize: function (container) {
-        "use strict";
-
         var arr = this.list("input, select, textarea", container),
             result = [],
             boolean,
@@ -136,8 +124,6 @@ ui.form = {
         return result.join("&");
     },
     deserialize: function (container) {
-        "use strict";
-
         var data = this.serialize(container),
             pairs = data && data.split("&"),
             result = {},
@@ -181,8 +167,6 @@ ui.form = {
         return result;
     },
     accessibility: function (flag, container, toggleSpin, customTag) {
-        "use strict";
-
         var tags = ["input", "select", "textarea", "button"],
             arr,
             i;

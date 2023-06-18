@@ -1,9 +1,9 @@
+"use strict";
+
 ui.comment = {
     hashIdentifier: /^\/(academy|videos)$/.test(location.pathname),
     setEmptyValue: /^\/videos$/.test(location.pathname),
     load: function (container, avoidError) {
-        "use strict";
-
         function config() {
             var identifier = "https://lea.laukstein.com" + location.pathname;
 
@@ -42,15 +42,11 @@ ui.comment = {
         }
     },
     remove: function () {
-        "use strict";
-
         if (this.el) {
             this.el.innerHTML = "";
         }
     },
     init: function () {
-        "use strict";
-
         if (this.hashIdentifier && location.search) {
             var search = ui.hash({hash: location.search}),
                 hash;

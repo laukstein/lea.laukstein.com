@@ -1,9 +1,9 @@
+"use strict";
+
 ui.discount = {
     duration: 7,
     passed: 0,
     diff: function () {
-        "use strict";
-
         try {
             /* Mailchimp tags http://kb.mailchimp.com/merge-tags/all-the-merge-tags-cheat-sheet
                #discount=*|DATE:U|*   => date
@@ -35,8 +35,6 @@ ui.discount = {
         }
     },
     run: function () {
-        "use strict";
-
         this.handler = this.handler || ui.d.querySelector("[data-discount]");
         this.origin = this.origin || ui.d.querySelector("[data-origin]");
         this.discount = this.handler && this.handler.getAttribute("data-discount");
@@ -63,8 +61,6 @@ ui.discount = {
         }
     },
     init: function () {
-        "use strict";
-
         ui.w.addEventListener("hashchange", this.run);
         this.run();
     }

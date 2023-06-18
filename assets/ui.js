@@ -1,3 +1,5 @@
+"use strict";
+
 window.ui = {
     w: window,
     d: document,
@@ -8,8 +10,6 @@ window.ui = {
         classList: "classList" in document.documentElement
     },
     log: function (data) {
-        "use strict";
-
         console.log(data);
 
         if (window.FS) {
@@ -22,13 +22,9 @@ window.ui = {
         }
     },
     generateID: function () {
-        "use strict";
-
         return Math.random().toString(16).substr(2, 8).toUpperCase();
     },
     asyncScript: function (src/* , success, options |, options */) {
-        "use strict";
-
         var script = this.d.createElement("script"),
             onSuccess = typeof arguments[1] === "function" && arguments[1],
             options = onSuccess ? arguments[2] || {} : arguments[1] || {},
@@ -106,8 +102,6 @@ window.ui = {
         return null;
     },
     analytics: function () {
-        "use strict";
-
         if (this.environment === "prod") {
             // Bugsnag https://docs.bugsnag.com/platforms/javascript/
             this.asyncScript("https://d2wy8f7a9ursnm.cloudfront.net/v7/bugsnag.min.js", {
@@ -262,8 +256,6 @@ window.ui = {
     },
     identify: {
         all: function () {
-            "use strict";
-
             var arr = Object.keys(this),
                 ignoredKeys = ["all", "user", "track"],
                 i;
@@ -277,8 +269,6 @@ window.ui = {
             }
         },
         track: function (options) {
-            "use strict";
-
             options = options || {};
             var self = this,
                 retryCount = 0,
@@ -305,8 +295,6 @@ window.ui = {
             } */
         },
         bugsnag: function () {
-            "use strict";
-
             this.track({
                 name: "Bugsnag",
                 condition: function (self) {
@@ -335,8 +323,6 @@ window.ui = {
             });
         },
         ga: function () {
-            "use strict";
-
             this.track({
                 name: "Google Analytics",
                 condition: function (self) {
@@ -351,8 +337,6 @@ window.ui = {
             });
         },
         fs: function () {
-            "use strict";
-
             this.track({
                 name: "FullStory",
                 condition: function (self) {
@@ -384,8 +368,6 @@ window.ui = {
         user: {}
     },
     setUser: function (session) {
-        "use strict";
-
         var user = {},
             name = [],
             email,
@@ -436,8 +418,6 @@ window.ui = {
         }
     },
     getUser: function () {
-        "use strict";
-
         this.identify.user = (function () {
             try {
                 return JSON.parse(localStorage.user);
@@ -457,16 +437,12 @@ window.ui = {
         return this.identify.user;
     },
     isNumber: function (str) {
-        "use strict";
-
         // Is a number
         return !isNaN(parseFloat(str)) && isFinite(str) &&
             // Isn't a phone number that begins with "0"
             (String(str).length === String(Number(str)).length || str.indexOf(".") > 0);
     },
     isObj: function (str) {
-        "use strict";
-
         try {
             var obj = JSON.parse(str);
 
@@ -476,8 +452,6 @@ window.ui = {
         }
     },
     hash: function (opt /* param */) {
-        "use strict";
-
         // opt => key | hash, param, getCookie
         opt = typeof opt === "string" || Array.isArray(opt) ? {param: opt} : opt || {};
 
@@ -522,8 +496,6 @@ window.ui = {
         return opt.param ? obj[opt.param] : obj;
     },
     serialize: function (obj, options) {
-        "use strict";
-
         if (typeof obj === "object") {
             options = options || {};
             var arr = Object.keys(obj),
@@ -544,8 +516,6 @@ window.ui = {
         return "";
     },
     filterObj: function (raw, condition) {
-        "use strict";
-
         return Object.keys(raw).filter(function (key) {
             return condition ? condition(key, raw) : raw[key];
         }).reduce(function (obj, key) {
@@ -555,8 +525,6 @@ window.ui = {
         }, {});
     },
     confirm: function (el) {
-        "use strict";
-
         var arr,
             i;
 
@@ -576,8 +544,6 @@ window.ui = {
         playlistLink: "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUNNsgimJtU1q1LUMVsq44Dg&maxResults=50&key=AIzaSyBt0-e3Ups6i4p8GQs811EarYbpMiPfxg4",
         playlistLocal: "/assets/ui-videosList.js",
         getData: function (id) {
-            "use strict";
-
             var obj = ui.videosList && ui.videosList[id] || {},
                 res = {},
                 prop;
@@ -592,8 +558,6 @@ window.ui = {
             return res;
         },
         size: (function () {
-            "use strict";
-
             if (sessionStorage.videoSize) {
                 return sessionStorage.videoSize;
             }
@@ -623,8 +587,6 @@ window.ui = {
             return result;
         }()),
         template: function (id) {
-            "use strict";
-
             var obj = this.getData(id);
 
             return id ? "<video data-id=" + id + " poster=\"" + obj.image + "\" preload=auto crossorigin playsinline controls controlsList=nodownload>" +
@@ -632,8 +594,6 @@ window.ui = {
                 "</video>" : "";
         },
         youtubeConvert: function () {
-            "use strict";
-
             var iframes = Array.from(ui.d.querySelectorAll(".video iframe")),
                 i;
 
@@ -642,8 +602,6 @@ window.ui = {
             }
         },
         applyPlyr: function () {
-            "use strict";
-
             var self = this,
                 success;
 
@@ -687,8 +645,6 @@ window.ui = {
             }
         },
         youtubeSupport: function (legacyCallback) {
-            "use strict";
-
             var self = ui.video,
                 loadImage = {};
 
@@ -843,8 +799,6 @@ window.ui = {
         }
     },
     legacy: function (callback) {
-        "use strict";
-
         var self = this;
 
         if (typeof callback === "function") {
@@ -927,8 +881,6 @@ window.ui = {
     }
 };
 ui.cookie = (function (self) {
-    "use strict";
-
     var res = function (obj /* or key */, expires) {
         // obj => {key: value} or key/s
         // expires => N seconds, default 1 day
@@ -981,8 +933,6 @@ ui.cookie = (function (self) {
     return res;
 }(ui));
 ui.init = (function (self) {
-    "use strict";
-
     self.legacy(function () {
         self.getUser();
         self.analytics();

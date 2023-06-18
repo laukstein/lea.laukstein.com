@@ -1,6 +1,6 @@
-ui.success = (function () {
-    "use strict";
+"use strict";
 
+ui.success = (function () {
     function init() {
         var hash = ui.hash({hash: location.search}),
             locale;

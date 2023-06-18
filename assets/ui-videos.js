@@ -1,6 +1,6 @@
-ui.videos = (function () {
-    "use strict";
+"use strict";
 
+ui.videos = (function () {
     // Restrict API access in https://console.cloud.google.com/apis/credentials/key/13?project=lea-style
     var container = ui.d.getElementById("content"),
         pageTitle = ui.d.title,
@@ -19,7 +19,7 @@ ui.videos = (function () {
                 !lazyload.initDefined && ui.w.IntersectionObserver && ui.w.IntersectionObserverEntry &&
                 "intersectionRatio" in ui.w.IntersectionObserverEntry.prototype &&
                 !("isIntersecting" in IntersectionObserverEntry.prototype) &&
-                Object.defineProperty(ui.w.IntersectionObserverEntry.prototype, "isIntersecting", {
+                Object.defineProperty(ui.w.IntersectionObserverEntry.prototype, "isIntersecting", { // eslint-disable-line accessor-pairs
                     get: function () {
                         return this.intersectionRatio > 0;
                     }

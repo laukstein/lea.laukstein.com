@@ -158,22 +158,14 @@
             "space-in-parens": "error",
             "space-unary-ops": "error",
             "spaced-comment": "error",
-            "strict": ["error", "function"],
+            "strict": ["error", "global"],
             "symbol-description": "error",
             "template-curly-spacing": "error",
             "template-tag-spacing": "error",
             "unicode-bom": "error",
             "wrap-iife": ["error", "outside"],
             "yoda": "error"
-        },
-        "overrides": [
-            {
-                "files": ["sw.js"],
-                "rules": {
-                    "strict": ["error", "global"]
-                }
-            }
-        ]
+        }
     },
     "eslintIgnore": ["**/*.min.js"],
     "scripts": {

@@ -1,6 +1,6 @@
-ui.colorSwatch = (function () {
-    "use strict";
+"use strict";
 
+ui.colorSwatch = (function () {
     // -> /color-swatch?affiliate=foo&campaign=bar
     // <- /payment#orderid=1&utm_campaign=foo&utm_source=bar
     var buttons = Array.from(ui.d.querySelectorAll(".x-button")),

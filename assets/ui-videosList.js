@@ -1,3 +1,5 @@
+"use strict";
+
 ui.videosList = {
     _dohRGGGLmQ: {
         academy: true,

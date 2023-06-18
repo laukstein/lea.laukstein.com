@@ -1,9 +1,9 @@
+"use strict";
+
 ui.contact = {
     key: "8a321b1a-8fa6-470f-91ab-fcbe92ffbfbf",
     endpoint: "https://lab.laukstein.com/contact",
     success: function () {
-        "use strict";
-
         var self = ui.contact,
             response = this.response,
             error = [],
@@ -48,8 +48,6 @@ ui.contact = {
         }
     },
     send: function (e) {
-        "use strict";
-
         var self = ui.contact,
             client;
 
@@ -72,8 +70,6 @@ ui.contact = {
         }
     },
     option: function () {
-        "use strict";
-
         var self = ui.contact,
             val = location.hash,
             arr = self.subject && self.subject.options,
@@ -101,8 +97,6 @@ ui.contact = {
         }
     },
     autogrow: function (e) {
-        "use strict";
-
         // IE8 backward compatibility
         e = e || ui.w.event;
         var el = e.target || e.srcElement;
@@ -113,8 +107,6 @@ ui.contact = {
         }
     },
     init: function (id) {
-        "use strict";
-
         if (!this.active) {
             this.el = ui.form.el = id && ui.d.getElementById(id);
 

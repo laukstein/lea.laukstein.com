@@ -1,6 +1,6 @@
-ui.payment = ui.legacy(function () {
-    "use strict";
+"use strict";
 
+ui.payment = ui.legacy(function () {
     // -> /payment#orderid=1&firstname=a&lastname=b&email=a@b.com&phone=0&utm_campaign=foo&utm_source=bar
     // <- /order?firstname=a&lastname=b&email=a@b.com&phone=0&payfor=product&custom=...&orderid=1...
     var status = ui.d.getElementById("status"),

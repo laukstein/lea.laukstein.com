@@ -1,8 +1,9 @@
+"use strict";
+
 ui.subscribe = {
     key: "2d8c12be3a09dc2eb907c9be7",
     endpoint: "https://laukstein.us13.list-manage.com/subscribe/post-json",
     success: function (data) {
-        "use strict";
 
         data = typeof data === "object" && !(data instanceof Event) ? data : undefined;
 
@@ -31,8 +32,6 @@ ui.subscribe = {
         self.el.innerHTML = message;
     },
     send: function (e) {
-        "use strict";
-
         var self = ui.subscribe,
             script,
             head;
@@ -62,8 +61,6 @@ ui.subscribe = {
         }
     },
     init: function (id) {
-        "use strict";
-
         if (!this.active) {
             this.el = ui.form.el = id && ui.d.getElementById(id);
 
