@@ -137,12 +137,10 @@ window.ui = {
                         dataLayer.push(arguments);
                     };
                     gtag("js", new Date());
-                    gtag("config", "G-PFVPM1DDTP", ui.identify.user.email ? {
-                        user_id: ui.identify.user.email
-                    } : {});
+                    gtag("config", "G-PFVPM1DDTP", {page_path: location.href});
                 },
                 onSuccess: function () {
-                    ui.identify.ga();
+                    ui.identify.gtag();
                 }
             });
 
@@ -322,20 +320,6 @@ window.ui = {
                 }
             });
         },
-        ga: function () {
-            this.track({
-                name: "Google Analytics",
-                condition: function (self) {
-                    return window.gtag && self.user.email;
-                },
-                callback: function (self) {
-                    gtag("set", {user_id: self.user.email});
-                },
-                log: function (self) {
-                    console.log("Google Analytics", self.user.email);
-                }
-            });
-        },
         fs: function () {
             this.track({
                 name: "FullStory",
@@ -362,6 +346,22 @@ window.ui = {
                 },
                 log: function (self) {
                     console.log("FullStory", self.user.email, this.params(self));
+                }
+            });
+        },
+        gtag: function () {
+            this.track({
+                name: "Google Analytics",
+                condition: function (self) {
+                    return window.gtag && ui.sha256 && self.user.email;
+                },
+                callback: async function (self) {
+                    const email = await ui.sha256(self.user.email);
+
+                    gtag("set", {user_data: {email_address: email}});
+                },
+                log: function (self) {
+                    console.log("Google Analytics", self.user.email);
                 }
             });
         },
@@ -973,3 +973,12 @@ ui.init = (function (self) {
         }
     });
 }(ui));
+
+ui.sha256 = async function (message) {
+    const msgBuffer = new TextEncoder().encode(message),
+        hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer),
+        hashArray = Array.from(new Uint8Array(hashBuffer)),
+        hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+
+    return hashHex;
+};
