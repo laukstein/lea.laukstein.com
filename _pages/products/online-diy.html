@@ -182,8 +182,7 @@ jsonldProperties: |
         <div class=sticky-footer>
             {% include button.html data = page %}
         </div>
-        <p>לא בטוחה? רוצה להתיעץ איתי? תרימי טלפון <a href="tel:0585800020" target=_blank>058-5800020</a></p>{%
-        include recommendation.html data = page.recommendations2 %}
+        {% include recommendation.html data = page.recommendations2 %}
         {% include button.html data = page %}
     </div>
 </article>

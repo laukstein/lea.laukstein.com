@@ -115,7 +115,7 @@ ui.videosList = {
         "720p": "9yihimn7fp6pquo",
         image: "aiusnphkup1axtj",
         title: "סדנאות סטיילינג ושיחות גיור לנשים ונערות",
-        description: "לאה לאוקשטיין\nלהזמנות https://lea.laukstein.com, 0585800020",
+        description: "לאה לאוקשטיין\nלהזמנות https://lea.laukstein.com",
         publishedAt: "2017-06-09T12:11:27.000Z"
     },
     ACrS3PLjZ2k: {
@@ -409,7 +409,7 @@ ui.videosList = {
         "720p": "gw98xmpvp3on6xk",
         image: "094s28zqjk2642m",
         title: "איזה מעיל יתאים לך?",
-        description: "סרטון חדש שיעזור לך לבחור מעיל נכון למבנה הגוף שלך!\nלקבלת יעוץ מותאם אישית לך - צרי קשר 0585800020\nלהורדת מדריך החינמי - https://lea.laukstein.com",
+        description: "סרטון חדש שיעזור לך לבחור מעיל נכון למבנה הגוף שלך!\nלהורדת מדריך החינמי - https://lea.laukstein.com",
         publishedAt: "2017-10-22T05:50:22.000Z"
     },
     "QE3PAdPPK-k": {
@@ -498,7 +498,7 @@ ui.videosList = {
         "720p": "cgki85sgj2xqo2q",
         image: "yh2hc5bblvw625k",
         title: "טעימה - קורס סטיילינג אינטרנטי \"סטייל שבא מבפנים\"",
-        description: "מיד אחרי סוכות נפתח מחזור 5 של הקורס שלי!\nלפרטים המאלים על הקורס https://lea.laukstein.com/diy\nאו פשוט צלצלי אלי 0585800020",
+        description: "מיד אחרי סוכות נפתח מחזור 5 של הקורס שלי!\nלפרטים המאלים על הקורס https://lea.laukstein.com/diy\n",
         publishedAt: "2018-09-17T10:55:03.000Z"
     },
     W_7qA3OIHmk: {
@@ -525,7 +525,7 @@ ui.videosList = {
         "720p": "eljxprss2liad5g",
         image: "07pcgarcpr07ivz",
         title: "לאה לאוקשטיין - שיחות גיור וסדנאות סטיילינג",
-        description: "להזמנות - https://lea.laukstein.com, 0585800020",
+        description: "להזמנות - https://lea.laukstein.com",
         publishedAt: "2017-06-06T08:22:47.000Z"
     },
     xVhYdW1WXqk: {
