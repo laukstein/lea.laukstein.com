@@ -7,6 +7,7 @@ navClassName: hide-ondesktop
 title: מי אני?
 title-short: אודות
 video: 4HwTeZiZJ4Q
+downloadGuide: true
 css: |
     @media (max-width: 56em) {
         .subscribe {
