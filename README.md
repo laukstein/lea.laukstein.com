@@ -11,6 +11,7 @@ YAML schema
     description: max 170-200 chars
     date: YYYY-MM-DD HH:MM:SS
     private: true // default `false`, prevent page indexing
+    downloadGuide: true // Download for Guide PDF
     className: className
     css: |
         selector {

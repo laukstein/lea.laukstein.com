@@ -5,6 +5,7 @@ description: לאה לאוקשטיין סטייליסטית אישית מומח�
 video: oJqYt6ybTV0
 videoTitle: סטייל שבא מבפנים
 pageName: landing
+downloadGuide: true
 headlines: true
 image:
     src: image.jpg
