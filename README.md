@@ -11,13 +11,6 @@ YAML schema
     description: max 170-200 chars
     date: YYYY-MM-DD HH:MM:SS
     private: true // default `false`, prevent page indexing
-    subscribe:
-        id: Mailchimp ID
-        utm_campaign: optional for Facebook Pixel
-        title:  differ form title
-        button: differ button text
-        autofocus: true   // default `false`
-        requiredTel: true // default `false`
     className: className
     css: |
         selector {
@@ -42,6 +35,6 @@ on in Docker http://127.0.0.1:4000
 
 Differ production and development environment with `SET JEKYLL_ENV=prod | dev` before `jekyll serve` or uncomment `environment: development` in _config.yml.
 
-Used APIs: YouTube, Disqus, Mailchimp, Mailgun, Pelepay, Bugsnag, Google Analytics, FullStory, Facebook Pixel, and private APIs.
+Used APIs: YouTube, Disqus, Mailgun, Pelepay, Bugsnag, Google Analytics, FullStory, Facebook Pixel, and private APIs.
 
 Released under the [CC BY-NC-ND 4.0 License](LICENSE). © 2022 לאה לאוקשטיין

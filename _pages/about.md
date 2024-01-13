@@ -7,10 +7,9 @@ navClassName: hide-ondesktop
 title: מי אני?
 title-short: אודות
 video: 4HwTeZiZJ4Q
-subscribe: 70a2d0d976
 css: |
     @media (max-width: 56em) {
-        form.subscribe {
+        .subscribe {
                 width: initial;
             max-width: 23.2em;
             padding-right: 1.6em;

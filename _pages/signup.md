@@ -6,10 +6,6 @@ hiddenHeader: true
 title: מדריך לארון מדוייק
 description: סטיילינג לדתיות - מדריך לארון מדוייק
 video: oJqYt6ybTV0
-subscribe:
-    id: 70a2d0d976
-    autofocus: true
-    requiredTel: false
 css: |
     main {
         display: table;
@@ -49,8 +45,8 @@ css: |
     .cel.subscribe h1 {
         color: #f58e84;
     }
-    .cel.subscribe input,
-    .cel.subscribe button {
+    .cel.subscribe .button {
+        width: 100%;
         max-width: 100%;
         border-width: 2px;
         border-radius: 4px;
@@ -60,24 +56,8 @@ css: |
                     border-color .15s,
                     box-shadow .15s;
     }
-    .cel.subscribe input {
-        background-color: #f4ffff;
-        border-color: #00b0a9;
-        box-shadow: none;
-    }
-    .cel.subscribe input:focus {
-        background-color: #fbffff;
-        border-color: #0f8fc4;
-        outline: 1px solid #1e90ff;
-        box-shadow: inset -1px -1px 0 1px #fff,
-                    2px 2px .3em rgba(101,79,72,.1),
-                    1px 1px 1.8em -.4em rgba(101,79,72,.4);
-    }
-    .cel.subscribe .error input {
-        background-color: #fffbfb;
-        border-color: #c00;
-    }
-    .cel.subscribe button {
+    .cel.subscribe .button {
+        width: 100%;
         line-height: 1.11;
         background-color: #00b0a9;
         border-color: rgba(0,0,0,.2);
@@ -85,21 +65,17 @@ css: |
         border-left-color: rgba(255,255,255,0);
         box-shadow: inset -2px -2px 0 -1px rgba(255,255,255,.14), 1px 1px 2px rgba(0,0,0,.15);
     }
-    .cel.subscribe button:before {
+    .cel.subscribe .button:before {
         line-height: .35;
     }
-    .cel.subscribe button:not(:active):not([disabled]):hover {
+    .cel.subscribe .button:not(:active):hover {
         background-color: #09bab4;
     }
-    .cel.subscribe button:focus,
-    .cel.subscribe button:hover:active {
+    .cel.subscribe .button:focus,
+    .cel.subscribe .button:hover:active {
         background-image: linear-gradient(rgba(100,100,100,.23), rgba(100,100,100,.23));
         border-color: transparent;
         box-shadow: none;
-    }
-    .cel.subscribe .confirm {
-        text-align: center;
-        text-indent: calc(-10.6em / 2);
     }
     footer {
         padding: 0;
@@ -144,9 +120,6 @@ css: |
         .cel.subscribe {
             margin-bottom: auto;
         }
-        .cel.subscribe .confirm {
-            text-indent: inherit;
-        }
         @media (orientation: landscape) {
             .cel.cel {
                 min-width: 21em;
@@ -160,7 +133,7 @@ jsonld: |
         "name": "מדריך לארון מדוייק",
         "image": "https://i.ytimg.com/vi/$video/0.jpg",
         "description": "מדריך בעל שלושה סרטונים על יסודות הסטיילינג",
-        "sku": "newsletters",
+        "sku": "accurate-closet-guide",
         "review": {
             "@type": "Review",
             "reviewRating": {
@@ -186,7 +159,7 @@ jsonld: |
             "@type": "Offer",
             "price": "0.00",
             "priceCurrency": "ILS",
-            "priceValidUntil": "2059-12-31",
+            "priceValidUntil": "2034-02-13",
             "availability": "https://schema.org/InStock",
             "url": "https://lea.laukstein.com/signup"
         }

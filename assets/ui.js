@@ -524,22 +524,6 @@ window.ui = {
             return obj;
         }, {});
     },
-    confirm: function (el) {
-        var arr,
-            i;
-
-        if (el && el.type === "checkbox") {
-            arr = el.parentNode.parentNode.querySelectorAll("button, .button");
-
-            for (i = 0; i < arr.length; i += 1) {
-                if (el.checked) {
-                    arr[i].removeAttribute("disabled");
-                } else {
-                    arr[i].setAttribute("disabled", "");
-                }
-            }
-        }
-    },
     video: {
         playlistLink: "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUNNsgimJtU1q1LUMVsq44Dg&maxResults=50&key=AIzaSyBt0-e3Ups6i4p8GQs811EarYbpMiPfxg4",
         playlistLocal: "/assets/ui-videosList.js",

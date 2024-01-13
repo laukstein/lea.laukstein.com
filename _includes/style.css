@@ -542,14 +542,13 @@ form {
     display: inline-block;
     width: 100%;
 }
-form.subscribe {
+.subscribe {
         width: 24.2em;
     max-width: 100%;
     padding-bottom: 6%;
     margin: auto;
     text-align: right;
 }
-
 .subscribe h1 {
     margin-bottom: 0;
 }
@@ -565,10 +564,6 @@ form.subscribe {
 .subscribe button {
     margin-top: .35em;
     text-align: right;
-}
-.subscribe .confirm {
-    color: #aaa;
-    margin-top: .5em;
 }
 
 label {
@@ -749,15 +744,6 @@ button.next:before {
     outline: none;
     box-shadow: none;
     cursor: default;
-}
-.confirm {
-    margin-bottom: .2em;
-    font-size: 97%;
-}
-.subscribe .confirm {
-    margin-top: .4em;
-    margin-bottom: 0;
-    text-align: right;
 }
 figure {
     margin: -5% .2em 1em;

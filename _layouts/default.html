@@ -78,7 +78,7 @@ unless page.hiddenHeader %}<input class=bar-holder id=bar type=checkbox hidden>
                 endif %}{%
             endfor %}
             <li class=external><a rel=noopener href="https://www.facebook.com/LeaLaukstein/" title="פייסבוק" target=_blank><div class=icon-facebook></div></a></li>
-            <li class=external><a rel=noopener href="https://www.youtube.com/channel/UCNNsgimJtU1q1LUMVsq44Dg" title="יוטיוב" target=_blank><div class=icon-youtube></div></a></li>
+            <li class=external><a rel=noopener href="https://www.youtube.com/@Lea_Laukstein" title="יוטיוב" target=_blank><div class=icon-youtube></div></a></li>
         </ul>
         <label class="bar-close absolute" id=bar-close for=bar hidden></label>
     </div>
@@ -220,21 +220,9 @@ if page.jsonld == nil %}{%
     "logo": "{{ site.url | append: site.assets | append: "hotlink-ok/logo.jpg" }}",
     "sameAs": [
         "https://www.facebook.com/LeaLaukstein/",
-        "https://www.youtube.com/channel/UCNNsgimJtU1q1LUMVsq44Dg",
-        "https://www.pinterest.com/lealaukstein/",
-        "https://twitter.com/lealaukstein"
-    ],
-    "contactPoint": [{
-        "@type": "ContactPoint",
-        "telephone": "+972-58-580-0020",
-        "contactType": "Customer service",
-        "areaServed": "IL",
-        "availableLanguage": [
-            "Hebrew",
-            "English",
-            "Russian"
-        ]
-    }]
+        "https://www.youtube.com/@Lea_Laukstein",
+        "https://www.pinterest.com/lealaukstein/"
+    ]
 }
 {%          endcapture %}{%
             endif %}{%
