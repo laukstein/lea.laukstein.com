@@ -5,7 +5,6 @@ order: 2
 
 title: מיני קורס ארון מדויק
 permalink: /closet
-redirectURL: https://mailchi.mp/laukstein.com/closet
 image: product-diy.jpg
 duration: שלוש שעות
 price: 360

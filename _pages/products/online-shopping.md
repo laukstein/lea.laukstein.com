@@ -5,7 +5,6 @@ order: 3
 
 title: מיני קורס קניות ממוקדות
 permalink: /online-shopping
-redirectURL: https://mailchi.mp/laukstein.com/shopping
 image: product-diy.jpg
 price: 360
 max_payments: 2
