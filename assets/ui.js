@@ -586,46 +586,31 @@ window.ui = {
             }
         },
         applyPlyr: function () {
-            var self = this,
-                success;
+            if (!this.youtubeSupport) {
+                this.youtubeConvert();
 
-            if (!self.youtubeSupport) {
-                success = function () {
-                    self.youtubeConvert();
+                var videos = Array.from(ui.d.querySelectorAll(".video video")),
+                    options = {
+                        controls: ["play-large", "play", "progress", "current-time", "mute", "volume", "pip", "airplay", "fullscreen"],
+                        resetOnEnd: true,
+                        iconUrl: "/assets/plyr/plyr.svg",
+                        blankUrl: "/assets/plyr/blank.mp4",
+                        volume: 10
+                    };
 
-                    var videos = Array.from(ui.d.querySelectorAll(".video video")),
-                        options = {
-                            controls: ["play-large", "play", "progress", "current-time", "mute", "volume", "pip", "airplay", "fullscreen"],
-                            resetOnEnd: true,
-                            iconUrl: "/assets/plyr/plyr.svg",
-                            blankUrl: "/assets/plyr/blank.mp4",
-                            volume: 10
+                videos.map(function (video) {
+                    var config = Object.assign({}, options);
+
+                    if (video.getAttribute("data-id") === "oJqYt6ybTV0") {
+                        // Signup video preview thumbnails https://github.com/sampotts/plyr#preview-thumbnails
+                        config.previewThumbnails = {
+                            enabled: true,
+                            src: "/assets/plyr/thumbnails.vtt"
                         };
+                    }
 
-                    videos.map(function (video) {
-                        var config = Object.assign({}, options);
-
-                        if (video.getAttribute("data-id") === "oJqYt6ybTV0") {
-                            // Signup video preview thumbnails https://github.com/sampotts/plyr#preview-thumbnails
-                            config.previewThumbnails = {
-                                enabled: true,
-                                src: "/assets/plyr/thumbnails.vtt"
-                            };
-                        }
-
-                        return new Plyr(video, config);
-                    });
-
-                    delete ui.video.youtubeSupportInProgress;
-                };
-
-                if (ui.w.Plyr) {
-                    success();
-                } else if (!self.youtubeSupportInProgress) {
-                    self.youtubeSupportInProgress = true;
-
-                    ui.asyncScript("/assets/plyr/plyr.min.js", success);
-                }
+                    return new Plyr(video, config);
+                });
             }
         },
         youtubeSupport: function (legacyCallback) {
@@ -646,18 +631,7 @@ window.ui = {
                 }
 
                 self.youtubeConvert();
-
-                if (!ui.w.Plyr && !self.youtubeSupportInProgress) {
-                    self.applyPlyr();
-
-                    var el = ui.d.createElement("link");
-
-                    el.href = "/assets/plyr/plyr.css";
-                    el.rel = "stylesheet";
-
-                    ui.d.body.appendChild(el);
-                }
-
+                self.applyPlyr();
                 loadImage.legacyCallback();
 
                 return self.youtubeSupport;
@@ -677,7 +651,6 @@ window.ui = {
 
                 image.addEventListener("load", onload);
                 image.addEventListener("error", onerror);
-
                 image.src = url;
 
                 return image;
